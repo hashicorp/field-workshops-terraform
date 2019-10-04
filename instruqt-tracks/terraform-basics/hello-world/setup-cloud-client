@@ -1,0 +1,20 @@
+#!/bin/bash
+# Create the Azure credentials script
+
+cat <<-EOF > /bin/setup_azure.sh
+#!/bin/bash
+# Fetch temporary Azure credentials from a Vault server
+# Requires \$VAULT_ADDR, \$VAULT_NAMESPACE, \$VAULT_CREDS_ENDPOINT and \$VAULT_TOKEN to be set as environment variables
+
+echo "Fetching dynamic Azure credentials from \${VAULT_ADDR}/v1/\${VAULT_CREDS_ENDPOINT}"
+curl -s -H "X-Vault-Token: \${VAULT_TOKEN}" -H "X-Vault-Namespace: \$VAULT_NAMESPACE" \${VAULT_ADDR}/v1/\${VAULT_CREDS_ENDPOINT} | \
+jq -r '[.data.client_id,.data.client_secret] | @tsv' | \
+while read id secret; do
+  echo "export ARM_CLIENT_ID=\$id" >> ~/.bashrc
+  echo "export ARM_CLIENT_SECRET=\$secret" >> ~/.bashrc
+done
+sleep 5
+echo "Setup script complete."
+EOF
+
+chmod +x /bin/setup_azure.sh

@@ -1,0 +1,72 @@
+slug: terraform-basics
+id: m83tcer7vgjm
+type: track
+title: Terraform Basics
+teaser: Learn the basics of Terraform on AWS.
+description: |-
+  This is a longer description of the basics of Terraform on AWS.
+
+  More description can go here.
+icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
+tags:
+- terraform
+- aws
+- azure
+- basics
+owner: hashicorp
+developers:
+- scarolan@hashicorp.com
+private: true
+published: true
+challenges:
+- slug: hello-world
+  id: pbc0sybscvko
+  type: challenge
+  title: Getting to Know Terraform
+  teaser: Learn the terraform basics and command line syntax.
+  assignment: |-
+    Let's get started with Terraform on Azure. First we need some credentials. Run the script below to fetch dynamic Azure credentials from HashiCorp Vault.
+
+    ```
+    setup_azure.sh
+    ```
+
+    If the command ran successfully you should get a message that says `Setup script complete.`
+
+    Run the following command to load your creds into the current shell. This will happen automatically for all the rest of the challenges.
+
+    ```
+    source .bashrc
+    ```
+
+    Congratulations! You have Azure credentials that you can use to start building with Terraform.
+  notes:
+  - type: text
+    contents: This is a note. Notes are fun.
+  tabs:
+  - title: AWS Console
+    type: service
+    hostname: cloud-client
+    path: /
+    port: 80
+  - title: Terraform CLI
+    type: terminal
+    hostname: cloud-client
+  difficulty: basic
+  timelimit: 1800
+- slug: tf-on-azure
+  id: jquapvdocvly
+  type: challenge
+  title: Terraform and Azure
+  teaser: Run terraform commands to build Azure infrastructure.
+  assignment: Use terraform to build Azure stuff.
+  notes:
+  - type: text
+    contents: This is a note. Notes are fun.
+  tabs:
+  - title: Terraform CLI
+    type: terminal
+    hostname: cloud-client
+  difficulty: basic
+  timelimit: 1800
+checksum: "12896743069640302823"
