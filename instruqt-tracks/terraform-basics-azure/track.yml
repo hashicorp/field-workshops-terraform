@@ -2,7 +2,7 @@ slug: terraform-basics-azure
 id: m83tcer7vgjm
 type: track
 title: Terraform Basics on Azure
-teaser: Learn how to deploy infrastructure on Microsoft Azure using Terraform.
+teaser: Learn how to setup and run some basic Terraform commands with Azure.
 description: |-
   Terraform is the world's most popular open source provisioning tool. Thousands of users build millions of containers, virtual machines, and other infrastructure with Terraform every single day. Terraform is easy to learn and fun to work with.
 
@@ -242,7 +242,7 @@ challenges:
     simply changing a single variable.
   assignment: "In one of the previous challenges we set our *prefix* variable.\n\nChoose
     the Azure location nearest to you and set the 'location' variable. You can find
-    a list of valid Azure locations here:\n\nhttps://azure.microsoft.com/en-us/global-infrastructure/locations/\n\nExamples:\ncentralus
+    a list of valid Azure locations here:\n\nhttps://azure.microsoft.com/en-us/global-infrastructure/locations/\n\nExamples:\n\ncentralus
     \ - Iowa  \neastus     - Virginia  \nwestus     - California  \nuksouth    - London
     \ \nsouthindia - Chennai  \neastasia   - Hong Kong  \ncanadacentral - Toronto
     \ \n\nOnce you've set your location variable try running `terraform plan` again.
@@ -301,4 +301,4 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "13919681085429391294"
+checksum: "3655121299937851958"
