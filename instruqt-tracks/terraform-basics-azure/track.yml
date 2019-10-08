@@ -61,7 +61,7 @@ challenges:
     type: terminal
     hostname: cloud-client
   difficulty: basic
-  timelimit: 1800
+  timelimit: 300
 - slug: tf-azure-creds
   id: jquapvdocvly
   type: challenge
@@ -106,7 +106,7 @@ challenges:
     type: terminal
     hostname: cloud-client
   difficulty: basic
-  timelimit: 1800
+  timelimit: 300
 - slug: tf-init-provider
   id: gvo1lsxgpyjx
   type: challenge
@@ -134,7 +134,7 @@ challenges:
     type: terminal
     hostname: cloud-client
   difficulty: basic
-  timelimit: 1800
+  timelimit: 300
 - slug: tf-validate
   id: s35t6v0i2wwk
   type: challenge
@@ -166,7 +166,7 @@ challenges:
     hostname: cloud-client
     path: /root/hashicat-azure/main.tf
   difficulty: basic
-  timelimit: 1800
+  timelimit: 300
 - slug: tf-plan
   id: im52n8wdgt9n
   type: challenge
@@ -197,7 +197,7 @@ challenges:
     type: terminal
     hostname: cloud-client
   difficulty: basic
-  timelimit: 1800
+  timelimit: 300
 - slug: tf-variables
   id: fea5hyeemrxo
   type: challenge
@@ -232,7 +232,40 @@ challenges:
     hostname: cloud-client
     path: /root/hashicat-azure/variables.tf
   difficulty: basic
-  timelimit: 1800
+  timelimit: 300
+- slug: tf-add-a-variable
+  id: nusbmrgoi4cn
+  type: challenge
+  title: Change Your Location
+  teaser: Terraform is flexible enough to deploy infrastructure anywhere in the world.
+    You can easily provision your applications in different geographical regions by
+    simply changing a single variable.
+  assignment: "In one of the previous challenges we set our *prefix* variable.\n\nChoose
+    the Azure location nearest to you and set the 'location' variable. You can find
+    a list of valid Azure locations here:\n\nhttps://azure.microsoft.com/en-us/global-infrastructure/locations/\n\nExamples:\ncentralus
+    \ - Iowa  \neastus     - Virginia  \nwestus     - California  \nuksouth    - London
+    \ \nsouthindia - Chennai  \neastasia   - Hong Kong  \ncanadacentral - Toronto
+    \ \n\nOnce you've set your location variable try running `terraform plan` again.
+    What's different this time?\n\nHINT: Remember that you can set any variable you
+    wish in the **terraform.tfvars** file."
+  notes:
+  - type: text
+    contents: You can override any variable defined in the *variables.tf* file by
+      setting it in your personal *terraform.tfvars* file.
+  tabs:
+  - title: Terraform CLI
+    type: terminal
+    hostname: cloud-client
+  - title: terraform.tfvars
+    type: code
+    hostname: cloud-client
+    path: /root/hashicat-azure/terraform.tfvars
+  - title: variables.tf
+    type: code
+    hostname: cloud-client
+    path: /root/hashicat-azure/variables.tf
+  difficulty: basic
+  timelimit: 300
 - slug: tf-graph
   id: m3at5sjm1vxw
   type: challenge
@@ -267,38 +300,5 @@ challenges:
     hostname: cloud-client
     port: 5000
   difficulty: basic
-  timelimit: 1800
-- slug: tf-add-a-variable
-  id: nusbmrgoi4cn
-  type: challenge
-  title: Change Your Location
-  teaser: Terraform is flexible enough to deploy infrastructure anywhere in the world.
-    You can easily provision your applications in different geographical regions by
-    simply changing a single variable.
-  assignment: "In one of the previous challenges we set our *prefix* variable.\n\nChoose
-    the Azure location nearest to you and set the 'location' variable. You can find
-    a list of valid Azure locations here:\n\nhttps://azure.microsoft.com/en-us/global-infrastructure/locations/\n\nExamples:\ncentralus
-    \ - Iowa  \neastus     - Virginia  \nwestus     - California  \nuksouth    - London
-    \ \nsouthindia - Chennai  \neastasia   - Hong Kong  \ncanadacentral - Toronto
-    \ \n\nOnce you've set your location variable try running `terraform plan` again.
-    What's different this time?\n\nHINT: Remember that you can set any variable you
-    wish in the **terraform.tfvars** file."
-  notes:
-  - type: text
-    contents: You can override any variable defined in the *variables.tf* file by
-      setting it in your personal *terraform.tfvars* file.
-  tabs:
-  - title: Terraform CLI
-    type: terminal
-    hostname: cloud-client
-  - title: terraform.tfvars
-    type: code
-    hostname: cloud-client
-    path: /root/hashicat-azure/terraform.tfvars
-  - title: variables.tf
-    type: code
-    hostname: cloud-client
-    path: /root/hashicat-azure/variables.tf
-  difficulty: basic
-  timelimit: 1800
-checksum: "1504810829257715018"
+  timelimit: 300
+checksum: "13919681085429391294"
