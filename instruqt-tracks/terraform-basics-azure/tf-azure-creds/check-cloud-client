@@ -1,0 +1,2 @@
+#!/bin/bash
+[ ! -z $ARM_CLIENT_ID ] || [ ! -z $ARM_CLIENT_SECRET ] || fail-message "Oops, we couldn't detect Azure credentials in your shell environment. Try again."

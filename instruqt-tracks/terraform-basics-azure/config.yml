@@ -5,6 +5,7 @@ containers:
   shell: /bin/bash
   ports:
   - 80
+  - 5000
   environment:
     ARM_SUBSCRIPTION_ID: 14692f20-9428-451b-8298-102ed4e39c2a
     ARM_TENANT_ID: 0e3e2e88-8caf-41ca-b4da-e3b33b6c52ec
