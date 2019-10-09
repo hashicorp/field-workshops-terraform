@@ -62,51 +62,6 @@ challenges:
     hostname: cloud-client
   difficulty: basic
   timelimit: 300
-- slug: tf-azure-creds
-  id: jquapvdocvly
-  type: challenge
-  title: Get Azure Credentials
-  teaser: Terraform can authenticate to your Azure account using several methods.
-    In this challenge we'll connect the terraform command line tool to Azure so we
-    can start building.
-  assignment: |-
-    Let's learn how to use Terraform on Azure. First we need some credentials. Run the script below to fetch dynamic Azure credentials from HashiCorp Vault.
-
-    ```
-    setup_azure.sh
-    ```
-
-    Run the following command to load your creds into the current shell. This will happen automatically for all the rest of the challenges.
-
-    ```
-    source ~/.bashrc
-    ```
-
-    Verify that your credentials are loaded in your shell environment:
-
-    ```
-    env | grep ARM_CLIENT
-    ```
-
-    Congratulations! You have Azure credentials that you can use to start building with Terraform.
-
-    These credentials will remain safely hidden away as environment variables. Terraform will automatically find and use them.
-  notes:
-  - type: text
-    contents: |-
-      Terraform can't build anything on Azure until we provide it with some credentials.
-
-      In this challenge we'll configure dynamic Azure credentials so we can connect to the training account.
-
-      You can learn more about dynamic cloud credentials here:
-
-      https://www.vaultproject.io/docs/secrets/azure/index.html
-  tabs:
-  - title: Terraform CLI
-    type: terminal
-    hostname: cloud-client
-  difficulty: basic
-  timelimit: 300
 - slug: tf-init-provider
   id: gvo1lsxgpyjx
   type: challenge
@@ -301,4 +256,4 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "3655121299937851958"
+checksum: "12520834088485823908"

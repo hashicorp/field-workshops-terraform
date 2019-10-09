@@ -1,6 +1,0 @@
-#!/bin/bash
-# This script is currently not working because the $VAULT_TOKEN variable
-# which is available once you log in, is not available to the script.
-# We have asked instruqt for help with this scenario.
-source /etc/profile.d/instruqt-env.sh
-/bin/setup_azure.sh

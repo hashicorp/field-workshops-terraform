@@ -10,5 +10,6 @@ RUN apt -y install software-properties-common
 RUN add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
 RUN apt -y install graphviz
 RUN /usr/local/bin/pip install BlastRadius
+RUN echo $VAULT_TOKEN > /tmp/vault_token
 
 ENV VAULT_TOKEN $VAULT_TOKEN

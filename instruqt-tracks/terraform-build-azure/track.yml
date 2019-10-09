@@ -1,0 +1,90 @@
+slug: terraform-build-azure
+id: bvlt94x5i8gc
+type: track
+title: Provision to Azure with Terraform
+teaser: Provision the HashiCat application on Azure using Terraform.
+description: "In this track you'll practice provisioning infrastructure in Azure.\n\nWe'll
+  begin by deploying a resource group, then adding a network and gradually building
+  the entire application stack. "
+icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
+tags:
+- terraform
+- azure
+- basics
+owner: hashicorp
+developers:
+- scarolan@hashicorp.com
+private: true
+published: true
+challenges:
+- slug: tf-add-a-variable
+  id: jhgtd1ygijts
+  type: challenge
+  title: Set Your Location and Prefix Variables
+  teaser: Terraform is flexible enough to deploy infrastructure anywhere in the world.
+    You can easily provision your applications in different geographical regions by
+    simply changing a single variable.
+  assignment: "In this challenge we'll set the *prefix* and *location* variables.
+    The prefix will become part of your application's URL, and the location determines
+    which Azure datacenter our app will be deployed into.\n\nChoose the Azure location
+    nearest to you.\n  \nExamples:\n  \ncentralus     - Iowa  \neastus        - Virginia
+    \ \nwestus        - California  \nuksouth       - London  \nsouthindia    - Chennai
+    \ \neastasia      - Hong Kong  \ncanadacentral - Toronto\n\nEdit the terraform.tfvars
+    file to set your *location* and *prefix* variables.\n\nKeep your prefix string
+    all lower case, and between 5-12 characters long.\n\nSave the file with the CTRL-S
+    (Windows) or CMD-S (OSX) shortcut."
+  notes:
+  - type: text
+    contents: |-
+      You can override any variable defined in the *variables.tf* file by setting it in your personal *terraform.tfvars* file.
+      Let's deploy our HashiCat application in the Azure location nearest to you.
+  tabs:
+  - title: Terraform CLI
+    type: terminal
+    hostname: cloud-client
+  - title: terraform.tfvars
+    type: code
+    hostname: cloud-client
+    path: /root/hashicat-azure/terraform.tfvars
+  - title: variables.tf
+    type: code
+    hostname: cloud-client
+    path: /root/hashicat-azure/variables.tf
+  difficulty: basic
+  timelimit: 300
+- slug: tf-plan-and-apply
+  id: xgmrp6woe3up
+  type: challenge
+  title: Run Terraform Plan and Terraform Apply
+  teaser: The terraform plan command can be run anytime to get a preview of changes
+    that terraform might make. When you run terraform apply these changes are implemented,
+    and terraform builds, updates, or destroys resources.
+  assignment: |-
+    Now that we've configured our required variables we can actually apply our changes.
+
+    Run the *terraform plan* command first to see what will happen:
+
+    ```
+    terraform plan
+    ```
+
+    Then go ahead and run *terraform apply* and watch your resource group being built.
+
+    ```
+    terraform apply
+    ```
+
+    You'll need to enter *yes* when terraform prompts you with the "Do you want to perform these actions?" question.
+
+    Right now our code only defines a single Azure resource group. We'll be building upon this starting point in the next challenge.
+  notes:
+  - type: text
+    contents: Terraform apply includes a terraform plan right before it runs. Terraform
+      maps out all the changes it needs to make before actually applying them.
+  tabs:
+  - title: Terraform CLI
+    type: terminal
+    hostname: cloud-client
+  difficulty: basic
+  timelimit: 300
+checksum: "13765162853862461381"

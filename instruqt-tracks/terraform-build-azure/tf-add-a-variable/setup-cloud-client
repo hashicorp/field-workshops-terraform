@@ -1,6 +1,4 @@
 #!/bin/bash
-# Create the Azure credentials script
-
 cat <<-EOF > /bin/setup_azure.sh
 #!/bin/bash
 # Define some colors
@@ -40,14 +38,20 @@ chmod +x /bin/setup_azure.sh
 git clone https://github.com/hashicorp/hashicat-azure
 
 # Rewind everything back to a single resource group.
-cd /root/hashicat-azure
-mv /root/hashicat-azure/main.tf /root/hashicat-azure/main.tf.completed
-mv /root/hashicat-azure/main.tf.basics /root/hashicat-azure/main.tf
-mv /root/hashicat-azure/outputs.tf /root/hashicat-azure/outputs.tf.completed
-mv /root/hashicat-azure/outputs.tf.basics /root/hashicat-azure/outputs.tf
+GITDIR="/root/hashicat-azure"
+cd ${GITDIR}
+mv ${GITDIR}/main.tf ${GITDIR}/main.tf.completed
+mv ${GITDIR}/main.tf.basics ${GITDIR}/main.tf
+mv ${GITDIR}/outputs.tf ${GITDIR}/outputs.tf.completed
+mv ${GITDIR}/outputs.tf.basics ${GITDIR}/outputs.tf
+mv ${GITDIR}/terraform.tfvars.example ${GITDIR}/terraform.tfvars
+
+cd ${GITDIR}
+/usr/local/bin/terraform init
+echo -e "\nlocation = \"centralus\"" >> ${GITDIR}/terraform.tfvars
 
 export VAULT_TOKEN=$(cat /tmp/vault_token)
 source /etc/profile.d/instruqt-env.sh
 /bin/setup_azure.sh
 
-/bin/set-workdir /root/hashicat-azure
+/bin/set-workdir ${GITDIR}

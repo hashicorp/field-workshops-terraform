@@ -1,0 +1,8 @@
+#!/bin/bash
+cd /root/hashicat-azure
+MYRG=$(cat terraform.tfstate | jq -r '.resources | .[].name')
+
+if [ $MYRG != "myresourcegroup" ]; then
+  fail-message "It looks like your resource group has not been built yet. Try again."
+  exit 1
+fi
