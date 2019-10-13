@@ -1,4 +1,0 @@
-baseURL = "http://example.org/"
-languageCode = "en-us"
-title = "Introduction to Terraform on Azure"
-theme = "story"
