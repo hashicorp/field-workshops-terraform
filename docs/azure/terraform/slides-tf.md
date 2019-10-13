@@ -2,9 +2,8 @@ name: Azure-Terraform-Vault-Workshop
 class: center,middle,title-slide
 count: false
 ![:scale 80%](images/tfaz.png)
-.titletext[
-Azure Terraform Workshop]
-Build Azure Resources With Infrastructure as Code
+## Azure Terraform Workshop
+### Build Azure Resources With Infrastructure as Code
 
 ???
 <!---
