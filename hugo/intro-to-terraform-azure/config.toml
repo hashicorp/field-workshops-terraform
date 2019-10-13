@@ -1,3 +1,4 @@
-baseURL = "http://hashicorp.github.io/field-workshops-terraform/intro-to-terraform-azure"
+baseURL = "http://example.org/"
 languageCode = "en-us"
 title = "Introduction to Terraform on Azure"
+theme = "story"
