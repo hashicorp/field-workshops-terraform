@@ -4,8 +4,9 @@ type: track
 title: Provision to Azure with Terraform
 teaser: Provision the HashiCat application on Azure using Terraform.
 description: "In this track you'll practice provisioning infrastructure in Azure.\n\nWe'll
-  begin by deploying a resource group, then adding a network and gradually building
-  the entire application stack. "
+  begin by deploying a resource group, then adding a network and gradually building\nthe
+  entire application stack.\n\nWhen you're finished you'll be able to view the HashiCat
+  application in your web browser.\n\nKittens as a Service! \U0001F63A"
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
 - terraform
@@ -20,28 +21,36 @@ challenges:
 - slug: tf-add-a-variable
   id: jhgtd1ygijts
   type: challenge
-  title: Set Your Location and Prefix Variables
+  title: Configure Terraform Variables
   teaser: Terraform is flexible enough to deploy infrastructure anywhere in the world.
     You can easily provision your applications in different geographical regions by
     simply changing a single variable.
-  assignment: "In this challenge we'll set the *prefix* and *location* variables.
-    The prefix will become part of your application's URL, and the location determines
-    which Azure datacenter our app will be deployed into.\n\nChoose the Azure location
-    nearest to you.\n  \nExamples:\n  \ncentralus     - Iowa  \neastus        - Virginia
-    \ \nwestus        - California  \nuksouth       - London  \nsouthindia    - Chennai
-    \ \neastasia      - Hong Kong  \ncanadacentral - Toronto\n\nEdit the terraform.tfvars
-    file to set your *location* and *prefix* variables.\n\nKeep your prefix string
-    all lower case, and between 5-12 characters long.\n\nSave the file with the CTRL-S
-    (Windows) or CMD-S (OSX) shortcut."
+  assignment: |-
+    In this challenge we'll set the *prefix* and *location* variables. The prefix will become part of your application's URL, and the location determines which Azure datacenter our app will be deployed into.
+
+    Choose the Azure location nearest to you.
+
+    Examples:
+
+    centralus     - Iowa<br/>
+    eastus        - Virginia<br/>
+    westus        - California<br/>
+    uksouth       - London<br/>
+    southindia    - Chennai<br/>
+    eastasia      - Hong Kong<br/>
+    canadacentral - Toronto<br/>
+
+    Edit the terraform.tfvars file to set your *location* and *prefix* variables.
+
+    Keep your prefix string all lower case, and between 5-12 characters long.
+
+    Save the file with the CTRL-S (Windows) or CMD-S (OSX) shortcut.
   notes:
   - type: text
-    contents: |-
-      You can override any variable defined in the *variables.tf* file by setting it in your personal *terraform.tfvars* file.
-      Let's deploy our HashiCat application in the Azure location nearest to you.
+    contents: You can override any variable defined in the *variables.tf* file by
+      setting it in your personal *terraform.tfvars* file. Let's deploy our HashiCat
+      application in the Azure location nearest to you.
   tabs:
-  - title: Terraform CLI
-    type: terminal
-    hostname: cloud-client
   - title: terraform.tfvars
     type: code
     hostname: cloud-client
@@ -55,12 +64,12 @@ challenges:
 - slug: tf-plan-and-apply
   id: xgmrp6woe3up
   type: challenge
-  title: Run Terraform Plan and Terraform Apply
+  title: Terraform Plan and Terraform Apply
   teaser: The terraform plan command can be run anytime to get a preview of changes
     that terraform might make. When you run terraform apply these changes are implemented,
     and terraform builds, updates, or destroys resources.
   assignment: |-
-    Now that we've configured our required variables we can actually apply our changes.
+    Now that we've configured our required variables we can apply our changes.
 
     Run the *terraform plan* command first to see what will happen:
 
@@ -87,4 +96,100 @@ challenges:
     hostname: cloud-client
   difficulty: basic
   timelimit: 300
-checksum: "13765162853862461381"
+- slug: tf-plan-again
+  id: 7uywvtmk4ogw
+  type: challenge
+  title: Test and Repair
+  teaser: Terraform is idempotent. Each resource in your code will be examined, and
+    if it already exists Terraform will leave it alone.
+  assignment: |-
+    Try running **terraform plan** again and see what happens:
+
+    ```
+    terraform plan
+    ```
+
+    Since your Azure resource group has already been built, terraform will report that there are no changes required.
+
+    This is normal and expected.
+  notes:
+  - type: text
+    contents: |-
+      Terraform is an *idempotent* application.
+
+      Idempotence is the property of certain operations in mathematics and computer science whereby they can be applied multiple times without changing the result beyond the initial application.
+
+      https://en.wikipedia.org/wiki/Idempotence
+  tabs:
+  - title: Terraform CLI
+    type: terminal
+    hostname: cloud-client
+  difficulty: basic
+  timelimit: 300
+- slug: change-location
+  id: stlwwlwfd6tn
+  type: challenge
+  title: Change Your Location
+  teaser: When your terraform code changes, your infrastructure will be modified to
+    match the updated code. Terraform is a declarative language.
+  assignment: |-
+    Use the *terraform.tfvars* tab to update your Azure location. You can choose any valid Azure region. Here are some examples:
+
+    centralus     - Iowa<br/>
+    eastus        - Virginia<br/>
+    westus        - California<br/>
+    uksouth       - London<br/>
+    southindia    - Chennai<br/>
+    eastasia      - Hong Kong<br/>
+    canadacentral - Toronto<br/>
+
+    Save the file using CTRL-S (Windows) or CMD-S (OSX) and run your apply command again.
+
+    You can use the `-auto-approve` flag to avoid having to type "yes" every time you apply.
+
+    ```
+    terraform apply -auto-approve
+    ```
+
+    Observe the output. What happened?
+  notes:
+  - type: text
+    contents: |-
+      Terraform can create, destroy, update in place, or destroy and re-create your infrastructure. Some types of resources can be updated without deleting them. Major changes usually require a teardown and rebuild.
+
+      Terraform always tries to match the current infrastructure to what has been defined in your code.
+  tabs:
+  - title: Terraform CLI
+    type: terminal
+    hostname: cloud-client
+  - title: terraform.tfvars
+    type: code
+    hostname: cloud-client
+    path: /root/hashicat-azure/terraform.tfvars
+  difficulty: basic
+  timelimit: 300
+- slug: terraform-destroy
+  id: sliv4sehcy5r
+  type: challenge
+  title: Terraform Destroy
+  teaser: Terraform can build infrastructure and also destroy it when you are done
+    using it. This helps control costs and reduce infrastructure sprawl.
+  assignment: |-
+    Let's destroy the resource group we created in the previous challenges. Run the following command to destroy your infrastructure:
+
+    ```
+    terraform destroy
+    ```
+
+    You'll need to type "yes" when prompted to destroy your infrastructure. This is a safety feature to help prevent accidental deletion of important resources.
+  notes:
+  - type: text
+    contents: Terraform can destroy infrastructure as easily as it can build it. Use
+      terraform with caution.
+  tabs:
+  - title: Terraform CLI
+    type: terminal
+    hostname: cloud-client
+  difficulty: basic
+  timelimit: 300
+checksum: "6408534910983880049"

@@ -1,0 +1,9 @@
+#!/bin/bash
+cd /root/hashicat-azure
+source /etc/profile.d/instruqt-env.sh
+source /root/.bashrc
+
+# Update our location
+sed 's/^location.*/location = "eastus"/g' terraform.tfvars
+
+/usr/local/bin/terraform apply -auto-approve

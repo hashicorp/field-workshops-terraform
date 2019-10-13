@@ -1,0 +1,3 @@
+baseURL = "http://hashicorp.github.io/field-workshops-terraform/intro-to-terraform-azure"
+languageCode = "en-us"
+title = "Introduction to Terraform on Azure"

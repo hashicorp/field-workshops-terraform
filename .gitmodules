@@ -1,0 +1,3 @@
+[submodule "docs/intro-to-terraform-azure/themes/xaprb"]
+	path = docs/intro-to-terraform-azure/themes/xaprb
+	url = https://github.com/xaprb/story.git

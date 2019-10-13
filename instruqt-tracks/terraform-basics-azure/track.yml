@@ -26,9 +26,9 @@ challenges:
   title: Getting to Know Terraform
   teaser: Learn terraform basics and command line syntax.
   assignment: |-
-    Let's get started with some basic terraform commands.
+    Let's start with some basic terraform commands.
 
-    You can run the following commands in the terminal on the left.
+    Run the following commands in the terminal on the left.
 
     Check the version of Terraform running on your machine:
     ```
@@ -39,6 +39,10 @@ challenges:
     ```
     terraform help
     ```
+
+    Terraform runs on Windows, OSX, or Linux. You can install it on your laptop or on a cloud based workstation. Terraform is also pre-installed in Azure Cloud Shell.
+
+    Today we'll be using the preconfigured terraform workstation on the left for all our lab exercises.
   notes:
   - type: text
     contents: |-
@@ -62,6 +66,78 @@ challenges:
     hostname: cloud-client
   difficulty: basic
   timelimit: 300
+- slug: azure-credentials
+  id: 1xafrvqookjz
+  type: challenge
+  title: Connecting Terraform to Azure Cloud
+  teaser: Safely connect to the Azure APIs using a service principal.
+  assignment: |-
+    Terraform needs credentials to be able to connect to Azure and build resources.
+
+    We've pre-installed some temporary credentials in your Instruqt training environment. These credentials are stored as environment variables. You should never store sensitive API keys inside your source code.
+
+    Terraform can automatically read and use the environment variables that are in your shell environment.
+
+    Run the following command to see your temporary credentials:
+
+    ```
+    env | grep ARM_CLIENT
+    ```
+
+    *Do not ever store your credentials in source code files*, as they can be accidentally exposed or copied to a public repository.
+  notes:
+  - type: text
+    contents: |-
+      Microsoft has a great tutorial for setting up Azure credentials on your laptop or virtual workstation:
+
+      https://docs.microsoft.com/en-us/azure/virtual-machines/linux/terraform-install-configure
+
+      Azure Cloud Shell is another great way to get started with Terraform. With Azure Cloud Shell, terraform is pre-installed and ready to go.
+  - type: text
+    contents: |-
+      Azure Cloud Shell is another great way to get started with Terraform. With Azure Cloud Shell, terraform is pre-installed and ready to go.
+
+      https://docs.microsoft.com/en-us/azure/virtual-machines/linux/terraform-install-configure#use-azure-cloud-shell
+  tabs:
+  - title: Terraform CLI
+    type: terminal
+    hostname: cloud-client
+  difficulty: basic
+  timelimit: 300
+- slug: terraform-code
+  id: 0vb60xa2lbts
+  type: challenge
+  title: What does Terraform code look like?
+  teaser: The terraform DSL (Domain Specific Language) is a declarative language that
+    lets you build almost any type of infrastructure.
+  assignment: "We've downloaded some terraform code onto your workstation. Run the
+    following command to see the terraform code files:\n\n```\nls *.tf\n```\n\nTerraform
+    code always ends with a `.tf` extension. You can have as many terraform files
+    as you want, but these three are commonly created first:\n\n**main.tf** - Where
+    most of your terraform code is stored. This is the part that does the building
+    of resources.  \n\n**variables.tf** - Use this file to define which variables
+    will be available to your users.  \n\n**outputs.tf** - This file contains outputs
+    that will be shown at the end of a successful terraform run  \n\nYou can use the
+    *Code Editor* tab to examine these files. Note that most of the contents of the
+    files are commented out with `#` symbols.  \n\nFiles that end in anything other
+    than `*.tf` or `*.tfvars` are ignored by Terraform."
+  notes:
+  - type: text
+    contents: "Terraform will read anything in the current directory that ends in
+      `*.tf` or `*.tfvars`.\n\nBy convention most terraform workspaces will contain
+      `main.tf`, `variables.tf`, and `outputs.tf` files.\n\nYou can also group your
+      terraform code into files by purpose. For example, you might place all your
+      load balancer configuration code into a file called `load_balancer.tf`. "
+  tabs:
+  - title: Terraform CLI
+    type: terminal
+    hostname: cloud-client
+  - title: Code Editor
+    type: code
+    hostname: cloud-client
+    path: /root/hashicat-azure/
+  difficulty: basic
+  timelimit: 300
 - slug: tf-init-provider
   id: gvo1lsxgpyjx
   type: challenge
@@ -70,7 +146,7 @@ challenges:
     that connects terraform core to your infrastructure providers.
   assignment: "We have downloaded some terraform code for the HashiCat application.
     We'll be using this source code for the rest of the track. \n\nBefore we can do
-    anything with terraform we need to initialize this directory. Run the following
+    anything with terraform we need to initialize our workspace. Run the following
     command in your terminal window:\n\n```\nterraform init\n```\n\nThe *terraform
     init* command scans your terraform code, identifies any providers that are needed,
     and downloads them.\n\nRun the following command to take a peek inside the .terraform
@@ -90,6 +166,26 @@ challenges:
     hostname: cloud-client
   difficulty: basic
   timelimit: 300
+- slug: provider-quiz
+  id: cftow3r88gop
+  type: quiz
+  title: Quiz 1 - Providers and Modules
+  teaser: A quiz about Terraform init
+  assignment: |
+    Where does Terraform store its modules and providers?
+  notes:
+  - type: text
+    contents: |
+      It's quiz time!
+  answers:
+  - In the /tmp directory
+  - In the user's home directory
+  - In the .terraform directory
+  - None of the above
+  solution:
+  - 2
+  difficulty: basic
+  timelimit: 300
 - slug: tf-validate
   id: s35t6v0i2wwk
   type: challenge
@@ -99,7 +195,9 @@ challenges:
   assignment: |-
     Terraform comes with a built-in subcommand called *validate*. This is useful when you want to do a quick syntax check of your code to make sure it parses correctly.
 
-    Edit the main.tf file and remove the curly brace on line 4 of the file. Validate your code:
+    Edit the main.tf file and remove the curly brace on line 4 of the file.  
+    
+    Validate your code:
 
     ```
     terraform validate
@@ -221,6 +319,26 @@ challenges:
     path: /root/hashicat-azure/variables.tf
   difficulty: basic
   timelimit: 300
+- slug: variables-quiz
+  id: qjaiij9j0j35
+  type: quiz
+  title: Quiz 2 - Variables
+  teaser: A quiz about Terraform variables
+  assignment: |
+    Where are Terraform variables *defined*?
+  notes:
+  - type: text
+    contents: |
+      Another quiz, get ready!
+  answers:
+  - On the command line
+  - As environment variables
+  - In the variables.tf file
+  - In the terraform.tfvars file
+  solution:
+  - 2
+  difficulty: basic
+  timelimit: 300
 - slug: tf-graph
   id: m3at5sjm1vxw
   type: challenge
@@ -256,4 +374,4 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "12520834088485823908"
+checksum: "10378486872968727957"
