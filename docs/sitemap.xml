@@ -3,15 +3,29 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/</loc>
+    <loc>http://hashicorp.github.io/field-workshops-terraform/intro-to-terraform-azure/slides/single/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>http://hashicorp.github.io/field-workshops-terraform/intro-to-terraform-azure/slides/slides-tf/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>http://hashicorp.github.io/field-workshops-terraform/intro-to-terraform-azure/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>http://hashicorp.github.io/field-workshops-terraform/intro-to-terraform-azure/</loc>
+  </url>
+  
+  <url>
+    <loc>http://hashicorp.github.io/field-workshops-terraform/intro-to-terraform-azure/slides/</loc>
+  </url>
+  
+  <url>
+    <loc>http://hashicorp.github.io/field-workshops-terraform/intro-to-terraform-azure/tags/</loc>
   </url>
   
 </urlset>

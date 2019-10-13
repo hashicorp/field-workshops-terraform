@@ -1,0 +1,98 @@
+{{ define "title" }}{{ cond (eq .Site.Params.titlecase true) (.Title | title | markdownify) (.Title | markdownify) }}{{ end }}
+
+{{ define "layout" }}
+		{{- if .Site.Params.less -}}
+			{{- with .Params.themes -}}
+				{{- range . }}
+					<link rel="stylesheet/less" type="text/css" href="{{ "css/" | absURL }}{{ . }}.less"></style>
+				{{- end -}}
+				<script type="text/javascript" src="{{ "js/less.min.js" | absURL }}"></script>
+			{{- end }}
+		{{ else }}
+			{{- with .Params.themes -}}
+				{{- range . }}
+					<link rel="stylesheet" type="text/css" href="{{ "css/" | absURL }}{{ . }}.css"></style>
+				{{- end -}}
+			{{- else }}
+			<link rel="stylesheet" type="text/css" href="{{ "css/" | absURL }}{{ .Params.theme }}.css"></style>
+			{{- end }}
+		{{- end -}}
+		<style type="text/css">
+		/* Fixes a RemarkJS print-to-PDF bug; assumes 16:9 or 4:3 ratio */
+		@page {
+				  size: {{ if eq "16:9" .Params.ratio }} 1216px 684px; {{ else }} 912px 684px; {{ end }}
+				  margin: 0;
+		}
+		</style>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i|Quattrocento:400,700|Spectral:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+{{ end }}
+
+{{ define "header" }}
+  <!-- simply override the "header" from baseof.html to make it empty -->
+{{ end }}
+
+{{ define "main" }}
+    <textarea id="source">
+			{{- .RawContent -}}
+    </textarea>
+    <script type="text/javascript" src="{{ "js/qrcode.js" | absURL }}"></script>
+    <script src="{{ "js/remark.js" | absURL }}"></script>
+    <script>
+      var slideshow = remark.create({
+         {{ with .Params.ratio }} ratio: "{{ . }}", {{ end }}
+         navigation: {
+            scroll: false
+         },
+         countIncrementalSlides: false,
+         slideNumberFormat: '%current%',
+			highlightLanguage: "xaprb",
+			placeholder: "dummy value to end the list without a comma"
+      });
+
+		// Shrink headers until they fit. (They have to be momentarily made
+		// visible first.)
+		$(".remark-slide-content.fit-h1 h1").each(function(i, e) {
+			var $e = $(e);
+			var $p = $e.closest('div.remark-slide-container');
+			var needsToggle = !$p.hasClass('remark-visible');
+			if ( needsToggle ) $p.toggleClass('remark-visible');
+			while (e.scrollHeight > e.clientHeight + 1 && $e.css('font-size') != '1px') {
+				$e.css('font-size', (parseInt($e.css('font-size')) - 1) + "px");
+				// console.log($e.css('font-size') + "sh:" + e.scrollHeight + "ch:" +
+				// 	e.clientHeight);
+			}
+			if ( needsToggle ) $p.toggleClass('remark-visible');
+		});
+
+		$( function() {
+			if ( $( "body.feature-qrcode:not(.feature-noqrcode)" ).length ) {
+				if ( $( ".qrcode" ).length ) {
+					new QRCode($(".qrcode")[0], {
+						"useSVG": true,
+						"text": window.location.href.replace(/#\d*$/, "")
+					});
+				}
+			}
+		});
+
+    </script>
+{{ end }}
+
+{{ define "social" }}
+		<meta property="og:title" content="{{ cond (eq .Site.Params.titlecase true) (.Title | title | markdownify) (.Title | markdownify) }}" />
+		<meta property="og:type" content="article" />
+		<meta property="og:image" content="{{ default .Params.image .Params.thumbnail | absURL }}" />
+		<meta property="og:description" content="{{ .Description | markdownify }}" />
+		<meta property="og:url" content="{{ .Permalink }}" />
+		<meta property="og:site_name" content="{{ cond (eq .Site.Params.titlecase true) (.Title | title | markdownify) (.Title | markdownify) }}" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@{{ .Site.Params.twitter }}" />
+{{ end }}
+
+{{ define "about" }}
+  <!-- simply override the "header" from baseof.html to make it empty -->
+{{ end }}
+{{ define "footer" }}
+  <!-- simply override the "header" from baseof.html to make it empty -->
+{{ end }}

@@ -1,13 +1,35 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title></title>
-    <link>/</link>
-    <description>Recent content on </description>
+    <title>Introduction to Terraform on Azure</title>
+    <link>http://hashicorp.github.io/field-workshops-terraform/intro-to-terraform-azure/</link>
+    <description>Recent content on Introduction to Terraform on Azure</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://hashicorp.github.io/field-workshops-terraform/intro-to-terraform-azure/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title></title>
+      <link>http://hashicorp.github.io/field-workshops-terraform/intro-to-terraform-azure/slides/single/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://hashicorp.github.io/field-workshops-terraform/intro-to-terraform-azure/slides/single/</guid>
+      <description>  Azure Terraform and Vault Workshop        </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://hashicorp.github.io/field-workshops-terraform/intro-to-terraform-azure/slides/slides-tf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://hashicorp.github.io/field-workshops-terraform/intro-to-terraform-azure/slides/slides-tf/</guid>
+      <description>name: Azure-Terraform-Vault-Workshop class: center,middle,title-slide count: false .titletext[ Azure Terraform Workshop] Build Azure Resources With Infrastructure as Code
+??? &amp;lt;!&amp;mdash; Azure Terraform Vault Workshop - Part 1 Terraform for Beginners on Azure
+This slide presentation is stored as Markdown code, specifically using the RemarkJS engine to render it. All standard markdown tags are supported, and you can also use some HTML within this document.
+If you need to change the look and feel of the slide deck just use the style.</description>
+    </item>
     
   </channel>
 </rss>
