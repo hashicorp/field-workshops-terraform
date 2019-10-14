@@ -18,6 +18,28 @@ developers:
 private: true
 published: true
 challenges:
+- slug: examine-main-tf
+  id: nisroc5tsz4h
+  type: challenge
+  title: Examine the main.tf file
+  teaser: Terraform code is a declarative language that allows you to build almost
+    any kind of infrastructure. Let's look at the code from our sample application.
+  assignment: |-
+    Open the *main.tf* tab on the left and examine the file in the text editor.
+
+    You'll notice that most of the file is commented out with `#` symbols. At the top of the file there's a single terraform resource which builds an Azure Resource group.
+
+    Note the two variables that must be configured for this resource to work. We'll set those in the next challenge.
+  notes:
+  - type: text
+    contents: Terraform code files always end with `.tf` or `.tfvars` extensions.
+  tabs:
+  - title: main.tf
+    type: code
+    hostname: cloud-client
+    path: /root/hashicat-azure/main.tf
+  difficulty: basic
+  timelimit: 300
 - slug: tf-add-a-variable
   id: jhgtd1ygijts
   type: challenge
@@ -44,7 +66,7 @@ challenges:
 
     Keep your prefix string all lower case, and between 5-12 characters long.
 
-    Save the file with the CTRL-S (Windows) or CMD-S (OSX) shortcut.
+    Save the file with the CTRL-S (Windows) or CMD-S (MacOS) shortcut.
   notes:
   - type: text
     contents: You can override any variable defined in the *variables.tf* file by
@@ -143,7 +165,7 @@ challenges:
     eastasia      - Hong Kong<br/>
     canadacentral - Toronto<br/>
 
-    Save the file using CTRL-S (Windows) or CMD-S (OSX) and run your apply command again.
+    Save the file using CTRL-S (Windows) or CMD-S (MacOS) and run your apply command again.
 
     You can use the `-auto-approve` flag to avoid having to type "yes" every time you apply.
 
@@ -166,6 +188,88 @@ challenges:
     type: code
     hostname: cloud-client
     path: /root/hashicat-azure/terraform.tfvars
+  difficulty: basic
+  timelimit: 300
+- slug: add-a-tag
+  id: 4rorshedxlta
+  type: challenge
+  title: Add a Tag to Your Resource Group
+  teaser: Terraform can change some resources in in place without deleting them. Adding
+    tags is a non-destructive action.
+  assignment: "Read the terraform documentation for the azurerm_resource_group resource:\n\nhttps://www.terraform.io/docs/providers/azurerm/r/resource_group.html\n\nAdd
+    a tag to your resource group in the *main.tf* file. \n\nThe name of the tag should
+    be `environment` and the value should be `production`.\n\nSave the file and re-run
+    `terraform apply`. \n\nWhat happens?"
+  notes:
+  - type: text
+    contents: Adding, changing, or removing tags is a non-destructive action. Terraform
+      can tag your instances without re-creating them.
+  tabs:
+  - title: Terraform CLI
+    type: terminal
+    hostname: cloud-client
+  - title: main.tf
+    type: code
+    hostname: cloud-client
+    path: /root/hashicat-azure/main.tf
+  difficulty: basic
+  timelimit: 300
+- slug: add-virtual-network
+  id: 18lcsj2vyhpz
+  type: challenge
+  title: Add a Virtual Network
+  teaser: Terraform resources are like building blocks. You can continue adding more
+    blocks until your infrastructure reaches the desired state.
+  assignment: |-
+    Open the *main.tf* file again and uncomment the next resource block in the file.
+
+    You can do this by simply deleting the `#` characters at the beginning of each line. Save the file.
+
+    Now run `terraform apply` again. Observe the results.
+  notes:
+  - type: text
+    contents: Terraform code can be built incrementally, one or two resources at a
+      time.
+  tabs:
+  - title: Terraform CLI
+    type: terminal
+    hostname: cloud-client
+  - title: main.tf
+    type: code
+    hostname: cloud-client
+    path: /root/hashicat-azure/main.tf
+  difficulty: basic
+  timelimit: 300
+- slug: complete-the-build
+  id: tb8t1yp7qjyo
+  type: challenge
+  title: Complete the Build
+  teaser: Terraform code can stand up everything from resource groups, to virtual
+    networks, to VMs and containers.
+  assignment: |-
+    We've uncommented all the rest of the terraform code in the main.tf for you. Run a `terraform plan` to see what will be built:
+
+    ```
+    terraform plan
+    ```
+
+    Now run an apply to build the HashiCat application:
+
+    ```
+    terraform apply -auto-approve
+    ```
+  notes:
+  - type: text
+    contents: The -auto-approve flag can be used to override the "Are you sure?" questions
+      that appear before an apply or destroy. Use with caution!
+  tabs:
+  - title: Terraform CLI
+    type: terminal
+    hostname: cloud-client
+  - title: main.tf
+    type: code
+    hostname: cloud-client
+    path: /root/hashicat-azure/main.tf
   difficulty: basic
   timelimit: 300
 - slug: terraform-destroy
@@ -192,4 +296,4 @@ challenges:
     hostname: cloud-client
   difficulty: basic
   timelimit: 300
-checksum: "6408534910983880049"
+checksum: "10837800692447722986"

@@ -1,10 +1,10 @@
 name: Azure-Terraform-Vault-Workshop
-class: center,middle,title-slide
+class: center
 count: false
-![:scale 80%](images/tfaz.png)
+![:scale 60%](images/tfaz.png)
+<br/><br/>
 ## Azure Terraform Workshop
 ### Build Azure Resources With Infrastructure as Code
-
 ???
 <!---
 Azure Terraform Vault Workshop - Part 1
@@ -17,11 +17,7 @@ If you need to change the look and feel of the slide deck just use the style.css
 HTML comments like this one will show up in the source code, but not in the slides or speaker notes.
 --->
 
-Welcome to the beginner's guide to Terraform on Azure. This slide deck is written entirely in Markdown language, which means you can make edits or additions, then submit a pull request to add your changes to the master copy. To make edits to the slide deck simply fork this repository:  
-
-https://github.com/hashicorp/workshops  
-
-edit the Markdown files, and submit a pull request with your changes.
+Welcome to the beginner's guide to Terraform on Azure. This slide deck is written entirely in Markdown language, which means you can make edits or additions, then submit a pull request to add your changes to the master copy. To make edits to the slide deck simply fork this repository, edit the Markdown files, and submit a pull request with your changes.
 
 The Markdown content is contained in the docs/terraform and docs/vault directories.
 
@@ -72,15 +68,12 @@ class: center,middle
 Table of Contents
 =========================
 
-.contents[
-0. Intro to Terraform & Demo
-1. Set Up Your Workstation
-2. My First Terraform
-3. Terraform In Action: plan, apply, destroy
-4. Organizing Your Terraform Code
-5. Provision and Configure Azure VMs
-6. Manage and Change Infrastructure State
-]
+1. Intro to Terraform & Demo
+1. Terraform Basics
+1. Terraform In Action: plan, apply, destroy
+1. Organizing Your Terraform Code
+1. Provision and Configure Azure VMs
+1. Manage and Change Infrastructure State
 
 ???
 This workshop should take roughly three hours to complete. It is ideal for a half-day workshop and can be paired with Vault content for a full day of training. The infrastructure participants build during the morning session is used as the lab environment for the afternoon session. So you can do a half day of Terraform and/or Vault, or both of them together.
@@ -91,17 +84,14 @@ This workshop should take roughly three hours to complete. It is ideal for a hal
 name: How-to-Provision-a-VM
 How to Provision an Azure VM
 -------------------------
-<br><br><br>
 
 Let's look at a few different ways you could provision a new Azure Virtual Machine. Before we start we'll need to gather some basic information including:
 
-.biglist[
-1. Virtual Machine Name
-1. Operating System (Image)
-1. VM Size
-1. Geographical Location
-1. Username and Password
-]
+* Virtual Machine Name
+* Operating System (Image)
+* VM Size
+* Geographical Location
+* Username and Password
 
 ???
 **Has anyone got experience using Azure? How do most of us normally get started? That's right, we log onto the Azure Portal and start clicking around. All of the major cloud providers make this part really easy. You get your account, log on and start clicking buttons. Let's take a peek at what that looks like...**
@@ -110,7 +100,7 @@ Let's look at a few different ways you could provision a new Azure Virtual Machi
 name: Azure-Portal-Provision
 Method 1: Azure Portal (GUI)
 -------------------------
-![:scale 100%](images/azure_provision.png)
+![:scale 70%](images/azure_provision.png)
 
 ???
 **This should look familiar if you've ever used Azure. You click on Virtual Machines, and you'll see a whole list of different base images you can use to provision your VM. Some of these are provided by Microsoft, others are provided by third parties in the marketplace. You either search or browse for the thing you need, and click on it. Easy.**
@@ -119,14 +109,15 @@ Method 1: Azure Portal (GUI)
 name: Azure-Portal-Provision-2
 Method 1: Azure Portal (GUI)
 -------------------------
-![:scale 100%](images/azure_provision_3.png)
+![:scale 70%](images/azure_provision_3.png)
 
 ???
 **Once you've chosen your base OS image, you will fill in some more details like the size of the VM, which location you want to run it in, and the initial administrator password. The Azure portal can be handy for spinning up individual VMs and dev or test environments. The good news is it's really easy to spin up infrastructure this way. The bad news is that it doesn't scale, and chances are nobody's keeping track of what got built.**
 
 ---
 name: Azure-Resource-Manager
-Method 2: Azure Resource Manager (ARM) Template
+class: compact
+Method 2: ARM Template
 -------------------------
 ```json
 {
@@ -143,10 +134,6 @@ Method 2: Azure Resource Manager (ARM) Template
     "vmSize": "[parameters('virtualMachineSize')]"
   },
   "osProfile": {
-    "computerName": "[variables('vmName')]",
-    "adminUsername": "[parameters('adminUsername')]",
-    "adminPassword": "[parameters('adminPassword')]"
-  }
 ```
 
 ARM templates provide a consistent and reliable way to provision Azure resources. JSON is easy for computers to read, but can be challenging for humans to edit and troubleshoot.
@@ -164,7 +151,6 @@ ARM templates provide a consistent and reliable way to provision Azure resources
 name: Provision-with-Terraform-2
 Method 3: Provision with Terraform
 -------------------------
-<br><br><br>
 ```terraform
 resource "azure_virtual_machine" "web" {
   name     = "MyFirstVM"
@@ -186,8 +172,15 @@ Advance back to the previous slide to illustrate the difference between JSON and
 name: What-is-Terraform
 What is Terraform?
 -------------------------
-
-![:scale 100%](./images/azure_tf_code.png)
+```terraform
+resource "azurerm_virtual_machine" "catapp" {
+  name                = "${var.prefix}-meow"
+  location            = "${var.location}"
+  resource_group_name = "${azurerm_resource_group.myresourcegroup.name}"
+  vm_size             = "${var.vm_size}"
+  network_interface_ids         = ["${azurerm_network_interface.catapp-nic.id}"]
+  delete_os_disk_on_termination = "true"
+```
 
 .contents[
 * Executable Documentation
@@ -233,10 +226,7 @@ Infrastructure as Code Allows Us To...
 name: IaC2
 Infrastructure as Code Allows Us To...
 -------------------------
-<br><br>
-.biglist[
 * Provide a codified workflow to create infrastructure
-]
 ???
 **...codified workflow. When you code-ify all of your manual steps, you'll gain several advantages that allow you to provision faster, with more efficiency, while reducing risk.**
 
@@ -245,11 +235,8 @@ Infrastructure as Code Allows Us To...
 name: IaC2
 Infrastructure as Code Allows Us To...
 -------------------------
-<br><br>
-.biglist[
 * Provide a codified workflow to create infrastructure
 * Change and update existing infrastructure
-]
 ???
 **One of the main benefits of IaC is the ability to change and update what you built. There are many tools that allow you to provision infrastructure. This is sometimes called 'Day 0' of operations. The real challenge is managing Day N. What happens when you need to alter the infrastructure you built? Maybe you need to destroy or recreate part or all of it? Are you prepared to maintain and care for this infrastructure, without causing any downtime? Because Terraform is a _stateful_ tool, it can help you keep track of your infrastructure and change it with minimal impact.**
 
@@ -257,12 +244,9 @@ Infrastructure as Code Allows Us To...
 name: IaC2
 Infrastructure as Code Allows Us To...
 -------------------------
-<br><br>
-.biglist[
 * Provide a codified workflow to create infrastructure
 * Change and update existing infrastructure
 * Safely test changes using **`terraform plan`** in dry run mode
-]
 ???
 **Do you remember that scene in the movie Jurassic Park, where Samuel L Jackson turns around and says 'hold onto your butts' as he pushes his untested code change into production? Every sysadmin has had that feeling at one time or another. I really hope this works...**
 
@@ -274,13 +258,10 @@ Infrastructure as Code Allows Us To...
 name: IaC2
 Infrastructure as Code Allows Us To...
 -------------------------
-<br><br>
-.biglist[
 * Provide a codified workflow to create infrastructure
 * Change and update existing infrastructure
 * Safely test changes using **`terraform plan`** in dry run mode
 * Integrate with application code workflows (Git, Azure DevOps, CI/CD tools)
-]
 
 ???
 **Terraform allows you to automate manual processes and build continuous integration or continuous delivery pipelines. Imagine you had a pipeline for creating hardened machine images. Perhaps you have another pipeline for testing your infrastructure build process. These might be chained to other CI/CD application pipelines where the application is deployed into your tested, hardened infrastructure. Think of API driven infrastructure builds, written in a simple langage everybody can use and understand.**
@@ -289,14 +270,11 @@ Infrastructure as Code Allows Us To...
 name: IaC2
 Infrastructure as Code Allows Us To...
 -------------------------
-<br><br>
-.biglist[
 * Provide a codified workflow to create infrastructure
 * Change and update existing infrastructure
 * Safely test changes using **`terraform plan`** in dry run mode
 * Integrate with application code workflows (Git, Azure DevOps, CI/CD tools)
 * Provide reusable modules for easy sharing and collaboration
-]
 
 ???
 **As you expand your terraform usage, you'll have certain patterns and pieces of your infrastructure that you'd like to re-use. Maybe you want your network security to be set up a certain way, every time. Or perhaps someone wrote a great Terraform config for your web application. Terraform supports custom modules, which are simply packages of pre-built Terraform code that others can use. You can use Terraform modules to avoid repetition, enforce security, and ensure that standards are followed.**
@@ -305,15 +283,12 @@ Infrastructure as Code Allows Us To...
 name: IaC2
 Infrastructure as Code Allows Us To...
 -------------------------
-<br><br>
-.biglist[
 * Provide a codified workflow to create infrastructure
 * Change and update existing infrastructure
 * Safely test changes using **`terraform plan`** in dry run mode
 * Integrate with application code workflows (Git, Azure DevOps, CI/CD tools)
 * Provide reusable modules for easy sharing and collaboration
 * Enforce security policy and organizational standards
-]
 
 ???
 **Terraform Enterprise also supports policy enforcement. You can create a list of dos and do-nots for your users and ensure that people don't build things they shouldn't, or introduce unnecessary risk into your environments. For example, you may have a policy that states that servers should not be exposed to the public internet. Because all your infrastructure is stored as code, you can quickly analyze that code to see if it's breaking any of the rules, preventing the bad behavior *before* the infrastructure gets built.**
@@ -322,8 +297,6 @@ Infrastructure as Code Allows Us To...
 name: IaC2
 Infrastructure as Code Allows Us To...
 -------------------------
-<br><br>
-.biglist[
 * Provide a codified workflow to create infrastructure
 * Change and update existing infrastructure
 * Safely test changes using **`terraform plan`** in dry run mode
@@ -331,7 +304,6 @@ Infrastructure as Code Allows Us To...
 * Provide reusable modules for easy sharing and collaboration
 * Enforce security policy and organizational standards
 * Enable collaboration between different teams
-]
 
 ???
 **Now that all your infrastructure is stored in a source code repository, it's very easy for multiple users and teams to collaborate on it. Developer needs a new feature? He or she can easily adjust the source code and send the change back to the operations folks for review. Terraform is a universal language that is understood by both developers and operations teams.**
@@ -340,8 +312,7 @@ Infrastructure as Code Allows Us To...
 name: IaC-Tools
 Other Infrastructure as Code Tools
 -------------------------
-<br><br>
-.center[![:scale 60%](images/infra_tools.png)]
+.center[![:scale 50%](images/infra_tools.png)]
 
 These tools work well for configuring the operating system and application. They are not purpose-built for provisioning cloud infrastructure and platform services.
 
@@ -354,7 +325,6 @@ These tools work well for configuring the operating system and application. They
 name: Native-Tools
 Native Cloud Provisioning Tools
 -------------------------
-<br><br><br>
 .center[![:scale 100%](images/clouds.png)]
 
 Each cloud has its own YAML or JSON based provisioning tool. 
@@ -366,7 +336,7 @@ Terraform can be used across *all* major cloud providers and VM hypervisors.
 
 ---
 name: Config-Hell
-.center[![:scale 90%](images/Config_Hell.jpg)]
+.center[![:scale 60%](images/Config_Hell.jpg)]
 ???
 **This is a fun web comic. Those of you who have spent hours poking at a nested JSON template, trying to figure out which layer of curly braces you are in will understand this...**
 
@@ -374,7 +344,6 @@ name: Config-Hell
 Name: Terraform-vs-JSON
 Terraform vs. JSON
 -------------------------
-<br><br><br>
 ARM JSON:
 ```json
 "name": "[concat(parameters('PilotServerName'), '-vm')]",
@@ -398,7 +367,7 @@ https://blog.1password.com/terraforming-1password/
 Name: Why-Terraform
 Why Terraform?
 -------------------------
-![:scale 100%](images/azure-loves-terraform.png)
+![:scale 80%](images/azure-loves-terraform.png)
 
 ???
 **Microsoft has invested significant resources to ensure that Azure users have a first-class experience when using Terraform to provision on Azure. Your friendly Microsoft solutions architect is happy to support you if you choose to use Terraform, especially if you are adopting a multi-cloud strategy. Terraform is even built right into Azure CloudShell. You can use Terraform with zero setup, right from your web browser.**
@@ -408,9 +377,7 @@ Name: Why-Terraform-on-Azure
 Why Terraform on Azure?
 -------------------------
 
-.contents[
 * Supports multi-cloud & hybrid infrastructure
-]
 
 ???
 **Why specifcially should you use Terraform on Azure? The first reason is that Terraform supports your hybrid or multi-cloud strategy. If you need to build some infrastructure on-prem, and some in Azure, Terraform is a natural fit. Your technical staff only has to learn a single language to be able to provision in either environment.**
@@ -420,10 +387,8 @@ Name: Why-Terraform-on-Azure
 Why Terraform on Azure?
 -------------------------
 
-.contents[
 * Supports multi-cloud & hybrid infrastructure
 * Migrate from other cloud providers
-]
 
 ???
 **Terraform is also great for migrating between cloud providers. Let's say you wanted to move some workloads from AWS to Azure. The code changes in Terraform would be much easier to implement than they would via ARM templates. I was able to migrate a simple demo application from one cloud to another in a few short hours, because there was almost no learning curve. Terraform code looks the same no matter where you run it.**
@@ -433,11 +398,9 @@ Name: Why-Terraform-on-Azure
 Why Terraform on Azure?
 -------------------------
 
-.contents[
 * Supports multi-cloud & hybrid infrastructure
 * Migrate from other cloud providers
 * Increase provisioning speed
-]
 
 ???
 **It's not unusual to see provisioning times drop from days or weeks to hours or minutes when users adopt Terraform. Ineffective manual steps and change approvals can be replaced with fast code pipelines that have rigorous testing and security built right in. Now instead of waiting for days for a change request to be approved, users can self-provision their infrastructure without bottlenecks or slow approval processes.**
@@ -447,12 +410,10 @@ Name: Why-Terraform-on-Azure
 Why Terraform on Azure?
 -------------------------
 
-.contents[
 * Supports multi-cloud & hybrid infrastructure
 * Migrate from other cloud providers
 * Increase provisioning speed
 * Improve efficiency
-]
 
 ???
 **Have you heard the saying 'measure twice, cut once?'? Terraform forces your operations teams to be disciplined and consistent with every single build. Have a change or setting that was overlooked during the build? Now you can immediately correct that mistake inside the code, so that a particular step never gets missed again. All future builds will contain the change. This can also improve relations between developers and operations, because the contract is clear. What gets built is always defined in the code, and never left to guesswork or manual processes.**
@@ -462,20 +423,18 @@ Name: Why-Terraform-on-Azure
 Why Terraform on Azure?
 -------------------------
 
-.contents[
 * Supports multi-cloud & hybrid infrastructure
 * Migrate from other cloud providers
 * Increase provisioning speed
 * Improve efficiency
 * Reduce risk
-]
 
 ???
 **Every modern IT organization has to deal with risk. It's a balancing act between security and usability. You can make it so secure nobody can use it, or on the other end you have a free for all where users can do whatever they want, but are putting the entire cloud account in jeopardy due to risky behavior. Terraform allows you to reduce risk by abstracting your users away from the web UI or API. Instead we provide a safe, auditable abstraction layer that lets users get their work done in a secure and safe way, that doesn't grant unnecessary privileged access.**
 
 ---
 name: Live-Demo
-class: center,middle
+class: title
 Live Demo
 =========================
 ???
@@ -495,464 +454,85 @@ Here is some sample dialog you can use for the demo. Keep it short and sweet. No
 
 ---
 name: Chapter-1
-class: center,middle
-.section[
-Chapter 1  
-Set Up Your Workstation
-]
-
-
----
-name: workstation-setup-0
-Choose Your Workstation
--------------------------
-
-Your instructor will provide you with one of the following two options for your workstation:
-
-1. A cloud based Windows workstation with all our tools pre-installed.
-2. An Azure Cloudshell environment which you can use from a web browser.
-
-We may not have both options available with every training. Check with your instructor for details.
-
-Windows workstation users please proceed to the next slide.
-
-Azure Cloudshell users can jump to the [next section](#workstation-setup-6).
-
-???
-Instructor Note: If your users want to bring their own Azure accounts, they can do all the exercises in Azure Cloudshell. Or if you are able to spin up accounts inside a training account and provide them to your students that's fine too. Otherwise we recommend using the Azure Dev/Test prebuilt workstations described in the instructor notes in this repo.
-
----
-name: workstation-setup-1
-Log Onto Your Workstation
--------------------------
-
-Your instructor will provide you with a workstation URL that looks like this:
-
-.center[.h1[myworkstation01.centralus.cloudapp.azure.com]]
-
-.center[![:scale 50%](images/rdp_login.png)]
-
-Use Remote Desktop (RDP) to access your workstation. Your instructor will provide the username and password.
-
-???
-Note to the instructor - outbound access on TCP port 3389 is required for this to work. Always have someone at the client check that they can access a test workstation *before* you go on site. You don't want to show up for training and find out that RDP access is blocked from the network you're using.
-
-RDP is installed by default on almost all Windows corporate PCs and laptops. If your students are on Mac they can download the official Microsoft RDP client from the app store.
-
----
-name: workstation-setup-2
-Run the setup_azure.ps1 script
--------------------------
-<br><br>
-.center[![:scale 50%](images/run_setup.png)]
-
-Right click on the file called 'setup_azure' on your desktop and select 'Run with Powershell'. Type Y for Yes when it asks about changing your execution policy.
-
-**WARNING:** Do not skip this step. It is required to set up your connection to Azure Cloud.
-
-???
-If anyone is curious what this powershell script does, it's disabling windows line endings for git clone. It also fetches dynamic Azure credentials that are good for 8 hours.
-
-**This handy script does some setup and fetches dynamic Azure credentials from our training Vault server. Right click on the setup_azure.ps1 file and select the "Run with Powershell" option. It may take a minute or two to finish.**
-
----
-name: workstation-setup-2a
-Run the setup_azure.ps1 script
--------------------------
-<br><br>
-.center[![:scale 80%](images/ready_to_terraform.png)]
-
-You should see this banner if the script ran successfully.
-
----
-name: workstation-setup-3
-Open Visual Studio Code
--------------------------
-.center[![:scale 70%](images/set_colors_and_icons.png)]
-
-Click the little gear icon in the lower left corner. You can adjust your Color Theme, File Icon Theme, and other settings such as Font Size. Choose a color theme and font size that are comfortable for you.
-
-???
-I like to demo this part for the students. My personal favorites are Dracula and vscode-icons. Be sure and reload if you add any new extensions or themes. Remember that some of these folks have never used Visual Studio Code before. Know where the font, color, and icon settings are and show them how to change these.
-
-**Let's take a moment to move in and get comfortable. You can click on this little gear icon in the lower left corner to access your settings. Pick a color theme and font size that are easy on the eyes. You can also adjust your icons. I like the vscode-icons set, which has an icon for almost every type of file you can imagine.**
-
----
-name: workstation-setup-3a
-Warning Message
--------------------------
-<br><br>
-.center[![:scale 70%](images/renderer.png)]
-
-If you see this warning message just select 'Yes'. Visual Studio Code works better with the DOM-based renderer on remote workstations.
-
-???
-The reason for this is VSC wants to use your graphics card on your local laptop if its available. This doesn't work so well in the cloud.
-
----
-name: workstation-setup-4
-Install the Terraform Extension
--------------------------
-.center[![:scale 70%](images/install_terraform_extension.png)]
-
-Click the box shaped icon on the left side menu. This brings you to the Extensions Marketplace. Search for Terraform. Install the first one on the list. Click the 'Reload' button once it is done installing.
-
-???
-**The terraform extension gives you syntax highlighting, code completion, and the ability to run terraform commands right from the command palette.**
-
----
-name: workstation-setup-5
-Open the Integrated Terminal
--------------------------
-.center[![:scale 70%](images/open_terminal.png)]
-
-Open the integrated VSC terminal using the menu or keyboard shortcut. You'll be asked to choose a default shell the first time you do this. Select Powershell as your default shell. You can change this later in your settings if you wish.
-
-???
-I've seen this popup sometimes take two tries to save properly. It might be a bug. In any case it shouldn't matter because the default is Powershell which is what we want.
-
----
-name: workstation-setup-6
-Clone the Training Repo
--------------------------
-Run the following commands to clone the training repository from GitHub. Run the Windows workstation commands if you have a cloud workstation provided by your instructor. Run the Cloudshell commands if you're using Azure Cloudshell in a browser window.
-
-Windows Workstation Commands
-```powershell
-cd ~/Desktop
-git clone https://github.com/hashicorp/workshops
-cd workshops/azure
-code -r .
-```
-
-Azure Cloudshell Commands
-```bash
-git clone https://github.com/hashicorp/workshops
-cd workshops/azure
-code .
-```
-
-???
-**This git command is copying a remote repository full of Terraform code onto your workstation. After that we change directories into the repo, and reload our text editor with the current folder opened. Visual Studio Code has a built in file browser which is essential for keeping track of large Terraform projects.**
-
----
-name: workstation-setup-7
-Get to Know Visual Studio Code
--------------------------
-.center[![:scale 70%](images/vsc_tour.png)]
-
-* Left side: File browser, search, version control & more.
-* Lower right: Integrated terminal. Run all commands here.
-* Upper right: Open and edit multiple files in tabs.
-
-???
-**This is your learning environment. You can do everything from within Visual Studio Code. On the left is your file browser, for managing, renaming, moving or opening files. On the upper right we have our text editor. And down here is the terminal, this is where we'll be running our terraform commands.**
-
----
-name: workstation-setup-8
-Explore the Repository
--------------------------
-.center[![:scale 70%](images/terraform_config_files.png)]
-
-Terraform configuration files always end in either a `.tf` or `.tfvars` extension. These files are marked with the purple Terraform icon if you are using the vscode-icons set.
-
-???
-This is a good time to explore the VSC text editor a bit. Show your students that you can do almost everything from within the editor. You can expand and collapse the file browser. Show what each icon on the left side of the GUI does. You can also point out that the terminal can easily be maximized or minimized.
-
----
-name: workstation-setup-10
-Verify That Terraform is Installed
--------------------------
-<br>
-Run the terraform --version command:
-
-```powershell
-terraform --version
-```
-
-You should see the following output (version number may vary):
-
-```powershell
-PS> terraform --version
-Terraform v0.11.13
-```
-
-???
-**We've preinstalled terraform on your workstation for you. You can also download terraform and install it on your own laptop or desktop computer if you wish. Terraform is shipped as a single zip file. You download it, unzip it, and put it somewhere you can run it. Easy.**
-
----
-name: chapter-1-review
-📝 Chapter 1 Review
--------------------------
-.contents[
-In this chapter we:
-* Logged onto your workstation
-* Configured Visual Studio Code
-* Cloned the training git repository
-* Opened VSC in the training folder
-]
-
----
-name: Chapter-2
-class: center,middle
-.section[
-Chapter 2  
-My First Terraform
-]
+class: title
+# Chapter 1
+## Terraform Basics
 
 ???
 **Now that you have terraform installed and working with Azure, we can do a few dry runs before building real infrastructure. Follow along carefully, copying and pasting the commands on each slide into your terminal as we go.**
 
 ---
-name: terraform-help
-Run Terraform Help
--------------------------
-Run the **`terraform help`** command in your Terminal:
+name: what-is-terraform-oss
+class: img-left
+# What is Terraform?
+![Terraform](images\Terraform_VerticalLogo_FullColor.png)
 
-Command:
-```powershell
+Terraform is an open source provisioning tool.
+
+It ships as a single binary which is written in Go. Terraform is cross platform and can run on Linux, Windows, or MacOS. 
+
+Installing terraform is easy. You simply download a zip file, unzip it, and run it.
+
+---
+name: terraform-command-line
+class: col-2
+# Terraform Command Line
+Terraform is a command line tool.
+
+Terraform commands are either typed in manually or run automatically from a script.
+
+The commands are the same whether you are on Linux or Windows or MacOS.
+
+Terraform has subcommands that perform different actions.
+
+```terraform
+# Basic Terraform Commands
+terraform version
 terraform help
+terraform init
+terraform plan
+terraform apply
+terraform destroy
 ```
 
-Output:
+---
+name: terraform-help
+# Terraform Help
 ```tex
-Usage: terraform [-version] [-help] <command> [args]
-
-  The available commands for execution are listed below.
-  The most common, useful commands are shown first, followed by
-  less common or more advanced commands. If you're just getting
-  started with Terraform, stick with the common commands. For the
-  other commands, please read the help and docs before usage.
-  
-  Common commands:
-      plan               Generate and show an execution plan
-      graph              Create a visual graph of Terraform resources
-      init               Initialize a Terraform working directory
-      console            Interactive console for Terraform interpolations
-      fmt                Rewrites config files to canonical format
-      get                Download and install modules for the configuration
-      ...
+*$ terraform help                                                                                                      Usage: terraform [-version] [-help] <command> [args]
+...
+Common commands:
+    apply              Builds or changes infrastructure
+    console            Interactive console for Terraform interpolations
+    destroy            Destroy Terraform-managed infrastructure
+    env                Workspace management
+    fmt                Rewrites config files to canonical format
+    get                Download and install modules for the configuration
+    graph              Create a visual graph of Terraform resources
 ```
+Type `terraform subcommand help` to view help on a particular subcommand.
 ???
 **This is a good command to know. Terraform help will reveal all the available subcommands.**
 
 ---
-name: terraform-init
-Run Terraform Init
--------------------------
-Run the **`terraform init`** command in your Terminal:
-
-Command:
-```powershell
-terraform init
-```
-
-Output:
-```tex
-Initializing provider plugins...
-- Checking for available provider plugins on https://releases.hashicorp.com...
-- Downloading plugin for provider "azurerm" (1.30.1)...
-
-Terraform has been successfully initialized!
-```
-
-Terraform fetches any required providers and modules and stores them in the .terraform directory. You can take a peek inside that directory where you'll see the plugins folder.
-
-???
-**Terraform has an extendible architecture. You download the core program, terraform, then it fetches plugins and modules that are required for your code.**
-
----
-name: terraform-plan
-Run Terraform Plan
--------------------------
-Run the **`terraform plan`** command in your Terminal. Terraform will prompt you to set the required prefix variable. Enter your name in all lowercase letters.
-
-Command:
-```powershell
-terraform plan
-```
-
-Output:
-```tex
-var.prefix
-  This prefix will be included in the name of most resources.
-
-* Enter a value: bugsbunny
-
-Refreshing Terraform state in-memory prior to plan...
-The refreshed state will be used to calculate this plan, but will not be
-persisted to local or remote state storage.
-```
-
-???
-**`terraform plan` is a dry run command. We're not actually building anything yet, Terraform is just telling is what it would do if we ran it for real.**
-
-**If you're curious, how are we authenticating to Azure? We saved some Azure credentials on your workstation as environment variables when we ran the setup_azure.ps1 script. You can also use Terraform directly from Azure cloudshell. Terraform is preinstalled in cloudshell and doesn't require any authentication or special configuration.**
-
----
-name: terraform-plan-2
-Run Terraform Plan
--------------------------
-<br><br>
-When you run **`terraform plan`** and enter your name, you should see output that looks like this:
-
-```tex
-Terraform will perform the following actions:
-
-  + azurerm_resource_group.hashitraining
-      id:       <computed>
-      location: "centralus"
-      name:     "bugsbunny-workshop"
-      tags.%:   <computed>
-
-
-Plan: 1 to add, 0 to change, 0 to destroy.
-```
-
-We are not actually building anything yet. This is just a dry run, showing us what would happen if we applied our change.
-
----
-name: terraform-plan-3
-Optional - Save Your Plan
--------------------------
-<br><br><br>
-You may have noticed this output when you ran **`terraform plan`**:
-
-```tex
-Note: You didn't specify an "-out" parameter to save this plan, so Terraform
-can't guarantee that exactly these actions will be performed if
-"terraform apply" is subsequently run.
-```
-
-If you specify the -out parameter, you can save your Terraform plan in a file and run it later.
-
-???
-Why might you want to do this? Maybe you have a maintenance window and can only implement changes on Friday evening. But you'd like to do the dry run on Friday afternoon. So you run the plan, have it approved, and save it for deployment later that night.
-
----
-name: set-prefix
-Set the Prefix Variable
--------------------------
-Rename the **terraform.tfvars.example** file to **terraform.tfvars**.  
-
-Change where it says "yourname" to your own name. No spaces or special characters please. **Keep it all lowercase.** Save the file.
-
-```tex
-# Rename or copy this file to terraform.tfvars
-# Prefix must be all lowercase letters, no symbols please.
-
-*prefix = "yourname"
-```
-
-Now you will no longer be prompted to enter your prefix variable when you run terraform commands.
-
-The **terraform.tfvars** file is your own personal settings file. You can use it to set or override any of the default variables in the variables.tf file.
-
-**Everyone must choose a unique prefix. 5-12 characters. All lowercase or numbers.**
-
-???
-**Let's go ahead and set this variable in a file so we don't have to type it in every time we run terraform commands. You're going to simply rename the terraform.tfvars.example file to terraform.tfvars. Terraform knows to look for files that end in .tf or .tfvars. You can right click the file right inside VSC to rename it. You may put any text you like here but be sure and avoid very common names and words, or add a number to the end to guarantee it is unique.**
-
-NOTE TO INSTRUCTOR: If students have a very common name, they should add a number to the end of it to guarantee that it is available. The default Azure public 'cloudapp' DNS zone is a global namespace. If your student enters a very common word here, there's a chance it could be taken already. This will cause the Terraform run to fail.
-
----
-name: defining-variables
-Where are Variables Defined?
--------------------------
-Open up the **variables.tf** file and you can see all of the defined variables. Note that some of them have default settings. If you omit the default, the user will be prompted to enter a value.
-
-Here we are *declaring* all the variables that we intend to use in our Terraform code.
-
-```tex
-variable "prefix" {
-  description = "This prefix will be included in the name of most resources."
-}
-
-variable "location" {
-  description = "The region where the virtual network is created."
-  default     = "centralus"
-}
-
-variable "address_space" {
-  description = "The address space that is used by the virtual network. You can supply more than one address space. Changing this forces a new resource to be created."
-  default     = "10.0.0.0/16"
+name: terraform-code
+# Terraform Code
+```terraform
+resource "azurerm_virtual_network" "vnet" {
+  name                = "${var.prefix}-vnet"
+  location            = "${azurerm_resource_group.myresourcegroup.location}"
+  address_space       = ["${var.address_space}"]
+  resource_group_name = "${azurerm_resource_group.myresourcegroup.name}"
 }
 ```
 
-???
-**If you're curious where all these variables are defined, you can see them all in the _variables.tf_ file. Here we are simply defining all the available settings, and optionally declaring some default values. These defaults are what terraform will use if your user doesn't override them with their own settings.**
+Terraform code is based on the [HCL2 toolkit](https://github.com/hashicorp/hcl2). HCL stands for HashiCorp Configuration Language.
 
-Q. Where could you override these defaults?  
-A. In the terraform.tfvars file, or optionally on the command line or via environment variables. The most common approach is to use a tfvars file.
-
----
-name: chapter-2-lab
-.center[.lab-header[👩‍💻 Lab Exercise 2: Set a Variable]]
-
-Choose the Azure location nearest to you and set the 'location' variable. You can find a list of Azure locations here:
-
-https://azure.microsoft.com/en-us/global-infrastructure/locations/
-
-Examples:
-```
-centralus  - Iowa
-eastus     - Virginia
-westus     - California
-uksouth    - London
-southindia - Chennai
-eastasia   - Hong Kong
-canadacentral - Toronto
-```
-
-???
-Have the students do this one on their own. They can choose any region, please let us know if you find any regions that do not support the VM type we use in this workshop.
-
----
-name: chapter-2-lab-answer
-.center[.lab-header[👩‍💻 Lab Exercise 2: Solution]]
-<br><br><br>
-Your **terraform.tfvars** file should now look similar to this:
-
-```tex
-# Rename or copy this file to terraform.tfvars
-# Prefix must be all lowercase letters, no symbols please.
-
-prefix = "yourname"
-location = "uksouth"
-```
-
-If you wish you can run **`terraform plan`** again to see a different result. Notice how your location setting has overridden the default setting.
-
----
-name: chapter-2-review
-📝 Chapter 2 Review
--------------------------
-.contents[
-In this chapter we:
-* Used the **`terraform init`** command
-* Ran the **`terraform plan`** command
-* Learned about variables
-* Set our location and prefix
-]
-
----
-name: Chapter-3
-class: center,middle
-.section[
-Chapter 3  
-terraform plan, apply and destroy
-]
-
-???
-**In this chapter we'll actually build real infrastructure using our sample code.**
+Terraform code, or simply *terraform* is a declarative language that is specifically designed for provisioning infrastructure on any cloud or platform.
 
 ---
 name: main.tf
-Terraform Comments
--------------------------
-<br><br>
-Open the main.tf file in the VSC file browser. You'll notice that most of the file is full of comments. There are two types of comments:
-
+# Terraform Comments
 Line Comments begin with an octothorpe<sup>*</sup>, or pound symbol: #
 ```hcl
 # This is a line comment.
@@ -964,24 +544,153 @@ Block comments are contained between /\* and \*/ symbols.
 Block comments can span multiple lines.
 The comment ends with this symbol: */
 ```
-<br><br>
-.smalltext[
+.small[
 \* Yes, it really is called an [octothorpe](https://www.merriam-webster.com/dictionary/octothorpe).
 ]
 
 ---
+name: terraform-workspaces
+# Terraform Workspaces
+
+A terraform workspace is simply a folder or directory that contains terraform code.
+
+Terraform files always end in either a `*.tf` or `*.tfvars` extension.
+
+Most terraform workspaces contain a minimum of three files:
+
+**main.tf** - Most of your functional code will go here.  
+**variables.tf** - This file is for storing variables.  
+**outputs.tf** - Define what is shown at the end of a terraform run.
+
+---
+name: terraform-init
+# Terraform Init
+```tex
+*$ terraform init
+
+Initializing the backend...
+Initializing provider plugins...
+- Checking for available provider plugins...
+- Downloading plugin for provider "azurerm" (hashicorp/azurerm) 1.35.0...
+...
+provider.azurerm: version = "~> 1.35"
+
+Terraform has been successfully initialized!
+
+```
+Terraform fetches any required providers and modules and stores them in the .terraform directory. If you add, change or update your modules or providers you will need to run init again.
+
+???
+**Terraform has an extendible architecture. You download the core program, terraform, then it fetches plugins and modules that are required for your code.**
+
+---
+name: terraform-plan
+# Terraform Plan
+```tex
+*$ terraform plan
+An execution plan has been generated and is shown below.
+
+Terraform will perform the following actions:
+  # azurerm_resource_group.myresourcegroup will be created
+  + resource "azurerm_resource_group" "myresourcegroup" {
+      + id       = (known after apply)
+      + location = "centralus"
+      + name     = "bugsbunny-workshop"
+      + tags     = (known after apply)
+    }
+Plan: 1 to add, 0 to change, 0 to destroy.
+```
+Preview your changes with `terraform plan` before you apply them.
+
+???
+**`terraform plan` is a dry run command. We're not actually building anything yet, Terraform is just telling is what it would do if we ran it for real.**
+
+---
+name: defining-variables
+# Where are Variables Defined?
+Terraform variables are placed in a file called *variables.tf*. Variables can have default settings. If you omit the default, the user will be prompted to enter a value. Here we are *declaring* the variables that we intend to use in our Terraform code.
+
+```tex
+variable "prefix" {
+  description = "This prefix will be included in the name of most resources."
+}
+
+variable "location" {
+  description = "The region where the virtual network is created."
+* default     = "centralus"
+}
+```
+
+???
+**If you're curious where all these variables are defined, you can see them all in the _variables.tf_ file. Here we are simply defining all the available settings, and optionally declaring some default values. These defaults are what terraform will use if your user doesn't override them with their own settings.**
+
+Q. Where could you override these defaults?  
+A. In the terraform.tfvars file, or optionally on the command line or via environment variables. The most common approach is to use a tfvars file.
+
+---
+name: setting-variables
+class: col-2
+# How are Variables Set?
+Once you have some variables defined, you can set and override them in different ways. Here is the level of precedence for each method.
+
+This list goes from highest precedence (1) to lowest (5).
+
+<br>
+1. Command line flag
+1. Environment variable
+1. Configuration file
+1. Default Config
+1. User manual entry
+
+---
+name: lab-exercise-1
+# 👩‍💻 Lab Exercise 1: Terraform Basics
+<br><br>
+Click on the link below to visit the HashiCorp training lab:
+
+[https://instruqt.com/hashicorp/tracks/terraform-basics-azure](https://instruqt.com/hashicorp/tracks/terraform-basics-azure)
+
+Your instructor will let you know when it's time to regroup.
+
+---
+name: chapter-1-review
+# 📝 Chapter 1 Review
+.contents[
+In this chapter we:
+* Used the **`terraform init`** command
+* Ran the **`terraform plan`** command
+* Learned about variables
+* Set our location and prefix
+]
+
+---
+name: Chapter-2
+class: title
+# Chapter 2  
+## Terraform in Action
+
+???
+**In this chapter we'll actually build real infrastructure using our sample code.**
+
+---
 name: anatomy-of-a-resource
-Anatomy of a Resource
--------------------------
+class: compact
+# Anatomy of a Resource
 Every terraform resource is structured exactly the same way.
 
-.center[![:scale 80%](images/resource_anatomy.png)]
+```terraform
+resource "type" "name" {
+  parameter = "foo"
+  parameter2 = "bar"
+  list = ["one", "two", "three"]
+}
+```
 
-*resource* = top level keyword
+**resource** = top level keyword  
 
-*type* = this is the name of the resource. The first part tells you which provider it belongs to. Example: `azurerm_virtual_machine`. This means the provider is Azure and the specific type of resource is a virtual machine.
+**type** = this is the name of the resource. The first part tells you which provider it belongs to. Example: `azurerm_virtual_machine`. This means the provider is Azure and the specific type of resource is a virtual machine.  
 
-*name* = arbitrary name to refer to this resource. Used internally by terraform. This field *cannot* be a variable.
+**name** = arbitrary name to refer to this resource. Used internally by terraform. This field *cannot* be a variable.
 
 ???
 Everything else you want to configure within the resource is going to be sandwiched between the curly braces. These can include strings, lists, and maps.
@@ -990,35 +699,32 @@ Everything else you want to configure within the resource is going to be sandwic
 name: provider-block
 Terraform Provider Configuration
 -------------------------
-<br><br><br>
-Open up the main.tf file in Visual Studio Code and you'll see the provider block.
+The terraform core program requires at least one provider to build anything.
 
 You can manually configure which version(s) of a provider you would like to use. If you leave this option out, Terraform will default to the latest available version of the provider.
 
 ```hcl
 provider "azurerm" {
-  version = "=1.30.1"
+  version = "=1.35.0"
 }
 ```
-
-???
-**Here we have pinned the provider version to 1.30.1. We recommend pinning your provider versions, especially in production.**
 
 ---
 name: resources-building-blocks
 Resources - Terraform Building Blocks
 -------------------------
-<br><br><br>
-Scroll down a little further and find the first resource in the main.tf file on lines 26-29. These lines are already uncommented for you.
-
-You can toggle comments with the _Edit > Toggle Line Comment_ menu, or by simply highlighting some text and pressing `CTRL-/`. 
-
 ```hcl
 resource "azurerm_resource_group" "hashitraining" {
   name     = "${var.prefix}-workshop"
   location = "${var.location}"
 }
 ```
+
+Here is the first resource we'll be building in the next lab. The variables will be replaced with your own settings or default values.
+
+Terraform is easy to work with. You can test your code as you write it.
+
+Simply keep adding more building blocks until your infrastructure is complete. 
 
 ???
 **Try commenting out this code, then uncommenting it. This is the easy way to write code. Just highlight, uncomment, save the file.**
@@ -1027,258 +733,56 @@ resource "azurerm_resource_group" "hashitraining" {
 
 **Note that the resource contains references to the two variables we set in the previous chapter, location and prefix. These will be replaced when we run terraform commands. Variables are always enclosed in a dollar sign and curly braces.**
 
-I like to flip over to my own workstation and actually show them how to do this. If you run your own workstation in a separate virtual desktop or window, you can easily flip back and forth between slides and live code.
-
----
-name: terraform-plan
-I Love It When a Plan Comes Together
--------------------------
-Run the **`terraform plan`** command and observe the output:
-
-Command:
-```powershell
-terraform plan
-```
-
-Output:
-```tex
-------------------------------------------------------------------------
-An execution plan has been generated and is shown below.
-Resource actions are indicated with the following symbols:
-  + create
-
-Terraform will perform the following actions:
-
-  + azurerm_resource_group.hashitraining
-      id:       <computed>
-      location: "centralus"
-      name:     "yourname-workshop"
-      tags.%:   <computed>
-
-
-Plan: 1 to add, 0 to change, 0 to destroy.
-------------------------------------------------------------------------
-```
-
-???
-**Terraform plan is a dry run. It gives you a chance to have other people review and approve your changes before you apply them.**
-
 ---
 name: terraform-apply
-Terraform Apply
--------------------------
-Run the **`terraform apply`** command to execute the code and build a resource group. Type 'yes' when it prompts you to continue.
-
-Command:
-```powershell
-terraform apply
-```
-
-Output:
+class: compact
+# Terraform Apply
 ```tex
-...
-Plan: 1 to add, 0 to change, 0 to destroy.
+*$ terraform apply
+An execution plan has been generated and is shown below.
 
-Do you want to perform these actions?
-  Terraform will perform the actions described above.
-  Only 'yes' will be accepted to approve.
-  Enter a value: yes
-
-  azurerm_resource_group.hashitraining: Creating...
-  location: "" => "centralus"
-  name:     "" => "yourname-workshop"
-  tags.%:   "" => "<computed>"
-azurerm_resource_group.hashitraining: Creation complete after 1s (ID: /subscriptions/c0a607b2-6372-4ef3-abdb-...ourceGroups/yourname-workshop)
-
-Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
-```
-
----
-name: what-did-we-build
-What Did We Build?
--------------------------
-.center[![:scale 60%](images/blast_radius_graph_1.png)]
-This graph represents the infrastructure we just built. You can see the azurerm provider, your resource group, and two variables, location and prefix.
-
-???
-The grayed out items are variables that we're not using yet, and therefore they have no dependencies. This graph was created with the free Blast Radius tool.
-
----
-name: terraform-plan-again
-Terraform Plan - Repeat
--------------------------
-Run the **`terraform plan`** command again and see what happens.
-
-Command:
-```powershell
-terraform plan
-```
-
-Output:
-```tex
-Refreshing Terraform state in-memory prior to plan...
-The refreshed state will be used to calculate this plan, but will not be
-persisted to local or remote state storage.
-
-azurerm_resource_group.hashitraining: Refreshing state... (ID: /subscriptions/c0a607b2-6372-4ef3-abdb-...ourceGroups/yourname-workshop)
-
-------------------------------------------------------------------------
-
-*No changes. Infrastructure is up-to-date.
-
-This means that Terraform did not detect any differences between your
-configuration and real physical resources that exist. As a result, no
-actions need to be performed.
-```
-
-???
-Terraform is sometimes called idempotent. This means it keeps track of what you built, and if something is already in the correct state Terraform will leave it alone.
-
----
-name: chapter-3-lab
-.center[.lab-header[👩🏻‍💻 Lab Exercise 3a: Change Your Location]]
-<br><br><br>
-Change the location variable in your terraform.tfvars file to a different Azure location. Re-run the **`terraform plan`** and **`terraform apply`** commands. What happens?
-
-???
-This is a good spot for a mini discussion on how Terraform is idempotent, and declarative. You declare what you want (eg, one resource group in a particular region, with a specific name), and then terraform goes and carries out your command, even if you're changing something that already exists. In this example, we have to tear down the existing resource group and build a new one.
-
----
-name: chapter-3-lab-answer
-.center[.lab-header[👩🏻‍💻 Lab Exercise 3a: Solution]]
-<br><br><br>
-When you changed your location variable, Terraform detected a difference between your current settings and what you built before. Terraform can destroy and recreate resources as you make changes to your code. Some resources can be changed in place.
-
-```tex
 Terraform will perform the following actions:
+  # azurerm_resource_group.myresourcegroup will be created
+  + resource "azurerm_resource_group" "myresourcegroup" {
+      + id       = (known after apply)
+      + location = "centralus"
+      + name     = "seanc-workshop"
+      + tags     = (known after apply)
+    }
 
--/+ azurerm_resource_group.hashitraining (new resource required)
-      id:       "/subscriptions/c0a607b2-6372-4ef3-abdb-dbe52a7b56ba/resourceGroups/yourname-workshop" => <computed> (forces new resource)
-      location: "uksouth" => "uscentral" (forces new resource)
-      name:     "yourname-workshop" => "yourname-workshop"
-      tags.%:   "0" => <computed>
-
-
-Plan: 1 to add, 0 to change, 1 to destroy.
+Plan: 1 to add, 0 to change, 0 to destroy.
 ```
+`terraform apply` runs a plan and then if you approve, it applies the changes.
 
 ---
 name: terraform-destroy
-Terraform Destroy
--------------------------
-Run the **`terraform destroy`** command to delete your resource group.
-
-Command:
-```powershell
-terraform destroy
-```
-
-Output:
+class: compact
+# Terraform Destroy
 ```tex
-Do you really want to destroy all resources?
-  Terraform will destroy all your managed infrastructure, as shown above.
-  There is no undo. Only 'yes' will be accepted to confirm.
+*$ terraform destroy
+An execution plan has been generated and is shown below.
 
-  Enter a value: yes
+Terraform will perform the following actions:
 
-Destroy complete! Resources: 0 destroyed.
+  # azurerm_resource_group.myresourcegroup will be destroyed
+  - resource "azurerm_resource_group" "myresourcegroup" {
+      - id       = "/subscriptions/14692f20-9428-451b-8298-102ed4e39c2a/resourceGroups/seanc-workshop" -> null
+      - location = "centralus" -> null
+      - name     = "seanc-workshop" -> null
+      - tags     = {} -> null
+    }
+
+Plan: 0 to add, 0 to change, 1 to destroy.
 ```
-
+`terraform destroy` does the opposite. If you approve, your infrastructure is destroyed.
 ???
 **Terraform can just as easily destroy infrastructure as create it. With great power comes great responsibility!**
 
 ---
-name: we-can-rebuild-him
-We Can Rebuild Him
--------------------------
-Reset your location variable to your nearest Azure location. This time you can skip straight to **`terraform apply`**. Use the **`-auto-approve`** flag this time to avoid having to type 'yes'.
-
-Command:
-```powershell
-terraform apply -auto-approve
-```
-
-Output:
-```tex
-azurerm_resource_group.hashitraining: Creating...
-  location: "" => "centralus"
-  name:     "" => "yourname-workshop"
-  tags.%:   "" => "<computed>"
-azurerm_resource_group.hashitraining: Creation complete after 1s (ID: /subscriptions/c0a607b2-6372-4ef3-abdb-...ourceGroups/yourname-workshop)
-
-Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
-```
-
-???
-The phrase "We can rebuild him. We have the technology." comes from 1970s TV show, The Six Million Dollar Man. https://www.youtube.com/watch?v=0CPJ-AbCsT8#t=2m00s 
-
----
-name: chapter-3b-lab
-.center[.lab-header[👩🏼‍💻 Lab Exercise 3b: Add a Tag]]
-<br><br><br>
-Read the documentation for the `azurerm_resource_group` resource and learn how to add tags to the resource group:
-
-https://www.terraform.io/docs/providers/azurerm/r/resource_group.html
-
-Edit your main.tf file and add a tag to the resource. Set the name of the tag to 'environment' and the value to 'Production'.
-
-???
-Don't just give the answer away here. Let people struggle a little bit and try to actually read the documentation. You can literally copy the example right from the docs into your code. Wait a few minutes until everyone's had a chance to try and do this on their own.
-
----
-name: chapter-3b-lab-answer
-.center[.lab-header[👩🏼‍💻 Lab Exercise 3b: Solution]]
-<br><br>
-Adding and removing tags is a non-destructive action, therefore Terraform is able to make these changes in-place, without destroying your resource group. Your main.tf file should look like this:
-
-```terraform
-resource "azurerm_resource_group" "hashitraining" {
-  name     = "${var.prefix}-vault-workshop"
-  location = "${var.location}"
-
-  tags = {
-    environment = "Production"
-  }
-}
-```
-
-Note how the tag is added by modifying the existing resource:
-```tex
-azurerm_resource_group.hashitraining: Modifying... (ID: /subscriptions/c0a607b2-6372-4ef3-abdb-...ourceGroups/yourname-workshop)
-  tags.%:           "0" => "1"
-  tags.environment: "" => "Production"
-azurerm_resource_group.hashitraining: Modifications complete after 0s (ID: /subscriptions/c0a607b2-6372-4ef3-abdb-...ourceGroups/yourname-workshop)
-```
-
-???
-Some resources can be non-destructively changed in place. Ask your class what they think some of those resources might be? Good examples are tags and security group rules.
-
----
-name: add-virtual-network
-Add a Virtual Network
--------------------------
-<br><br>
-Let's add a virtual network. Scroll down in the main.tf file until you find the azurerm_virtual_network resource. Uncomment it and save the file.
-
-```terraform
-resource "azurerm_virtual_network" "vnet" {
-  name                = "${var.prefix}-vnet"
-  location            = "${azurerm_resource_group.hashitraining.location}"
-  address_space       = ["${var.address_space}"]
-  resource_group_name = "${azurerm_resource_group.hashitraining.name}"
-}
-```
-Note the syntax for ensuring that this virtual network is placed into the resource group we created earlier.
-
-???
-Hop over to your own workstation and regenerate the terraform graph. Point out that we now have a Virtual Network, that depends on the resource group. How did Terraform know these things are connected? 
-
----
 name: dependency-mapping
-Terraform Dependency Mapping
--------------------------
-<br><br>
-Terraform can automatically keep track of dependencies for you. Let's take a look at the two resources in our main.tf file. Note the highlighted line in the azurerm_virtual_network resource. This is how we tell one resource to refer to another in terraform.
+class: compact
+# Terraform Dependency Mapping
+Terraform can automatically keep track of dependencies for you. Look at the two resources below. Note the highlighted line in the azurerm_virtual_network resource. This is how we tell one resource to refer to another in terraform.
 
 ```terraform
 resource "azurerm_resource_group" "hashitraining" {
@@ -1295,134 +799,26 @@ resource "azurerm_virtual_network" "vnet" {
 ```
 
 ---
-name: terraform-apply-again
-Terraform Apply
--------------------------
-Run the **`terraform apply`** command again to build the virtual network.
-
-Command:
-```powershell
-terraform apply -auto-approve
-```
-
-Output:
-```tex
-azurerm_resource_group.hashitraining: Refreshing state... (ID: /subscriptions/c0a607b2-6372-4ef3-abdb-...ourceGroups/yourname-workshop)
-azurerm_virtual_network.vnet: Creating...
-  address_space.#:     "" => "1"
-  address_space.0:     "" => "10.0.0.0/16"
-  location:            "" => "centralus"
-  name:                "" => "yourname-vnet"
-  resource_group_name: "" => "yourname-workshop"
-  subnet.#:            "" => "<computed>"
-  tags.%:              "" => "<computed>"
-azurerm_virtual_network.vnet: Still creating... (10s elapsed)
-azurerm_virtual_network.vnet: Creation complete after 10s (ID: /subscriptions/c0a607b2-6372-4ef3-abdb-...twork/virtualNetworks/yourname-vnet)
-
-Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
-```
-
-???
-The auto-approve flag is so we don't have to type 'yes' every time we run terraform.
-
----
-name: tf-dependency-map
-Expanding the Graph
--------------------------
-.center[![:scale 50%](images/blast_radius_graph_3.png)]
-The terraform resource graph has expanded to include our virtual network.
-
-???
-This is a good spot to talk a bit about how the dependency graph gets formed.
-
----
-name: chapter-3c-lab
-.center[.lab-header[👩🏽‍💻 Lab Exercise 3c: Build the Vault Lab]]
-<br><br><br>
-Go through the rest of the **main.tf** file and uncomment all of the terraform resources. 
-
-Alternatively, you can copy all of the contents of the **main.tf.completed** file into your **main.tf** file. Just make sure you overwrite the entire file and save it.
-
-Run **`terraform apply`** again to build out the rest of your lab environment.
-
-???
-Note the dependency in the `data` block that forces terraform to wait until the Virtual Machine is fully provisioned and has a Public IP address before proceeding. Without that `depends_on` parameter the run may sometimes fail. You don't have to highlight this or explain it. This is for the instructor just in case someone asks. Normally it's best to allow Terraform to discover all dependencies automatically.
-
-NOTE: It will take up to five minutes to build out the lab environment. This is a good place to take a break, or have some time for open discussion and questions.
-
----
-name: chapter-3c-lab-answer
-.center[.lab-header[👩🏽‍💻 Lab Exercise 3c: Solution]]
-<br><br>
-If you copied all the code over from **main.tf.completed** into **main.tf**, it should look like this (comments have been removed for brevity):
-
-```terraform
-resource "azurerm_resource_group" "hashitraining" {
-  name     = "${var.prefix}-vault-workshop"
-  location = "${var.location}"
-}
-
-resource "azurerm_virtual_network" "vnet" {
-  name                = "${var.prefix}-vnet"
-  location            = "${azurerm_resource_group.hashitraining.location}"
-  address_space       = ["${var.address_space}"]
-  resource_group_name = "${azurerm_resource_group.hashitraining.name}"
-}
-
-resource "azurerm_subnet" "subnet" {
-  name                 = "${var.prefix}-subnet"
-  virtual_network_name = "${azurerm_virtual_network.vnet.name}"
-  resource_group_name  = "${azurerm_resource_group.hashitraining.name}"
-  address_prefix       = "${var.subnet_prefix}"
-}
-...
-```
-
----
-name: tf-full-graph
-Terraform Graph
--------------------------
-.center[![:scale 70%](images/blast_radius_graph_2.png)]
-This graph represents your entire lab environment. Check out the free [Blast Radius](https://github.com/28mm/blast-radius) tool to generate your own terraform graphs.
-
-???
-
-
----
-name: chapter-3-review
-📝 Chapter 3 Review
--------------------------
-.contents[
-In this chapter we:
-* Learned about Terraform resources
-* Ran terraform plan, graph, apply and destroy
-* Learned about dependencies
-* Built the lab environment
-* Viewed a graph of the lab
-]
-
----
-name: Chapter-4
-class: center,middle
-.section[
-Chapter 4  
-Organizing Your Terraform Code
-]
-
----
 name: organizing-your-terraform
-Organize Your Terraform Code
--------------------------
-.center[![:scale 85%](images/terraform_config_files.png)]
-You should have three files that end in the \*.tf extension on your workstation. The convention is to have a main.tf, variables.tf, and outputs.tf. You may add more tf files if you wish.
+# Organize Your Terraform Code
+Terraform will read any file in your workspace that ends in a `.tf` extension, but the convention is to have a main.tf, variables.tf, and outputs.tf. You may add more tf files if you wish.
+
+```bash
+main.tf
+variables.tf
+outputs.tf
+```
+
+Let's take a closer look at each of these files.
 
 ---
 name: terraform-main
-The Main File
--------------------------
+class: compact
+# The Main File
+
 The first file is called main.tf. This is where you normally store your terraform code. With larger, more complex infrastructure you might break this up across several files.
 
-```powershell
+```bash
 # This is the main.tf file.
 resource "azurerm_resource_group" "hashitraining" {
   name     = "${var.prefix}-vault-workshop"
@@ -1435,13 +831,7 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = ["${var.address_space}"]
   resource_group_name = "${azurerm_resource_group.hashitraining.name}"
 }
-
-resource "azurerm_subnet" "subnet" {
-  name                 = "${var.prefix}-subnet"
-  virtual_network_name = "${azurerm_virtual_network.vnet.name}"
-  resource_group_name  = "${azurerm_resource_group.hashitraining.name}"
-  address_prefix       = "${var.subnet_prefix}"
-}
+...
 ```
 
 ???
@@ -1449,11 +839,12 @@ resource "azurerm_subnet" "subnet" {
 
 ---
 name: terraform-variables
-The Variables File
--------------------------
+class: compact
+# The Variables File
+
 The second file is called variables.tf. This is where you define your variables and optionally set some defaults.
 
-```powershell
+```bash
 variable "prefix" {
   description = "This prefix will be included in the name of most resources."
 }
@@ -1467,17 +858,12 @@ variable "address_space" {
   description = "The address space that is used by the virtual network. You can supply more than one address space. Changing this forces a new resource to be created."
   default     = "10.0.0.0/16"
 }
-
-variable "subnet_prefix" {
-  description = "The address prefix to use for the subnet."
-  default     = "10.0.10.0/24"
-}
 ```
 
 ---
 name: terraform-outputs
-The Outputs File
--------------------------
+class: compact
+# The Outputs File
 The outputs file is where you configure any messages or data you want to show at the end of a terraform apply.
 
 ```terraform
@@ -1489,19 +875,8 @@ output "MySQL_Server_FQDN" {
   value = "${azurerm_mysql_server.mysql.fqdn}"
 }
 
-output "Instructions" {
-  value = <<EOF
-
-##############################################################################
-# Connect to your Linux Virtual Machine
-#
-# Run the command below to SSH into your server. You can also use PuTTY or any
-# other SSH client. Your password is: ${var.admin_password}
-##############################################################################
-
-ssh ${var.admin_username}@${azurerm_public_ip.vault-pip.fqdn}
-
-EOF
+output "catapp_url" {
+  value = "http://${azurerm_public_ip.catapp-pip.fqdn}"
 }
 ```
 
@@ -1509,183 +884,51 @@ EOF
 **This bit here with the EOF is an example of a HEREDOC. It allows you store multi-line text in an output.**
 
 ---
-name: terraform-outputs
-The Outputs File
--------------------------
-Open up the outputs.tf file in Visual Studio Code. Uncomment all of the outputs. Save the file.
+name: tf-dependency-graph
+class: img-right
+# Terraform Dependency Graph
+.center[![:scale 90%](images/blast_radius_graph_3.png)]
 
-```terraform
-output "Vault_Server_URL" {
-  value = "http://${azurerm_public_ip.vault-pip.fqdn}:8200"
-}
+The terraform resource graph visually depicts dependencies between resources.
 
-output "MySQL_Server_FQDN" {
-  value = "${azurerm_mysql_server.mysql.fqdn}"
-}
-
-output "Instructions" {
-  value = <<EOF
-
-##############################################################################
-# Connect to your Linux Virtual Machine
-#
-# Run the command below to SSH into your server. You can also use PuTTY or any
-# other SSH client. Your password is: ${var.admin_password}
-##############################################################################
-
-ssh ${var.admin_username}@${azurerm_public_ip.vault-pip.fqdn}
-
-EOF
-}
-```
-???
-The bit with EOF is called a heredoc. This is how you add multiple lines or a paragraph of text to your outputs.
-
----
-name: terraform-refresh
-Terraform Refresh
--------------------------
-Run the **`terraform refresh`** command again to show the outputs. You will also see these outputs every time you run **`terraform apply`**.
-
-Command:
-```powershell
-terraform refresh
-```
-
-Output:
-```tex
-Outputs:
-
-Instructions =
-##############################################################################
-# Connect to your Linux Virtual Machine
-#
-# Run the command below to SSH into your server. You can also use PuTTY or any
-# other SSH client. Your password is: Password123!
-##############################################################################
-
-ssh hashicorp@yourname.centralus.cloudapp.azure.com
-
-MySQL_Server_FQDN = yourname-mysql-server.mysql.database.azure.com
-Vault_Server_URL = http://yourname.centralus.cloudapp.azure.com:8200
-```
-
----
-name: terraform-output
-Terraform Output
--------------------------
-If you just want to see the outputs again, use the **`terraform output`** subcommand.
-
-Command:
-```powershell
-terraform output
-```
-
-Output:
-```tex
-Outputs:
-
-Instructions =
-##############################################################################
-# Connect to your Linux Virtual Machine
-#
-# Run the command below to SSH into your server. You can also use PuTTY or any
-# other SSH client. Your password is: Password123!
-##############################################################################
-
-ssh hashicorp@yourname.centralus.cloudapp.azure.com
-
-MySQL_Server_FQDN = yourname-mysql-server.mysql.database.azure.com
-Vault_Server_URL = http://yourname.centralus.cloudapp.azure.com:8200
-```
-
----
-name: terraform-output-2
-Terraform Output - Single Value
--------------------------
-<br><br><br><br>
-If you only want to fetch one of the outputs, use this syntax:
-
-Command:
-```powershell
-terraform output Vault_Server_URL
-```
-
-Output:
-```tex
-http://yourname.centralus.cloudapp.azure.com:8200
-```
+The location and prefix variables are required to create the resource group, which is in turn required to build the virtual network.
 
 ???
-**The name of the variable here is CaSe Sensitive. Make sure you copy it exactly.**
+This is a good spot to talk a bit about how the dependency graph gets formed.
 
 ---
-name: chapter-4a-lab
-.center[.lab-header[👩🏿‍💻 Lab Exercise 4a: Break main.tf Down]]
-<br><br><br><br>
-Take the azurerm_virtual_machine resource out of main.tf and put it into its own file called **vm.tf**. Save both files. Run **`terraform apply`** again. What happens?
+name: lab-exercise-2
+# 👩‍💻 Lab Exercise 2: Terraform in Action
+In the next lab we'll begin by building out a single resource group. Then you'll create a virtual network and finally add  the other components of our infrastructure.
 
-???
-**Don't forget to take the config resource out of main.tf when you copy it into vm.tf. Otherwise you'll have two resources of the same type, with the same name, which causes an error.**
+Click on the link below to visit the HashiCorp training lab:
 
----
-name: chapter-4a-lab-answer
-.center[.lab-header[👩🏿‍💻 Lab Exercise 4a: Solution]]
-<br><br><br><br>
-If you break a large *.tf file down into smaller ones, Terraform doesn't mind. It simply crawls through the directory looking for anything that ends in a .tf extension. All resources in all tf files will be compiled together onto the resource graph before the apply is run.
+[https://instruqt.com/hashicorp/tracks/terraform-build-azure](https://instruqt.com/hashicorp/tracks/terraform-build-azure)
 
-If you want to exclude some tf files from being run, simply rename them with a different extension or move them into another directory.
-
-???
-Some extra notes:
-
-Terraform will *not* crawl into subdirectories looking for tf files. There's also no way to tell terraform which specific tf files to run or not run. The default behavior is to parse any file ending with the .tf or .tfvars extensions in the current directory.
+Your instructor will let you know when it's time to regroup.
 
 ---
-name: chapter-4b-lab
-.center[.lab-header[👩‍🔬 Lab Exercise 4b: Format Your Code]]
+name: chapter-2-review
+# 📝 Chapter 2 Review
 
-<br><br><br>
-Terraform comes with a built-in code formatting command, **`terraform fmt`**. Add some extra white space and lines to your Terraform code, save the file(s), then run this command in your terminal:
-
-```bash
-terraform fmt
-```
----
-name: chapter-4b-lab-answer
-.center[.lab-header[👩‍🔬 Lab Exercise 4b: Solution]]
-
-<br><br><br><br>
-When you run the **`terraform fmt`** command your code is automatically formatted according to recommended standards. This ensures that your code is always neat and tidy, and eliminates unnecessary code versions caused by empty spaces.
-
-???
-Have your students play around with the **`terraform fmt`** command for a bit.
-
----
-name: chapter-4-review
-📝 Chapter 4 Review
--------------------------
-.contents[
 In this chapter we:
+* Learned about Terraform resources
+* Ran terraform plan, graph, apply and destroy
+* Learned about dependencies
+* Viewed a graph of the lab
 * Looked at main.tf, variables.tf and outputs.tf
 * Enabled some outputs in our code
-* Refactored our main.tf into smaller parts
-* Learned the **`terraform fmt`** command
-]
+* Built the lab environment
 
 ---
-name: Chapter-5
-class: center,middle
-.section[
-Chapter 5  
-Provision and Configure Azure VMs
-]
+name: Chapter-3
+class: title
+# Chapter 3
+## Provision and Configure Azure VMs
 
 ---
 name: intro-to-provisioners
-Using Terraform Provisioners
--------------------------
-<br><br><br><br>
+# Using Terraform Provisioners
 Once you've used Terraform to stand up a virtual machine or container, you may wish to configure your operating system and applications. This is where provisioners come in. Terraform supports several different types of provisioners including: Bash, Powershell, Chef, Puppet, Ansible, and more.
 
 .center[https://www.terraform.io/docs/provisioners/index.html]
@@ -1695,9 +938,9 @@ Once you've used Terraform to stand up a virtual machine or container, you may w
 
 ---
 name: file-provisioner
-The File Provisioner
--------------------------
-The Terraform file provisioner copies files from your workstation onto the remote machine. This is one of the simplest ways to put config files into the correct locations on the target machine. In our code we're using the file provisioner to upload a shell script.
+class: compact
+# The File Provisioner
+The Terraform file provisioner copies files from your workstation onto the remote machine. In our code we're using the file provisioner to upload a shell script.
 
 ```terraform
 provisioner "file" {
@@ -1713,44 +956,39 @@ provisioner "file" {
 }
 ```
 
-Note the *connection* block of code inside the provisioner block. This is where you configure the method for connecting to the target machine. The file provisioner supports both SSH and WinRM connections.
+Note the *connection* block of code inside the provisioner block. The file provisioner supports both SSH and WinRM connections.
 
 ???
 SSH for linux, WinRM for your windows machines.
 
 ---
 name: remote-exec-provisioner
-The Remote Exec Provisioner
--------------------------
+class: compact
+# The Remote Exec Provisioner
 The remote exec provisioner allows you to execute scripts or other programs on the target host. If its something you can run unattended (for example, a software installer), then you can run it with remote exec.
 
 ```terraform
 provisioner "remote-exec" {
   inline = [
-    "chmod +x /home/${var.admin_username}/*.sh",
-    "sleep 30",
-    "MYSQL_HOST=${var.prefix}-mysql-server /home/${var.admin_username}/setup.sh"
+    "sudo chown -R ${var.admin_username}:${var.admin_username} /var/www/html",
+    "chmod +x *.sh",
+    "PLACEHOLDER=${var.placeholder} WIDTH=${var.width} HEIGHT=${var.height} PREFIX=${var.prefix} ./deploy_app.sh",
   ]
-
-  connection {
-    type     = "ssh"
-    user     = "${var.admin_username}"
-    password = "${var.admin_password}"
-    host     = "${azurerm_public_ip.vault-pip.fqdn}"
-  }
+...
 }
 ```
 
-In this example we're running two commands. The first changes the permissions of the script to make it executable. The second command runs the script with variables that we defined earlier.
+In this example we're running a few commands to change some permissions and ownership, and to run a script with some enviroment variables.
 
 ???
 Local exec and remote exec can be used to trigger Puppet or Ansible runs. We do have a dedicated chef provisioner as well. 
 
 ---
 name: puppet-chef-ansible
+class: compact
 Terraform & Config Management Tools
 -------------------------
-.center[![:scale 80%](images/cpa.jpg)]
+.center[![:scale 60%](images/cpa.jpg)]
 
 Terraform works well with common config management tools like Chef, Puppet or Ansible. Below are some links with more information on each:
 
@@ -1767,7 +1005,6 @@ https://github.com/scarolan/ansible-terraform
 name: provisioner-tips
 Terraform Provisioner Tips
 -------------------------
-<br><br>
 Terraform provisioners like remote-exec are great when you need to run a few simple commands or scripts. For more complex configuration management you'll want a tool like Chef or Ansible. 
 
 Provisioners only run the first time a Terraform run is executed. In this sense, they are not idempotent. If you need ongoing state management of VMs or servers that are long-lived, we recommend using a config management tool.
@@ -1775,56 +1012,8 @@ Provisioners only run the first time a Terraform run is executed. In this sense,
 On the other hand, if you want immutable infrastructure you should consider using our [Packer](https://packer.io) tool.
 
 ---
-name: chapter-5-lab
-.center[.lab-header[👩🏻‍🔬 Lab Exercise 5: Use a Provisioner]]
-<br><br><br>
-Let's add a simple command to our **remote-exec** block of code.  You can use the 'cowsay' command to output messages into your Terraform log:
-
-```terraform
-inline = [
-  "chmod +x /home/${var.admin_username}/*.sh",
-  "sleep 30",
-  "MYSQL_HOST=${var.prefix}-mysql-server /home/${var.admin_username}/setup.sh",
-* "cowsay Mooooooo!"
-]
-```
-
-Run **`terraform apply`** again and see what happens. Did your virtual machine get rebuilt? Why?
-
-Hint: read up on the [terraform taint](https://www.terraform.io/docs/commands/taint.html) command.
-
-???
-Explain that provisioners only run when virtual machines are first created. If you need to reprovision, you simply destroy and rebuild the VM. You can force a rebuild with this `terraform taint` command. Don't forget that comma at the end of the setup.sh line!
-
----
-name: chapter-5-lab-answer
-.center[.lab-header[👩🏻‍🔬 Lab Exercise 5: Solution]]
-<br><br>
-The remote-exec provisioner is a [Creation Time](https://www.terraform.io/docs/provisioners/index.html#creation-time-provisioners) Provisioner. It does not run every time you update scripts or code within the remote-exec block. If you need to completely rebuild a virtual machine, you can use the **`terraform taint`** command to mark it for a rebuild. Go ahead and taint your Azure VM and rebuild it before the next chapter.
-
-```bash
-terraform taint azurerm_virtual_machine.vault
-terraform apply -auto-approve
-```
-
-```bash
-(remote-exec): ___________
-(remote-exec):< Mooooooo! >
-(remote-exec): -----------
-(remote-exec):        \   ^__^
-(remote-exec):         \  (oo)\_______
-(remote-exec):            (__)\       )\/\
-(remote-exec):                ||----w |
-(remote-exec):                ||     ||
- Creation complete after 4m20s...
-```
-
-???
-You might walk through this one with your students, showing them how easy it is to run commands on your target machine. The cowsay program was installed on your Linux target by the setup.sh script in the files directory.
-
----
-name: chapter-5-review
-📝 Chapter 5 Review
+name: chapter-3-review
+📝 Chapter 3 Review
 -------------------------
 .contents[
 In this chapter we:
@@ -1836,15 +1025,14 @@ In this chapter we:
 ]
 
 ---
-name: Chapter-6
-class: center,middle
-.section[
-Chapter 6  
-Manage and Change Infrastructure State
-]
+name: Chapter-4
+class: title
+# Chapter 4
+## Terraform State
 
 ---
 name: terraform-state
+class: compact
 Terraform State
 -------------------------
 Terraform is a _stateful_ application. This means that it keeps track of everything you build inside of a **state file**. You may have noticed the terraform.tfstate and terraform.tfstate.backup files that appeared inside your working directory.
@@ -1862,17 +1050,12 @@ The state file is Terraform's source of record for everything it knows about.
           "path": [
               "root"
           ],
-          "outputs": {
-              "MySQL_Server_FQDN": {
-                  "sensitive": false,
-                  "type": "string",
-                  "value": "labtest1-mysql-server.mysql.database.azure.com"
 ```
 
 ---
 name: terraform-refresh
-Terraform Refresh
--------------------------
+# Terraform Refresh
+
 Sometimes infrastructure may be changed outside of Terraform's control. Virtual machines could be deleted, firewall rules changed, hardware failures could occur causing your infrastructure to look different than what's in the state file.
 
 The state file represents the *last known* state of the infrastructure. If you'd like to check and see if the state file still matches what you built, you can use the **terraform refresh** command. 
@@ -1885,9 +1068,10 @@ terraform refresh
 
 ---
 name: change-existing-infra
-Changing Existing Infrastructure
--------------------------
-During the earlier sections, you learned to write code in small increments, then test your changes with the **`terraform apply`** command. Whenever you run a plan or apply, Terraform reconciles three different data sources:
+class: compact
+# Changing Existing Infrastructure
+
+Whenever you run a plan or apply, Terraform reconciles three different data sources:
 
 1.  What you wrote in your code
 2.  The state file
@@ -1903,52 +1087,41 @@ Terraform does its best to add, delete, change, or replace existing resources ba
 ```
 
 ---
-name: chapter-6-lab
-.center[.lab-header[👩🏼‍🔬 Lab Exercise 6: State Quiz]]
+name: state-quiz
+class: compact
+# Terraform State Quiz
+| Configuration           | State                   | Reality                 | Operation |
+| ----------------------- | ----------------------- | ----------------------- |:---------:|
+| azurerm_virtual_machine |                         |                         |    ???    |
+| azurerm_virtual_machine | azurerm_virtual_machine |                         |    ???    |
+| azurerm_virtual_machine | azurerm_virtual_machine | azurerm_virtual_machine |    ???    |
+|                         | azurerm_virtual_machine | azurerm_virtual_machine |    ???    |
+|                         |                         | azurerm_virtual_machine |    ???    |
+| azurerm_virtual_machine |                         | azurerm_virtual_machine |    ???    |
+|                         | azurerm_virtual_machine |                         |    ???    |
 
-<br>
-.center[![:scale 100%](images/state_table_empty.png)]
-
-What will happen in each scenario when you run **`terraform apply`**?
-
-???
-Queue up the Jeopardy music! Walk through each row and explain the scenario. See if your students can guess what `terraform apply` will do in each situation.
-
----
-name: chapter-6-lab-answer
-.center[.lab-header[👩🏼‍🔬 Lab Exercise 6: Solution]]
-
-<br>
-.center[![:scale 100%](images/state_table_full.png)]
-
-It's important to understand how Terraform views code, state, and reality. If you're ever unsure about what will happen you can run **`terraform plan`** to find out.
+What happens in each scenario? Discuss.
 
 ---
-name: terraform-destroy-2
-Before You Go...
--------------------------
-If you are not proceeding to the Vault workshop, please run a **`terraform destroy`** command to delete your lab environment.
+name: state-quiz-answers
+class: compact
+# Terraform State Quiz
+| Configuration           | State                   | Reality                 | Operation    |
+| ----------------------- | ----------------------- | ----------------------- |:------------:|
+| azurerm_virtual_machine |                         |                         | create       |
+| azurerm_virtual_machine | azurerm_virtual_machine |                         | create       |
+| azurerm_virtual_machine | azurerm_virtual_machine | azurerm_virtual_machine | no-op        |
+|                         | azurerm_virtual_machine | azurerm_virtual_machine | delete       |
+|                         |                         | azurerm_virtual_machine | no-op        |
+| azurerm_virtual_machine |                         | azurerm_virtual_machine | re-create    |
+|                         | azurerm_virtual_machine |                         | update state |
 
-Command:
-```powershell
-terraform destroy
-```
-
-Output:
-```tex
-Do you really want to destroy all resources?
-  Terraform will destroy all your managed infrastructure, as shown above.
-  There is no undo. Only 'yes' will be accepted to confirm.
-
-  Enter a value: yes
-
-Destroy complete! Resources: 0 destroyed.
-```
+What happens in each scenario? Discuss.
 
 ---
 name: additional-resources
-Additional Resources
--------------------------
+class: compact
+# Additional Resources
 If you'd like to learn more about Terraform on Azure try the links below:
 
 HashiCorp Learning Portal  
@@ -1967,24 +1140,8 @@ Link to this Slide Deck
 https://bit.ly/hashiazure
 
 ---
-name: Ready-fo-More
-Ready for More?
--------------------------
-<br><br><br>
-You can try the [Introduction to Vault](../vault) Workshop, or proceed to the [Intro to Terraform Enterprise](../tfe) Workshop.
-
-The Intro to Vault workshop uses the infrastructure you just built as its lab environment. 
-
-Please run **`terraform destroy`** if you're not doing the Vault workshop. This helps us keep our cloud spending under control. You can always spin up a new instance of the workshop lab later.
-
-[Introduction to Vault](../vault) - Learn the Basics of HashiCorp Vault
-
-[Intro to Terraform Enterprise](../tfe) - Explore Terraform Cloud and Enterprise
-
----
 name: Feedback-Survey
-Workshop Feedback Survey
--------------------------
+# Workshop Feedback Survey
 <br><br>
 .center[
 Your feedback is important to us! 

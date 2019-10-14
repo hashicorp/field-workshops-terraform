@@ -1,5 +1,5 @@
 .remark-slide-content {
-  font-family: 'Quattrocento Sans', -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, arial, sans-serif;
+  font-family: Metro, -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, arial, sans-serif;
 }
 .remark-slide-content pre,
 .remark-slide-content code,
@@ -11,7 +11,7 @@
 .remark-slide-content h1,
 .remark-slide-content h2,
 .remark-slide-content h3 {
-  font-family: Quattrocento, "Goudy Old Style", "Big Caslon", Palatino, serif;
+  font-family: Metro, "Goudy Old Style", "Big Caslon", Palatino, serif;
   font-weight: bold;
 }
 .remark-slide-content table {
