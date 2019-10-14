@@ -31,27 +31,22 @@ Instructor notes are included in plain text, narrative parts are in **bold**. Yo
 
 ---
 name: Link-to-Slide-Deck
-The Slide Deck
--------------------------
+# The Slide Deck
 <br><br><br>
 .center[
 Follow along on your own computer at this link:
 
-https://bit.ly/hashiazure
-=========================
+# https://bit.ly/hashiazure
 ]
 
 ---
 name: Introductions
-Introductions
--------------------------
+# Introductions
 <br><br><br>
-.contents[
 * Your Name
 * Job Title
 * Automation Experience
 * Favorite Text Editor
-]
 
 ???
 Use this slide to introduce yourself, give a little bit of your background story, then go around the room and have all your participants introduce themselves.
@@ -65,8 +60,7 @@ The favorite text editor question is a good ice breaker, but perhaps more import
 ---
 name: Table-of-Contents
 class: center,middle
-Table of Contents
-=========================
+# Table of Contents
 
 1. Intro to Terraform & Demo
 1. Terraform Basics
@@ -82,8 +76,7 @@ This workshop should take roughly three hours to complete. It is ideal for a hal
 
 ---
 name: How-to-Provision-a-VM
-How to Provision an Azure VM
--------------------------
+# How to Provision an Azure VM
 
 Let's look at a few different ways you could provision a new Azure Virtual Machine. Before we start we'll need to gather some basic information including:
 
@@ -98,8 +91,7 @@ Let's look at a few different ways you could provision a new Azure Virtual Machi
 
 ---
 name: Azure-Portal-Provision
-Method 1: Azure Portal (GUI)
--------------------------
+# Method 1: Azure Portal (GUI)
 ![:scale 70%](images/azure_provision.png)
 
 ???
@@ -107,8 +99,7 @@ Method 1: Azure Portal (GUI)
 
 ---
 name: Azure-Portal-Provision-2
-Method 1: Azure Portal (GUI)
--------------------------
+# Method 1: Azure Portal (GUI)
 ![:scale 70%](images/azure_provision_3.png)
 
 ???
@@ -117,8 +108,7 @@ Method 1: Azure Portal (GUI)
 ---
 name: Azure-Resource-Manager
 class: compact
-Method 2: ARM Template
--------------------------
+# Method 2: ARM Template
 ```json
 {
 ...
@@ -149,8 +139,7 @@ ARM templates provide a consistent and reliable way to provision Azure resources
 
 ---
 name: Provision-with-Terraform-2
-Method 3: Provision with Terraform
--------------------------
+# Method 3: Provision with Terraform
 ```terraform
 resource "azure_virtual_machine" "web" {
   name     = "MyFirstVM"
@@ -170,8 +159,7 @@ Advance back to the previous slide to illustrate the difference between JSON and
 
 ---
 name: What-is-Terraform
-What is Terraform?
--------------------------
+# What is Terraform?
 ```terraform
 resource "azurerm_virtual_machine" "catapp" {
   name                = "${var.prefix}-meow"
@@ -199,8 +187,7 @@ resource "azurerm_virtual_machine" "catapp" {
 
 ---
 name: IaC
-What is Infrastructure as Code?
--------------------------
+# What is Infrastructure as Code?
 <br><br><br>
 .biglist[
 Infrastructure as Code (IaC) is the process of managing and provisioning cloud infrastructure with machine-readable definition files. 
@@ -217,15 +204,13 @@ Infrastructure as Code (IaC) is the process of managing and provisioning cloud i
 
 ---
 name: IaC2
-Infrastructure as Code Allows Us To...
--------------------------
+# Infrastructure as Code Allows Us To...
 ???
 **We sometimes call this philosophy 'Infrastructure as Code', or the practice of expressing all of our provisioning steps as machine-readable code and variables. This is also known as the...**
 
 ---
 name: IaC2
-Infrastructure as Code Allows Us To...
--------------------------
+# Infrastructure as Code Allows Us To...
 * Provide a codified workflow to create infrastructure
 ???
 **...codified workflow. When you code-ify all of your manual steps, you'll gain several advantages that allow you to provision faster, with more efficiency, while reducing risk.**
@@ -233,8 +218,7 @@ Infrastructure as Code Allows Us To...
 
 ---
 name: IaC2
-Infrastructure as Code Allows Us To...
--------------------------
+# Infrastructure as Code Allows Us To...
 * Provide a codified workflow to create infrastructure
 * Change and update existing infrastructure
 ???
@@ -242,8 +226,7 @@ Infrastructure as Code Allows Us To...
 
 ---
 name: IaC2
-Infrastructure as Code Allows Us To...
--------------------------
+# Infrastructure as Code Allows Us To...
 * Provide a codified workflow to create infrastructure
 * Change and update existing infrastructure
 * Safely test changes using **`terraform plan`** in dry run mode
@@ -256,8 +239,7 @@ Infrastructure as Code Allows Us To...
 
 ---
 name: IaC2
-Infrastructure as Code Allows Us To...
--------------------------
+# Infrastructure as Code Allows Us To...
 * Provide a codified workflow to create infrastructure
 * Change and update existing infrastructure
 * Safely test changes using **`terraform plan`** in dry run mode
@@ -268,8 +250,7 @@ Infrastructure as Code Allows Us To...
 
 ---
 name: IaC2
-Infrastructure as Code Allows Us To...
--------------------------
+# Infrastructure as Code Allows Us To...
 * Provide a codified workflow to create infrastructure
 * Change and update existing infrastructure
 * Safely test changes using **`terraform plan`** in dry run mode
@@ -281,8 +262,7 @@ Infrastructure as Code Allows Us To...
 
 ---
 name: IaC2
-Infrastructure as Code Allows Us To...
--------------------------
+# Infrastructure as Code Allows Us To...
 * Provide a codified workflow to create infrastructure
 * Change and update existing infrastructure
 * Safely test changes using **`terraform plan`** in dry run mode
@@ -295,8 +275,7 @@ Infrastructure as Code Allows Us To...
 
 ---
 name: IaC2
-Infrastructure as Code Allows Us To...
--------------------------
+# Infrastructure as Code Allows Us To...
 * Provide a codified workflow to create infrastructure
 * Change and update existing infrastructure
 * Safely test changes using **`terraform plan`** in dry run mode
@@ -310,8 +289,7 @@ Infrastructure as Code Allows Us To...
 
 ---
 name: IaC-Tools
-Other Infrastructure as Code Tools
--------------------------
+# Other Infrastructure as Code Tools
 .center[![:scale 50%](images/infra_tools.png)]
 
 These tools work well for configuring the operating system and application. They are not purpose-built for provisioning cloud infrastructure and platform services.
@@ -323,8 +301,7 @@ These tools work well for configuring the operating system and application. They
 
 ---
 name: Native-Tools
-Native Cloud Provisioning Tools
--------------------------
+# Native Cloud Provisioning Tools
 .center[![:scale 100%](images/clouds.png)]
 
 Each cloud has its own YAML or JSON based provisioning tool. 
@@ -342,8 +319,7 @@ name: Config-Hell
 
 ---
 Name: Terraform-vs-JSON
-Terraform vs. JSON
--------------------------
+# Terraform vs. JSON
 ARM JSON:
 ```json
 "name": "[concat(parameters('PilotServerName'), '-vm')]",
@@ -365,8 +341,7 @@ https://blog.1password.com/terraforming-1password/
 
 ---
 Name: Why-Terraform
-Why Terraform?
--------------------------
+# Why Terraform?
 ![:scale 80%](images/azure-loves-terraform.png)
 
 ???
@@ -374,8 +349,7 @@ Why Terraform?
 
 ---
 Name: Why-Terraform-on-Azure
-Why Terraform on Azure?
--------------------------
+# Why Terraform on Azure?
 
 * Supports multi-cloud & hybrid infrastructure
 
@@ -384,8 +358,7 @@ Why Terraform on Azure?
 
 ---
 Name: Why-Terraform-on-Azure
-Why Terraform on Azure?
--------------------------
+# Why Terraform on Azure?
 
 * Supports multi-cloud & hybrid infrastructure
 * Migrate from other cloud providers
@@ -395,8 +368,7 @@ Why Terraform on Azure?
 
 ---
 Name: Why-Terraform-on-Azure
-Why Terraform on Azure?
--------------------------
+# Why Terraform on Azure?
 
 * Supports multi-cloud & hybrid infrastructure
 * Migrate from other cloud providers
@@ -407,8 +379,7 @@ Why Terraform on Azure?
 
 ---
 Name: Why-Terraform-on-Azure
-Why Terraform on Azure?
--------------------------
+# Why Terraform on Azure?
 
 * Supports multi-cloud & hybrid infrastructure
 * Migrate from other cloud providers
@@ -420,8 +391,7 @@ Why Terraform on Azure?
 
 ---
 Name: Why-Terraform-on-Azure
-Why Terraform on Azure?
--------------------------
+# Why Terraform on Azure?
 
 * Supports multi-cloud & hybrid infrastructure
 * Migrate from other cloud providers
@@ -435,8 +405,8 @@ Why Terraform on Azure?
 ---
 name: Live-Demo
 class: title
-Live Demo
-=========================
+# Live Demo
+
 ???
 **Let's do a short demo! I'm going to show you how easy it can be to provision infrastructure in Azure. I'll do the demo on one of the workstations that you'll be using for this training.**
 
@@ -697,8 +667,7 @@ Everything else you want to configure within the resource is going to be sandwic
 
 ---
 name: provider-block
-Terraform Provider Configuration
--------------------------
+# Terraform Provider Configuration
 The terraform core program requires at least one provider to build anything.
 
 You can manually configure which version(s) of a provider you would like to use. If you leave this option out, Terraform will default to the latest available version of the provider.
@@ -711,8 +680,7 @@ provider "azurerm" {
 
 ---
 name: resources-building-blocks
-Resources - Terraform Building Blocks
--------------------------
+# Resources - Terraform Building Blocks
 ```hcl
 resource "azurerm_resource_group" "hashitraining" {
   name     = "${var.prefix}-workshop"
@@ -887,7 +855,7 @@ output "catapp_url" {
 name: tf-dependency-graph
 class: img-right
 # Terraform Dependency Graph
-.center[![:scale 90%](images/blast_radius_graph_3.png)]
+.center[![:scale 80%](images/blast_radius_graph_3.png)]
 
 The terraform resource graph visually depicts dependencies between resources.
 
@@ -986,8 +954,7 @@ Local exec and remote exec can be used to trigger Puppet or Ansible runs. We do 
 ---
 name: puppet-chef-ansible
 class: compact
-Terraform & Config Management Tools
--------------------------
+# Terraform & Config Management Tools
 .center[![:scale 60%](images/cpa.jpg)]
 
 Terraform works well with common config management tools like Chef, Puppet or Ansible. Below are some links with more information on each:
@@ -1003,8 +970,7 @@ https://github.com/scarolan/ansible-terraform
 
 ---
 name: provisioner-tips
-Terraform Provisioner Tips
--------------------------
+# Terraform Provisioner Tips
 Terraform provisioners like remote-exec are great when you need to run a few simple commands or scripts. For more complex configuration management you'll want a tool like Chef or Ansible. 
 
 Provisioners only run the first time a Terraform run is executed. In this sense, they are not idempotent. If you need ongoing state management of VMs or servers that are long-lived, we recommend using a config management tool.
@@ -1013,8 +979,7 @@ On the other hand, if you want immutable infrastructure you should consider usin
 
 ---
 name: chapter-3-review
-📝 Chapter 3 Review
--------------------------
+# 📝 Chapter 3 Review
 .contents[
 In this chapter we:
 * Learned about Terraform Provisioners
@@ -1033,8 +998,7 @@ class: title
 ---
 name: terraform-state
 class: compact
-Terraform State
--------------------------
+# Terraform State
 Terraform is a _stateful_ application. This means that it keeps track of everything you build inside of a **state file**. You may have noticed the terraform.tfstate and terraform.tfstate.backup files that appeared inside your working directory.
 
 The state file is Terraform's source of record for everything it knows about.
@@ -1148,6 +1112,5 @@ Your feedback is important to us!
 
 The survey is short, we promise:
 
-http://bit.ly/hashiworkshopfeedback
--------------------------
+## http://bit.ly/hashiworkshopfeedback
 ]
