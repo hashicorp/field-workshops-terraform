@@ -1,3 +1,7 @@
+layout: true
+<div class="hashilogo"><img src="images/hashilogo.png" style="height: 50px; width: 50px;"/></div>
+
+---
 name: Azure-Terraform-Vault-Workshop
 class: center
 count: false

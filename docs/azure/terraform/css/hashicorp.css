@@ -5,3 +5,9 @@
 .small {
   font-size: 50%;
 }
+
+.hashilogo {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
