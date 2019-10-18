@@ -4,9 +4,9 @@ type: track
 title: Provision to Azure with Terraform
 teaser: Provision the HashiCat application on Azure using Terraform.
 description: "In this track you'll practice provisioning infrastructure in Azure.\n\nWe'll
-  begin by deploying a resource group, then adding a network and gradually building\nthe
-  entire application stack.\n\nWhen you're finished you'll be able to view the HashiCat
-  application in your web browser.\n\nKittens as a Service! \U0001F63A"
+  begin by deploying a resource group, then adding a network and gradually building
+  the entire application stack.\n\nWhen you're finished you'll be able to view the
+  HashiCat application in your web browser.\n\nKittens as a Service! \U0001F63A"
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
 - terraform
@@ -147,6 +147,10 @@ challenges:
   - title: Terraform CLI
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
   difficulty: basic
   timelimit: 300
 - slug: tf-plan-again
@@ -212,13 +216,13 @@ challenges:
 
       Terraform always tries to match the current infrastructure to what has been defined in your code.
   tabs:
-  - title: Terraform CLI
-    type: terminal
-    hostname: workstation
   - title: Code Editor
     type: service
     hostname: workstation
     port: 8080
+  - title: Terraform CLI
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: add-a-tag
@@ -227,14 +231,21 @@ challenges:
   title: Add a Tag to Your Resource Group
   teaser: Terraform can change some resources in in place without deleting them. Adding
     tags is a non-destructive action.
-  assignment: "Read the terraform documentation for the azurerm_resource_group resource:\n\nhttps://www.terraform.io/docs/providers/azurerm/r/resource_group.html\n\nAdd
-    a tag to your resource group in the *main.tf* file. \n\nThe name of the tag should
-    be `environment` and the value should be `production`.\n\nSave the file and re-run
-    `terraform apply`. \n\nWhat happens?"
+  assignment: |-
+    Read the terraform documentation for the azurerm_resource_group resource:
+
+    https://www.terraform.io/docs/providers/azurerm/r/resource_group.html
+    Add a tag to your resource group in the *main.tf* file.
+
+    The name of the tag should be `environment` and the value should be `production`.
+
+    Save the file and re-run `terraform apply`.
+
+    What happens?
   notes:
   - type: text
     contents: Adding, changing, or removing tags is a non-destructive action. Terraform
-      can tag your instances without re-creating them.
+      can tag your resources without re-creating them.
   tabs:
   - title: Terraform CLI
     type: terminal
@@ -254,7 +265,9 @@ challenges:
   assignment: |-
     Open the *main.tf* file again and uncomment the next resource block in the file.
 
-    You can do this by simply deleting the `#` characters at the beginning of each line. Save the file.
+    You can do this quickly by highlighting the block of code with your mouse. Then use the keyboard shortcut `CTRL-/`. That will toggle the comments off.
+
+    Save the file.
 
     Now run `terraform apply` again. Observe the results.
   notes:
@@ -262,13 +275,13 @@ challenges:
     contents: Terraform code can be built incrementally, one or two resources at a
       time.
   tabs:
-  - title: Terraform CLI
-    type: terminal
-    hostname: workstation
   - title: Code Editor
     type: service
     hostname: workstation
     port: 8080
+  - title: Terraform CLI
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: complete-the-build
@@ -289,18 +302,20 @@ challenges:
     ```
     terraform apply -auto-approve
     ```
+
+    It can take four to five minutes for the application to finish deploying. You will know it is complete when you see the Terraform output with your application URL at the end of the run.
   notes:
   - type: text
     contents: The -auto-approve flag can be used to override the "Are you sure?" questions
       that appear before an apply or destroy. Use with caution!
   tabs:
-  - title: Terraform CLI
-    type: terminal
-    hostname: workstation
   - title: Code Editor
     type: service
     hostname: workstation
     port: 8080
+  - title: Terraform CLI
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: terraform-destroy
@@ -327,4 +342,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 300
-checksum: "16260989603316404603"
+checksum: "4224620454175686420"

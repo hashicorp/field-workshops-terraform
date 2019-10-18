@@ -158,7 +158,9 @@ challenges:
 
     **variables.tf** - Use this file to define which variables will be available to your users.
 
-    **outputs.tf** - This file contains outputs that will be shown at the end of a successful terraform run. You can use the    *Code Editor* tab to examine these files. Note that most of the contents of the files are commented out with `#` symbols.
+    **outputs.tf** - This file contains outputs that will be shown at the end of a successful terraform run.
+
+    You can use the *Code Editor* tab to examine these files. Note that most of the contents of the files are commented out with `#` symbols.
 
     Files that end in anything other than `*.tf` or `*.tfvars` are ignored by Terraform.
   notes:
@@ -173,10 +175,6 @@ challenges:
   - title: Terraform CLI
     type: terminal
     hostname: workstation
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8080
   difficulty: basic
   timelimit: 300
 - slug: tf-init-provider
@@ -261,13 +259,13 @@ challenges:
     contents: Terraform has a built-in syntax checker. You can run it with the `terraform
       validate` command.
   tabs:
-  - title: Terraform CLI
-    type: terminal
-    hostname: workstation
   - title: Code Editor
     type: service
     hostname: workstation
     port: 8080
+  - title: Terraform CLI
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: tf-plan
@@ -315,7 +313,7 @@ challenges:
 
     In terraform all variables must be declared (with or without an optional default value) before you can use them.
 
-    Open the **terraform.tfvars** tab and set your prefix variable there. Save the file with CTRL-S (Windows/Linux) or CMD-S (OSX).
+    Open the **terraform.tfvars** file and set your prefix variable there. Save the file.
 
     Now run `terraform plan` in the *Terraform CLI* tab again. This time you won't have to enter your prefix manually.
   notes:
@@ -342,7 +340,7 @@ challenges:
   assignment: |-
     In one of the previous challenges we set our *prefix* variable.
 
-    Choose the Azure location nearest to you and set the 'location' variable.
+    Choose the Azure location nearest to you and set the 'location' variable in your **terraform.tfvars** file. You may need to close and re-open the file if it appears blank.
 
     You can find a list of valid Azure locations here:
 
@@ -360,7 +358,7 @@ challenges:
 
     Once you've set your location variable try running `terraform plan` again. What's different this time?
 
-    HINT: Remember that you can set any variable you wish in the **terraform.tfvars** file."
+    HINT: Remember that you can set any variable you wish in the **terraform.tfvars** file.
   notes:
   - type: text
     contents: You can override any variable defined in the *variables.tf* file by
@@ -430,4 +428,4 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "2223660572028239033"
+checksum: "3490823485605501770"
