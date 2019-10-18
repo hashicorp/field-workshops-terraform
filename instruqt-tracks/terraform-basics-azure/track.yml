@@ -20,6 +20,39 @@ developers:
 private: true
 published: true
 challenges:
+- slug: setup-our-environment
+  id: i5cjggcixwll
+  type: challenge
+  title: Moving in - Set Up Your Workspace
+  teaser: Configure your code editor with the Terraform extension and open a workspace.
+  assignment: |-
+    Open the Code Editor tab on the left.
+
+    Select "File > Open Folder".
+
+    Open the `hashicat-azure` directory in the Code Editor.
+
+    This is your terraform workspace.
+
+    Now click on the box-shaped icon on the left side menu. This opens the Extensions sidebar.
+
+    Search for *terraform*. Install the first extension on the list. It is named `Terraform`.
+
+    Click on the blue **Reload Required** button to refresh the editor.
+
+    Congratulations, you installed the Terraform extension in Visual Studio Code.
+
+    NOTE - you may ignore the error message about the mauve.terraform extension. This is a known bug.
+  notes:
+  - type: text
+    contents: Most modern text editors support Terraform syntax highlighting.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  difficulty: basic
+  timelimit: 300
 - slug: hello-terraform
   id: pbc0sybscvko
   type: challenge
@@ -63,7 +96,11 @@ challenges:
   tabs:
   - title: Terraform CLI
     type: terminal
-    hostname: cloud-client
+    hostname: workstation
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
   difficulty: basic
   timelimit: 300
 - slug: azure-credentials
@@ -91,17 +128,15 @@ challenges:
       Microsoft has a great tutorial for setting up Azure credentials on your laptop or virtual workstation:
 
       https://docs.microsoft.com/en-us/azure/virtual-machines/linux/terraform-install-configure
-
-      Azure Cloud Shell is another great way to get started with Terraform. With Azure Cloud Shell, terraform is pre-installed and ready to go.
   - type: text
     contents: |-
-      Azure Cloud Shell is another great way to get started with Terraform. With Azure Cloud Shell, terraform is pre-installed and ready to go.
+      Azure Cloud Shell is another easy way to get started with Terraform. With Azure Cloud Shell, terraform is pre-installed and ready to go.
 
       https://docs.microsoft.com/en-us/azure/virtual-machines/linux/terraform-install-configure#use-azure-cloud-shell
   tabs:
   - title: Terraform CLI
     type: terminal
-    hostname: cloud-client
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: terraform-code
@@ -110,32 +145,39 @@ challenges:
   title: What does Terraform code look like?
   teaser: The terraform DSL (Domain Specific Language) is a declarative language that
     lets you build almost any type of infrastructure.
-  assignment: "We've downloaded some terraform code onto your workstation. Run the
-    following command to see the terraform code files:\n\n```\nls *.tf\n```\n\nTerraform
-    code always ends with a `.tf` extension. You can have as many terraform files
-    as you want, but these three are commonly created first:\n\n**main.tf** - Where
-    most of your terraform code is stored. This is the part that does the building
-    of resources.  \n\n**variables.tf** - Use this file to define which variables
-    will be available to your users.  \n\n**outputs.tf** - This file contains outputs
-    that will be shown at the end of a successful terraform run  \n\nYou can use the
-    *Code Editor* tab to examine these files. Note that most of the contents of the
-    files are commented out with `#` symbols.  \n\nFiles that end in anything other
-    than `*.tf` or `*.tfvars` are ignored by Terraform."
+  assignment: |-
+    We've downloaded some terraform code onto your workstation. Run the following command to see the terraform code files:
+
+    ```
+    ls *.tf
+    ```
+
+    Terraform code always ends with a `.tf` extension. You can have as many terraform files as you want, but these three are commonly created first:
+
+    **main.tf** - Where most of your terraform code is stored. This is the part that does the building of resources.
+
+    **variables.tf** - Use this file to define which variables will be available to your users.
+
+    **outputs.tf** - This file contains outputs that will be shown at the end of a successful terraform run. You can use the    *Code Editor* tab to examine these files. Note that most of the contents of the files are commented out with `#` symbols.
+
+    Files that end in anything other than `*.tf` or `*.tfvars` are ignored by Terraform.
   notes:
   - type: text
-    contents: "Terraform will read anything in the current directory that ends in
-      `*.tf` or `*.tfvars`.\n\nBy convention most terraform workspaces will contain
-      `main.tf`, `variables.tf`, and `outputs.tf` files.\n\nYou can also group your
-      terraform code into files by purpose. For example, you might place all your
-      load balancer configuration code into a file called `load_balancer.tf`. "
-  tabs:
+    contents: |-
+
+    Terraform will read anything in the current directory that ends in `*.tf` or `*.tfvars`.
+
+    By convention most terraform workspaces will contain `main.tf`, `variables.tf`, and `outputs.tf` files.
+
+    You can also group your terraform code into files by purpose. For example, you might place all your load balancer configuration code into a file called `load_balancer.tf`.
+    tabs:
   - title: Terraform CLI
     type: terminal
-    hostname: cloud-client
+    hostname: workstation
   - title: Code Editor
-    type: code
-    hostname: cloud-client
-    path: /root/hashicat-azure/
+    type: service
+    hostname: workstation
+    port: 8080
   difficulty: basic
   timelimit: 300
 - slug: tf-init-provider
@@ -144,14 +186,24 @@ challenges:
   title: Terraform Init - Install the Azure Provider
   teaser: Terraform needs a provider to talk to cloud APIs. The provider is the bridge
     that connects terraform core to your infrastructure providers.
-  assignment: "We have downloaded some terraform code for the HashiCat application.
-    We'll be using this source code for the rest of the track. \n\nBefore we can do
-    anything with terraform we need to initialize our workspace. Run the following
-    command in your terminal window:\n\n```\nterraform init\n```\n\nThe *terraform
-    init* command scans your terraform code, identifies any providers that are needed,
-    and downloads them.\n\nRun the following command to take a peek inside the .terraform
-    directory:\n\n```\nls .terraform/plugins/linux_amd64/\n```\n\nThis hidden directory
-    is where all modules and plugins are stored."
+  assignment: |-
+
+  We have downloaded some terraform code for the HashiCat application. We'll be using this source code for the rest of the track.
+
+  Before we can do anything with terraform we need to initialize our workspace. Run the following    command in your terminal window:
+  ```
+  terraform init
+  ```
+
+  The *terraform init* command scans your terraform code, identifies any providers that are needed,    and downloads them.
+
+  Run the following command to take a peek inside the `.terraform` directory:
+
+  ```
+  ls .terraform/plugins/linux_amd64/
+  ```
+
+  This hidden directory is where all modules and plugins are stored."
   notes:
   - type: text
     contents: |-
@@ -163,7 +215,7 @@ challenges:
   tabs:
   - title: Terraform CLI
     type: terminal
-    hostname: cloud-client
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: provider-quiz
@@ -195,8 +247,8 @@ challenges:
   assignment: |-
     Terraform comes with a built-in subcommand called *validate*. This is useful when you want to do a quick syntax check of your code to make sure it parses correctly.
 
-    Edit the main.tf file and remove the curly brace on line 4 of the file.  
-    
+    Edit the main.tf file and remove the curly brace on line 4 of the file.
+
     Validate your code:
 
     ```
@@ -213,11 +265,11 @@ challenges:
   tabs:
   - title: Terraform CLI
     type: terminal
-    hostname: cloud-client
-  - title: main.tf
-    type: code
-    hostname: cloud-client
-    path: /root/hashicat-azure/main.tf
+    hostname: workstation
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
   difficulty: basic
   timelimit: 300
 - slug: tf-plan
@@ -248,7 +300,7 @@ challenges:
   tabs:
   - title: Terraform CLI
     type: terminal
-    hostname: cloud-client
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: tf-variables
@@ -273,17 +325,13 @@ challenges:
     contents: The **terraform.tfvars** file is a convenient place for users to configure
       their variables.
   tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
   - title: Terraform CLI
     type: terminal
-    hostname: cloud-client
-  - title: terraform.tfvars
-    type: code
-    hostname: cloud-client
-    path: /root/hashicat-azure/terraform.tfvars
-  - title: variables.tf
-    type: code
-    hostname: cloud-client
-    path: /root/hashicat-azure/variables.tf
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: tf-add-a-variable
@@ -293,30 +341,40 @@ challenges:
   teaser: Terraform is flexible enough to deploy infrastructure anywhere in the world.
     You can easily provision your applications in different geographical regions by
     simply changing a single variable.
-  assignment: "In one of the previous challenges we set our *prefix* variable.\n\nChoose
-    the Azure location nearest to you and set the 'location' variable. You can find
-    a list of valid Azure locations here:\n\nhttps://azure.microsoft.com/en-us/global-infrastructure/locations/\n\nExamples:\n\ncentralus
-    \ - Iowa  \neastus     - Virginia  \nwestus     - California  \nuksouth    - London
-    \ \nsouthindia - Chennai  \neastasia   - Hong Kong  \ncanadacentral - Toronto
-    \ \n\nOnce you've set your location variable try running `terraform plan` again.
-    What's different this time?\n\nHINT: Remember that you can set any variable you
-    wish in the **terraform.tfvars** file."
+  assignment: |-
+    In one of the previous challenges we set our *prefix* variable.
+
+    Choose the Azure location nearest to you and set the 'location' variable.
+
+    You can find a list of valid Azure locations here:
+
+    https://azure.microsoft.com/en-us/global-infrastructure/locations/
+
+    Examples:
+
+    centralus - Iowa<br/>
+    eastus    - Virginia<br/>
+    westus     - California<br/>
+    uksouth    - London<br/>
+    southindia - Chennai<br/>
+    eastasia   - Hong Kong<br/>
+    canadacentral - Toronto
+
+    Once you've set your location variable try running `terraform plan` again. What's different this time?
+
+    HINT: Remember that you can set any variable you wish in the **terraform.tfvars** file."
   notes:
   - type: text
     contents: You can override any variable defined in the *variables.tf* file by
       setting it in your personal *terraform.tfvars* file.
   tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
   - title: Terraform CLI
     type: terminal
-    hostname: cloud-client
-  - title: terraform.tfvars
-    type: code
-    hostname: cloud-client
-    path: /root/hashicat-azure/terraform.tfvars
-  - title: variables.tf
-    type: code
-    hostname: cloud-client
-    path: /root/hashicat-azure/variables.tf
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: variables-quiz
@@ -367,11 +425,11 @@ challenges:
   tabs:
   - title: Terraform CLI
     type: terminal
-    hostname: cloud-client
+    hostname: workstation
   - title: Terraform Graph
     type: service
-    hostname: cloud-client
+    hostname: workstation
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "10378486872968727957"
+checksum: "12310045750888143181"
