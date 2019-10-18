@@ -119,6 +119,8 @@ name: Azure-Portal-Provision-2
 ???
 **Once you've chosen your base OS image, you will fill in some more details like the size of the VM, which location you want to run it in, and the initial administrator password. The Azure portal can be handy for spinning up individual VMs and dev or test environments. The good news is it's really easy to spin up infrastructure this way. The bad news is that it doesn't scale, and chances are nobody's keeping track of what got built.**
 
+It's really easy to make a big mess of things if you simply give everyone a portal account and turn them loose in the cloud environment.
+
 ---
 name: Azure-Resource-Manager
 class: compact
@@ -149,6 +151,10 @@ ARM templates provide a consistent and reliable way to provision Azure resources
 **The problem is that editing and maintaining huge JSON files is hard for humans. Because JSON is not a programming language, you'll end up writing a lot more lines of complex code that is hard to understand and change.**
 
 **ARM templates - easy for computers to read, hard for humans to troubleshoot and maintain.**
+
+We are not here to bash on ARM templates or any other JSON/YAML based provisioning tools. The simple fact is these data formats are not well suited for logical operations (if/then, for loops, etc.)
+
+
 
 ---
 name: Provision-with-Terraform-2
@@ -436,9 +442,9 @@ Here is some sample dialog you can use for the demo. Keep it short and sweet. No
 **During the morning workshop session each of you will be building a Vault server that you will use after lunch, during the Vault training.**
 
 ---
-name: Chapter-1
+name: Chapter-2
 class: title
-# Chapter 1
+# Chapter 2
 ## Terraform Basics
 
 ???
@@ -636,8 +642,8 @@ Click on the link below to visit the HashiCorp training lab:
 Your instructor will let you know when it's time to regroup.
 
 ---
-name: chapter-1-review
-# 📝 Chapter 1 Review
+name: chapter-2-review
+# 📝 Chapter 2 Review
 .contents[
 In this chapter we:
 * Used the **`terraform init`** command
@@ -647,9 +653,9 @@ In this chapter we:
 ]
 
 ---
-name: Chapter-2
+name: Chapter-3
 class: title
-# Chapter 2  
+# Chapter 3  
 ## Terraform in Action
 
 ???
@@ -886,8 +892,8 @@ Click on the link below to visit the HashiCorp training lab:
 Your instructor will let you know when it's time to regroup.
 
 ---
-name: chapter-2-review
-# 📝 Chapter 2 Review
+name: chapter-3-review
+# 📝 Chapter 3 Review
 
 In this chapter we:
 * Learned about Terraform resources
@@ -899,9 +905,9 @@ In this chapter we:
 * Built the lab environment
 
 ---
-name: Chapter-3
+name: Chapter-4
 class: title
-# Chapter 3
+# Chapter 4
 ## Provision and Configure Azure VMs
 
 ---
@@ -988,8 +994,8 @@ Provisioners only run the first time a Terraform run is executed. In this sense,
 On the other hand, if you want immutable infrastructure you should consider using our [Packer](https://packer.io) tool.
 
 ---
-name: chapter-3-review
-# 📝 Chapter 3 Review
+name: chapter-4-review
+# 📝 Chapter 4 Review
 .contents[
 In this chapter we:
 * Learned about Terraform Provisioners
@@ -1000,9 +1006,9 @@ In this chapter we:
 ]
 
 ---
-name: Chapter-4
+name: Chapter-5
 class: title
-# Chapter 4
+# Chapter 5
 ## Terraform State
 
 ---
