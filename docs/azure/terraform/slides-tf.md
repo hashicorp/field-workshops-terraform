@@ -1,7 +1,3 @@
-layout: true
-<div class="hashilogo"><img src="images/hashilogo.png" style="height: 50px; width: 50px;"/></div>
-
----
 name: Azure-Terraform-Vault-Workshop
 class: center
 count: false
@@ -23,7 +19,7 @@ HTML comments like this one will show up in the source code, but not in the slid
 
 Welcome to the beginner's guide to Terraform on Azure. This slide deck is written entirely in Markdown language, which means you can make edits or additions, then submit a pull request to add your changes to the master copy. To make edits to the slide deck simply fork this repository, edit the Markdown files, and submit a pull request with your changes.
 
-The Markdown content is contained in the docs/terraform and docs/vault directories.
+The Markdown content is contained in the docs/ subdirectories.
 
 Here are some helpful keyboard shortcuts for the instructor or participant:  
 
@@ -37,11 +33,9 @@ Instructor notes are included in plain text, narrative parts are in **bold**. Yo
 name: Link-to-Slide-Deck
 # The Slide Deck
 <br><br><br>
-.center[
 Follow along on your own computer at this link:
 
-# https://bit.ly/hashiazure
-]
+# https://git.io/JeBIn
 
 ---
 name: Introductions
@@ -59,24 +53,38 @@ The favorite text editor question is a good ice breaker, but perhaps more import
 
 **There are no wrong answers to this question. Unless you say Notepad. Friends don't let friends write code in Notepad.**
 
-**If you don't have a favorite text editor, that's okay! We've brought prebuilt cloud workstations that have Visual Studio Code already preinstalled. VSC is a free programmer's text editor for Microsoft, and it has great Terraform support. Most of this workshop will be simply copying and pasting code, so if you're not a developer don't fret. Terraform is easy to learn and fun to work with.**
+**If you don't have a favorite text editor, that's okay! Our cloud lab has Visual Studio Code preinstalled. VSC is a free programmer's text editor for Microsoft, and it has great Terraform support. Most of this workshop will be simply copying and pasting code, so if you're not a developer don't fret. Terraform is easy to learn and fun to work with.**
 
 ---
 name: Table-of-Contents
-class: center,middle
 # Table of Contents
 
 1. Intro to Terraform & Demo
-1. Terraform Basics
+1. Terraform Basics  
+**Lab - Setup and Basic Usage**
 1. Terraform In Action: plan, apply, destroy
-1. Organizing Your Terraform Code
-1. Provision and Configure Azure VMs
+1. Organizing Your Terraform Code  
+**Lab - Terraform in Action**
+1. Provision and Configure Azure VMs  
+**Lab - Provisioning with Terraform**
 1. Manage and Change Infrastructure State
+1. Terraform Cloud  
+**Lab - Terraform Remote State**
+
 
 ???
-This workshop should take roughly three hours to complete. It is ideal for a half-day workshop and can be paired with Vault content for a full day of training. The infrastructure participants build during the morning session is used as the lab environment for the afternoon session. So you can do a half day of Terraform and/or Vault, or both of them together.
+This workshop should take roughly three hours to complete.
 
-**Here is our agenda for today's training. We'll be taking breaks after each major section or every hour, whichever comes first. This part of the workshop will take us through lunch break, then we'll cover Vault during the afternoon session.**
+**Here is our agenda for today's training. We'll be taking breaks after each major section or every hour, whichever comes first.**
+
+---
+name: intro-to-terraform-demo
+class: title
+# Chapter 1
+## Introduction to Terraform
+
+???
+We use the word chapter here, because the training should feel like a story unfolding. The instructor's job is to guide the learners through this interactive story.
 
 ---
 name: How-to-Provision-a-VM
@@ -92,6 +100,8 @@ Let's look at a few different ways you could provision a new Azure Virtual Machi
 
 ???
 **Has anyone got experience using Azure? How do most of us normally get started? That's right, we log onto the Azure Portal and start clicking around. All of the major cloud providers make this part really easy. You get your account, log on and start clicking buttons. Let's take a peek at what that looks like...**
+
+We chose the Azure portal as a starting point because most Azure users will be familiar with it. From this familiar starting point we begin our journey...
 
 ---
 name: Azure-Portal-Provision
@@ -127,7 +137,6 @@ class: compact
   "hardwareProfile": {
     "vmSize": "[parameters('virtualMachineSize')]"
   },
-  "osProfile": {
 ```
 
 ARM templates provide a consistent and reliable way to provision Azure resources. JSON is easy for computers to read, but can be challenging for humans to edit and troubleshoot.
@@ -473,7 +482,8 @@ terraform destroy
 name: terraform-help
 # Terraform Help
 ```tex
-*$ terraform help                                                                                                      Usage: terraform [-version] [-help] <command> [args]
+*$ terraform help
+Usage: terraform [-version] [-help] <command> [args]
 ...
 Common commands:
     apply              Builds or changes infrastructure
@@ -481,7 +491,6 @@ Common commands:
     destroy            Destroy Terraform-managed infrastructure
     env                Workspace management
     fmt                Rewrites config files to canonical format
-    get                Download and install modules for the configuration
     graph              Create a visual graph of Terraform resources
 ```
 Type `terraform subcommand help` to view help on a particular subcommand.
@@ -582,7 +591,7 @@ Preview your changes with `terraform plan` before you apply them.
 ---
 name: defining-variables
 # Where are Variables Defined?
-Terraform variables are placed in a file called *variables.tf*. Variables can have default settings. If you omit the default, the user will be prompted to enter a value. Here we are *declaring* the variables that we intend to use in our Terraform code.
+Terraform variables are placed in a file called *variables.tf*. Variables can have default settings. If you omit the default, the user will be prompted to enter a value. Here we are *declaring* the variables that we intend to use.
 
 ```tex
 variable "prefix" {
@@ -648,7 +657,6 @@ class: title
 
 ---
 name: anatomy-of-a-resource
-class: compact
 # Anatomy of a Resource
 Every terraform resource is structured exactly the same way.
 
@@ -661,9 +669,7 @@ resource "type" "name" {
 ```
 
 **resource** = top level keyword  
-
-**type** = this is the name of the resource. The first part tells you which provider it belongs to. Example: `azurerm_virtual_machine`. This means the provider is Azure and the specific type of resource is a virtual machine.  
-
+**type** = this is the name of the resource. The first part tells you which provider it belongs to. Example: `azurerm_virtual_machine`.  
 **name** = arbitrary name to refer to this resource. Used internally by terraform. This field *cannot* be a variable.
 
 ???

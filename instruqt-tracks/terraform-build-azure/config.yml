@@ -1,10 +1,10 @@
 version: "2"
 containers:
-- name: cloud-client
-  image: gcr.io/instruqt-hashicorp/hashiworkstation:latest
+- name: workstation
+  image: gcr.io/instruqt-hashicorp/hashiworkstation:vsc
   shell: /bin/bash
   ports:
-  - 80
+  - 8080
   - 5000
   environment:
     ARM_SUBSCRIPTION_ID: 14692f20-9428-451b-8298-102ed4e39c2a

@@ -18,6 +18,41 @@ developers:
 private: true
 published: true
 challenges:
+- slug: setup-our-environment
+  id: hyrkyyn0w8en
+  type: challenge
+  title: Moving in - Set Up Your Workspace
+  teaser: Configure your code editor with the Terraform extension and open a workspace.
+  assignment: |-
+    Open the Code Editor tab on the left.
+
+    Select "File > Open Folder".
+
+    Open the `hashicat-azure` directory in the Code Editor.
+
+    This is your terraform workspace.
+
+    Now click on the box-shaped icon on the left side menu. This opens the Extensions sidebar.
+
+    Search for *terraform*. Install the first extension on the list. It is named `Terraform`.
+
+    Click on the blue **Reload Required** button to refresh the editor.
+
+    Now click on the explorer icon on the left side menu. It looks like a stack of documents.
+
+    Congratulations, you installed the Terraform extension in Visual Studio Code.
+
+    NOTE - you may ignore the error message about the mauve.terraform extension. This is a known bug.
+  notes:
+  - type: text
+    contents: Most modern text editors support Terraform syntax highlighting.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  difficulty: basic
+  timelimit: 300
 - slug: examine-main-tf
   id: nisroc5tsz4h
   type: challenge
@@ -25,7 +60,7 @@ challenges:
   teaser: Terraform code is a declarative language that allows you to build almost
     any kind of infrastructure. Let's look at the code from our sample application.
   assignment: |-
-    Open the *main.tf* tab on the left and examine the file in the text editor.
+    Open the main.tf file in the Code Editor.
 
     You'll notice that most of the file is commented out with `#` symbols. At the top of the file there's a single terraform resource which builds an Azure Resource group.
 
@@ -34,10 +69,10 @@ challenges:
   - type: text
     contents: Terraform code files always end with `.tf` or `.tfvars` extensions.
   tabs:
-  - title: main.tf
-    type: code
-    hostname: cloud-client
-    path: /root/hashicat-azure/main.tf
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
   difficulty: basic
   timelimit: 300
 - slug: tf-add-a-variable
@@ -66,21 +101,17 @@ challenges:
 
     Keep your prefix string all lower case, and between 5-12 characters long.
 
-    Save the file with the CTRL-S (Windows) or CMD-S (MacOS) shortcut.
+    Save the terraform.tfvars file.
   notes:
   - type: text
     contents: You can override any variable defined in the *variables.tf* file by
       setting it in your personal *terraform.tfvars* file. Let's deploy our HashiCat
       application in the Azure location nearest to you.
   tabs:
-  - title: terraform.tfvars
-    type: code
-    hostname: cloud-client
-    path: /root/hashicat-azure/terraform.tfvars
-  - title: variables.tf
-    type: code
-    hostname: cloud-client
-    path: /root/hashicat-azure/variables.tf
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
   difficulty: basic
   timelimit: 300
 - slug: tf-plan-and-apply
@@ -115,7 +146,7 @@ challenges:
   tabs:
   - title: Terraform CLI
     type: terminal
-    hostname: cloud-client
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: tf-plan-again
@@ -145,7 +176,7 @@ challenges:
   tabs:
   - title: Terraform CLI
     type: terminal
-    hostname: cloud-client
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: change-location
@@ -155,7 +186,7 @@ challenges:
   teaser: When your terraform code changes, your infrastructure will be modified to
     match the updated code. Terraform is a declarative language.
   assignment: |-
-    Use the *terraform.tfvars* tab to update your Azure location. You can choose any valid Azure region. Here are some examples:
+    Use the *Code Editor* tab to update your Azure location. You can choose any valid Azure region. Here are some examples:
 
     centralus     - Iowa<br/>
     eastus        - Virginia<br/>
@@ -165,7 +196,7 @@ challenges:
     eastasia      - Hong Kong<br/>
     canadacentral - Toronto<br/>
 
-    Save the file using CTRL-S (Windows) or CMD-S (MacOS) and run your apply command again.
+    Save the terraform.tfvars file and run your apply command again.
 
     You can use the `-auto-approve` flag to avoid having to type "yes" every time you apply.
 
@@ -183,11 +214,11 @@ challenges:
   tabs:
   - title: Terraform CLI
     type: terminal
-    hostname: cloud-client
-  - title: terraform.tfvars
-    type: code
-    hostname: cloud-client
-    path: /root/hashicat-azure/terraform.tfvars
+    hostname: workstation
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
   difficulty: basic
   timelimit: 300
 - slug: add-a-tag
@@ -207,11 +238,11 @@ challenges:
   tabs:
   - title: Terraform CLI
     type: terminal
-    hostname: cloud-client
-  - title: main.tf
-    type: code
-    hostname: cloud-client
-    path: /root/hashicat-azure/main.tf
+    hostname: workstation
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
   difficulty: basic
   timelimit: 300
 - slug: add-virtual-network
@@ -233,11 +264,11 @@ challenges:
   tabs:
   - title: Terraform CLI
     type: terminal
-    hostname: cloud-client
-  - title: main.tf
-    type: code
-    hostname: cloud-client
-    path: /root/hashicat-azure/main.tf
+    hostname: workstation
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
   difficulty: basic
   timelimit: 300
 - slug: complete-the-build
@@ -265,11 +296,11 @@ challenges:
   tabs:
   - title: Terraform CLI
     type: terminal
-    hostname: cloud-client
-  - title: main.tf
-    type: code
-    hostname: cloud-client
-    path: /root/hashicat-azure/main.tf
+    hostname: workstation
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
   difficulty: basic
   timelimit: 300
 - slug: terraform-destroy
@@ -293,7 +324,7 @@ challenges:
   tabs:
   - title: Terraform CLI
     type: terminal
-    hostname: cloud-client
+    hostname: workstation
   difficulty: basic
   timelimit: 300
-checksum: "10837800692447722986"
+checksum: "16260989603316404603"

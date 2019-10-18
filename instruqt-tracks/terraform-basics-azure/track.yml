@@ -164,13 +164,12 @@ challenges:
   notes:
   - type: text
     contents: |-
+      Terraform will read anything in the current directory that ends in `*.tf` or `*.tfvars`.
 
-    Terraform will read anything in the current directory that ends in `*.tf` or `*.tfvars`.
+      By convention most terraform workspaces will contain `main.tf`, `variables.tf`, and `outputs.tf` files.
 
-    By convention most terraform workspaces will contain `main.tf`, `variables.tf`, and `outputs.tf` files.
-
-    You can also group your terraform code into files by purpose. For example, you might place all your load balancer configuration code into a file called `load_balancer.tf`.
-    tabs:
+      You can also group your terraform code into files by purpose. For example, you might place all your load balancer configuration code into a file called `load_balancer.tf`.
+  tabs:
   - title: Terraform CLI
     type: terminal
     hostname: workstation
@@ -187,23 +186,22 @@ challenges:
   teaser: Terraform needs a provider to talk to cloud APIs. The provider is the bridge
     that connects terraform core to your infrastructure providers.
   assignment: |-
+    We have downloaded some terraform code for the HashiCat application. We'll be using this source code for the rest of the track.
 
-  We have downloaded some terraform code for the HashiCat application. We'll be using this source code for the rest of the track.
+    Before we can do anything with terraform we need to initialize our workspace. Run the following    command in your terminal window:
+    ```
+    terraform init
+    ```
 
-  Before we can do anything with terraform we need to initialize our workspace. Run the following    command in your terminal window:
-  ```
-  terraform init
-  ```
+    The *terraform init* command scans your terraform code, identifies any providers that are needed,    and downloads them.
 
-  The *terraform init* command scans your terraform code, identifies any providers that are needed,    and downloads them.
+    Run the following command to take a peek inside the `.terraform` directory:
 
-  Run the following command to take a peek inside the `.terraform` directory:
+    ```
+    ls .terraform/plugins/linux_amd64/
+    ```
 
-  ```
-  ls .terraform/plugins/linux_amd64/
-  ```
-
-  This hidden directory is where all modules and plugins are stored."
+    This hidden directory is where all modules and plugins are stored.
   notes:
   - type: text
     contents: |-
@@ -432,4 +430,4 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "12310045750888143181"
+checksum: "2223660572028239033"
