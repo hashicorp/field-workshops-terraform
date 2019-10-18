@@ -633,7 +633,7 @@ This list goes from highest precedence (1) to lowest (5).
 
 ---
 name: lab-exercise-1
-# 👩‍💻 Lab Exercise 1: Terraform Basics
+# 👩‍💻 Lab Exercise: Terraform Basics
 <br><br>
 Click on the link below to visit the HashiCorp training lab:
 
@@ -882,7 +882,7 @@ This is a good spot to talk a bit about how the dependency graph gets formed.
 
 ---
 name: lab-exercise-2
-# 👩‍💻 Lab Exercise 2: Terraform in Action
+# 👩‍💻 Lab Exercise: Terraform in Action
 In the next lab we'll begin by building out a single resource group. Then you'll create a virtual network and finally add  the other components of our infrastructure.
 
 Click on the link below to visit the HashiCorp training lab:
