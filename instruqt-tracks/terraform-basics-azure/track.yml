@@ -36,7 +36,7 @@ challenges:
 
     Now click on the box-shaped icon on the left side menu. This opens the Extensions sidebar.
 
-    Search for *terraform*. Install the first extension on the list. It is named `Terraform`.
+    Search for *terraform*. Install the first extension on the list. It is named *Terraform*.
 
     Click on the blue **Reload Required** button to refresh the editor.
 
@@ -44,6 +44,8 @@ challenges:
 
     NOTE - you may ignore the error message about the mauve.terraform extension. This is a known bug.
   notes:
+  - type: text
+    contents: The terraform language is designed to be both human and machine-readable.
   - type: text
     contents: Most modern text editors support Terraform syntax highlighting.
   tabs:
@@ -81,7 +83,7 @@ challenges:
     contents: |-
       Terraform open source is a command line application that you can download and run from your laptop or virtual workstation.
 
-      It is written in Go and runs on Mac OSX, Linux or Windows. You can always download the latest version of terraform here:
+      It is written in Go and runs on MacOS, Linux or Windows. You can always download the latest version of terraform here:
 
       https://www.terraform.io/downloads.html
   - type: text
@@ -97,10 +99,6 @@ challenges:
   - title: Terraform CLI
     type: terminal
     hostname: workstation
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8080
   difficulty: basic
   timelimit: 300
 - slug: azure-credentials
@@ -159,8 +157,6 @@ challenges:
     **variables.tf** - Use this file to define which variables will be available to your users.
 
     **outputs.tf** - This file contains outputs that will be shown at the end of a successful terraform run.
-
-    You can use the *Code Editor* tab to examine these files. Note that most of the contents of the files are commented out with `#` symbols.
 
     Files that end in anything other than `*.tf` or `*.tfvars` are ignored by Terraform.
   notes:
@@ -242,6 +238,8 @@ challenges:
     your Terraform code is valid and parses correctly.
   assignment: |-
     Terraform comes with a built-in subcommand called *validate*. This is useful when you want to do a quick syntax check of your code to make sure it parses correctly.
+
+    Click on the File Explorer icon on the left. It looks like a stack of papers.
 
     Edit the main.tf file and remove the curly brace on line 4 of the file.
 
@@ -340,7 +338,7 @@ challenges:
   assignment: |-
     In one of the previous challenges we set our *prefix* variable.
 
-    Choose the Azure location nearest to you and set the 'location' variable in your **terraform.tfvars** file. You may need to close and re-open the file if it appears blank.
+    Choose the Azure location nearest to you and set the location variable in your **terraform.tfvars** file. You may need to close and re-open the file if it appears blank.
 
     You can find a list of valid Azure locations here:
 
@@ -428,4 +426,4 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "3490823485605501770"
+checksum: "9794689375830635763"

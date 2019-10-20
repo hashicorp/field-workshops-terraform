@@ -1,0 +1,10 @@
+#!/bin/bash
+cd /root/hashicat-azure
+
+curl -I $(cat terraform.tfstate | jq -r .outputs.catapp_url.value) | grep "200 OK"
+EXITCODE=$?
+
+if [ $EXITCODE -ne 0 ]; then
+  fail-message "We were unable to load your web app. Try provisioning it again."
+  exit 1
+fi

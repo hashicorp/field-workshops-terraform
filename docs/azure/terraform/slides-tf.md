@@ -10,7 +10,7 @@ count: false
 Azure Terraform Vault Workshop - Part 1
 Terraform for Beginners on Azure
 
-This slide presentation is stored as Markdown code, specifically using the RemarkJS engine to render it. All standard markdown tags are supported, and you can also use some HTML within this document. 
+This slide presentation is stored as Markdown code, specifically using the RemarkJS engine to render it. All standard markdown tags are supported, and you can also use some HTML within this document.
 
 If you need to change the look and feel of the slide deck just use the style.css and remark_settings.js files to suit your needs. The content in this file is picked up by index.html when the page is loaded.
 
@@ -21,13 +21,13 @@ Welcome to the beginner's guide to Terraform on Azure. This slide deck is writte
 
 The Markdown content is contained in the docs/ subdirectories.
 
-Here are some helpful keyboard shortcuts for the instructor or participant:  
+Here are some helpful keyboard shortcuts for the instructor or participant:
 
-⬆ ⬇ ⬅ ➡ - Navigate back and forth  
-P         - Toggle presenter view  
+⬆ ⬇ ⬅ ➡ - Navigate back and forth
+P         - Toggle presenter view
 C         - Pop an external window for presentation
 
-Instructor notes are included in plain text, narrative parts are in **bold**. You can use the narrative quotes or change them to suit your own presentation style. 
+Instructor notes are included in plain text, narrative parts are in **bold**. You can use the narrative quotes or change them to suit your own presentation style.
 
 ---
 name: Link-to-Slide-Deck
@@ -40,7 +40,7 @@ Follow along on your own computer at this link:
 ---
 name: Introductions
 # Introductions
-<br><br><br>
+<br/><br/><br/>
 * Your Name
 * Job Title
 * Automation Experience
@@ -49,7 +49,7 @@ name: Introductions
 ???
 Use this slide to introduce yourself, give a little bit of your background story, then go around the room and have all your participants introduce themselves.
 
-The favorite text editor question is a good ice breaker, but perhaps more importantly it gives you an immediate gauge of how technical your users are.  
+The favorite text editor question is a good ice breaker, but perhaps more importantly it gives you an immediate gauge of how technical your users are.
 
 **There are no wrong answers to this question. Unless you say Notepad. Friends don't let friends write code in Notepad.**
 
@@ -59,23 +59,23 @@ The favorite text editor question is a good ice breaker, but perhaps more import
 name: Table-of-Contents
 # Table of Contents
 
-1. Intro to Terraform & Demo
-1. Terraform Basics  
-**Lab - Setup and Basic Usage**
-1. Terraform In Action: plan, apply, destroy
-1. Organizing Your Terraform Code  
-**Lab - Terraform in Action**
-1. Provision and Configure Azure VMs  
-**Lab - Provisioning with Terraform**
-1. Manage and Change Infrastructure State
-1. Terraform Cloud  
-**Lab - Terraform Remote State**
+1. Intro to Terraform & Demo<br/>
+1. Terraform Basics<br/>
+👩‍🔬 **Lab - Setup and Basic Usage**<br/>
+1. Terraform In Action: plan, apply, destroy<br/>
+1. Organizing Your Terraform Code<br/>
+🧪 **Lab - Terraform in Action**<br/>
+1. Provision and Configure Azure VMs<br/>
+🔬 **Lab - Provisioning with Terraform**<br/>
+1. Manage and Change Infrastructure State<br/>
+1. Terraform Cloud<br/>
+⚗️ **Lab - Terraform Remote State**
 
 
 ???
 This workshop should take roughly three hours to complete.
 
-**Here is our agenda for today's training. We'll be taking breaks after each major section or every hour, whichever comes first.**
+**Here is our agenda for today's training. The format is simple, you'll hear a lecture and view slides on each topic, then participate in a hands-on lab about that topic. We'll alternate between lecture and lab, with a couple of breaks thrown in.**
 
 ---
 name: intro-to-terraform-demo
@@ -174,7 +174,7 @@ resource "azure_virtual_machine" "web" {
 ???
 **And finally we have option #3, Terraform. Terraform uses a Domain Specific Language, or DSL that is designed to be both human-friendly and machine-readable. This is an example snippet of Terraform code. Now watch as I flip back to the previous slide. Would you rather have to write and maintain this complex and messy JSON, or this simple, compact terraform code?**
 
-Advance back to the previous slide to illustrate the difference between JSON and equivalent Terraform. 
+Advance back to the previous slide to illustrate the difference between JSON and equivalent Terraform.
 
 ---
 name: What-is-Terraform
@@ -186,16 +186,13 @@ resource "azurerm_virtual_machine" "catapp" {
   resource_group_name = "${azurerm_resource_group.myresourcegroup.name}"
   vm_size             = "${var.vm_size}"
   network_interface_ids         = ["${azurerm_network_interface.catapp-nic.id}"]
-  delete_os_disk_on_termination = "true"
 ```
-
-.contents[
 * Executable Documentation
 * Human and machine readable
 * Easy to learn
 * Test, share, re-use, automate
 * Works on all major cloud providers
-]
+
 
 ???
 **So what exactly _is_ Terraform? Terraform is the DNA of your hybrid infrastructure. Terraform code is written in HCL, or HashiCorp Config Language. It is the only programming language designed specifically for provisioning infrastructure on any platform.**
@@ -209,7 +206,7 @@ name: IaC
 # What is Infrastructure as Code?
 <br><br><br>
 .biglist[
-Infrastructure as Code (IaC) is the process of managing and provisioning cloud infrastructure with machine-readable definition files. 
+Infrastructure as Code (IaC) is the process of managing and provisioning cloud infrastructure with machine-readable definition files.
 
 **Think of it as executable documentation.**
 ]
@@ -323,7 +320,7 @@ name: Native-Tools
 # Native Cloud Provisioning Tools
 .center[![:scale 100%](images/clouds.png)]
 
-Each cloud has its own YAML or JSON based provisioning tool. 
+Each cloud has its own YAML or JSON based provisioning tool.
 
 Terraform can be used across *all* major cloud providers and VM hypervisors.
 
@@ -352,7 +349,7 @@ name = "${var.PilotServerName}-vm"
 Terraform code (HCL) is easy to learn and easy to read. It is also 50-70% more compact than an equivalent JSON configuration.
 
 ???
-1Password did a great blog post illustrating the difference between AWS Cloudformation (JSON) and Terraform. 
+1Password did a great blog post illustrating the difference between AWS Cloudformation (JSON) and Terraform.
 
 https://blog.1password.com/terraforming-1password/
 
@@ -427,19 +424,13 @@ class: title
 # Live Demo
 
 ???
-**Let's do a short demo! I'm going to show you how easy it can be to provision infrastructure in Azure. I'll do the demo on one of the workstations that you'll be using for this training.**
-
-NOTE: We tested this in the eastus region and it took around five minutes to build the lab environment. You'll probably want to pre-bake your demo environment and just show the terraform output and Vault server.
-
-Here is some sample dialog you can use for the demo. Keep it short and sweet. Nobody wants a long boring lecture.
+**Let's do a short demo! I'm going to show you how easy it can be to provision infrastructure in Azure. I'll do the demo on one of the lab workstations that you'll be using for this training.**
 
 **This is a workstation just like the ones you'll be using for today's workshops. I'm going to run a terraform apply command to build out the lab environment. We're actually cheating a little bit here, as we prebaked most of the environment before class to save us some time. Just like your favorite cooking show!**
 
-**You can see the results of the terraform run here in my terminal window. These outputs are showing me the URL of the Vault server I just built. And if we pop over here to the Azure portal you'll see all of the different parts of my lab environment.**
+**You can see the results of the terraform run here in my terminal window. This output is showing me the URL of the application server I just built. And if we pop over here to the Azure portal you'll see all of the different parts of my lab environment.**
 
 **This is Infrastructure as code. By the end of today's training you'll be able to create your own infrastructure using Terraform.**
-
-**During the morning workshop session each of you will be building a Vault server that you will use after lunch, during the Vault training.**
 
 ---
 name: Chapter-2
@@ -458,7 +449,7 @@ class: img-left
 
 Terraform is an open source provisioning tool.
 
-It ships as a single binary which is written in Go. Terraform is cross platform and can run on Linux, Windows, or MacOS. 
+It ships as a single binary which is written in Go. Terraform is cross platform and can run on Linux, Windows, or MacOS.
 
 Installing terraform is easy. You simply download a zip file, unzip it, and run it.
 
@@ -547,9 +538,9 @@ Terraform files always end in either a `*.tf` or `*.tfvars` extension.
 
 Most terraform workspaces contain a minimum of three files:
 
-**main.tf** - Most of your functional code will go here.  
-**variables.tf** - This file is for storing variables.  
-**outputs.tf** - Define what is shown at the end of a terraform run.
+**main.tf** - Most of your functional code will go here.<br/>
+**variables.tf** - This file is for storing variables.<br/>
+**outputs.tf** - Define what is shown at the end of a terraform run.<br/>
 
 ---
 name: terraform-init
@@ -613,7 +604,7 @@ variable "location" {
 ???
 **If you're curious where all these variables are defined, you can see them all in the _variables.tf_ file. Here we are simply defining all the available settings, and optionally declaring some default values. These defaults are what terraform will use if your user doesn't override them with their own settings.**
 
-Q. Where could you override these defaults?  
+Q. Where could you override these defaults?<br/>
 A. In the terraform.tfvars file, or optionally on the command line or via environment variables. The most common approach is to use a tfvars file.
 
 ---
@@ -655,7 +646,7 @@ In this chapter we:
 ---
 name: Chapter-3
 class: title
-# Chapter 3  
+# Chapter 3
 ## Terraform in Action
 
 ???
@@ -674,9 +665,9 @@ resource "type" "name" {
 }
 ```
 
-**resource** = top level keyword  
-**type** = this is the name of the resource. The first part tells you which provider it belongs to. Example: `azurerm_virtual_machine`.  
-**name** = arbitrary name to refer to this resource. Used internally by terraform. This field *cannot* be a variable.
+**resource** = Top level keyword<br/>
+**type** = Type of resource. The first part tells you which provider it belongs to. Example: `azurerm_virtual_machine`.<br/>
+**name** = Arbitrary name to refer to this resource. Used internally by terraform. This field *cannot* be a variable.
 
 ???
 Everything else you want to configure within the resource is going to be sandwiched between the curly braces. These can include strings, lists, and maps.
@@ -708,7 +699,7 @@ Here is the first resource we'll be building in the next lab. The variables will
 
 Terraform is easy to work with. You can test your code as you write it.
 
-Simply keep adding more building blocks until your infrastructure is complete. 
+Simply keep adding more building blocks until your infrastructure is complete.
 
 ???
 **Try commenting out this code, then uncommenting it. This is the easy way to write code. Just highlight, uncomment, save the file.**
@@ -881,7 +872,7 @@ The location and prefix variables are required to create the resource group, whi
 This is a good spot to talk a bit about how the dependency graph gets formed.
 
 ---
-name: lab-exercise-2
+name: lab-exercise-2a
 # 👩‍💻 Lab Exercise: Terraform in Action
 In the next lab we'll begin by building out a single resource group. Then you'll create a virtual network and finally add  the other components of our infrastructure.
 
@@ -901,8 +892,7 @@ In this chapter we:
 * Learned about dependencies
 * Viewed a graph of the lab
 * Looked at main.tf, variables.tf and outputs.tf
-* Enabled some outputs in our code
-* Built the lab environment
+* Built the Meow World application
 
 ---
 name: Chapter-4
@@ -928,14 +918,14 @@ The Terraform file provisioner copies files from your workstation onto the remot
 
 ```terraform
 provisioner "file" {
-  source      = "files/setup.sh"
-  destination = "/home/${var.admin_username}/setup.sh"
+  source      = "files/"
+  destination = "/home/${var.admin_username}/"
 
   connection {
     type     = "ssh"
     user     = "${var.admin_username}"
     password = "${var.admin_password}"
-    host     = "${azurerm_public_ip.vault-pip.fqdn}"
+    host     = "${azurerm_public_ip.catapp-pip.fqdn}"
   }
 }
 ```
@@ -949,7 +939,7 @@ SSH for linux, WinRM for your windows machines.
 name: remote-exec-provisioner
 class: compact
 # The Remote Exec Provisioner
-The remote exec provisioner allows you to execute scripts or other programs on the target host. If its something you can run unattended (for example, a software installer), then you can run it with remote exec.
+The remote exec provisioner allows you to execute scripts or other programs on the target host. If it's something you can run unattended (for example, a software installer), then you can run it with remote exec.
 
 ```terraform
 provisioner "remote-exec" {
@@ -965,7 +955,7 @@ provisioner "remote-exec" {
 In this example we're running a few commands to change some permissions and ownership, and to run a script with some enviroment variables.
 
 ???
-Local exec and remote exec can be used to trigger Puppet or Ansible runs. We do have a dedicated chef provisioner as well. 
+Local exec and remote exec can be used to trigger Puppet or Ansible runs. We do have a dedicated chef provisioner as well.
 
 ---
 name: puppet-chef-ansible
@@ -975,23 +965,34 @@ class: compact
 
 Terraform works well with common config management tools like Chef, Puppet or Ansible. Below are some links with more information on each:
 
-Official Chef Terraform provisioner:  
+Official Chef Terraform provisioner:
 https://www.terraform.io/docs/provisioners/chef.html
 
-Run Puppet with 'local-exec':  
+Run Puppet with 'local-exec':
 https://www.terraform.io/docs/provisioners/local-exec.html
 
-Terraform and Ansible - Better Together:  
+Terraform and Ansible - Better Together:
 https://github.com/scarolan/ansible-terraform
 
 ---
 name: provisioner-tips
 # Terraform Provisioner Tips
-Terraform provisioners like remote-exec are great when you need to run a few simple commands or scripts. For more complex configuration management you'll want a tool like Chef or Ansible. 
+Terraform provisioners like remote-exec are great when you need to run a few simple commands or scripts. For more complex configuration management you'll want a tool like Chef or Ansible.
 
 Provisioners only run the first time a Terraform run is executed. In this sense, they are not idempotent. If you need ongoing state management of VMs or servers that are long-lived, we recommend using a config management tool.
 
 On the other hand, if you want immutable infrastructure you should consider using our [Packer](https://packer.io) tool.
+
+---
+name: lab-exercise-2b
+# 👩‍💻 Lab Exercise: Working with Provisioners
+Let's continue the previous lab and use a provisioner to install a new software package.
+
+Click on the link below to return to the HashiCorp training lab:
+
+[https://instruqt.com/hashicorp/tracks/terraform-build-azure](https://instruqt.com/hashicorp/tracks/terraform-build-azure)
+
+Your instructor will let you know when it's time to regroup.
 
 ---
 name: chapter-4-review
@@ -1038,7 +1039,7 @@ name: terraform-refresh
 
 Sometimes infrastructure may be changed outside of Terraform's control. Virtual machines could be deleted, firewall rules changed, hardware failures could occur causing your infrastructure to look different than what's in the state file.
 
-The state file represents the *last known* state of the infrastructure. If you'd like to check and see if the state file still matches what you built, you can use the **terraform refresh** command. 
+The state file represents the *last known* state of the infrastructure. If you'd like to check and see if the state file still matches what you built, you can use the **terraform refresh** command.
 
 Note that this does *not* update your infrastructure, it simply updates the state file.
 
@@ -1104,19 +1105,19 @@ class: compact
 # Additional Resources
 If you'd like to learn more about Terraform on Azure try the links below:
 
-HashiCorp Learning Portal  
+HashiCorp Learning Portal
 https://learn.hashicorp.com/terraform/
 
-Microsoft Terraform Quickstarts  
+Microsoft Terraform Quickstarts
 https://docs.microsoft.com/en-us/azure/terraform/
 
-Terraform with Azure Cloudshell  
+Terraform with Azure Cloudshell
 https://docs.microsoft.com/en-us/azure/terraform/terraform-cloud-shell
 
-Terraform Azurerm Provider Documentation  
+Terraform Azurerm Provider Documentation
 https://www.terraform.io/docs/providers/azurerm/
 
-Link to this Slide Deck  
+Link to this Slide Deck
 https://bit.ly/hashiazure
 
 ---
@@ -1124,7 +1125,7 @@ name: Feedback-Survey
 # Workshop Feedback Survey
 <br><br>
 .center[
-Your feedback is important to us! 
+Your feedback is important to us!
 
 The survey is short, we promise:
 

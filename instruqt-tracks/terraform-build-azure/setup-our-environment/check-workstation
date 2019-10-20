@@ -1,0 +1,2 @@
+#!/bin/bash
+[ -d /root/.local/share/code-server/extensions/mauve.terraform-1.4.0 ] || fail-message "Oops, it looks like the Terraform extension is not installed yet. Please try again."

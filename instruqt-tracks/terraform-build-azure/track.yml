@@ -45,6 +45,8 @@ challenges:
     NOTE - you may ignore the error message about the mauve.terraform extension. This is a known bug.
   notes:
   - type: text
+    contents: The terraform language is designed to be both human and machine-readable.
+  - type: text
     contents: Most modern text editors support Terraform syntax highlighting.
   tabs:
   - title: Code Editor
@@ -52,7 +54,7 @@ challenges:
     hostname: workstation
     port: 8080
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: examine-main-tf
   id: nisroc5tsz4h
   type: challenge
@@ -74,7 +76,7 @@ challenges:
     hostname: workstation
     port: 8080
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: tf-add-a-variable
   id: jhgtd1ygijts
   type: challenge
@@ -97,7 +99,7 @@ challenges:
     eastasia      - Hong Kong<br/>
     canadacentral - Toronto<br/>
 
-    Edit the terraform.tfvars file to set your *location* and *prefix* variables.
+    Edit the *terraform.tfvars* file to set your *location* and *prefix* variables.
 
     Keep your prefix string all lower case, and between 5-12 characters long.
 
@@ -113,7 +115,7 @@ challenges:
     hostname: workstation
     port: 8080
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: tf-plan-and-apply
   id: xgmrp6woe3up
   type: challenge
@@ -152,7 +154,7 @@ challenges:
     hostname: workstation
     port: 8080
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: tf-plan-again
   id: 7uywvtmk4ogw
   type: challenge
@@ -182,7 +184,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: change-location
   id: stlwwlwfd6tn
   type: challenge
@@ -224,7 +226,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: add-a-tag
   id: 4rorshedxlta
   type: challenge
@@ -234,10 +236,11 @@ challenges:
   assignment: |-
     Read the terraform documentation for the azurerm_resource_group resource:
 
-    https://www.terraform.io/docs/providers/azurerm/r/resource_group.html
+    [AzureRM Terraform Docs - Click Here](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html)
+
     Add a tag to your resource group in the *main.tf* file.
 
-    The name of the tag should be `environment` and the value should be `production`.
+    The name of the tag should be `environment` and the value should be `Production`.
 
     Save the file and re-run `terraform apply`.
 
@@ -255,7 +258,7 @@ challenges:
     hostname: workstation
     port: 8080
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: add-virtual-network
   id: 18lcsj2vyhpz
   type: challenge
@@ -263,7 +266,7 @@ challenges:
   teaser: Terraform resources are like building blocks. You can continue adding more
     blocks until your infrastructure reaches the desired state.
   assignment: |-
-    Open the *main.tf* file again and uncomment the next resource block in the file.
+    Open the *main.tf* file again and uncomment the next resource block in the file. The type of resource is **azurerm_virtual_network** and it is named **vnet**.
 
     You can do this quickly by highlighting the block of code with your mouse. Then use the keyboard shortcut `CTRL-/`. That will toggle the comments off.
 
@@ -283,7 +286,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: complete-the-build
   id: tb8t1yp7qjyo
   type: challenge
@@ -304,10 +307,102 @@ challenges:
     ```
 
     It can take four to five minutes for the application to finish deploying. You will know it is complete when you see the Terraform output with your application URL at the end of the run.
+
+    Open your web application in a new browser tab. You'll need to copy and paste the URL into your address bar.
   notes:
   - type: text
     contents: The -auto-approve flag can be used to override the "Are you sure?" questions
       that appear before an apply or destroy. Use with caution!
+  tabs:
+  - title: Terraform CLI
+    type: terminal
+    hostname: workstation
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  difficulty: basic
+  timelimit: 600
+- slug: tf-graph
+  id: fgkcnkqwypsr
+  type: challenge
+  title: Terraform Graph - What Did We Build?
+  teaser: Terraform creates a graph of all the infrastructure defined in your code.
+    Let's visualize the graph and see what your infrastructure map looks like.
+  assignment: |-
+    The **terraform graph** command can generate a DOT-formatted graph of your infrastructure. DOT is a graph description language. DOT files can be used with visualization tools like Graphviz.
+
+    Run the terraform graph command now to see the raw output:
+
+    ```
+    terraform graph
+    ```
+
+    Now let's plot this raw data using the free Blast Radius visualizer. We've pre-installed blast-radius for you. Run the following command then open the **Terraform Graph** tab to see the results:
+
+    ```
+    blast-radius --serve .
+    ```
+
+    You can use your mouse to click and drag the graph around. You can click on different graph nodes to see dependencies more clearly.
+  notes:
+  - type: text
+    contents: Terraform Graph can give you a visual representation of all your infrastructure.
+  tabs:
+  - title: Terraform CLI
+    type: terminal
+    hostname: workstation
+  - title: Terraform Graph
+    type: service
+    hostname: workstation
+    port: 5000
+  difficulty: basic
+  timelimit: 600
+- slug: use-a-provisioner
+  id: cnhiy7l5eagm
+  type: challenge
+  title: Use a Provisioner
+  teaser: Terraform works great with many different provisioning tools including Chef,
+    Puppet, Ansible, Bash, and Powershell.
+  assignment: |-
+    Open the `main.tf` file in the Code Editor. Scroll down to line 157 where you will see the remote-exec provisioner block.
+
+    Add the following at the end of the inline list of commands:
+
+    ```
+    "sudo apt -y install cowsay",
+    "cowsay Mooooooooooo!",
+    ```
+
+    Now run another `terraform apply` to apply your changes:
+
+    ```
+    terraform apply -auto-approve
+    ```
+
+    Scroll back through the log output. You should see an ASCII art cow that is saying "Moooooooo!"
+  notes:
+  - type: text
+    contents: Terraform provisioners run once at creation time. They do not run on
+      subsequent applies, except in special circumstances. (Like this training lab...)
+  - type: text
+    contents: We've made some special adjustments to force the provisioner run every
+      time you type terraform apply. This is so you can practice playing with provisioners
+      without destroying and recreating your virtual machine every time you make a
+      change.
+  - type: text
+    contents: |-
+      ```
+      ______________________
+      < Cows love Terraform! >
+       ----------------------
+               \   ^__^
+                \  (oo)\_______
+                   (__)\       )\/\
+                       ||----w |
+                       ||     ||
+      =============================
+      ```
   tabs:
   - title: Code Editor
     type: service
@@ -317,7 +412,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: terraform-destroy
   id: sliv4sehcy5r
   type: challenge
@@ -325,13 +420,15 @@ challenges:
   teaser: Terraform can build infrastructure and also destroy it when you are done
     using it. This helps control costs and reduce infrastructure sprawl.
   assignment: |-
-    Let's destroy the resource group we created in the previous challenges. Run the following command to destroy your infrastructure:
+    Run the following command to destroy your infrastructure:
 
     ```
     terraform destroy
     ```
 
     You'll need to type "yes" when prompted to destroy your infrastructure. This is a safety feature to help prevent accidental deletion of important resources.
+
+    Wait until the destroy action has completely finished before clicking on the *Check* button.
   notes:
   - type: text
     contents: Terraform can destroy infrastructure as easily as it can build it. Use
@@ -341,5 +438,5 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 300
-checksum: "4224620454175686420"
+  timelimit: 600
+checksum: "7374979993843894106"

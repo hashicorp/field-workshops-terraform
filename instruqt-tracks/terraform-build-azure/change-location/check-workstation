@@ -1,0 +1,7 @@
+#!/bin/bash
+SERIAL=$(cat terraform.tfstate | jq .serial)
+
+if [ $SERIAL -eq 1 ]; then
+  fail-message "It looks like you haven't updated your location yet. Try again."
+  exit 1
+fi
