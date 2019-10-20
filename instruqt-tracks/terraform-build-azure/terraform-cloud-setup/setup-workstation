@@ -1,0 +1,10 @@
+#!/bin/bash
+# Create the ~/.terraformrc template
+cat <<-EOF > /root/.terraformrc
+credentials "app.terraform.io" {
+  token = "YOURTOKENHERE"
+}
+EOF
+
+cd /root/hashicat-azure
+mv remote_backend.tf.disabled remote_backend.tf

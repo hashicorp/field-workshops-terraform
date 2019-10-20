@@ -1,0 +1,10 @@
+#!/bin/bash
+cd /root/hashicat-azure
+
+# Insert an output for the catapp_ip public IP address.
+cat <<-EOF >> outputs.tf
+
+output "catapp_ip" {
+  value = "\${azurerm_public_ip.catapp-pip.ip_address}"
+}
+EOF

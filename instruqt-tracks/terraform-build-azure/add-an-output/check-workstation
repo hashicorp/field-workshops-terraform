@@ -1,0 +1,8 @@
+#!/bin/bash
+cd /root/hashicat-azure
+OUTPUT=$(cat terraform.tfstate | jq -r .outputs.catapp_ip.value)
+
+if [ -z $OUTPUT ]; then
+  fail-message "We didn't find your catapp_ip output. Try again."
+  exit 1
+fi

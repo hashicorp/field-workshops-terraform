@@ -21,10 +21,10 @@ private: true
 published: true
 challenges:
 - slug: setup-our-environment
-  id: i5cjggcixwll
+  id: hyrkyyn0w8en
   type: challenge
   title: Moving in - Set Up Your Workspace
-  teaser: Configure your code editor with the Terraform extension and open a workspace.
+  teaser: Configure your code editor with the HCL extension and open a workspace.
   assignment: |-
     Open the Code Editor tab on the left.
 
@@ -36,13 +36,13 @@ challenges:
 
     Now click on the box-shaped icon on the left side menu. This opens the Extensions sidebar.
 
-    Search for *terraform*. Install the first extension on the list. It is named *Terraform*.
+    Search for *hcl*. Install the first extension on the list. It is named `HCL`.
 
     Click on the blue **Reload Required** button to refresh the editor.
 
-    Congratulations, you installed the Terraform extension in Visual Studio Code.
+    Now click on the explorer icon on the left side menu. It looks like a stack of documents.
 
-    NOTE - you may ignore the error message about the mauve.terraform extension. This is a known bug.
+    Congratulations, you've configured your environment to work with Terraform!
   notes:
   - type: text
     contents: The terraform language is designed to be both human and machine-readable.
@@ -55,6 +55,29 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 300
+- slug: open-a-terminal
+  id: tdj4sxpvzupm
+  type: challenge
+  title: Open a Terminal
+  teaser: Terraform commands are run from a terminal window. Terraform can be installed
+    on Linux, Windows, or MacOS.
+  assignment: |-
+    Open a new Terminal window. You can use the "Terminal > New Terminal" menu item or the keyboard shortcut **CTRL-J**.
+
+    All terraform commands should be run from the terminal in Visual Studio Code.
+
+    Try the **CTRL-J** shortcut to toggle the terminal window open and closed.
+  notes:
+  - type: text
+    contents: The terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
+      Windows, Solaris and Linux.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  difficulty: basic
+  timelimit: 600
 - slug: hello-terraform
   id: pbc0sybscvko
   type: challenge
@@ -96,9 +119,10 @@ challenges:
 
       We've pre-installed Terraform in your Instruqt lab environment for you.
   tabs:
-  - title: Terraform CLI
-    type: terminal
+  - title: Code Editor
+    type: service
     hostname: workstation
+    port: 8080
   difficulty: basic
   timelimit: 300
 - slug: azure-credentials
@@ -132,9 +156,10 @@ challenges:
 
       https://docs.microsoft.com/en-us/azure/virtual-machines/linux/terraform-install-configure#use-azure-cloud-shell
   tabs:
-  - title: Terraform CLI
-    type: terminal
+  - title: Code Editor
+    type: service
     hostname: workstation
+    port: 8080
   difficulty: basic
   timelimit: 300
 - slug: terraform-code
@@ -168,9 +193,10 @@ challenges:
 
       You can also group your terraform code into files by purpose. For example, you might place all your load balancer configuration code into a file called `load_balancer.tf`.
   tabs:
-  - title: Terraform CLI
-    type: terminal
+  - title: Code Editor
+    type: service
     hostname: workstation
+    port: 8080
   difficulty: basic
   timelimit: 300
 - slug: tf-init-provider
@@ -205,9 +231,10 @@ challenges:
 
       Today we'll be using the *azurerm* provider. AzureRM stands for Azure Resource Manager.
   tabs:
-  - title: Terraform CLI
-    type: terminal
+  - title: Code Editor
+    type: service
     hostname: workstation
+    port: 8080
   difficulty: basic
   timelimit: 300
 - slug: provider-quiz
@@ -261,9 +288,6 @@ challenges:
     type: service
     hostname: workstation
     port: 8080
-  - title: Terraform CLI
-    type: terminal
-    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: tf-plan
@@ -292,9 +316,10 @@ challenges:
 
       This can help you identify any unexpected changes before you deploy them, not after they are already built.
   tabs:
-  - title: Terraform CLI
-    type: terminal
+  - title: Code Editor
+    type: service
     hostname: workstation
+    port: 8080
   difficulty: basic
   timelimit: 300
 - slug: tf-variables
@@ -313,7 +338,7 @@ challenges:
 
     Open the **terraform.tfvars** file and set your prefix variable there. Save the file.
 
-    Now run `terraform plan` in the *Terraform CLI* tab again. This time you won't have to enter your prefix manually.
+    Now run `terraform plan` again. This time you won't have to enter your prefix manually.
   notes:
   - type: text
     contents: The **terraform.tfvars** file is a convenient place for users to configure
@@ -323,9 +348,6 @@ challenges:
     type: service
     hostname: workstation
     port: 8080
-  - title: Terraform CLI
-    type: terminal
-    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: tf-add-a-variable
@@ -366,9 +388,6 @@ challenges:
     type: service
     hostname: workstation
     port: 8080
-  - title: Terraform CLI
-    type: terminal
-    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: variables-quiz
@@ -417,13 +436,14 @@ challenges:
   - type: text
     contents: Terraform Graph can give you a visual representation of all your infrastructure.
   tabs:
-  - title: Terraform CLI
-    type: terminal
+  - title: Code Editor
+    type: service
     hostname: workstation
+    port: 8080
   - title: Terraform Graph
     type: service
     hostname: workstation
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "9794689375830635763"
+checksum: "6569717604783858498"

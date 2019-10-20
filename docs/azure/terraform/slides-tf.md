@@ -617,16 +617,24 @@ This list goes from highest precedence (1) to lowest (5).
 
 <br>
 1. Command line flag
-1. Environment variable
 1. Configuration file
+1. Environment variable
 1. Default Config
 1. User manual entry
+
+---
+name: lab-exercise-0
+# 👩‍💻 Getting Started with Instruqt
+<br><br>
+[Instruqt](https://instruqt.com) is the HashiCorp training platform. Visit the link below for a short tutorial, or if you're already familiar with Instruqt you can skip to the next slide.
+
+[https://instruqt.com/instruqt/tracks/getting-started-with-instruqt](https://instruqt.com/instruqt/tracks/getting-started-with-instruqt)
 
 ---
 name: lab-exercise-1
 # 👩‍💻 Lab Exercise: Terraform Basics
 <br><br>
-Click on the link below to visit the HashiCorp training lab:
+Click on the link below to visit the HashiCorp training lab. Your instructor will provide an invitation code to access the track.
 
 [https://instruqt.com/hashicorp/tracks/terraform-basics-azure](https://instruqt.com/hashicorp/tracks/terraform-basics-azure)
 
@@ -874,13 +882,16 @@ This is a good spot to talk a bit about how the dependency graph gets formed.
 ---
 name: lab-exercise-2a
 # 👩‍💻 Lab Exercise: Terraform in Action
-In the next lab we'll begin by building out a single resource group. Then you'll create a virtual network and finally add  the other components of our infrastructure.
+Let's use Terraform to build, manage, and destroy Azure resources. This is a three part lab. In part one you'll build the HashiCat application stack.
 
-Click on the link below to visit the HashiCorp training lab:
+Click on the link below to visit the HashiCorp training lab. Your instructor will provide an invitation code you can use to access the track.
 
 [https://instruqt.com/hashicorp/tracks/terraform-build-azure](https://instruqt.com/hashicorp/tracks/terraform-build-azure)
 
-Your instructor will let you know when it's time to regroup.
+**STOP** after you complete the Terraform Graph challenge.
+
+???
+**We will explore the Terraform Graph together once everyone has completed the lab. Once you have the graph running in your instruqt lab stop there.**
 
 ---
 name: chapter-3-review
@@ -914,7 +925,7 @@ Once you've used Terraform to stand up a virtual machine or container, you may w
 name: file-provisioner
 class: compact
 # The File Provisioner
-The Terraform file provisioner copies files from your workstation onto the remote machine. In our code we're using the file provisioner to upload a shell script.
+The Terraform file provisioner copies files from your workstation onto the remote machine. In our code we're using the file provisioner to upload some shell scripts.
 
 ```terraform
 provisioner "file" {
@@ -965,13 +976,13 @@ class: compact
 
 Terraform works well with common config management tools like Chef, Puppet or Ansible. Below are some links with more information on each:
 
-Official Chef Terraform provisioner:
+Official Chef Terraform provisioner:<br/>
 https://www.terraform.io/docs/provisioners/chef.html
 
-Run Puppet with 'local-exec':
+Run Puppet with 'local-exec':<br/>
 https://www.terraform.io/docs/provisioners/local-exec.html
 
-Terraform and Ansible - Better Together:
+Terraform and Ansible - Better Together:<br/>
 https://github.com/scarolan/ansible-terraform
 
 ---
@@ -985,14 +996,14 @@ On the other hand, if you want immutable infrastructure you should consider usin
 
 ---
 name: lab-exercise-2b
-# 👩‍💻 Lab Exercise: Working with Provisioners
-Let's continue the previous lab and use a provisioner to install a new software package.
+# 👩‍💻 Lab Exercise: Provisioners, Variables and Outputs
+In part two of the lab we'll use a provisioner to install a new software package. We will also explore variables and outputs.
 
 Click on the link below to return to the HashiCorp training lab:
 
 [https://instruqt.com/hashicorp/tracks/terraform-build-azure](https://instruqt.com/hashicorp/tracks/terraform-build-azure)
 
-Your instructor will let you know when it's time to regroup.
+**STOP** after you have completed the Fun with Variables challenge.
 
 ---
 name: chapter-4-review
@@ -1001,8 +1012,6 @@ name: chapter-4-review
 In this chapter we:
 * Learned about Terraform Provisioners
 * Explored the **file** and **remote-exec** provisioners
-* Learned the **`terraform fmt`** command
-* Used the **`terraform taint`** command
 * Rebuilt our web server with a new provisioning step
 ]
 
@@ -1100,24 +1109,57 @@ class: compact
 What happens in each scenario? Discuss.
 
 ---
+name: Chapter-6
+class: title
+# Chapter 6
+## Terraform Cloud
+
+---
+name: tfcloud-vs-tfe
+# Terraform Cloud or Terraform Enterprise
+**Terraform Cloud** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud based SaaS solution because they don't want to maintain the infrastructure to run it.
+
+**Terraform Enterprise** is the same application, but it runs in your cloud environment or data center. Some users require more control over the Terraform Enterprise application, or wish to run it in restricted networks behind corporate firewalls.
+
+The feature list for these two offerings is nearly identical. We will be using Terraform Cloud accounts for the next lab exercise.
+
+---
+name: terraform-cloud-remote-state
+# Terraform Remote State
+By default Terraform stores its state file in the workspace directory on your laptop or workstation. This is ok for development and experimentation, but in a production environment you need to protect and store the state file safely.
+
+Terraform has an option to store and secure your state files remotely. Terraform Cloud accounts now offer unlimited state file storage even for open source users.
+
+All state files are encrypted (using HashiCorp Vault) and stored securely in your Terraform Cloud account. You'll never have to worry about losing or deleting your state file again.
+
+---
+name: lab-exercise-2c
+# 👩‍💻 Lab Exercise: Terraform Cloud
+In the final part of the second lab we'll create a free Terraform Cloud account and enable remote storage of our state file.
+
+Click the link below to return to the lab and complete the final challenges:
+
+[https://instruqt.com/hashicorp/tracks/terraform-build-azure](https://instruqt.com/hashicorp/tracks/terraform-build-azure)
+
+---
 name: additional-resources
 class: compact
 # Additional Resources
 If you'd like to learn more about Terraform on Azure try the links below:
 
-HashiCorp Learning Portal
+HashiCorp Learning Portal<br/>
 https://learn.hashicorp.com/terraform/
 
-Microsoft Terraform Quickstarts
+Microsoft Terraform Quickstarts<br/>
 https://docs.microsoft.com/en-us/azure/terraform/
 
-Terraform with Azure Cloudshell
+Terraform with Azure Cloudshell<br/>
 https://docs.microsoft.com/en-us/azure/terraform/terraform-cloud-shell
 
-Terraform Azurerm Provider Documentation
+Terraform Azurerm Provider Documentation<br/>
 https://www.terraform.io/docs/providers/azurerm/
 
-Link to this Slide Deck
+Link to this Slide Deck<br/>
 https://bit.ly/hashiazure
 
 ---
