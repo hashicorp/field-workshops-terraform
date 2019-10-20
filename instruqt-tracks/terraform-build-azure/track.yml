@@ -578,10 +578,12 @@ challenges:
     Run another `terraform apply` and watch your state file evolve with each change. You can browse through previous state files with the Terraform Cloud UI.
   notes:
   - type: text
-    contents: With *remote state* the terraform commands and variables all remain
-      on your workstation. With *remote execution* terraform runs in a Terraform Cloud
-      container environment. All variables must be configured in the cloud environment
-      with this method.
+    contents: |-
+      With *local* execution mode the terraform commands and variables all remain
+      on your workstation.
+
+      With *remote* execution mode terraform runs in a Terraform Cloud
+      container environment. All variables must be configured in the cloud environment with this method.
   tabs:
   - title: Code Editor
     type: service
@@ -616,4 +618,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "11412897605310501848"
+checksum: "9142865038032331350"

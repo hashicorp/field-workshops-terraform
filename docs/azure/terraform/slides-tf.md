@@ -1133,6 +1133,14 @@ Terraform has an option to store and secure your state files remotely. Terraform
 All state files are encrypted (using HashiCorp Vault) and stored securely in your Terraform Cloud account. You'll never have to worry about losing or deleting your state file again.
 
 ---
+name: execution-mode
+# Terraform Cloud Execution Modes
+
+**Local Execution** - Terraform commands run on your laptop or workstation and all variables are configured locally. Only the terraform state is stored remotely.
+
+**Remote Execution** - Terraform commands are run in a Terraform Cloud container environment. All variables are stored in the remote workspace. Code can be stored in a Version Control System repository. Limited to 1 concurrent run for free tier users.
+
+---
 name: lab-exercise-2c
 # 👩‍💻 Lab Exercise: Terraform Cloud
 In the final part of the second lab we'll create a free Terraform Cloud account and enable remote storage of our state file.
@@ -1160,7 +1168,7 @@ Terraform Azurerm Provider Documentation<br/>
 https://www.terraform.io/docs/providers/azurerm/
 
 Link to this Slide Deck<br/>
-https://bit.ly/hashiazure
+https://git.io/JeBIn
 
 ---
 name: Feedback-Survey
