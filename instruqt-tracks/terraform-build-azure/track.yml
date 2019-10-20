@@ -2,7 +2,7 @@ slug: terraform-build-azure
 id: bvlt94x5i8gc
 type: track
 title: Provision to Azure with Terraform
-teaser: Provision the HashiCat application on Azure using Terraform.
+teaser: Provision the HashiCat application on Azure Cloud using Terraform.
 description: "In this track you'll practice provisioning infrastructure in Azure.\n\nWe'll
   begin by deploying a resource group, then adding a network and gradually building
   the entire application stack.\n\nWhen you're finished you'll be able to view the
@@ -21,7 +21,7 @@ challenges:
 - slug: setup-our-environment
   id: ybj0pfuzxigx
   type: challenge
-  title: Moving in - Set Up Your Workspace
+  title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: Configure your code editor with the HCL extension and open a workspace.
   assignment: |-
     Open the Code Editor tab on the left.
@@ -56,7 +56,7 @@ challenges:
 - slug: open-a-terminal
   id: 5xarxf5nkudh
   type: challenge
-  title: Open a Terminal
+  title: "\U0001F5A5️ Open a Terminal"
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
     on Linux, Windows, or MacOS.
   assignment: |-
@@ -81,7 +81,7 @@ challenges:
 - slug: examine-main-tf
   id: nisroc5tsz4h
   type: challenge
-  title: Examine the main.tf file
+  title: "\U0001F4C1 Examine the main.tf file"
   teaser: Terraform code is a declarative language that allows you to build almost
     any kind of infrastructure. Let's look at the code from our sample application.
   assignment: |-
@@ -105,7 +105,7 @@ challenges:
 - slug: tf-add-a-variable
   id: jhgtd1ygijts
   type: challenge
-  title: Configure Terraform Variables
+  title: "\U0001F469‍\U0001F4BB Configure Terraform Variables"
   teaser: Terraform is flexible enough to deploy infrastructure anywhere in the world.
     You can easily provision your applications in different geographical regions by
     simply changing a single variable.
@@ -142,7 +142,7 @@ challenges:
 - slug: tf-plan-and-apply
   id: xgmrp6woe3up
   type: challenge
-  title: Terraform Plan and Terraform Apply
+  title: "\U0001F468‍\U0001F4BB Terraform Plan and Terraform Apply"
   teaser: The terraform plan command can be run anytime to get a preview of changes
     that terraform might make. When you run terraform apply these changes are implemented,
     and terraform builds, updates, or destroys resources.
@@ -178,7 +178,7 @@ challenges:
 - slug: tf-plan-again
   id: 7uywvtmk4ogw
   type: challenge
-  title: Test and Repair
+  title: "\U0001F469‍\U0001F4BB Test and Repair"
   teaser: Terraform is idempotent. Each resource in your code will be examined, and
     if it already exists Terraform will leave it alone.
   assignment: |-
@@ -209,7 +209,7 @@ challenges:
 - slug: change-location
   id: stlwwlwfd6tn
   type: challenge
-  title: Change Your Location
+  title: "\U0001F5FD Change Your Location"
   teaser: When your terraform code changes, your infrastructure will be modified to
     match the updated code. Terraform is a declarative language.
   assignment: |-
@@ -249,7 +249,7 @@ challenges:
 - slug: add-a-tag
   id: 4rorshedxlta
   type: challenge
-  title: Add a Tag to Your Resource Group
+  title: "\U0001F3F7️ Add a Tag to Your Resource Group"
   teaser: Terraform can change some resources in in place without deleting them. Adding
     tags is a non-destructive action.
   assignment: |-
@@ -278,7 +278,7 @@ challenges:
 - slug: add-virtual-network
   id: 18lcsj2vyhpz
   type: challenge
-  title: Add a Virtual Network
+  title: "\U0001F5A7 Add a Virtual Network"
   teaser: Terraform resources are like building blocks. You can continue adding more
     blocks until your infrastructure reaches the desired state.
   assignment: |-
@@ -303,7 +303,7 @@ challenges:
 - slug: complete-the-build
   id: tb8t1yp7qjyo
   type: challenge
-  title: Complete the Build
+  title: "\U0001F3D7️ Complete the Build"
   teaser: Terraform code can stand up everything from resource groups, to virtual
     networks, to VMs and containers.
   assignment: |-
@@ -336,7 +336,7 @@ challenges:
 - slug: tf-graph
   id: fgkcnkqwypsr
   type: challenge
-  title: Terraform Graph
+  title: "\U0001F4C8 Terraform Graph"
   teaser: Terraform creates a graph of all the infrastructure defined in your code.
   assignment: |-
     Start up a Blast Radius server with the following command:
@@ -355,7 +355,7 @@ challenges:
   notes:
   - type: text
     contents: Terraform Graph can provide a visual representation of all your infrastructure.
-      This can be handy for finding dependency issues or resources that will be affected
+      This is handy for finding dependency issues or resources that will be affected
       by a change.
   tabs:
   - title: Command Line
@@ -367,10 +367,30 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 600
+- slug: terraform-apply-quiz
+  id: mdf2cwo4fqgg
+  type: quiz
+  title: "\U0001F4DD Quiz 1 - Terraform Apply"
+  teaser: What happens when you run `terraform apply` without a plan file?
+  assignment: |
+    What happens when you run `terraform apply` without specifying a plan file?
+  notes:
+  - type: text
+    contents: |
+      It's quiz time!
+  answers:
+  - Terraform runs without any plan
+  - Terraform reads the previous plan and then applies it
+  - Terraform runs a new plan right before the apply
+  - None of the above
+  solution:
+  - 2
+  difficulty: basic
+  timelimit: 300
 - slug: use-a-provisioner
   id: cnhiy7l5eagm
   type: challenge
-  title: Use a Provisioner
+  title: "\U0001F6E0️ Use a Provisioner"
   teaser: Terraform works great with many different provisioning tools including Chef,
     Puppet, Ansible, Bash, and Powershell.
   assignment: |-
@@ -389,7 +409,7 @@ challenges:
     terraform apply -auto-approve
     ```
 
-    Scroll back through the log output. You should see an ASCII art cow that is saying "Moooooooo!"
+    Scroll back through the log output. You should see an ASCII art cow saying "Moooooooo!"
   notes:
   - type: text
     contents: Terraform provisioners run once at creation time. They do not run on
@@ -422,7 +442,7 @@ challenges:
 - slug: add-an-output
   id: fynppt1whity
   type: challenge
-  title: Add an Output
+  title: "\U0001F5A8️ Add an Output"
   teaser: Outputs are used to convey useful information such as IP addresses, application
     URLs or other useful data.
   assignment: |-
@@ -468,11 +488,11 @@ challenges:
 - slug: fun-with-variables
   id: xhrtgnqx2nod
   type: challenge
-  title: Fun With Variables
+  title: "\U0001F436 Fun With Variables"
   teaser: Variables give the consumers of your terraform code an easy way to customize
     their infrastructure.
   assignment: |-
-    There are several ways to configure Terraform variables. So far we've been using the **terraform.tfvars** file to set our variables. Try re-deploying your application with a different **height** and **width** variables on the command line. Reload the webapp after each apply to observe any changes.
+    There are several ways to configure Terraform variables. So far we've been using the **terraform.tfvars** file to set our variables. Try re-deploying your application with different **height** and **width** variables on the command line. Reload the webapp after each apply to observe any changes.
 
     ```
     terraform apply -auto-approve -var height=600 -var width=800
@@ -524,10 +544,30 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
+- slug: terraform-variables-quiz
+  id: zunny1znszqd
+  type: quiz
+  title: "\U0001F4DD Quiz 2 - Terraform Variables"
+  teaser: How do terraform variables get set or overridden?
+  assignment: |
+    You have the same variable set in a *.tfvars file and as an environment variable. Which one takes precedence?
+  notes:
+  - type: text
+    contents: |
+      Get ready for another quiz...
+  answers:
+  - The environment variable
+  - The config file
+  - The default value in variables.tf
+  - None of the above
+  solution:
+  - 1
+  difficulty: basic
+  timelimit: 300
 - slug: terraform-cloud-setup
   id: 6qzffd0tp15f
   type: challenge
-  title: Terraform Cloud Setup
+  title: ☁️ Terraform Cloud Setup
   teaser: Terraform Cloud offers unlimited free terraform state storage for users.
     Safeguard your state files by storing them remotely in Terraform Cloud.
   assignment: |-
@@ -555,15 +595,15 @@ challenges:
 - slug: configure-remote-state
   id: s3ktaoaj9jf0
   type: challenge
-  title: Configure Remote State
+  title: "\U0001F39B️ Configure Remote State"
   teaser: The terraform command line tool can store its state in Terraform Cloud.
     All that is required is a user token.
   assignment: |-
-    Go into your Terraform Cloud User Settings by clicking the icon in the upper right corner. Under User Settings click on Tokens. Generate a new token for your workstation. You can call it **workshop-token**.
+    In the Terraform Cloud web UI, go into your Terraform Cloud User Settings by clicking the icon in the upper right corner. Under User Settings click on Tokens. Generate a new token for your workstation. You can call it **workshop-token**.
 
     Open the `/root/.terraformrc` file with the "File > Open File" menu command. Replace where it says YOURTOKENHERE with the user token you just created. Save and close the file.
 
-    Edit the remote_backend.tf file. Replace the organization with your sandbox organization name. Replace the workspace name with **hashicat**. Save the file.
+    Edit the `remote_backend.tf` file. Replace the organization with your sandbox organization name. Replace the workspace name with **hashicat**. Save the file.
 
     Now run a *terraform init* to migrate your state to Terraform Cloud:
 
@@ -594,7 +634,7 @@ challenges:
 - slug: terraform-destroy
   id: sliv4sehcy5r
   type: challenge
-  title: Terraform Destroy
+  title: "\U0001F525 Terraform Destroy"
   teaser: Terraform can build infrastructure and also destroy it when you are done
     using it. This helps control costs and reduce infrastructure sprawl.
   assignment: |-
@@ -618,4 +658,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "9142865038032331350"
+checksum: "1311862370608271335"

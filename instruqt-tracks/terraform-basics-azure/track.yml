@@ -23,7 +23,7 @@ challenges:
 - slug: setup-our-environment
   id: hyrkyyn0w8en
   type: challenge
-  title: Moving in - Set Up Your Workspace
+  title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: Configure your code editor with the HCL extension and open a workspace.
   assignment: |-
     Open the Code Editor tab on the left.
@@ -58,7 +58,7 @@ challenges:
 - slug: open-a-terminal
   id: tdj4sxpvzupm
   type: challenge
-  title: Open a Terminal
+  title: "\U0001F5A5️ Open a Terminal"
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
     on Linux, Windows, or MacOS.
   assignment: |-
@@ -67,6 +67,10 @@ challenges:
     All terraform commands should be run from the terminal in Visual Studio Code.
 
     Try the **CTRL-J** shortcut to toggle the terminal window open and closed.
+
+    You can use the little caret ^ shaped button on the terminal pane to expand and shrink your Terminal window. This is useful for viewing logs.
+
+    Click on the File Explorer icon a couple times to toggle the File Explorer on and off. This can provide more space while you're viewing and editing code.
   notes:
   - type: text
     contents: The terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
@@ -81,7 +85,7 @@ challenges:
 - slug: hello-terraform
   id: pbc0sybscvko
   type: challenge
-  title: Getting to Know Terraform
+  title: "\U0001F44B Getting to Know Terraform"
   teaser: Learn terraform basics and command line syntax.
   assignment: |-
     Let's start with some basic terraform commands.
@@ -128,7 +132,7 @@ challenges:
 - slug: azure-credentials
   id: 1xafrvqookjz
   type: challenge
-  title: Connecting Terraform to Azure Cloud
+  title: "\U0001F510 Connecting Terraform to Azure Cloud"
   teaser: Safely connect to the Azure APIs using a service principal.
   assignment: |-
     Terraform needs credentials to be able to connect to Azure and build resources.
@@ -165,7 +169,7 @@ challenges:
 - slug: terraform-code
   id: 0vb60xa2lbts
   type: challenge
-  title: What does Terraform code look like?
+  title: "\U0001F468‍\U0001F4BB What does Terraform code look like?"
   teaser: The terraform DSL (Domain Specific Language) is a declarative language that
     lets you build almost any type of infrastructure.
   assignment: |-
@@ -174,6 +178,8 @@ challenges:
     ```
     ls *.tf
     ```
+
+    The same files are visible in the file explorer pane on the left. Terraform files are marked with the purple T icon.
 
     Terraform code always ends with a `.tf` extension. You can have as many terraform files as you want, but these three are commonly created first:
 
@@ -202,7 +208,7 @@ challenges:
 - slug: tf-init-provider
   id: gvo1lsxgpyjx
   type: challenge
-  title: Terraform Init - Install the Azure Provider
+  title: ☁️ Terraform Init - Install the Azure Provider
   teaser: Terraform needs a provider to talk to cloud APIs. The provider is the bridge
     that connects terraform core to your infrastructure providers.
   assignment: |-
@@ -240,7 +246,7 @@ challenges:
 - slug: provider-quiz
   id: cftow3r88gop
   type: quiz
-  title: Quiz 1 - Providers and Modules
+  title: "\U0001F4DD Quiz 1 - Providers and Modules"
   teaser: A quiz about Terraform init
   assignment: |
     Where does Terraform store its modules and providers?
@@ -260,7 +266,7 @@ challenges:
 - slug: tf-validate
   id: s35t6v0i2wwk
   type: challenge
-  title: Terraform Validate - Test Your Code
+  title: "\U0001F469‍⚖️ Terraform Validate - Test Your Code"
   teaser: Terraform has a built in validation tester. This is useful to see whether
     your Terraform code is valid and parses correctly.
   assignment: |-
@@ -293,7 +299,7 @@ challenges:
 - slug: tf-plan
   id: im52n8wdgt9n
   type: challenge
-  title: Terraform Plan - Dry Run Mode
+  title: "\U0001F914 Terraform Plan - Dry Run Mode"
   teaser: Terraform has a dry run mode where you can preview what will be built without
     actually creating any resources. In this challenge we'll run terraform plan and
     view the output.
@@ -325,7 +331,7 @@ challenges:
 - slug: tf-variables
   id: fea5hyeemrxo
   type: challenge
-  title: Working with Terraform Variables
+  title: "\U0001F39B️ Working with Terraform Variables"
   teaser: Terraform variables allow you to customize your infrastructure without editing
     any code. You can use the same terraform code to deploy dev, staging and production
     but with different variables.
@@ -353,7 +359,7 @@ challenges:
 - slug: tf-add-a-variable
   id: nusbmrgoi4cn
   type: challenge
-  title: Change Your Location
+  title: "\U0001F5FC Change Your Location"
   teaser: Terraform is flexible enough to deploy infrastructure anywhere in the world.
     You can easily provision your applications in different geographical regions by
     simply changing a single variable.
@@ -393,7 +399,7 @@ challenges:
 - slug: variables-quiz
   id: qjaiij9j0j35
   type: quiz
-  title: Quiz 2 - Variables
+  title: "\U0001F4DD Quiz 2 - Variables"
   teaser: A quiz about Terraform variables
   assignment: |
     Where are Terraform variables *defined*?
@@ -413,7 +419,7 @@ challenges:
 - slug: tf-graph
   id: m3at5sjm1vxw
   type: challenge
-  title: Terraform Graph - Seeing is Believing
+  title: "\U0001F4CA Terraform Graph - Seeing is Believing"
   teaser: Terraform creates a graph of all the infrastructure defined in your code.
     Let's visualize the graph and see what your infrastructure map looks like.
   assignment: |-
@@ -446,4 +452,4 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "6569717604783858498"
+checksum: "2008606010710400049"

@@ -762,6 +762,17 @@ Plan: 0 to add, 0 to change, 1 to destroy.
 **Terraform can just as easily destroy infrastructure as create it. With great power comes great responsibility!**
 
 ---
+name: terraform-fmt
+# Terraform Format
+Terraform comes with a built in code formatter/cleaner. It can make all your margins and list indentation neat and tidy. Beauty works better.
+
+```tex
+terraform fmt
+```
+
+Simply run it in a directory containing *.tf files and it will tidy up your code for you.
+
+---
 name: dependency-mapping
 class: compact
 # Terraform Dependency Mapping
@@ -888,7 +899,7 @@ Click on the link below to visit the HashiCorp training lab. Your instructor wil
 
 [https://instruqt.com/hashicorp/tracks/terraform-build-azure](https://instruqt.com/hashicorp/tracks/terraform-build-azure)
 
-**STOP** after you complete the Terraform Graph challenge.
+**STOP** after you complete the first quiz.
 
 ???
 **We will explore the Terraform Graph together once everyone has completed the lab. Once you have the graph running in your instruqt lab stop there.**
@@ -1003,7 +1014,7 @@ Click on the link below to return to the HashiCorp training lab:
 
 [https://instruqt.com/hashicorp/tracks/terraform-build-azure](https://instruqt.com/hashicorp/tracks/terraform-build-azure)
 
-**STOP** after you have completed the Fun with Variables challenge.
+**STOP** after you complete the second quiz.
 
 ---
 name: chapter-4-review
