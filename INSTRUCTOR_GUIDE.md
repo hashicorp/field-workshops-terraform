@@ -111,7 +111,7 @@ terraform apply -auto-approve
 
 > Terraform has put the security groups back in their correct configuration and restored access to our web application. And access is restored!
 
-> This was a brief demo showing what Terraform open source can do. In a moment you'll get some hands on experience with terraform and Azure. Let's take a five minute break. When you return we'll roll up our sleeves and build some infrastructure.
+> This was a brief demo showing what Terraform open source can do. In a moment you'll get some hands on experience with terraform and Azure.
 
 ### Timing
 The following schedule assumes you have a group of participants who are brand new to Terraform. You should budget between three and four hours for this workshop. This is meant as a guideline, you can adjust as needed.
