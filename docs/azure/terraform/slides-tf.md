@@ -1120,6 +1120,21 @@ class: title
 ## Terraform Cloud
 
 ---
+name: terraform-cloud
+class: img-right
+# Terraform Cloud
+##### Terraform Cloud is a free to use SaaS application that provides the best workflow for writing and building infrastructure as code with Terraform.
+![Terraform Cloud](https://www.terraform.io/assets/images/terraform-overview/automate-the-provisioning-lifecycle@4x-5cc6a17f.png)
+
+* State storage and management
+* Web UI for viewing and approving Terraform runs
+* Private module registry
+* Version Control System (VCS) integration
+* CLI, API or GUI driven actions
+* Notifications for run events
+* Full HTTP API for automation
+
+---
 name: tfcloud-vs-tfe
 # Terraform Cloud or Terraform Enterprise
 **Terraform Cloud** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud based SaaS solution because they don't want to maintain the infrastructure to run it.
@@ -1151,6 +1166,13 @@ name: lab-exercise-2c
 In the final part of the second lab we'll create a free Terraform Cloud account and enable remote storage of our state file.
 
 Return to the training lab and continue where you left off.
+
+---
+name: the-end
+class: img-caption
+
+# Congratulations, you completed the workshop!
+![HashiCorp Employees - 2019](https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-build-azure/hashicorp_employees.jpg)
 
 ---
 name: additional-resources
