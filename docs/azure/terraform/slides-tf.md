@@ -634,11 +634,7 @@ name: lab-exercise-0
 name: lab-exercise-1
 # 👩‍💻 Lab Exercise: Terraform Basics
 <br><br>
-Click on the link below to visit the HashiCorp training lab. Your instructor will provide an invitation code to access the track.
-
-[https://instruqt.com/hashicorp/tracks/terraform-basics-azure](https://instruqt.com/hashicorp/tracks/terraform-basics-azure)
-
-Your instructor will let you know when it's time to regroup.
+Your instructor will provide the URL for the first lab environment.
 
 ---
 name: chapter-2-review
@@ -895,9 +891,7 @@ name: lab-exercise-2a
 # 👩‍💻 Lab Exercise: Terraform in Action
 Let's use Terraform to build, manage, and destroy Azure resources. This is a three part lab. In part one you'll build the HashiCat application stack.
 
-Click on the link below to visit the HashiCorp training lab. Your instructor will provide an invitation code you can use to access the track.
-
-[https://instruqt.com/hashicorp/tracks/terraform-build-azure](https://instruqt.com/hashicorp/tracks/terraform-build-azure)
+Your instructor will provide the URL for the second lab environment. Bookmark it for easy reference.
 
 **STOP** after you complete the first quiz.
 
@@ -1010,9 +1004,7 @@ name: lab-exercise-2b
 # 👩‍💻 Lab Exercise: Provisioners, Variables and Outputs
 In part two of the lab we'll use a provisioner to install a new software package. We will also explore variables and outputs.
 
-Click on the link below to return to the HashiCorp training lab:
-
-[https://instruqt.com/hashicorp/tracks/terraform-build-azure](https://instruqt.com/hashicorp/tracks/terraform-build-azure)
+Return to the training lab and continue where you left off.
 
 **STOP** after you complete the second quiz.
 
@@ -1156,9 +1148,7 @@ name: lab-exercise-2c
 # 👩‍💻 Lab Exercise: Terraform Cloud
 In the final part of the second lab we'll create a free Terraform Cloud account and enable remote storage of our state file.
 
-Click the link below to return to the lab and complete the final challenges:
-
-[https://instruqt.com/hashicorp/tracks/terraform-build-azure](https://instruqt.com/hashicorp/tracks/terraform-build-azure)
+Return to the training lab and continue where you left off.
 
 ---
 name: additional-resources
