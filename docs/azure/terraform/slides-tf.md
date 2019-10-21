@@ -634,6 +634,8 @@ name: lab-exercise-0
 name: lab-exercise-1
 # 👩‍💻 Lab Exercise: Terraform Basics
 <br><br>
+In this lab you'll learn how to set up your editor, use the Terraform command line tool, integrate with Azure Cloud, and do a few dry runs with different settings.
+
 Your instructor will provide the URL for the first lab environment.
 
 ---
