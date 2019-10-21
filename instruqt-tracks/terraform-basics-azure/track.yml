@@ -437,6 +437,8 @@ challenges:
     blast-radius --serve .
     ```
 
+    Once Blast Radius is up and running, click on the **Terraform Graph** tab to view the interactive graph.
+
     You can use your mouse to click and drag the graph around. Even though we only have one single resource group, all of the variables in our config files are included in the graph. In the next track you'll build more complex infrastructure and watch your graph grow.
   notes:
   - type: text
@@ -452,4 +454,4 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "2008606010710400049"
+checksum: "10871126017428773863"

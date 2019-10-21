@@ -267,7 +267,7 @@ challenges:
 
     Add a tag to your resource group in the *main.tf* file.
 
-    The name of the tag should be `environment` and the value should be `Production`.
+    The name of the tag should be `environment` and the value should be `Production`. The tag is case-sensitive. Make sure you use a capital P.
 
     Save the file and re-run `terraform apply`.
 
@@ -670,4 +670,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "14841123853974713945"
+checksum: "13391984307200810612"
