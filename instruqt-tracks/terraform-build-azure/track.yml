@@ -191,6 +191,14 @@ challenges:
     Since your Azure resource group has already been built, terraform will report that there are no changes required.
 
     This is normal and expected.
+
+    Now try running another apply:
+
+    ```
+    terraform apply
+    ```
+
+    Terraform checks each resource to ensure it is in the proper state. It will not re-create your resource group if it is already provisioned correctly.
   notes:
   - type: text
     contents: |-
@@ -209,7 +217,7 @@ challenges:
 - slug: change-location
   id: stlwwlwfd6tn
   type: challenge
-  title: "\U0001F5FD Change Your Location"
+  title: "\U0001F6EB Change Your Location"
   teaser: When your terraform code changes, your infrastructure will be modified to
     match the updated code. Terraform is a declarative language.
   assignment: |-
@@ -289,6 +297,10 @@ challenges:
     Save the file.
 
     Now run `terraform apply` again. Observe the results.
+
+    Look at the **location** and **resource_group_name** parameters inside the vnet resource. See how they point back at the first resource in the file? The virtual network resource inherits settings from the resource group.
+
+    Terraform can map out the complex web of dependencies between hundreds of interconnected resources.
   notes:
   - type: text
     contents: Terraform code can be built incrementally, one or two resources at a
@@ -658,4 +670,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "1311862370608271335"
+checksum: "14841123853974713945"
