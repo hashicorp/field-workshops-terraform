@@ -55,7 +55,7 @@ https://github.com/hashicorp/field-workshops-terraform/issues
 ### Hands-on Labs
 At certain points in the slide deck there are links to the lab exercises. [Instruqt](https://instruqt.com/hashicorp) is our lab platform. Lab exercises can be completed anonymously, but if users want to keep track of their progress they should create accounts on the Instruqt website. There are currently two labs referenced in the slide deck:
 
-https://instruqt.com/hashicorp/tracks/terraform-basics-azure
+https://instruqt.com/hashicorp/tracks/terraform-basics-azure  
 https://instruqt.com/hashicorp/tracks/terraform-build-azure
 
 Go through each of these tracks from start to finish and make sure you understand them. Students may have questions during the labs. When presenting a workshop be sure to give enough time for all your participants to go through the labs. Remember that this is probably their first time working a tool like Terraform.
