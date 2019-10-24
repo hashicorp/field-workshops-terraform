@@ -1092,7 +1092,6 @@ class: compact
 | azurerm_virtual_machine | azurerm_virtual_machine | azurerm_virtual_machine |    ???    |
 |                         | azurerm_virtual_machine | azurerm_virtual_machine |    ???    |
 |                         |                         | azurerm_virtual_machine |    ???    |
-| azurerm_virtual_machine |                         | azurerm_virtual_machine |    ???    |
 |                         | azurerm_virtual_machine |                         |    ???    |
 
 What happens in each scenario? Discuss.
@@ -1108,7 +1107,6 @@ class: compact
 | azurerm_virtual_machine | azurerm_virtual_machine | azurerm_virtual_machine | no-op        |
 |                         | azurerm_virtual_machine | azurerm_virtual_machine | delete       |
 |                         |                         | azurerm_virtual_machine | no-op        |
-| azurerm_virtual_machine |                         | azurerm_virtual_machine | re-create    |
 |                         | azurerm_virtual_machine |                         | update state |
 
 What happens in each scenario? Discuss.
