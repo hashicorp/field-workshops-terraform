@@ -40,10 +40,8 @@ git clone https://github.com/hashicorp/hashicat-azure
 # Rewind everything back to a single resource group.
 GITDIR="/root/hashicat-azure"
 cd ${GITDIR}
-mv ${GITDIR}/main.tf ${GITDIR}/main.tf.completed
-mv ${GITDIR}/main.tf.basics ${GITDIR}/main.tf
-mv ${GITDIR}/outputs.tf ${GITDIR}/outputs.tf.completed
-mv ${GITDIR}/outputs.tf.basics ${GITDIR}/outputs.tf
+cp ${GITDIR}/exercises/main.tf.start ${GITDIR}/main.tf
+cp ${GITDIR}/exercises/outputs.tf.start ${GITDIR}/outputs.tf
 mv ${GITDIR}/terraform.tfvars.example ${GITDIR}/terraform.tfvars
 
 cd ${GITDIR}

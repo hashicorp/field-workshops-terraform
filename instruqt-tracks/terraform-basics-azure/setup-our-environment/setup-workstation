@@ -41,10 +41,8 @@ git clone https://github.com/hashicorp/hashicat-azure
 
 # Rewind everything back to a single resource group.
 cd /root/hashicat-azure
-mv /root/hashicat-azure/main.tf /root/hashicat-azure/main.tf.completed
-mv /root/hashicat-azure/main.tf.basics /root/hashicat-azure/main.tf
-mv /root/hashicat-azure/outputs.tf /root/hashicat-azure/outputs.tf.completed
-mv /root/hashicat-azure/outputs.tf.basics /root/hashicat-azure/outputs.tf
+cp /root/hashicat-azure/exercises/main.tf.start /root/hashicat-azure/main.tf
+cp /root/hashicat-azure/exercises/outputs.tf.start /root/hashicat-azure/outputs.tf
 
 export VAULT_TOKEN=$(cat /tmp/vault_token)
 source /etc/profile.d/instruqt-env.sh

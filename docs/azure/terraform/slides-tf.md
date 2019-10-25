@@ -895,7 +895,7 @@ Let's use Terraform to build, manage, and destroy Azure resources. This is a thr
 
 Your instructor will provide the URL for the second lab environment. Bookmark it for easy reference.
 
-You will need to set up your workstation again as the first challenge. This is expected as we create a new instance for each lab.
+You will need to set up your workstation again in the first challenge. This is expected as we create a new instance for each lab.
 
 **STOP** after you complete the first quiz.
 
