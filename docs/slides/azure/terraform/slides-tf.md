@@ -35,7 +35,7 @@ name: Link-to-Slide-Deck
 <br><br><br>
 Follow along on your own computer at this link:
 
-# https://git.io/JeBIn
+# https://git.io/JeETB
 
 ---
 name: Introductions
