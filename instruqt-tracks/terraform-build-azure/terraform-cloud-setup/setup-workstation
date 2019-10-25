@@ -7,4 +7,4 @@ credentials "app.terraform.io" {
 EOF
 
 cd /root/hashicat-azure
-mv remote_backend.tf.disabled remote_backend.tf
+cp exercises/remote_backend.tf remote_backend.tf
