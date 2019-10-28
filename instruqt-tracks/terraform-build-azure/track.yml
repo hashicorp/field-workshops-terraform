@@ -114,14 +114,14 @@ challenges:
 
     Choose the Azure location nearest to you.
 
-    Examples:<br/>
-    centralus     - Iowa<br/>
-    eastus        - Virginia<br/>
-    westus        - California<br/>
-    uksouth       - London<br/>
-    southindia    - Chennai<br/>
-    eastasia      - Hong Kong<br/>
-    canadacentral - Toronto<br/>
+    Examples:<br>
+    centralus     - Iowa<br>
+    eastus        - Virginia<br>
+    westus        - California<br>
+    uksouth       - London<br>
+    southindia    - Chennai<br>
+    eastasia      - Hong Kong<br>
+    canadacentral - Toronto<br>
 
     Edit the *terraform.tfvars* file to set your *location* and *prefix* variables.
 
@@ -223,14 +223,14 @@ challenges:
   assignment: |-
     Edit the **terraform.tfvars** file to change your Azure location. You can choose any valid Azure region.
 
-    Examples:<br/>
-    centralus     - Iowa<br/>
-    eastus        - Virginia<br/>
-    westus        - California<br/>
-    uksouth       - London<br/>
-    southindia    - Chennai<br/>
-    eastasia      - Hong Kong<br/>
-    canadacentral - Toronto<br/>
+    Examples:<br>
+    centralus     - Iowa<br>
+    eastus        - Virginia<br>
+    westus        - California<br>
+    uksouth       - London<br>
+    southindia    - Chennai<br>
+    eastasia      - Hong Kong<br>
+    canadacentral - Toronto<br>
 
     Save the **terraform.tfvars** file and run your apply command again.
 
@@ -541,14 +541,14 @@ challenges:
     contents: |-
       Here are some other fun placeholder sites you can try with the *placeholder* variable:
 
-      placedog.net<br/>
-      placebear.com<br/>
-      www.fillmurray.com<br/>
-      www.placecage.com<br/>
-      placebeard.it<br/>
-      loremflickr.com<br/>
-      baconmockup.com<br/>
-      placeimg.com<br/>
+      placedog.net<br>
+      placebear.com<br>
+      www.fillmurray.com<br>
+      www.placecage.com<br>
+      placebeard.it<br>
+      loremflickr.com<br>
+      baconmockup.com<br>
+      placeimg.com<br>
   tabs:
   - title: Code Editor
     type: service

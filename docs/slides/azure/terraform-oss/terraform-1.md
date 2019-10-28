@@ -2,7 +2,7 @@ name: Azure-Terraform-Vault-Workshop
 class: center
 count: false
 ![:scale 60%](images/tfaz.png)
-<br/><br/>
+<br><br>
 ## Azure Terraform Workshop
 ### Build Azure Resources With Infrastructure as Code
 ???
@@ -40,7 +40,7 @@ Follow along on your own computer at this link:
 ---
 name: Introductions
 # Introductions
-<br/><br/><br/>
+<br><br><br>
 * Your Name
 * Job Title
 * Automation Experience
@@ -59,16 +59,16 @@ The favorite text editor question is a good ice breaker, but perhaps more import
 name: Table-of-Contents
 # Table of Contents
 
-1. Intro to Terraform & Demo<br/>
-1. Terraform Basics<br/>
-👩‍🔬 **Lab - Setup and Basic Usage**<br/>
-1. Terraform In Action: plan, apply, destroy<br/>
-1. Organizing Your Terraform Code<br/>
-🧪 **Lab - Terraform in Action**<br/>
-1. Provision and Configure Azure VMs<br/>
-🔬 **Lab - Provisioning with Terraform**<br/>
-1. Manage and Change Infrastructure State<br/>
-1. Terraform Cloud<br/>
+1. Intro to Terraform & Demo<br>
+1. Terraform Basics<br>
+👩‍🔬 **Lab - Setup and Basic Usage**<br>
+1. Terraform In Action: plan, apply, destroy<br>
+1. Organizing Your Terraform Code<br>
+🧪 **Lab - Terraform in Action**<br>
+1. Provision and Configure Azure VMs<br>
+🔬 **Lab - Provisioning with Terraform**<br>
+1. Manage and Change Infrastructure State<br>
+1. Terraform Cloud<br>
 ⚗️ **Lab - Terraform Remote State**
 
 
@@ -538,9 +538,9 @@ Terraform files always end in either a `*.tf` or `*.tfvars` extension.
 
 Most terraform workspaces contain a minimum of three files:
 
-**main.tf** - Most of your functional code will go here.<br/>
-**variables.tf** - This file is for storing variables.<br/>
-**outputs.tf** - Define what is shown at the end of a terraform run.<br/>
+**main.tf** - Most of your functional code will go here.<br>
+**variables.tf** - This file is for storing variables.<br>
+**outputs.tf** - Define what is shown at the end of a terraform run.<br>
 
 ---
 name: terraform-init
@@ -604,7 +604,7 @@ variable "location" {
 ???
 **If you're curious where all these variables are defined, you can see them all in the _variables.tf_ file. Here we are simply defining all the available settings, and optionally declaring some default values. These defaults are what terraform will use if your user doesn't override them with their own settings.**
 
-Q. Where could you override these defaults?<br/>
+Q. Where could you override these defaults?<br>
 A. In the terraform.tfvars file, or optionally on the command line or via environment variables. The most common approach is to use a tfvars file.
 
 ---
@@ -671,8 +671,8 @@ resource "type" "name" {
 }
 ```
 
-**resource** = Top level keyword<br/>
-**type** = Type of resource. The first part tells you which provider it belongs to. Example: `azurerm_virtual_machine`.<br/>
+**resource** = Top level keyword<br>
+**type** = Type of resource. The first part tells you which provider it belongs to. Example: `azurerm_virtual_machine`.<br>
 **name** = Arbitrary name to refer to this resource. Used internally by terraform. This field *cannot* be a variable.
 
 ???
@@ -985,13 +985,13 @@ class: compact
 
 Terraform works well with common config management tools like Chef, Puppet or Ansible. Below are some links with more information on each:
 
-Official Chef Terraform provisioner:<br/>
+Official Chef Terraform provisioner:<br>
 https://www.terraform.io/docs/provisioners/chef.html
 
-Run Puppet with 'local-exec':<br/>
+Run Puppet with 'local-exec':<br>
 https://www.terraform.io/docs/provisioners/local-exec.html
 
-Terraform and Ansible - Better Together:<br/>
+Terraform and Ansible - Better Together:<br>
 https://github.com/scarolan/ansible-terraform
 
 ---
@@ -1180,19 +1180,19 @@ class: compact
 # Additional Resources
 If you'd like to learn more about Terraform on Azure try the links below:
 
-HashiCorp Learning Portal<br/>
+HashiCorp Learning Portal<br>
 https://learn.hashicorp.com/terraform/
 
-Microsoft Terraform Quickstarts<br/>
+Microsoft Terraform Quickstarts<br>
 https://docs.microsoft.com/en-us/azure/terraform/
 
-Terraform with Azure Cloudshell<br/>
+Terraform with Azure Cloudshell<br>
 https://docs.microsoft.com/en-us/azure/terraform/terraform-cloud-shell
 
-Terraform Azurerm Provider Documentation<br/>
+Terraform Azurerm Provider Documentation<br>
 https://www.terraform.io/docs/providers/azurerm/
 
-Link to this Slide Deck<br/>
+Link to this Slide Deck<br>
 https://git.io/JeBIn
 
 ---

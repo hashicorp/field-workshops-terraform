@@ -374,12 +374,12 @@ challenges:
 
     Examples:
 
-    centralus - Iowa<br/>
-    eastus    - Virginia<br/>
-    westus     - California<br/>
-    uksouth    - London<br/>
-    southindia - Chennai<br/>
-    eastasia   - Hong Kong<br/>
+    centralus - Iowa<br>
+    eastus    - Virginia<br>
+    westus     - California<br>
+    uksouth    - London<br>
+    southindia - Chennai<br>
+    eastasia   - Hong Kong<br>
     canadacentral - Toronto
 
     Once you've set your location variable try running `terraform plan` again. What's different this time?
