@@ -37,6 +37,8 @@ Follow along on your own computer at this link:
 
 # https://git.io/JeuCI
 
+<i class="fa fa-camera" style="color: firebrick"></i>
+
 ---
 name: Introductions
 # Introductions
@@ -616,11 +618,11 @@ Once you have some variables defined, you can set and override them in different
 This list goes from highest precedence (1) to lowest (5).
 
 <br>
-1. Command line flag
-1. Configuration file
-1. Environment variable
-1. Default Config
-1. User manual entry
+1. Command line flag - run as a command line switch
+1. Configuration file - set in your terraform.tfvars file
+1. Environment variable - part of your shell environment
+1. Default Config - default value in variables.tf
+1. User manual entry - if not specified, prompt the user for entry
 
 ---
 name: lab-exercise-0

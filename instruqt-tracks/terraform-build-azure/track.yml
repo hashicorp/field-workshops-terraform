@@ -532,11 +532,11 @@ challenges:
     contents: |-
       Terraform variables have five levels of precedence. 1=highest 5=lowest:
 
-      1. Command line flag
-      1. Configuration file
-      1. Environment variable
-      1. Default Config
-      1. User manual entry
+      1. Command line flag - run as a command line switch
+      1. Configuration file - set in your terraform.tfvars file
+      1. Environment variable - part of your shell environment
+      1. Default Config - default value in variables.tf
+      1. User manual entry - if not specified, prompt the user for entry
   - type: text
     contents: |-
       Here are some other fun placeholder sites you can try with the *placeholder* variable:
