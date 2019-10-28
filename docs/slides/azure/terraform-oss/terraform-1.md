@@ -35,7 +35,7 @@ name: Link-to-Slide-Deck
 <br><br><br>
 Follow along on your own computer at this link:
 
-# https://git.io/JeETB
+# https://git.io/JeuCI
 
 ---
 name: Introductions
