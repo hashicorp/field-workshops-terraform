@@ -37,8 +37,6 @@ Follow along on your own computer at this link:
 
 # https://git.io/JeuCI
 
-<i class="fa fa-camera" style="color: firebrick"></i>
-
 ---
 name: Introductions
 # Introductions
