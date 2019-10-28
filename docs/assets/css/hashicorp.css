@@ -1,0 +1,37 @@
+/*
+HashiCorp Colors
+Vagrant    #1563FF
+Packer     #00ACFF
+Terraform  #623CE4
+Vault      #000000
+Nomad      #00BC7F
+Consul     #CA2171
+*/
+
+
+.remark-container {
+  background-color: #5C4EE5;
+}
+
+.small {
+  font-size: 50%;
+}
+
+.hashilogo {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+#legend {
+  border: 0px none;
+  height: 450px;
+  position: absolute;
+  width: 600px;
+  overflow: hidden;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
