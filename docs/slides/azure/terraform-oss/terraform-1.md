@@ -897,7 +897,7 @@ Your instructor will provide the URL for the second lab environment. Bookmark it
 
 You will need to set up your workstation again in the first challenge. This is expected as we create a new instance for each lab.
 
-**STOP** after you complete the first quiz.
+🛑 **STOP** after you complete the first quiz.
 
 ???
 **We will explore the Terraform Graph together once everyone has completed the lab. Once you have the graph running in your instruqt lab stop there.**
@@ -1010,7 +1010,7 @@ In part two of the lab we'll use a provisioner to install a new software package
 
 Return to the training lab and continue where you left off.
 
-**STOP** after you complete the second quiz.
+🛑 **STOP** after you complete the second quiz.
 
 ---
 name: chapter-4-review
