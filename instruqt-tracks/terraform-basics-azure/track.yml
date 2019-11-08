@@ -314,7 +314,9 @@ challenges:
 
     Enter a short string of lower-case letters and/or numbers. You can use your own name here if you wish.
 
-    Keep your prefix string all lower case, and between 5-12 characters long.
+    **Keep your prefix string all lower case, and between 5-12 characters long. Do not use an underscore in your prefix.**
+
+    The prefix will become part of your application hostname, and therefore must be DNS-compliant. Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, and the hyphen (-).  A hostname may not start with a hyphen.
   notes:
   - type: text
     contents: |-
@@ -454,4 +456,4 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "16732614781656935089"
+checksum: "4508636903404844571"
