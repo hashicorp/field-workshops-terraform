@@ -4,7 +4,7 @@ background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/
 count: false
 
 
-# Terraform Multi-Cloud Field Workshop Slides
+# Terraform Multi-Cloud Field Workshop
 ## Slides for Terraform multi-cloud field workshops
 
 ![:scale 15%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
