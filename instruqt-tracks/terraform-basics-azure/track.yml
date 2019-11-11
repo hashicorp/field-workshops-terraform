@@ -28,19 +28,19 @@ challenges:
   assignment: |-
     Open the Code Editor tab on the left.
 
-    Select "File > Open Folder".
+    Select "File > Open".
 
-    Open the `hashicat-azure` directory in the Code Editor.
+    Find the `hashicat-azure` directory in the Code Editor and hit `OK`.
 
     This is your terraform workspace.
 
-    Now click on the box-shaped icon on the left side menu. This opens the Extensions sidebar.
+    Now click on the box-shaped icon on the bottom of the left side menu. This opens the Extensions sidebar.
 
     Search for *hcl*. Install the first extension on the list. It is named `HCL`.
 
     Click on the blue **Reload Required** button to refresh the editor.
 
-    Now click on the explorer icon on the left side menu. It looks like a stack of documents.
+    Now click on the explorer icon on the top of the left side menu. It looks like a stack of documents.
 
     Congratulations, you've configured your environment to work with Terraform!
   notes:
@@ -62,11 +62,11 @@ challenges:
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
     on Linux, Windows, or MacOS.
   assignment: |-
-    Open a new Terminal window. You can use the "Terminal > New Terminal" menu item or the keyboard shortcut **CTRL-J**.
+    Open a new Terminal window. You can use the "Terminal > New Terminal" menu item or the keyboard shortcut **CTRL-J** (**CMD-J** on Mac).
 
-    All terraform commands should be run from the terminal in Visual Studio Code.
+    All terraform commands should be run from the terminal within the Code Editor.
 
-    Try the **CTRL-J** shortcut to toggle the terminal window open and closed.
+    Try the **CTRL-J** shortcut to toggle the terminal window open and closed ].
 
     You can use the little caret ^ shaped button on the terminal pane to expand and shrink your Terminal window. This is useful for viewing logs.
 
@@ -272,7 +272,7 @@ challenges:
   assignment: |-
     Terraform comes with a built-in subcommand called *validate*. This is useful when you want to do a quick syntax check of your code to make sure it parses correctly.
 
-    Click on the File Explorer icon on the left. It looks like a stack of papers.
+    Click on the File Explorer icon on the left if it is not already open. It looks like a stack of papers.
 
     Edit the main.tf file and remove the curly brace on line 4 of the file.
 
