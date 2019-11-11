@@ -66,7 +66,7 @@ challenges:
 
     All terraform commands should be run from the terminal within the Code Editor.
 
-    Try the **CTRL-J** shortcut to toggle the terminal window open and closed ].
+    Try the **CTRL-J** shortcut to toggle the terminal window open and closed.
 
     You can use the little caret ^ shaped button on the terminal pane to expand and shrink your Terminal window. This is useful for viewing logs.
 

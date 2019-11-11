@@ -26,19 +26,19 @@ challenges:
   assignment: |-
     Open the Code Editor tab on the left.
 
-    Select "File > Open Folder".
+    Select "File > Open".
 
-    Open the `hashicat-azure` directory in the Code Editor.
+    Open the `hashicat-azure` directory in the Code Editor and select `OK`.
 
     This is your terraform workspace.
 
-    Now click on the box-shaped icon on the left side menu. This opens the Extensions sidebar.
+    Now click on the box-shaped icon on the bottom of the left side menu. This opens the Extensions sidebar.
 
     Search for *hcl*. Install the first extension on the list. It is named `HCL`.
 
     Click on the blue **Reload Required** button to refresh the editor.
 
-    Now click on the explorer icon on the left side menu. It looks like a stack of documents.
+    Now click on the explorer icon on the top of the left side menu. It looks like a stack of documents.
 
     Congratulations, you've configured your environment to work with Terraform!
   notes:
@@ -60,7 +60,7 @@ challenges:
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
     on Linux, Windows, or MacOS.
   assignment: |-
-    Open a new Terminal window. You can use the "Terminal > New Terminal" menu item or the keyboard shortcut **CTRL-J**.
+    Open a new Terminal window. You can use the "Terminal > New Terminal" menu item or the keyboard shortcut **CTRL-J** (**CMD-J** on Mac).
 
     All terraform commands should be run from the terminal in Visual Studio Code.
 
@@ -154,6 +154,7 @@ challenges:
     ```
     terraform plan
     ```
+    Confirm the proper prefix and location are displayed in the plan output.
 
     Then run *terraform apply* and watch your resource group being built.
 
@@ -467,6 +468,7 @@ challenges:
     You may refer to the docs page to see what types of outputs are valid:
 
     [Terraform Azure Docs - Click Here](https://www.terraform.io/docs/providers/azurerm/r/public_ip.html)
+    [Terraform Outputs Docs - Click Here] (https://www.terraform.io/docs/configuration/outputs.html)
 
     Run the terraform refresh command to view your new output:
 
@@ -593,7 +595,7 @@ challenges:
 
     Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "No VCS Connection" button. Name your workspace **hashicat**.
 
-    Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local. This will allow us to run terraform commands from our workstation with local variables.
+    Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local.  Be sure to save your settings! This will allow us to run terraform commands from our workstation with local variables.
   notes:
   - type: text
     contents: Terraform Cloud remote state storage is free for all users.
