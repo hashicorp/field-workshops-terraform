@@ -35,10 +35,11 @@ The only prerequisites for this workshop are a web browser and willingness to le
 ### Markdown Slide Deck
 The slide deck for this training is published here:
 
-#### https://hashicorp.github.io/field-workshops-terraform/azure/terraform
+#### https://hashicorp.github.io/field-workshops-terraform/slides/azure/terraform-oss/index.html#1
+
 
 Shortened URL:
-#### https://git.io/JeBIn
+#### https://git.io/JeuCI
 
 #### Navigation
 Use the arrow keys (up/down or left/right) to navigate back and forth between slides.
