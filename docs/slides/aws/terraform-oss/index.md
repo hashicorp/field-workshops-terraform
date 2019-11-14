@@ -17,7 +17,7 @@ If you need to change the look and feel of the slide deck just use the style.css
 HTML comments like this one will show up in the source code, but not in the slides or speaker notes.
 --->
 
-Welcome to the beginner's guide to Terraform on Azure. This slide deck is written entirely in Markdown language, which means you can make edits or additions, then submit a pull request to add your changes to the master copy. To make edits to the slide deck simply fork this repository, edit the Markdown files, and submit a pull request with your changes.
+Welcome to the beginner's guide to Terraform on AWS. This slide deck is written entirely in Markdown language, which means you can make edits or additions, then submit a pull request to add your changes to the master copy. To make edits to the slide deck simply fork this repository, edit the Markdown files, and submit a pull request with your changes.
 
 The Markdown content is contained in the docs/ subdirectories.
 
@@ -65,7 +65,7 @@ name: Table-of-Contents
 1. Terraform In Action: plan, apply, destroy
 1. Organizing Your Terraform Code<br>
 🧪 **Lab - Terraform in Action**<br>
-1. Provision and Configure Azure VMs<br>
+1. Provision and Configure AWS Instances<br>
 🔬 **Lab - Provisioning with Terraform**<br>
 1. Manage and Change Infrastructure State<br>
 1. Terraform Cloud<br>
@@ -208,7 +208,7 @@ Infrastructure as Code (IaC) is the process of managing and provisioning cloud i
 ]
 
 ???
-**You might be thinking...why can't I just do this by hand? After all the Azure portal is really easy, and I can just stand up my infrastructure manually. Here's why:**
+**You might be thinking...why can't I just do this by hand? After all the AWS portal is really easy, and I can just stand up my infrastructure manually. Here's why:**
 
 **Terraform ensures that when you build any type of infrastructure that it gets built correctly every single time, exactly the same way. Let's try a thought experiment. If I gave every single one of you the same build document and asked you to set up a server, I guarantee there will be differences in those machines when you hand them over. They may not be major differences, but over time these can pile up and cause all sorts of uncertainty and issues in your environment.**
 
@@ -255,7 +255,7 @@ name: IaC2
 * Provide a codified workflow to create infrastructure
 * Change and update existing infrastructure
 * Safely test changes using **`terraform plan`** in dry run mode
-* Integrate with application code workflows (Git, Azure DevOps, CI/CD tools)
+* Integrate with application code workflows (Git, CI/CD tools)
 
 ???
 **Terraform allows you to automate manual processes and build continuous integration or continuous delivery pipelines. Imagine you had a pipeline for creating hardened machine images. Perhaps you have another pipeline for testing your infrastructure build process. These might be chained to other CI/CD application pipelines where the application is deployed into your tested, hardened infrastructure. Think of API driven infrastructure builds, written in a simple langage everybody can use and understand.**
@@ -266,7 +266,7 @@ name: IaC2
 * Provide a codified workflow to create infrastructure
 * Change and update existing infrastructure
 * Safely test changes using **`terraform plan`** in dry run mode
-* Integrate with application code workflows (Git, Azure DevOps, CI/CD tools)
+* Integrate with application code workflows (Git, CI/CD tools)
 * Provide reusable modules for easy sharing and collaboration
 
 ???
@@ -278,7 +278,7 @@ name: IaC2
 * Provide a codified workflow to create infrastructure
 * Change and update existing infrastructure
 * Safely test changes using **`terraform plan`** in dry run mode
-* Integrate with application code workflows (Git, Azure DevOps, CI/CD tools)
+* Integrate with application code workflows (Git, CI/CD tools)
 * Provide reusable modules for easy sharing and collaboration
 * Enforce security policy and organizational standards
 
@@ -291,7 +291,7 @@ name: IaC2
 * Provide a codified workflow to create infrastructure
 * Change and update existing infrastructure
 * Safely test changes using **`terraform plan`** in dry run mode
-* Integrate with application code workflows (Git, Azure DevOps, CI/CD tools)
+* Integrate with application code workflows (Git, CI/CD tools)
 * Provide reusable modules for easy sharing and collaboration
 * Enforce security policy and organizational standards
 * Enable collaboration between different teams
@@ -375,7 +375,7 @@ Name: Why-Terraform-on-AWS
 * Migrate from other cloud providers
 
 ???
-**Terraform is also great for migrating between cloud providers. Let's say you wanted to move some workloads from Azure to AWS. The code changes in Terraform would be much easier to implement than they would via CloudFormation Templates. I was able to migrate a simple demo application from one cloud to another in a few short hours, because there was almost no learning curve. Terraform code looks the same no matter where you run it.**
+**Terraform is also great for migrating between cloud providers. Let's say you wanted to move some workloads from AWS to AWS. The code changes in Terraform would be much easier to implement than they would via CloudFormation Templates. I was able to migrate a simple demo application from one cloud to another in a few short hours, because there was almost no learning curve. Terraform code looks the same no matter where you run it.**
 
 ---
 Name: Why-Terraform-on-AWS
@@ -423,7 +423,7 @@ class: title
 
 **This is a workstation just like the ones you'll be using for today's workshops. I'm going to run a terraform apply command to build out the lab environment. We're actually cheating a little bit here, as we prebaked most of the environment before class to save us some time. Just like your favorite cooking show!**
 
-**You can see the results of the Terraform run here in my terminal window. This output is showing me the URL of the application server I just built. And if we pop over here to the Azure portal you'll see all of the different parts of my lab environment.**
+**You can see the results of the Terraform run here in my terminal window. This output is showing me the URL of the application server I just built. And if we pop over here to the AWS portal you'll see all of the different parts of my lab environment.**
 
 **This is Infrastructure as code. By the end of today's training you'll be able to create your own infrastructure using Terraform.**
 
@@ -932,7 +932,7 @@ In this chapter we:
 name: Chapter-4
 class: title
 # Chapter 4
-## Provision and Configure Azure VMs
+## Provision and Configure AWS Instances
 
 ---
 name: intro-to-provisioners
@@ -1192,22 +1192,19 @@ class: img-caption
 name: additional-resources
 class: compact
 # Additional Resources
-If you'd like to learn more about Terraform on Azure try the links below:
+If you'd like to learn more about Terraform on AWS try the links below:
 
 HashiCorp Learning Portal<br>
 https://learn.hashicorp.com/terraform/
 
-Microsoft Terraform Quickstarts<br>
-https://docs.microsoft.com/en-us/azure/terraform/
+Terraform - Beyond the Basics with AWS<br>
+https://aws.amazon.com/blogs/apn/terraform-beyond-the-basics-with-aws/
 
-Terraform with Azure Cloudshell<br>
-https://docs.microsoft.com/en-us/azure/terraform/terraform-cloud-shell
-
-Terraform Azurerm Provider Documentation<br>
-https://www.terraform.io/docs/providers/azurerm/
+Terraform AWS Provider Documentation<br>
+https://www.terraform.io/docs/providers/aws/index.html
 
 Link to this Slide Deck<br>
-https://git.io/JeBIn
+https://git.io/something
 
 ---
 name: Feedback-Survey
