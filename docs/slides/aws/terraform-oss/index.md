@@ -935,3 +935,296 @@ In this chapter we:
 * Viewed a graph of the lab
 * Looked at main.tf, variables.tf and outputs.tf
 * Built the Meow World application
+
+---
+name: Chapter-4
+class: title
+# Chapter 4
+## Provision and Configure Azure VMs
+
+---
+name: intro-to-provisioners
+# Using Terraform Provisioners
+Once you've used Terraform to stand up a virtual machine or container, you may wish to configure your operating system and applications. This is where provisioners come in. Terraform supports several different types of provisioners including: Bash, Powershell, Chef, Puppet, Ansible, and more.
+
+.center[https://www.terraform.io/docs/provisioners/index.html]
+
+???
+**Terraform works hand-in-hand with these other configuration management tools to install packages, configure applications and change OS settings inside of a virtual machine or container.**
+
+---
+name: file-provisioner
+class: compact
+# The File Provisioner
+The Terraform file provisioner copies files from your workstation onto the remote machine. In our code we're using the file provisioner to upload some shell scripts.
+
+```terraform
+provisioner "file" {
+  source        = "files/"
+  destination   = "/home/${var.admin_username}/"
+
+  connection {
+    type        = "ssh"
+    user        = var.username
+    private_key = file(var.ssh_key)
+    host        = ${self.ip}
+  }
+}
+```
+
+Note the *connection* block of code inside the provisioner block. The file provisioner supports both SSH and WinRM connections.
+
+???
+SSH for linux, WinRM for your windows machines.
+
+---
+name: remote-exec-provisioner
+class: compact
+# The Remote Exec Provisioner
+The remote exec provisioner allows you to execute scripts or other programs on the target host. If it's something you can run unattended (for example, a software installer), then you can run it with remote exec.
+
+```terraform
+provisioner "remote-exec" {
+  inline = [
+    "sudo chown -R ${var.admin_username}:${var.admin_username} /var/www/html",
+    "chmod +x *.sh",
+    "PLACEHOLDER=${var.placeholder} WIDTH=${var.width} HEIGHT=${var.height} PREFIX=${var.prefix} ./deploy_app.sh",
+  ]
+...
+}
+```
+
+In this example we're running a few commands to change some permissions and ownership, and to run a script with some enviroment variables.
+
+???
+Local exec and remote exec can be used to trigger Puppet or Ansible runs. We do have a dedicated chef provisioner as well.
+
+---
+name: puppet-chef-ansible
+class: compact
+# Terraform & Config Management Tools
+.center[![:scale 60%](images/cpa.jpg)]
+
+Terraform works well with common config management tools like Chef, Puppet or Ansible. Below are some links with more information on each:
+
+Official Chef Terraform provisioner:<br>
+https://www.terraform.io/docs/provisioners/chef.html
+
+Run Puppet with 'local-exec':<br>
+https://www.terraform.io/docs/provisioners/local-exec.html
+
+Terraform and Ansible - Better Together:<br>
+https://github.com/scarolan/ansible-terraform
+
+---
+name: provisioner-tips
+# Terraform Provisioner Tips
+Terraform provisioners like remote-exec are great when you need to run a few simple commands or scripts. For more complex configuration management you'll want a tool like Chef or Ansible.
+
+Provisioners only run the first time a Terraform run is executed. In this sense, they are not idempotent. If you need ongoing state management of VMs or servers that are long-lived, we recommend using a config management tool.
+
+On the other hand, if you want immutable infrastructure you should consider using our [Packer](https://packer.io) tool.
+
+---
+name: lab-exercise-2b
+# 👩‍💻 Lab Exercise: Provisioners, Variables and Outputs
+In part two of the lab we'll use a provisioner to install a new software package. We will also explore variables and outputs.
+
+Return to the training lab and continue where you left off.
+
+🛑 **STOP** after you complete the second quiz.
+
+---
+name: chapter-4-review
+# 📝 Chapter 4 Review
+.contents[
+In this chapter we:
+* Learned about Terraform Provisioners
+* Explored the **file** and **remote-exec** provisioners
+* Rebuilt our web server with a new provisioning step
+]
+
+---
+name: Chapter-5
+class: title
+# Chapter 5
+## Terraform State
+
+---
+name: terraform-state
+class: compact
+# Terraform State
+Terraform is a _stateful_ application. This means that it keeps track of everything you build inside of a **state file**. You may have noticed the terraform.tfstate and terraform.tfstate.backup files that appeared inside your working directory.
+
+The state file is Terraform's source of record for everything it knows about.
+
+```json
+{
+  "version": 4,
+  "terraform_version": "0.12.7",
+  "serial": 14,
+  "lineage": "452b4191-89f6-db17-a3b1-4470dcb00607",
+  "outputs": {
+    "catapp_url": {
+      "value": "http://go-hashicat-5c0265179ccda553.workshop.aws.hashidemos.io",
+      "type": "string"
+    },
+```
+
+---
+name: terraform-refresh
+# Terraform Refresh
+
+Sometimes infrastructure may be changed outside of Terraform's control. Virtual machines could be deleted, firewall rules changed, hardware failures could occur causing your infrastructure to look different than what's in the state file.
+
+The state file represents the *last known* state of the infrastructure. If you'd like to check and see if the state file still matches what you built, you can use the **terraform refresh** command.
+
+Note that this does *not* update your infrastructure, it simply updates the state file.
+
+```bash
+terraform refresh
+```
+
+---
+name: change-existing-infra
+class: compact
+# Changing Existing Infrastructure
+
+Whenever you run a plan or apply, Terraform reconciles three different data sources:
+
+1.  What you wrote in your code
+2.  The state file
+3.  What actually exists
+
+Terraform does its best to add, delete, change, or replace existing resources based on what is in your *.tf files. Here are the four different things that can happen to each resource during a plan/apply:
+
+```tex
++   create
+-   destroy
+-/+ replace
+~   update in-place
+```
+
+---
+name: state-quiz
+class: compact
+# Terraform State Quiz
+| Configuration           | State                   | Reality                 | Operation |
+| ----------------------- | ----------------------- | ----------------------- |:---------:|
+| aws_instance |                         |                         |    ???    |
+| aws_instance | aws_instance |                         |    ???    |
+| aws_instance | aws_instance | aws_instance |    ???    |
+|                         | aws_instance | aws_instance |    ???    |
+|                         |                         | aws_instance |    ???    |
+|                         | aws_instance |                         |    ???    |
+
+What happens in each scenario? Discuss.
+
+---
+name: state-quiz-answers
+class: compact
+# Terraform State Quiz
+| Configuration           | State                   | Reality                 | Operation    |
+| ----------------------- | ----------------------- | ----------------------- |:------------:|
+| aws_instance |                         |                         | create       |
+| aws_instance | aws_instance |                         | create       |
+| aws_instance | aws_instance | aws_instance | no-op        |
+|                         | aws_instance | aws_instance | delete       |
+|                         |                         | aws_instance | no-op        |
+|                         | aws_instance |                         | update state |
+
+What happens in each scenario? Discuss.
+
+---
+name: Chapter-6
+class: title
+# Chapter 6
+## Terraform Cloud
+
+---
+name: terraform-cloud
+class: img-right
+# Terraform Cloud
+##### Terraform Cloud is a free to use SaaS application that provides the best workflow for writing and building infrastructure as code with Terraform.
+![Terraform Cloud](https://www.terraform.io/assets/images/terraform-overview/automate-the-provisioning-lifecycle@4x-5cc6a17f.png)
+
+* State storage and management
+* Web UI for viewing and approving Terraform runs
+* Private module registry
+* Version Control System (VCS) integration
+* CLI, API or GUI driven actions
+* Notifications for run events
+* Full HTTP API for automation
+
+---
+name: tfcloud-vs-tfe
+# Terraform Cloud or Terraform Enterprise
+**Terraform Cloud** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud based SaaS solution because they don't want to maintain the infrastructure to run it.
+
+**Terraform Enterprise** is the same application, but it runs in your cloud environment or data center. Some users require more control over the Terraform Enterprise application, or wish to run it in restricted networks behind corporate firewalls.
+
+The feature list for these two offerings is nearly identical. We will be using Terraform Cloud accounts for the next lab exercise.
+
+---
+name: terraform-cloud-remote-state
+# Terraform Remote State
+By default Terraform stores its state file in the workspace directory on your laptop or workstation. This is ok for development and experimentation, but in a production environment you need to protect and store the state file safely.
+
+Terraform has an option to store and secure your state files remotely. Terraform Cloud accounts now offer unlimited state file storage even for open source users.
+
+All state files are encrypted (using HashiCorp Vault) and stored securely in your Terraform Cloud account. You'll never have to worry about losing or deleting your state file again.
+
+---
+name: execution-mode
+# Terraform Cloud Execution Modes
+
+**Local Execution** - Terraform commands run on your laptop or workstation and all variables are configured locally. Only the terraform state is stored remotely.
+
+**Remote Execution** - Terraform commands are run in a Terraform Cloud container environment. All variables are stored in the remote workspace. Code can be stored in a Version Control System repository. Limited to 1 concurrent run for free tier users.
+
+---
+name: lab-exercise-2c
+# 👩‍💻 Lab Exercise: Terraform Cloud
+In the final part of the second lab we'll create a free Terraform Cloud account and enable remote storage of our state file.
+
+Return to the training lab and continue where you left off.
+
+---
+name: the-end
+class: img-caption
+
+# Congratulations, you completed the workshop!
+![HashiCorp Employees - 2019](https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-build-azure/hashicorp_employees.jpg)
+
+---
+name: additional-resources
+class: compact
+# Additional Resources
+If you'd like to learn more about Terraform on Azure try the links below:
+
+HashiCorp Learning Portal<br>
+https://learn.hashicorp.com/terraform/
+
+Microsoft Terraform Quickstarts<br>
+https://docs.microsoft.com/en-us/azure/terraform/
+
+Terraform with Azure Cloudshell<br>
+https://docs.microsoft.com/en-us/azure/terraform/terraform-cloud-shell
+
+Terraform Azurerm Provider Documentation<br>
+https://www.terraform.io/docs/providers/azurerm/
+
+Link to this Slide Deck<br>
+https://git.io/JeBIn
+
+---
+name: Feedback-Survey
+# Workshop Feedback Survey
+<br><br>
+.center[
+Your feedback is important to us!
+
+The survey is short, we promise:
+
+## http://bit.ly/hashiworkshopfeedback
+]
