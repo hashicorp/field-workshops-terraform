@@ -359,14 +359,6 @@ https://blog.1password.com/terraforming-1password/
 1Password were able to move their entire production infrastructure to Terraform in a few short weeks. Now they can tear down and completely rebuild their production environment in a matter of hours.
 
 ---
-Name: Why-Terraform-2
-# Why Terraform?
-![:scale 80%](images/azure-loves-terraform.png)
-
-???
-**While we are focused on AWS usage today, this is really relevant as we see Terraform becoming the defacto standard for all the major cloud providers. Microsoft has invested significant resources to ensure that Azure users have a first-class experience when using Terraform to provision on Azure. Your friendly Microsoft solutions architect is happy to support you if you choose to use Terraform, especially if you are adopting a multi-cloud strategy. Terraform is even built right into Azure CloudShell. You can use Terraform with zero setup, right from your web browser.**
-
----
 Name: Why-Terraform-on-AWS
 # Why Terraform on AWS?
 
