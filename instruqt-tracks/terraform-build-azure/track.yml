@@ -26,7 +26,7 @@ challenges:
   assignment: |-
     Open the Code Editor tab on the left.
 
-    Select "File > Open".
+    Select "File > Open Folder".
 
     Open the `hashicat-azure` directory in the Code Editor and select `OK`.
 
@@ -672,4 +672,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "3079980521310588963"
+checksum: "902148236860573119"
