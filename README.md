@@ -1,4 +1,6 @@
 # HashiCorp Terraform Field Workshops
+[![CircleCI](https://circleci.com/gh/hashicorp/field-workshops-consul.svg?style=svg)](https://circleci.com/gh/hashicorp/field-workshops-consul)
+
 All HashiCorp field workshops focused on Terraform should be placed in this repository. Similar field workshop repositories exist for these HashiCorp solutions:
 * [field-workshops-consul](https://github.com/hashicorp/field-workshops-consul)
 * [field-workshops-nomad](https://github.com/hashicorp/field-workshops-nomad)
