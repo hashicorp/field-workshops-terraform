@@ -83,7 +83,6 @@ challenges:
     1. Review the list of supported arguments by typing `terraform help` into the terminal.
 
     2. Using your new found knowledge of terraform arguments, enter the command to check the terraform version.
-
   notes:
   - type: text
     contents: |-
@@ -115,20 +114,33 @@ challenges:
   title: "\U0001F510 Connecting Terraform to AWS"
   teaser: Connecting to AWS with Access Keys and Secret Keys.
   assignment: |-
-    Terraform needs credentials to be able to connect to AWS and build resources.
+    **Goal**: Understand methods for configuring AWS provider credentials.
+    **Estimated time**: 3-5 minutes.
 
-    We've pre-installed some temporary credentials in your Instruqt training environment. These credentials are stored as environment variables. You should never store sensitive data of any kind inside your source code.
+    In order to authenticate to AWS and build resources, Terraform requires you to provide a set of credntials, backed by an appropriate IAM policy.
 
-    Terraform can automatically read and use the environment variables that are in your shell environment.
+    These are part of the provider configuration, and could be set within the provider stanza.
 
-    Run the following commands to see your temporary credentials:
+    ```
+    provider "aws" {
+      region  = "us-east-1"
+      access_key = "my-access-key"
+      secret_key = "my-secret-key"
+    }
+
+    Warning: Hard-coding credentials into any Terraform configuration is not recommended, and risks secret leakage should this file ever be committed to a public version control system.
+
+    You can also use an AWS credentials file to specify your credentials. The default location is $HOME/.aws/credentials on Linux and macOS, or "%USERPROFILE%\.aws\credentials" for Windows users.
+
+    For this training environment, we have prepared some temporary AWS credentials and stored them as environment variables. Terraform will automatically read and use the environment variables that are configured in your shell environment.
+
+    1. Run the following commands to see your temporary credentials:
 
     ```
     env | grep AWS_ACCESS_KEY_ID
     env | grep AWS_SECRET_ACCESS_KEY
     ```
 
-    *Do not ever store your credentials in source code files*, as they can be accidentally exposed or copied to a public repository.
   notes:
   - type: text
     contents: |-
@@ -460,4 +472,4 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "10487768971193869322"
+checksum: "2396086520240268334"
