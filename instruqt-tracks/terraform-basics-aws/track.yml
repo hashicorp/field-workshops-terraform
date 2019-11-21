@@ -141,12 +141,9 @@ challenges:
     env | grep AWS_ACCESS_KEY_ID
     env | grep AWS_SECRET_ACCESS_KEY
     ```
-
   notes:
   - type: text
-    contents: |-
-      Did you know HCL stands for "Hashicorp COnfiguration Language"?
-
+    contents: Did you know HCL stands for "Hashicorp COnfiguration Language"?
   tabs:
   - title: Code Editor
     type: service
@@ -472,4 +469,4 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "2396086520240268334"
+checksum: "11004047882145300300"
