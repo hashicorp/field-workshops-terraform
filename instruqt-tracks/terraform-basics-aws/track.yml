@@ -26,29 +26,32 @@ challenges:
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: Configure your code editor with the HCL extension and open a workspace.
   assignment: |-
+    *Goal*: Validate and configure your working environment.
+    *Estimated Time*: 2-3 minutes.
+
     What you see on screen now will be your working environment for the rest of this training.
 
     You'll notice that there are a few tabs along the top of the frame. The bright orange one will take you back to the Instruqt home page - try not to click it!
 
     The next tab along should be active, and is your interactive shell. This is where you will be interacting with the Terraform CLI.
 
-    In your shell, type `terraform version`.
+    - In your shell, type `echo "hello world"`.
 
     Finally, you have the Code Editor. This is where you will create and modify Terraform code.
 
-    Click on the Code Editor tab to switch context.
+    1. Click on the Code Editor tab to switch context.
 
-    Select "File > Open Folder".
+    2. Select `File > Open...`.
 
-    Open the `hashicat-aws` directory in the Code Editor.
+    3. Open the `hashicat-aws` directory in the Code Editor.
 
-    Now select the icon on the bottom of the left menu that looks like building blocks. This opens the Extensions sidebar.
+    4. Select the icon on the bottom of the left menu that looks like building blocks. This opens the Extensions sidebar.
 
-    Search for *hcl*. Install the first extension on the list. It is named `HCL`.
+    5. Search for *hcl*. Install the first extension on the list. It is named `HCL`.
 
-    Click on the blue **Reload Required** button to refresh the editor.
+    6. Click on the blue **Reload Required** button to refresh the editor.
 
-    Now click on the explorer icon at the top of the left hand menu. It looks like a stack of documents.
+    7. Finally, select the explorer icon at the top of the left hand menu. It looks like a stack of documents.
 
     Congratulations, you've configured your environment to work with Terraform!
   notes:
@@ -468,4 +471,4 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "7075486254026858243"
+checksum: "1623327028648946898"
