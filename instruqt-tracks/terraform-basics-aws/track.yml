@@ -127,6 +127,7 @@ challenges:
       access_key = "my-access-key"
       secret_key = "my-secret-key"
     }
+    ```
 
     Warning: Hard-coding credentials into any Terraform configuration is not recommended, and risks secret leakage should this file ever be committed to a public version control system.
 
@@ -134,7 +135,7 @@ challenges:
 
     For this training environment, we have prepared some temporary AWS credentials and stored them as environment variables. Terraform will automatically read and use the environment variables that are configured in your shell environment.
 
-    1. Run the following commands to see your temporary credentials:
+    1. Run the following commands in the terminal to see your temporary credentials:
 
     ```
     env | grep AWS_ACCESS_KEY_ID
@@ -144,11 +145,8 @@ challenges:
   notes:
   - type: text
     contents: |-
-      You can read more about using environment variables with AWS configuration options here:
+      Did you know HCL stands for "Hashicorp COnfiguration Language"?
 
-      https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars
-
-      Apart from the two variables we have already looked at, which other variables seem like they might be helpful to set a default for?
   tabs:
   - title: Code Editor
     type: service
@@ -166,13 +164,15 @@ challenges:
   teaser: The terraform DSL (Domain Specific Language) is a declarative language that
     lets you build almost any type of infrastructure.
   assignment: |-
-    We've downloaded some terraform code onto your workstation. Run the following command to see the terraform code files:
+    We've downloaded some terraform code onto your workstation.
+
+    1. Run the following command in the terminal to see the terraform files in your working directory:
 
     ```
     ls *.tf
     ```
 
-    The same files are visible in the file explorer pane on the left. Terraform files are marked with the purple T icon.
+    2. Switch tabs to VSCode. You will note the same files are visible in the file explorer pane on the left. Terraform files are marked with the purple T icon.
 
     Terraform code always ends with a `.tf` extension. You can have as many terraform files as you want, but these three are commonly created first:
 
