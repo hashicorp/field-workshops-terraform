@@ -1,0 +1,2 @@
+#!/bin/bash
+[ -d /root/.local/share/code-server/extensions/wholroyd.hcl-0.0.4 ] || fail-message "Oops, it looks like the HCL extension is not installed yet. Please try again."

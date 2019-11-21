@@ -1,0 +1,7 @@
+#!/bin/bash
+
+git clone --single-branch --branch instruqt https://github.com/hashicorp/hashicat-aws
+
+source /etc/profile.d/instruqt-env.sh
+
+/bin/set-workdir /root/hashicat-aws

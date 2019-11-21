@@ -1,0 +1,471 @@
+slug: terraform-basics-aws
+id: 3grwcipacthi
+type: track
+title: Terraform Basics on AWS
+teaser: Learn how to begin provisioning infrastructure on AWS with Terraform.
+description: |-
+  Terraform is the world's most popular open source provisioning tool. Thousands of users build millions of containers, virtual machines, and other infrastructure with Terraform every single day. Terraform is easy to learn and fun to work with.
+
+  We invite you to join the ranks of the Terraform community today!
+
+  This track will introduce you to Terraform open source on AWS. You'll learn  terraform setup, basic commands and integration with AWS.
+icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
+tags:
+- terraform
+- aws
+- basics
+owner: hashicorp
+developers:
+- go@hashicorp.com
+private: true
+published: true
+challenges:
+- slug: setup-our-environment
+  id: xywjxcqb096l
+  type: challenge
+  title: "\U0001F3E1 Moving in - Set Up Your Workspace"
+  teaser: Configure your code editor with the HCL extension and open a workspace.
+  assignment: |-
+    What you see on screen now will be your working environment for the rest of this training.
+
+    You'll notice that there are a few tabs along the top of the frame. The bright orange one will take you back to the Instruqt home page - try not to click it!
+
+    The next tab along should be active, and is your interactive shell. This is where you will be interacting with the Terraform CLI.
+
+    In your shell, type `terraform version`.
+
+    Finally, you have the Code Editor. This is where you will create and modify Terraform code.
+
+    Click on the Code Editor tab to switch context.
+
+    Select "File > Open Folder".
+
+    Open the `hashicat-aws` directory in the Code Editor.
+
+    Now select the icon on the bottom of the left menu that looks like building blocks. This opens the Extensions sidebar.
+
+    Search for *hcl*. Install the first extension on the list. It is named `HCL`.
+
+    Click on the blue **Reload Required** button to refresh the editor.
+
+    Now click on the explorer icon at the top of the left hand menu. It looks like a stack of documents.
+
+    Congratulations, you've configured your environment to work with Terraform!
+  notes:
+  - type: text
+    contents: |
+      Setting up your environment...
+      Keep an eye on the bottom right corner to know when you can get started.
+  tabs:
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  difficulty: basic
+  timelimit: 300
+- slug: hello-terraform
+  id: xmnvifg0wmiy
+  type: challenge
+  title: "\U0001F44B Getting to Know Terraform"
+  teaser: Learn terraform basics and command line syntax.
+  assignment: |-
+    Let's start with some basic terraform commands.
+
+    Run the following commands in the terminal on the left.
+
+
+    Check the version of Terraform running on your machine:
+    ```
+    terraform version
+    ```
+
+    You can always get help if you're curious about command syntax:
+    ```
+    terraform help
+    ```
+
+    Terraform runs on Windows, OSX, or Linux. You can install it on your laptop or on a cloud based workstation.
+
+    Today we'll be using the preconfigured terraform workstation on the left for all our lab exercises.
+  notes:
+  - type: text
+    contents: |-
+      Terraform open source is a command line application that you can download and run from your laptop or virtual workstation.
+
+      It is written in Go and runs on MacOS, Linux or Windows. You can always download the latest version of terraform here:
+
+      https://www.terraform.io/downloads.html
+  - type: text
+    contents: |-
+      Installing Terraform on your laptop or workstation is easy. You simply download the zip file, unpack it, and place it somewhere in your PATH.
+
+      Check out this tutorial for step-by-step instructions:
+
+      https://learn.hashicorp.com/terraform/getting-started/install.html
+
+      We've pre-installed Terraform in your Instruqt lab environment for you.
+  tabs:
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  difficulty: basic
+  timelimit: 300
+- slug: aws-credentials
+  id: 6yijz7bt56nc
+  type: challenge
+  title: "\U0001F510 Connecting Terraform to AWS"
+  teaser: Connecting to AWS with Access Keys and Secret Keys.
+  assignment: |-
+    Terraform needs credentials to be able to connect to AWS and build resources.
+
+    We've pre-installed some temporary credentials in your Instruqt training environment. These credentials are stored as environment variables. You should never store sensitive data of any kind inside your source code.
+
+    Terraform can automatically read and use the environment variables that are in your shell environment.
+
+    Run the following commands to see your temporary credentials:
+
+    ```
+    env | grep AWS_ACCESS_KEY_ID
+    env | grep AWS_SECRET_ACCESS_KEY
+    ```
+
+    *Do not ever store your credentials in source code files*, as they can be accidentally exposed or copied to a public repository.
+  notes:
+  - type: text
+    contents: |-
+      You can read more about using environment variables with AWS configuration options here:
+
+      https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars
+
+      Apart from the two variables we have already looked at, which other variables seem like they might be helpful to set a default for?
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  difficulty: basic
+  timelimit: 300
+- slug: terraform-code
+  id: r2xd5ubxvdnh
+  type: challenge
+  title: "\U0001F468‍\U0001F4BB What does Terraform code look like?"
+  teaser: The terraform DSL (Domain Specific Language) is a declarative language that
+    lets you build almost any type of infrastructure.
+  assignment: |-
+    We've downloaded some terraform code onto your workstation. Run the following command to see the terraform code files:
+
+    ```
+    ls *.tf
+    ```
+
+    The same files are visible in the file explorer pane on the left. Terraform files are marked with the purple T icon.
+
+    Terraform code always ends with a `.tf` extension. You can have as many terraform files as you want, but these three are commonly created first:
+
+    **main.tf** - Where most of your terraform code is stored. This is the part that does the building of resources.
+
+    **variables.tf** - Use this file to define which variables will be available to your users.
+
+    **outputs.tf** - This file contains outputs that will be shown at the end of a successful terraform run.
+
+    Files that end in anything other than `*.tf` or `*.tfvars` are ignored by Terraform.
+  notes:
+  - type: text
+    contents: |-
+      Terraform will read anything in the current directory that ends in `*.tf` or `*.tfvars`.
+
+      By convention most terraform workspaces will contain `main.tf`, `variables.tf`, and `outputs.tf` files.
+
+      You can also group your terraform code into files by purpose. For example, you might place all your load balancer configuration code into a file called `load_balancer.tf`.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  difficulty: basic
+  timelimit: 300
+- slug: terraform-init-provider
+  id: vb4yy4igazwq
+  type: challenge
+  title: "\U0001F3E1 Terraform Init - Install the Providers"
+  teaser: Terraform needs a provider to talk to cloud APIs. The provider is the bridge
+    that connects terraform core to your infrastructure providers.
+  assignment: |-
+    We have downloaded some terraform code for the HashiCat application. We'll be using this source code for the rest of the track.
+
+    Before we can do anything with terraform we need to initialize our workspace. Run the following    command in your terminal window:
+    ```
+    terraform init
+    ```
+
+    The *terraform init* command scans your terraform code, identifies any providers that are needed,    and downloads them.
+
+    Run the following command to take a peek inside the `.terraform` directory:
+
+    ```
+    ls .terraform/plugins/linux_amd64/
+    ```
+
+    This hidden directory is where all modules and plugins are stored.
+  notes:
+  - type: text
+    contents: |-
+      The terraform core program isn't very useful by itself. Terraform needs the help of a *provider* to be able to talk to cloud APIs. Terraform has hundreds of different providers. You can browse the provider list here:
+
+      https://www.terraform.io/docs/providers/index.html
+
+      Today we'll be using a few different providers, but the main one is the *aws* provider.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  difficulty: basic
+  timelimit: 300
+- slug: provider-quiz
+  id: f06z9c0v0yky
+  type: quiz
+  title: "\U0001F4DD Quiz 1 - Providers and Modules"
+  teaser: A quiz about Terraform init
+  assignment: |
+    Where does Terraform store its modules and providers?
+  notes:
+  - type: text
+    contents: |
+      It's quiz time!
+  answers:
+  - In the /tmp direcotry
+  - In the user's home directory
+  - In the .terraform directory
+  - None of the above
+  solution:
+  - 2
+  difficulty: basic
+  timelimit: 300
+- slug: terraform-validate
+  id: itive8arfaf7
+  type: challenge
+  title: "\U0001F469‍⚖️ Terraform Validate - Test Your Code"
+  teaser: Terraform has a built in validation tester. This is useful to see whether
+    your Terraform code is valid and parses correctly.
+  assignment: |-
+    Terraform comes with a built-in subcommand called *validate*. This is useful when you want to do a quick syntax check of your code to make sure it parses correctly.
+
+    Click on the File Explorer icon on the left. It looks like a stack of papers.
+
+    Edit the main.tf file and remove the curly brace on line 4 of the file.
+
+    Validate your code:
+
+    ```
+    terraform validate
+    ```
+
+    Now put the curly brace back onto line 4 and run the validate command again. This time you should pass the validation test.
+
+    **terraform validate** is most often used in automated CI/CD test pipelines. It allows you to quickly catch errors in your code before any other steps are taken.
+  notes:
+  - type: text
+    contents: Terraform has a built-in syntax checker. You can run it with the `terraform
+      validate` command.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  difficulty: basic
+  timelimit: 300
+- slug: terraform-plan
+  id: jx9ndprnlypw
+  type: challenge
+  title: "\U0001F914 Terraform Plan - Dry Run Mode"
+  teaser: Terraform has a dry run mode where you can preview what will be built without
+    actually creating any resources. In this challenge we'll run terraform plan and
+    view the output.
+  assignment: |-
+    Run the **terraform plan** command:
+
+    ```
+    terraform plan
+    ```
+
+    When you run this command terraform will prompt you to enter the `prefix` variable.
+
+    Enter a short string of lower-case letters and/or numbers. You can use your own name here if you wish.
+
+    **Keep your prefix string all lower case, and between 5-12 characters long. Do not use an underscore in your prefix.**
+
+    The prefix will become part of your application hostname, and therefore must be DNS-compliant. Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, and the hyphen (-).  A hostname may not start with a hyphen.
+  notes:
+  - type: text
+    contents: |-
+      `terraform plan` allows you to preview any changes to your environment in a safe way.
+
+      This can help you identify any unexpected changes before you deploy them, not after they are already built.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  difficulty: basic
+  timelimit: 300
+- slug: terraform-variables
+  id: rocxqntdh4vu
+  type: challenge
+  title: "\U0001F39B️ Working with Terraform Variables"
+  teaser: Terraform variables allow you to customize your infrastructure without editing
+    any code. You can use the same terraform code to deploy dev, staging and production
+    but with different variables.
+  assignment: |-
+    We've created a **terraform.tfvars** file for you to edit. This is a special file where you can set any variables you wish to change from their defaults.
+
+    Variables are *defined* in the **variables.tf** file. They are *set* in the **terraform.tfvars** file.
+
+    In terraform all variables must be declared (with or without an optional default value) before you can use them.
+
+    Open the **terraform.tfvars** file and set your prefix variable there. Save the file.
+
+    Now run `terraform plan` again. This time you won't have to enter your prefix manually.
+  notes:
+  - type: text
+    contents: The **terraform.tfvars** file is a convenient place for users to configure
+      their variables.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  difficulty: basic
+  timelimit: 300
+- slug: terraform-add-a-variable
+  id: lrtbjcbhijkt
+  type: challenge
+  title: "\U0001F5FC Change Your Location"
+  teaser: Terraform is flexible enough to deploy infrastructure anywhere in the world.
+    You can easily provision your applications in different geographical regions by
+    simply changing a single variable.
+  assignment: |-
+    In one of the previous challenges we set our *prefix* variable.
+
+    Choose the AWS region nearest to you and set the location variable in your **terraform.tfvars** file. You may need to close and re-open the file if it appears blank.
+
+    You can find the details of valid AWS regions here:
+
+    https://aws.amazon.com/about-aws/global-infrastructure/regions_az/
+
+    as well as a more succinct list of valid region ids here:
+
+    https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions
+
+    Examples:
+
+    us-east-1 - North Virginia<br>
+    us-west-1 - North California<br>
+    ap-southeast-1 - Singapore<br>
+    ap-southeast-2 - Sydney<br>
+    eu-north-1 - London
+
+    Once you've set your location variable try running `terraform plan` again. What's different this time?
+
+    HINT: Remember that you can set any variable you wish in the **terraform.tfvars** file.
+  notes:
+  - type: text
+    contents: You can override any variable defined in the *variables.tf* file by
+      setting it in your personal *terraform.tfvars* file.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  difficulty: basic
+  timelimit: 300
+- slug: variables-quiz
+  id: ygkb05xzqcxj
+  type: quiz
+  title: "\U0001F4DD Quiz 2 - Variables"
+  teaser: A quiz about Terraform variables
+  assignment: |
+    Where are Terraform variables *defined*?
+  notes:
+  - type: text
+    contents: |
+      Another quiz, get ready!
+  answers:
+  - On the command line
+  - As environment variables
+  - In the variables.tf file
+  - In the terraform.tfvars file
+  solution:
+  - 2
+  difficulty: basic
+  timelimit: 300
+- slug: terraform-graph
+  id: ogpsnlrqnwdx
+  type: challenge
+  title: "\U0001F4CA Terraform Graph - Seeing is Believing"
+  teaser: Terraform creates a graph of all the infrastructure defined in your code.
+    Let's visualize the graph and see what your infrastructure map looks like.
+  assignment: |-
+    The **terraform graph** command can generate a DOT-formatted graph of your infrastructure. DOT is a graph description language. DOT files can be used with visualization tools like Graphviz.
+
+    Run the terraform graph command now to see the raw output:
+
+    ```
+    terraform graph
+    ```
+
+    Now let's plot this raw data using the free Blast Radius visualizer. We've pre-installed blast-radius for you. Run the following command then open the **Terraform Graph** tab to see the results:
+
+    ```
+    blast-radius --serve .
+    ```
+
+    Once Blast Radius is up and running, click on the **Terraform Graph** tab to view the interactive graph.
+
+    You can use your mouse to click and drag the graph around. Even though we only have one single resource group, all of the variables in our config files are included in the graph. In the next track you'll build more complex infrastructure and watch your graph grow.
+  notes:
+  - type: text
+    contents: Terraform Graph can give you a visual representation of all your infrastructure.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  - title: Terraform Graph
+    type: service
+    hostname: workstation
+    port: 5000
+  difficulty: basic
+  timelimit: 300
+checksum: "7075486254026858243"
