@@ -26,8 +26,8 @@ challenges:
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: Configure your code editor with the HCL extension and open a workspace.
   assignment: |-
-    *Goal*: Validate and configure your working environment.
-    *Estimated Time*: 2-3 minutes.
+    **Goal**: Validate and configure your working environment.
+    **Estimated Time**: 2-3 minutes.
 
     What you see on screen now will be your working environment for the rest of this training.
 
@@ -43,11 +43,11 @@ challenges:
 
     2. Select `File > Open...`.
 
-    3. Open the `hashicat-aws` directory in the Code Editor.
+    3. Click on the `hashicat-aws` directory in the Code Editor.
 
     4. Select the icon on the bottom of the left menu that looks like building blocks. This opens the Extensions sidebar.
 
-    5. Search for *hcl*. Install the first extension on the list. It is named `HCL`.
+    5. Search for `hcl`. Click on the green **Install** box to add the extension. This will make navigating your code a lot easier!
 
     6. Click on the blue **Reload Required** button to refresh the editor.
 
@@ -75,32 +75,21 @@ challenges:
   title: "\U0001F44B Getting to Know Terraform"
   teaser: Learn terraform basics and command line syntax.
   assignment: |-
-    Let's start with some basic terraform commands.
+    Goal: Familiarise yourself with the terraform CLI
+    Estimated Time: 1-2 minutes
 
-    Run the following commands in the terminal on the left.
+    The terraform CLI accepts a number of arguments that allow you to format your code, validate your code, check what you are about to deploy and many more.
 
+    1. Review the list of supported arguments by typing `terraform help` into the terminal.
 
-    Check the version of Terraform running on your machine:
-    ```
-    terraform version
-    ```
+    2. Using your new found knowledge of terraform arguments, enter the command to check the terraform version.
 
-    You can always get help if you're curious about command syntax:
-    ```
-    terraform help
-    ```
-
-    Terraform runs on Windows, OSX, or Linux. You can install it on your laptop or on a cloud based workstation.
-
-    Today we'll be using the preconfigured terraform workstation on the left for all our lab exercises.
   notes:
   - type: text
     contents: |-
       Terraform open source is a command line application that you can download and run from your laptop or virtual workstation.
 
-      It is written in Go and runs on MacOS, Linux or Windows. You can always download the latest version of terraform here:
-
-      https://www.terraform.io/downloads.html
+      It is written in Go and runs on macOS, Linux or Windows. You can always download the latest version of terraform from https://www.terraform.io/downloads.html
   - type: text
     contents: |-
       Installing Terraform on your laptop or workstation is easy. You simply download the zip file, unpack it, and place it somewhere in your PATH.
@@ -471,4 +460,4 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "1623327028648946898"
+checksum: "10487768971193869322"
