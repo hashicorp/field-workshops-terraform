@@ -1,3 +1,4 @@
 #!/bin/bash
-wget https://marketplace.visualstudio.com/_apis/public/gallery/publishers/wholroyd/vsextensions/HCL/0.0.5/vspackage -O /tmp/hcl.vsix
-code /tmp/hcl.vsix
+wget https://storage.cloud.google.com/instruqt-hashicorp-tracks/terraform-build-azure/wholroyd.hcl-0.0.4.tar.gz -O /tmp/wholroyd.hcl-0.0.4.tar.gz
+cd /root/.local/share/code-server/extensions
+tar -zxvf /tmp/wholroyd.hcl-0.0.4.tar.gz
