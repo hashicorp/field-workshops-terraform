@@ -52,7 +52,7 @@ jobs:
             else
               echo "Instruqt Version $VERSION is installed."
             fi
-            echo "Running instruqt track validate..."
+            echo "Running instruqt track test..."
             for dir in $(ls -d /root/project/instruqt-tracks/*); do
               cd $dir && instruqt track test --skip-fail-check
             done

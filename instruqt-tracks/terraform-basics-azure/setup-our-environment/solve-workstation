@@ -1,0 +1,3 @@
+#!/bin/bash
+wget https://marketplace.visualstudio.com/_apis/public/gallery/publishers/wholroyd/vsextensions/HCL/0.0.5/vspackage -O /tmp/hcl.vsix
+code /tmp/hcl.vsix
