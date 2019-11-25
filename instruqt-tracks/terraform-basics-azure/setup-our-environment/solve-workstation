@@ -1,4 +1,4 @@
 #!/bin/bash
-wget https://storage.cloud.google.com/instruqt-hashicorp-tracks/terraform-build-azure/wholroyd.hcl-0.0.4.tar.gz -O /tmp/wholroyd.hcl-0.0.4.tar.gz
+wget https://github.com/hashicorp/field-workshops-terraform/blob/master/docker/workstation/wholroyd.hcl-0.0.4.tar.gz?raw=true -O /tmp/wholroyd.hcl-0.0.4.tar.gz
 cd /root/.local/share/code-server/extensions
 tar -zxvf /tmp/wholroyd.hcl-0.0.4.tar.gz
