@@ -54,8 +54,7 @@ jobs:
             fi
             echo "Running instruqt track validate..."
             for dir in $(ls -d /root/project/instruqt-tracks/*); do
-              # Change this to test once we have it.
-              cd $dir && instruqt track validate
+              cd $dir && instruqt track test --skip-fail-check
             done
 workflows:
   version: 2
