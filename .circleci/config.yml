@@ -57,6 +57,14 @@ jobs:
               # Change this to test once we have it.
               cd $dir && instruqt track validate
             done
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - instruqt-validate
+      - instruqt-test:
+          requires:
+            - instruqt-validate
   nightly-build:
     triggers:
       - schedule:
@@ -65,9 +73,6 @@ jobs:
             branches:
               only:
                 - master
-workflows:
-  version: 2
-  build-and-deploy:
     jobs:
       - instruqt-validate
       - instruqt-test:
