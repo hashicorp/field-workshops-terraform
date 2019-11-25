@@ -70,6 +70,6 @@ workflows:
   build-and-deploy:
     jobs:
       - instruqt-validate
-      - instruqt-test
+      - instruqt-test:
           requires:
             - instruqt-validate
