@@ -1,4 +1,7 @@
 #!/bin/bash
+cd /root/hashicat-azure
+source /root/.bashrc
+source /etc/profile.d/instruqt-env
 SERIAL=$(cat terraform.tfstate | jq .serial)
 
 if [ $SERIAL -eq 1 ]; then
