@@ -47,5 +47,6 @@ cp /root/hashicat-azure/exercises/outputs.tf.start /root/hashicat-azure/outputs.
 export VAULT_TOKEN=$(cat /tmp/vault_token)
 source /etc/profile.d/instruqt-env.sh
 /bin/setup_azure.sh
+sleep 20
 
 /bin/set-workdir /root/hashicat-azure
