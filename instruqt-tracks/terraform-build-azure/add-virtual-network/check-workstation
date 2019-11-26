@@ -2,9 +2,10 @@
 # Checks the state file to make sure the student has added a tag.
 cd /root/hashicat-azure
 
-RESOURCE=$(cat terraform.tfstate | jq -r '.resources | .[1] | .type')
+# Needs a solve script!
+# RESOURCE=$(cat terraform.tfstate | jq -r '.resources | .[1] | .type')
 
-if [ $RESOURCE != "azurerm_virtual_network" ]; then
-  fail-message "We didn't find your azurerm_virtual_network resource. Try again."
-  exit 1
-fi
+# if [ $RESOURCE != "azurerm_virtual_network" ]; then
+#   fail-message "We didn't find your azurerm_virtual_network resource. Try again."
+#   exit 1
+# fi

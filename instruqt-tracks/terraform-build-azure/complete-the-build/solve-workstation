@@ -1,5 +1,7 @@
 #!/bin/bash
+source /root/.bashrc
 source /etc/profile.d/instruqt-env.sh
 cd /root/hashicat-azure
 
+cp exercises/main.tf.completed main.tf
 /usr/local/bin/terraform apply -auto-approve
