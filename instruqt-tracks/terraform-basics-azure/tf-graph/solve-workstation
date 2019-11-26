@@ -2,4 +2,5 @@
 source /root/.bashrc
 source /etc/profile.d/instruqt-env.sh
 cd /root/hashicat-azure
-nohup /usr/local/bin/blast-radius --serve . &
+# This still hangs.
+# nohup /usr/local/bin/blast-radius --serve . &
