@@ -51,5 +51,6 @@ echo -e "\nlocation = \"centralus\"" >> ${GITDIR}/terraform.tfvars
 export VAULT_TOKEN=$(cat /tmp/vault_token)
 source /etc/profile.d/instruqt-env.sh
 /bin/setup_azure.sh
+sleep 20
 
 /bin/set-workdir ${GITDIR}
