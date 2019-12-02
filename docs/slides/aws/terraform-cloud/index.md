@@ -11,24 +11,38 @@ name: Table-of-Contents
 class: col-2
 # Table of Contents
 
+<div>
+1. OSS vs. Cloud/Enterprise<br>
 🌥️ **Terraform Cloud Overview**<br>
 👨🏽‍🏫 **Review the Basics**<br>
-👩‍🔬 **Configure Remote State**<br>
-🧪 **Protecting Sensitive Variables**<br>
-🔬 **Sentinel Policy Enforcement**<br>
-⚗️ **Connecting to Version Control**<br>
-👩🏿‍💻 **VCS Based Collaboration**<br>
-👩‍🔧 **Access Controls**<br>
+🔗 **Configure Remote State**<br>
+<hr>
+2. Security and Compliance<br>
+🔐 **Protect Sensitive Variables**<br>
+🛡️ **Work With Access Controls**<br>
+👮 **Sentinel Policy Enforcement**<br>
+</div>
+<div>
+<hr>
+3. Terraform and Version Control<br>
+🕸️ **Connect to VCS**<br>
+👩🏽‍🤝‍👨🏻 **Collaborate with VCS**<br>
+<hr>
+4. Terraform Modules<br>
 ⚙️ **Private Module Registry**<br>
-
-???
-**This workshop is meant to give a basic introduction to all the major features of Terraform Cloud and Enterprise.**
+📦 **Deploy a Container App**<br>
+<hr>
+5. Extra Resources<br>
+⚗️ **Bonus Lab**<br>
+🌐 **Useful Links**
+</div>
 
 ---
 name: TFE-Chapter-1
 class: title
+
 # Chapter 1
-## Terraform Cloud
+## Terraform OSS, Cloud and Enterprise
 
 ---
 name: why-tfc-1
@@ -163,263 +177,82 @@ Follow along on your own computer at this link:
 # https://git.io/JeM0d
 ]
 
-???
-TODO:  Update this link once the TFE intro deck has it's own home. Currently it is stored as Appendix B
-
 ---
-name: tfc-chapter-2
-class: center,middle
-.section[
-Chapter 2
-Review the Basics
-]
+name: terraform-cloud-what-is-it
+# Terraform Cloud - SaaS for Infrastructure
 
 ???
-This chapter is meant to give a quick review of some Terraform basics.
+**During the next lab you'll sign up for a free Terraform Cloud account which we'll use for the remainder of this training.**
+TODO: Add an image or something to make this slide more interesting
 
 ---
-name: tfc-workstation-setup-0
-# Terraform Workstation Requirements
+name: terraform-cloud-enterprise
+# Terraform Cloud or Terraform Enterprise?
+**[Terraform Cloud](https://app.terraform.io/signup)** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud based SaaS solution because they don't want to maintain the infrastructure to run it.
+
+**[Terraform Enterprise](https://www.hashicorp.com/go/terraform-enterprise)** is the same application, but it runs in your cloud environment or data center. Some users require more control over the Terraform Cloud application, or wish to run it in restricted networks behind corporate firewalls.
+
+The feature list for these two offerings is nearly identical. We will be using Terraform Cloud accounts for our lab exercises today.
+
+---
+name: review-basic-terraform-commands
+# Terraform Command Review
+
+Let's review some of the most useful terraform commands:
+
+```bash
+terraform init    # Initialize the current directory
+terraform plan    # Dry run to see what Terraform will do
+terraform apply   # Apply the Terraform code and build stuff
+terraform destroy # Destroy what was built by Terraform
+terraform refresh # Refresh the state file
+terraform output  # View Terraform outputs
+terraform graph   # Create a DOT-formatted graph
+```
+
+---
+name: our-application
+# HashiCat Application - Kittens as a Service
+
+.center[![:scale 60%](images/meow_world.png)]
+
+---
+name: terraform-user-journey
+# The Terraform User Journey
+
+---
+name: infrastructure-as-code
+# Infrastructure as Code
+
+---
+name: multi-cloud-compliance
+# Multi-Cloud Compliance and Management
+
+---
+name: self-service-infra
+# Self-Service Infrastructure
+
+---
+name: lab-exercise-0
+# 👩‍💻 Getting Started with Instruqt
 <br><br>
+[Instruqt](https://instruqt.com) is the HashiCorp training platform. Visit the link below for a short tutorial, or if you're already familiar with Instruqt you can skip to the next slide.
 
-In order to proceed you'll need a Terraform workstation and valid AWS account credentials. You will also need a free [github.com](https://github.com) account. The workstation should also have **`git`**, **`terraform`**, and **`vault`** (client) installed.
-
-You have two options:
-
-**Option 1:** Use a cloud-based workstation provided by your instructor. Your instructor will provide you with RDP/SSH credentials for the machine with all of the pre-requisites installed. **This is the recommended option.**
-
-**Option 2:** If you want to bring your own machine, you'll want the [AWS CLI](https://aws.amazon.com/cli/) or the [AWS Shell](https://github.com/awslabs/aws-shell) installed. Make sure you have [`terraform`](https://learn.hashicorp.com/terraform/getting-started/install.html) and [`vault`**](https://www.vaultproject.io/docs/install/) installed as well. If you're running Windows, you'll also need [PuTTY](https://www.putty.org).
-
-???
-**Today we'll be using cloud-based workstations that have all the software you need pre-installed. There are no firewalls, no ticketing systems and no blockers in the lab environment. It is your own personal Terraform playground. All the skills you learn here today can be applied to your own Terraform Cloud or Enterprise account as well. All the exercises will be done in our Azure training account. Please be kind to our training account, no bittorrent or crypto mining please.**
-
-The expectation here is that everybody starts the workshop with a workstation that can run **`terraform apply`** and build things in an AWS account. You should always default to Option 1.  If advanced students want to try option #2 tell them they are on their own for troubleshooting.
+[https://instruqt.com/instruqt/tracks/getting-started-with-instruqt](https://instruqt.com/instruqt/tracks/getting-started-with-instruqt)
 
 ---
-name: tfc-workstation-setup-1
-# Fork the Application Repo
-.center[![:scale 100%](images/fork.png)]
-Log onto your GitHub account and navigate to this URL:
-
-.center[https://github.com/hashicorp/hashicat-aws]
-
-Click on the **Fork** button in the upper right corner. This will create an exact copy of the repo in your own account. Keep the new repo open in your web browser.
-
-???
-**You'll need your own copy of this repo for some of the labs we'll be doing today.**
-
----
-name: tfc-workstation-setup-2
-# Log Onto Your Workstation
-<br><br><br><br>
-
-
-Your instructor will provide you with RDP/SSH credentials for your cloud based workstation.
-
-* For Windows based workstations you can use any RDP client to connect.
-
-  ** Note: ** The workstations should be configured to accept RDP sessions on ports 3389, 80, and 443.
-  If you have trouble connecting try a different port.
-
-* For Linux based workstations you will connect using a command similar to this:
-
-  ```bash
-  ssh -i ~/.ssh/id_rsa ubuntu@acme-1.workshops.aws.hashidemos.io
-  ```
-
-???
-SSH is installed by default on all *nix systems. If your students are on a Windows machine, they can download and use [PuTTY](https://www.putty.org/).
-
----
-name: tfc-workstation-setup-3
-# Run the Setup Script
-
-<br>
-<br>
-** If you are using Windows machine provided by your instructor,** Locate the `setup_aws` powershell script on the desktop, right click and select **Run with PowerShell**
-
-**If you are using an instructor provided Linux machine,** Run the setup script on your workstation to set your AWS credentials.
-
-```bash
-source post_launch_setup_aws.sh
-```
-
-.red[_**WARNING**: Do not skip this step. It is required to set up your connection to AWS. If you are bringing your own machine, set the **`AWS_ACCESS_KEY_ID`** and **`AWS_SECRET_ACCESS_KEY`** environment variables._]
-<br>
-<br>
-
----
-name: tfc-workstation-setup-editor
-# Choose an Editor
-<br><br><br>
-* **Linux workstations** provided by your instructor will have both **`vim`** and **`nano`** installed by default, with each one having an HCL syntax highlighter for usage with Terraform. For accessibility's sake, we'll use **`nano`** as the example editor for the rest of this workshop.
-
-* **Window workstations** will have Visual Studio Code pre-installed. You may get a pop up asking you to install the Terraform extensions. **This is recommended**
-
-
----
-name: tfc-workstation-setup-4
-# Clone Your Training Repo
+name: lab-exercise-1
+# 👩‍💻 Lab Exercise: Setup a TF Cloud Account
 <br><br>
-Run the following commands to clone the training repository from GitHub. Replace **`GITUSER`** with your own GitHub username.
+In this lab you'll create a fork of the HashiCat application code, and set up a free Terraform Cloud account. Then you'll configure your account for remote execution of Terraform commands.
 
-```bash
-cd ~/
-git clone https://github.com/GITUSER/hashicat-aws
-cd hashicat-aws/
-```
-
-Now open up the `main.tf` file with `nano` or **Visual Studio Code**.
-
-Nano
-```bash
-nano main.tf
-```
-
-Visual Studio Code
-```bash
-code .
-```
+Your instructor will provide the URL for the first lab environment.
 
 ---
-name: tfc-set-prefix
-# Set the Prefix Variable
-<br><br>
-Rename the **`terraform.tfvars.example`** file to **`terraform.tfvars`**.
-
-Change where it says `"yourname"` to your own name. No spaces or special characters please. **Keep it all lowercase.** Save the file.
-
-```tex
-# Rename or copy this file to terraform.tfvars
-# Prefix must be all lowercase letters, no symbols please.
-
-*prefix = "yourname"
-```
-
-The **`terraform.tfvars`** file is your own personal settings file. You can use it to set or override any of the default variables in the `variables.tf` file.
-
-**Everyone must choose a unique prefix. 5-12 characters. All lowercase and/or numbers.**
-
-???
-**Let's go ahead and set this variable in a file so we don't have to type it in every time we run terraform commands. You're going to simply rename the terraform.tfvars.example file to terraform.tfvars. Terraform knows to look for files that end in .tf or .tfvars. You can right click the file right inside VSC to rename it. You may put any text you like here but be sure and avoid very common names and words, or add a number to the end to guarantee it is unique.**
-
-NOTE TO INSTRUCTOR: If students have a very common name, they should add a number to the end of it to guarantee that it is available. The default Azure public 'cloudapp' DNS zone is a global namespace. If your student enters a very common word here, there's a chance it could be taken already. This will cause the Terraform run to fail.
-
----
-name: tfc-terraform-init
-# Run Terraform Init
-Run the **`terraform init`** command in your Terminal:
-
-**CLI:**
-```bash
-terraform init
-```
-
-**Output:**
-```tex
-Initializing provider plugins...
-- Checking for available provider plugins...
-- Downloading plugin for provider "null" (terraform-providers/null) 2.1.2...
-- Downloading plugin for provider "tls" (terraform-providers/tls) 2.0.1...
-- Downloading plugin for provider "aws" (terraform-providers/aws) 2.23.0...
-
-...
-
-Terraform has been successfully initialized!
-```
-
-Terraform fetches any required providers and modules and stores them in the **`.terraform/`** directory. You can take a peek inside that directory where you'll see the plugins folder.
-
-???
-**Terraform has an extendible architecture. You download the core program, terraform, then it fetches plugins and modules that are required for your code.**
-
----
-name: tfc-terraform-apply
-# Run Terraform Apply
-Run **`terraform apply -auto-approve`** in your terminal:
-
-**CLI:**
-```bash
-terraform apply -auto-approve
-```
-
-**Output:**
-```tex
-aws_vpc.hashicat-aws: Creating...
-  arn:                              "" => "<computed>"
-  assign_generated_ipv6_cidr_block: "" => "false"
-  cidr_block:                       "" => "10.0.0.0/16"
-
-  ...
-
-  Apply complete! Resources: 12 added, 0 changed, 0 destroyed.
-
-Outputs:
-
-catapp_url = http://ndahlke-hashicat-90211a7912a91be6.workshop.aws.hashidemos.io
-```
-
-
-???
-**We've built some terraform here that you probably wouldn't use in the real world.  It's been customized so that you can finish a run in 15 seconds instead of five to ten minutes. Some of what we did here is a bit unorthodox, for the sake of speed.**
-
-There is a [known bug](https://github.com/hashicorp/terraform/issues/12596) with the null_provisioner that *may* cause your run to hang if you're using Terraform 0.11.x.
-
-When this happens (terminal hangs for more than 30 seconds), have your student simply click on the little trash can icon in VSC, then reopen the terminal and run `terraform apply` again.  The problem should be gone, as the run did complete successfully.  NOTE: This issue appears to be fixed with Terraform 0.12
-
----
-name: unleash-the-felis-catus
-# Kittens as a Service (KaaS)
-.center[![:scale 80%](images/meow_world.png)]
-.center[Open your application in a web browser.]
-
-???
-This application produces different images of cats, depending on the height and width variables.
-
----
-name: chapter-2-tfc-lab
-.center[.lab-header[👩🏽‍🔬 Lab Exercise 2: Re-provision the App]]
-<br><br><br>
-The application has three variables that you can set to change the look and feel of your site.
-
-They are **`height`**, **`width`**, and **`placeholder`**.
-
-Redeploy your app with a different height and width and reload the page.
-
-If you need a refresher on variables visit the docs:
-
-https://www.terraform.io/docs/configuration/variables.html#variables-on-the-command-line
-
----
-name: chapter-2-tfc-lab-solution
-.center[.lab-header[👩🏽‍🔬 Lab Exercise 2: Solution]]
-<br><br><br>
-Here's an example where we simply override variables on the command line:
-
-Commands:
-```bash
-terraform apply -var placeholder=placebear.com -var height=500 -var width=500 -auto-approve
-```
-
-Try some different placeholder image sites. Here are some examples: [placedog.net](http://placedog.net), [placebear.com](http://placebear.com), [www.fillmurray.com](http://www.fillmurray.com), [www.placecage.com](http://www.placecage.com), [placebeard.it](http://placebeard.it), [loremflickr.com](http://loremflickr.com), [baconmockup.com](http://baconmockup.com), and [placeimg.com](http://placeimg.com).
-
-???
-Point out that we're doing some things here that you shouldn't do in production (like using null_resource for our provisioner.) You can also review the different ways to set variables:
-
-https://www.terraform.io/docs/configuration/variables.html#variable-definition-precedence
-
-Some of these sites may not work as well as others.  Others
----
-name: tfc-chapter-2-review
-# 📝 Chapter 2 Review
-<br>
-.contents[
-In this chapter we:
-* Forked the application repo
-* Cloned the new git repo
-* Deployed the Cat App into AWS
-* Customized the application with variables
-]
+name: under-construction
+class: title
+# Under Construction
+## All content after this slide is legacy stuff...
 
 ---
 name: TFE-Chapter-3
@@ -433,18 +266,7 @@ Terraform Cloud
 ???
 **In this chapter we'll sign up for a free Terraform Cloud account.**
 
----
-name: tfc-terraform-cloud-enterprise
-# Terraform Cloud or Terraform Cloud?
-<br><br><br>
-**[Terraform Cloud](https://app.terraform.io/signup)** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud based SaaS solution because they don't want to maintain the infrastructure to run it.
 
-**[Terraform Enterprise](https://www.hashicorp.com/go/terraform-enterprise)** is the same application, but it runs in your cloud environment or data center. Some users require more control over the Terraform Cloud application, or wish to run it in restricted networks behind corporate firewalls.
-
-The feature list for these two offerings is nearly identical. We will be using Terraform Cloud accounts for our lab exercises today.
-
-???
-At the instructor's discretion, this course can also be taught with an on-prem Terraform Enterprise server. We highly recommend sticking to the cloud based training though, to avoid any blockers or issues in the enterprise...
 
 ---
 name: tfc-terraform-cloud-signup
