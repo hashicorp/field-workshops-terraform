@@ -13,28 +13,28 @@ class: col-2
 
 <div>
 1. OSS vs. Cloud/Enterprise<br>
-🌥️ **Terraform Cloud Overview**<br>
-👨🏽‍🏫 **Review the Basics**<br>
-🔗 **Configure Remote State**<br>
+🌥️ Terraform Cloud Overview<br>
+👨🏽‍🏫 Review the Basics<br>
+🔗 Configure Remote State<br>
 <hr>
 2. Security and Compliance<br>
-🔐 **Protect Sensitive Variables**<br>
-🛡️ **Work With Access Controls**<br>
-👮 **Sentinel Policy Enforcement**<br>
+🔐 Protect Sensitive Variables<br>
+🛡️ Work With Access Controls<br>
+👮 Sentinel Policy Enforcement<br>
 </div>
 <div>
 <hr>
 3. Terraform and Version Control<br>
-🕸️ **Connect to VCS**<br>
-👩🏽‍🤝‍👨🏻 **Collaborate with VCS**<br>
+🕸️ Connect to VCS<br>
+👩🏽‍🤝‍👨🏻 Collaborate with VCS<br>
 <hr>
 4. Terraform Modules<br>
-⚙️ **Private Module Registry**<br>
-📦 **Deploy a Container App**<br>
+⚙️ Private Module Registry<br>
+📦 Deploy a Container App<br>
 <hr>
 5. Extra Resources<br>
-⚗️ **Bonus Lab**<br>
-🌐 **Useful Links**
+⚗️ Bonus Lab<br>
+🌐 Useful Links
 </div>
 
 ---
