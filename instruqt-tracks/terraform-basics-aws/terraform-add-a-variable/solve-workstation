@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /root/hashicat-aws
+echo -e "region = \"us-east-1\"" >> terraform.tfvars
