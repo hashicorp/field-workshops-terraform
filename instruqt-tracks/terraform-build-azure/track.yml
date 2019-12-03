@@ -4,9 +4,9 @@ type: track
 title: Provision to Azure with Terraform
 teaser: Provision the HashiCat application on Azure Cloud using Terraform.
 description: "This track will introduce you to Terraform on Microsoft Azure.\n\nWe'll
-  learn Terraform setup, basic commands, and gradually build
-  an entire application stack.\n\nWhen you're finished you'll be able to view the
-  HashiCat application in your web browser.\n\nKittens as a Service! \U0001F63A"
+  learn Terraform setup, basic commands, and gradually build an entire application
+  stack.\n\nWhen you're finished you'll be able to view the HashiCat application in
+  your web browser.\n\nKittens as a Service! \U0001F63A"
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
 - terraform
@@ -18,7 +18,6 @@ developers:
 private: true
 published: true
 challenges:
-
 - slug: setup-our-environment
   id: hyrkyyn0w8en
   type: challenge
@@ -383,8 +382,6 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 600
-
-
 - slug: tf-plan-and-apply
   id: xgmrp6woe3up
   type: challenge
@@ -593,6 +590,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-graph-again
+  id: uej2lqcqxfyd
   type: challenge
   title: "\U0001F4C8 Terraform Graph"
   teaser: Revist graph to see what has changed.
@@ -612,7 +610,7 @@ challenges:
     Terraform uses this graph to determine which resources can be built in parallel for maximum efficiency.
   notes:
   - type: text
-    contents: Let's revisit our graph to see what has changed. 
+    contents: Let's revisit our graph to see what has changed.
   tabs:
   - title: Command Line
     type: terminal
@@ -915,4 +913,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "5792707143360430409"
+checksum: "8564515293179933280"
