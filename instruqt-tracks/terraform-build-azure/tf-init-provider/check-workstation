@@ -1,0 +1,2 @@
+#!/bin/bash
+[ -d /root/hashicat-azure/.terraform ] || fail-message "Oops, it doesn't look like you've run terraform init yet."
