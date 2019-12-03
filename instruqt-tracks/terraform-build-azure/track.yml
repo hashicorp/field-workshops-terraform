@@ -1,5 +1,5 @@
 slug: terraform-build-azure
-id: bvlt94x5i8gc
+id: u38r24o3ett6
 type: track
 title: Provision to Azure with Terraform
 teaser: Provision the HashiCat application on Azure Cloud using Terraform.
@@ -25,13 +25,21 @@ challenges:
   teaser: Configure your code editor with the HCL extension and open a workspace.
   assignment: |-
     Open the Code Editor tab on the left.
+
     Select "File > Open Folder".
+
     Find the `hashicat-azure` directory in the Code Editor and hit `OK`.
+
     This is your terraform workspace.
+
     Now click on the box-shaped icon on the bottom of the left side menu. This opens the Extensions sidebar.
+
     Search for *hcl*. Install the first extension on the list. It is named `HCL`.
+
     Click on the blue **Reload Required** button to refresh the editor.
+
     Now click on the explorer icon on the top of the left side menu. It looks like a stack of documents.
+
     Congratulations, you've configured your environment to work with Terraform!
   notes:
   - type: text
@@ -53,9 +61,13 @@ challenges:
     on Linux, Windows, or MacOS.
   assignment: |-
     Open a new Terminal window. You can use the "Terminal > New Terminal" menu item or the keyboard shortcut **CTRL-J** (**CMD-J** on Mac).
+
     All terraform commands should be run from the terminal within the Code Editor.
+
     Try the **CTRL-J** shortcut to toggle the terminal window open and closed.
+
     You can use the little caret ^ shaped button on the terminal pane to expand and shrink your Terminal window. This is useful for viewing logs.
+
     Click on the File Explorer icon a couple times to toggle the File Explorer on and off. This can provide more space while you're viewing and editing code.
   notes:
   - type: text
@@ -85,6 +97,7 @@ challenges:
     terraform help
     ```
     Terraform runs on Windows, OSX, or Linux. You can install it on your laptop or on a cloud based workstation. Terraform is also pre-installed in Azure Cloud Shell.
+
     Today we'll be using the preconfigured terraform workstation on the left for all our lab exercises.
   notes:
   - type: text
@@ -112,8 +125,11 @@ challenges:
   teaser: Safely connect to the Azure APIs using a service principal.
   assignment: |-
     Terraform needs credentials to be able to connect to Azure and build resources.
+
     We've pre-installed some temporary credentials in your Instruqt training environment. These credentials are stored as environment variables. You should never store sensitive API keys inside your source code.
+
     Terraform can automatically read and use the environment variables that are in your shell environment.
+
     Run the following command to see your temporary credentials:
     ```
     env | grep ARM_CLIENT
@@ -147,16 +163,21 @@ challenges:
     ls *.tf
     ```
     The same files are visible in the file explorer pane on the left. Terraform files are marked with the purple T icon.
+
     Terraform code always ends with a `.tf` extension. You can have as many terraform files as you want, but these three are commonly created first:
+
     **main.tf** - Where most of your terraform code is stored. This is the part that does the building of resources.
     **variables.tf** - Use this file to define which variables will be available to your users.
     **outputs.tf** - This file contains outputs that will be shown at the end of a successful terraform run.
+
     Files that end in anything other than `*.tf` or `*.tfvars` are ignored by Terraform.
   notes:
   - type: text
     contents: |-
       Terraform will read anything in the current directory that ends in `*.tf` or `*.tfvars`.
+
       By convention most terraform workspaces will contain `main.tf`, `variables.tf`, and `outputs.tf` files.
+
       You can also group your terraform code into files by purpose. For example, you might place all your load balancer configuration code into a file called `load_balancer.tf`.
   tabs:
   - title: Code Editor
@@ -173,11 +194,13 @@ challenges:
     that connects terraform core to your infrastructure providers.
   assignment: |-
     We have downloaded some terraform code for the HashiCat application. We'll be using this source code for the rest of the track.
-    Before we can do anything with terraform we need to initialize our workspace. Run the following    command in your terminal window:
+
+    Before we can do anything with terraform we need to initialize our workspace. Run the following command in your terminal window:
     ```
     terraform init
     ```
-    The *terraform init* command scans your terraform code, identifies any providers that are needed,    and downloads them.
+    The *terraform init* command scans your terraform code, identifies any providers that are needed, and downloads them.
+
     Run the following command to take a peek inside the `.terraform` directory:
     ```
     ls .terraform/plugins/linux_amd64/
@@ -187,7 +210,9 @@ challenges:
   - type: text
     contents: |-
       The terraform core program isn't very useful by itself. Terraform needs the help of a *provider* to be able to talk to cloud APIs. Terraform has hundreds of different providers. You can browse the provider list here:
+
       https://www.terraform.io/docs/providers/index.html
+
       Today we'll be using the *azurerm* provider. AzureRM stands for Azure Resource Manager.
   tabs:
   - title: Code Editor
@@ -224,13 +249,16 @@ challenges:
     your Terraform code is valid and parses correctly.
   assignment: |-
     Terraform comes with a built-in subcommand called *validate*. This is useful when you want to do a quick syntax check of your code to make sure it parses correctly.
+
     Click on the File Explorer icon on the left if it is not already open. It looks like a stack of papers.
+
     Edit the main.tf file and remove the curly brace on line 4 of the file.
     Validate your code:
     ```
     terraform validate
     ```
     Now put the curly brace back onto line 4 and run the validate command again. This time you should pass the validation test.
+
     **terraform validate** is most often used in automated CI/CD test pipelines. It allows you to quickly catch errors in your code before any other steps are taken.
   notes:
   - type: text
@@ -256,13 +284,17 @@ challenges:
     terraform plan
     ```
     When you run this command terraform will prompt you to enter the `prefix` variable.
+
     Enter a short string of lower-case letters and/or numbers. You can use your own name here if you wish.
+
     **Keep your prefix string all lower case, and between 5-12 characters long. Do not use an underscore in your prefix.**
+
     The prefix will become part of your application hostname, and therefore must be DNS-compliant. Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, and the hyphen (-).  A hostname may not start with a hyphen.
   notes:
   - type: text
     contents: |-
       `terraform plan` allows you to preview any changes to your environment in a safe way.
+
       This can help you identify any unexpected changes before you deploy them, not after they are already built.
   tabs:
   - title: Code Editor
@@ -280,9 +312,13 @@ challenges:
     but with different variables.
   assignment: |-
     We've created a **terraform.tfvars** file for you to edit. This is a special file where you can set any variables you wish to change from their defaults.
+
     Variables are *defined* in the **variables.tf** file. They are *set* in the **terraform.tfvars** file.
+
     In terraform all variables must be declared (with or without an optional default value) before you can use them.
+
     Open the **terraform.tfvars** file and set your prefix variable there. Save the file.
+
     Now run `terraform plan` again. This time you won't have to enter your prefix manually.
   notes:
   - type: text
@@ -304,6 +340,7 @@ challenges:
     simply changing a single variable.
   assignment: |-
     In one of the previous challenges we set our *prefix* variable.
+
     Choose the Azure location nearest to you and set the location variable in your **terraform.tfvars** file. You may need to close and re-open the file if it appears blank.
     You can find a list of valid Azure locations here:
     https://azure.microsoft.com/en-us/global-infrastructure/locations/
@@ -315,7 +352,9 @@ challenges:
     southindia - Chennai<br>
     eastasia   - Hong Kong<br>
     canadacentral - Toronto
+
     Once you've set your location variable try running `terraform plan` again. What's different this time?
+
     HINT: Remember that you can set any variable you wish in the **terraform.tfvars** file.
   notes:
   - type: text
@@ -913,4 +952,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "8564515293179933280"
+checksum: "4864755105815133329"

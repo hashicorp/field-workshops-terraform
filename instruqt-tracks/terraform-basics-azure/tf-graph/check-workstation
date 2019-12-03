@@ -1,8 +1,0 @@
-#!/bin/bash
-# Disabling these until we can get automated solve working
-# curl -I http://localhost:5000 | grep -q "HTTP/1.0 200 OK"
-# EXITCODE=$?
-# if [ $EXITCODE -ne 0 ]; then
-#   fail-message "Oops, it looks like the Blast Radius tool is not running."
-#   exit 1
-# fi

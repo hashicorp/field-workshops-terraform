@@ -1,3 +1,0 @@
-#!/bin/bash
-grep -q "terraform version" /root/.bash_history || fail-message "You haven't run terraform version yet. You can do it!"
-grep -q "terraform help" /root/.bash_history || fail-message "You haven't run terraform help yet. We believe in you!"
