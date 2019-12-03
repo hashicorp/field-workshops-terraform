@@ -20,7 +20,7 @@ while read id secret; do
   echo "export ARM_CLIENT_ID=\$id" >> ~/.bashrc
   echo "export ARM_CLIENT_SECRET=\$secret" >> ~/.bashrc
 done
-sleep 5
+sleep 30
 
 echo "\${grn}Ready to run Terraform on...\${end}"
 echo "${blu}"
@@ -51,6 +51,5 @@ echo -e "\nlocation = \"centralus\"" >> ${GITDIR}/terraform.tfvars
 export VAULT_TOKEN=$(cat /tmp/vault_token)
 source /etc/profile.d/instruqt-env.sh
 /bin/setup_azure.sh
-sleep 20
 
 /bin/set-workdir ${GITDIR}
