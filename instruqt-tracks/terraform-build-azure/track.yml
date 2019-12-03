@@ -627,7 +627,7 @@ checksum: "16698346622513549469"
 - slug: terraform-apply-quiz
   id: mdf2cwo4fqgg
   type: quiz
-  title: "\U0001F4DD Quiz 1 - Terraform Apply"
+  title: "\U0001F4DD Quiz 3 - Terraform Apply"
   teaser: What happens when you run `terraform apply` without a plan file?
   assignment: |
     What happens when you run `terraform apply` without specifying a plan file?
@@ -805,7 +805,7 @@ checksum: "16698346622513549469"
 - slug: terraform-variables-quiz
   id: zunny1znszqd
   type: quiz
-  title: "\U0001F4DD Quiz 2 - Terraform Variables"
+  title: "\U0001F4DD Quiz 4 - Terraform Variables"
   teaser: How do terraform variables get set or overridden?
   assignment: |
     You have the same variable set in a *.tfvars file and as an environment variable. Which one takes precedence?
