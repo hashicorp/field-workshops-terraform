@@ -1,0 +1,5 @@
+#!/bin/bash
+# These two lines ensure the environment looks similar to an interactive login.
+source /root/.bashrc
+source /etc/profile.d/instruqt-env.sh
+echo "env | grep AWS" >> /root/.bash_history
