@@ -16,7 +16,7 @@ tags:
 - basics
 owner: hashicorp
 developers:
-- go@hashicorp.com
+- null
 private: true
 published: true
 challenges:
@@ -469,4 +469,4 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "11004047882145300300"
+checksum: "8361587903516291291"
