@@ -3,9 +3,9 @@ id: bvlt94x5i8gc
 type: track
 title: Provision to Azure with Terraform
 teaser: Provision the HashiCat application on Azure Cloud using Terraform.
-description: "In this track you'll practice provisioning infrastructure in Azure.\n\nWe'll
-  begin by deploying a resource group, then adding a network and gradually building
-  the entire application stack.\n\nWhen you're finished you'll be able to view the
+description: "This track will introduce you to Terraform on Microsoft Azure.\n\nWe'll
+  learn Terraform setup, basic commands, and gradually build
+  an entire application stack.\n\nWhen you're finished you'll be able to view the
   HashiCat application in your web browser.\n\nKittens as a Service! \U0001F63A"
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
@@ -349,39 +349,6 @@ challenges:
   - 2
   difficulty: basic
   timelimit: 300
-- slug: tf-graph
-  id: m3at5sjm1vxw
-  type: challenge
-  title: "\U0001F4CA Terraform Graph - Seeing is Believing"
-  teaser: Terraform creates a graph of all the infrastructure defined in your code.
-    Let's visualize the graph and see what your infrastructure map looks like.
-  assignment: |-
-    The **terraform graph** command can generate a DOT-formatted graph of your infrastructure. DOT is a graph description language. DOT files can be used with visualization tools like Graphviz.
-    Run the terraform graph command now to see the raw output:
-    ```
-    terraform graph
-    ```
-    Now let's plot this raw data using the free Blast Radius visualizer. We've pre-installed blast-radius for you. Run the following command then open the **Terraform Graph** tab to see the results:
-    ```
-    blast-radius --serve .
-    ```
-    Once Blast Radius is up and running, click on the **Terraform Graph** tab to view the interactive graph.
-    You can use your mouse to click and drag the graph around. Even though we only have one single resource group, all of the variables in our config files are included in the graph. In the next track you'll build more complex infrastructure and watch your graph grow.
-  notes:
-  - type: text
-    contents: Terraform Graph can give you a visual representation of all your infrastructure.
-  tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8080
-  - title: Terraform Graph
-    type: service
-    hostname: workstation
-    port: 5000
-  difficulty: basic
-  timelimit: 300
-checksum: "16698346622513549469"
 
 - slug: tf-plan-and-apply
   id: xgmrp6woe3up
