@@ -1,3 +1,4 @@
 #!/bin/bash
-cd /root/hashicat-aws
-/usr/local/bin/blast-radius --serve .
+# This will hang the automated test.  TODO: Fix this, find a way to run blast radius in the background.
+# cd /root/hashicat-aws
+# /usr/local/bin/blast-radius --serve .
