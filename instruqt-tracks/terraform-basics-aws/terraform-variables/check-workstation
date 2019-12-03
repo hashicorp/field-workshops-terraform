@@ -1,5 +1,5 @@
 #!/bin/bash
-grep yourname /root/hashicat-aws/terraform.tfvars 
+grep yourname /root/hashicat-aws/terraform.tfvars
 EXITCODE=$?
 if [ $EXITCODE -ne 1 ]; then
   fail-message "Oops, it looks like you haven't updated your prefix variable yet."

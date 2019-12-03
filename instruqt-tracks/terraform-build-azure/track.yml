@@ -52,7 +52,7 @@ challenges:
     hostname: workstation
     port: 8080
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: open-a-terminal
   id: tdj4sxpvzupm
   type: challenge
@@ -117,7 +117,7 @@ challenges:
     hostname: workstation
     port: 8080
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: azure-credentials
   id: 1xafrvqookjz
   type: challenge
@@ -150,7 +150,7 @@ challenges:
     hostname: workstation
     port: 8080
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: terraform-code
   id: 0vb60xa2lbts
   type: challenge
@@ -185,7 +185,7 @@ challenges:
     hostname: workstation
     port: 8080
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: tf-init-provider
   id: gvo1lsxgpyjx
   type: challenge
@@ -220,7 +220,7 @@ challenges:
     hostname: workstation
     port: 8080
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: provider-quiz
   id: cftow3r88gop
   type: quiz
@@ -240,7 +240,7 @@ challenges:
   solution:
   - 2
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: tf-validate
   id: s35t6v0i2wwk
   type: challenge
@@ -270,7 +270,7 @@ challenges:
     hostname: workstation
     port: 8080
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: tf-plan
   id: im52n8wdgt9n
   type: challenge
@@ -302,7 +302,7 @@ challenges:
     hostname: workstation
     port: 8080
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: tf-variables
   id: fea5hyeemrxo
   type: challenge
@@ -330,7 +330,7 @@ challenges:
     hostname: workstation
     port: 8080
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: tf-add-a-variable
   id: nusbmrgoi4cn
   type: challenge
@@ -366,7 +366,7 @@ challenges:
     hostname: workstation
     port: 8080
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: variables-quiz
   id: qjaiij9j0j35
   type: quiz
@@ -386,7 +386,7 @@ challenges:
   solution:
   - 2
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: tf-graph
   id: fgkcnkqwypsr
   type: challenge
@@ -679,7 +679,7 @@ challenges:
   solution:
   - 2
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: use-a-provisioner
   id: cnhiy7l5eagm
   type: challenge
@@ -857,7 +857,7 @@ challenges:
   solution:
   - 1
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: terraform-cloud-setup
   id: 6qzffd0tp15f
   type: challenge
@@ -952,4 +952,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "4864755105815133329"
+checksum: "12828789149910750235"
