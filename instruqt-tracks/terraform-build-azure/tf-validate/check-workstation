@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /root/hashicat-azure
+/usr/local/bin/terraform validate || fail-message "Oops, it looks like there is still an error in your Terraform code."
