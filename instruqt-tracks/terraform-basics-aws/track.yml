@@ -15,8 +15,7 @@ tags:
 - aws
 - basics
 owner: hashicorp
-developers:
-- null
+developers: []
 private: true
 published: true
 challenges:
@@ -469,4 +468,4 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "8361587903516291291"
+checksum: "5189760092322769563"
