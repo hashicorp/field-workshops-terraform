@@ -1,7 +1,7 @@
 slug: terraform-cloud-aws
 id: 2hgi8e9hftli
 type: track
-title: Terraform Cloud Workshop - AWS
+title: Terraform Enterprise on AWS
 teaser: Join the ACME devops team on their journey to fully automated provisioning
   with AWS Cloud.
 description: |-
@@ -103,4 +103,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "1778145375545729302"
+checksum: "14431217312347944328"

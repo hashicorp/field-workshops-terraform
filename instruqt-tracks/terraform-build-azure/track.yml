@@ -1,7 +1,7 @@
 slug: terraform-build-azure
 id: u38r24o3ett6
 type: track
-title: Terraform OSS Workshop - Azure
+title: Intro to Terraform on Azure
 teaser: Provision the HashiCat application on Azure Cloud using Terraform.
 description: "This track will introduce you to Terraform on Microsoft Azure.\n\nWe'll
   learn Terraform setup, basic commands, and gradually build an entire application
@@ -952,4 +952,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "9346379586947180723"
+checksum: "11602706370356025651"

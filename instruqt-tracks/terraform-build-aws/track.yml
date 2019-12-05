@@ -1,8 +1,8 @@
 slug: terraform-build-aws
 id: i3hihwd3qqr7
 type: track
-title: Terraform OSS Workshop - AWS
-teaser: Provision the HashiCat application on Azure Cloud using Terraform.
+title: Intro to Terraform on AWS
+teaser: Provision the HashiCat application on AWS Cloud using Terraform.
 description: "This track will introduce you to Terraform on Microsoft Azure.\n\nWe'll
   learn Terraform setup, basic commands, and gradually build an entire application
   stack.\n\nWhen you're finished you'll be able to view the HashiCat application in
@@ -466,4 +466,4 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "7736305297938167201"
+checksum: "1353363867166397733"
