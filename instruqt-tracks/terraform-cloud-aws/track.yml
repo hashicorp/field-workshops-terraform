@@ -1,10 +1,11 @@
 slug: terraform-cloud-aws
+id: 2hgi8e9hftli
 type: track
 title: Terraform Cloud Workshop - AWS
 teaser: Join the ACME devops team on their journey to fully automated provisioning
   with AWS Cloud.
 description: |-
-  Work with the devops team at Acme Inc. as they go from manual provisioning with Terraform to a fully automated devops workflow with code reviews, testing, and automated provisioning in Azure Cloud. This workshop covers the following topics:
+  Work with the devops team at Acme Inc. as they go from manual provisioning with Terraform to a fully automated devops workflow with code reviews, testing, and automated provisioning in AWS Cloud. This workshop covers the following topics:
 
   * Terraform Open Source
   * Terraform Cloud
@@ -102,4 +103,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "6479340573376244818"
+checksum: "1778145375545729302"
