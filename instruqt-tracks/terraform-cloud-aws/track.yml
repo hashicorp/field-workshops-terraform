@@ -1,7 +1,7 @@
 slug: terraform-cloud-aws
 id: 2hgi8e9hftli
 type: track
-title: Terraform Enterprise on AWS
+title: Terraform Cloud with AWS
 teaser: Join the ACME devops team on their journey to fully automated provisioning
   with AWS Cloud.
 description: |-
@@ -59,7 +59,7 @@ challenges:
   - type: text
     contents: "Welcome to your first day on the job at ACME Inc. Here are the members
       of your team:\n<center><table cellpadding=20>\n  <tr>\n    <td>\n    \U0001F9D5\U0001F3FD
-      Aisha - Database Admin<br>\n    \U0001F46E\U0001F3FE‍♀️ Janet - Security Officer<br>\n
+      Aisha - Database Admin<br>\n    \U0001F46E\U0001F3FE‍♀️ Janet - Security<br>\n
       \   \U0001F468\U0001F3FB‍\U0001F9B2 Lars - Lead Developer<br>\n    </td>\n    <td>\n
       \   \U0001F9D3 Robin - Operations<br>\n    \U0001F468\U0001F3FB‍\U0001F4BC Hiro
       - Product Manager<br>\n    \U0001F473\U0001F3FE‍♂️ Gaurav - Network Admin<br>\n
@@ -103,4 +103,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "14431217312347944328"
+checksum: "16846985530495728309"

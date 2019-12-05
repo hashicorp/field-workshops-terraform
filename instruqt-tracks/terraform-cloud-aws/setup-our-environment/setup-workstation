@@ -7,12 +7,8 @@ git clone --single-branch --branch instruqt https://github.com/hashicorp/hashica
 # Rewind everything back to a single resource group.
 GITDIR="/root/hashicat-aws"
 cd ${GITDIR}
-cp ${GITDIR}/exercises/main.tf.start ${GITDIR}/main.tf
-cp ${GITDIR}/exercises/outputs.tf.start ${GITDIR}/outputs.tf
-mv ${GITDIR}/terraform.tfvars.example ${GITDIR}/terraform.tfvars
-
-cd ${GITDIR}
-/usr/local/bin/terraform init
+echo -e "prefix = \"workshop\"" >> ${GITDIR}/terraform.tfvars
 echo -e "\nregion = \"us-west-2\"" >> ${GITDIR}/terraform.tfvars
+/usr/local/bin/terraform init
 
 /bin/set-workdir ${GITDIR}
