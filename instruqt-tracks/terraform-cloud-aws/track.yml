@@ -61,8 +61,8 @@ challenges:
       of your team:\n<center><table cellpadding=20>\n  <tr>\n    <td>\n    \U0001F9D5\U0001F3FD
       Aisha - Database Admin<br>\n    \U0001F46E\U0001F3FE‍♀️ Janet - Security<br>\n
       \   \U0001F468\U0001F3FB‍\U0001F9B2 Lars - Lead Developer<br>\n    </td>\n    <td>\n
-      \   \U0001F9D3 Robin - Operations<br>\n    \U0001F468\U0001F3FB‍\U0001F4BC Hiro
-      - Product Manager<br>\n    \U0001F473\U0001F3FE‍♂️ Gaurav - Network Admin<br>\n
+      \   \U0001F9D3\U0001F3FB Robin - Operations<br>\n    \U0001F468\U0001F3FB‍\U0001F4BC
+      Hiro - Product Manager<br>\n    \U0001F473\U0001F3FE‍♂️ Gaurav - Network Admin<br>\n
       \   </td>\n  </tr>\n</table></center>\n\n<center>\U0001F913 You - Brand New
       Intern\n</center>"
   - type: text
@@ -92,6 +92,14 @@ challenges:
     Click on the File Explorer icon a couple times to toggle the File Explorer on and off. This can provide more space while you're viewing and editing code.
 
     You can also hide and show these notes with the expand icon on the upper right side of the GUI. It looks like a box with two small arrows in the corners. This will expand and close the notes panel. Try it now to give your text editor more space.
+
+    Try running the following command in your terminal pane:
+
+    ```
+    terraform version
+    ```
+
+    Good job, you're ready to deploy the hashicat application on AWS!
   notes:
   - type: text
     contents: The terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
@@ -103,4 +111,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "16846985530495728309"
+checksum: "16463121228426523359"
