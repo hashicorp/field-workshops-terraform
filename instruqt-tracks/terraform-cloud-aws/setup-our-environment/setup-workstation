@@ -13,5 +13,6 @@ mv ${GITDIR}/terraform.tfvars.example ${GITDIR}/terraform.tfvars
 
 cd ${GITDIR}
 /usr/local/bin/terraform init
+echo -e "\nregion = \"us-west-2\"" >> ${GITDIR}/terraform.tfvars
 
 /bin/set-workdir ${GITDIR}

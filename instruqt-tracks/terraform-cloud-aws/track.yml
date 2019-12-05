@@ -1,0 +1,105 @@
+slug: terraform-cloud-aws
+type: track
+title: Terraform Cloud Workshop - AWS
+teaser: Join the ACME devops team on their journey to fully automated provisioning
+  with AWS Cloud.
+description: |-
+  Work with the devops team at Acme Inc. as they go from manual provisioning with Terraform to a fully automated devops workflow with code reviews, testing, and automated provisioning in Azure Cloud. This workshop covers the following topics:
+
+  * Terraform Open Source
+  * Terraform Cloud
+  * Remote State
+  * Secure Variable Storage
+  * Version Control Integration
+  * Role-based Access Controls
+  * Sentinel Security Policies
+  * Collaboration on Changes
+  * Private Module Registry
+icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
+tags:
+- terraform
+- aws
+- cloud
+- enterprise
+owner: hashicorp
+developers:
+- scarolan@hashicorp.com
+private: true
+published: true
+challenges:
+- slug: setup-our-environment
+  id: kvtcvkhtdkf1
+  type: challenge
+  title: "\U0001F3E1 Moving in - Set Up Your Workspace"
+  teaser: Configure your code editor with the HCL extension and open a workspace.
+  assignment: |-
+    Welcome to your first day as an intern at ACME Inc. [ACME](https://www.youtube.com/watch?v=9m7evoFF83c) is a multi-national conglomerate that sells anvils, rocket powered roller skates, deyhdrated boulders, earthquake pills and birdseed.
+
+    After employee orientation you sit down at your workstation and open your text editor, Visual Studio Code.
+
+    Open the Code Editor tab on the left.
+
+    Select "File > Open Folder".
+
+    Find the `hashicat-aws` directory in the Code Editor and hit `OK`.
+
+    This is your terraform workspace.
+
+    Now click on the box-shaped icon on the bottom of the left side menu. This opens the Extensions sidebar.
+
+    Search for *hcl*. Install the first extension on the list. It is named `HCL`.
+
+    Click on the blue **Reload Required** button to refresh the editor.
+
+    Now click on the explorer icon on the top of the left side menu. It looks like a stack of documents.
+
+    Congratulations, you've configured your environment to work with Terraform!
+  notes:
+  - type: text
+    contents: "Welcome to your first day on the job at ACME Inc. Here are the members
+      of your team:\n<center><table cellpadding=20>\n  <tr>\n    <td>\n    \U0001F9D5\U0001F3FD
+      Aisha - Database Admin<br>\n    \U0001F46E\U0001F3FE‍♀️ Janet - Security Officer<br>\n
+      \   \U0001F468\U0001F3FB‍\U0001F9B2 Lars - Lead Developer<br>\n    </td>\n    <td>\n
+      \   \U0001F9D3 Robin - Operations<br>\n    \U0001F468\U0001F3FB‍\U0001F4BC Hiro
+      - Product Manager<br>\n    \U0001F473\U0001F3FE‍♂️ Gaurav - Network Admin<br>\n
+      \   </td>\n  </tr>\n</table></center>\n\n<center>\U0001F913 You - Brand New
+      Intern\n</center>"
+  - type: text
+    contents: Most modern text editors support Terraform syntax highlighting.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  difficulty: basic
+  timelimit: 600
+- slug: open-a-terminal
+  id: tdj4sxpvzupm
+  type: challenge
+  title: "\U0001F5A5️ Open a Terminal"
+  teaser: Terraform commands are run from a terminal window. Terraform can be installed
+    on Linux, Windows, or MacOS.
+  assignment: |-
+    Open a new Terminal window. You can use the "Terminal > New Terminal" menu item or the keyboard shortcut **CTRL-J** (**CMD-J** on Mac).
+
+    All terraform commands should be run from the terminal within the Code Editor.
+
+    Try the **CTRL-J** shortcut to toggle the terminal window open and closed.
+
+    You can use the little caret ^ shaped button on the terminal pane to expand and shrink your Terminal window. This is useful for viewing logs.
+
+    Click on the File Explorer icon a couple times to toggle the File Explorer on and off. This can provide more space while you're viewing and editing code.
+
+    You can also hide and show these notes with the expand icon on the upper right side of the GUI. It looks like a box with two small arrows in the corners. This will expand and close the notes panel. Try it now to give your text editor more space.
+  notes:
+  - type: text
+    contents: The terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
+      Windows, Solaris and Linux.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  difficulty: basic
+  timelimit: 600
+checksum: "6479340573376244818"
