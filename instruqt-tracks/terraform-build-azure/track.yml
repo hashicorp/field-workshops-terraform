@@ -1,7 +1,7 @@
 slug: terraform-build-azure
 id: u38r24o3ett6
 type: track
-title: Provision to Azure with Terraform
+title: Terraform OSS Workshop - Azure
 teaser: Provision the HashiCat application on Azure Cloud using Terraform.
 description: "This track will introduce you to Terraform on Microsoft Azure.\n\nWe'll
   learn Terraform setup, basic commands, and gradually build an entire application

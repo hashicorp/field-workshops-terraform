@@ -1,14 +1,12 @@
-slug: terraform-basics-aws
-id: 3grwcipacthi
+slug: terraform-build-aws
+id: i3hihwd3qqr7
 type: track
-title: Terraform Basics on AWS
-teaser: Learn how to begin provisioning infrastructure on AWS with Terraform.
-description: |-
-  Terraform is the world's most popular open source provisioning tool. Thousands of users build millions of containers, virtual machines, and other infrastructure with Terraform every single day. Terraform is easy to learn and fun to work with.
-
-  We invite you to join the ranks of the Terraform community today!
-
-  This track will introduce you to Terraform open source on AWS. You'll learn  terraform setup, basic commands and integration with AWS.
+title: Terraform OSS Workshop - AWS
+teaser: Provision the HashiCat application on Azure Cloud using Terraform.
+description: "This track will introduce you to Terraform on Microsoft Azure.\n\nWe'll
+  learn Terraform setup, basic commands, and gradually build an entire application
+  stack.\n\nWhen you're finished you'll be able to view the HashiCat application in
+  your web browser.\n\nKittens as a Service! \U0001F63A"
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
 - terraform
@@ -20,7 +18,7 @@ private: true
 published: true
 challenges:
 - slug: setup-our-environment
-  id: xywjxcqb096l
+  id: 18k5rj1sqre4
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: Configure your code editor with the HCL extension and open a workspace.
@@ -69,7 +67,7 @@ challenges:
   difficulty: basic
   timelimit: 300
 - slug: hello-terraform
-  id: xmnvifg0wmiy
+  id: wvkxvci11tsz
   type: challenge
   title: "\U0001F44B Getting to Know Terraform"
   teaser: Learn terraform basics and command line syntax.
@@ -108,7 +106,7 @@ challenges:
   difficulty: basic
   timelimit: 300
 - slug: aws-credentials
-  id: 6yijz7bt56nc
+  id: a5f0synqa36i
   type: challenge
   title: "\U0001F510 Connecting Terraform to AWS"
   teaser: Connecting to AWS with Access Keys and Secret Keys.
@@ -154,7 +152,7 @@ challenges:
   difficulty: basic
   timelimit: 300
 - slug: terraform-code
-  id: r2xd5ubxvdnh
+  id: d9myfouiiqpi
   type: challenge
   title: "\U0001F468‍\U0001F4BB What does Terraform code look like?"
   teaser: The terraform DSL (Domain Specific Language) is a declarative language that
@@ -198,7 +196,7 @@ challenges:
   difficulty: basic
   timelimit: 300
 - slug: terraform-init-provider
-  id: vb4yy4igazwq
+  id: cqxh6q4bwyxj
   type: challenge
   title: "\U0001F3E1 Terraform Init - Install the Providers"
   teaser: Terraform needs a provider to talk to cloud APIs. The provider is the bridge
@@ -239,7 +237,7 @@ challenges:
   difficulty: basic
   timelimit: 300
 - slug: provider-quiz
-  id: f06z9c0v0yky
+  id: kus0m3kir2zp
   type: quiz
   title: "\U0001F4DD Quiz 1 - Providers and Modules"
   teaser: A quiz about Terraform init
@@ -259,7 +257,7 @@ challenges:
   difficulty: basic
   timelimit: 300
 - slug: terraform-validate
-  id: itive8arfaf7
+  id: xxliy7nlua0y
   type: challenge
   title: "\U0001F469‍⚖️ Terraform Validate - Test Your Code"
   teaser: Terraform has a built in validation tester. This is useful to see whether
@@ -295,7 +293,7 @@ challenges:
   difficulty: basic
   timelimit: 300
 - slug: terraform-plan
-  id: jx9ndprnlypw
+  id: o1vyapttalmp
   type: challenge
   title: "\U0001F914 Terraform Plan - Dry Run Mode"
   teaser: Terraform has a dry run mode where you can preview what will be built without
@@ -332,7 +330,7 @@ challenges:
   difficulty: basic
   timelimit: 300
 - slug: terraform-variables
-  id: rocxqntdh4vu
+  id: aeohqynramm9
   type: challenge
   title: "\U0001F39B️ Working with Terraform Variables"
   teaser: Terraform variables allow you to customize your infrastructure without editing
@@ -363,7 +361,7 @@ challenges:
   difficulty: basic
   timelimit: 300
 - slug: terraform-add-a-variable
-  id: lrtbjcbhijkt
+  id: x3pslyujlpbb
   type: challenge
   title: "\U0001F5FC Change Your Location"
   teaser: Terraform is flexible enough to deploy infrastructure anywhere in the world.
@@ -408,7 +406,7 @@ challenges:
   difficulty: basic
   timelimit: 300
 - slug: variables-quiz
-  id: ygkb05xzqcxj
+  id: 3wa4xnmbjvhn
   type: quiz
   title: "\U0001F4DD Quiz 2 - Variables"
   teaser: A quiz about Terraform variables
@@ -428,7 +426,7 @@ challenges:
   difficulty: basic
   timelimit: 300
 - slug: terraform-graph
-  id: ogpsnlrqnwdx
+  id: vw1abznphdtg
   type: challenge
   title: "\U0001F4CA Terraform Graph - Seeing is Believing"
   teaser: Terraform creates a graph of all the infrastructure defined in your code.
@@ -468,4 +466,4 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 300
-checksum: "5548534619889242149"
+checksum: "7736305297938167201"
