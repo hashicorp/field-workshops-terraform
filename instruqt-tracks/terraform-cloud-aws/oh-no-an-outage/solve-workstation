@@ -40,12 +40,10 @@ cat <<-EOF > /tmp/create_workspace.json
 {
   "data": {
     "attributes": {
-      "name": "hashicat-aws"
-    },
-    "type": "workspaces",
-    "attributes": {
+      "name": "hashicat-aws",
       "operations": False
-    }
+    },
+    "type": "workspaces"
   }
 }
 EOF
