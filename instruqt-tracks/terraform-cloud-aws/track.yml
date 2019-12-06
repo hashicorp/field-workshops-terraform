@@ -111,4 +111,73 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "16463121228426523359"
+- slug: terraform-cloud-setup
+  id: bwxfyq4qboqt
+  type: challenge
+  title: ☁️ Terraform Cloud Setup
+  teaser: Terraform Cloud offers unlimited free terraform state storage for users.
+    Safeguard your state files by storing them remotely in Terraform Cloud.
+  assignment: |-
+    Sign up for a free Terraform Cloud account at the following URL:
+
+    https://app.terraform.io/signup/account
+
+    If you already have an account you can simply sign in with your existing credentials.
+
+    Once you're signed into Terraform Cloud create a new organization called YOURNAME-training. Replace YOURNAME with your own name or other text.
+
+    Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "No VCS Connection" button. Name your workspace **hashicat-aws**.
+
+    Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local.  Be sure to save your settings! This will allow us to run terraform commands from our workstation with local variables.
+  notes:
+  - type: text
+    contents: Terraform Cloud remote state storage is free for all users.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  difficulty: basic
+  timelimit: 600
+- slug: oh-no-an-outage
+  id: isfxzosfx0p1
+  type: challenge
+  title: "\U0001F631 Oh No - An Outage!"
+  teaser: An unexpected outage has taken down one of the production websites. How
+    can Terraform help the team recover quickly?
+  assignment: |-
+    Your task is to configure remote state using your Terraform Cloud account. In order to complete this challenge you'll need the following:
+
+    1. A free Terraform Cloud account - log in at https://app.terraform.io<br>
+    2. An organization called **yourname-training**. Replace yourname with any string of letters or numbers.<br>
+    3. A workspace named **hashicat-aws** with its Execution Mode set to **Local** (not Remote)<br>
+    4. A *user* token for authentication<br>
+    5. A `.terraformrc` file to store your user token<br>
+    6. A `remote_backend` config stored in your workspace<br>
+
+    We've given you a head start with templates for the `/root/.terraformrc` file and your `remote_backend.tf` configuration file. You will need to edit these files and insert your own token, organization and
+    workspace names.
+
+    Once you've got all the pieces in place, try running a `terraform init` and then `terraform apply` command in the terminal.
+
+    When you're done you should see a new state file in your Terraform Cloud workspace.
+
+    Report back to Robin with the *Check* button below once you've successfully deployed the hashicat application with remote state enabled.
+  notes:
+  - type: text
+    contents: "It's Monday morning and you're the first one into the office. Most
+      of your teammates were up late fixing last night's outage. Eventually senior
+      operations admin Robin shows up at your desk.\n\n>\U0001F9D3 Hey kiddo, how
+      are you doing? Listen, I want your help with something. Last night we had trouble
+      rebuilding the website because the terraform state file was stored on Lars'
+      laptop. And guess what, Lars is on vacation for the next two weeks. Why don't
+      you help me configure remote state on this application so this doesn't happen
+      again?"
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  difficulty: basic
+  timelimit: 600
+checksum: "15830153576410784073"

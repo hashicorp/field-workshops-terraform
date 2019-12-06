@@ -1,0 +1,8 @@
+#!/bin/bash
+source /etc/profile.d/instruqt-env.sh
+source /root/.bashrc
+/bin/set-workdir /root/hashicat-aws
+
+# Give the student a head start.
+cp exercises/remote_backend.tf remote_backend.tf
+cp exercises/terraform.rc.example /root/.terraformrc

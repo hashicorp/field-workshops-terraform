@@ -4,11 +4,17 @@ source /root/.bashrc
 
 git clone --single-branch --branch instruqt https://github.com/hashicorp/hashicat-aws
 
-# Rewind everything back to a single resource group.
 GITDIR="/root/hashicat-aws"
 cd ${GITDIR}
 echo -e "prefix = \"workshop\"" >> ${GITDIR}/terraform.tfvars
-echo -e "\nregion = \"us-west-2\"" >> ${GITDIR}/terraform.tfvars
-/usr/local/bin/terraform init
+echo -e "\nregion = \"us-east-1\"" >> ${GITDIR}/terraform.tfvars
+
+# Just the public DNS please
+cat <<EOF > outputs.tf
+# Outputs file
+output "catapp_url" {
+  value = "http://\${aws_instance.hashicat.public_dns}"
+}
+EOF
 
 /bin/set-workdir ${GITDIR}
