@@ -54,7 +54,7 @@ jobs:
             fi
             echo "Running instruqt track test..."
             cd /root/project/instruqt-tracks/terraform-build-aws
-            TFC_TOKEN=$TFC_TOKEN TFC_ORG=$TFC_ORG instruqt track test --skip-fail-check
+            instruqt track test --skip-fail-check
   instruqt-test-oss-azure:
     docker:
       - image: ubuntu:latest

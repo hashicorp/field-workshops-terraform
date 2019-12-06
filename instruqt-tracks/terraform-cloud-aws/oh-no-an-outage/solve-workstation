@@ -3,8 +3,12 @@ source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 /bin/set-workdir /root/hashicat-aws
 
-ORG="${TFC_ORG:-instruqt-hashicat-aws-$RANDOM}"
-TOKEN="${TFC_TOKEN:-REPLACETHISWITHYOURTOKEN}"
+# ORG="${TFC_ORG:-instruqt-hashicat-aws-$RANDOM}"
+# TOKEN="${TFC_TOKEN:-REPLACETHISWITHYOURTOKEN}"
+
+# Hacky fix until instruqt allows us to pass these in from CircleCI
+ORG="instruqt-testing"
+TOKEN=$(cat /tmp/tfc_org_token)
 
 # Configure the /root/.terraformrc file
 cat <<-EOF > /root/.terraformrc
@@ -27,6 +31,7 @@ terraform {
 EOF
 
 # Create an organization payload
+# This is not used since we can't create new orgs (yet)
 cat <<-EOF > /tmp/create_org.json
 {
   "data": {
@@ -57,7 +62,8 @@ cat /tmp/create_org.json
 cat /tmp/create_workspace.json
 
 # Create the organization
-curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/create_org.json https://app.terraform.io/api/v2/organizations
+# Disabled - see above
+# curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/create_org.json https://app.terraform.io/api/v2/organizations
 
 # Create a workspace
 $ curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/create_workspace.json https://app.terraform.io/api/v2/organizations/$ORG/workspaces
