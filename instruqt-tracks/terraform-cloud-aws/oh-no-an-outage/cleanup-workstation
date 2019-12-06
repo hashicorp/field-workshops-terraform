@@ -3,11 +3,6 @@ source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 /bin/set-workdir /root/hashicat-aws
 
-# The idea here was to pass these in from CircleCI
-# ORG="${TFC_ORG:-instruqt-hashicat-aws-$RANDOM}"
-# TOKEN="${TFC_TOKEN:-REPLACETHISWITHYOURTOKEN}"
-
-# Hacky fix until instruqt allows us to pass these in from CircleCI
 ORG=$(grep organization /root/hashicat-aws/remote_backend.tf | cut -d '"' -f2)
 TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
 

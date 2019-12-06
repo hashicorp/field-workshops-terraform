@@ -1,6 +1,7 @@
 #FROM gcr.io/instruqt/cloud-client:latest
 FROM codercom/code-server:v2
 ARG VAULT_TOKEN
+ARG TFC_ORG_TOKEN
 
 RUN sudo apt -y update
 RUN sudo apt -y install software-properties-common unzip python3-pip jq cowsay

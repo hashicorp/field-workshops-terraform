@@ -61,6 +61,7 @@ echo $TOKEN
 echo $ORG
 cat /tmp/create_org.json
 cat /tmp/create_workspace.json
+cat /root/.terraformrc
 
 # Create the organization
 # Disabled - see above
