@@ -32,7 +32,7 @@ cat <<-EOF > /tmp/create_org.json
   "data": {
     "type": "organizations",
     "attributes": {
-      "name": "${ORG}",
+      "name": "$ORG",
       "email": "instruqt@hashicorp.com"
     }
   }
@@ -51,18 +51,13 @@ cat <<-EOF > /tmp/create_workspace.json
 }
 EOF
 
+echo $TOKEN
+echo $ORG
+cat /tmp/create_org.json
+cat /tmp/create_workspace.json
+
 # Create the organization
-curl \
-  --header "Authorization: Bearer $TOKEN" \
-  --header "Content-Type: application/vnd.api+json" \
-  --request POST \
-  --data @/tmp/create_org.json \
-  https://app.terraform.io/api/v2/organizations
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/create_org.json https://app.terraform.io/api/v2/organizations
 
 # Create a workspace
-$ curl \
-  --header "Authorization: Bearer $TOKEN" \
-  --header "Content-Type: application/vnd.api+json" \
-  --request POST \
-  --data @/tmp/create_workspace.json \
-  https://app.terraform.io/api/v2/organizations/${ORG}/workspaces
+$ curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/create_workspace.json https://app.terraform.io/api/v2/organizations/$ORG/workspaces
