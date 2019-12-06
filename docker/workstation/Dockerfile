@@ -1,7 +1,7 @@
 #FROM gcr.io/instruqt/cloud-client:latest
 FROM codercom/code-server:v2
 ARG VAULT_TOKEN
-ARG TFC_ORG_TOKEN
+ARG TFC_USER_TOKEN
 
 RUN sudo apt -y update
 RUN sudo apt -y install software-properties-common unzip python3-pip jq cowsay
@@ -12,7 +12,7 @@ RUN sudo chmod +x /usr/local/bin/terraform
 RUN sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
 RUN sudo apt -y install graphviz
 RUN sudo /usr/bin/pip3 install BlastRadius
-RUN echo $TFC_ORG_TOKEN > /tmp/tfc_org_token
+RUN echo $TFC_USER_TOKEN > /tmp/tfc_user_token
 RUN echo $VAULT_TOKEN > /tmp/vault_token
 
 ENV VAULT_TOKEN $VAULT_TOKEN
