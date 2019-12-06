@@ -57,12 +57,6 @@ cat <<-EOF > /tmp/create_workspace.json
 }
 EOF
 
-echo $TOKEN
-echo $ORG
-cat /tmp/create_org.json
-cat /tmp/create_workspace.json
-cat /root/.terraformrc
-
 # Create the organization
 # Disabled - see above
 # curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/create_org.json https://app.terraform.io/api/v2/organizations
