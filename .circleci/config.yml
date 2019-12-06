@@ -37,8 +37,6 @@ jobs:
           name: Run Instruqt Test
           command: |
             VERSION=$INSTRUQT_VERSION
-            echo "export TFC_TOKEN=$TFC_TOKEN" >> /root/.bashrc
-            echo "export TFC_ORG=$TFC_ORG" >> /root/.bashrc
             apt -y update
             apt -y install wget unzip
             wget https://github.com/instruqt/cli/releases/download/${VERSION}/instruqt-linux-${VERSION}.zip -O /tmp/instruqt.zip
@@ -56,7 +54,7 @@ jobs:
             fi
             echo "Running instruqt track test..."
             cd /root/project/instruqt-tracks/terraform-build-aws
-            instruqt track test --skip-fail-check
+            TFC_TOKEN=$TFC_TOKEN TFC_ORG=$TFC_ORG instruqt track test --skip-fail-check
   instruqt-test-oss-azure:
     docker:
       - image: ubuntu:latest
