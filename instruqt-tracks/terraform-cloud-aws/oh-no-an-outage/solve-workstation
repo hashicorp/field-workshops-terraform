@@ -53,6 +53,7 @@ EOF
 
 echo $TOKEN
 echo $ORG
+cat /root/.bashrc
 cat /tmp/create_org.json
 cat /tmp/create_workspace.json
 
