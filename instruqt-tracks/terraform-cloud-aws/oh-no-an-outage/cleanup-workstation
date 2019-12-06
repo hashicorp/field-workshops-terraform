@@ -3,6 +3,7 @@ source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 /bin/set-workdir /root/hashicat-aws
 
+# The idea here was to pass these in from CircleCI
 # ORG="${TFC_ORG:-instruqt-hashicat-aws-$RANDOM}"
 # TOKEN="${TFC_TOKEN:-REPLACETHISWITHYOURTOKEN}"
 
@@ -10,13 +11,8 @@ source /root/.bashrc
 ORG="instruqt-testing"
 TOKEN=$(cat /tmp/tfc_org_token)
 
-
 # Delete the workspace
-curl \
-  --header "Authorization: Bearer $TOKEN" \
-  --header "Content-Type: application/vnd.api+json" \
-  --request DELETE \
-  https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws
 
 # Delete the organization
 # curl \
