@@ -34,7 +34,8 @@ terraform {
 }
 EOF
 
-# Create a workspace payload
+# Create a workspace payload with local exec
+# Set the operations flag to false to do this
 echo "Creating a workspace JSON payload..."
 cat <<-EOF > /tmp/create_workspace.json
 {

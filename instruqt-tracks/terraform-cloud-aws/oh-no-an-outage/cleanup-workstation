@@ -7,9 +7,6 @@ cd /root/hashicat-aws
 ORG=$(grep organization /root/hashicat-aws/remote_backend.tf | cut -d '"' -f2)
 TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
 
-# Clean up the app
-terraform destroy -auto-approve
-
 # Delete the workspace
 echo "Cleaning up the hashicat-aws workspace..."
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws
