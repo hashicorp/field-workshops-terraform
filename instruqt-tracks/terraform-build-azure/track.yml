@@ -19,7 +19,7 @@ private: true
 published: true
 challenges:
 - slug: setup-our-environment
-  id: hyrkyyn0w8en
+  id: 6ba8crym1sn1
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: Configure your code editor with the HCL extension and open a workspace.
@@ -54,7 +54,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: open-a-terminal
-  id: tdj4sxpvzupm
+  id: ec6ttl2twggx
   type: challenge
   title: "\U0001F5A5️ Open a Terminal"
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
@@ -81,7 +81,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: hello-terraform
-  id: pbc0sybscvko
+  id: ehxl0lx4yydr
   type: challenge
   title: "\U0001F44B Getting to Know Terraform"
   teaser: Learn terraform basics and command line syntax.
@@ -119,7 +119,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: azure-credentials
-  id: 1xafrvqookjz
+  id: rhexfy1dnqks
   type: challenge
   title: "\U0001F510 Connecting Terraform to Azure Cloud"
   teaser: Safely connect to the Azure APIs using a service principal.
@@ -152,7 +152,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: terraform-code
-  id: 0vb60xa2lbts
+  id: 21zqzlddpx0w
   type: challenge
   title: "\U0001F468‍\U0001F4BB What does Terraform code look like?"
   teaser: The terraform DSL (Domain Specific Language) is a declarative language that
@@ -187,7 +187,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-init-provider
-  id: gvo1lsxgpyjx
+  id: q3jsy8fijoc7
   type: challenge
   title: ☁️ Terraform Init - Install the Azure Provider
   teaser: Terraform needs a provider to talk to cloud APIs. The provider is the bridge
@@ -222,7 +222,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: provider-quiz
-  id: cftow3r88gop
+  id: x48icxesswut
   type: quiz
   title: "\U0001F4DD Quiz 1 - Providers and Modules"
   teaser: A quiz about Terraform init
@@ -242,7 +242,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-validate
-  id: s35t6v0i2wwk
+  id: c3afst42goal
   type: challenge
   title: "\U0001F469‍⚖️ Terraform Validate - Test Your Code"
   teaser: Terraform has a built in validation tester. This is useful to see whether
@@ -272,7 +272,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-plan
-  id: im52n8wdgt9n
+  id: jwwajjhyns6k
   type: challenge
   title: "\U0001F914 Terraform Plan - Dry Run Mode"
   teaser: Terraform has a dry run mode where you can preview what will be built without
@@ -304,7 +304,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-variables
-  id: fea5hyeemrxo
+  id: gidlvko2bxmv
   type: challenge
   title: "\U0001F39B️ Working with Terraform Variables"
   teaser: Terraform variables allow you to customize your infrastructure without editing
@@ -332,7 +332,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-add-a-variable
-  id: nusbmrgoi4cn
+  id: gmb282m60p1i
   type: challenge
   title: "\U0001F5FC Change Your Location"
   teaser: Terraform is flexible enough to deploy infrastructure anywhere in the world.
@@ -368,7 +368,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: variables-quiz
-  id: qjaiij9j0j35
+  id: msdmitaxxyjd
   type: quiz
   title: "\U0001F4DD Quiz 2 - Variables"
   teaser: A quiz about Terraform variables
@@ -388,7 +388,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-graph
-  id: fgkcnkqwypsr
+  id: waxfs227u4zm
   type: challenge
   title: "\U0001F4C8 Terraform Graph"
   teaser: Terraform creates a graph of all the infrastructure defined in your code.
@@ -422,7 +422,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-plan-and-apply
-  id: xgmrp6woe3up
+  id: 72np2k4dvpbq
   type: challenge
   title: "\U0001F468‍\U0001F4BB Terraform Plan and Terraform Apply"
   teaser: The terraform plan command can be run anytime to get a preview of changes
@@ -459,7 +459,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-plan-again
-  id: 7uywvtmk4ogw
+  id: p9yyp4wkg0ul
   type: challenge
   title: "\U0001F469‍\U0001F4BB Test and Repair"
   teaser: Terraform is idempotent. Each resource in your code will be examined, and
@@ -498,7 +498,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: change-location
-  id: stlwwlwfd6tn
+  id: jwinl1cwrk5z
   type: challenge
   title: "\U0001F6EB Change Your Location"
   teaser: When your terraform code changes, your infrastructure will be modified to
@@ -538,7 +538,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: add-a-tag
-  id: 4rorshedxlta
+  id: uyeuodzgyr7b
   type: challenge
   title: "\U0001F3F7️ Add a Tag to Your Resource Group"
   teaser: Terraform can change some resources in in place without deleting them. Adding
@@ -567,7 +567,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: add-virtual-network
-  id: 18lcsj2vyhpz
+  id: d8mr7rhhceqr
   type: challenge
   title: "\U0001F5A7 Add a Virtual Network"
   teaser: Terraform resources are like building blocks. You can continue adding more
@@ -596,7 +596,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: complete-the-build
-  id: tb8t1yp7qjyo
+  id: tqgznlvx3gvr
   type: challenge
   title: "\U0001F3D7️ Complete the Build"
   teaser: Terraform code can stand up everything from resource groups, to virtual
@@ -629,7 +629,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-graph-again
-  id: uej2lqcqxfyd
+  id: z8mjaenqudko
   type: challenge
   title: "\U0001F4C8 Terraform Graph"
   teaser: Revist graph to see what has changed.
@@ -661,7 +661,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: terraform-apply-quiz
-  id: mdf2cwo4fqgg
+  id: ovoqk5lthudf
   type: quiz
   title: "\U0001F4DD Quiz 3 - Terraform Apply"
   teaser: What happens when you run `terraform apply` without a plan file?
@@ -681,7 +681,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: use-a-provisioner
-  id: cnhiy7l5eagm
+  id: vwmw1zypu5t4
   type: challenge
   title: "\U0001F6E0️ Use a Provisioner"
   teaser: Terraform works great with many different provisioning tools including Chef,
@@ -733,7 +733,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: add-an-output
-  id: fynppt1whity
+  id: 9xeq71ssc3xj
   type: challenge
   title: "\U0001F5A8️ Add an Output"
   teaser: Outputs are used to convey useful information such as IP addresses, application
@@ -780,7 +780,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: fun-with-variables
-  id: xhrtgnqx2nod
+  id: 1ya4kzyoyrss
   type: challenge
   title: "\U0001F436 Fun With Variables"
   teaser: Variables give the consumers of your terraform code an easy way to customize
@@ -839,7 +839,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: terraform-variables-quiz
-  id: zunny1znszqd
+  id: c5qopqeffnwd
   type: quiz
   title: "\U0001F4DD Quiz 4 - Terraform Variables"
   teaser: How do terraform variables get set or overridden?
@@ -859,7 +859,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: terraform-cloud-setup
-  id: 6qzffd0tp15f
+  id: kxuyplynyyr9
   type: challenge
   title: ☁️ Terraform Cloud Setup
   teaser: Terraform Cloud offers unlimited free terraform state storage for users.
@@ -887,7 +887,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: configure-remote-state
-  id: s3ktaoaj9jf0
+  id: hhcfa3sw8xcg
   type: challenge
   title: "\U0001F39B️ Configure Remote State"
   teaser: The terraform command line tool can store its state in Terraform Cloud.
@@ -926,7 +926,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: terraform-destroy
-  id: sliv4sehcy5r
+  id: jxsnsxju73ha
   type: challenge
   title: "\U0001F525 Terraform Destroy"
   teaser: Terraform can build infrastructure and also destroy it when you are done
@@ -952,4 +952,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "11602706370356025651"
+checksum: "610635359046674773"
