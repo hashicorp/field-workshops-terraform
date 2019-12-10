@@ -9,6 +9,8 @@ description: |-
   Governance and security teams can write Sentinel policies to restrict what can be provisioned in Terraform Cloud and Terraform Enterprise workspaces. Sentinel allows these teams to control costs and enforce security standards.
 
   In this track, you will write and test policies that restrict resources, data sources, and modules provisioned by Terraform in AWS, Azure, and GCP.
+
+  This track is intended for use with these [slides](https://drive.google.com/open?id=1iFff7wYhiRLQyWiRXDSN6HJ5CGVGy5xI).
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
 - terraform
@@ -513,4 +515,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 1800
-checksum: "17023895714570893835"
+checksum: "10369849599806578095"
