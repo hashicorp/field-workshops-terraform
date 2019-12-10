@@ -1,0 +1,83 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data": {},
+		"path": [],
+		"resources": {
+			"vault_auth_backend": {
+				"test": {
+					0: {
+						"applied": {
+							"description":        null,
+							"listing_visibility": null,
+							"local":              null,
+							"path":               "roger-k8s",
+							"type":               "kubernetes",
+						},
+					},
+					1: {
+						"applied": {
+							"description":        null,
+							"listing_visibility": null,
+							"local":              null,
+							"path":               "roger-gh",
+							"type":               "github",
+						},
+					},
+					2: {
+						"applied": {
+							"description":        null,
+							"listing_visibility": null,
+							"local":              null,
+							"path":               "roger-azure",
+							"type":               "azure",
+						},
+					},
+				},
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+terraform_version = "0.12.3"
+
+variables = {
+	"paths": [
+		"roger-k8s",
+		"roger-gh",
+		"roger-azure",
+	],
+	"types": [
+		"kubernetes",
+		"github",
+		"azure",
+	],
+}
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+path = _modules.root.path
+resources = _modules.root.resources

@@ -1,0 +1,73 @@
+# This policy restricts the public images that GCP compute instances use
+
+##### Imports #####
+
+import "tfplan"
+import "strings"
+import "types"
+
+##### Functions #####
+
+# Find all resources of a specific type from all modules using the tfplan import
+find_resources_from_plan = func(type) {
+
+  resources = {}
+
+  # Iterate over all modules in the tfplan import
+  for tfplan.module_paths as path {
+    # Iterate over the named resources of desired type in the module
+    for tfplan.module(path).resources[type] else {} as name, instances {
+      # Iterate over resource instances
+      for instances as index, r {
+
+        # Get the address of the instance
+        if length(path) == 0 {
+          # root module
+          address = type + "." + name + "[" + string(index) + "]"
+        } else {
+          # non-root module
+          address = "module." + strings.join(path, ".module.") + "." +
+                    type + "." + name + "[" + string(index) + "]"
+        }
+
+        # Add the instance to resources map, setting the key to the address
+        resources[address] = r
+      }
+    }
+  }
+
+  return resources
+}
+
+# Function to restrict images used by GCP compute instances
+validate_images = func() {
+
+  validated = true
+
+  # Get all resource instances of the specified type
+  resource_instances = find_resources_from_plan("<resource_type>")
+
+  # Loop through the resource instances
+  for resource_instances as address, r {
+    # Validate that boot_disk[0].initialize_params is present and a list
+    if types.type_of(r.applied.boot_disk[0].initialize_params) is "list" {
+      if <expression_1> is not "<expression_2>" {
+        print("GCP compute instance", address, "has image",
+              <expression_1>,
+              "but is supposed to use <expression_2>")
+        validated = false
+      } //end second if
+    } //end first if
+  } //end for
+
+  return validated
+
+}
+
+##### Rules #####
+
+# Call the validation function and assign result
+<add_validation_function_call>
+
+# Main rule that that evaluates the result of the validation function
+<add_main_rule>

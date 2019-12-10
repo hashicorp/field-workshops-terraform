@@ -1,0 +1,13 @@
+# A policy that requires an integer to be even
+
+# A parameter that must be set to an integer.
+param the_number default 1
+
+# Print the number
+print("The number is:", the_number)
+
+# The main rule
+main = rule {
+  # Divide the integer by 2 and compare the remainder to 0
+  the_number % 2 is 0
+}

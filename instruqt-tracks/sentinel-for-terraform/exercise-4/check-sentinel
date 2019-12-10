@@ -1,0 +1,27 @@
+#!/bin/sh -l
+
+set -e
+
+grep -q "google_compute_instance" restrict-gcp-instance-image.sentinel || fail-message "You have not replaced '<data_source_type>' with 'google_compute_instance' yet."
+
+grep -qL "<expression_1>" restrict-gcp-instance-image.sentinel && fail-message "You have not replaced '<expression_1>' yet."
+
+grep -q "r.applied.boot_disk\[0\].initialize_params\[0\].image" restrict-gcp-instance-image.sentinel || fail-message "You have not replaced '<expression_1>' with 'r.applied.boot_disk[0].initialize_params[0].image' yet."
+
+grep -qL "<expression_2>" restrict-gcp-instance-image.sentinel && fail-message "You have not replaced '<expression_2>' yet."
+
+grep -q "debian-cloud/debian-9" restrict-gcp-instance-image.sentinel || fail-message "You have not replaced '<expression_2>' with 'debian-cloud/debian-9' yet."
+
+grep -qL "<add_validation_function_call>" restrict-gcp-instance-image.sentinel && fail-message "You have not replaced '<add_validation_function_call>' yet. You should call the 'validate_images' function and assign the result to a boolean variable."
+
+grep -qL "<add_main_rule>" restrict-gcp-instance-image.sentinel && fail-message "You have not replaced '<add_main_rule>' yet. You should define a main rule that evaluates a boolean variable."
+
+grep -q "sentinel test -run=gcp -verbose" /root/.bash_history || grep -q "sentinel test -run=gcp" /root/.bash_history || fail-message "You haven't tested the restrict-gcp-instance-image.sentinel policy against the test cases yet. Please run 'sentinel test -run=acm -verbose'"
+
+sentinel test -run=gcp
+rc=$?
+if [ $rc -ne 0 ]; then
+    fail-message "Your policy did not pass both test cases. Please revise and test it again."
+fi
+
+exit 0

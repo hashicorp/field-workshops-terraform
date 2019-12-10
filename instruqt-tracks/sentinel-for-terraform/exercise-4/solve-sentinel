@@ -1,0 +1,14 @@
+#!/bin/sh -l
+
+# Edit the restrict-gcp-instance-image.sentinel policy
+sed -i 's/<resource_type>/google_compute_instance/g' restrict-gcp-instance-image.sentinel
+sed -i 's/<expression_1>/r.applied.boot_disk[0].initialize_params[0].image/g' restrict-gcp-instance-image.sentinel
+sed -i 's/<expression_2>/debian-cloud\/debian-9/g' restrict-gcp-instance-image.sentinel
+sed -i 's/<add_validation_function_call>/images_validated = validate_images()/g' restrict-gcp-instance-image.sentinel
+sed -i 's/<add_main_rule>/main = rule { images_validated }/g' restrict-gcp-instance-image.sentinel
+
+# Test the restrict-gcp-instance-image.sentinel policy
+echo -e "sentinel test -run=gcp -verbose\n" >> /root/.bash_history
+sentinel test -run=gcp -verbose
+
+exit 0
