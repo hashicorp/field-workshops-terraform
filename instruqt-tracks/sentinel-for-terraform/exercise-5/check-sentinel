@@ -1,0 +1,47 @@
+#!/bin/sh -l
+
+set -e
+
+grep -qL "<declare_imports>" require-modules-from-pmr.sentinel && fail-message "You have not replaced '<declare_imports>' with import declarations yet."
+
+grep -q "import \"tfconfig\"" require-modules-from-pmr.sentinel || fail-message "You have not declared the 'tfconfig' import yet."
+
+grep -qL "<expression_1>" require-modules-from-pmr.sentinel && fail-message "You have not replaced '<expression_1>' yet."
+
+grep -q "tfconfig.modules" require-modules-from-pmr.sentinel || fail-message "You have not replaced '<expression_1>' with 'tfconfig.modules' yet."
+
+grep -qL "<condition>" require-modules-from-pmr.sentinel && fail-message "You have not replaced '<condition>' yet."
+
+grep -qL "<expression_2>" require-modules-from-pmr.sentinel && fail-message "You have not replaced '<expression_2>' yet."
+
+grep -q "m.source" require-modules-from-pmr.sentinel || fail-message "You have not added 'm.source' yet."
+
+grep -q "strings.has_prefix" require-modules-from-pmr.sentinel || grep -q "matches" require-modules-from-pmr.sentinel || fail-message "You need to use 'strings.has_prefix' or 'matches' in your condition."
+
+matches=$(grep -o "strings" require-modules-from-pmr.sentinel | wc -l)
+if [ "$matches" = "1" ]; then
+    fail-message "You need to declare the strings import before using it."
+fi
+
+matches=$(grep -o "m.source" require-modules-from-pmr.sentinel | wc -l)
+if [ ! "$matches" = "2" ]; then
+    fail-message "You have not added 'm.source' a second time yet."
+fi
+
+grep -qL "<function>" require-modules-from-pmr.sentinel && fail-message "You have not replaced '<function>' yet. You should call the 'require_modules_from_pmr' function and pass parameters to it."
+
+grep -qL "<arg1>" require-modules-from-pmr.sentinel && fail-message "You have not replaced '<arg1>' yet."
+
+grep -qL "<arg2>" require-modules-from-pmr.sentinel && fail-message "You have not replaced '<arg2>' yet."
+
+grep -q "require_modules_from_pmr(address, organization)" require-modules-from-pmr.sentinel || fail-message "You have not replaced '<function>(<arg1>, <arg2>)' with 'require_modules_from_pmr(address, organization)' yet."
+
+grep -q "sentinel test -run=pmr -verbose" /root/.bash_history || grep -q "sentinel test -run=pmr" /root/.bash_history || fail-message "You haven't tested the require-modules-from-pmr.sentinel policy against the test cases yet. Please run 'sentinel test -run=pmr -verbose'"
+
+sentinel test -run=pmr
+rc=$?
+if [ $rc -ne 0 ]; then
+    fail-message "Your policy did not pass both test cases. Please revise and test it again."
+fi
+
+exit 0

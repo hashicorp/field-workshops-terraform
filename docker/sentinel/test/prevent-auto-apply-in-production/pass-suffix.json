@@ -1,0 +1,8 @@
+{
+  "mock": {
+    "tfrun": "mock-tfrun-pass-suffix.sentinel"
+  },
+  "test": {
+    "main": true
+  }
+}

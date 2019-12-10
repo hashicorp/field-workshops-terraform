@@ -1,0 +1,21 @@
+#!/bin/sh -l
+
+#  Apply require-even-number.sentinel with the default value 1
+echo -e "sentinel apply require-even-number.sentinel\n" >> /root/.bash_history
+sentinel apply require-even-number.sentinel
+
+
+# Apply require-even-number.sentinel with the value 2
+echo -e "sentinel apply -param the_number=2 require-even-number.sentinel\n" >> /root/.bash_history
+sentinel apply -param the_number=2 require-even-number.sentinel
+
+
+# Edit the require-even-number test cases
+sed -i 's/<an_odd_number>/5/g' /root/test/require-even-number/fail.json
+sed -i 's/<an_even_number>/4/g' /root/test/require-even-number/pass.json
+
+# Test the require-even-number.sentinel policy
+echo -e "sentinel test -run=number\n" >> /root/.bash_history
+sentinel test -run=number
+
+exit 0

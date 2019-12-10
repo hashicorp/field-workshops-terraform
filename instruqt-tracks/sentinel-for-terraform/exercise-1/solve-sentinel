@@ -1,0 +1,16 @@
+#!/bin/sh -l
+
+# Edit the restrict-vault-auth-methods.sentinel policy
+sed -i 's/<method1>/azure/g' restrict-vault-auth-methods.sentinel
+sed -i 's/<method2>/kubernetes/g' restrict-vault-auth-methods.sentinel
+sed -i 's/<method3>/github/g' restrict-vault-auth-methods.sentinel
+sed -i 's/<method4>/approle/g' restrict-vault-auth-methods.sentinel
+sed -i 's/<resource_type>/vault_auth_backend/g' restrict-vault-auth-methods.sentinel
+sed -i 's/<attribute>/type/g' restrict-vault-auth-methods.sentinel
+sed -i 's/<list>/allowed_methods/g' restrict-vault-auth-methods.sentinel
+
+# Test the restrict-vault-auth-methods.sentinel policy
+echo -e "sentinel test -run=vault -verbose\n" >> /root/.bash_history
+sentinel test -run=vault -verbose
+
+exit 0
