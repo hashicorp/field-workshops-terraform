@@ -1,0 +1,8 @@
+{
+  "param": {
+    "the_number": <an_even_number>
+  },
+  "test": {
+    "main": true
+  }
+}

@@ -1,0 +1,21 @@
+#!/bin/sh -l
+
+set -e
+
+grep -q "sentinel apply require-even-number.sentinel" /root/.bash_history || fail-message "You haven't run applied the policy with the default value of 1 yet."
+
+grep -q "sentinel apply -param the_number=2 require-even-number.sentinel" /root/.bash_history || grep -q "sentinel apply -param the_number=2 -trace require-even-number.sentinel" /root/.bash_history || fail-message "You haven't applied the policy with the value of 2 yet."
+
+grep -qL "<an_odd_number>" test/require-even-number/fail.json && fail-message "You have not replaced '<an_odd_number>' in fail.json with an odd number yet."
+
+grep -qL "<an_even_number>" test/require-even-number/pass.json && fail-message "You have not replaced '<an_even_number>' in pass.json with an even number yet."
+
+grep -q "sentinel test -run=number" /root/.bash_history || grep -q "sentinel test -run=number -verbose" /root/.bash_history || fail-message "You haven't tested the require-even-number.sentinel policy against the test cases yet."
+
+sentinel test -run=number
+rc=$?
+if [ $rc -ne 0 ]; then
+    fail-message "Your policy did not pass both test cases. Please revise and test it again."
+fi
+
+exit 0

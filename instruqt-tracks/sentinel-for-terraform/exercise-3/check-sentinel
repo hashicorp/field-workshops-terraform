@@ -1,0 +1,26 @@
+#!/bin/sh -l
+
+set -e
+
+grep -q "aws_acm_certificate" restrict-acm-certificate-domains.sentinel || fail-message "You have not replaced '<data_source_type>' with 'aws_acm_certificate' yet."
+
+grep -qL "<condition>" restrict-acm-certificate-domains.sentinel && fail-message "You have not replaced '<condition>' yet."
+
+grep -q "d.attr.domain" restrict-acm-certificate-domains.sentinel || fail-message "You have not replaced '<expression>' with 'd.attr.domain' yet."
+
+grep -qL "<boolean_variable>" restrict-acm-certificate-domains.sentinel && fail-message "You have not replaced '<boolean_variable>' with a boolean variable yet."
+
+matches=$(grep -o validate_certs restrict-acm-certificate-domains.sentinel | wc -l)
+if [ ! "$matches" = "2" ]; then
+    fail-message "You have not replaced '<function>' with 'validate_certs' yet."
+fi
+
+grep -q "sentinel test -run=acm -verbose" /root/.bash_history || grep -q "sentinel test -run=acm" /root/.bash_history || fail-message "You haven't tested the restrict-acm-certificate-domains.sentinel policy against the test cases yet. Please run 'sentinel test -run=acm -verbose'"
+
+sentinel test -run=acm
+rc=$?
+if [ $rc -ne 0 ]; then
+    fail-message "Your policy did not pass both test cases. Please revise and test it again."
+fi
+
+exit 0

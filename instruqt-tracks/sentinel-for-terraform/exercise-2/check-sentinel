@@ -1,0 +1,26 @@
+#!/bin/sh -l
+
+set -e
+
+grep -q "aws_iam_access_key" require-access-keys-use-pgp.sentinel || fail-message "You have not replaced '<resource_type>' with 'aws_iam_access_key' yet."
+
+grep -qL "<condition>" require-access-keys-use-pgp.sentinel && fail-message "You have not replaced '<condition>' yet."
+
+grep -q "r.applied.pgp_key" require-access-keys-use-pgp.sentinel || fail-message "You have not replaced '<expression>' with 'r.applied.pgp_key' yet."
+
+grep -q "null" require-access-keys-use-pgp.sentinel || fail-message "You have not included 'null' in your condition yet."
+
+matches=$(grep -o validate_keys require-access-keys-use-pgp.sentinel | wc -l)
+if [ ! "$matches" = "2" ]; then
+    fail-message "You have not replaced '<function>' with 'validate_keys' yet."
+fi
+
+grep -q "sentinel test -run=keys -verbose" /root/.bash_history || grep -q "sentinel test -run=keys" /root/.bash_history || fail-message "You haven't tested the require-access-keys-use-pgp.sentinel policy against the test cases yet. Please run 'sentinel test -run=keys -verbose'"
+
+sentinel test -run=keys
+rc=$?
+if [ $rc -ne 0 ]; then
+    fail-message "Your policy did not pass all 4 test cases. Please revise and test it again."
+fi
+
+exit 0

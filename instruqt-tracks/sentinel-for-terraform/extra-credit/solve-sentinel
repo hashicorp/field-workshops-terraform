@@ -1,0 +1,13 @@
+#!/bin/sh -l
+
+# Edit the prevent-auto-apply-in-production.sentinel policy
+sed -i 's/<condition_1>/tfrun.workspace.name matches "^prod-(.*)"/g' prevent-auto-apply-in-production.sentinel
+sed -i 's/<condition_2>/tfrun.workspace.name matches "(.*)-prod$"/g' prevent-auto-apply-in-production.sentinel
+sed -i 's/<condition_3>/tfrun.workspace.auto_apply is true/g' prevent-auto-apply-in-production.sentinel
+sed -i 's/<expression_1>/tfrun.workspace.name/g' prevent-auto-apply-in-production.sentinel
+
+# Test the prevent-auto-apply-in-production.sentinel policy
+echo -e "sentinel test -run=auto -verbose\n" >> /root/.bash_history
+sentinel test -run=auto -verbose
+
+exit 0

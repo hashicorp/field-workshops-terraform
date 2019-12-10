@@ -1,0 +1,14 @@
+#!/bin/sh -l
+
+# Edit the restrict-acm-certificate-domains.sentinel policy
+sed -i 's/<data_source_type>/aws_acm_certificate/g' restrict-acm-certificate-domains.sentinel
+sed -i 's/<condition>/strings.has_suffix(d.attr.domain else "", ".hashidemos.io")/g' restrict-acm-certificate-domains.sentinel
+sed -i 's/<expression>/d.attr.domain/g' restrict-acm-certificate-domains.sentinel
+sed -i 's/<function>/validate_certs()/g' restrict-acm-certificate-domains.sentinel
+sed -i 's/<boolean_variable>/certs_validated/g' restrict-acm-certificate-domains.sentinel
+
+# Test the restrict-acm-certificate-domains.sentinel policy
+echo -e "sentinel test -run=acm -verbose\n" >> /root/.bash_history
+sentinel test -run=acm -verbose
+
+exit 0
