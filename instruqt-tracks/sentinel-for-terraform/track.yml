@@ -11,6 +11,8 @@ description: |-
   In this track, you will write and test policies that restrict resources, data sources, and modules provisioned by Terraform in AWS, Azure, and GCP.
 
   This track is intended for use with these [slides](https://drive.google.com/open?id=1iFff7wYhiRLQyWiRXDSN6HJ5CGVGy5xI).
+
+  We recommend starting this track when you can set aside at least 2 hours of uninterrupted time. (The total allocation of 4 hours is for use of the track in a workshop setting in which slides are alternated with the track challenges.) If you find yourself running out of time or are interrupted, we recommend saving all your completed policies outside the track so that you can quickly restore them if forced to begin the track again.
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
 - terraform
@@ -135,11 +137,13 @@ challenges:
 
     We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it. The policy uses simplified versions of the `find_resources_from_plan` and `validate_attribute_in_list` functions from this sample [policy](https://github.com/hashicorp/terraform-guides/blob/master/governance/second-generation/aws/restrict-ec2-instance-type.sentinel).
 
+    If you would like to learn more about those methods, see the [find_resources_from_plan](https://github.com/hashicorp/terraform-guides/blob/master/governance/second-generation/common-functions/plan/find_resources_from_plan.md) and [validate_attribute_in_list](https://github.com/hashicorp/terraform-guides/blob/master/governance/second-generation/common-functions/plan/validate_attribute_in_list.md) doc pages.
+
     At any point while solving the challenge, you can click the green `Check` button to get a hint suggesting something that you still need to do.
 
     Open the restrict-vault-auth-methods.sentinel policy on the "Policy" tab. After two import statements and the functions mentioned above, you'll see several placeholders in angular brackets. You need to replace those placeholders with suitable expressions.
 
-    Replace `<method1>`, `<method2>`, `<method3>`, and `<method4>` in the `allowed_methods` list with suitable values. If you did not read the second screen while this challenge was loading, we suggest you read it now by clicking on the note icon in the upper right corner and then clicking the right arrow icon. Click the X icon to return to the challenge.
+    Replace `<method1>`, `<method2>`, `<method3>`, and `<method4>` in the `allowed_methods` list with suitable values. If you did not read the second screen while this challenge was loading, we suggest you read it now by clicking on the note icon in the upper right corner and then clicking the right arrow icon. Click the X icon to return to the challenge. Be sure to check the Vault auth method pages to see what the correct values are and note that case matters.
 
     You now need to replace `<resource_type>`, `<attribute>`, and `<list>` in the call to the `validate_attribute_in_list` function on line 77. We've already told you the resource type above.  You can figure out the attribute you want to restrict by reading the [auth_backend](https://www.terraform.io/docs/providers/vault/r/auth_backend.html) documentation. The name of the list to use should be obvious.
 
@@ -267,6 +271,8 @@ challenges:
 
     Open the restrict-acm-certificate-domains.sentinel policy on the "Policy" tab. After two import statements and a `find_data_sources_from_state` function, you'll see a `validate_certs` function with several placeholders in angular brackets. You need to replace those placeholders with suitable expressions.
 
+    If you would like to learn more about the first function, see this [doc](https://github.com/hashicorp/terraform-guides/blob/master/governance/second-generation/common-functions/state/find_datasources_from_state.md).
+
     Replace `<data_source_type>` in the definition of the `validate_certs` function with a suitable data source type from the AWS provider. If you did not read the second screen while this challenge was loading, we suggest you read it now by clicking on the note icon in the upper right corner and then clicking the right arrow icon. Click the X icon to return to the challenge.
 
     Now that you have found the documentation page for the data source you are restricting, you can determine the specific attribute that is used to set the domain on an ACM certificate. Note that when referring to an attribute in the `tfstate` import, you have to use `attr` instead of `applied`.
@@ -275,7 +281,7 @@ challenges:
 
     You now need to replace `<expression>` in the definition of the `validate_certs` function twice with a suitable expression representing the value of the domain. You would have already used this expression when building your condition.
 
-    Now that you've completed the `validate_keys` function, you need to call it in the Rules section of the policy, replacing `<boolean_variable>` and `<function>`. You also need to replace `<boolean_variable>` in the main rule. You could call the boolean variable almost anything, but we recommend `certs_validated`.
+    Now that you've completed the `validate_certs` function, you need to call it in the Rules section of the policy, replacing `<boolean_variable>` and `<function>`. You also need to replace `<boolean_variable>` in the main rule. You could call the boolean variable almost anything, but we recommend `certs_validated`.
 
     After making all the above substitutions, save the restrict-acm-certificate-domains.sentinel policy.
 
@@ -515,4 +521,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 1800
-checksum: "10369849599806578095"
+checksum: "137564690779601884"
