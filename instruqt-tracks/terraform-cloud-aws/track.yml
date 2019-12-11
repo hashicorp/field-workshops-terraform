@@ -29,7 +29,7 @@ private: true
 published: true
 challenges:
 - slug: setup-our-environment
-  id: kvtcvkhtdkf1
+  id: 8ptkcyuuh6r0
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: Configure your code editor with the HCL extension and open a workspace.
@@ -75,7 +75,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: open-a-terminal
-  id: tdj4sxpvzupm
+  id: j5cp109wofoa
   type: challenge
   title: "\U0001F5A5️ Open a Terminal"
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
@@ -112,7 +112,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: terraform-cloud-setup
-  id: bwxfyq4qboqt
+  id: flgornvw5xu5
   type: challenge
   title: ☁️ Terraform Cloud Setup
   teaser: Terraform Cloud offers unlimited free terraform state storage for users.
@@ -140,7 +140,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: oh-no-an-outage
-  id: isfxzosfx0p1
+  id: 6ddjxvjdqigq
   type: challenge
   title: "\U0001F631 Oh No - An Outage!"
   teaser: An unexpected outage has taken down one of the production websites. How
@@ -180,4 +180,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "11652165282290193082"
+checksum: "11525787030907085731"
