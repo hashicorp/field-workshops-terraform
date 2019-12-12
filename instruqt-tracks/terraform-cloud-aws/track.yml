@@ -29,7 +29,7 @@ private: true
 published: true
 challenges:
 - slug: setup-our-environment
-  id: kvtcvkhtdkf1
+  id: 8ptkcyuuh6r0
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: Configure your code editor with the HCL extension and open a workspace.
@@ -75,7 +75,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: open-a-terminal
-  id: tdj4sxpvzupm
+  id: j5cp109wofoa
   type: challenge
   title: "\U0001F5A5️ Open a Terminal"
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
@@ -112,7 +112,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: terraform-cloud-setup
-  id: bwxfyq4qboqt
+  id: flgornvw5xu5
   type: challenge
   title: ☁️ Terraform Cloud Setup
   teaser: Terraform Cloud offers unlimited free terraform state storage for users.
@@ -140,7 +140,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: oh-no-an-outage
-  id: isfxzosfx0p1
+  id: 6ddjxvjdqigq
   type: challenge
   title: "\U0001F631 Oh No - An Outage!"
   teaser: An unexpected outage has taken down one of the production websites. How
@@ -180,4 +180,111 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "11652165282290193082"
+- slug: protecting-sensitive-variables
+  id: kdpzdpk67mjx
+  type: challenge
+  title: "\U0001F510 Meet the Security Team"
+  teaser: Your team has started building cloud infrastructure on AWS, but the security
+    team is concerned about protecting access to everyone's cloud credentials.
+  assignment: |-
+    After the AWS credentials issue, the security team is tightening down access to your AWS account. API keys must now be secured as stored variables in Terraform Cloud. Your task is to find your AWS Access Key ID and Secret Access Key, and move them into your workspace as secure environment variables.
+
+    In order to complete this challenge you'll need to do the following:
+
+    1. Find your AWS credentials with the following commands:
+
+    ```
+    echo $AWS_ACCESS_KEY_ID
+    echo $AWS_SECRET_ACCESS_KEY
+    ```
+    2. Update the **Execution Mode** settings in your workspace to **Remote**.
+    3. Set **Environment Variables** for your AWS credentials and mark them as "Sensitive".
+    4. Set **Terraform Variables** for your `prefix` and `region`. Learn more about these variables by looking in the variables.tf file.
+
+    Test your work by running `terraform plan`. You should see a remote execution run begin on Terraform Cloud. A copy of the output will be streamed back to your terminal. Run a terraform apply to see it in action:
+
+    ```
+    terraform apply -auto-approve
+    ```
+
+    The `-auto-approve` flag will override the approval phase and go directly to the build.
+
+    Congratulations, your AWS keys are now safely encrypted and stored in your Terraform Cloud workspace.
+
+    You can continue to run `terraform plan` and `terraform apply` in your terminal, but the execution is now done in Terraform Cloud.
+  notes:
+  - type: text
+    contents: "After a few weeks on the job you're starting to get into the rhythm
+      of things. Write some code, run some tests, deploy the website. Everything's
+      going great until someone's AWS keys are accidentally pushed to a public code
+      repository. You get this email from Janet, the lead infosec admin at ACME:\n\n\U0001F46E\U0001F3FE‍♀️
+      Hello intern, we ran a remote scan on your laptop last night and found some
+      unsecured AWS access keys. We need you to move those off your laptop and store
+      them in Terraform Cloud by the end of the day."
+  - type: text
+    contents: "\U0001F914 Did you know?\n\nThousands of API and cryptographic keys
+      are leaking on GitHub every day!\n\nhttps://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/\n\nWhen
+      you store your API keys as sensitive variables they are encrypted and stored
+      in an instance of HashiCorp Vault. These keys are only decrypted in a trusted,
+      secure container that runs the terraform command."
+  - type: text
+    contents: "\U0001F469\U0001F3FC‍\U0001F4BB Remote Execution, Local Code\n\nRemote
+      Execution allows you to use the same terraform commands that you're familiar
+      with, but the run and all your variables are safely stored in your Terraform
+      Cloud workspace. This can be helpful when you're upgrading tools that were originally
+      written for Terraform Open Source.\n\nWith Remote Execution your terraform code
+      is still stored on your local machine and sent to the server each time you run."
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  difficulty: basic
+  timelimit: 600
+- slug: sharing-is-caring
+  id: yxnc2r1zlmlg
+  type: challenge
+  title: "\U0001F91D\U0001F3FC Working Together with Teams"
+  teaser: As your Terraform usage increases more team members want to collaborate.
+    Let's add some teams and access rules for our organization.
+  assignment: |-
+    In this challenge you'll create teams with different levels of access to your workspace. You can then invite teammates so they are able to collaborate on code changes and terraform runs.
+
+    1. Go into your organization's General Settings and click on the **Teams** link.<br>
+    2. Add a team called **admins**. Admins should be able to manage policies, manage workspaces, and manage VCS settings.<br>
+    3. Add another team called **developers**. Developers should not have any organization-wide access.<br>
+    4. Add a third team called **managers**. Managers should also not have any organization-wide access.
+
+    Now that you have created some teams you can invite your teammates to your organization. Select the **Users** option in your organization's General Settings.
+
+    * Invite `scarolan+instruqt-aisha@hashicorp.com` to the **developers** team.<br>
+    * Invite `scarolan+instruqt-lars@hashicorp.com` to the **admins** team.<br>
+    * Invite `scarolan+instruqt-hiro@hashicorp.com` to the **managers** team.
+
+    Now you can assign access rights to the hashicat-aws workspace. Go into the **Team Access** page of the hashicat-aws workspace settings.
+
+    * Give the **admins** group admin level access.<br>
+    * Give the **developers** group write level access.<br>
+    * Give the **managers** group read level access.
+
+    Note that you will not see these users appear in your organization until your instructor accepts the invitations to your organization.
+  notes:
+  - type: text
+    contents: "A few months go by and you continue building more infrastructure with
+      Terraform Cloud. The devops team are all familiar with terraform, but some members
+      are unable to access the terraform cloud organization. Your manager Hiro steps
+      into your cubicle with a clipboard in hand:\n\n\U0001F468\U0001F3FB‍\U0001F4BC
+      Thank you for all your hard work on this terraform project. I'd like to have
+      read access to your workspace, and we also need to get Lars and Aisha set up.
+      Can you please create some teams in our organization and add your co-workers
+      to them?"
+  - type: image
+    url: https://storage.cloud.google.com/instruqt-hashicorp-tracks/terraform-cloud-aws/tfcloud_users_page.png?authuser=1
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  difficulty: basic
+  timelimit: 600
+checksum: "16914953636366355103"

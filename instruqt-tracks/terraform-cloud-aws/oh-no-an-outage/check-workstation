@@ -15,8 +15,8 @@ grep -q YOURORGANIZATION /root/hashicat-aws/remote_backend.tf && fail-message "O
 # Does the user have a workspace configured
 grep -q hashicat-aws /root/hashicat-aws/remote_backend.tf || fail-message "Oops, we couldn't find the hashicat-aws workspace in your remote_backend.tf config file. Try again."
 
-# Can we verify the organization exists in TFC?
-# TODO - write this test with a curl command and maybe jq
+# Verify the organization exists in TFC
+curl -I -s -L --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG | grep "HTTP/2 200" || fail-message "I couldn't find your organization, $ORG in Terraform Cloud. Make sure you created it and that it is configured in your remote_backend.tf file."
 
-# Can we verify the workspace exists in TFC?
-# TODO - write this test with a curl command and maybe jq
+# Verify the workspace exists in TFC
+curl -I -s -L --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws | grep "HTTP/2 200" || fail-message "I couldn't find the hashicat-aws workspace in your organization $ORG. Make sure you created it and that it is configured in your remote_backend.tf file."
