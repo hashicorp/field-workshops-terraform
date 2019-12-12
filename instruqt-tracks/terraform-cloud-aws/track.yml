@@ -248,6 +248,8 @@ challenges:
   teaser: As your Terraform usage increases more team members want to collaborate.
     Let's add some teams and access rules for our organization.
   assignment: |-
+    Teams and role-based access controls are a paid feature of Terraform Cloud. Your instructor will need to upgrade your organization to a free trial in order to complete this challenge.
+
     In this challenge you'll create teams with different levels of access to your workspace. You can then invite teammates so they are able to collaborate on code changes and terraform runs.
 
     1. Go into your organization's General Settings and click on the **Teams** link.<br>
@@ -280,6 +282,10 @@ challenges:
       to them?"
   - type: image
     url: https://storage.cloud.google.com/instruqt-hashicorp-tracks/terraform-cloud-aws/tfcloud_users_page.png?authuser=1
+  - type: text
+    contents: Teams and role-based access controls are a paid feature of Terraform
+      Cloud. Your instructor will need to upgrade your organization to a free trial
+      in order to complete this challenge.
   tabs:
   - title: Code Editor
     type: service
@@ -287,4 +293,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "5481506625313487893"
+checksum: "2577420358297057560"

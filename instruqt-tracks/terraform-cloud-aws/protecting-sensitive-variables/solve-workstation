@@ -7,11 +7,6 @@ cd /root/hashicat-aws
 ORG="instruqt-testing"
 TOKEN=$(cat /tmp/tfc_user_token)
 
-# TODO - write a solve script to switch to remote exec
-# Curl command to change to remote exec
-# Curl commands to populate environment vars
-# Curl commands to populate terraform vars
-
 # Create a workspace JSON payload with remote exec enabled
 echo "Creating a workspace JSON payload..."
 cat <<-EOF > /tmp/update_workspace.json
