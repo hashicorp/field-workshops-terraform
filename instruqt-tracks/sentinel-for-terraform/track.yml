@@ -367,7 +367,7 @@ challenges:
     contents: |-
       In this challenge, you will complete the fourth of five exercises from the [Writing and Testing Sentinel Policies for Terraform](https://www.hashicorp.com/resources/writing-and-testing-sentinel-policies-for-terraform) guide.
 
-      We recommend reviewing slides 88-89 of the Sentinel-in-Terraform.pptx presentation or reading or reading the [Dealing with Lists, Maps, and Blocks](https://www.hashicorp.com/resources/writing-and-testing-sentinel-policies-for-terraform#dealing-with-lists-maps-and-blocks) section of that guide. In this exercise, you will learn how to evaluate an attribute that is contained in a block contained in another block of a resource. A block is treated by Sentinel as a list of maps.
+      We recommend reviewing slides 88-89 of the Sentinel-in-Terraform.pptx presentation or reading the [Dealing with Lists, Maps, and Blocks](https://www.hashicorp.com/resources/writing-and-testing-sentinel-policies-for-terraform#dealing-with-lists-maps-and-blocks) section of that guide. In this exercise, you will learn how to evaluate an attribute that is contained in a block contained in another block of a resource. A block is treated by Sentinel as a list of maps.
 
       We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it.
   - type: text
@@ -437,7 +437,7 @@ challenges:
     contents: |-
       In this challenge, you will complete the fifth of five exercises from the [Writing and Testing Sentinel Policies for Terraform](https://www.hashicorp.com/resources/writing-and-testing-sentinel-policies-for-terraform) guide.
 
-      We recommend reviewing slide 92 of the Sentinel-in-Terraform.pptx presentation or reading or reading the [Using the Sentinel tfconfig Import](https://www.hashicorp.com/resources/writing-and-testing-sentinel-policies-for-terraform#using-the-tfe-sentinel-tfconfig-import) section of that guide.
+      We recommend reviewing slide 92 of the Sentinel-in-Terraform.pptx presentation or reading the [Using the Sentinel tfconfig Import](https://www.hashicorp.com/resources/writing-and-testing-sentinel-policies-for-terraform#using-the-tfe-sentinel-tfconfig-import) section of that guide.
 
       We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it. The mocks simulate the use of two Azure modules.
   - type: text
@@ -521,4 +521,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 1800
-checksum: "137564690779601884"
+checksum: "281986770032830982"
