@@ -20,7 +20,6 @@ tags:
 owner: hashicorp
 developers:
 - roger@hashicorp.com
-- scarolan@hashicorp.com
 private: false
 published: true
 challenges:
@@ -521,4 +520,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 1800
-checksum: "281986770032830982"
+checksum: "1100184409611799231"
