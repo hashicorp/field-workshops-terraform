@@ -57,14 +57,15 @@ challenges:
     Congratulations, you've configured your environment to work with Terraform!
   notes:
   - type: text
-    contents: "Welcome to your first day on the job at ACME Inc. Here are the members
-      of your team:\n<center><table cellpadding=20>\n  <tr>\n    <td>\n    \U0001F9D5\U0001F3FD
-      Aisha - Database Admin<br>\n    \U0001F46E\U0001F3FE‍♀️ Janet - Security<br>\n
+    contents: "Welcome to your first day on the job at ACME Inc. These are some of
+      your coworkers in the local ACME office:\n<center><table cellpadding=20>\n  <tr>\n
+      \   <td>\n    \U0001F468\U0001F3FB‍\U0001F4BC Hiro - Product Manager<br>\n    \U0001F9D5\U0001F3FD
+      Aisha - Database Admin<br>\n    \U0001F46E\U0001F3FF‍♂️ William - InfoSec Lead<br>\n
       \   \U0001F468\U0001F3FB‍\U0001F9B2 Lars - Lead Developer<br>\n    </td>\n    <td>\n
-      \   \U0001F9D3\U0001F3FB Robin - Operations<br>\n    \U0001F468\U0001F3FB‍\U0001F4BC
-      Hiro - Product Manager<br>\n    \U0001F473\U0001F3FE‍♂️ Gaurav - Network Admin<br>\n
-      \   </td>\n  </tr>\n</table></center>\n\n<center>\U0001F913 You - Brand New
-      Intern\n</center>"
+      \   \U0001F9D3\U0001F3FB Robin - Operations Admin<br>\n    \U0001F469‍\U0001F3A4
+      Jane - Quality Assurance<br>\n    \U0001F473\U0001F3FE‍♂️ Gaurav - Network Admin<br>\n
+      \   \U0001F469\U0001F3FC‍\U0001F4BC Karen - Finance    </td>\n  </tr>\n</table></center>\n\n<center>\U0001F913
+      You - Brand New Intern\n</center>"
   - type: text
     contents: Most modern text editors support Terraform syntax highlighting.
   tabs:
@@ -129,14 +130,15 @@ challenges:
     Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "No VCS Connection" button. Name your workspace **hashicat-aws**.
 
     Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local.  Be sure to save your settings! This will allow us to run terraform commands from our workstation with local variables.
+
+    Finally, provide your instructor with your organization's name. They will upgrade your organization to unlock a 30 day free trial of all paid features.
   notes:
   - type: text
     contents: Terraform Cloud remote state storage is free for all users.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8080
+  - title: Terraform Cloud
+    type: external
+    url: https://app.terraform.io
   difficulty: basic
   timelimit: 600
 - slug: oh-no-an-outage
@@ -178,12 +180,15 @@ challenges:
     type: service
     hostname: workstation
     port: 8080
+  - title: Terraform Cloud
+    type: external
+    url: https://app.terraform.io
   difficulty: basic
   timelimit: 600
 - slug: protecting-sensitive-variables
   id: kdpzdpk67mjx
   type: challenge
-  title: "\U0001F510 Meet the Security Team"
+  title: "\U0001F510 Securing Cloud Credentials"
   teaser: Your team has started building cloud infrastructure on AWS, but the security
     team is concerned about protecting access to everyone's cloud credentials.
   assignment: |-
@@ -201,7 +206,9 @@ challenges:
     3. Set **Environment Variables** for your AWS credentials and mark them as "Sensitive".
     4. Set **Terraform Variables** for your `prefix` and `region`. Learn more about these variables by looking in the variables.tf file.
 
-    Test your work by running `terraform plan`. You should see a remote execution run begin on Terraform Cloud. A copy of the output will be streamed back to your terminal. Run a terraform apply to see it in action:
+    Test your work by running `terraform init`. Your backend configuration will be updated for remote execution.
+
+    Next try running `terraform plan`. You should see a remote execution run begin on Terraform Cloud. A copy of the output will be streamed back to your terminal. Run a terraform apply to see it in action:
 
     ```
     terraform apply -auto-approve
@@ -217,7 +224,7 @@ challenges:
     contents: "After a few weeks on the job you're starting to get into the rhythm
       of things. Write some code, run some tests, deploy the website. Everything's
       going great until someone's AWS keys are accidentally pushed to a public code
-      repository. You get this email from Janet, the lead infosec admin at ACME:\n\n\U0001F46E\U0001F3FE‍♀️
+      repository. You get this email from William, the lead infosec admin at ACME:\n\n\U0001F46E\U0001F3FF‍♂️
       Hello intern, we ran a remote scan on your laptop last night and found some
       unsecured AWS access keys. We need you to move those off your laptop and store
       them in Terraform Cloud by the end of the day."
@@ -239,12 +246,15 @@ challenges:
     type: service
     hostname: workstation
     port: 8080
+  - title: Terraform Cloud
+    type: external
+    url: https://app.terraform.io
   difficulty: basic
   timelimit: 600
 - slug: sharing-is-caring
   id: yxnc2r1zlmlg
   type: challenge
-  title: "\U0001F91D\U0001F3FC Working Together with Teams"
+  title: "\U0001F91D\U0001F3FC Working with Teams in Terraform Cloud"
   teaser: As your Terraform usage increases more team members want to collaborate.
     Let's add some teams and access rules for our organization.
   assignment: |-
@@ -287,10 +297,73 @@ challenges:
       Cloud. Your instructor will need to upgrade your organization to a free trial
       in order to complete this challenge.
   tabs:
+  - title: Terraform Cloud
+    type: external
+    url: https://app.terraform.io
+  difficulty: basic
+  timelimit: 600
+- slug: versioned-infrastructure
+  id: k8udkz2bnf5f
+  type: challenge
+  title: "\U0001F4BB Version-Controlled Infrastructure"
+  teaser: The team has grown and you need to implement code reviews. Terraform Cloud
+    can connect to popular Version Control Systems to enable collaboration and testing.
+  assignment: |-
+    In order for different teams and indivdiuals to be able to work on the same terraform code, you need to use a Version Control System (VCS). Terraform Cloud can integrate with the most popular VCS systems including GitHub, GitLab and Bitbucket.
+
+    You will need a free GitHub.com account for this challenge. We recommend using a personal account for training instead your work account (if you have one).
+
+    In this challenge your first task is to create a fork of the hashicat-aws repository. Visit this URL and click on the **Fork** button in the upper right corner to create your own copy of the repo.
+
+    https://github.com/hashicorp/hashicat-aws
+
+    Now that you have your own copy of the hashicat-aws repo to work with, follow the **Configuring GitHub Access** section of the TFC documentation to connect your GitHub account to your Terraform Organization.
+
+    https://www.terraform.io/docs/cloud/vcs/github.html
+
+    Once you've configured GitHub access, you can update your workspace to use your hashicat-aws repository as the source for all Terraform runs. Go into the **Settings > Version Control** settings page for your workspace. Connect your workspace to the fork of your hashicat-aws repository on GitHub. You can leave all the VCS settings at their defaults.
+
+    Now you can test your work by triggering the first VCS driven terraform run. Click the **Queue Plan** button and enter "Github Integration" for the reason.
+
+    Congratulations, all Terraform changes must now go through version control before they are used in your workspace. This enables you to do code reviews before any changes are pushed to production. It also provides a valuable record of any and all changes made to the code that built your infrastructure. This can prevent configuration drift and undocumented changes.
+
+    Click the **Check** button to let Jane know she can clone the hashicat-aws repo for QA testing.
+  notes:
+  - type: text
+    contents: "As terraform usage continues to increase across the organization, your
+      team needs a better way to store and organize everyone's terraform code. Until
+      now you haven't had much testing or code review for infrastructure changes.
+      Jane, the QA lead, introduces herself:\n\n\U0001F469‍\U0001F3A4 Hi devops admin,
+      we're trying to implement better quality assurance around our infrastructure
+      deployment process. Can you help me add the hashicat-aws GitHub repository to
+      the workspace so we can implement code reviews?"
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8080
+  - title: Configuring Github Access
+    type: external
+    url: https://www.terraform.io/docs/cloud/vcs/github.html
+  - title: Terraform Cloud
+    type: external
+    url: https://app.terraform.io
+  difficulty: basic
+  timelimit: 600
+- slug: this-is-the-end
+  id: fckoj2szdzcm
+  type: challenge
+  title: The End - That's All Folks!
+  teaser: You have reached the end of this workshop.
+  assignment: This is just a placeholder right now.
+  notes:
+  - type: video
+    url: https://www.youtube.com/embed/gBzJGckMYO4
+  tabs:
   - title: Code Editor
     type: service
     hostname: workstation
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "2577420358297057560"
+checksum: "13928427858698719887"

@@ -2,3 +2,11 @@
 wget https://github.com/hashicorp/field-workshops-terraform/blob/master/docker/workstation/wholroyd.hcl-0.0.4.tar.gz?raw=true -O /tmp/wholroyd.hcl-0.0.4.tar.gz
 cd /root/.local/share/code-server/extensions
 tar -zxvf /tmp/wholroyd.hcl-0.0.4.tar.gz
+
+# Blow away the test workspace, hashicat-aws if it exists
+ORG=instruqt-testing
+TOKEN=$(cat /tmp/tfc_user_token)
+
+# Delete the workspace. Might result in a 404 but that's OK as long as curl doesn't error out.
+echo "Cleaning up the hashicat-aws workspace..."
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws

@@ -6,7 +6,7 @@ ARG TFC_USER_TOKEN
 RUN sudo apt -y update
 RUN sudo apt -y install software-properties-common unzip python3-pip jq cowsay
 RUN echo "Installing Terraform and command line tools."
-RUN wget https://releases.hashicorp.com/terraform/0.12.17/terraform_0.12.17_linux_amd64.zip -O /tmp/terraform.zip
+RUN wget https://releases.hashicorp.com/terraform/0.12.18/terraform_0.12.18_linux_amd64.zip -O /tmp/terraform.zip
 RUN sudo unzip /tmp/terraform.zip -d /usr/local/bin
 RUN sudo chmod +x /usr/local/bin/terraform
 RUN sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
