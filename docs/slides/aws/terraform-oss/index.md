@@ -641,8 +641,9 @@ name: lab-exercise-1
 <br><br>
 In this lab you'll learn how to set up your editor, use the Terraform command line tool, integrate with AWS, and do a few dry runs with different settings.
 
-Your instructor will provide the URL for the first lab environment.
+Your instructor will provide the URL for the lab environment.
 
+🛑 **STOP** after you complete the second quiz.
 ---
 name: chapter-2-review
 # 📝 Chapter 2 Review
@@ -914,7 +915,7 @@ Your instructor will provide the URL for the second lab environment. Bookmark it
 
 You will need to set up your workstation again in the first challenge. This is expected as we create a new instance for each lab.
 
-🛑 **STOP** after you complete the first quiz.
+🛑 **STOP** after you complete the third quiz.
 
 ???
 **We will explore the Terraform Graph together once everyone has completed the lab. Once you have the graph running in your instruqt lab stop there.**
@@ -1027,7 +1028,7 @@ In part two of the lab we'll use a provisioner to install a new software package
 
 Return to the training lab and continue where you left off.
 
-🛑 **STOP** after you complete the second quiz.
+🛑 **STOP** after you complete the fourth quiz.
 
 ---
 name: chapter-4-review
