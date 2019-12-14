@@ -7,6 +7,14 @@ count: false
 # Intro to Terraform Cloud on AWS
 
 ---
+layout: true
+
+.footer[
+- Copyright © 2019 HashiCorp
+- ![:scale 100%](https://hashicorp.github.io/field-workshops-assets/assets/logos/HashiCorp_Icon_Black.svg)
+]
+
+---
 name: Table-of-Contents
 class: col-2
 # Table of Contents
