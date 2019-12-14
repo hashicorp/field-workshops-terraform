@@ -313,7 +313,7 @@ name: IaC2
 ---
 name: IaC-Tools
 # Other Infrastructure as Code Tools
-.center[![:scale 50%](images/infra_tools.png)]
+.center[![:scale 40%](images/infra_tools.png)]
 
 These tools work well for configuring the operating system and application. They are not purpose-built for provisioning cloud infrastructure and platform services.
 
@@ -325,7 +325,7 @@ These tools work well for configuring the operating system and application. They
 ---
 name: Native-Tools
 # Native Cloud Provisioning Tools
-.center[![:scale 100%](images/clouds.png)]
+.center[![:scale 90%](images/clouds.png)]
 
 Each cloud has its own YAML or JSON based provisioning tool.
 
@@ -513,9 +513,7 @@ resource "azurerm_virtual_network" "vnet" {
 }
 ```
 
-Terraform code is based on the [HCL2 toolkit](https://github.com/hashicorp/hcl2). HCL stands for HashiCorp Configuration Language.
-
-Terraform code, or simply *terraform* is a declarative language that is specifically designed for provisioning infrastructure on any cloud or platform.
+Terraform code is based on the [HCL2 toolkit](https://github.com/hashicorp/hcl2). HCL stands for HashiCorp Configuration Language. Terraform code, or simply *terraform* is a declarative language for provisioning infrastructure on any cloud or platform.
 
 ---
 name: main.tf
@@ -554,7 +552,6 @@ name: terraform-init
 # Terraform Init
 ```tex
 *$ terraform init
-
 Initializing the backend...
 Initializing provider plugins...
 - Checking for available provider plugins...
@@ -563,7 +560,6 @@ Initializing provider plugins...
 provider.azurerm: version = "~> 1.35"
 
 Terraform has been successfully initialized!
-
 ```
 Terraform fetches any required providers and modules and stores them in the .terraform directory. If you add, change or update your modules or providers you will need to run init again.
 
@@ -576,7 +572,6 @@ name: terraform-plan
 ```tex
 *$ terraform plan
 An execution plan has been generated and is shown below.
-
 Terraform will perform the following actions:
   # azurerm_resource_group.myresourcegroup will be created
   + resource "azurerm_resource_group" "myresourcegroup" {
@@ -671,7 +666,6 @@ class: title
 name: anatomy-of-a-resource
 # Anatomy of a Resource
 Every terraform resource is structured exactly the same way.
-
 ```terraform
 resource "type" "name" {
   parameter = "foo"
@@ -679,9 +673,8 @@ resource "type" "name" {
   list = ["one", "two", "three"]
 }
 ```
-
 **resource** = Top level keyword<br>
-**type** = Type of resource. The first part tells you which provider it belongs to. Example: `azurerm_virtual_machine`.<br>
+**type** = Type of resource. Example: `azurerm_virtual_machine`.<br>
 **name** = Arbitrary name to refer to this resource. Used internally by terraform. This field *cannot* be a variable.
 
 ???
@@ -943,7 +936,7 @@ Once you've used Terraform to stand up a virtual machine or container, you may w
 name: file-provisioner
 class: compact
 # The File Provisioner
-The Terraform file provisioner copies files from your workstation onto the remote machine. In our code we're using the file provisioner to upload some shell scripts.
+The Terraform file provisioner copies files onto the remote machine.
 
 ```terraform
 provisioner "file" {
@@ -990,7 +983,7 @@ Local exec and remote exec can be used to trigger Puppet or Ansible runs. We do 
 name: puppet-chef-ansible
 class: compact
 # Terraform & Config Management Tools
-.center[![:scale 60%](images/cpa.jpg)]
+.center[![:scale 50%](images/cpa.jpg)]
 
 Terraform works well with common config management tools like Chef, Puppet or Ansible. Below are some links with more information on each:
 
@@ -1061,8 +1054,7 @@ The state file is Terraform's source of record for everything it knows about.
 ---
 name: terraform-refresh
 # Terraform Refresh
-
-Sometimes infrastructure may be changed outside of Terraform's control. Virtual machines could be deleted, firewall rules changed, hardware failures could occur causing your infrastructure to look different than what's in the state file.
+Sometimes infrastructure may be changed outside of Terraform's control.
 
 The state file represents the *last known* state of the infrastructure. If you'd like to check and see if the state file still matches what you built, you can use the **terraform refresh** command.
 
@@ -1187,8 +1179,6 @@ class: img-caption
 name: additional-resources
 class: compact
 # Additional Resources
-If you'd like to learn more about Terraform on Azure try the links below:
-
 HashiCorp Learning Portal<br>
 https://learn.hashicorp.com/terraform/
 
