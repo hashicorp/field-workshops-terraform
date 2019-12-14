@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /root/hashicat-azure
+cd /root/hashicat-aws
 
 curl -I $(cat terraform.tfstate | jq -r .outputs.catapp_url.value) | grep "200 OK"
 EXITCODE=$?
