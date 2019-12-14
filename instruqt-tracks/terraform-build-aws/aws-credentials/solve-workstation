@@ -3,4 +3,4 @@
 source /root/.bashrc
 source /etc/profile.d/instruqt-env.sh
 # Emulate the student running this command
-echo "env | grep AWS" >> /root/.bash_history
+echo "AWS_SECRET_ACCESS_KEY" >> /root/.bash_history
