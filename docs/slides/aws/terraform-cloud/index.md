@@ -15,6 +15,14 @@ layout: true
 ]
 
 ---
+name: Introductions
+# Introductions
+- Your Name
+- Job Title
+- Automation Experience
+- Favorite Text Editor
+
+---
 name: Table-of-Contents
 class: col-2
 # Table of Contents

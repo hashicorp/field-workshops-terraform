@@ -48,7 +48,6 @@ Follow along on your own computer at this link:
 ---
 name: Introductions
 # Introductions
-<br><br><br>
 - Your Name
 - Job Title
 - Automation Experience
@@ -122,7 +121,7 @@ name: AWS-Console-Provision
 ---
 name: AWS-Console-Provision-2
 # Method 1: AWS Portal (GUI)
-![:scale 70%](images/aws_provision_2.png)
+![:scale 60%](images/aws_provision_2.png)
 
 ???
 **Once you've chosen your AMI, you will fill in some more details - the instance type, the VPC you want it to launch in, any associated IAM roles you want to assign it, external storage, tags, security groups... it's a long list of options! The AWS console can be handy for spinning up individual VMs and dev or test environments. The good news is that it's really easy to spin up infrastructure this way. The bad news is that it doesn't scale, and chances are that nobody is keeping track of what got built.**
@@ -310,7 +309,7 @@ name: IaC2
 ---
 name: IaC-Tools
 # Other Infrastructure as Code Tools
-.center[![:scale 50%](images/infra_tools.png)]
+.center[![:scale 40%](images/infra_tools.png)]
 
 These tools work well for configuring the operating system and application. They are not purpose-built for provisioning cloud infrastructure and platform services.
 
@@ -322,7 +321,7 @@ These tools work well for configuring the operating system and application. They
 ---
 name: Native-Tools
 # Native Cloud Provisioning Tools
-.center[![:scale 100%](images/clouds.png)]
+.center[![:scale 90%](images/clouds.png)]
 
 Each cloud has its own YAML or JSON based provisioning tool.
 
@@ -570,7 +569,6 @@ name: terraform-plan
 ```tex
 *$ terraform plan
 An execution plan has been generated and is shown below.
-
 Terraform will perform the following actions:
   # aws_vpc.main will be created
   + resource "aws_vpc" "main" {
@@ -579,8 +577,6 @@ Terraform will perform the following actions:
       ...
       + instance_tenancy                 = "dedicated"
     }
-
-Plan: 1 to add, 0 to change, 0 to destroy.
 ```
 Preview your changes with `terraform plan` before you apply them.
 
@@ -681,7 +677,7 @@ resource type "name" {
 ```
 
 **resource** = Top level keyword<br>
-**type** = Type of resource. The first part tells you which provider it belongs to. Example: `aws_instance`.<br>
+**type** = Type of resource. Example: `aws_instance`.<br>
 **name** = Arbitrary name to refer to this resource. Used internally by terraform. This field *cannot* be a variable.
 
 ???
@@ -750,7 +746,6 @@ class: compact
 An execution plan has been generated and is shown below.
 
 Terraform will perform the following actions:
-
   # aws_vpc.main will be destroyed
   - resource "aws_vpc" "main" {
       - cidr_block                       = "10.0.0.0/16" -> null
@@ -956,7 +951,7 @@ Once you've used Terraform to stand up a virtual machine or container, you may w
 name: file-provisioner
 class: compact
 # The File Provisioner
-The Terraform file provisioner copies files from your workstation onto the remote machine. In our code we're using the file provisioner to upload some shell scripts.
+The Terraform file provisioner copies files onto the remote machine.
 
 ```terraform
 provisioner "file" {
@@ -1003,9 +998,9 @@ Local exec and remote exec can be used to trigger Puppet or Ansible runs. We do 
 name: puppet-chef-ansible
 class: compact
 # Terraform & Config Management Tools
-.center[![:scale 60%](images/cpa.jpg)]
+.center[![:scale 50%](images/cpa.jpg)]
 
-Terraform works well with common config management tools like Chef, Puppet or Ansible. Below are some links with more information on each:
+Terraform works well with common config management tools like Chef, Puppet or Ansible.
 
 Official Chef Terraform provisioner:<br>
 https://www.terraform.io/docs/provisioners/chef.html
@@ -1075,7 +1070,7 @@ The state file is Terraform's source of record for everything it knows about.
 name: terraform-refresh
 # Terraform Refresh
 
-Sometimes infrastructure may be changed outside of Terraform's control. Virtual machines could be deleted, firewall rules changed, hardware failures could occur causing your infrastructure to look different than what's in the state file.
+Sometimes infrastructure may be changed outside of Terraform's control.
 
 The state file represents the *last known* state of the infrastructure. If you'd like to check and see if the state file still matches what you built, you can use the **terraform refresh** command.
 
