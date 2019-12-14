@@ -1,0 +1,8 @@
+#!/bin/bash
+source /root/.bashrc
+source /etc/profile.d/instruqt-env.sh
+cd /root/hashicat-aws
+
+cp exercises/main.tf.cowsay main.tf
+
+/usr/local/bin/terraform apply -auto-approve

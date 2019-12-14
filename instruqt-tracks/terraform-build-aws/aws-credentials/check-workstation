@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -q "env | grep AWS" /root/.bash_history || fail-message "You haven't checked your credentials yet. We believe in you!"
+grep -q "AWS_SECRET_ACCESS_KEY" /root/.bash_history || fail-message "You haven't checked your credentials yet. We believe in you!"

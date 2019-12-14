@@ -19,11 +19,14 @@ private: true
 published: true
 challenges:
 - slug: setup-our-environment
-  id: 6ba8crym1sn1
+  id: 5qygxzik7w3a
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: Configure your code editor with the HCL extension and open a workspace.
   assignment: |-
+    **Goal**: Validate and configure your working environment.<br>
+    **Estimated Time**: 2-3 minutes.
+
     Open the Code Editor tab on the left.
 
     Select "File > Open Folder".
@@ -43,6 +46,13 @@ challenges:
     Congratulations, you've configured your environment to work with Terraform!
   notes:
   - type: text
+    contents: |
+      Setting up your environment...
+      Keep an eye on the bottom right corner to know when you can get started.
+  - type: text
+    contents: The terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
+      Windows, Solaris and Linux.
+  - type: text
     contents: The terraform language is designed to be both human and machine-readable.
   - type: text
     contents: Most modern text editors support Terraform syntax highlighting.
@@ -54,12 +64,15 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: open-a-terminal
-  id: ec6ttl2twggx
+  id: o8yjfzmw5gep
   type: challenge
   title: "\U0001F5A5️ Open a Terminal"
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
     on Linux, Windows, or MacOS.
   assignment: |-
+    **Goal**: Get to know your workstation<br>
+    **Estimated Time**: 1-2 minutes
+
     Open a new Terminal window. You can use the "Terminal > New Terminal" menu item or the keyboard shortcut **CTRL-J** (**CMD-J** on Mac).
 
     All terraform commands should be run from the terminal within the Code Editor.
@@ -69,6 +82,8 @@ challenges:
     You can use the little caret ^ shaped button on the terminal pane to expand and shrink your Terminal window. This is useful for viewing logs.
 
     Click on the File Explorer icon a couple times to toggle the File Explorer on and off. This can provide more space while you're viewing and editing code.
+
+    You can also hide and show these notes with the expand icon on the upper right side of the GUI. It looks like a box with two small arrows in the corners. This will expand and close the notes panel. Try it now to give your text editor more space.
   notes:
   - type: text
     contents: The terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
@@ -81,11 +96,14 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: hello-terraform
-  id: ehxl0lx4yydr
+  id: 8oijwcqnww0h
   type: challenge
   title: "\U0001F44B Getting to Know Terraform"
   teaser: Learn terraform basics and command line syntax.
   assignment: |-
+    **Goal**: Familiarise yourself with the terraform CLI<br>
+    **Estimated Time**: 1-2 minutes
+
     Let's start with some basic terraform commands.
     Run the following commands in the terminal on the left.
     Check the version of Terraform running on your machine:
@@ -103,13 +121,16 @@ challenges:
   - type: text
     contents: |-
       Terraform open source is a command line application that you can download and run from your laptop or virtual workstation.
-      It is written in Go and runs on MacOS, Linux or Windows. You can always download the latest version of terraform here:
-      https://www.terraform.io/downloads.html
+
+      It is written in Go and runs on macOS, Linux or Windows. You can always download the latest version of terraform from https://www.terraform.io/downloads.html
   - type: text
     contents: |-
       Installing Terraform on your laptop or workstation is easy. You simply download the zip file, unpack it, and place it somewhere in your PATH.
+
       Check out this tutorial for step-by-step instructions:
+
       https://learn.hashicorp.com/terraform/getting-started/install.html
+
       We've pre-installed Terraform in your Instruqt lab environment for you.
   tabs:
   - title: Code Editor
@@ -119,11 +140,14 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: azure-credentials
-  id: rhexfy1dnqks
+  id: ngqfp04xlppc
   type: challenge
   title: "\U0001F510 Connecting Terraform to Azure Cloud"
   teaser: Safely connect to the Azure APIs using a service principal.
   assignment: |-
+    **Goal**: Understand methods for configuring Azure provider credentials.<br>
+    **Estimated time**: 3-5 minutes.
+
     Terraform needs credentials to be able to connect to Azure and build resources.
 
     We've pre-installed some temporary credentials in your Instruqt training environment. These credentials are stored as environment variables. You should never store sensitive API keys inside your source code.
@@ -134,6 +158,7 @@ challenges:
     ```
     env | grep ARM_CLIENT
     ```
+
     *Do not ever store your credentials in source code files*, as they can be accidentally exposed or copied to a public repository.
   notes:
   - type: text
@@ -152,7 +177,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: terraform-code
-  id: 21zqzlddpx0w
+  id: 8b3nazy7xvxq
   type: challenge
   title: "\U0001F468‍\U0001F4BB What does Terraform code look like?"
   teaser: The terraform DSL (Domain Specific Language) is a declarative language that
@@ -166,8 +191,8 @@ challenges:
 
     Terraform code always ends with a `.tf` extension. You can have as many terraform files as you want, but these three are commonly created first:
 
-    **main.tf** - Where most of your terraform code is stored. This is the part that does the building of resources.
-    **variables.tf** - Use this file to define which variables will be available to your users.
+    **main.tf** - Where most of your terraform code is stored. This is the part that does the building of resources.<br>
+    **variables.tf** - Use this file to define which variables will be available to your users.<br>
     **outputs.tf** - This file contains outputs that will be shown at the end of a successful terraform run.
 
     Files that end in anything other than `*.tf` or `*.tfvars` are ignored by Terraform.
@@ -187,7 +212,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-init-provider
-  id: q3jsy8fijoc7
+  id: fjqlffgwsahm
   type: challenge
   title: ☁️ Terraform Init - Install the Azure Provider
   teaser: Terraform needs a provider to talk to cloud APIs. The provider is the bridge
@@ -222,7 +247,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: provider-quiz
-  id: x48icxesswut
+  id: hplqnlk4dxar
   type: quiz
   title: "\U0001F4DD Quiz 1 - Providers and Modules"
   teaser: A quiz about Terraform init
@@ -242,7 +267,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-validate
-  id: c3afst42goal
+  id: thzyufj1wzsc
   type: challenge
   title: "\U0001F469‍⚖️ Terraform Validate - Test Your Code"
   teaser: Terraform has a built in validation tester. This is useful to see whether
@@ -250,13 +275,16 @@ challenges:
   assignment: |-
     Terraform comes with a built-in subcommand called *validate*. This is useful when you want to do a quick syntax check of your code to make sure it parses correctly.
 
-    Click on the File Explorer icon on the left if it is not already open. It looks like a stack of papers.
+    Click on the File Explorer icon on the left. It looks like a stack of papers.
 
     Edit the main.tf file and remove the curly brace on line 4 of the file.
+
     Validate your code:
+
     ```
     terraform validate
     ```
+
     Now put the curly brace back onto line 4 and run the validate command again. This time you should pass the validation test.
 
     **terraform validate** is most often used in automated CI/CD test pipelines. It allows you to quickly catch errors in your code before any other steps are taken.
@@ -272,7 +300,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-plan
-  id: jwwajjhyns6k
+  id: pfwkjcqfkx4o
   type: challenge
   title: "\U0001F914 Terraform Plan - Dry Run Mode"
   teaser: Terraform has a dry run mode where you can preview what will be built without
@@ -304,7 +332,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-variables
-  id: gidlvko2bxmv
+  id: 8mqlh6h1x89o
   type: challenge
   title: "\U0001F39B️ Working with Terraform Variables"
   teaser: Terraform variables allow you to customize your infrastructure without editing
@@ -332,7 +360,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-add-a-variable
-  id: gmb282m60p1i
+  id: aearucx6ptpd
   type: challenge
   title: "\U0001F5FC Change Your Location"
   teaser: Terraform is flexible enough to deploy infrastructure anywhere in the world.
@@ -368,7 +396,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: variables-quiz
-  id: msdmitaxxyjd
+  id: wujzqmy0b9jv
   type: quiz
   title: "\U0001F4DD Quiz 2 - Variables"
   teaser: A quiz about Terraform variables
@@ -388,7 +416,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-graph
-  id: waxfs227u4zm
+  id: kr9uyrnyk51z
   type: challenge
   title: "\U0001F4C8 Terraform Graph"
   teaser: Terraform creates a graph of all the infrastructure defined in your code.
@@ -422,7 +450,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-plan-and-apply
-  id: 72np2k4dvpbq
+  id: eutzht6ysoc7
   type: challenge
   title: "\U0001F468‍\U0001F4BB Terraform Plan and Terraform Apply"
   teaser: The terraform plan command can be run anytime to get a preview of changes
@@ -459,7 +487,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-plan-again
-  id: p9yyp4wkg0ul
+  id: ojqjgcggt41x
   type: challenge
   title: "\U0001F469‍\U0001F4BB Test and Repair"
   teaser: Terraform is idempotent. Each resource in your code will be examined, and
@@ -498,7 +526,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: change-location
-  id: jwinl1cwrk5z
+  id: rc3fsoiiutei
   type: challenge
   title: "\U0001F6EB Change Your Location"
   teaser: When your terraform code changes, your infrastructure will be modified to
@@ -538,7 +566,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: add-a-tag
-  id: uyeuodzgyr7b
+  id: om38efxz74ox
   type: challenge
   title: "\U0001F3F7️ Add a Tag to Your Resource Group"
   teaser: Terraform can change some resources in in place without deleting them. Adding
@@ -567,7 +595,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: add-virtual-network
-  id: d8mr7rhhceqr
+  id: akiixqo0aqul
   type: challenge
   title: "\U0001F5A7 Add a Virtual Network"
   teaser: Terraform resources are like building blocks. You can continue adding more
@@ -596,7 +624,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: complete-the-build
-  id: tqgznlvx3gvr
+  id: oj7n8otck18m
   type: challenge
   title: "\U0001F3D7️ Complete the Build"
   teaser: Terraform code can stand up everything from resource groups, to virtual
@@ -629,7 +657,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: tf-graph-again
-  id: z8mjaenqudko
+  id: bzvjk3xi7ngf
   type: challenge
   title: "\U0001F4C8 Terraform Graph"
   teaser: Revist graph to see what has changed.
@@ -661,7 +689,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: terraform-apply-quiz
-  id: ovoqk5lthudf
+  id: 7zidogjn1oe9
   type: quiz
   title: "\U0001F4DD Quiz 3 - Terraform Apply"
   teaser: What happens when you run `terraform apply` without a plan file?
@@ -681,7 +709,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: use-a-provisioner
-  id: vwmw1zypu5t4
+  id: vpozgnompzhd
   type: challenge
   title: "\U0001F6E0️ Use a Provisioner"
   teaser: Terraform works great with many different provisioning tools including Chef,
@@ -733,7 +761,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: add-an-output
-  id: 9xeq71ssc3xj
+  id: uynaqtnhxe3m
   type: challenge
   title: "\U0001F5A8️ Add an Output"
   teaser: Outputs are used to convey useful information such as IP addresses, application
@@ -780,7 +808,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: fun-with-variables
-  id: 1ya4kzyoyrss
+  id: 1pi0cgooxmlp
   type: challenge
   title: "\U0001F436 Fun With Variables"
   teaser: Variables give the consumers of your terraform code an easy way to customize
@@ -839,7 +867,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: terraform-variables-quiz
-  id: c5qopqeffnwd
+  id: f92cyaayt2ya
   type: quiz
   title: "\U0001F4DD Quiz 4 - Terraform Variables"
   teaser: How do terraform variables get set or overridden?
@@ -859,7 +887,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: terraform-cloud-setup
-  id: kxuyplynyyr9
+  id: inwqabkqorsd
   type: challenge
   title: ☁️ Terraform Cloud Setup
   teaser: Terraform Cloud offers unlimited free terraform state storage for users.
@@ -887,7 +915,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: configure-remote-state
-  id: hhcfa3sw8xcg
+  id: azzf4lxdgwta
   type: challenge
   title: "\U0001F39B️ Configure Remote State"
   teaser: The terraform command line tool can store its state in Terraform Cloud.
@@ -926,7 +954,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: terraform-destroy
-  id: jxsnsxju73ha
+  id: vzdrbjbglp0w
   type: challenge
   title: "\U0001F525 Terraform Destroy"
   teaser: Terraform can build infrastructure and also destroy it when you are done
@@ -952,4 +980,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "610635359046674773"
+checksum: "16618334787053815203"

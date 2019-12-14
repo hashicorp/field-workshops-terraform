@@ -1,0 +1,2 @@
+#!/bin/bash
+grep cowsay main.tf || fail-message "We couldn't find the cowsay install commands in your provisioner inline list."

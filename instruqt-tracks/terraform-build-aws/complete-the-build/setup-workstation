@@ -1,0 +1,13 @@
+#!/bin/bash
+cd /root/hashicat-aws
+cp exercises/main.tf.completed main.tf
+
+# Just the public DNS please
+cat <<EOF > outputs.tf
+# Outputs file
+output "catapp_url" {
+  value = "http://\${aws_instance.hashicat.public_dns}"
+}
+EOF
+
+/usr/local/bin/terraform init
