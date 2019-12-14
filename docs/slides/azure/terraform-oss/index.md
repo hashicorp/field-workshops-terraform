@@ -30,6 +30,14 @@ C         - Pop an external window for presentation
 Instructor notes are included in plain text, narrative parts are in **bold**. You can use the narrative quotes or change them to suit your own presentation style.
 
 ---
+layout: true
+
+.footer[
+- Copyright © 2019 HashiCorp
+- ![:scale 100%](https://hashicorp.github.io/field-workshops-assets/assets/logos/HashiCorp_Icon_Black.svg)
+]
+
+---
 name: Link-to-Slide-Deck
 # The Slide Deck
 <br><br><br>

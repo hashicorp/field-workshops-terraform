@@ -305,7 +305,7 @@ challenges:
 - slug: versioned-infrastructure
   id: k8udkz2bnf5f
   type: challenge
-  title: "\U0001F4BB Version-Controlled Infrastructure"
+  title: "\U0001F4BB Version Controlled Infrastructure"
   teaser: The team has grown and you need to implement code reviews. Terraform Cloud
     can connect to popular Version Control Systems to enable collaboration and testing.
   assignment: |-
