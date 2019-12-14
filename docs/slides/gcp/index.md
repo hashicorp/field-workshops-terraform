@@ -3,9 +3,10 @@ class: title, shelf, no-footer, fullbleed
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-
+.white[
 # Terraform GCP Field Workshop Slides
 ## Slides for Terraform GCP field workshops
+]
 
 ![:scale 15%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
 

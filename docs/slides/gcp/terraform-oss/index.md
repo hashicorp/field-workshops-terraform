@@ -3,8 +3,10 @@ class: title, shelf, no-footer, fullbleed
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
+.white[
 # Terraform OSS GCP Workshop
 ## Provision Infrastructure to Any Cloud
+]
 
 ![:scale 15%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
 
