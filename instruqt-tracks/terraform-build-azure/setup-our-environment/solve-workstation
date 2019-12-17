@@ -2,3 +2,7 @@
 wget https://github.com/hashicorp/field-workshops-terraform/blob/master/docker/workstation/wholroyd.hcl-0.0.4.tar.gz?raw=true -O /tmp/wholroyd.hcl-0.0.4.tar.gz
 cd /root/.local/share/code-server/extensions
 tar -zxvf /tmp/wholroyd.hcl-0.0.4.tar.gz
+
+# TODO: Put an az delete resource group command in here to clean up the bugsbunny-workshop RG if it exists.
+# It should not already exist or the solve scripts will fail.
+# This may require installing the az command line tool on our docker image
