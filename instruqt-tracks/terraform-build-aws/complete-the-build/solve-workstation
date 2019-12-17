@@ -3,7 +3,15 @@ source /root/.bashrc
 source /etc/profile.d/instruqt-env.sh
 cd /root/hashicat-aws
 
-echo "*********************************"
-echo "Running Terraform Apply"
-echo "*********************************"
-/usr/local/bin/terraform apply -auto-approve
+# This feels so gross
+# Try terraform apply 3 times because Ubuntu repos are flaky
+n=0
+until [ $n -ge 3 ]
+do
+  # A successful curl should break out of the loop
+  terraform apply -auto-approve && break
+  n=$[$n+1]
+  sleep 10
+done
+
+echo "Solve script complete."

@@ -1594,7 +1594,7 @@ name: view-your-module-composite
 Commit your code and push your changes to the remote repo. This will trigger a Terraform run. You should have a new application URL in the output:
 
 ```hcl
-alb_dns_name = neil-lb-934610893.us-west-2.elb.amazonaws.com
+alb_dns_name = your-lb-934610893.us-west-2.elb.amazonaws.com
 ```
 ???
 Instructor note: You might see a git error message when you try to push. This is because your partner pushed changes to your repo, and you need to **`git pull`** his or her changes before you proceed.

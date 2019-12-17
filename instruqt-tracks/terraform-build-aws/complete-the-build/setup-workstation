@@ -1,5 +1,9 @@
 #!/bin/bash
+source /root/.bashrc
+source /etc/profile.d/instruqt-env.sh
 cd /root/hashicat-aws
+
+# Copy the completed terraform to main.tf
 cp exercises/main.tf.completed main.tf
 
 # Just the public DNS please
@@ -10,4 +14,5 @@ output "catapp_url" {
 }
 EOF
 
-/usr/local/bin/terraform init
+# Run terraform init to bring in new providers
+terraform init

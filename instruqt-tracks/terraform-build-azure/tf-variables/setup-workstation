@@ -1,3 +1,2 @@
 #!/bin/bash
-mv /root/hashicat-azure/terraform.tfvars.example /root/hashicat-azure/terraform.tfvars
 /bin/set-workdir /root/hashicat-azure
