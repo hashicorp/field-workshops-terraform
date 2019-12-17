@@ -3,6 +3,7 @@ source /root/.bashrc
 source /etc/profile.d/instruqt-env.sh
 cd /root/hashicat-aws
 
+echo "*********************************"
+echo "Running Terraform Apply"
+echo "*********************************"
 /usr/local/bin/terraform apply -auto-approve
-sleep 20
-/usr/local/bin/terraform refresh

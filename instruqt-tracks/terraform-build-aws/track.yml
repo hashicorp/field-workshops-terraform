@@ -13,7 +13,8 @@ tags:
 - aws
 - basics
 owner: hashicorp
-developers: []
+developers:
+- scarolan@hashicorp.com
 private: true
 published: true
 challenges:
@@ -975,4 +976,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "11775517158710981179"
+checksum: "17778434439339452714"

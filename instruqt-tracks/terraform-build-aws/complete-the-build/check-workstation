@@ -1,6 +1,18 @@
 #!/bin/bash
 cd /root/hashicat-aws
 
+# Attempt to curl the app URL six times at ten second intervals
+echo "Attempting to load the catapp URL..."
+n=0
+until [ $n -ge 6 ]
+do
+  # A successful curl should break out of the loop
+  curl -I $(cat terraform.tfstate | jq -r .outputs.catapp_url.value) | grep "200 OK" && break
+  n=$[$n+1]
+  sleep 10
+done
+
+# Fetch the URL again and grep the HTTP code for "200 OK"
 curl -I $(cat terraform.tfstate | jq -r .outputs.catapp_url.value) | grep "200 OK"
 EXITCODE=$?
 
