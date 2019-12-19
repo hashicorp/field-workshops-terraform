@@ -33,17 +33,11 @@ challenges:
 
     Find the `hashicat-aws` directory in the Code Editor and hit `OK`.
 
-    This is your terraform workspace.
+    Congratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new terraform skills.
 
-    Now click on the box-shaped icon on the bottom of the left side menu. This opens the Extensions sidebar.
+    NOTE: The Terraform syntax highlighting extension is not 100% perfect, so you might see some variables underlined in red in your code. You can disregard these warnings.
 
-    Search for *hcl*. Install the first extension on the list. It is named `HCL`.
-
-    Click on the blue **Reload Required** button to refresh the editor.
-
-    Now click on the explorer icon on the top of the left side menu. It looks like a stack of documents.
-
-    Congratulations, you've configured your environment to work with Terraform!
+    Click the **Check** button to continue.
   notes:
   - type: text
     contents: |
@@ -976,4 +970,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "17435342687842745119"
+checksum: "16327894927778495204"

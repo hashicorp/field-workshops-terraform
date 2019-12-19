@@ -52,4 +52,8 @@ export VAULT_TOKEN=$(cat /tmp/vault_token)
 source /etc/profile.d/instruqt-env.sh
 /bin/setup_azure.sh
 
+# Install VSC terraform extension
+cd /root/.local/share/code-server/extensions/
+tar -zxvf /tmp/mauve.terraform-1.4.0.tar.gz
+
 /bin/set-workdir ${GITDIR}

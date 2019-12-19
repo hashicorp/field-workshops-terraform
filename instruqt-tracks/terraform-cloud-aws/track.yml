@@ -44,7 +44,11 @@ challenges:
 
     Find the `hashicat-aws` directory in the Code Editor and hit `OK`.
 
+    NOTE: The Terraform syntax highlighting extension is not 100% perfect, so you might see some variables underlined in red in your code. You can disregard these warnings.
+
     Congratulations, you've configured your environment to work with Terraform!
+
+    Click the **Check** button to continue.
   notes:
   - type: text
     contents: "Welcome to your first day on the job at ACME Inc. These are some of
@@ -356,4 +360,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "5215596222756385410"
+checksum: "10756673305673632727"

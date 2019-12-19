@@ -33,17 +33,11 @@ challenges:
 
     Find the `hashicat-azure` directory in the Code Editor and hit `OK`.
 
-    This is your terraform workspace.
+    NOTE: The Terraform syntax highlighting extension is not 100% perfect, so you might see some variables underlined in red in your code. You can disregard these warnings.
 
-    Now click on the box-shaped icon on the bottom of the left side menu. This opens the Extensions sidebar.
+    Congratulations, you are ready to start working with Terraform on Azure. We'll use the hashicat-azure example app in the rest of the challenges as you learn new terraform skills.
 
-    Search for *hcl*. Install the first extension on the list. It is named `HCL`.
-
-    Click on the blue **Reload Required** button to refresh the editor.
-
-    Now click on the explorer icon on the top of the left side menu. It looks like a stack of documents.
-
-    Congratulations, you've configured your environment to work with Terraform!
+    Click the **Check** button to continue.
   notes:
   - type: text
     contents: |
@@ -980,4 +974,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "16618334787053815203"
+checksum: "8883920850302980945"

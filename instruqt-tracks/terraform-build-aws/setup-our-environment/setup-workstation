@@ -15,4 +15,8 @@ mv ${GITDIR}/terraform.tfvars.example ${GITDIR}/terraform.tfvars
 cd ${GITDIR}
 /bin/set-workdir ${GITDIR}
 
+# Install VSC terraform extension
+cd /root/.local/share/code-server/extensions/
+tar -zxvf /tmp/mauve.terraform-1.4.0.tar.gz
+
 terraform init
