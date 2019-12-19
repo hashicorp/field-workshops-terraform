@@ -14,6 +14,7 @@ do
   sleep 10
 done
 
-sleep 10
+echo "Running terraform refresh..."
+terraform refresh
 
 echo "Solve script complete."
