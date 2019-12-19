@@ -15,6 +15,7 @@ RUN sudo /usr/bin/pip3 install BlastRadius
 RUN echo $TFC_USER_TOKEN > /tmp/tfc_user_token
 RUN echo $VAULT_TOKEN > /tmp/vault_token
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+RUN wget https://storage.googleapis.com/instruqt-hashicorp-tracks/vsc-extensions/mauve.terraform-1.4.0.tar.gz -O /tmp/mauve.terraform-1.4.0.tar.gz
 
 ENV VAULT_TOKEN $VAULT_TOKEN
 ENV SHELL=/bin/bash
