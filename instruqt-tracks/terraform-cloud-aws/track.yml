@@ -44,16 +44,6 @@ challenges:
 
     Find the `hashicat-aws` directory in the Code Editor and hit `OK`.
 
-    This is your terraform workspace.
-
-    Now click on the box-shaped icon on the bottom of the left side menu. This opens the Extensions sidebar.
-
-    Search for *hcl*. Install the first extension on the list. It is named `HCL`.
-
-    Click on the blue **Reload Required** button to refresh the editor.
-
-    Now click on the explorer icon on the top of the left side menu. It looks like a stack of documents.
-
     Congratulations, you've configured your environment to work with Terraform!
   notes:
   - type: text
@@ -366,4 +356,4 @@ challenges:
     port: 8080
   difficulty: basic
   timelimit: 600
-checksum: "12902122479366466398"
+checksum: "17901037999550837745"
