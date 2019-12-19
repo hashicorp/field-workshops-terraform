@@ -1,5 +1,7 @@
 #!/bin/bash
+source /etc/profile.d/instruqt-env.sh
+source /root/.bashrc
 
-# TODO: Put an az delete resource group command in here to clean up the bugsbunny-workshop RG if it exists.
-# It should not already exist or the solve scripts will fail.
-# This may require installing the az command line tool on our docker image
+# az delete resource group to clean up the bugsbunny-workshop RG if it exists.
+az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant $ARM_TENANT_ID
+az group delete -y --name bugsbunny-workshop
