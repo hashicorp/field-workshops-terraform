@@ -24,16 +24,17 @@ challenges:
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: Configure your code editor with the HCL extension and open a workspace.
   assignment: |-
-    **Goal**: Validate and configure your working environment.<br>
-    **Estimated Time**: 2-3 minutes.
+    Open the Code Editor tab on the left. First get familiar with the menus.
 
-    Open the Code Editor tab on the left.
+    Find the "hamburger" or triple-line menu on the top of the navigation bar on the left. It's right underneath the Instruqt mascot logo. This is your Main Menu. You can find all the other VSC menu options here.
 
-    Select "File > Open Folder".
+    Right below the Main Menu you'll see a column of icons. The first icon looks like a stack of documents. This is the File Explorer. Click on the File Explorer icon then select **Open Folder**.
 
-    Find the `hashicat-azure` directory in the Code Editor and hit `OK`.
+    Select the `hashicat-azure` directory and hit `OK`.
 
-    NOTE: The Terraform syntax highlighting extension is not 100% perfect, so you might see some variables underlined in red in your code. You can disregard these warnings.
+    Next you can enable the Terraform Language Server for syntax highlighting and other features. Click on the Main Menu and select **View >> Command Palette**, then type in `Terraform`.
+
+    Select the option that says **Terraform: Enable/Disable Language Server**. You only need to click this once. It will activate in the background and generate a couple of notifications.
 
     Congratulations, you are ready to start working with Terraform on Azure. We'll use the hashicat-azure example app in the rest of the challenges as you learn new terraform skills.
 
@@ -64,10 +65,7 @@ challenges:
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
     on Linux, Windows, or MacOS.
   assignment: |-
-    **Goal**: Get to know your workstation<br>
-    **Estimated Time**: 1-2 minutes
-
-    Open a new Terminal window. You can use the "Terminal > New Terminal" menu item or the keyboard shortcut **CTRL-J** (**CMD-J** on Mac).
+    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-J** (**CMD-J** on Mac).
 
     All terraform commands should be run from the terminal within the Code Editor.
 
@@ -974,4 +972,4 @@ challenges:
     port: 8443
   difficulty: basic
   timelimit: 600
-checksum: "8070516170627944025"
+checksum: "11624715347190297523"

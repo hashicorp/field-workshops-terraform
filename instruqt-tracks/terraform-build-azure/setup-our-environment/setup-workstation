@@ -1,4 +1,8 @@
 #!/bin/bash
+source /etc/profile.d/instruqt-env.sh
+source /root/.bashrc
+
+# Generate the Azure creds setup script
 cat <<-EOF > /bin/setup_azure.sh
 #!/bin/bash
 # Define some colors
@@ -34,26 +38,28 @@ echo "\${mag}Setup script complete. Your Azure credentials are valid for 8 hours
 EOF
 
 chmod +x /bin/setup_azure.sh
-
 git clone https://github.com/hashicorp/hashicat-azure
+GITDIR="/root/hashicat-azure"
+/bin/set-workdir "${GITDIR}"
 
 # Rewind everything back to a single resource group.
-GITDIR="/root/hashicat-azure"
 cd ${GITDIR}
 cp ${GITDIR}/exercises/main.tf.start ${GITDIR}/main.tf
 cp ${GITDIR}/exercises/outputs.tf.start ${GITDIR}/outputs.tf
 mv ${GITDIR}/terraform.tfvars.example ${GITDIR}/terraform.tfvars
-
 cd ${GITDIR}
-/usr/local/bin/terraform init
 echo -e "\nlocation = \"centralus\"" >> ${GITDIR}/terraform.tfvars
 
+# Fetch dynamic creds for Azure
 export VAULT_TOKEN=$(cat /tmp/vault_token)
-source /etc/profile.d/instruqt-env.sh
 /bin/setup_azure.sh
 
-# Install VSC terraform extension
+# Install VSC terraform extension and update providers
 cd /root/.local/share/code-server/extensions/
 tar -zxvf /tmp/mauve.terraform-1.4.0.tar.gz
+cd /root/.local/share/code-server/extensions/mauve.terraform-1.4.0/lspbin/
+terraform init
 
-/bin/set-workdir ${GITDIR}
+# Back to our git repo and init
+cd $GITDIR
+terraform init
