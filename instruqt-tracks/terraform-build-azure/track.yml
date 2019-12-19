@@ -54,7 +54,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: open-a-terminal
@@ -86,7 +86,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: hello-terraform
@@ -130,7 +130,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: azure-credentials
@@ -167,7 +167,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: terraform-code
@@ -202,7 +202,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: tf-init-provider
@@ -237,7 +237,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: provider-quiz
@@ -290,7 +290,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: tf-plan
@@ -322,7 +322,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: tf-variables
@@ -350,7 +350,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: tf-add-a-variable
@@ -386,7 +386,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: variables-quiz
@@ -477,7 +477,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: tf-plan-again
@@ -516,7 +516,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: change-location
@@ -556,7 +556,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: add-a-tag
@@ -585,7 +585,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: add-virtual-network
@@ -614,7 +614,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: complete-the-build
@@ -647,7 +647,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: tf-graph-again
@@ -751,7 +751,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: add-an-output
@@ -798,7 +798,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: fun-with-variables
@@ -857,7 +857,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: terraform-variables-quiz
@@ -905,7 +905,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: configure-remote-state
@@ -944,7 +944,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: terraform-destroy
@@ -971,7 +971,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
-checksum: "13692975334326062307"
+checksum: "8070516170627944025"

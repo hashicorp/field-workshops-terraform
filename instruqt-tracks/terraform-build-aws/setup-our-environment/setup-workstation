@@ -3,7 +3,7 @@ source /root/.bashrc
 source /etc/profile.d/instruqt-env.sh
 cd /root/hashicat-aws
 
-git clone --single-branch --branch instruqt https://github.com/hashicorp/hashicat-aws
+git clone https://github.com/hashicorp/hashicat-aws
 
 # Rewind everything back to a single resource group.
 GITDIR="/root/hashicat-aws"

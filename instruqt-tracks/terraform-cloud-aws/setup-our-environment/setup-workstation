@@ -2,7 +2,7 @@
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 
-git clone --single-branch --branch instruqt https://github.com/hashicorp/hashicat-aws
+git clone https://github.com/hashicorp/hashicat-aws
 
 GITDIR="/root/hashicat-aws"
 cd ${GITDIR}
@@ -19,5 +19,6 @@ EOF
 
 /bin/set-workdir ${GITDIR}
 
+# Install the terraform VSC extension
 cd /root/.local/share/code-server/extensions/
 tar -zxvf /tmp/mauve.terraform-1.4.0.tar.gz

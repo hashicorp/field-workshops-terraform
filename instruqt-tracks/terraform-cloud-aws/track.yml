@@ -66,7 +66,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: open-a-terminal
@@ -103,7 +103,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: terraform-cloud-setup
@@ -173,7 +173,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
@@ -239,7 +239,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
@@ -335,7 +335,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   - title: Configuring Github Access
     type: external
     url: https://www.terraform.io/docs/cloud/vcs/github.html
@@ -357,7 +357,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
-checksum: "10756673305673632727"
+checksum: "376518524447790481"
