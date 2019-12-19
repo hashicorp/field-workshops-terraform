@@ -14,4 +14,6 @@ do
   sleep 10
 done
 
+sleep 10
+
 echo "Solve script complete."
