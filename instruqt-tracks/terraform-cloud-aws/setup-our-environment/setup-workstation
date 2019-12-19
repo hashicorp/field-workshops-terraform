@@ -19,5 +19,5 @@ EOF
 
 /bin/set-workdir ${GITDIR}
 
-cd /root/.local/share/code-server/extensions
-tar -zxvf mauve.terraform-1.4.0.tar.gz
+cd /root/.local/share/code-server/extensions/
+tar -zxvf /tmp/mauve.terraform-1.4.0.tar.gz
