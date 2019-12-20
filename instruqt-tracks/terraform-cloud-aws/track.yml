@@ -345,7 +345,7 @@ challenges:
 - slug: a-sentinel-stands-guard
   id: mk8s69dbnqk8
   type: challenge
-  title: "\U0001F916 Sentinel - Compliance Guardrails for Terraform Runs"
+  title: "\U0001F916 Compliance Checks for Terraform with Sentinel"
   teaser: Developers in your organization are building cloud resources without tagging
     them properly. You need a way to enforce tagging on all your AWS instances that
     are built with Terraform. Meet Sentinel, the compliance and security rules engine
@@ -406,4 +406,4 @@ challenges:
     port: 8443
   difficulty: basic
   timelimit: 600
-checksum: "9572671003533037202"
+checksum: "3632821680198241518"
