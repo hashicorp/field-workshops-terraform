@@ -14,7 +14,7 @@ do
   sleep 10
 done
 
-echo "Running terraform refresh..."
-terraform refresh
+echo "Running terraform apply again..."
+terraform apply -auto-approve
 
 echo "Solve script complete."
