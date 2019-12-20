@@ -2,9 +2,11 @@
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 
-git clone --single-branch --branch instruqt https://github.com/hashicorp/hashicat-aws
-
+# clone the hashicat-aws repo
+git clone https://github.com/hashicorp/hashicat-aws
 GITDIR="/root/hashicat-aws"
+/bin/set-workdir "$GITDIR"
+
 cd ${GITDIR}
 echo -e "prefix = \"workshop\"" >> ${GITDIR}/terraform.tfvars
 echo -e "\nregion = \"us-east-1\"" >> ${GITDIR}/terraform.tfvars
@@ -17,7 +19,13 @@ output "catapp_url" {
 }
 EOF
 
-/bin/set-workdir ${GITDIR}
-
+# Install VSC terraform extension and update providers
 cd /root/.local/share/code-server/extensions/
 tar -zxvf /tmp/mauve.terraform-1.4.0.tar.gz
+cd /root/.local/share/code-server/extensions/mauve.terraform-1.4.0/lspbin/
+echo 'provider "tls" {}' >> providers.tf
+terraform init
+
+# Back to our git repo and init
+cd $GITDIR
+terraform init

@@ -2,10 +2,14 @@ version: "2"
 containers:
 - name: workstation
   image: gcr.io/instruqt-hashicorp/hashiworkstation:vsc
+  cmd: --cert --port 8443 --auth none
   shell: /bin/bash
   ports:
-  - 8080
+  - 8443
   - 5000
+  environment:
+    PASSWORD: HashiCorp123
+  memory: 512
 aws_accounts:
 - name: TF-WORKSHOP
   managed_policies:

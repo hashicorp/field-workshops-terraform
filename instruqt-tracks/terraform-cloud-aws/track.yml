@@ -38,13 +38,21 @@ challenges:
 
     After employee orientation you sit down at your workstation and open your text editor, Visual Studio Code.
 
-    Open the Code Editor tab on the left.
+    Open the Code Editor tab on the left. First get familiar with the menus.
 
-    Select "File > Open Folder".
+    Find the "hamburger" or triple-line menu on the top of the navigation bar on the left. It's right underneath the Instruqt mascot logo. This is your Main Menu. You can find all the other VSC menu options here.
 
-    Find the `hashicat-aws` directory in the Code Editor and hit `OK`.
+    Right below the Main Menu you'll see a column of icons. The first icon looks like a stack of documents. This is the File Explorer. Click on the File Explorer icon then select **Open Folder**.
 
-    Congratulations, you've configured your environment to work with Terraform!
+    Select the `hashicat-aws` directory and hit `OK`.
+
+    Next you can enable the Terraform Language Server for syntax highlighting and other features. Click on the Main Menu and select **View >> Command Palette**, then type in `Terraform`.
+
+    Select the option that says **Terraform: Enable/Disable Language Server**. You only need to click this once. It will activate in the background and generate a couple of notifications.
+
+    Congratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new terraform skills.
+
+    Click the **Check** button to continue.
   notes:
   - type: text
     contents: "Welcome to your first day on the job at ACME Inc. These are some of
@@ -62,7 +70,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: open-a-terminal
@@ -72,7 +80,7 @@ challenges:
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
     on Linux, Windows, or MacOS.
   assignment: |-
-    Open a new Terminal window. You can use the "Terminal > New Terminal" menu item or the keyboard shortcut **CTRL-J** (**CMD-J** on Mac).
+    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-J** (**CMD-J** on Mac).
 
     All terraform commands should be run from the terminal within the Code Editor.
 
@@ -84,12 +92,6 @@ challenges:
 
     You can also hide and show these notes with the expand icon on the upper right side of the GUI. It looks like a box with two small arrows in the corners. This will expand and close the notes panel. Try it now to give your text editor more space.
 
-    Try running the following command in your terminal pane:
-
-    ```
-    terraform version
-    ```
-
     Good job, you're ready to deploy the hashicat application on AWS!
   notes:
   - type: text
@@ -99,7 +101,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: terraform-cloud-setup
@@ -169,7 +171,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
@@ -235,7 +237,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
@@ -331,7 +333,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   - title: Configuring Github Access
     type: external
     url: https://www.terraform.io/docs/cloud/vcs/github.html
@@ -353,7 +355,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
-checksum: "5215596222756385410"
+checksum: "3185498748951707717"

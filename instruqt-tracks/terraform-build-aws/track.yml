@@ -24,26 +24,21 @@ challenges:
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: Configure your code editor with the HCL extension and open a workspace.
   assignment: |-
-    **Goal**: Validate and configure your working environment.<br>
-    **Estimated Time**: 2-3 minutes.
+    Open the Code Editor tab on the left. First get familiar with the menus.
 
-    Open the Code Editor tab on the left.
+    Find the "hamburger" or triple-line menu on the top of the navigation bar on the left. It's right underneath the Instruqt mascot logo. This is your Main Menu. You can find all the other VSC menu options here.
 
-    Select "File > Open Folder".
+    Right below the Main Menu you'll see a column of icons. The first icon looks like a stack of documents. This is the File Explorer. Click on the File Explorer icon then select **Open Folder**.
 
-    Find the `hashicat-aws` directory in the Code Editor and hit `OK`.
+    Select the `hashicat-aws` directory and hit `OK`.
 
-    This is your terraform workspace.
+    Next you can enable the Terraform Language Server for syntax highlighting and other features. Click on the Main Menu and select **View >> Command Palette**, then type in `Terraform`.
 
-    Now click on the box-shaped icon on the bottom of the left side menu. This opens the Extensions sidebar.
+    Select the option that says **Terraform: Enable/Disable Language Server**. You only need to click this once. It will activate in the background and generate a couple of notifications.
 
-    Search for *hcl*. Install the first extension on the list. It is named `HCL`.
+    Congratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new terraform skills.
 
-    Click on the blue **Reload Required** button to refresh the editor.
-
-    Now click on the explorer icon on the top of the left side menu. It looks like a stack of documents.
-
-    Congratulations, you've configured your environment to work with Terraform!
+    Click the **Check** button to continue.
   notes:
   - type: text
     contents: |
@@ -60,7 +55,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 300
 - slug: open-a-terminal
@@ -70,10 +65,7 @@ challenges:
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
     on Linux, Windows, or MacOS.
   assignment: |-
-    **Goal**: Get to know your workstation<br>
-    **Estimated Time**: 1-2 minutes
-
-    Open a new Terminal window. You can use the "Terminal > New Terminal" menu item or the keyboard shortcut **CTRL-J** (**CMD-J** on Mac).
+    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-J** (**CMD-J** on Mac).
 
     All terraform commands should be run from the terminal within the Code Editor.
 
@@ -92,7 +84,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: hello-terraform
@@ -114,7 +106,7 @@ challenges:
     ```
     terraform help
     ```
-    Terraform runs on Windows, OSX, or Linux. You can install it on your laptop or on a cloud based workstation. Terraform is also pre-installed in Azure Cloud Shell.
+    Terraform runs on Windows, OSX, or Linux. You can install it on your laptop or on a cloud based workstation.
 
     Today we'll be using the preconfigured terraform workstation on the left for all our lab exercises.
   notes:
@@ -136,7 +128,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 300
 - slug: aws-credentials
@@ -167,7 +159,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 300
 - slug: terraform-code
@@ -202,7 +194,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 300
 - slug: terraform-init-provider
@@ -240,7 +232,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 300
 - slug: provider-quiz
@@ -293,7 +285,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 300
 - slug: terraform-plan
@@ -323,7 +315,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 300
 - slug: terraform-variables
@@ -351,7 +343,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 300
 - slug: terraform-add-a-variable
@@ -393,7 +385,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 300
 - slug: variables-quiz
@@ -484,7 +476,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: tf-plan-again
@@ -523,7 +515,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: change-location
@@ -558,7 +550,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: add-a-tag
@@ -587,7 +579,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: add-virtual-network
@@ -616,7 +608,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: complete-the-build
@@ -649,7 +641,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: tf-graph-again
@@ -753,7 +745,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: add-an-output
@@ -800,7 +792,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: fun-with-variables
@@ -859,7 +851,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: terraform-variables-quiz
@@ -907,7 +899,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: configure-remote-state
@@ -946,7 +938,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: terraform-destroy
@@ -973,7 +965,7 @@ challenges:
   - title: Code Editor
     type: service
     hostname: workstation
-    port: 8080
+    port: 8443
   difficulty: basic
   timelimit: 600
-checksum: "17435342687842745119"
+checksum: "16698288308887232401"
