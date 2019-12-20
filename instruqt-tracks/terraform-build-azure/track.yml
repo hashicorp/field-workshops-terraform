@@ -707,9 +707,9 @@ challenges:
   teaser: Terraform works great with many different provisioning tools including Chef,
     Puppet, Ansible, Bash, and Powershell.
   assignment: |-
-    Open the `main.tf` file in the Code Editor. Scroll down to line 157 where you will see the remote-exec provisioner block.
+    Open the `main.tf` file in the Code Editor. Scroll down until you find the `remote-exec` provisioner block, or search the file and find it with CTRL-F.
 
-    Add the following at the end of the inline list of commands:
+    Add the following two lines at the end of the inline list of commands:
 
     ```
     "sudo apt -y install cowsay",
@@ -972,4 +972,4 @@ challenges:
     port: 8443
   difficulty: basic
   timelimit: 600
-checksum: "11624715347190297523"
+checksum: "9739937993522208821"
