@@ -632,6 +632,12 @@ challenges:
 
     It can take up to five minutes for the application to finish deploying. You will know it is complete when you see the Terraform output with your application URL at the end of the run.
 
+    You'll need to run one more command to refresh the output, because we are using a specialized terraform config for training.
+
+    ```
+    terraform refresh
+    ```
+
     Open your web application in a new browser tab. You'll need to copy and paste the URL into your address bar.
   notes:
   - type: text
@@ -968,4 +974,4 @@ challenges:
     port: 8443
   difficulty: basic
   timelimit: 600
-checksum: "16698288308887232401"
+checksum: "5299691122298733591"
