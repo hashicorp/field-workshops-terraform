@@ -7,8 +7,6 @@ containers:
   ports:
   - 8443
   - 5000
-  environment:
-    PASSWORD: HashiCorp123
   memory: 512
 aws_accounts:
 - name: TF-WORKSHOP

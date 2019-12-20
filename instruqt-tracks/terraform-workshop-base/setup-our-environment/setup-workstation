@@ -1,0 +1,22 @@
+#!/bin/bash
+# This is the setup script for the workstation container. Use it to set the stage for your terraform training, demo, or lab.
+
+# Ensure environment variables are available for non-interactive logins
+source /etc/profile.d/instruqt-env.sh
+source /root/.bashrc
+
+# Install VSC terraform extension and update providers. Any provider that you want syntax highlighting for should be added to the providers.tf file in the plugin directory. A terraform init command loads the syntax for that provider into Visual Studio Code.
+cd /root/.local/share/code-server/extensions/
+tar -zxvf /tmp/mauve.terraform-1.4.0.tar.gz
+cd /root/.local/share/code-server/extensions/mauve.terraform-1.4.0/lspbin/
+echo 'provider "tls" {}' >> providers.tf
+
+# You can do anything! Clone an existing repo, or write some terraform from scratch.
+
+# A few example repos to get you started:
+# git clone https://github.com/hashicorp/hashicat-aws
+# git clone https://github.com/hashicorp/hashicat-azure
+# git clone https://github.com/hashicorp/hashicat-gcp
+
+# Set the user's working directory with the set-workdir script, then in subsequent challenges the user will always start in that directory.
+# /bin/set-workdir /root/my-git-repo
