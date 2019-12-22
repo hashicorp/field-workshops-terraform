@@ -16,6 +16,7 @@ RUN echo $TFC_USER_TOKEN > /tmp/tfc_user_token
 RUN echo $VAULT_TOKEN > /tmp/vault_token
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 RUN wget https://storage.googleapis.com/instruqt-hashicorp-tracks/vsc-extensions/mauve.terraform-1.4.0.tar.gz -O /tmp/mauve.terraform-1.4.0.tar.gz
-
+RUN wget http://www.vcheng.org/ponysay/ponysay_3.0.2-1_all.deb -O /tmp/ponysay_3.0.2-1_all.deb
+RUN sudo dpkg -i /tmp/ponysay_3.0.2-1_all.deb
 ENV VAULT_TOKEN $VAULT_TOKEN
 ENV SHELL=/bin/bash
