@@ -16,6 +16,7 @@ description: |-
   * Sentinel Security Policies
   * Collaboration on Changes
   * Private Module Registry
+  * API Driven Workflows
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
 - terraform
@@ -195,8 +196,9 @@ challenges:
     echo $AWS_SECRET_ACCESS_KEY
     ```
     2. Update the **Execution Mode** settings in your workspace to **Remote**.
-    3. Set **Environment Variables** for your AWS credentials and mark them as "Sensitive".
-    4. Set **Terraform Variables** for your `prefix` and `region`. Learn more about these variables by looking in the variables.tf file.
+    3. Change the **Apply Method** to Auto apply. This will save you the trouble of having to approve every terraform run manually. Remember to click the **Save** button at the bottom of the page!
+    4. Set **Environment Variables** for your AWS credentials and mark them as **Sensitive**.
+    5. Set **Terraform Variables** for your `prefix` and `region`. Learn more about these variables by looking in the variables.tf file.
 
     Test your work by running `terraform init`. Your backend configuration will be updated for remote execution.
 
@@ -309,13 +311,29 @@ challenges:
 
     https://github.com/hashicorp/hashicat-aws
 
+    Run the following commands to update your git configuration for your own repository. Don't forget to replace YOURGITUSER with your own git username.
+
+    ```
+    git remote remove origin
+    git remote add origin https://github.com/YOURGITUSER/hashicat-aws
+    ```
+
+    Next use these commands to set your email and name:
+    ```
+    git config --global user.email "you@example.com"
+    ```
+
+    ```
+    git config --global user.name "Your Name"
+    ```
+
     Now that you have your own copy of the hashicat-aws repo to work with, follow the **Configuring GitHub Access** section of the TFC documentation to connect your GitHub account to your Terraform Organization.
 
     https://www.terraform.io/docs/cloud/vcs/github.html
 
     Once you've configured GitHub access, you can update your workspace to use your hashicat-aws repository as the source for all Terraform runs. Go into the **Settings > Version Control** settings page for your workspace. Connect your workspace to the fork of your hashicat-aws repository on GitHub. You can leave all the VCS settings at their defaults.
 
-    Now you can test your work by triggering the first VCS driven terraform run. Click the **Queue Plan** button and enter "Github Integration" for the reason.
+    The first VCS-backed apply should trigger immediately. Click on the Runs tab to view the run in action.
 
     Congratulations, all Terraform changes must now go through version control before they are used in your workspace. This enables you to do code reviews before any changes are pushed to production. It also provides a valuable record of any and all changes made to the code that built your infrastructure. This can prevent configuration drift and undocumented changes.
 
@@ -329,6 +347,11 @@ challenges:
       we're trying to implement better quality assurance around our infrastructure
       deployment process. Can you help me add the hashicat-aws GitHub repository to
       the workspace so we can implement code reviews?"
+  - type: text
+    contents: |-
+      Once you connect a VCS repository to your Terraform Cloud workspace, **all** changes to the code must be stored in the VCS before terraform will execute them. This ensures that you have no unauthorized changes to your infrastructure as code.
+
+      In addition it allows you to enable features like code reviews, pull requests, and automated testing of your code.
   tabs:
   - title: Code Editor
     type: service
@@ -345,31 +368,50 @@ challenges:
 - slug: a-sentinel-stands-guard
   id: mk8s69dbnqk8
   type: challenge
-  title: "\U0001F916 Terraform Compliance with Sentinel"
+  title: "\U0001F6E1️ Terraform Compliance with Sentinel"
   teaser: Developers in your organization are building cloud resources without tagging
     them properly. You need a way to enforce tagging on all your AWS instances that
     are built with Terraform. Meet Sentinel, the compliance and security rules engine
     for Terraform.
   assignment: |-
-    In this challenge you'll use Sentinel to enforce a rule that requires any AWS instance created in your account to have the correct billing and department tags.
+    In this challenge you'll use Sentinel to enforce a rule that requires any AWS instance created in your account to have the correct billable and department tags.
 
-    Steps required:
+    ### Challenge Setup
+    1. Before configuring Sentinel you'll need to queue up a Destroy run. You must create a special environment variable named `CONFIRM_DESTROY` in your workspace to enable this. Set the value of this environment variable to `1`. Now you can use the **Settings >> Destruction and Deletion** menu to queue a destroy plan. Do not click the red **Delete from Terraform Cloud** button!!! Instead, click on **Queue Destroy Plan** and confirm it if necessary.
 
-    1. Create a fork of the following GitHub repo, which contains a Sentinel Policy Set that you can use in your own organization:
+    2. Create a fork of the following GitHub repo, which contains a Sentinel Policy Set that you can use in your own organization:
 
     https://github.com/hashicorp/tfc-workshops-sentinel
 
     As you did with the hashicat-aws repo, use the **Fork** button in the upper right corner of the screen to create your own copy.
 
-    2. Go into the **Organization Settings** for your training organization and click on **Policy Sets**.
+    3. Go into the **Organization Settings** for your training organization and click on **Policy Sets**.
 
-    3. Use the **Connect a new policy set** button to connect your new GitHub repo to your organization. Remember, the repository is named **tfc-workshops-sentinel**.
+    4. Use the **Connect a new policy set** button to connect your new GitHub repo to your organization. Remember, the repository is named **tfc-workshops-sentinel**.
 
-    4. Under **Description** you can enter "Sentinel Policies for our AWS resources".
+    5. Under **Description** you can enter "Sentinel Policies for our AWS resources".
 
-    5. In the **More Options** menu set the **Policies Path** to `/aws`. This tells Terraform Cloud to use the AWS specific policies that are stored in the repo.
+    6. In the **More Options** menu set the **Policies Path** to `/aws`. This tells Terraform Cloud to use the AWS specific policies that are stored in the repo.
 
     6. Leave everything else at its default setting and click on the **Connect Policy Set** button at the bottom of the page.
+
+    You are now ready to begin the challenge.
+
+    ### The Challenge
+
+    Update your code so that any `aws_instance` resources are properly tagged with the **Billable** and **Department** tags. You can set the Billable tag to "true" and the Department tag to "devops".
+
+    If you need a git refresher, here are the commands you'll need to push a change to your forked repo:
+
+    ```
+    git add .
+    git commit -m "Updated my code."
+    git push origin master
+    ```
+
+    These commands mean "Stage all my changes, commit them to the local git repo, then push them to the master branch of the remote repo."
+
+    Each time you push a change to master, you'll trigger a new terraform run. Keep trying until you pass the Sentinel policy check.
   notes:
   - type: text
     contents: "Developers love working in the cloud but sometimes they forget to tag
@@ -380,61 +422,84 @@ challenges:
       have a report that is supposed to show this stuff but it only works if everybody
       tags their resources properly. Can you make sure all your folks are properly
       tagging their cloud resources?"
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
   difficulty: basic
   timelimit: 600
-- slug: private-module-registry
-  id: 1aslq4ex2olk
+- slug: api-driven-workflows
+  id: o3c2wad9s7if
   type: challenge
-  title: "\U0001F4DA Private Module Registry"
-  teaser: Some of your users want a simple way to deploy databases and network configurations.
-    Enter the Private Module Registry, where you can store standard, re-usable terraform
-    configurations that others can use in their own workspaces.
+  title: "\U0001F517 API Driven Workflows"
+  teaser: Terraform Cloud has a fully featured RESTful API that you can use to integrate
+    with external systems.
   assignment: |-
-    In this challenge you'll learn to use the Private Module Registry, which allows you to store and version re-usable snippets of Terraform code. Think of modules like custom resources for your own environment.
+    In the final challenge you'll directly interact with the Terraform Cloud API. Terraform Cloud has a rich API that lets you do everything you can do in the GUI and more. Intermediate and advanced users utilize the API to create complex integrations that work with external systems.
 
-    Instead of writing this module from scratch you can copy the existing vpc module from the public Terraform registry. Visit this URL to view the VPC module:
+    Your goal is to configure three variables in the hashicat-aws workspace and then trigger a terraform run using only the API. The three variables you need to configure are:
 
-    https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws
+    - `placeholder` An image placeholder URL. Examples: placekitten.com, placedog.net, picsum.photos
+    - `height` The height in pixels for your image. Set this to 600
+    - `width` The width in pixels for your image. Set this to 800
 
-    Note the **Source:** link that points at the github repository for this module. Click on the Source URL. As you did in previous challenges, create your own fork of this repository with the **Fork** button.
+    If you've already configured any of the three variables in the UI please delete them before starting the challenge.
 
-    Back in the Terraform Cloud control panel, click on the **Modules** link at the top of the page. Click on the **+Add Module** button. Click on the Github button and select the terraform-aws-vpc module that you just forked. Click on **Publish Module**.
+    ### Challenge Setup:
 
-    Create a new terraform file called `vpc.tf` and use the module in this file to create a new VPC for Gaurav.
-
-    HINT: The docs are your friend. They might even have an example of how the code should look.
-
-    When you're done configuring the `vpc.tf` file, configure your fork as one of your remote targets. Remember to replace `GITUSER` with your own github username.
-
+    Run this command to fetch your token and store it as the TOKEN environment variable:
     ```
-    git remote add myfork \
-    https://github.com/GITUSER/hashicat-aws
+    export TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
     ```
 
-    Before you start pushing changes to your remote fork you'll need to tell git your email address and name:
-
+    Next set your ORG variable with the following command, replacing MYORGNAME with your own:
     ```
-    git config --global user.email "you@example.com"
-    git config --global user.name "Your Name"
+    export ORG="MYORGNAME"
     ```
 
-    Next, run the following commands in your terminal to commit your changes and push them to the remote repo, triggering a new terraform apply.
-
+    Finally, fetch your workspace id with the following curl command. Curl is a command line tool that is handy for interacting directly with APIs. Note how your TOKEN and ORG variables are automatically embedded in the command:
     ```
-    git add .
-    git commit -m "Adding new VPC for Gaurav"
-    git push myfork master
+    curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json"   https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws | jq -r .data.id
     ```
 
-    If all went well you should see a new VPC being built in the console output. Click the `Check` button to verify your work.
+    Copy or save this workspace ID somewhere as you will need it during the challenge.
+
+    ### The Challenge:
+    Use the four *.json files located in the json directory to update your variables and trigger a terraform plan/apply. Use the terraform API docs to determine which commands to run. You can edit the files in your text editor to customize them for your workspace.
+
+    HINT: The global find-and-replace (magnifying glass icon) allows you to replace text across all the files in your workspace at once.
+
+    When you've succesfully triggered a run via the API with the new variables, click the Check button to continue.
   notes:
   - type: text
-    contents: "Most of the devops team is using terraform to build and configure their
-      infrastructure. Recently users from outside the team have been requesting help
-      building their own workspaces. Gaurav, the database admin, sees you at lunch
-      and asks for your help:\n>\U0001F473\U0001F3FD‍♂️ Hi senior devops admin, I
-      need to configure a lot of AWS VPCs and I heard you have a terraform module
-      for this. Can you help me set up a new VPC in the hashicat-aws workspace?"
+    contents: "You've mostly been using the Terraform Cloud Web UI and command line
+      interface (CLI) to build infrastructure. The devops team needs to integrate
+      with their CI/CD tool via the API. Lars is back from vacation and sends you
+      a chat message:\n\n>\U0001F468\U0001F3FB‍\U0001F9B2 Hey senior devops admin,
+      we have this new continuous integration tool that the developers are using to
+      test their application code. I'd like you to test some API calls to our Terraform
+      Cloud organization and workspaces. Can you please take a look at this and learn
+      how the API works?"
+  - type: text
+    contents: |-
+      Feeling stuck? Remember that the Terraform Cloud docs contain examples for all API endpoints:
+
+      https://www.terraform.io/docs/cloud/api/variables.html#create-a-variable
+
+      https://www.terraform.io/docs/cloud/api/run.html#create-a-run
+  - type: text
+    contents: |-
+      Here are some other fun placeholder sites you can try with the *placeholder* variable:
+
+      placedog.net<br>
+      placebear.com<br>
+      www.fillmurray.com<br>
+      www.placecage.com<br>
+      placebeard.it<br>
+      loremflickr.com<br>
+      baconmockup.com<br>
+      placeimg.com<br>
   tabs:
   - title: Code Editor
     type: service
@@ -461,4 +526,4 @@ challenges:
     port: 8443
   difficulty: basic
   timelimit: 600
-checksum: "6576302564173270052"
+checksum: "15287163046811071473"
