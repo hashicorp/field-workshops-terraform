@@ -16,6 +16,7 @@ description: |-
   * Sentinel Security Policies
   * Collaboration on Changes
   * Private Module Registry
+  * API Driven Workflows
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
 - terraform
@@ -195,8 +196,9 @@ challenges:
     echo $AWS_SECRET_ACCESS_KEY
     ```
     2. Update the **Execution Mode** settings in your workspace to **Remote**.
-    3. Set **Environment Variables** for your AWS credentials and mark them as "Sensitive".
-    4. Set **Terraform Variables** for your `prefix` and `region`. Learn more about these variables by looking in the variables.tf file.
+    3. Change the **Apply Method** to Auto apply. This will save you the trouble of having to approve every terraform run manually. Remember to click the **Save** button at the bottom of the page!
+    4. Set **Environment Variables** for your AWS credentials and mark them as **Sensitive**.
+    5. Set **Terraform Variables** for your `prefix` and `region`. Learn more about these variables by looking in the variables.tf file.
 
     Test your work by running `terraform init`. Your backend configuration will be updated for remote execution.
 
@@ -309,13 +311,29 @@ challenges:
 
     https://github.com/hashicorp/hashicat-aws
 
+    Run the following commands to update your git configuration for your own repository. Don't forget to replace YOURGITUSER with your own git username.
+
+    ```
+    git remote remove origin
+    git remote add origin https://github.com/YOURGITUSER/hashicat-aws
+    ```
+
+    Next use these commands to set your email and name:
+    ```
+    git config --global user.email "you@example.com"
+    ```
+
+    ```
+    git config --global user.name "Your Name"
+    ```
+
     Now that you have your own copy of the hashicat-aws repo to work with, follow the **Configuring GitHub Access** section of the TFC documentation to connect your GitHub account to your Terraform Organization.
 
     https://www.terraform.io/docs/cloud/vcs/github.html
 
     Once you've configured GitHub access, you can update your workspace to use your hashicat-aws repository as the source for all Terraform runs. Go into the **Settings > Version Control** settings page for your workspace. Connect your workspace to the fork of your hashicat-aws repository on GitHub. You can leave all the VCS settings at their defaults.
 
-    Now you can test your work by triggering the first VCS driven terraform run. Click the **Queue Plan** button and enter "Github Integration" for the reason.
+    The first VCS-backed apply should trigger immediately. Click on the Runs tab to view the run in action.
 
     Congratulations, all Terraform changes must now go through version control before they are used in your workspace. This enables you to do code reviews before any changes are pushed to production. It also provides a valuable record of any and all changes made to the code that built your infrastructure. This can prevent configuration drift and undocumented changes.
 
@@ -329,6 +347,11 @@ challenges:
       we're trying to implement better quality assurance around our infrastructure
       deployment process. Can you help me add the hashicat-aws GitHub repository to
       the workspace so we can implement code reviews?"
+  - type: text
+    contents: |-
+      Once you connect a VCS repository to your Terraform Cloud workspace, **all** changes to the code must be stored in the VCS before terraform will execute them. This ensures that you have no unauthorized changes to your infrastructure as code.
+
+      In addition it allows you to enable features like code reviews, pull requests, and automated testing of your code.
   tabs:
   - title: Code Editor
     type: service
@@ -345,31 +368,50 @@ challenges:
 - slug: a-sentinel-stands-guard
   id: mk8s69dbnqk8
   type: challenge
-  title: "\U0001F916 Terraform Compliance with Sentinel"
+  title: "\U0001F6E1️ Terraform Compliance with Sentinel"
   teaser: Developers in your organization are building cloud resources without tagging
     them properly. You need a way to enforce tagging on all your AWS instances that
     are built with Terraform. Meet Sentinel, the compliance and security rules engine
     for Terraform.
   assignment: |-
-    In this challenge you'll use Sentinel to enforce a rule that requires any AWS instance created in your account to have the correct billing and department tags.
+    In this challenge you'll use Sentinel to enforce a rule that requires any AWS instance created in your account to have the correct billable and department tags.
 
-    Steps required:
+    ### Challenge Setup
+    1. Before configuring Sentinel you'll need to queue up a Destroy run. You must create a special environment variable named `CONFIRM_DESTROY` in your workspace to enable this. Set the value of this environment variable to `1`. Now you can use the **Settings >> Destruction and Deletion** menu to queue a destroy plan. Do not click the red **Delete from Terraform Cloud** button!!! Instead, click on **Queue Destroy Plan** and confirm it if necessary.
 
-    1. Create a fork of the following GitHub repo, which contains a Sentinel Policy Set that you can use in your own organization:
+    2. Create a fork of the following GitHub repo, which contains a Sentinel Policy Set that you can use in your own organization:
 
     https://github.com/hashicorp/tfc-workshops-sentinel
 
     As you did with the hashicat-aws repo, use the **Fork** button in the upper right corner of the screen to create your own copy.
 
-    2. Go into the **Organization Settings** for your training organization and click on **Policy Sets**.
+    3. Go into the **Organization Settings** for your training organization and click on **Policy Sets**.
 
-    3. Use the **Connect a new policy set** button to connect your new GitHub repo to your organization. Remember, the repository is named **tfc-workshops-sentinel**.
+    4. Use the **Connect a new policy set** button to connect your new GitHub repo to your organization. Remember, the repository is named **tfc-workshops-sentinel**.
 
-    4. Under **Description** you can enter "Sentinel Policies for our AWS resources".
+    5. Under **Description** you can enter "Sentinel Policies for our AWS resources".
 
-    5. In the **More Options** menu set the **Policies Path** to `/aws`. This tells Terraform Cloud to use the AWS specific policies that are stored in the repo.
+    6. In the **More Options** menu set the **Policies Path** to `/aws`. This tells Terraform Cloud to use the AWS specific policies that are stored in the repo.
 
     6. Leave everything else at its default setting and click on the **Connect Policy Set** button at the bottom of the page.
+
+    You are now ready to begin the challenge.
+
+    ### The Challenge
+
+    Update your code so that any `aws_instance` resources are properly tagged with the **Billable** and **Department** tags. You can set the Billable tag to "true" and the Department tag to "devops".
+
+    If you need a git refresher, here are the commands you'll need to push a change to your forked repo:
+
+    ```
+    git add .
+    git commit -m "Updated my code."
+    git push origin master
+    ```
+
+    These commands mean "Stage all my changes, commit them to the local git repo, then push them to the master branch of the remote repo."
+
+    Each time you push a change to master, you'll trigger a new terraform run. Keep trying until you pass the Sentinel policy check.
   notes:
   - type: text
     contents: "Developers love working in the cloud but sometimes they forget to tag
@@ -380,6 +422,11 @@ challenges:
       have a report that is supposed to show this stuff but it only works if everybody
       tags their resources properly. Can you make sure all your folks are properly
       tagging their cloud resources?"
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
   difficulty: basic
   timelimit: 600
 - slug: this-is-the-end
@@ -398,4 +445,4 @@ challenges:
     port: 8443
   difficulty: basic
   timelimit: 600
-checksum: "15608970819478942537"
+checksum: "612067060539956185"
