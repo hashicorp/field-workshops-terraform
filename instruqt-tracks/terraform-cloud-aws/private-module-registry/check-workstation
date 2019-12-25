@@ -3,21 +3,17 @@ source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 /bin/set-workdir /root/hashicat-aws
 
-# We can't use any of this until this bug is fixed
-# Runs won't start so we can't `terraform apply` in an automated pipeline
-# https://app.asana.com/0/1118351459439625/1154785911193251
+TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
+ORG=$(grep organization /root/hashicat-aws/remote_backend.tf | cut -d '"' -f2)
 
-# TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
-# ORG=$(grep organization /root/hashicat-aws/remote_backend.tf | cut -d '"' -f2)
+# Fetch the workspace ID
+WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json"   https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws | jq -r .data.id)
 
-# # Fetch the workspace ID
-# WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json"   https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws | jq -r .data.id)
-
-# # Echo out the environment variables, what do we have to work with here
+# Echo out the environment variables, what do we have to work with here
 # echo "Environment variables include the following"
 # env
 
-# # Verify that VPC exists in the modules listed in the state file
-# VPC_EXIST=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" https://app.terraform.io/api/v2/workspaces/${WORKSPACE_ID}/current-state-version | jq -r '.data.attributes.modules.root | .["aws-vpc"]')
+# Verify that VPC exists in the modules listed in the state file
+VPC_EXIST=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" https://app.terraform.io/api/v2/workspaces/${WORKSPACE_ID}/current-state-version | jq -r '.data.attributes.modules.root | .["aws-vpc"]')
 
-# [[ $VPC_EXIST -eq 1 ]] || fail-message "Uh oh, we couldn't find the VPC module in your state file. Make sure you have added the AWS VPC module to your vpc.tf file and pushed it to your remote repo."
+[[ $VPC_EXIST -eq 1 ]] || fail-message "Uh oh, we couldn't find the VPC module in your state file. Make sure you have added the AWS VPC module to your vpc.tf file and pushed it to your remote repo."

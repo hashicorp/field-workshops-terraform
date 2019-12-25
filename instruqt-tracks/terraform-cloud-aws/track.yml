@@ -382,69 +382,6 @@ challenges:
       tagging their cloud resources?"
   difficulty: basic
   timelimit: 600
-- slug: private-module-registry
-  id: 1aslq4ex2olk
-  type: challenge
-  title: "\U0001F4DA Private Module Registry"
-  teaser: Some of your users want a simple way to deploy databases and network configurations.
-    Enter the Private Module Registry, where you can store standard, re-usable terraform
-    configurations that others can use in their own workspaces.
-  assignment: |-
-    In this challenge you'll learn to use the Private Module Registry, which allows you to store and version re-usable snippets of Terraform code. Think of modules like custom resources for your own environment.
-
-    Instead of writing this module from scratch you can copy the existing vpc module from the public Terraform registry. Visit this URL to view the VPC module:
-
-    https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws
-
-    Note the **Source:** link that points at the github repository for this module. Click on the Source URL. As you did in previous challenges, create your own fork of this repository with the **Fork** button.
-
-    Back in the Terraform Cloud control panel, click on the **Modules** link at the top of the page. Click on the **+Add Module** button. Click on the Github button and select the terraform-aws-vpc module that you just forked. Click on **Publish Module**.
-
-    Create a new terraform file called `vpc.tf` and use the module in this file to create a new VPC for Gaurav.
-
-    HINT: The docs are your friend. They might even have an example of how the code should look.
-
-    When you're done configuring the `vpc.tf` file, configure your fork as one of your remote targets. Remember to replace `GITUSER` with your own github username.
-
-    ```
-    git remote add myfork \
-    https://github.com/GITUSER/hashicat-aws
-    ```
-
-    Before you start pushing changes to your remote fork you'll need to tell git your email address and name:
-
-    ```
-    git config --global user.email "you@example.com"
-    git config --global user.name "Your Name"
-    ```
-
-    Next, run the following commands in your terminal to commit your changes and push them to the remote repo, triggering a new terraform apply.
-
-    ```
-    git add .
-    git commit -m "Adding new VPC for Gaurav"
-    git push myfork master
-    ```
-
-    If all went well you should see a new VPC being built in the console output. Click the `Check` button to verify your work.
-  notes:
-  - type: text
-    contents: "Most of the devops team is using terraform to build and configure their
-      infrastructure. Recently users from outside the team have been requesting help
-      building their own workspaces. Gaurav, the database admin, sees you at lunch
-      and asks for your help:\n>\U0001F473\U0001F3FD‍♂️ Hi senior devops admin, I
-      need to configure a lot of AWS VPCs and I heard you have a terraform module
-      for this. Can you help me set up a new VPC in the hashicat-aws workspace?"
-  tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
-  difficulty: basic
-  timelimit: 600
 - slug: this-is-the-end
   id: fckoj2szdzcm
   type: challenge
@@ -461,4 +398,4 @@ challenges:
     port: 8443
   difficulty: basic
   timelimit: 600
-checksum: "6576302564173270052"
+checksum: "15608970819478942537"

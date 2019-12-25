@@ -9,7 +9,7 @@ cd /root/hashicat-aws
 # TOKEN="${TFC_TOKEN:-REPLACETHISWITHYOURTOKEN}"
 
 # Hacky fix until instruqt allows us to pass these in from CircleCI
-ORG="instruqt-testing"
+ORG="instruqt-circleci"
 TOKEN=$(cat /tmp/tfc_user_token)
 
 # Configure the /root/.terraformrc file

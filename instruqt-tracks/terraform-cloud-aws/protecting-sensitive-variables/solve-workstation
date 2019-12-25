@@ -4,7 +4,7 @@ source /root/.bashrc
 /bin/set-workdir /root/hashicat-aws
 cd /root/hashicat-aws
 
-ORG="instruqt-testing"
+ORG="instruqt-circleci"
 TOKEN=$(cat /tmp/tfc_user_token)
 
 # Create a workspace JSON payload with remote exec enabled
@@ -133,5 +133,5 @@ curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application
 echo "#############################################"
 echo "Running terraform with remote exec enabled..."
 echo "#############################################"
-# terraform plan
-# terraform apply -auto-approve
+terraform plan
+terraform apply -auto-approve
