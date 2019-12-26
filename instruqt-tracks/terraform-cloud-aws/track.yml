@@ -254,26 +254,32 @@ challenges:
   assignment: |-
     Teams and role-based access controls are a paid feature of Terraform Cloud. Your instructor will need to upgrade your organization to a free trial in order to complete this challenge.
 
-    In this challenge you'll create teams with different levels of access to your workspace. You can then invite teammates so they are able to collaborate on code changes and terraform runs.
+    In this challenge you'll create teams with different levels of access to your workspace. You can then invite other users to collaborate on code changes, approvals, and terraform runs.
 
     1. Go into your organization's General Settings and click on the **Teams** link.<br>
     2. Add a team called **admins**. Admins should be able to manage policies, manage workspaces, and manage VCS settings.<br>
     3. Add another team called **developers**. Developers should not have any organization-wide access.<br>
     4. Add a third team called **managers**. Managers should also not have any organization-wide access.
 
-    Now that you have created some teams you can invite your teammates to your organization. Select the **Users** option in your organization's General Settings.
-
-    * Invite `scarolan+instruqt-aisha@hashicorp.com` to the **developers** team.<br>
-    * Invite `scarolan+instruqt-lars@hashicorp.com` to the **admins** team.<br>
-    * Invite `scarolan+instruqt-hiro@hashicorp.com` to the **managers** team.
-
-    Now you can assign access rights to the hashicat-aws workspace. Go into the **Team Access** page of the hashicat-aws workspace settings.
+    Next, assign access rights to the hashicat-aws workspace. Go into the **Team Access** page of the hashicat-aws workspace settings.
 
     * Give the **admins** group admin level access.<br>
     * Give the **developers** group write level access.<br>
     * Give the **managers** group read level access.
 
-    Note that you will not see these users appear in your organization until your instructor accepts the invitations to your organization.
+    Now that you have created teams you can invite some users to your organization.
+
+    If you're doing an instructor-led training, you can invite your instructor or a fellow student to your organization and place them on the developers team. You'll need the email address attached to their Terraform Cloud account to invite them.
+
+    Or you can use one of our example users below:
+
+    * `scarolan+instruqt-aisha@hashicorp.com`
+    * `scarolan+instruqt-lars@hashicorp.com`
+    * `scarolan+instruqt-hiro@hashicorp.com`
+
+    Note that you will not see any users in your organization until they accept your invitations.
+
+    You will need at least two users in your organization to pass this challenge.
   notes:
   - type: text
     contents: "A few months go by and you continue building more infrastructure with
@@ -429,6 +435,73 @@ challenges:
     port: 8443
   difficulty: basic
   timelimit: 600
+- slug: api-driven-workflows
+  id: y1kjttjfggdv
+  type: challenge
+  title: "\U0001F517 API Driven Workflows"
+  teaser: Terraform Cloud has a fully featured RESTful API that you can use to integrate
+    with external systems.
+  assignment: |-
+    In the final challenge you'll directly interact with the Terraform Cloud API. Terraform Cloud has a rich API that lets you do everything you can do in the GUI and more. Intermediate and advanced users utilize the API to create complex integrations that work with external systems.
+    Your goal is to configure three variables in the hashicat-aws workspace and then trigger a terraform run using only the API. The three variables you need to configure are:
+    - `placeholder` An image placeholder URL. Examples: placekitten.com, placedog.net, picsum.photos
+    - `height` The height in pixels for your image. Set this to 600
+    - `width` The width in pixels for your image. Set this to 800
+    If you've already configured any of the three variables in the UI please delete them before starting the challenge.
+    ### Challenge Setup:
+    Run this command to fetch your token and store it as the TOKEN environment variable:
+    ```
+    export TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
+    ```
+    Next set your ORG variable with the following command, replacing MYORGNAME with your own:
+    ```
+    export ORG="MYORGNAME"
+    ```
+    Finally, fetch your workspace id with the following curl command. Curl is a command line tool that is handy for interacting directly with APIs. Note how your TOKEN and ORG variables are automatically embedded in the command:
+    ```
+    curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json"   https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws | jq -r .data.id
+    ```
+    Copy or save this workspace ID somewhere as you will need it during the challenge.
+    ### The Challenge:
+    Use the four *.json files located in the json directory to update your variables and trigger a terraform plan/apply. Use the terraform API docs to determine which commands to run. You can edit the files in your text editor to customize them for your workspace.
+    HINT: The global find-and-replace (magnifying glass icon) allows you to replace text across all the files in your workspace at once.
+    When you've succesfully triggered a run via the API with the new variables, click the Check button to continue.
+  notes:
+  - type: text
+    contents: "You've mostly been using the Terraform Cloud Web UI and command line
+      interface (CLI) to build infrastructure. The devops team needs to integrate
+      with their CI/CD tool via the API. Lars is back from vacation and sends you
+      a chat message:\n\n>\U0001F468\U0001F3FB‍\U0001F9B2 Hey senior devops admin,
+      we have this new continuous integration tool that the developers are using to
+      test their application code. I'd like you to test some API calls to our Terraform
+      Cloud organization and workspaces. Can you please take a look at this and learn
+      how the API works?"
+  - type: text
+    contents: |-
+      Feeling stuck? Remember that the Terraform Cloud docs contain examples for all API endpoints:
+      https://www.terraform.io/docs/cloud/api/variables.html#create-a-variable
+      https://www.terraform.io/docs/cloud/api/run.html#create-a-run
+  - type: text
+    contents: |-
+      Here are some other fun placeholder sites you can try with the *placeholder* variable:
+      placedog.net<br>
+      placebear.com<br>
+      www.fillmurray.com<br>
+      www.placecage.com<br>
+      placebeard.it<br>
+      loremflickr.com<br>
+      baconmockup.com<br>
+      placeimg.com<br>
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
+  - title: Terraform Cloud
+    type: external
+    url: https://app.terraform.io
+  difficulty: basic
+  timelimit: 600
 - slug: this-is-the-end
   id: fckoj2szdzcm
   type: challenge
@@ -445,4 +518,4 @@ challenges:
     port: 8443
   difficulty: basic
   timelimit: 600
-checksum: "612067060539956185"
+checksum: "223405390200249171"

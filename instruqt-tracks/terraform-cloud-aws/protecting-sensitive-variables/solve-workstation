@@ -14,6 +14,7 @@ cat <<-EOF > /tmp/update_workspace.json
   "data": {
     "attributes": {
       "name": "hashicat-aws",
+      "auto-apply": true,
       "operations": true
     },
     "type": "workspaces"

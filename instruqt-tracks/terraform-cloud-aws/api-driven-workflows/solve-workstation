@@ -1,0 +1,86 @@
+#!/bin/bash
+source /etc/profile.d/instruqt-env.sh
+source /root/.bashrc
+/bin/set-workdir /root/hashicat-aws
+cd /root/hashicat-aws
+
+ORG="instruqt-circleci"
+TOKEN=$(cat /tmp/tfc_user_token)
+
+# Fetch the workspace ID
+WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json"   https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws | jq -r .data.id)
+
+# Create JSON payloads for variables
+cat <<-EOF > /tmp/placeholder.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"placeholder",
+      "value":"fillmurray.com",
+      "category":"env",
+      "hcl":false
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id":"$WORKSPACE_ID",
+          "type":"workspaces"
+        }
+      }
+    }
+  }
+}
+EOF
+
+cat <<-EOF > /tmp/height.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"height",
+      "value":"600",
+      "category":"env",
+      "hcl":false
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id":"$WORKSPACE_ID",
+          "type":"workspaces"
+        }
+      }
+    }
+  }
+}
+EOF
+
+cat <<-EOF > /tmp/width.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"width",
+      "value":"800",
+      "category":"terraform",
+      "hcl":false,
+      "sensitive":false
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id":"$WORKSPACE_ID",
+          "type":"workspaces"
+        }
+      }
+    }
+  }
+}
+EOF
+
+# Create our variables in terraform cloud
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/placeholder.json https://app.terraform.io/api/v2/vars
+
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/height.json https://app.terraform.io/api/v2/vars
+
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/width.json https://app.terraform.io/api/v2/vars
