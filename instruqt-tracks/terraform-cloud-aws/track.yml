@@ -437,6 +437,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: private-module-registry
+  id: lywcpik6oyjo
   type: challenge
   title: "\U0001F4DA Private Module Registry"
   teaser: Some of your users want a simple way to deploy databases and network configurations.
@@ -484,6 +485,8 @@ challenges:
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
+  difficulty: basic
+  timelimit: 600
 - slug: api-driven-workflows
   id: y1kjttjfggdv
   type: challenge
@@ -569,4 +572,4 @@ challenges:
     port: 8443
   difficulty: basic
   timelimit: 600
-checksum: "10130794570963742068"
+checksum: "7966479825050302690"
