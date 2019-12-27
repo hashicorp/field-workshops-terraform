@@ -137,7 +137,7 @@ challenges:
 - slug: oh-no-an-outage
   id: 6ddjxvjdqigq
   type: challenge
-  title: "\U0001F4D2 Safekeeping for Terraform State Files"
+  title: "\U0001F4D2 Safekeeping Your Terraform State"
   teaser: An unexpected outage has taken down one of the production websites. It took
     longer than expected to recover because the Terraform state file was stored on
     someone's laptop. Terraform Cloud's remote state feature is here to help.
@@ -413,8 +413,7 @@ challenges:
 - slug: vcs-collaboration
   id: dmgbzbeplipi
   type: challenge
-  title: "\U0001F468\U0001F3FB‍\U0001F91D‍\U0001F468\U0001F3FF Collaborating with
-    VCS"
+  title: "\U0001F46C Collaborating with VCS"
   teaser: Now that you've got your version control system configured with Terraform
     Cloud, you can collaborate on changes to your terraform built infrastructure.
   assignment: |-
@@ -697,4 +696,4 @@ challenges:
     port: 8443
   difficulty: basic
   timelimit: 600
-checksum: "15131160411931474251"
+checksum: "12889253353141353166"
