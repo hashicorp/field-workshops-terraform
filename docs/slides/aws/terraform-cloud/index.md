@@ -43,20 +43,18 @@ class: col-2
 👨🏽‍🏫 Review the Basics<br>
 🔗 Configure Remote State<br>
 <hr>
-2. Security and Compliance<br>
+2. Security and RBACs<br>
 🔐 Protect Sensitive Variables<br>
 🛡️ Work With Access Controls<br>
-👮 Sentinel Policy Enforcement<br>
-</div>
-<div>
 <hr>
-3. Terraform and Version Control<br>
+3. VCS & Policy Enforcement<br>
 🕸️ Connect to VCS<br>
-👩🏽‍🤝‍👨🏻 Collaborate with VCS<br>
+👨🏻‍🤝‍👨🏿 Collaboration with VCS<br>
+👮 Sentinel Policy Enforcement<br>
 <hr>
-4. Terraform Modules<br>
+4. Terraform Modules & API<br>
 ⚙️ Private Module Registry<br>
-🏗️ Deploy the VPC Module<br>
+🏗️ API Driven Workflows<br>
 <hr>
 5. Extra Resources<br>
 ⚗️ Bonus Lab<br>
@@ -336,65 +334,21 @@ class: title
 ---
 name: where-are-your-creds
 # Where Are Your API Keys?
-<br><br>
 Terraform requires credentials in order to communicate with your cloud provider's API. These API keys should never, ever be stored directly in your terraform code. Config files and environment variables are a better option, but the credentials still live on your workstation, usually stored in plaintext.
-
-Try these commands to view your API credentials.
-
-Bash
-```bash
-echo $AWS_ACCESS_KEY_ID
-echo $AWS_SECRET_ACCESS_KEY
-```
-
-PowerShell
-```powershell
-echo $env:AWS_ACCESS_KEY_ID
-echo $env:AWS_SECRET_ACCESS_KEY
-```
-
-???
-**Note how our API keys are just sitting there in plain text. This isn't the most secure way to build cloud resources.**
-
 ---
 name: a-better-way-creds
 # A Better Way to Store Sensitive Data
 
 Terraform Cloud can safely store your credentials and encrypt them for you. You can use this encrypted storage for passwords, TLS Certificates, SSH keys or anything else that should not be lying around in plain text.
 
-.center[![:scale 100%](images/aws_encrypted_vars.png)]
-
-.red[**NOTE:** _Don't worry if you don't recognize the varibles in the UI above, we'll be adding them in the upcoming lab._]
-
-???
-**Before we store our sensitive variables in Terraform Cloud, we must enable Remote Execution.**
-
-You may also point out again that these credentials are only valid for 8 hours and
-if anyone tries to check them into version control that hasn't happened since last week!
-We will get alerts, and the token will be shutdown!
----
-name: chapter-5-tfc-lab-enable-remote-execution
-.center[.lab-header[👩🏻‍🏫 Lab Exercise 5a: Remote Execution]]
-<br><br><br>
-Before we migrate our sensitive API credentials into the application we need to enable remote execution. Under the **General** settings for your workspace, change the Execution Mode to **Remote**. Click the **Save Settings** button at the bottom of the page.
-
-.center[![:scale 100%](images/remote_execution.png)]
-
-???
-**When remote execution is enabled, all of your variables are stored in Terraform Cloud, and the `terraform plan` and `terraform apply` commands now happen on the server instead of on your workstation. State is still stored remotely as before. Your command line simply becomes a tool for driving the remote execution.**
+.center[![:scale 60%](images/aws_encrypted_vars.png)]
 
 ---
 name: terraform-rbac
 # Role Based Access Controls (RBAC)
-.center[![:scale 60%](images/teams_list.png)]
-
-In the previous chapter we made a change by merging a code change into the source code repo. Your users can also collaborate within the Terraform UI.
+.center[![:scale 40%](images/teams_list.png)]
 
 Terraform Cloud is a multi-tenanted application that supports fine-grained access controls. You can create multiple organizations, each containing its own teams and users.
-
-???
-TODO: Find a better image for this slide.
-
 
 ---
 name: what-is-sentinel
@@ -406,27 +360,9 @@ aws_region_valid = rule {
 	rv == "us-east-1"
   }
 }
-# Restricting machine types in GCP
-gcp_allowed_machine_types = [
-  "n1-standard-1",
-  "n1-standard-2",
-  "n1-standard-4",
-]
-# Restricting publisher in Azure
-azure_allowed_publishers = [
-  "MicrosoftWindowsServer",
-  "RedHat",
-]
 ```
 
 Sentinel is HashiCorp's policy enforcement language. Sentinel policies are checked after **`terraform plan`** is run. Sentinel will intercept bad configurations *before* they go to production, not after.
-
-Sentinel rules help enforce compliance and security requirements in the cloud.
-
-???
-**Think of all the dos and do-nots that you want to enforce in your cloud environments. Maybe you want to limit the sizes of virtual machines, or to force web applications to always use SSL. Sentinel rules can be customized for most common security and compliance requirements.**
-
-Talk about Sentinel and some other things you can do with it.
 
 ---
 name: lab-exercise-2
@@ -473,7 +409,7 @@ You can configure rules like requiring tests to pass, code reviews, approvals an
 
 ---
 name: lab-exercise-3
-# 👩‍💻 Lab Exercise: VCS, Sentinel, and Private Modules
+# 👩‍💻 Lab Exercise: Version Control and Sentinel
 <br><br>
 In this lab we'll cover Version Control System (VCS) integration, Sentinel Policy Enforcement, and the Private Module Registry.
 

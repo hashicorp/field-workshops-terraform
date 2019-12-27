@@ -179,6 +179,24 @@ challenges:
     url: https://app.terraform.io
   difficulty: basic
   timelimit: 600
+- slug: quiz-1
+  id: pormukgjp0uy
+  type: quiz
+  title: "\U0001F4DD Quiz 1 - Terraform Remote State"
+  teaser: A quiz about Terraform State
+  assignment: |
+    The terraform state file always matches exactly with your current infrastructure configuration.
+  notes:
+  - type: text
+    contents: |
+      It's quiz time!
+  answers:
+  - "True"
+  - "False"
+  solution:
+  - 1
+  difficulty: basic
+  timelimit: 300
 - slug: protecting-sensitive-variables
   id: kdpzdpk67mjx
   type: challenge
@@ -303,6 +321,26 @@ challenges:
     url: https://app.terraform.io
   difficulty: basic
   timelimit: 600
+- slug: quiz-2
+  id: cnqr1iwueube
+  type: quiz
+  title: "\U0001F4DD Quiz 2 - Secure Variables"
+  teaser: A quiz about secure variables
+  assignment: |
+    Where should you store sensitive credentials like API keys?
+  notes:
+  - type: text
+    contents: |
+      It's quiz time!
+  answers:
+  - In your Terraform workspace
+  - In a text file on your Desktop
+  - As encrypted environment variables in Terraform Cloud
+  - As terraform variables in Terraform Cloud
+  solution:
+  - 2
+  difficulty: basic
+  timelimit: 300
 - slug: versioned-infrastructure
   id: k8udkz2bnf5f
   type: challenge
@@ -372,6 +410,54 @@ challenges:
     url: https://app.terraform.io
   difficulty: basic
   timelimit: 600
+- slug: vcs-collaboration
+  id: dmgbzbeplipi
+  type: challenge
+  title: "\U0001F468\U0001F3FB‍\U0001F91D‍\U0001F468\U0001F3FF Collaborating with
+    VCS"
+  teaser: Now that you've got your version control system configured with Terraform
+    Cloud, you can collaborate on changes to your terraform built infrastructure.
+  assignment: |-
+    In this challenge you'll make a small change to the code that deploys the hashicat-aws application, and then create a "Pull Request", which is simply a way of proposing a change and optionally allowing others to review your changes.
+
+    Find a partner, or if you're alone you can do this exercise solo. Exchange github usernames and browse to the other person's fork of the hashicat-aws repository. For example:
+
+    https://github.com/YOURNAME/hashicat-aws
+
+    Browse to the `files/deploy_app.sh` file and click on the small pencil icon in the upper right corner of the text area. This will allow you to edit the file right in your browser.
+
+    Replace the following text with your own catchy marketing slogan for ACME.
+
+    ```
+    Welcome to ${PREFIX}'s app. Replace this text with your own.
+    ```
+
+    Finally at the bottom of the screen, select the option that says "Create a new branch for this commit and start a pull request."
+
+    Your partner should now review and approve the pull request. Or if you're working alone you can review your own pull request and merge the changes.
+
+    Once you've merged your changes to the master branch, watch the Terraform run that starts in the UI.
+  notes:
+  - type: text
+    contents: "The marketing team at ACME is running a special promotion next week
+      and they need you to push a change to the hashicat website. If you're doing
+      an instructor led class you can pair up with a fellow student for this exercise.
+      Alternatively you can do the exercise on your own.\n\n>\U0001F468\U0001F3FB‍\U0001F9B2
+      Hey sysadmin friend, we need to push a change to the hashicat website. Can you
+      please update the placeholder text with some snappy marketing slogans?"
+  - type: text
+    contents: VCS-backed workspaces enable features like code reviews and automated
+      tests that must pass before any changes can be approved for production.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
+  - title: Terraform Cloud
+    type: external
+    url: https://app.terraform.io
+  difficulty: basic
+  timelimit: 600
 - slug: a-sentinel-stands-guard
   id: mk8s69dbnqk8
   type: challenge
@@ -386,11 +472,9 @@ challenges:
     ### Challenge Setup
     1. Before configuring Sentinel you'll need to queue up a Destroy run. You must create a special environment variable named `CONFIRM_DESTROY` in your workspace to enable this. Set the value of this environment variable to `1`. Now you can use the **Settings >> Destruction and Deletion** menu to queue a destroy plan. Do not click the red **Delete from Terraform Cloud** button!!! Instead, click on **Queue Destroy Plan** and confirm it if necessary.
 
-    2. Create a fork of the following GitHub repo, which contains a Sentinel Policy Set that you can use in your own organization:
+    2. Create a fork of the following GitHub repo, which contains a Sentinel Policy Set that you can use in your own organization. As you did with the hashicat-aws repo, use the **Fork** button in the upper right corner of the screen to create your own copy.
 
     https://github.com/hashicorp/tfc-workshops-sentinel
-
-    As you did with the hashicat-aws repo, use the **Fork** button in the upper right corner of the screen to create your own copy.
 
     3. Go into the **Organization Settings** for your training organization and click on **Policy Sets**.
 
@@ -436,6 +520,27 @@ challenges:
     port: 8443
   difficulty: basic
   timelimit: 600
+- slug: quiz-3
+  id: 6vbyf7ebvrjq
+  type: quiz
+  title: "\U0001F4DD Quiz 3 - Version Control and Terraform"
+  teaser: A quiz about version control
+  assignment: |
+    VCS-backed workspaces enable the following features (choose two)
+  notes:
+  - type: text
+    contents: |
+      It's quiz time!
+  answers:
+  - Code reviews
+  - Cost estimation
+  - Automated testing of terraform code
+  - Terraform provisioners
+  solution:
+  - 0
+  - 2
+  difficulty: basic
+  timelimit: 300
 - slug: private-module-registry
   id: lywcpik6oyjo
   type: challenge
@@ -495,6 +600,7 @@ challenges:
     with external systems. Where we're going, we don't need a GUI!
   assignment: |-
     In the final challenge you'll directly interact with the Terraform Cloud API. Terraform Cloud has a rich API that lets you do everything you can do in the GUI and more. Intermediate and advanced users utilize the API to create complex integrations that work with external systems.
+
     Your goal is to configure three variables in the hashicat-aws workspace and then trigger a terraform run using only the API. The three variables you need to configure are:
     - `placeholder` An image placeholder URL. Examples: placekitten.com, placedog.net, picsum.photos
     - `height` The height in pixels for your image. Set this to 600
@@ -516,18 +622,19 @@ challenges:
     Copy or save this workspace ID somewhere as you will need it during the challenge.
     ### The Challenge:
     Use the four *.json files located in the json directory to update your variables and trigger a terraform plan/apply. Use the terraform API docs to determine which commands to run. You can edit the files in your text editor to customize them for your workspace.
+
     HINT: The global find-and-replace (magnifying glass icon) allows you to replace text across all the files in your workspace at once.
+
     When you've succesfully triggered a run via the API with the new variables, click the Check button to continue.
   notes:
   - type: text
     contents: "You've mostly been using the Terraform Cloud Web UI and command line
       interface (CLI) to build infrastructure. The devops team needs to integrate
-      with their CI/CD tool via the API. Lars is back from vacation and sends you
-      a chat message:\n\n>\U0001F468\U0001F3FB‍\U0001F9B2 Hey senior devops admin,
-      we have this new continuous integration tool that the developers are using to
-      test their application code. I'd like you to test some API calls to our Terraform
-      Cloud organization and workspaces. Can you please take a look at this and learn
-      how the API works?"
+      with their CI/CD tool via the API. Lars sends you a chat message:\n\n>\U0001F468\U0001F3FB‍\U0001F9B2
+      Hey senior devops admin, we have this new continuous integration tool that the
+      developers are using to test their application code. I'd like you to test some
+      API calls to our Terraform Cloud organization and workspaces. Can you please
+      take a look at this and learn how the API works?"
   - type: text
     contents: |-
       Feeling stuck? Remember that the Terraform Cloud docs contain examples for all API endpoints:
@@ -554,6 +661,24 @@ challenges:
     url: https://app.terraform.io
   difficulty: basic
   timelimit: 600
+- slug: quiz-4
+  id: qaueezfzunpd
+  type: quiz
+  title: "\U0001F4DD Quiz 4 - Private Module Registry"
+  teaser: A quiz about the private module registry
+  assignment: |
+    The Terraform private module registry automatically syncs modules from the public registry.
+  notes:
+  - type: text
+    contents: |
+      It's quiz time!
+  answers:
+  - "True"
+  - "False"
+  solution:
+  - 1
+  difficulty: basic
+  timelimit: 300
 - slug: this-is-the-end
   id: fckoj2szdzcm
   type: challenge
@@ -572,4 +697,4 @@ challenges:
     port: 8443
   difficulty: basic
   timelimit: 600
-checksum: "7966479825050302690"
+checksum: "15131160411931474251"

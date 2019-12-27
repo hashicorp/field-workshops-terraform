@@ -18,7 +18,7 @@ cat <<-EOF > /tmp/placeholder.json
     "attributes": {
       "key":"placeholder",
       "value":"fillmurray.com",
-      "category":"env",
+      "category":"terraform",
       "hcl":false
     },
     "relationships": {
@@ -40,7 +40,7 @@ cat <<-EOF > /tmp/height.json
     "attributes": {
       "key":"height",
       "value":"600",
-      "category":"env",
+      "category":"terraform",
       "hcl":false
     },
     "relationships": {
