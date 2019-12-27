@@ -49,7 +49,7 @@ class: col-2
 <hr>
 3. VCS & Policy Enforcement<br>
 🕸️ Connect to VCS<br>
-👨🏻‍🤝‍👨🏿 Collaboration with VCS<br>
+👬 Collaboration with VCS<br>
 👮 Sentinel Policy Enforcement<br>
 <hr>
 4. Terraform Modules & API<br>
@@ -225,9 +225,19 @@ name: terraform-cloud-enterprise
 The feature list for these two offerings is nearly identical. We will be using Terraform Cloud accounts for our lab exercises today.
 
 ---
+name: live-demo
+class: title, smokescreen, shelf
+background-image: url(images/live_demo.jpg)
+# Live Demo
+## Terraform Cloud in Action
+
+---
 name: review-the-basics
-class: title
+class: title, smokescreen, shelf
+background-image: url(images/terraform_scifi.jpg)
 # Review the Basics
+## A Terraform OSS Refresher
+
 
 ---
 name: review-basic-terraform-commands
@@ -257,7 +267,8 @@ name: our-application
 
 ---
 name: terraform-state
-class: title
+class: title, smokescreen, shelf
+background-image: url(images/checklist.jpg)
 # Terraform State
 ## Infrastructure Lifecycle Management
 
@@ -327,14 +338,34 @@ Your instructor will provide the URL for the first lab environment.
 ---
 name: TFE-Chapter-2
 class: title
-
 # Chapter 2
-## Security and Compliance in Terraform Cloud
+## Security and Role-Based Access Controls
+
+---
+name: securing-sensitive-vars
+class: title, smokescreen, shelf
+background-image: url(images/secure_lock.jpg)
+# Sensitive Variables
+## A Secure Place for API Credentials
+
+---
+name: Security-and-Compliance
+# Did you know?
+Thousands of API and cryptographic keys are leaked to GitHub every day!
+
+https://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/
+
+>"I think efforts like GitHub’s Token Scanning project should be applauded, but they are only effective once a leak has already occurred. This problem also is likely not isolated to GitHub – it will affect any publicly available code. We need more research to develop systems that help developers avoid this mistake in the first place."
+
+---
+name: Protecting-Sensitive-Variables
+# Protecting Sensitive Variables
 
 ---
 name: where-are-your-creds
 # Where Are Your API Keys?
 Terraform requires credentials in order to communicate with your cloud provider's API. These API keys should never, ever be stored directly in your terraform code. Config files and environment variables are a better option, but the credentials still live on your workstation, usually stored in plaintext.
+
 ---
 name: a-better-way-creds
 # A Better Way to Store Sensitive Data
@@ -344,25 +375,22 @@ Terraform Cloud can safely store your credentials and encrypt them for you. You 
 .center[![:scale 60%](images/aws_encrypted_vars.png)]
 
 ---
+name: terraform-teams
+class: title, smokescreen, shelf
+background-image: url(images/teamwork.png)
+# Terraform Cloud Teams
+## Role-Based Access Controls (RBAC)
+
+---
+name: terraform-rbac-2
+# Teams for Terraform Collaboration
+
+---
 name: terraform-rbac
 # Role Based Access Controls (RBAC)
 .center[![:scale 40%](images/teams_list.png)]
 
 Terraform Cloud is a multi-tenanted application that supports fine-grained access controls. You can create multiple organizations, each containing its own teams and users.
-
----
-name: what-is-sentinel
-# What is Sentinel?
-```hcl
-# Restricting region in AWS
-aws_region_valid = rule {
-  all region_values as rv {
-	rv == "us-east-1"
-  }
-}
-```
-
-Sentinel is HashiCorp's policy enforcement language. Sentinel policies are checked after **`terraform plan`** is run. Sentinel will intercept bad configurations *before* they go to production, not after.
 
 ---
 name: lab-exercise-2
@@ -379,12 +407,18 @@ name: TFE-Chapter-3
 class: title
 
 # Chapter 3
-## Terraform Cloud and Version Control
+## Version Control and Sentinel Policies
+
+---
+name: version-control-title
+class: title, smokescreen, shelf
+background-image: url(images/git_log.png)
+# Terraform With VCS
+## Version Control Systems
 
 ---
 name: whats-a-vcs
 # What is a Version Control System (VCS)?
-.center[![:scale 80%](images/tfc-vcs.webp)]
 Version control systems are applications that allow users to store, track, test, and collaborate on changes to their infrastructure and applications. Terraform Cloud integrates with most common Version Control Systems.
 
 ---
@@ -393,25 +427,63 @@ name: tfc-infra-as-code-workflow
 <br><br>
 Terraform Cloud can directly integrate with source code repos in GitHub Enteprise, Gitlab, and Bitbucket. This allows you to build simple DevOps workflows with code reviews, testing and approvals.
 
-Until now all our code changes have been done on our workstation. Let's upgrade our workspace to use the repository fork we created earlier.
-
-???
-TODO: Add an image to this slide.
-
 ---
 name: vcs-driven-workflow
-# Collaboration With VCS
-.center[![:scale 100%](images/git_workflow_tests.png)]
+# Automated Test Pipelines
+.center[![:scale 60%](images/git_workflow_tests.png)]
 
-When your Terraform code is stored in a version control system, you unlock extra features like pull requests, code reviews and testing. Here's an example showing the tests that run on our training lab repo.
+When your Terraform code is stored in a version control system, you unlock extra features like pull requests, code reviews and testing. Here's an example showing some tests that run on our training lab repo.
 
-You can configure rules like requiring tests to pass, code reviews, approvals and more. Let's do a code collaboration exercise.
+---
+name: everything-is-recorded
+# No More Untracked Changes
+
+---
+name: multi-user-collaboration
+# Collaborate With Other Users
+
+---
+name: audit-trail-for-infra
+# Audit Trail for Infrastructure Builds
+
+---
+name: sentinel-policy-enforcement
+class: title, smokescreen, shelf
+background-image: url(images/security_lasers.jpg)
+# Sentinel
+## Policy Enforcement for Terraform
+
+---
+name: what-is-sentinel
+# What is Sentinel?
+```hcl
+# Restricting region in AWS
+aws_region_valid = rule {
+  all region_values as rv {
+	rv == "us-east-1"
+  }
+}
+```
+
+Sentinel is HashiCorp's policy enforcement language. Sentinel policies are checked after **`terraform plan`** is run. Sentinel will intercept bad configurations *before* they go to production, not after.
+
+---
+name: what-can-sentinel-do
+# Example Uses for Sentinel
+
+---
+name: sentinel-enforcement-levels
+# Sentinel Enforcement Levels
+
+---
+name: org-or-workspace
+# Apply to Organization or Workspaces
 
 ---
 name: lab-exercise-3
 # 👩‍💻 Lab Exercise: Version Control and Sentinel
 <br><br>
-In this lab we'll cover Version Control System (VCS) integration, Sentinel Policy Enforcement, and the Private Module Registry.
+In this lab we'll cover Version Control System (VCS) integration and Sentinel Policy Enforcement.
 
 Continue the lab exercises from where you left off.
 
@@ -422,21 +494,72 @@ name: TFE-Chapter-4
 class: title
 
 # Chapter 4
-## Terraform Modules
+## Modules and API Automation
 
 ---
 name: private-module-registry
-# TFE Private Module Registry
-.center[![:scale 80%](images/aws_pmr.png)]
+class: title, smokescreen, shelf
+background-image: url(images/lego_wallpaper.jpg)
+# Terraform Modules
+## Reusable Infrastructure as Code
 
-Terraform modules are reusable packages of Terraform code that you can use to build your infrastructure. Terraform Cloud includes a Private Module Registry where you can store, version, and distribute modules to your organizations and teams.
+---
+name: what-even-is-module
+# What is a Terraform Module?
+
+---
+name: how-modules-configured
+# How are Terraform Modules Configured?
+
+---
+name: private-module-registry
+class: img-right
+# Private Module Registry
+![](images/aws_pmr.png)
+
+Terraform modules are reusable packages of Terraform code that you can use to build your infrastructure.
+
+Terraform Cloud includes a Private Module Registry where you can store, version, and distribute modules to your organizations and teams.
+
+---
+name: api-driven-workflows
+class: title, smokescreen, shelf
+background-image: url(images/enter_the_matrix.jpg)
+# Terraform Cloud API
+## Automate Everything
+
+---
+name: whats-an-api
+# Application Programming Interface
+
+---
+name: terraform-cloud-api
+# Terraform Cloud API - How It Works
+
+---
+name: api-use-cases
+# Terraform Cloud API - Use Cases
 
 ---
 name: TFE-Chapter-5
 class: title
 
 # Chapter 5
-## Extra Resources
+## Bonus Lab & Extra Resources
+
+---
+name: additional-resources-tfe
+# Additional Resources
+If you'd like to learn more about Terraform Enterprise or Terraform Cloud visit the links below:
+
+Terraform Enterprise Product Page
+https://www.hashicorp.com/products/terraform/
+
+Why Consider Terraform Enterprise Over Open Source?
+https://www.hashicorp.com/resources/why-consider-terraform-enterprise-over-open-source
+
+Terraform AWS Provider Documentation
+https://www.terraform.io/docs/providers/aws/
 
 ---
 name: Feedback-Survey
@@ -451,21 +574,8 @@ The survey is short, we promise:
 ]
 
 ---
-name: additional-resources-tfe
-# Additional Resources
-If you'd like to learn more about Terraform Enterprise or Terraform Cloud visit the links below:
+name: the-end
+class: img-caption
 
-Terraform Enterprise Product Page
-https://www.hashicorp.com/products/terraform/
-
-Why Consider Terraform Enterprise Over Open Source?
-https://www.hashicorp.com/resources/why-consider-terraform-enterprise-over-open-source
-
-Terraform Enterprise Docs
-https://www.terraform.io/docs/enterprise/index.html
-
-Terraform AWS Provider Documentation
-https://www.terraform.io/docs/providers/aws/
-
-Link to this Slide Deck
-https://bit.ly/hashiazure
+# Congratulations, you completed the workshop!
+![HashiCorp Employees - 2019](https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-build-azure/hashicorp_employees.jpg)
