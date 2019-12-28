@@ -15,12 +15,13 @@ cat <<-EOF > /tmp/add_vcs.json
     "attributes": {
       "name": "hashicat-aws",
       "operations": true,
+      "auto-apply": true,
       "vcs-repo": {
         "branch": "",
         "ingress-submodules": false,
         "identifier": "scarolan/hashicat-aws",
         "display-identifier": "scarolan/hashicat-aws",
-        "oauth-token-id": "ot-biMCqt397ihnaZLP"
+        "oauth-token-id": "ot-Kvxk1Cc4VRWPjzG3"
         }
     },
     "type": "workspaces"
