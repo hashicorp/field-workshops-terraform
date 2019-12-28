@@ -29,7 +29,7 @@ name: tfc-link-to-slide-deck
 .center[
 Follow along on your own computer at this link:
 
-# https://git.io/JeM0d
+# https://git.io/JeNWH
 ]
 
 ---
@@ -38,7 +38,7 @@ class: col-2
 # Table of Contents
 
 <div>
-1. OSS vs. Cloud/Enterprise<br>
+1. OSS to Cloud/Enterprise<br>
 🌥️ Terraform Cloud Overview<br>
 👨🏽‍🏫 Review the Basics<br>
 🔗 Configure Remote State<br>
@@ -71,18 +71,57 @@ class: title
 ---
 name: terraform-user-journey
 # The Terraform User Journey
+.center[
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FWpCQar9dYg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+]
+
+https://www.hashicorp.com/resources/terraform-adoption-journey
 
 ---
 name: infrastructure-as-code
+class: col-2
 # Infrastructure as Code
 
+* Terraform code is written in HCL
+* Stop building things by hand
+* Put everything into repeatable Terraform configuration
+* All build steps are now expressed as code
+* If you ever have to rebuild something, it's much easier!
+
+![Terraform Code on AWS](images/code_example.png)
+
 ---
-name: multi-cloud-compliance
-# Multi-Cloud Compliance and Management
+name: multi-platform-compliance
+# Manage All Your Infrastructure
+.center[
+![:scale 80%](images/terraform_on_prem.png)
+]
+
+Terraform also integrates with on premise VMs or platform services.
+
+???
+We don't say 'multi-cloud' here out of respect for our hosts.
 
 ---
 name: self-service-infra
 # Self-Service Infrastructure
+
+.center[
+![:scale 60%](images/self_service.png)
+]
+
+Enable users to build what they need without running up a huge bill or putting your organization at risk.
+
+---
+name: terraform-cloud-what-is-it
+# Terraform Cloud - The Big Picture
+
+.center[
+![:scale 90%](images/cloud_overview_aws.png)
+]
+
+???
+**During the next lab you'll sign up for a free Terraform Cloud account which we'll use for the remainder of this training.**
 
 ---
 name: why-tfc-1
@@ -208,14 +247,6 @@ Terraform Cloud is a SaaS application that provides the following features:
 **Terraform enterprise can store and encrypt your cloud credentials, passwords or any other sensitive data. These credentials are stored safely inside of a Vault instance that runs inside of TFE.**
 
 ---
-name: terraform-cloud-what-is-it
-# Terraform Cloud - SaaS for Infrastructure
-
-???
-**During the next lab you'll sign up for a free Terraform Cloud account which we'll use for the remainder of this training.**
-TODO: Add an image or something to make this slide more interesting
-
----
 name: terraform-cloud-enterprise
 # Terraform Cloud or Terraform Enterprise?
 **[Terraform Cloud](https://app.terraform.io/signup)** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud based SaaS solution because they don't want to maintain the infrastructure to run it.
@@ -258,12 +289,23 @@ terraform graph   # Create a DOT-formatted graph
 ---
 name: what-is-a-workspace
 # Terraform Workspaces
+.center[![:scale 70%](images/workspaces_gui.png)
+https://www.terraform.io/docs/cloud/workspaces/
+]
+
+A Terraform workspace is simply a managed unit of infrastructure.
+
+???
+Explain some more about workspaces and how we view them.
 
 ---
 name: our-application
 # HashiCat Application - Kittens as a Service
 
 .center[![:scale 60%](images/meow_world.png)]
+
+???
+This will be our application for the training today. We've already written all the Terraform code for you. This app will help us learn how different features work.
 
 ---
 name: terraform-state
@@ -308,9 +350,11 @@ Terraform Cloud Remote State is free and available to all users. The requirement
 * Free or paid Terraform Cloud account
 * A **`.terraformrc`** (Unix/Linux) or **`terraform.rc`** (Windows) config file
 * User access token stored in your config file
-* Remote backend config file, name it **`remote_backend.tf`** for convenience.
+* Remote backend config file. We name it **`remote_backend.tf`** for consistency.
 
 **WARNING** - do not copy your Terraform Cloud API token to github!
+
+https://www.terraform.io/docs/backends/types/remote.html
 
 ???
 Please raise your right hand and repeat after me:
