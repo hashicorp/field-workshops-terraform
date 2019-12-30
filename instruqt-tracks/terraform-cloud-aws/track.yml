@@ -309,8 +309,6 @@ challenges:
       read access to your workspace, and we also need to get Lars and Aisha set up.
       Can you please create some teams in our organization and add your co-workers
       to them?"
-  - type: image
-    url: https://storage.cloud.google.com/instruqt-hashicorp-tracks/terraform-cloud-aws/tfcloud_users_page.png?authuser=1
   - type: text
     contents: Teams and role-based access controls are a paid feature of Terraform
       Cloud. Your instructor will need to upgrade your organization to a free trial
@@ -696,4 +694,4 @@ challenges:
     port: 8443
   difficulty: basic
   timelimit: 600
-checksum: "12889253353141353166"
+checksum: "18380252869663712615"
