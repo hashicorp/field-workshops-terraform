@@ -4,7 +4,31 @@ count: false
 <br><br>
 ![:scale 60%](images/tf_aws.png)
 <br><br>
-# Intro to Terraform Cloud on AWS
+# Terraform Cloud on AWS
+
+???
+**Welcome to the Terraform Cloud on AWS workshop. This is a one day workshop that introduces free and paid features of Terraform Cloud (also Enterprise) using an AWS-based application for the tech labs. If you're brand new to Terraform you should try the Introduction to Terraform OSS on AWS Instruqt track before this one.**
+
+**Terraform Cloud and Terraform Enterprise have almost identical feature sets so we'll be using Terraform Cloud as our training environment today.**
+
+INSTRUCTOR NOTE: Welcome to Terraform Cloud on AWS. This slide deck is written entirely in Markdown language, which means you can make edits or additions then submit a pull request to add your changes to the master copy. To make edits to the slide deck simply fork this repository, edit the Markdown file(s), and submit a pull request with your changes. You can easily test a local copy of the slide deck with this python one-liner:
+
+```
+python -m SimpleHTTPServer
+```
+
+The Markdown content is contained in the docs/slides subdirectories.
+
+Here are some helpful keyboard shortcuts for the instructor or participant:
+
+⬆ ⬇ ⬅ ➡   - Navigate back and forth
+P         - Toggle presenter view
+C         - Pop an external window for presentation
+
+Instructor notes are included in plain text, narrative parts are in **bold**. You can use the narrative quotes or change them to suit your own presentation style.
+
+Lab exercises are conducted on the Instruqt (www.instruqt.com) platform. You can learn all about Instruqt here:
+https://hashicorp.atlassian.net/wiki/spaces/SE/pages/511574174/Instruqt+and+Remark+Contributor+Guide
 
 ---
 layout: true
@@ -22,6 +46,15 @@ name: Introductions
 - Automation Experience
 - Favorite Text Editor
 
+???
+**Let's start with introductions. Give us your name, job title, any automation experience, and finally your favorite text editor. There are no wrong answers here. Except for Notepad. Notepad++ is ok though.**
+
+If your audience is less than 25 people you can quickly go through the room and ask everyone to introduce themselves. The text editor question is a fun ice breaker, and it also gives you a quick barometer on how skilled your students will be at writing and editing code.
+
+**You don't need to be an expert at vi to use Terraform. Today during the hands-on labs we'll be using Visual Studio Code or vim to edit some files.**
+
+Now introduce yourself, tell a story, give the audience something to think about. If you don't have a story borrow someone else's: https://www.youtube.com/watch?v=h970ZBgKINg
+
 ---
 name: tfc-link-to-slide-deck
 # The Slide Deck
@@ -29,8 +62,11 @@ name: tfc-link-to-slide-deck
 .center[
 Follow along on your own computer at this link:
 
-# https://git.io/JeNWH
+# https://git.io/JeA7Q
 ]
+
+???
+**The first question we usually hear during these workshops is "Can we have the slide deck?" The answer is YES, and we've made it really easy to download. In fact, it's just a website. Open this link and you can follow along on your own laptop. Just use the arrow keys to navigate.**
 
 ---
 name: Table-of-Contents
