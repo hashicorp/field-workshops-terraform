@@ -29,7 +29,7 @@ name: tfc-link-to-slide-deck
 .center[
 Follow along on your own computer at this link:
 
-# https://git.io/JeM0d
+# https://git.io/JeNWH
 ]
 
 ---
@@ -38,7 +38,7 @@ class: col-2
 # Table of Contents
 
 <div>
-1. OSS vs. Cloud/Enterprise<br>
+1. OSS to Cloud/Enterprise<br>
 🌥️ Terraform Cloud Overview<br>
 👨🏽‍🏫 Review the Basics<br>
 🔗 Configure Remote State<br>
@@ -71,18 +71,57 @@ class: title
 ---
 name: terraform-user-journey
 # The Terraform User Journey
+.center[
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FWpCQar9dYg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+]
+
+https://www.hashicorp.com/resources/terraform-adoption-journey
 
 ---
 name: infrastructure-as-code
+class: col-2
 # Infrastructure as Code
 
+* Terraform code is written in HCL
+* Stop building things by hand
+* Put everything into repeatable Terraform configuration
+* All build steps are now expressed as code
+* If you ever have to rebuild something, it's much easier!
+
+![Terraform Code on AWS](images/code_example.png)
+
 ---
-name: multi-cloud-compliance
-# Multi-Cloud Compliance and Management
+name: multi-platform-compliance
+# Manage All Your Infrastructure
+.center[
+![:scale 80%](images/terraform_on_prem.png)
+]
+
+Terraform also integrates with on premise VMs or platform services.
+
+???
+We don't say 'multi-cloud' here out of respect for our hosts.
 
 ---
 name: self-service-infra
 # Self-Service Infrastructure
+
+.center[
+![:scale 60%](images/self_service.png)
+]
+
+Enable users to build what they need without running up a huge bill or putting your organization at risk.
+
+---
+name: terraform-cloud-what-is-it
+# Terraform Cloud - The Big Picture
+
+.center[
+![:scale 90%](images/cloud_overview_aws.png)
+]
+
+???
+**During the next lab you'll sign up for a free Terraform Cloud account which we'll use for the remainder of this training.**
 
 ---
 name: why-tfc-1
@@ -208,14 +247,6 @@ Terraform Cloud is a SaaS application that provides the following features:
 **Terraform enterprise can store and encrypt your cloud credentials, passwords or any other sensitive data. These credentials are stored safely inside of a Vault instance that runs inside of TFE.**
 
 ---
-name: terraform-cloud-what-is-it
-# Terraform Cloud - SaaS for Infrastructure
-
-???
-**During the next lab you'll sign up for a free Terraform Cloud account which we'll use for the remainder of this training.**
-TODO: Add an image or something to make this slide more interesting
-
----
 name: terraform-cloud-enterprise
 # Terraform Cloud or Terraform Enterprise?
 **[Terraform Cloud](https://app.terraform.io/signup)** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud based SaaS solution because they don't want to maintain the infrastructure to run it.
@@ -255,15 +286,31 @@ terraform output  # View Terraform outputs
 terraform graph   # Create a DOT-formatted graph
 ```
 
+Need a refresher? Try the [Intro to Terraform on AWS](https://instruqt.com/hashicorp/tracks/terraform-build-aws) lab exercises.
+
+???
+Depending on the maturity of your audience you might take a detour back to the Intro to Terraform track. Ideally everyone in the workshop has already completed this or has equivalent experience with Terraform OSS.
+
 ---
 name: what-is-a-workspace
 # Terraform Workspaces
+.center[![:scale 70%](images/workspaces_gui.png)
+https://www.terraform.io/docs/cloud/workspaces/
+]
+
+A Terraform workspace is simply a managed unit of infrastructure.
+
+???
+Explain some more about workspaces and how we view them.
 
 ---
 name: our-application
 # HashiCat Application - Kittens as a Service
 
 .center[![:scale 60%](images/meow_world.png)]
+
+???
+This will be our application for the training today. We've already written all the Terraform code for you. This app will help us learn how different features work.
 
 ---
 name: terraform-state
@@ -308,9 +355,11 @@ Terraform Cloud Remote State is free and available to all users. The requirement
 * Free or paid Terraform Cloud account
 * A **`.terraformrc`** (Unix/Linux) or **`terraform.rc`** (Windows) config file
 * User access token stored in your config file
-* Remote backend config file, name it **`remote_backend.tf`** for convenience.
+* Remote backend config file. We name it **`remote_backend.tf`** for consistency.
 
 **WARNING** - do not copy your Terraform Cloud API token to github!
+
+https://www.terraform.io/docs/backends/types/remote.html
 
 ???
 Please raise your right hand and repeat after me:
@@ -359,12 +408,24 @@ https://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-thei
 
 ---
 name: Protecting-Sensitive-Variables
+class: img-right-full
 # Protecting Sensitive Variables
+![](images/encryption.jpg)
+
+* Cloud API Keys
+* Passwords
+* SSH private keys
+* SSL certificates
+* Any sensitive text or data
 
 ---
 name: where-are-your-creds
 # Where Are Your API Keys?
-Terraform requires credentials in order to communicate with your cloud provider's API. These API keys should never, ever be stored directly in your terraform code. Config files and environment variables are a better option, but the credentials still live on your workstation, usually stored in plaintext.
+Terraform requires credentials in order to communicate with your cloud provider's API.
+
+These API keys should **never** be stored directly in your terraform code.
+
+Config files and environment variables are a better option, but the credentials still live on your workstation, usually stored in plaintext.
 
 ---
 name: a-better-way-creds
@@ -383,14 +444,13 @@ background-image: url(images/teamwork.png)
 
 ---
 name: terraform-rbac-2
+class: img-right
 # Teams for Terraform Collaboration
+![](images/teams_gui.png)
 
----
-name: terraform-rbac
-# Role Based Access Controls (RBAC)
-.center[![:scale 40%](images/teams_list.png)]
+Teams are used to grant different levels of access to different parts of your Terraform infrastructure, depending on the user's role.
 
-Terraform Cloud is a multi-tenanted application that supports fine-grained access controls. You can create multiple organizations, each containing its own teams and users.
+Workspaces access levels include read, plan, write, and admin. Super users can also be granted organization wide permissions for managing policies and VCS settings.
 
 ---
 name: lab-exercise-2
@@ -418,14 +478,41 @@ background-image: url(images/git_log.png)
 
 ---
 name: whats-a-vcs
+class: img-right
 # What is a Version Control System (VCS)?
-Version control systems are applications that allow users to store, track, test, and collaborate on changes to their infrastructure and applications. Terraform Cloud integrates with most common Version Control Systems.
+
+![:scale 70%](images/distributed_vcs.png)
+
+Version control systems are applications that allow users to store, track, test, and collaborate on changes to their infrastructure and applications.
+
+Terraform Cloud integrates with most common Version Control Systems.
 
 ---
 name: tfc-infra-as-code-workflow
-# Infrastructure as Code
-<br><br>
+class: img-left
+# VCS Integration with Terraform Cloud
+
+![:scale 70%](images/git_noobs.png)
+
 Terraform Cloud can directly integrate with source code repos in GitHub Enteprise, Gitlab, and Bitbucket. This allows you to build simple DevOps workflows with code reviews, testing and approvals.
+
+https://xkcd.com/1597/
+
+For this workshop you'll only need four or five git commands.
+
+---
+name: multi-user-collaboration
+class: img-right-full
+# User Collaboration
+![](images/commitstrip_devops.jpg)
+Users from different teams or departments can all benefit from centralized infrastructure as code.
+
+Infrastructure changes are no longer created in isolated silos.
+
+Each team can contribute or consume Terraform code according to their needs.
+
+.small[http://www.commitstrip.com/en/2015/02/02/is-your-company-ready-for-devops/]
+
 
 ---
 name: vcs-driven-workflow
@@ -437,14 +524,9 @@ When your Terraform code is stored in a version control system, you unlock extra
 ---
 name: everything-is-recorded
 # No More Untracked Changes
+.center[![:scale 100%](images/git_commit_log.png)]
 
----
-name: multi-user-collaboration
-# Collaborate With Other Users
-
----
-name: audit-trail-for-infra
-# Audit Trail for Infrastructure Builds
+Every infrastructure change is recorded and tracked in the git log. You will always know exactly who made a change, what was changed, who approved the change, and when and why the change was made.
 
 ---
 name: sentinel-policy-enforcement
@@ -470,14 +552,29 @@ Sentinel is HashiCorp's policy enforcement language. Sentinel policies are check
 ---
 name: what-can-sentinel-do
 # Example Uses for Sentinel
+* Enforce owner allow list on aws_ami data source
+* Enforce mandatory tags on instances
+* Restrict availability zones
+* Disallow 0.0.0.0/0 CIDR blocks
+* Restrict instance types of EC2 instances
+* Require VPCs to be tagged and have DNS hostnames enabled
+
+You can implement these rules and many more using Sentinel.
 
 ---
 name: sentinel-enforcement-levels
 # Sentinel Enforcement Levels
+⏰ **Advisory** - Issues a warning to the user when they trigger a plan that violates the policy.
+
+⚠️ **Soft-Mandatory** - Blocks regular users from deploying the non-compliant infrastructure. Only admins can override.
+
+🛑 **Hard-Mandatory** - Blocks all users and apps from deploying the non-compliant infrastructure.
 
 ---
 name: org-or-workspace
 # Apply to Organization or Workspaces
+.center[![:scale 80%](images/policy_workspaces.png)]
+
 
 ---
 name: lab-exercise-3
@@ -506,10 +603,22 @@ background-image: url(images/lego_wallpaper.jpg)
 ---
 name: what-even-is-module
 # What is a Terraform Module?
+.center[![:scale 90%](images/aws_vpc_module.png)]
+
+Modules are reusable units of Terraform code that hide unnecessary complexity from the user. This one creates a standard VPC configuration with only 8 variables.
 
 ---
 name: how-modules-configured
 # How are Terraform Modules Configured?
+Creating Terraform Modules in 3 easy steps:
+
+1. Write some Terraform code, configuring inputs and outputs.
+2. Store the Terraform code somewhere your workstation can access it.
+3. Reference your modules by file path or source URL.
+
+Sounds easy right?
+
+What if you had to manage dozens or hundreds of modules, with different versions of each?
 
 ---
 name: private-module-registry
@@ -531,14 +640,46 @@ background-image: url(images/enter_the_matrix.jpg)
 ---
 name: whats-an-api
 # Application Programming Interface
+```ruby
+curl -s -H "Accept: application/json" https://icanhazdadjoke.com
+
+{
+  "id": "jyPCYTKuskb",
+  "joke": "How did Darth Vader know what Luke was getting for
+           Christmas? He felt his presents.",
+  "status": 200
+}
+```
+APIs are the default language of the Internet. According to Akamai research 83% of Internet traffic is made up of API calls (JSON/XML).
+.center[.small[https://www.akamai.com/us/en/about/news/press/2019-press/state-of-the-internet-security-retail-attacks-and-api-traffic.jsp]]
+
 
 ---
 name: terraform-cloud-api
 # Terraform Cloud API - How It Works
+```bash
+# Create a workspace using the API
+curl --header "Authorization: Bearer $TOKEN" --header \
+"Content-Type: application/vnd.api+json" --request POST \
+--data @/tmp/create_workspace.json \
+https://app.terraform.io/api/v2/organizations/$ORG/workspaces
+```
+
+1. Applications and tools authenticate to the API with a token.
+2. JSON payloads determine which knobs and buttons to push.
+3. The JSON payloads are submitted to different API endpoints depending on what you're doing.
+
+Most programming languages have helper libraries for working with APIs.
 
 ---
 name: api-use-cases
 # Terraform Cloud API - Use Cases
+
+* Continuous Integration test pipelines
+* Connect with workflow managment systems
+* External systems that need to query Terraform state for data
+* Self-service portal with Terraform on the backend
+* Custom command line scripts for specific needs
 
 ---
 name: TFE-Chapter-5
