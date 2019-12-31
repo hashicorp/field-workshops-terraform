@@ -98,7 +98,9 @@ class: col-2
 </div>
 
 ???
-**This is our table of contents. We have a lot of ground to cover today.**
+**This is our table of contents. We have a lot of ground to cover today. The workshop will alternate between lecture and lab exercise so we don't get bored and fall asleep. We'll be taking breaks roughly every 90 minutes, with a 45 minute break for lunch.**
+
+Make sure your EAM or sponsor have arranged for lunch if presenting this as a full-day workshop.
 
 ---
 name: TFE-Chapter-1
@@ -106,6 +108,9 @@ class: title
 
 # Chapter 1
 ## Terraform OSS, Cloud and Enterprise
+
+???
+**In the first chapter we'll cover Terraform open source and some of the differences between OSS and Cloud and Enterprise.**
 
 ---
 name: terraform-user-journey
@@ -115,6 +120,11 @@ name: terraform-user-journey
 ]
 
 https://www.hashicorp.com/resources/terraform-adoption-journey
+
+???
+**Let's start with a typical Terraform User Journey. Our CTO Armon Dadgar will explain what the stages of Terraform adoption look like.**
+
+If you have a good sound setup, you can simply play Armon's video for your audience. Alternatively you should watch the video and learn how to do this whiteboard talk yourself.
 
 ---
 name: infrastructure-as-code
@@ -129,6 +139,11 @@ class: col-2
 
 ![Terraform Code on AWS](images/code_example.png)
 
+???
+**At the core of Terraform is this idea of Infrastructure as Code. Instead of building things as a series of manual steps, or error-prone shell scripts that may or may not be tested and up to date, you express all your infrastructure build steps in this simple Domain Specific Language, or terraform. The official name for the Terraform config syntax is Hashicorp Config Language, or HCL. This language is easy for beginners and powerful for experts. Think of it as the DNA of your infrastructure.**
+
+This slide is here in case you have any brand new, or non-technical people who have never seen a terraform resource before.
+
 ---
 name: multi-platform-compliance
 # Manage All Your Infrastructure
@@ -139,7 +154,7 @@ name: multi-platform-compliance
 Terraform also integrates with on premise VMs or platform services.
 
 ???
-We don't say 'multi-cloud' here out of respect for our hosts.
+**Terraform Cloud and Enterprise can be used to build VMs in your data center, or AWS instances in the cloud, or both. You won't have to maintain two sets of tools to build on your hybrid cloud platforms.**
 
 ---
 name: self-service-infra
@@ -151,6 +166,9 @@ name: self-service-infra
 
 Enable users to build what they need without running up a huge bill or putting your organization at risk.
 
+???
+**Terraform Cloud encourages safe provisioning via reusable modules and policy enforcement. Now users can build exactly what they need to do their jobs without breaking things or putting your organization at risk. A slow and cumbersome approval process is no longer required because the automation enforces best practices without manual code reviews.**
+
 ---
 name: terraform-cloud-what-is-it
 # Terraform Cloud - The Big Picture
@@ -160,7 +178,17 @@ name: terraform-cloud-what-is-it
 ]
 
 ???
-**During the next lab you'll sign up for a free Terraform Cloud account which we'll use for the remainder of this training.**
+**This slide shows the end state of our workshop. Over on the left our infrastructure folks have created some reusable modules that the rest of our users can implement in their own terraform code. These modules ensure that infrastructure components like networks and VMs get built correctly every time, and they also make it easy for the user to build the "right stuff" on their own.**
+
+**In the next stage our user is writing terraform code and checking it into a Version Control System. This ensures that each and every change meant for production is recorded and reviewed. This is so important. It requires discipline and cooperation from all of your devops and infrastructure admins. When new code is committed to the master branch it triggers a plan in Terraform Cloud (or Enterprise)**
+
+**Think of Terraform Cloud as a remote execution and state management platform for Terraform. Now you're not running terraform on your laptop like it's the wild west of cloud provisioning; instead all terraform runs happen in secure docker containers that run on our SaaS platform, or in your own data center. This allows you to encrypt and secure all your API keys, variables, and terraform state files. Access is granted only to authorized users.**
+
+**All your terraform state files are safely stored and encrypted on the server side. Any time you need to make a change to any of your infrastructure, Terraform knows the last state it was in and can build incrementally based on what has changed. Need to add more instances to a cluster? No problem, terraform can do that for you without a complete tear-down and rebuild.**
+
+**Before every terraform apply, you can run Sentinel policy checks against the proposed infrastructure plan to catch any policy violations. For example you might not want the devs creating super XL instances that cost a lot of money to run. You can write a simple rule that restricts developer workspaces to only using m3.medium sized instances, unless they get special permission for more.**
+
+**Role-based access controls allow different types of users to interact with Terraform cloud according to their level of access. You might have super admins who can control everything in the organization, then regular users who can run terraform but only in dev environments. Another group might be able to push changes to production, while some users may have read-only access. Terraform Cloud/Enterprise is a true multi-tenant application.**
 
 ---
 name: why-tfc-1
@@ -171,7 +199,7 @@ class: img-right
 Terraform Cloud is a SaaS application that provides the following features:
 
 ???
-**Until now we've been using only open source features. Sooner or later you'll reach a point where you want more tools for governance and collaboration. Terraform open source is great for small environments and developers, but when you need multiple people or teams to collaborate on the same infrastructure, Terraform Cloud features can help.**
+**Let's go through a quick bullet list of Terraform Cloud features and why they matter.**
 
 ---
 name: why-tfc-2
@@ -199,6 +227,8 @@ Terraform Cloud is a SaaS application that provides the following features:
 
 ???
 **For our more advanced users we have a fully featured RESTful API. This is useful for programmatic access to terraform features. You can drive terraform plan and apply commands using an API interface. If you have a CI/CD pipeline you can automate your terraform builds as part of your process.**
+
+**APIs are the building blocks of any modern cloud automation system. By using standard, well defined APIs you ensure that your infrastructure pipelines will be ready to adapt to any future changes.**
 
 ---
 name: why-tfc-4
@@ -264,7 +294,7 @@ Terraform Cloud is a SaaS application that provides the following features:
 * Single Sign-On
 
 ???
-**Terraform Enteprise also supports single sign-on using your own SAML provider. This allows you to quickly map users into your organization's teams and workspaces so they can become productive right away.**
+**Terraform Enteprise also supports single sign-on using your own SAML provider. This allows you to quickly map users into your organization's teams and workspaces so they can become productive right away. This feature is only available for private Terraform Enterprise installations. We won't be covering SAML or single sign-on in today's workshop.**
 
 ---
 name: why-tfc-8
@@ -294,12 +324,76 @@ name: terraform-cloud-enterprise
 
 The feature list for these two offerings is nearly identical. We will be using Terraform Cloud accounts for our lab exercises today.
 
+???
+**If you're curious which one of these your company should adopt, the answer is Terraform Enterprise. Terraform Cloud, while convenient, is not suitable to high-volume environments or private data center infrastructure. We're using it for training because the feature set is nearly identical. In other words, everything you learn today will apply in your own Terraform Enterprise environment.**
+
+Be well versed on the feature list and differences between cloud and enterprise. In particular, remember that TF Cloud limits you to one single concurrent terraform run, and it also can't reach into your private data center or cloud account.
+
 ---
 name: live-demo
 class: title, smokescreen, shelf
 background-image: url(images/live_demo.jpg)
 # Live Demo
 ## Terraform Cloud in Action
+
+???
+INSTRUCTOR NOTE: You can use the same instruqt track that the students will be using to do this demo. Make sure you've gone through the entire track yourself and have your own organization, fork of the hashicat-aws repo, and sentinel policy in place. Once you have done these steps it's easy to create a new demo:
+
+1. Start your own copy of the Terraform Cloud on AWS track
+2. Echo out your AWS credentials and set them as environment variables in TFC:
+```
+echo $AWS_ACCESS_KEY_ID
+echo $AWS_SECRET_ACCESS_KEY
+```
+3. Open a browser tab to your fork of the hashicat-aws git repo. Edit the main.tf file and make sure your aws_instance resource is missing the `Department` and `Billable` tags.
+4. Make sure you remove the VPC file (vpc.tf) from your hashicat-aws repo. This will make the demo take longer and may break if the regions aren't set up right.
+5. Begin your demo dialog:
+
+**This is a brief demo showing off some of the features of Terraform cloud. You'll get to work with all these features during the hands-on labs today.**
+
+**Pretend I'm a brand new developer and I want to spin up a copy of my company's web application that I can use for testing. I have my own fork of the code here on github. This is the hashicat-aws application. Like the name implies, it provides kittens as a service. You give it a placeholder URL, a height, and a width, and you get a cat. Neat huh?**
+
+**Let's hop over to Terraform Cloud and take a look at my workspace. Here you can see the most recent terraform runs and their status, along with the exact git commit hash that led to each run being triggered. All changes are recorded, and only code that passes our sentinel policies is allowed to run.**
+
+**Before I build anything I might want to configure some variables to adjust my infrastructure settings. Here you can see some terraform variables, prefix and region. These will determine the names of my resources and the region they will be deployed in.**
+
+**Down bottom you see the Environment Variables. These are system shell variables that are injected into the terraform cloud container at runtime. You can optionally encrypt sensitive environment variables such as these AWS keys. Note that these are write-only. Once you encrypt a variable by marking it sensitive, you won't see it here in plaintext again. These are dynamic AWS credentials that are good for only a few hours. You can paste them in manually or use the API to auto-populate them from HashiCorp Vault.**
+
+**New and advanced users can utilize the GUI to trigger infrastructure builds. Let's do that now by clicking on this Queue Plan button. I'm going to put "new dev environment" down as the reason for the build. Now notice that a new terraform plan has kicked off. This is the dry run. terraform is figuring out if any of the infrastructure already exists from a previous run, and then it will build or change everything to match what's in the code. That is, unless we fail a sentinel policy...**
+
+**Oh dear it looks like we have some non-compliant terraform code that has blocked the build. This is Sentinel. Sentinel can inspect every terraform plan to ensure that users don't break the rules or build things that they shouldn't. In this case we have forgotten to tag our AWS instances with the mandatory tags, "Billable" and "Department". Since this is a hard-mandatory policy, we can't override it. We have to fix our code and get it compliant in order to proceed.**
+
+**We'll go back over to our github repo and edit the main.tf file. In the real world you probably won't be editing files directly on the master branch of your repo, what you'd do is test this change in a branch first, have someone review the change, and then merge the change to master. But for a demo it's fine.**
+
+INSTRUCTOR NOTE: Have your code commented and ready to go like this. That way you can quickly uncomment the required tags and save the file.
+
+```
+  tags = {
+    Name = "${var.prefix}-hashicat-instance"
+#     Department = "devops team"
+#     Billable = "true"
+  }
+```
+
+**Now if I pop back over to Terraform Cloud you can see that a new run has triggered based on the change I just made. Terraform Cloud watches that master branch for any changes and automatically picks them up. I still have a chance to review the run in the UI here. You can see that my policy check is now passing, which will make the finance people happy, and I can continue building my dev environment.**
+
+**I'll click Confirm & Apply and we'll start building.**
+
+If you want you can paste an emoji in along with your confirm message. Have fun with it.
+
+**And away we go. Terraform is building a bunch of network infrastructure and deploying my hashicat application onto a new aws instance in {REGION}. This application has been specially customized for training; it takes about 3-4 minutes to run the first time, then subsequent terraform apply commands only take 15-20 seconds. You might not use terraform this way in the real world but it's great for workshops because you can get a lot of terraform runs done in a short time without tearing down and rebuilding everything.**
+
+**Oh look, our apply looks like it's finished. Let's see what we built.**
+
+INSTRUCTOR NOTE: You might have to queue another plan here to get the app URL to refresh. This is normal, and if anyone asks you can say it's because the website re-provisions itself on every terraform run (which is not the default or how you'd do it in production.) Just wave your hand slowly and say "This is not the URL you're looking for."
+
+**Ok let's try a re-provision and see if the app loads this run. Ah, much better! Look at these cat(s). Now I can run terraform over and over again with different variables to make changes to the dev environment. For example, if we go into the variables and set the placeholder to placedog.net, let's see what we get...**
+
+Create a new variable called `placeholder` and set it to `placedog.net`. Queue up another run and approve it.
+
+**Note that the terraform run goes pretty quickly now. This is because we're running a custom provisioner that kicks off on every single run. If I reload the page I now get a picture of a dog instead of a cat.**
+
+**This has been a brief demo of a simple infrastructure as code workflow that you can use to get started with Terraform. We'll take a short break and when we return you'll get to do some hands on exercises in the first lab.**
 
 ---
 name: review-the-basics
