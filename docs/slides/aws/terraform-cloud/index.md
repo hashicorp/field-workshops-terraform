@@ -964,6 +964,19 @@ name: api-use-cases
 **Here are just a few of the things you might build with the Terraform Cloud API.**
 
 ---
+name: lab-exercise-4
+# 👩‍💻 Lab Exercise: Modules and API Automation
+<br><br>
+In this lab we'll cover the Private Module Registry and API Automation with Terraform Cloud.
+
+Continue the lab exercises from where you left off.
+
+🛑 **STOP** after you complete the fourth quiz.
+
+???
+This is the last official lab; the bonus lab will be stored in a separate track.
+
+---
 name: TFE-Chapter-5
 class: title
 
