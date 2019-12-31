@@ -97,6 +97,9 @@ class: col-2
 🌐 Useful Links
 </div>
 
+???
+**This is our table of contents. We have a lot of ground to cover today.**
+
 ---
 name: TFE-Chapter-1
 class: title
