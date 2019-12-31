@@ -29,3 +29,8 @@ terraform init
 # Back to our git repo and init
 cd $GITDIR
 terraform init
+
+# Fix up the ~/.vimrc file
+echo -e "let g:solarized_termcolors=256\nset t_Co=256\nsyntax enable\nset background=dark\ncolorscheme solarized" > /tmp/.vimrc
+mv /tmp/.vimrc /root/.vimrc
+chattr +i /root/.vimrc

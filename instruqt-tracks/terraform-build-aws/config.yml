@@ -7,7 +7,7 @@ containers:
   ports:
   - 8443
   - 5000
-  memory: 512
+  memory: 2048
 aws_accounts:
 - name: TF-WORKSHOP
   managed_policies:

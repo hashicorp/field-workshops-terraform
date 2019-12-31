@@ -49,7 +49,7 @@ challenges:
 
     Next, enable the Terraform Language Server for syntax highlighting and other features. Click on the Main Menu and select **View >> Command Palette**, then type in `Terraform`.
 
-    Select the option that says **Terraform: Enable/Disable Language Server**. You only need to click this once. It will activate in the background and generate a couple of notifications.
+    Select the option that says **Terraform: Install/Update Language Server**. You only need to click this once. It will activate in the background and generate a couple of notifications.
 
     Congratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new terraform skills.
 
@@ -85,13 +85,15 @@ challenges:
 
     All terraform commands should be run from the terminal within the Code Editor.
 
-    Try the **CTRL-J** shortcut to toggle the terminal window open and closed.
+    Try the **CTRL-J** shortcut to toggle the terminal window open and closed. If you don't see a command prompt in the terminal pane, simply click on the trash can icon and open a new terminal.
 
     You can use the little caret ^ shaped button on the terminal pane to expand and shrink your Terminal window. This is useful for viewing logs.
 
     Click on the File Explorer icon a couple times to toggle the File Explorer on and off. This can provide more space while you're viewing and editing code.
 
     You can also hide and show these notes with the expand icon on the upper right side of the GUI. It looks like a box with two small arrows in the corners. This will expand and close the notes panel. Try it now to give your text editor more space.
+
+    NOTE: If you prefer a classic command line experience we've provided another tab titled **Terminal**. The vim text editor is also installed on your workstation.
 
     Good job, you're ready to deploy the hashicat application on AWS!
   notes:
@@ -103,6 +105,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 600
 - slug: terraform-cloud-setup
@@ -174,6 +179,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
@@ -259,6 +267,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
@@ -400,6 +411,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   - title: Configuring Github Access
     type: external
     url: https://www.terraform.io/docs/cloud/vcs/github.html
@@ -450,6 +464,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
@@ -515,6 +532,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 600
 - slug: quiz-3
@@ -584,6 +604,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
@@ -653,6 +676,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
@@ -692,6 +718,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 600
-checksum: "8907100566798765836"
+checksum: "17537869597586072526"
