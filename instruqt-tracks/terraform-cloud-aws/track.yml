@@ -49,7 +49,7 @@ challenges:
 
     Next, enable the Terraform Language Server for syntax highlighting and other features. Click on the Main Menu and select **View >> Command Palette**, then type in `Terraform`.
 
-    Select the option that says **Terraform: Install/Update Language Server**. You only need to click this once. It will activate in the background and generate a couple of notifications.
+    Select the option that says **Terraform: Install/Update Language Server**. Install the latest version of the language server from the list. Open the command palette again and select **Terraform: Enable/Disable Language Server**.
 
     Congratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new terraform skills.
 
@@ -723,4 +723,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 600
-checksum: "17537869597586072526"
+checksum: "4119361767899760228"
