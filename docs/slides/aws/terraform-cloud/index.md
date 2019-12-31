@@ -402,6 +402,8 @@ background-image: url(images/terraform_scifi.jpg)
 # Review the Basics
 ## A Terraform OSS Refresher
 
+???
+**This section is a quick review of terraform open source usage.**
 
 ---
 name: review-basic-terraform-commands
@@ -428,13 +430,45 @@ Depending on the maturity of your audience you might take a detour back to the I
 name: what-is-a-workspace
 # Terraform Workspaces
 .center[![:scale 70%](images/workspaces_gui.png)
-https://www.terraform.io/docs/cloud/workspaces/
 ]
 
-A Terraform workspace is simply a managed unit of infrastructure.
+.center[
+.small[https://www.terraform.io/docs/cloud/workspaces/]
+]
+
 
 ???
-Explain some more about workspaces and how we view them.
+**A Terraform workspace is a managed unit of infrastructure. On your laptop or local workstation, the terraform workspace is simply a directory full of terraform code and variables. This code is also ideally stored in a git repository. In the cloud the workspace takes on some extra roles. In Terraform Cloud and Enterprise your workspace is still where you execute terraform runs but there are extra features like access controls, secure variables and policy management. Terraform is only run from secure docker containers that you control. (There is one exception to this and that is when you run terraform locally, but only store the state in Terraform Cloud). Your local workspace, or copy of a git repo, generally maps 1:1 with your terraform workspace.**
+
+**What should I put in a workspace? We recommend infrastructure that should be managed together as a unit be placed into the same workspace. Who has to manage it, how often does it change, does it have external dependencies that we can't control. Ask these questions. Think about what happens when you run `terraform apply`. You should be able to describe what you just built, and what outputs it provides, who this infrastructure is for, and how to utilize it.**
+
+**Terraform forces us to adopt the correct behavior which is to create a contract with our code. The terraform configuration agrees to build X, Y, and Z infrastructure, and to hand off some responsibilities to (Chef|Puppet|Ansible) for application configuration and deployment.**
+
+**A workspace could be: An entire application stack from network on up. Great for dev environments that you want to be completely self-contained. Or it could be a workspace that builds core network infrastructure and nothing else. Maybe the network team has to manage that. They get to be the lords of the network and provide terraform outputs to those who need a VPC or subnet. You can also use workspaces to deploy platform services like Kubernetes. Terraform can even manage IAM policies and roles, so that you can stand up an entire AWS account from scratch using only code. (Which is exactly what you're about to do in the labs...)**
+
+---
+name: what-is-an-organization
+# Terraform Organizations
+.center[![:scale 60%](images/choose_an_org.png)
+]
+.center[
+.small[https://www.terraform.io/docs/cloud/users-teams-organizations/organizations.html]
+]
+
+???
+**Organzations are shared spaces where users become members of teams and collaborate on workspaces. An organization can have hundreds or thousands of workspaces, and multiple teams with different levels of access. Users may belong to multiple organizations and teams.**
+
+---
+name: what-is-a-team
+# Terraform Teams
+.center[![:scale 90%](images/teams_emoji.png)
+]
+.center[
+.small[https://www.terraform.io/docs/cloud/users-teams-organizations/teams.html]
+]
+
+???
+**Teams are groups of users within an organization. Access rights to workspaces are granted at the team level. So for instance you might want to have an admins team, a managers team, and a developers team like you see here.**
 
 ---
 name: our-application
@@ -443,7 +477,7 @@ name: our-application
 .center[![:scale 60%](images/meow_world.png)]
 
 ???
-This will be our application for the training today. We've already written all the Terraform code for you. This app will help us learn how different features work.
+**This will be our application for the training today. We've already written all the Terraform code for you. This app will help us learn how different features work. Hashicat should be familiar if you've already been through Intro to Terraform on AWS. This is also the same app we used during the demo earlier.**
 
 ---
 name: terraform-state
@@ -466,6 +500,11 @@ Terraform stores information about the resources it has built in a **state file*
 
 By default, the state file is stored in your local workspace.
 
+???
+**Can anyone tell me why the state file is so important? Have you ever lost your state file? What was that like? I can tell you from experience it's not fun. You have to go and clean up or delete everything you built by hand instead of simply running `terraform destroy`. Recovering from a lost or corrupted state file is possible but painful and time consuming.**
+
+**Also, sometimes sensitive data can leak to the state file. We do our best to prevent this but the safest solution is to encrypt and store the entire state file in a safe place.**
+
 ---
 name: why-not-local-state
 class: img-left-full
@@ -479,6 +518,9 @@ The local state file has some disadvantages:
 * Can't collaborate because the file is on someone's laptop
 * Risk of losing or deleting the state file
 * No centralized record keeping
+
+???
+**Let's not be the dog at my homework kid. There's no excuse for losing your state file because you can easily store it for free in your Terraform Cloud account.**
 
 ---
 name: tfcloud-remote-state
@@ -495,9 +537,11 @@ Terraform Cloud Remote State is free and available to all users. The requirement
 https://www.terraform.io/docs/backends/types/remote.html
 
 ???
-Please raise your right hand and repeat after me:
+**Please raise your right hand and repeat after me:**
 
-"I will never store credentials in my terraform workspace."
+**"I will never store credentials in my terraform workspace."**
+
+The reason for the stern warning is because users have been copying this .terraformrc file to github during training workshops. Don't do it. Edit the file once, put your token in, and leave it alone. dot-files are hidden for a reason.
 
 ---
 name: lab-exercise-0
@@ -506,6 +550,9 @@ name: lab-exercise-0
 [Instruqt](https://instruqt.com) is the HashiCorp training platform. Visit the link below for a short tutorial, or if you're already familiar with Instruqt you can skip to the next slide.
 
 [https://instruqt.com/instruqt/tracks/getting-started-with-instruqt](https://instruqt.com/instruqt/tracks/getting-started-with-instruqt)
+
+???
+**That brings us to the first lab exercise. If you've worked with Instruqt before you can skip this lab. Or if it's your first time do this 10 minute track to get familiar with the lab environment.**
 
 ---
 name: lab-exercise-1
@@ -517,11 +564,19 @@ Your instructor will provide the URL for the first lab environment.
 
 🛑 **STOP** after you complete the first quiz.
 
+???
+**And finally we are ready for The Unicorn Project. It's a devops story where you play the lead role. Here is the link to your lab environment. The lab environment runs in your browser. If you want to save your progress make sure you create an Instruqt account. Go ahead and work through the first part of the track until you reach the first quiz. When you complete the quiz stop and take a break until the next lecture.**
+
+Give the private instruqt track link to your participants. You can create new invites in the instruqt control panel. Ask in #proj-instruqt on Slack if you need help with this part.
+
 ---
 name: TFE-Chapter-2
 class: title
 # Chapter 2
 ## Security and Role-Based Access Controls
+
+???
+**Welcome back, you made it through Chapter 1. Next we're going to look at secure variables and role based access controls or RBACs.**
 
 ---
 name: securing-sensitive-vars
@@ -529,6 +584,9 @@ class: title, smokescreen, shelf
 background-image: url(images/secure_lock.jpg)
 # Sensitive Variables
 ## A Secure Place for API Credentials
+
+???
+**First let's talk about sensitive variables, specifically API keys. Every time you build infrastructure on AWS you need an access key pair. The key pair includes the Access Key Id, and the Secret Access Key. These two strings paired together, with an optional time-based token, allow you to make requests to AWS API endpoints. Amazon spins up the resources and begins billing you for usage. These keys, especially if they are created by an account admin, are very powerful. The default setting in AWS is to grant admin-level access to the user. Let's look at how this can be a major problem...**
 
 ---
 name: Security-and-Compliance
@@ -538,6 +596,11 @@ Thousands of API and cryptographic keys are leaked to GitHub every day!
 https://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/
 
 >"I think efforts like GitHub’s Token Scanning project should be applauded, but they are only effective once a leak has already occurred. This problem also is likely not isolated to GitHub – it will affect any publicly available code. We need more research to develop systems that help developers avoid this mistake in the first place."
+
+???
+**This is from a recent article about a study Sophos did on credentials stored on GitHub. They used a free API key and simple search algorithm to crawl through github and what they found was very disturbing. Hundreds of thousands of API keys, passwords and other sensitive strings were found.**
+
+**If you've never seen it in action this is what usually happens. The attacker takes control of your AWS account and begins spinning up an enormous cryptocurrency farm with the maximum number of instances allowed. Then you have to get AWS support to help you untangle the mess. It's not fun. You really, really want to protect those API keys.**
 
 ---
 name: Protecting-Sensitive-Variables
@@ -551,6 +614,9 @@ class: img-right-full
 * SSL certificates
 * Any sensitive text or data
 
+???
+**Terraform Cloud has built in support for encryption and storage of any short string of text. This allows you to safely use these credentials during the provisioning process without exposing them in plaintext or storing them on someone's laptop.**
+
 ---
 name: where-are-your-creds
 # Where Are Your API Keys?
@@ -560,13 +626,19 @@ These API keys should **never** be stored directly in your terraform code.
 
 Config files and environment variables are a better option, but the credentials still live on your workstation, usually stored in plaintext.
 
+???
+**In case we weren't clear earlier, do not ever store credentials in your terraform code. Don't do it.**
+
 ---
 name: a-better-way-creds
 # A Better Way to Store Sensitive Data
 
 Terraform Cloud can safely store your credentials and encrypt them for you. You can use this encrypted storage for passwords, TLS Certificates, SSH keys or anything else that should not be lying around in plain text.
 
-.center[![:scale 60%](images/aws_encrypted_vars.png)]
+.center[![:scale 70%](images/aws_encrypted_vars.png)]
+
+???
+**Here's an example of storing AWS credentials safely so that we can use them inside of a workspace. The user doesn't have to manage these once they are set.**
 
 ---
 name: terraform-teams
@@ -574,6 +646,9 @@ class: title, smokescreen, shelf
 background-image: url(images/teamwork.png)
 # Terraform Cloud Teams
 ## Role-Based Access Controls (RBAC)
+
+???
+**This section is about teams and role based access controls.**
 
 ---
 name: terraform-rbac-2
@@ -585,6 +660,9 @@ Teams are used to grant different levels of access to different parts of your Te
 
 Workspaces access levels include read, plan, write, and admin. Super users can also be granted organization wide permissions for managing policies and VCS settings.
 
+???
+**You'll probably start out with a few admins, but as your terraform usage grows more and more users and applications will need different levels of access.**
+
 ---
 name: lab-exercise-2
 # 👩‍💻 Lab Exercise: Secure Variables and RBACs
@@ -595,6 +673,9 @@ Continue the lab exercises from where you left off.
 
 🛑 **STOP** after you complete the second quiz.
 
+???
+**And that brings us to the second lab, where you'll tackle the Secure Variables and RBAC challenges. Once you've made it past the second quiz you can take a break until Chapter 3.**
+
 ---
 name: TFE-Chapter-3
 class: title
@@ -602,12 +683,22 @@ class: title
 # Chapter 3
 ## Version Control and Sentinel Policies
 
+???
+**Now we're getting into slightly more advanced territory. It is also very cool territory because you can start to drive automation with code. We're going to cover VCS integration and Sentinel policies. The reason we cover VCS before Sentinel is because you'll want to define all your policy as code too!**
+
 ---
 name: version-control-title
 class: title, smokescreen, shelf
 background-image: url(images/git_log.png)
 # Terraform With VCS
 ## Version Control Systems
+
+???
+**Version control systems have been around for at least a few decades. Can anyone name a few?**
+
+Common answers might be RCS, SVN (Subversion).
+
+**And what's the world's most popular distributed version control system? That's right, it's git. Git was invented by Linus Torvalds, the same gent who created Linux.**
 
 ---
 name: whats-a-vcs
@@ -619,6 +710,9 @@ class: img-right
 Version control systems are applications that allow users to store, track, test, and collaborate on changes to their infrastructure and applications.
 
 Terraform Cloud integrates with most common Version Control Systems.
+
+???
+**Make sure you don't confuse git (the version control system) with GitHub (a web-based application containing the world's largest collection of git repositories). What are some other flavors of git? Bitbucket, GitLab are both also supported in Terraform Cloud. Today you'll be working with GitHub but you can integrate with any of the major git vendor software.**
 
 ---
 name: tfc-infra-as-code-workflow
@@ -633,6 +727,9 @@ https://xkcd.com/1597/
 
 For this workshop you'll only need four or five git commands.
 
+???
+**If you've never used git before, don't worry. We are only going to be using four or five basic commands. And as our friends at XKCD have pointed out, you can always wipe everything clean and clone a fresh copy of the code.**
+
 ---
 name: multi-user-collaboration
 class: img-right-full
@@ -646,6 +743,8 @@ Each team can contribute or consume Terraform code according to their needs.
 
 .small[http://www.commitstrip.com/en/2015/02/02/is-your-company-ready-for-devops/]
 
+???
+**When you store all your terraform code in git repos, you unlock some extra features like user collaboration. This is a funny comic called CommitStrip where dev and ops try to learn to work together. Terraform Cloud helps bring these teams closer in a more productive way.**
 
 ---
 name: vcs-driven-workflow
@@ -654,6 +753,9 @@ name: vcs-driven-workflow
 
 When your Terraform code is stored in a version control system, you unlock extra features like pull requests, code reviews and testing. Here's an example showing some tests that run on our training lab repo.
 
+???
+**Storing your code in VCS also enables you to build automated test pipelines and conduct code reviews to approve any pending changes. Multiple users can build and contribute changes to the same infrastructure as code base without stepping on one anothers toes.**
+
 ---
 name: everything-is-recorded
 # No More Untracked Changes
@@ -661,12 +763,18 @@ name: everything-is-recorded
 
 Every infrastructure change is recorded and tracked in the git log. You will always know exactly who made a change, what was changed, who approved the change, and when and why the change was made.
 
+???
+**Your auditors and security folks will like this because every change is tracked. No more mystery changes or wondering if something broke because of an untracked change.**
+
 ---
 name: sentinel-policy-enforcement
 class: title, smokescreen, shelf
 background-image: url(images/security_lasers.jpg)
 # Sentinel
 ## Policy Enforcement for Terraform
+
+???
+**Sentinel is the HashiCorp policy enforcement language and it is only available in terraform cloud or enterprise.**
 
 ---
 name: what-is-sentinel
@@ -682,6 +790,9 @@ aws_region_valid = rule {
 
 Sentinel is HashiCorp's policy enforcement language. Sentinel policies are checked after **`terraform plan`** is run. Sentinel will intercept bad configurations *before* they go to production, not after.
 
+???
+**As the saying goes, an ounce of prevention is worth a pound of cure. Sentinel helps you catch misconfigurations and bad behavior before the infrastructure is deployed, not after.**
+
 ---
 name: what-can-sentinel-do
 # Example Uses for Sentinel
@@ -694,6 +805,9 @@ name: what-can-sentinel-do
 
 You can implement these rules and many more using Sentinel.
 
+???
+**Sentinel is flexible and can be used to detect almost any kind of compliance or security violation.**
+
 ---
 name: sentinel-enforcement-levels
 # Sentinel Enforcement Levels
@@ -703,11 +817,16 @@ name: sentinel-enforcement-levels
 
 🛑 **Hard-Mandatory** - Blocks all users and apps from deploying the non-compliant infrastructure.
 
+???
+**There are three enforcement levels. You might start with everything set to Advisory to give your users a warning. Then you could set a date to start enforcing soft and hard mandatory rules for some or all workspaces in your organization.**
+
 ---
 name: org-or-workspace
 # Apply to Organization or Workspaces
 .center[![:scale 80%](images/policy_workspaces.png)]
 
+???
+**You can be very specific or very broad with your policy enforcement. Organization-wide policies can be implemented to ensure that basic security rules are always followed everywhere.**
 
 ---
 name: lab-exercise-3
@@ -719,12 +838,17 @@ Continue the lab exercises from where you left off.
 
 🛑 **STOP** after you complete the third quiz.
 
+???
+**This lab is a bit more challenging so take your time and read the notes carefully. I will be around along with your TA to answer questions if you get stuck. Stop after the third quiz.**
+
 ---
 name: TFE-Chapter-4
 class: title
-
 # Chapter 4
 ## Modules and API Automation
+
+???
+**This is the final content chapter where we'll cover the private module registry and API automation.**
 
 ---
 name: private-module-registry
@@ -733,12 +857,18 @@ background-image: url(images/lego_wallpaper.jpg)
 # Terraform Modules
 ## Reusable Infrastructure as Code
 
+???
+**First let's take a look at modules. Modules are fun, like these LEGO bricks.**
+
 ---
 name: what-even-is-module
 # What is a Terraform Module?
 .center[![:scale 90%](images/aws_vpc_module.png)]
 
 Modules are reusable units of Terraform code that hide unnecessary complexity from the user. This one creates a standard VPC configuration with only 8 variables.
+
+???
+**You'll get to use this module in the lab. If you've ever built out a VPC by hand you know that it's not a super simple process. You need to configure the correct network routes, set up your subnets, internet gateways and a bunch of other settings to get it right. This VPC module is meant to give you a standard set of inputs that you can use to configure a best-practice VPC with public and/or private subnets. This saves you the trouble of having to go write all that terraform code yourself.**
 
 ---
 name: how-modules-configured
@@ -753,6 +883,11 @@ Sounds easy right?
 
 What if you had to manage dozens or hundreds of modules, with different versions of each?
 
+???
+**Think of a terraform module like a black box. Variables (inputs) go in one side, and outputs come out the other side. What happens in the middle is really none of the user's business, as long as they get what they wanted from the module. This lets you control what users are able to build, and guide them to the right path by putting guard rails around them. You can hide variables and settings that the user should not tinker with, and this also keeps things simpler for the end user who just wants their VPC to work so they can build some instances.**
+
+**The challenge is when you start having dozens or hundreds of modules and lots of users consuming them...you really need a centralized way to manage this stuff, which brings us to...**
+
 ---
 name: private-module-registry
 class: img-right
@@ -763,12 +898,18 @@ Terraform modules are reusable packages of Terraform code that you can use to bu
 
 Terraform Cloud includes a Private Module Registry where you can store, version, and distribute modules to your organizations and teams.
 
+???
+**This is just like the public module registry but it runs inside your own Terraform Organization where only your users can access it. This way you can share private or confidential code, or even take the public modules and fork them for your own use.**
+
 ---
 name: api-driven-workflows
 class: title, smokescreen, shelf
 background-image: url(images/enter_the_matrix.jpg)
 # Terraform Cloud API
 ## Automate Everything
+
+???
+**This section will give us a small sample of what's possible using the Terraform Cloud API to build automation. APIs provide a clear and well understood method for interacting with Terraform Cloud, even from systems that have no native Terraform support or integrations.**
 
 ---
 name: whats-an-api
@@ -786,6 +927,8 @@ curl -s -H "Accept: application/json" https://icanhazdadjoke.com
 APIs are the default language of the Internet. According to Akamai research 83% of Internet traffic is made up of API calls (JSON/XML).
 .center[.small[https://www.akamai.com/us/en/about/news/press/2019-press/state-of-the-internet-security-retail-attacks-and-api-traffic.jsp]]
 
+???
+**There are APIs for all kinds of stuff! Even Dad Jokes!**
 
 ---
 name: terraform-cloud-api
@@ -804,6 +947,9 @@ https://app.terraform.io/api/v2/organizations/$ORG/workspaces
 
 Most programming languages have helper libraries for working with APIs.
 
+???
+**During the lab we'll be using the Unix cURL command. Curl is like a swiss army knife for talking to APIs and websites.**
+
 ---
 name: api-use-cases
 # Terraform Cloud API - Use Cases
@@ -814,12 +960,18 @@ name: api-use-cases
 * Self-service portal with Terraform on the backend
 * Custom command line scripts for specific needs
 
+???
+**Here are just a few of the things you might build with the Terraform Cloud API.**
+
 ---
 name: TFE-Chapter-5
 class: title
 
 # Chapter 5
 ## Bonus Lab & Extra Resources
+
+???
+COMING SOON: A bonus lab that ties everything we learned in this workshop together.
 
 ---
 name: additional-resources-tfe
