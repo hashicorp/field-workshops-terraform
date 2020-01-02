@@ -73,7 +73,7 @@ challenges:
     hostname: workstation
     port: 8443
   difficulty: basic
-  timelimit: 600
+  timelimit: 1800
 - slug: open-a-terminal
   id: j5cp109wofoa
   type: challenge
@@ -109,7 +109,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 600
+  timelimit: 1800
 - slug: terraform-cloud-setup
   id: flgornvw5xu5
   type: challenge
@@ -138,7 +138,7 @@ challenges:
     type: external
     url: https://app.terraform.io
   difficulty: basic
-  timelimit: 600
+  timelimit: 1800
 - slug: oh-no-an-outage
   id: 6ddjxvjdqigq
   type: challenge
@@ -186,7 +186,7 @@ challenges:
     type: external
     url: https://app.terraform.io
   difficulty: basic
-  timelimit: 600
+  timelimit: 1800
 - slug: quiz-1
   id: pormukgjp0uy
   type: quiz
@@ -203,7 +203,7 @@ challenges:
   solution:
   - 1
   difficulty: basic
-  timelimit: 300
+  timelimit: 1800
 - slug: protecting-sensitive-variables
   id: kdpzdpk67mjx
   type: challenge
@@ -273,7 +273,7 @@ challenges:
     type: external
     url: https://app.terraform.io
   difficulty: basic
-  timelimit: 600
+  timelimit: 1800
 - slug: sharing-is-caring
   id: yxnc2r1zlmlg
   type: challenge
@@ -328,7 +328,7 @@ challenges:
     type: external
     url: https://app.terraform.io
   difficulty: basic
-  timelimit: 600
+  timelimit: 1800
 - slug: quiz-2
   id: cnqr1iwueube
   type: quiz
@@ -347,7 +347,7 @@ challenges:
   solution:
   - 2
   difficulty: basic
-  timelimit: 300
+  timelimit: 1800
 - slug: versioned-infrastructure
   id: k8udkz2bnf5f
   type: challenge
@@ -419,7 +419,7 @@ challenges:
     type: external
     url: https://app.terraform.io
   difficulty: basic
-  timelimit: 600
+  timelimit: 1800
 - slug: vcs-collaboration
   id: dmgbzbeplipi
   type: challenge
@@ -469,7 +469,7 @@ challenges:
     type: external
     url: https://app.terraform.io
   difficulty: basic
-  timelimit: 600
+  timelimit: 1800
 - slug: a-sentinel-stands-guard
   id: mk8s69dbnqk8
   type: challenge
@@ -534,7 +534,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 600
+  timelimit: 1800
 - slug: quiz-3
   id: 6vbyf7ebvrjq
   type: quiz
@@ -555,7 +555,7 @@ challenges:
   - 0
   - 2
   difficulty: basic
-  timelimit: 300
+  timelimit: 1800
 - slug: private-module-registry
   id: lywcpik6oyjo
   type: challenge
@@ -609,7 +609,7 @@ challenges:
     type: external
     url: https://app.terraform.io
   difficulty: basic
-  timelimit: 600
+  timelimit: 1800
 - slug: api-driven-workflows
   id: y1kjttjfggdv
   type: challenge
@@ -681,7 +681,7 @@ challenges:
     type: external
     url: https://app.terraform.io
   difficulty: basic
-  timelimit: 600
+  timelimit: 1800
 - slug: quiz-4
   id: qaueezfzunpd
   type: quiz
@@ -699,7 +699,7 @@ challenges:
   solution:
   - 1
   difficulty: basic
-  timelimit: 300
+  timelimit: 1800
 - slug: this-is-the-end
   id: fckoj2szdzcm
   type: challenge
@@ -720,5 +720,5 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 600
-checksum: "8206747442233713613"
+  timelimit: 1800
+checksum: "18364091337516820735"
