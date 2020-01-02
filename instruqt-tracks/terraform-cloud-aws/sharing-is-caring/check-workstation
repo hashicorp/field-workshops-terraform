@@ -8,11 +8,6 @@ source /root/.bashrc
 TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
 ORG=$(grep organization /root/hashicat-aws/remote_backend.tf | cut -d '"' -f2)
 
-# These are the terraform cloud IDs of our fictional users. They are persistent and should not be deleted from TFC.
-# LARS_ID="user-V2Qt225RgAUzsWpz"
-# HIRO_ID="user-egHewG9Z5eNa9u9m"
-# AISHA_ID="user-CsBb94bVHrq7E5AA"
-
 # Get our team IDs. In the test environment these teams are pre-created.
 ADMINS_TEAM_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/teams | jq -r '.data | .[] | select(.attributes.name|test("admins")) | .id')
 
@@ -42,21 +37,3 @@ DEVS_ACCESS=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-
 USERS=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" https://app.terraform.io/api/v2/organizations/$ORG/organization-memberships | jq -r '.data | length')
 
 [[ $USERS -gt 1 ]] || fail-message "Oops, it looks like you haven't added any other users to your organization. Invite at least one user to your org and put them on a team."
-
-# These tests are a bit impractical, instead we just check the number of users in the organization.
-
-# # Does the admins team exist and is Lars on the team
-# ADMINS_CHECK=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/teams | jq --arg LARS_ID "$LARS_ID" -r '.data | .[] | select(.attributes.name|test("admins")) | .relationships.users.data | .[] | select(.id | test($LARS_ID)) | .id')
-
-# [[ $ADMINS_CHECK = $LARS_ID ]] || fail-message "Oops, we couldn't find an admins team with Lars as a member. Check your settings and try again"
-
-# # Does the developers team exist and is Aisha on the team
-# DEVS_CHECK=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/teams | jq --arg AISHA_ID "$AISHA_ID" -r '.data | .[] | select(.attributes.name|test("developers")) | .relationships.users.data | .[] | select(.id | test($AISHA_ID)) | .id')
-
-# [[ $DEVS_CHECK = $AISHA_ID ]] || fail-message "Oops, we couldn't find an developers team with Aisha as a member. Check your settings and try again"
-
-# # Does the managers team exist and is Hiro on the team
-# MANAGERS_CHECK=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/teams | jq --arg HIRO_ID "$HIRO_ID" -r '.data | .[] | select(.attributes.name|test("managers")) | .relationships.users.data | .[] | select(.id | test($HIRO_ID)) | .id')
-
-# [[ $MANAGERS_CHECK = $HIRO_ID ]] || fail-message "Oops, we couldn't find an managers team with Hiro as a member. Check your settings and try again"
-

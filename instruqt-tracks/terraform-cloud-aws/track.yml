@@ -196,8 +196,7 @@ challenges:
     The terraform state file always matches exactly with your current infrastructure configuration.
   notes:
   - type: text
-    contents: |
-      It's quiz time!
+    contents: "\U0001F431 Congratulations! You've been promoted to Junior Admin.\n"
   answers:
   - "True"
   - "False"
@@ -246,9 +245,9 @@ challenges:
       of things. Write some code, run some tests, deploy the website. Everything's
       going great until someone's AWS keys are accidentally pushed to a public code
       repository. You get this email from William, the lead infosec admin at ACME:\n\n>\U0001F46E\U0001F3FF‍♂️
-      Hello intern, we ran a remote scan on your laptop last night and found some
-      unsecured AWS access keys. We need you to move those off your laptop and store
-      them in Terraform Cloud by the end of the day."
+      Hello junior admin, we ran a remote scan on your laptop last night and found
+      some unsecured AWS access keys. We need you to move those off your laptop and
+      store them in Terraform Cloud by the end of the day."
   - type: text
     contents: "\U0001F914 Did you know?\n\nThousands of API and cryptographic keys
       are leaking on GitHub every day!\n\nhttps://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/\n\nWhen
@@ -303,9 +302,9 @@ challenges:
 
     Or you can use one of our example users below:
 
-    * `scarolan+instruqt-aisha@hashicorp.com`
-    * `scarolan+instruqt-lars@hashicorp.com`
-    * `scarolan+instruqt-hiro@hashicorp.com`
+    * `workshops+aisha@hashicorp.com`
+    * `workshops+lars@hashicorp.com`
+    * `workshops+hiro@hashicorp.com`
 
     Note that you will not see any users in your organization until they accept your invitations.
 
@@ -339,8 +338,7 @@ challenges:
     Where should you store sensitive credentials like API keys?
   notes:
   - type: text
-    contents: |
-      It's quiz time!
+    contents: "\U0001F63A Congratulations! You've been promoted to Sysadmin.\n"
   answers:
   - In your Terraform workspace
   - In a text file on your Desktop
@@ -397,7 +395,7 @@ challenges:
     contents: "As terraform usage continues to increase across the organization, your
       team needs a better way to store and organize everyone's terraform code. Until
       now you haven't had much testing or code review for infrastructure changes.
-      Jane, the QA lead, introduces herself:\n\n>\U0001F469‍\U0001F3A4 Hi devops admin,
+      Jane, the QA lead, introduces herself:\n\n>\U0001F469‍\U0001F3A4 Hi sysadmin,
       we're trying to implement better quality assurance around our infrastructure
       deployment process. Can you help me add the hashicat-aws GitHub repository to
       the workspace so we can implement code reviews?"
@@ -522,9 +520,9 @@ challenges:
     contents: "Developers love working in the cloud but sometimes they forget to tag
       their instances with the right billing and department codes. Karen from finance
       pays you a visit to see if you can help:\n\n>\U0001F469\U0001F3FC‍\U0001F4BC\U0001F4C8
-      Hello cloud sysadmin, we got a really big AWS bill last month and we have no
-      idea how much we can bill back to the department who requested this stuff. I
-      have a report that is supposed to show this stuff but it only works if everybody
+      Hello sysadmin, we got a really big AWS bill last month and we have no idea
+      how much we can bill back to the department who requested this stuff. I have
+      a report that is supposed to show this stuff but it only works if everybody
       tags their resources properly. Can you make sure all your folks are properly
       tagging their cloud resources?"
   tabs:
@@ -546,8 +544,8 @@ challenges:
     VCS-backed workspaces enable the following features (choose two)
   notes:
   - type: text
-    contents: |
-      It's quiz time!
+    contents: "\U0001F431‍\U0001F464 Congratulations! You've been promoted to Senior
+      Sysadmin.\n"
   answers:
   - Code reviews
   - Cost estimation
@@ -596,9 +594,9 @@ challenges:
     contents: "Most of the devops team is using terraform to build and configure their
       infrastructure. Recently users from outside the team have been requesting help
       building their own workspaces. Gaurav, the database admin, sees you at lunch
-      and asks for your help:\n>\U0001F473\U0001F3FD‍♂️ Hi senior devops admin, I
-      need to configure a lot of AWS VPCs and I heard you have a terraform module
-      for this. Can you help me set up a new VPC in the hashicat-aws workspace?"
+      and asks for your help:\n>\U0001F473\U0001F3FE‍♂️ Hi senior sysadmin, I need
+      to configure a lot of AWS VPCs and I heard you have a terraform module for this.
+      Can you help me set up a new VPC in the hashicat-aws workspace?"
   tabs:
   - title: Code Editor
     type: service
@@ -651,10 +649,10 @@ challenges:
     contents: "You've mostly been using the Terraform Cloud Web UI and command line
       interface (CLI) to build infrastructure. The devops team needs to integrate
       with their CI/CD tool via the API. Lars sends you a chat message:\n\n>\U0001F468\U0001F3FB‍\U0001F9B2
-      Hey senior devops admin, we have this new continuous integration tool that the
-      developers are using to test their application code. I'd like you to test some
-      API calls to our Terraform Cloud organization and workspaces. Can you please
-      take a look at this and learn how the API works?"
+      Hey senior sysadmin, we have this new continuous integration tool that the developers
+      are using to test their application code. I'd like you to test some API calls
+      to our Terraform Cloud organization and workspaces. Can you please take a look
+      at this and learn how the API works?"
   - type: text
     contents: |-
       Feeling stuck? Remember that the Terraform Cloud docs contain examples for all API endpoints:
@@ -693,8 +691,8 @@ challenges:
     The Terraform private module registry automatically syncs modules from the public registry.
   notes:
   - type: text
-    contents: |
-      It's quiz time!
+    contents: "\U0001F431‍\U0001F4BB Congratulations! You've been promoted to Terraform
+      Cloud Ninja."
   answers:
   - "True"
   - "False"
@@ -723,4 +721,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 600
-checksum: "4119361767899760228"
+checksum: "8206747442233713613"
