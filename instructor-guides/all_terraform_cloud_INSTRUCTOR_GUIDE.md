@@ -164,7 +164,7 @@ Create a new variable called `placeholder` and set it to `placedog.net`. Queue u
 **This has been a brief demo of a simple infrastructure as code workflow that you can use to get started with Terraform. We'll take a short break and when we return you'll get to do some hands on exercises in the first lab.**
 
 ### Timing
-The following schedule assumes you have a group of participants who are brand new to Terraform. You should budget between three and four hours for this workshop. This is meant as a guideline, you can adjust as needed.
+The following schedule assumes you have a group of participants who are somewhat new to Terraform. You should budget between five to six hours for this workshop. This is meant as a guideline, you can adjust as needed.
 
 0:00 - 0:10 - Wait for attendees to arrive, intros, coffee<br>
 0:10 - 0:50 - Terraform Cloud Lecture & Demo<br>
