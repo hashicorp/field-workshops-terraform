@@ -83,9 +83,9 @@ https://github.com/hashicorp/field-workshops-terraform/issues
 ### Instruqt Labs
 At certain points in the slide deck there are links to the lab exercises. [Instruqt](https://instruqt.com/hashicorp) is our lab platform. The lab exercises are stored in private tracks so you'll need to log onto instruqt and request access to join the `members` team to see these links. Join the #proj-instruqt channel in Slack to request access.
 
-https://instruqt.com/hashicorp/tracks/terraform-cloud-aws
-https://instruqt.com/hashicorp/tracks/terraform-cloud-azure
-https://instruqt.com/hashicorp/tracks/terraform-cloud-gcp
+https://instruqt.com/hashicorp/tracks/terraform-cloud-aws<br>
+https://instruqt.com/hashicorp/tracks/terraform-cloud-azure<br>
+https://instruqt.com/hashicorp/tracks/terraform-cloud-gcp<br>
 
 Go through your track from start to finish and make sure you understand everything. Students may have questions during the labs. When presenting a workshop be sure to give enough time for all your participants to go through the labs.
 
@@ -168,14 +168,14 @@ The following schedule assumes you have a group of participants who are brand ne
 
 0:00 - 0:10 - Wait for attendees to arrive, intros, coffee<br>
 0:10 - 0:50 - Terraform Cloud Lecture & Demo<br>
-0:50 - 1:00 - Break
+0:50 - 1:00 - Break<br>
 1:00 - 1:20 - Review the Basics / Remote State<br>
-1:20 - 2:00 - Lab #1
-2:00 - 2:20 - Security & RBACs
-2:20 - 3:00 - Lab #2
-3:00 - 4:00 - Lunch
-4:00 - 4:20 - VCS & Policy Enforcement
-4:20 - 5:00 - Lab #3
-4:00 - 5:20 - Terraform Modules & API
-5:20 - 6:00 - Lab #4
+1:20 - 2:00 - Lab #1<br>
+2:00 - 2:20 - Security & RBACs<br>
+2:20 - 3:00 - Lab #2<br>
+3:00 - 4:00 - Lunch<br>
+4:00 - 4:20 - VCS & Policy Enforcement<br>
+4:20 - 5:00 - Lab #3<br>
+4:00 - 5:20 - Terraform Modules & API<br>
+5:20 - 6:00 - Lab #4<br>
 6:00 - 6:30 - Optional Bonus Lab, Wrap-up
