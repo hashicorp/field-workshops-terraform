@@ -1,4 +1,4 @@
-# Intro to Terraform - Instructor Guide
+# Intro to Terraform on Azure - Instructor Guide
 
 This guide will prepare you to deliver a half-day [Introduction to Terraform on Azure Workshop](https://hashicorp.github.io/field-workshops-terraform/azure/terraform). This workshop content is suitable for HashiCorp community members, prospects and customers. The workshop is a combination of lecture slides and hands-on labs that introduce new users to Terraform features. This workshop focuses on open-source features and is targeted toward new users. The workshop may be presented in-person, over the web, or as a self-guided tutorial.
 
@@ -37,7 +37,6 @@ The slide deck for this training is published here:
 
 #### https://hashicorp.github.io/field-workshops-terraform/slides/azure/terraform-oss/index.html#1
 
-
 Shortened URL:
 #### https://git.io/JeuCI
 
@@ -58,7 +57,7 @@ At certain points in the slide deck there are links to the lab exercises. [Instr
 
 https://instruqt.com/hashicorp/tracks/terraform-build-azure
 
-Go through each of these tracks from start to finish and make sure you understand them. Students may have questions during the labs. When presenting a workshop be sure to give enough time for all your participants to go through the labs. Remember that this is probably their first time working a tool like Terraform.
+Go through this track start to finish and make sure you understand all the challenges. Students may have questions during the labs. When presenting a workshop be sure to give enough time for all your participants to go through the labs. Remember that this is probably their first time working a tool like Terraform.
 
 #### Creating Instruqt Invites
 Once you've gotten an invite to the HashiCorp organization you can create temporary invite links for your students:
@@ -72,10 +71,10 @@ Once you've gotten an invite to the HashiCorp organization you can create tempor
 7. Turn on the **Allow Anonymous** switch so you can hand the URL out on the day of training.
 
 ### The Live Demo
-After chapter 1 there is a slide that says *Live Demo*. You can use an instruqt track to do a brief Terraform demo for your participants. Follow these steps to do the demo:
+After chapter 1 there is a slide that says *Live Demo*. You can use an instruqt track to do a brief Terraform demo for your participants, or insert your own demo here. Follow these steps to do the demo in instruqt:
 
 #### Setup
-1. Right before you start the training, visit https://instruqt.com/hashicorp/tracks/terraform-build-azure and click on the "Skip to Challenge" button on the "Complete the Build" challenge. You may wish to also install the HCL extension in Visual Studio Code. Open the `/root/hashicat-azure` folder with VSC. Open a terminal and run `terraform apply -auto-approve`. Open the Meow World application in another browser tab. Open the Azure portal and navigate to your resource group in the UI. You are now ready to demo.
+1. Right before you start the training, visit https://instruqt.com/hashicorp/tracks/terraform-build-azure and start the track. You do not have to complete the track, we're just using Instruqt to stand up a demo environment. Open the `/root/hashicat-azure` folder with VSC. Open a terminal and run `terraform apply -auto-approve`. Open the Meow World application in another browser tab. Open the Azure portal and navigate to your resource group in the UI (In the Team Solutions Engineering subscription). You are now ready to demo.
 
 2. Walk through the demo scenario. You can use this talk track as a guideline or create your own.
 

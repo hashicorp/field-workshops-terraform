@@ -1,4 +1,4 @@
-# Intro to Terraform - Instructor Guide
+# Intro to Terraform on AWS - Instructor Guide
 
 This guide will prepare you to deliver a half-day [Introduction to Terraform on AWS Workshop](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/index.html#1). This workshop content is suitable for HashiCorp community members, prospects and customers. The workshop is a combination of lecture slides and hands-on labs that introduce new users to Terraform features. This workshop focuses on open-source features and is targeted toward new users. The workshop may be presented in-person, over the web, or as a self-guided tutorial.
 
@@ -55,15 +55,23 @@ https://github.com/hashicorp/field-workshops-terraform/issues
 ### Hands-on Labs
 At certain points in the slide deck there are links to the lab exercises. [Instruqt](https://instruqt.com/hashicorp) is our lab platform. Lab exercises can be completed anonymously, but if users want to keep track of their progress they should create accounts on the Instruqt website. There is one long instruqt track that is broken into sections for the labs:
 
-https://instruqt.com/hashicorp/tracks/terraform-basics-aws
+https://instruqt.com/hashicorp/tracks/terraform-build-aws
 
-Go through each of these tracks from start to finish and make sure you understand them. Students may have questions during the labs. When presenting a workshop be sure to give enough time for all your participants to go through the labs. Remember that this is probably their first time working a tool like Terraform.
+Go through this track start to finish and make sure you understand all the challenges. Students may have questions during the labs. When presenting a workshop be sure to give enough time for all your participants to go through the labs. Remember that this is probably their first time working a tool like Terraform.
 
 ### The Live Demo
-After chapter 1 there is a slide that says *Live Demo*. You can use an instruqt track to do a brief Terraform demo for your participants. Follow these steps to do the demo:
+After chapter 1 there is a slide that says *Live Demo*. You can use an instruqt track to do a brief Terraform demo for your participants, or insert your own demo here. Follow these steps to do the demo in instruqt:
 
 #### Setup
-1. Right before you start the training, visit https://instruqt.com/hashicorp/tracks/terraform-build-AWS and click on the "Skip to Challenge" button on the "Complete the Build" challenge. You may wish to also install the HCL extension in Visual Studio Code. Open the `/root/hashicat-aws` folder with VSC. Open a terminal and run `terraform apply -auto-approve`. Open the Meow World application in another browser tab. Open the AWS portal and navigate to your resource group in the UI. You are now ready to demo.
+1. Right before you start the training, visit https://instruqt.com/hashicorp/tracks/terraform-build-aws and start the track. You do not have to complete the track, we're just using Instruqt to stand up a demo environment. Open the `/root/hashicat-aws` folder with VSC. Open a terminal and run `terraform init; terraform apply -auto-approve`. Open the Meow World application in another browser tab. Open the AWS console and navigate to your resource group in the UI. If the app doesn't load the first time run `terraform apply` again.
+
+NOTE: You can find the AWS account ID, username and password in your environment variables. Use these to log onto the AWS Console.
+
+```
+echo $INSTRUQT_AWS_ACCOUNT_TF_WORKSHOP_ACCOUNT_ID
+echo $INSTRUQT_AWS_ACCOUNT_TF_WORKSHOP_USERNAME
+echo $INSTRUQT_AWS_ACCOUNT_TF_WORKSHOP_PASSWORD
+```
 
 2. Walk through the demo scenario. You can use this talk track as a guideline or create your own.
 
