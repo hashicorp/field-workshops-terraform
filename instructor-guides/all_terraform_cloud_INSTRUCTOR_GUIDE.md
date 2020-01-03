@@ -37,20 +37,20 @@ Here's the workshop syllabus showing the topics we will cover:
 🌥️ Terraform Cloud Overview<br>
 👨🏽‍🏫 Review the Basics<br>
 🔗 Configure Remote State<br>
-<hr>
+
 2. Security and RBACs<br>
 🔐 Protect Sensitive Variables<br>
 🛡️ Work With Access Controls<br>
-<hr>
+
 3. VCS & Policy Enforcement<br>
 🕸️ Connect to VCS<br>
 👬 Collaboration with VCS<br>
 👮 Sentinel Policy Enforcement<br>
-<hr>
+
 4. Terraform Modules & API<br>
 ⚙️ Private Module Registry<br>
 🏗️ API Driven Workflows<br>
-<hr>
+
 5. Extra Resources<br>
 ⚗️ Bonus Lab<br>
 🌐 Useful Links
