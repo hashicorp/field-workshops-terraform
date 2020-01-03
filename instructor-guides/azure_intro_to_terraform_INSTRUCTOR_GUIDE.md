@@ -54,14 +54,22 @@ The slide deck for this training is written completely in [Markdown](https://gui
 https://github.com/hashicorp/field-workshops-terraform/issues
 
 ### Hands-on Labs
-At certain points in the slide deck there are links to the lab exercises. [Instruqt](https://instruqt.com/hashicorp) is our lab platform. Lab exercises can be completed anonymously, but if users want to keep track of their progress they should create accounts on the Instruqt website. There are currently two labs referenced in the slide deck:
+At certain points in the slide deck there are links to the lab exercises. [Instruqt](https://instruqt.com/hashicorp) is our lab platform. Lab exercises can be completed anonymously, but if users want to keep track of their progress they should create accounts on the Instruqt website. There is one long instruqt track that is broken into sections for each lab:
 
-https://instruqt.com/hashicorp/tracks/terraform-basics-azure  
 https://instruqt.com/hashicorp/tracks/terraform-build-azure
 
 Go through each of these tracks from start to finish and make sure you understand them. Students may have questions during the labs. When presenting a workshop be sure to give enough time for all your participants to go through the labs. Remember that this is probably their first time working a tool like Terraform.
 
-NOTE: The two tracks references above are *Private*. This means you'll have to create an invite URL using Instruqt, and then provide the URL to your students. Check in the #proj-instruqt channel in Slack if you need help with this.
+#### Creating Instruqt Invites
+Once you've gotten an invite to the HashiCorp organization you can create temporary invite links for your students:
+
+1. Click on the **Invites** link at the top of the page.
+2. Click on the **New+** button to create a new invite.
+3. Create a descriptive title for internal use. Example: "Atlanta Intro to Terraform on Azure Workshop"
+4. Select the track you want to make available.
+5. Set the invite to expire in a month or two.
+6. Make the track available to your user for at least a week.
+7. Turn on the **Allow Anonymous** switch so you can hand the URL out on the day of training.
 
 ### The Live Demo
 After chapter 1 there is a slide that says *Live Demo*. You can use an instruqt track to do a brief Terraform demo for your participants. Follow these steps to do the demo:
@@ -117,15 +125,15 @@ terraform apply -auto-approve
 ### Timing
 The following schedule assumes you have a group of participants who are brand new to Terraform. You should budget between three and four hours for this workshop. This is meant as a guideline, you can adjust as needed.
 
-0:00 - 0:10 - Wait for attendees to arrive, intros, coffee  
-0:10 - 0:40 - Introduction to Terraform and Demo  
-0:40 - 0:55 - Terraform Basics  
-0:55 - 1:25 - Lab 1  
-1:25 - 1:30 - Break  
-1:30 - 1:45 - Terraform in Action, Organizing Your TF Code  
-1:45 - 2:15 - Lab 2, Part I  
-2:15 - 2:30 - Provisioning  
-2:30 - 3:00 - Lab 2, Part II  
-3:00 - 3:15 - State & Cloud  
-3:15 - 3:45 - Lab 2, Part III  
-3:45 - 4:00 - Wrap-up
+0:00 - 0:10 - Wait for attendees to arrive, intros, coffee<br>
+0:10 - 0:40 - Introduction to Terraform and Demo<br>
+0:40 - 0:55 - Terraform Basics<br>
+0:55 - 1:25 - Lab 1<br>
+1:25 - 1:30 - Break<br>
+1:30 - 1:45 - Terraform in Action, Organizing Your TF Code<br>
+1:45 - 2:15 - Lab 2, Part I<br>
+2:15 - 2:30 - Provisioning<br>
+2:30 - 3:00 - Lab 2, Part II<br>
+3:00 - 3:15 - State & Cloud<br>
+3:15 - 3:45 - Lab 2, Part III<br>
+3:45 - 4:00 - Wrap-up<br>
