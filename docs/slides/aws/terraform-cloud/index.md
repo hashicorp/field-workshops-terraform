@@ -985,6 +985,12 @@ class: title
 # Chapter 5
 ## Bonus Lab & Extra Resources
 
+---
+name: bonus-lab
+
+# Bonus Lab
+## 🦄 The Gauntlet 🏆
+
 If you have completed all the workshop content and would like to try the bonus lab, your instructor can provide you with an invite.
 
 ???
