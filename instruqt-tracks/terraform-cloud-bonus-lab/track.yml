@@ -1,0 +1,89 @@
+slug: terraform-cloud-bonus-lab
+id: gxdsws9y9bsu
+type: track
+title: Bonus Lab - Terraform Cloud
+teaser: Ready for more? Test your Terraform Cloud skills with this intermediate level
+  lab challenge.
+description: If you've completed one of the Terraform Cloud tracks and would like
+  an extra challenge, try this bonus lab. In this track you'll build an approval pipeline
+  and development branch for your Terraform code, then ensure that all tests pass
+  in a dev environment before approving the change to production.
+icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
+tags:
+- terraform
+- azure
+- aws
+- gcp
+owner: hashicorp
+developers:
+- scarolan@hashicorp.com
+private: true
+published: true
+challenges:
+- slug: setup-our-environment
+  id: b0ek2h24eln1
+  type: challenge
+  title: "\U0001F3E1 Welcome Back"
+  teaser: The environment is familiar, but this time you have to set it up on your
+    own.
+  assignment: |-
+    Welcome back! This is the bonus lab for the Terraform Cloud tracks. There are prerequisites that must be set up before you can begin the bonus lab. This is an intermediate level challenge.
+
+    Welcome to a brand new lab environment. Everything has been reset to the default settings. That means you'll need to do some initial setup before proceeding.
+
+    ### Workstation Setup
+    1. Clone a local copy of your fork of the **hashicat** repo that you created earlier.
+    2. Open the local repo in your text editor.
+    3. Open a Terminal
+    4. Create a new git branch called **dev** and switch to that branch.
+    5. Delete the `vpc.tf` file if it exists.
+    6. Add, commit, and push your changes to the remote **dev** branch.
+
+    ### Terraform Cloud Setup
+    1. Log onto your Terraform Cloud organization and create a new workspace called **hashicat-dev**.
+    2. This time make sure it pulls from the **dev** branch instead of the master branch.
+    3. Enable another policy set from your **tfc-workshop-sentinel** repo, this time use the `bonus_lab` directory as the source. Set this policy to be enforced organization-wide.
+    4. Echo out your credentials and store them as sensitive variables in both your **hashicat-dev** and **hashicat-cloud** workspaces. The old credentials from the previous lab are already gone so you'll need to delete and recreate them.
+    ```
+    echo $AWS_ACCESS_KEY_ID
+    echo $AWS_SECRET_ACCESS_KEY
+    ```
+    5. Trigger a run in the `dev` workspace. You should see a Sentinel failure.
+
+    ### Git Repo Setup
+    1. Go into the github.com settings page for your hashicat repo and click on **Branches** on the left side menu.
+    2. Add a branch protection rule on the master branch. Hint: the branch name pattern should be **master**.
+    3. Make sure the following boxes are checked:
+    * Require pull request reviews before merging
+    * Require status checks to pass before merging
+    * All the **Status Checks**
+    4. Click on **Create** at the bottom of the page.
+
+    That's it! You're now ready for the bonus lab challenge. You can do this one alone or with a partner.
+
+    ### The challenge
+    You need to make some changes to the production website but they have to be tested and approved before merging your changes into the master branch.
+
+    Your task is to get your code passing all Sentinel tests in the dev workspace and branch. Once that is complete submit a pull request against your fork of the hashicat repo. If you're working with a lab partner you can submit a pull request to their repo instead of your own.
+
+    Review the pull request, and if all tests are passing, approve and merge to master. Your changes are now safely being pushed to production.
+  notes:
+  - type: text
+    contents: |
+      Setting up your environment...
+      Keep an eye on the bottom right corner to know when you can get started.
+  - type: text
+    contents: The terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
+      Windows, Solaris and Linux.
+  - type: text
+    contents: The terraform language is designed to be both human and machine-readable.
+  - type: text
+    contents: Most modern text editors support Terraform syntax highlighting.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
+  difficulty: basic
+  timelimit: 7200
+checksum: "8047722749112950986"

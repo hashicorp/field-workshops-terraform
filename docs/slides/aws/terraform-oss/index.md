@@ -6,9 +6,7 @@ count: false
 # AWS Terraform Workshop
 ## Build AWS Resources with Infrastructure as Code
 ???
-<!---
-AWS Terraform Workshop - Part 1
-Terraform for Beginners on AWS
+INSTRUCTOR GUIDE LINK: https://github.com/hashicorp/field-workshops-terraform/blob/master/instructor-guides/aws_intro_to_terraform_INSTRUCTOR_GUIDE.md
 
 This slide presentation is stored as Markdown code, specifically using the RemarkJS engine to render it. All standard markdown tags are supported, and you can also use some HTML within this document.
 
