@@ -40,13 +40,13 @@ challenges:
     ### Terraform Cloud Setup
     1. Log onto your Terraform Cloud organization and create a new workspace called **hashicat-dev**.
     2. This time make sure it pulls from the **dev** branch instead of the master branch.
-    3. Enable another policy set from your **tfc-workshop-sentinel** repo, this time use the `bonus_lab` directory as the source. Name the policy **tfc-workshop-bonuslab**. Set this policy to be enforced organization-wide.
-    4. Echo out your credentials and store them as sensitive variables in both your **hashicat-dev** and **hashicat-cloud** workspaces. The old credentials from the previous lab are already gone so you'll need to delete and recreate them.
+    3. Enable another policy set from your **tfc-workshop-sentinel** repo, this time use the `bonus_lab` directory as the source. Name the policy **tfc-workshop-bonuslab**. Set this policy to be enforced organization-wide. HINT: You'll be connecting to the same sentinel repo we used before, but pointing at a **different directory**.
+    4. Echo out your credentials and store them as sensitive variables in both your **hashicat-dev** and **hashicat-cloud** workspaces. The AWS credentials from the previous lab are already gone so you'll need to delete and recreate them.
     ```
     echo $AWS_ACCESS_KEY_ID
     echo $AWS_SECRET_ACCESS_KEY
     ```
-    5. Trigger a run in the `dev` workspace. You should see a Sentinel failure.
+    5. Trigger a run in the `dev` workspace. You should see a Sentinel failure. Ports 80 and 443 would be exposed to the entire internet, and Sentinel is preventing this from happening.
 
     ### Git Repo Setup
     1. Go into the github.com settings page for your hashicat repo and click on **Branches** on the left side menu.
@@ -89,4 +89,4 @@ challenges:
     port: 8443
   difficulty: basic
   timelimit: 7200
-checksum: "13211953014590483901"
+checksum: "93001718545144527"
