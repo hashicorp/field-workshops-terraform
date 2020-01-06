@@ -179,3 +179,6 @@ The following schedule assumes you have a group of participants who are somewhat
 4:00 - 5:20 - Terraform Modules & API<br>
 5:20 - 6:00 - Lab #4<br>
 6:00 - 6:30 - Optional Bonus Lab, Wrap-up
+
+### The Bonus Lab
+The bonus lab is extra content you can share with participants if you feel they're ready for it. This is a loosely structured lab with minimal setup instructions. No details are provided for commands like "git add, git commit, git push". The student is expected to know how to create a git branch, commit changes to it, push those changes, and create a pull request. They also need to know how to set up branch protection and understand how Terraform Cloud interacts with git repos and directories. In the challenge there is a sentinel policy that blocks security groups from allowing unrestricted (0.0.0.0/0) access to the web app. The participants need to figure out how to update their terraform code, commit their changes to a dev branch, push the changes to the remote dev branch, then ensure that the dev workspace runs correctly, and finally create a pull request to merge to master. As an instructor you should go through this lab and be familiar with it if you plan to teach it.
