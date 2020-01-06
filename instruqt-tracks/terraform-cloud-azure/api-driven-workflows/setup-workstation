@@ -1,0 +1,53 @@
+#!/bin/bash
+source /etc/profile.d/instruqt-env.sh
+source /root/.bashrc
+/bin/set-workdir /root/hashicat-azure/json
+/bin/mkdir /root/hashicat-azure/json
+cd /root/hashicat-azure/json
+
+# Create some payload files for the student
+for VAR in placeholder width height; do
+cat <<-EOF > /root/hashicat-azure/json/var-${VAR}.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"${VAR}",
+      "value":"REPLACE_ME",
+      "category":"terraform",
+      "hcl":false,
+      "sensitive":false
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id":"REPLACE_WITH_WORKSPACE_ID",
+          "type":"workspaces"
+        }
+      }
+    }
+  }
+}
+EOF
+done
+
+# Create the payload for the plan/apply
+cat <<-EOF > /root/hashicat-azure/json/apply.json
+{
+  "data": {
+    "attributes": {
+      "is-destroy":false,
+      "message": "Terraform Cloud API is Magic! 🦄 🌈 🧙‍♂️"
+    },
+    "type":"runs",
+    "relationships": {
+      "workspace": {
+        "data": {
+          "type": "workspaces",
+          "id": "REPLACE_WITH_WORKSPACE_ID"
+        }
+      }
+    }
+  }
+}
+EOF

@@ -1,0 +1,37 @@
+#!/bin/bash
+source /etc/profile.d/instruqt-env.sh
+source /root/.bashrc
+
+# clone the hashicat-azure repo
+git clone https://github.com/hashicorp/hashicat-azure
+GITDIR="/root/hashicat-azure"
+/bin/set-workdir "$GITDIR"
+
+cd ${GITDIR}
+echo -e "prefix = \"workshop\"" >> ${GITDIR}/terraform.tfvars
+echo -e "\nregion = \"us-east-1\"" >> ${GITDIR}/terraform.tfvars
+
+# Just the public DNS please
+# Not sure we need this in the Azure course
+# cat <<EOF > outputs.tf
+# # Outputs file
+# output "catapp_url" {
+#   value = "http://\${azure_instance.hashicat.public_dns}"
+# }
+# EOF
+
+# Install VSC terraform extension and update providers
+cd /root/.local/share/code-server/extensions/
+tar -zxvf /tmp/mauve.terraform-1.4.0.tar.gz
+cd /root/.local/share/code-server/extensions/mauve.terraform-1.4.0/lspbin/
+echo 'provider "tls" {}' >> providers.tf
+terraform init
+
+# Back to our git repo and init
+cd $GITDIR
+terraform init
+
+# Fix up the ~/.vimrc file
+echo -e "let g:solarized_termcolors=256\nset t_Co=256\nsyntax enable\nset background=dark\ncolorscheme solarized" > /tmp/.vimrc
+mv /tmp/.vimrc /root/.vimrc
+chattr +i /root/.vimrc

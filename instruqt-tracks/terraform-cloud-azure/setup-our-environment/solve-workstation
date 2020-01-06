@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Blow away the test workspace, hashicat-azure if it exists
+ORG=instruqt-circleci
+TOKEN=$(cat /tmp/tfc_user_token)
+
+# Delete the workspace. Might result in a 404 but that's OK as long as curl doesn't error out.
+echo "Cleaning up the hashicat-azure workspace..."
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-azure
