@@ -2,29 +2,58 @@
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 
-# clone the hashicat-azure repo
+# Generate the Azure creds setup script
+cat <<-EOF > /bin/setup_azure.sh
+#!/bin/bash
+# Define some colors
+red=$'\e[1;31m'
+grn=$'\e[1;32m'
+yel=$'\e[1;33m'
+blu=$'\e[1;34m'
+mag=$'\e[1;35m'
+cyn=$'\e[1;36m'
+end=$'\e[0m'
+
+# Fetch temporary Azure credentials from a Vault server
+# Requires \$VAULT_ADDR, \$VAULT_NAMESPACE, \$VAULT_CREDS_ENDPOINT and \$VAULT_TOKEN to be set as environment variables
+
+echo "Fetching dynamic Azure credentials from \${VAULT_ADDR}/v1/\${VAULT_CREDS_ENDPOINT}"
+curl -s -H "X-Vault-Token: \${VAULT_TOKEN}" -H "X-Vault-Namespace: \$VAULT_NAMESPACE" \${VAULT_ADDR}/v1/\${VAULT_CREDS_ENDPOINT} | \
+jq -r '[.data.client_id,.data.client_secret] | @tsv' | \
+while read id secret; do
+  echo "export ARM_CLIENT_ID=\$id" >> ~/.bashrc
+  echo "export ARM_CLIENT_SECRET=\$secret" >> ~/.bashrc
+done
+sleep 30
+
+echo "\${grn}Ready to run Terraform on...\${end}"
+echo "${blu}"
+echo '     /\'
+echo '    /  \    _____   _ _  ___ _'
+echo "   / /\\\ \\\  |_  / | | | \\\'__/ _\\\"
+echo '  / ____ \  / /| |_| | | |  __/'
+echo ' /_/    \_\/___|\__,_|_|  \___|'
+echo "${end}"
+echo "\${mag}Setup script complete. Your Azure credentials are valid for 8 hours.\${end}"
+EOF
+
+chmod +x /bin/setup_azure.sh
 git clone https://github.com/hashicorp/hashicat-azure
 GITDIR="/root/hashicat-azure"
-/bin/set-workdir "$GITDIR"
+/bin/set-workdir "${GITDIR}"
 
+# Rewind everything back to a single resource group.
 cd ${GITDIR}
-echo -e "prefix = \"workshop\"" >> ${GITDIR}/terraform.tfvars
-echo -e "\nregion = \"us-east-1\"" >> ${GITDIR}/terraform.tfvars
+mv ${GITDIR}/terraform.tfvars.example ${GITDIR}/terraform.tfvars
 
-# Just the public DNS please
-# Not sure we need this in the Azure course
-# cat <<EOF > outputs.tf
-# # Outputs file
-# output "catapp_url" {
-#   value = "http://\${azure_instance.hashicat.public_dns}"
-# }
-# EOF
+# Fetch dynamic creds for Azure
+export VAULT_TOKEN=$(cat /tmp/vault_token)
+/bin/setup_azure.sh
 
 # Install VSC terraform extension and update providers
 cd /root/.local/share/code-server/extensions/
 tar -zxvf /tmp/mauve.terraform-1.4.0.tar.gz
 cd /root/.local/share/code-server/extensions/mauve.terraform-1.4.0/lspbin/
-echo 'provider "tls" {}' >> providers.tf
 terraform init
 
 # Back to our git repo and init

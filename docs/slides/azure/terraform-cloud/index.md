@@ -176,7 +176,7 @@ name: terraform-cloud-what-is-it
 # Terraform Cloud - The Big Picture
 
 .center[
-![:scale 90%](images/cloud_overview_aws.png)
+![:scale 90%](images/cloud_overview_azure.png)
 ]
 
 ???
@@ -492,10 +492,10 @@ background-image: url(images/checklist.jpg)
 name: tf-state-file
 # Terraform State
 ```tex
-  "primary": {
-      "id": "i-0413fe5b4509d65b1",
-      "attributes": {
-          "ami": "ami-06f2f779464715dc5",
+"location": "centralus",
+"mac_address": "00-0D-3A-A4-1C-1C",
+"name": "hashitest-catapp-nic",
+"network_security_group_id": "/subscriptions/14692f20-9428-451b-8298-102ed4e39c2a/resourceGroups/hashitest-workshop/providers/Microsoft.Network/networkSecurityGroups/hashitest-sg",
 ```
 
 Terraform stores information about the resources it has built in a **state file**. This important file contains all of the data that Terraform needs to change, update, and delete infrastructure.
@@ -637,7 +637,7 @@ name: a-better-way-creds
 
 Terraform Cloud can safely store your credentials and encrypt them for you. You can use this encrypted storage for passwords, TLS Certificates, SSH keys or anything else that should not be lying around in plain text.
 
-.center[![:scale 70%](images/azure_encrypted_vars.png)]
+.center[![:scale 90%](images/azure_encrypted_vars.png)]
 
 ???
 **Here's an example of storing Azure credentials safely so that we can use them inside of a workspace. The user doesn't have to manage these once they are set.**
@@ -863,7 +863,7 @@ background-image: url(images/lego_wallpaper.jpg)
 ---
 name: what-even-is-module
 # What is a Terraform Module?
-.center[![:scale 90%](images/aws_vpc_module.png)]
+.center[![:scale 90%](images/azure_vnet_module.png)]
 
 Modules are reusable units of Terraform code that hide unnecessary complexity from the user. This one creates a standard VPC configuration with only 8 variables.
 
@@ -892,7 +892,7 @@ What if you had to manage dozens or hundreds of modules, with different versions
 name: private-module-registry
 class: img-right
 # Private Module Registry
-![](images/aws_pmr.png)
+![](images/azure_pmr.png)
 
 Terraform modules are reusable packages of Terraform code that you can use to build your infrastructure.
 
