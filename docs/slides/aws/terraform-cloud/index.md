@@ -985,8 +985,12 @@ class: title
 # Chapter 5
 ## Bonus Lab & Extra Resources
 
+If you have completed all the workshop content and would like to try the bonus lab, your instructor can provide you with an invite.
+
 ???
-COMING SOON: A bonus lab that ties everything we learned in this workshop together.
+This bonus lab can be used with any of the three Terraform Cloud workshops. Create an invite if you'd like to share it with your students.
+
+https://instruqt.com/hashicorp/tracks/terraform-cloud-bonus-lab
 
 ---
 name: additional-resources-tfe

@@ -23,13 +23,11 @@ challenges:
 - slug: setup-our-environment
   id: b0ek2h24eln1
   type: challenge
-  title: "\U0001F3E1 Welcome Back"
-  teaser: The environment is familiar, but this time you have to set it up on your
-    own.
+  title: "\U0001F432 Bonus Lab - The Gauntlet \U0001F9D9\U0001F3FC‍♀️"
+  teaser: Welcome back to a familiar environment. You'll have to rely on your skills
+    and knowledge to complete the bonus lab, also known as The Gauntlet.
   assignment: |-
     Welcome back! This is the bonus lab for the Terraform Cloud tracks. There are prerequisites that must be set up before you can begin the bonus lab. This is an intermediate level challenge.
-
-    Welcome to a brand new lab environment. Everything has been reset to the default settings. That means you'll need to do some initial setup before proceeding.
 
     ### Workstation Setup
     1. Clone a local copy of your fork of the **hashicat** repo that you created earlier.
@@ -42,7 +40,7 @@ challenges:
     ### Terraform Cloud Setup
     1. Log onto your Terraform Cloud organization and create a new workspace called **hashicat-dev**.
     2. This time make sure it pulls from the **dev** branch instead of the master branch.
-    3. Enable another policy set from your **tfc-workshop-sentinel** repo, this time use the `bonus_lab` directory as the source. Set this policy to be enforced organization-wide.
+    3. Enable another policy set from your **tfc-workshop-sentinel** repo, this time use the `bonus_lab` directory as the source. Name the policy **tfc-workshop-bonuslab**. Set this policy to be enforced organization-wide.
     4. Echo out your credentials and store them as sensitive variables in both your **hashicat-dev** and **hashicat-cloud** workspaces. The old credentials from the previous lab are already gone so you'll need to delete and recreate them.
     ```
     echo $AWS_ACCESS_KEY_ID
@@ -56,7 +54,7 @@ challenges:
     3. Make sure the following boxes are checked:
     * Require pull request reviews before merging
     * Require status checks to pass before merging
-    * All the **Status Checks**
+    * All the **Status Checks** that include **hashicat-dev**
     4. Click on **Create** at the bottom of the page.
 
     That's it! You're now ready for the bonus lab challenge. You can do this one alone or with a partner.
@@ -66,19 +64,24 @@ challenges:
 
     Your task is to get your code passing all Sentinel tests in the dev workspace and branch. Once that is complete submit a pull request against your fork of the hashicat repo. If you're working with a lab partner you can submit a pull request to their repo instead of your own.
 
+    The new sentinel policy you created for the bonus lab restricts security groups from allowing inbound web access on ports 80 and 443 from anywhere, or `0.0.0.0/0`.
+
+    You should replace this open network with your own public IP address. Example: `136.49.125.137/32`.
+
+    HINT: You can find your public IP address by visiting http://whatismyip.host
+
     Review the pull request, and if all tests are passing, approve and merge to master. Your changes are now safely being pushed to production.
+
+    Congratulations, you built an Infrastructure as Code CI/CD pipeline!
   notes:
   - type: text
-    contents: |
-      Setting up your environment...
-      Keep an eye on the bottom right corner to know when you can get started.
+    contents: "\U0001F3F0 Welcome to the Gauntlet! This challenging lab will require
+      all the skills you learned in the Terraform Cloud workshop. \U0001F9DD\U0001F3FB"
   - type: text
-    contents: The terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
-      Windows, Solaris and Linux.
-  - type: text
-    contents: The terraform language is designed to be both human and machine-readable.
-  - type: text
-    contents: Most modern text editors support Terraform syntax highlighting.
+    contents: Branch protection allows you to create rules that must be passed before
+      any changes get merged into your master branch.
+  - type: image
+    url: https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-cloud-bonuslab/git_branch_protection.png
   tabs:
   - title: Code Editor
     type: service
@@ -86,4 +89,4 @@ challenges:
     port: 8443
   difficulty: basic
   timelimit: 7200
-checksum: "8047722749112950986"
+checksum: "13211953014590483901"
