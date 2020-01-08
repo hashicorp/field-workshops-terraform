@@ -184,6 +184,8 @@ challenges:
     We've given you a head start with templates for the `/root/.terraformrc` file and your `remote_backend.tf` configuration file. You will need to edit these files and insert your own token, organization and
     workspace names.
 
+    Please do not delete either of these files as they are required to complete the track successfully.
+
     Once you've got all the pieces in place, try running a `terraform init` and then `terraform apply` command in the terminal.
 
     When you're done you should see a new state file in your Terraform Cloud workspace.
@@ -590,9 +592,9 @@ challenges:
   assignment: |-
     In this challenge you'll learn to use the Private Module Registry, which allows you to store and version re-usable snippets of Terraform code. Think of modules like custom resources for your own environment.
 
-    Instead of writing this module from scratch you can copy the existing vpc module from the public Terraform registry. Visit this URL to view the Virtual Network module:
+    Instead of writing this module from scratch you can copy the existing Azure network module from the public Terraform registry. Visit this URL to view the Azure Network module:
 
-    https://registry.terraform.io/modules/Azure/vnet/azurerm/1.2.0
+    https://registry.terraform.io/modules/Azure/network/azurerm/2.0.0
 
     Note the **Source:** link that points at the github repository for this module. Click on the Source URL. As you did in previous challenges, create your own fork of this repository with the **Fork** button.
 
@@ -606,21 +608,22 @@ challenges:
 
     ```
     git add .
-    git commit -m "Added Virtual Network module"
+    git commit -m "Added Azure Network module"
     git push origin master
     ```
 
     HINT: The docs are your friend. They might even have an example of how the code should look.
 
-    If all went well you should see a new Virtual Network being built in the console output. Click the `Check` button to verify your work.
+    If all went well you should see a new network being built in the console output. Click the `Check` button to verify your work.
   notes:
   - type: text
     contents: "Most of the devops team is using terraform to build and configure their
       infrastructure. Recently users from outside the team have been requesting help
       building their own workspaces. Gaurav, the database admin, sees you at lunch
       and asks for your help:\n>\U0001F473\U0001F3FE‍♂️ Hi senior sysadmin, I need
-      to configure a lot of Azure VPCs and I heard you have a terraform module for
-      this. Can you help me set up a new Virtual Network in the hashicat-azure workspace?"
+      to configure a lot of Azure Virtual Networks and I heard you have a terraform
+      module for this. Can you help me set up a new network in the hashicat-azure
+      workspace?"
   tabs:
   - title: Code Editor
     type: service
@@ -745,4 +748,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "10077498326051330657"
+checksum: "10026582762614138050"

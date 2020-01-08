@@ -127,7 +127,7 @@ cat <<-EOF > /tmp/prefix.json
     "type":"vars",
     "attributes": {
       "key":"prefix",
-      "value":"workshop",
+      "value":"tweetybird",
       "category":"terraform",
       "hcl":false,
       "sensitive":false
