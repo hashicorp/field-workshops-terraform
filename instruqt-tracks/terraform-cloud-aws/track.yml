@@ -159,6 +159,8 @@ challenges:
     We've given you a head start with templates for the `/root/.terraformrc` file and your `remote_backend.tf` configuration file. You will need to edit these files and insert your own token, organization and
     workspace names.
 
+    Please do not delete either of these files as they are required to complete the track successfully.
+
     Once you've got all the pieces in place, try running a `terraform init` and then `terraform apply` command in the terminal.
 
     When you're done you should see a new state file in your Terraform Cloud workspace.
@@ -721,4 +723,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "10015542639043045711"
+checksum: "9145845676189869602"
