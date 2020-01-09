@@ -36,14 +36,6 @@ layout: true
 ]
 
 ---
-name: Link-to-Slide-Deck
-# The Slide Deck
-<br><br><br>
-Follow along on your own computer at this link:
-
-# https://git.io/JeuCI
-
----
 name: Introductions
 # Introductions
 * Your Name
@@ -59,6 +51,14 @@ The favorite text editor question is a good ice breaker, but perhaps more import
 **There are no wrong answers to this question. Unless you say Notepad. Friends don't let friends write code in Notepad.**
 
 **If you don't have a favorite text editor, that's okay! Our cloud lab has Visual Studio Code preinstalled. VSC is a free programmer's text editor for Microsoft, and it has great Terraform support. Most of this workshop will be simply copying and pasting code, so if you're not a developer don't fret. Terraform is easy to learn and fun to work with.**
+
+---
+name: Link-to-Slide-Deck
+# The Slide Deck
+<br><br><br>
+Follow along on your own computer at this link:
+
+# https://git.io/JeuCI
 
 ---
 name: Table-of-Contents
