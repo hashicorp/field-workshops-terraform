@@ -1029,4 +1029,4 @@ name: the-end
 class: img-caption
 
 # Congratulations, you completed the workshop!
-![HashiCorp Employees - 2019](https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-build-azure/hashicorp_employees.jpg)
+![HashiCorp Employees - 2019](https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-shared/hashicorp_employees.jpg)
