@@ -13,3 +13,11 @@ az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant $A
 if [[ $(az group show --name tweetybird-workshop) ]]; then
   az group delete -y --name tweetybird-workshop
 fi
+
+# fudge the git repo for testing; this one is already completed
+cd /root
+rm -rf hashicat-azure
+git clone https://github.com/scarolan/hashicat-azure
+cd hashicat-azure
+mv terraform.tfvars.example terraform.tfvars
+terraform init

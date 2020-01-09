@@ -32,30 +32,3 @@ EOF
 
 # Update the workspace to enable VCS
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request PATCH --data @/tmp/add_vcs.json https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-azure
-
-# Trigger a terraform apply to update the infrastructure
-cat <<-EOF > /tmp/create_run.json
-{
-  "data": {
-    "attributes": {
-      "is-destroy":false,
-      "message": "Make it so."
-    },
-    "type":"runs",
-    "relationships": {
-      "workspace": {
-        "data": {
-          "type": "workspaces",
-          "id": "$WORKSPACE_ID"
-        }
-      }
-    }
-  }
-}
-EOF
-
-# Do the run
-curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/create_run.json https://app.terraform.io/api/v2/runs
-
-# Give the run time to finish
-sleep 120
