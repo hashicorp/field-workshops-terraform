@@ -354,7 +354,7 @@ name = "${var.PilotServerName}-vm"
 Terraform code (HCL) is easy to learn and easy to read. It is also 50-70% more compact than an equivalent JSON configuration.
 
 ???
-1Password did a great blog post illustrating the difference between AWS Cloudformation (JSON) and Terraform.
+1Password did a great blog post illustrating the difference between JSON configuration files and Terraform.
 
 https://blog.1password.com/terraforming-1password/
 
@@ -385,7 +385,7 @@ Name: Why-Terraform-on-Azure
 * Migrate from other cloud providers
 
 ???
-**Terraform is also great for migrating between cloud providers. Let's say you wanted to move some workloads from AWS to Azure. The code changes in Terraform would be much easier to implement than they would via ARM templates. I was able to migrate a simple demo application from one cloud to another in a few short hours, because there was almost no learning curve. Terraform code looks the same no matter where you run it.**
+**Terraform is also great for migrating between cloud providers. Let's say you wanted to move some workloads to Azure. The code changes in Terraform would be much easier to implement than they would via ARM templates. I was able to migrate a simple demo application from one cloud to another in a few short hours, because there was almost no learning curve. Terraform code looks the same no matter where you run it.**
 
 ---
 Name: Why-Terraform-on-Azure
