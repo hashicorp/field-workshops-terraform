@@ -177,6 +177,9 @@ workflows:
       - instruqt-test-cloud-aws:
           requires:
             - instruqt-validate
+      - instruqt-test-cloud-azure:
+          requires:
+            - instruqt-validate
       - instruqt-test-sentinel:
           requires:
             - instruqt-validate
