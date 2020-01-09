@@ -4,4 +4,5 @@ source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 
 rm remote_backend.tf
-/usr/local/bin/terraform destroy -auto-approve
+# /usr/local/bin/terraform destroy -auto-approve
+echo '{ "resources": [] }' > terraform.tfstate
