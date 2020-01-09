@@ -36,7 +36,7 @@ challenges:
 
     Select the option that says **Terraform: Enable/Disable Language Server**. You only need to click this once. It will activate in the background and generate a couple of notifications.
 
-    Congratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new terraform skills.
+    Congratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new Terraform skills.
 
     Click the **Check** button to continue.
   notes:
@@ -45,10 +45,10 @@ challenges:
       Setting up your environment...
       Keep an eye on the bottom right corner to know when you can get started.
   - type: text
-    contents: The terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
+    contents: The Terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
       Windows, Solaris and Linux.
   - type: text
-    contents: The terraform language is designed to be both human and machine-readable.
+    contents: The Terraform language is designed to be both human and machine-readable.
   - type: text
     contents: Most modern text editors support Terraform syntax highlighting.
   tabs:
@@ -70,7 +70,7 @@ challenges:
   assignment: |-
     Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-J** (**CMD-J** on Mac).
 
-    All terraform commands should be run from the terminal within the Code Editor.
+    All Terraform commands should be run from the terminal within the Code Editor.
 
     Try the **CTRL-J** shortcut to toggle the terminal window open and closed.
 
@@ -81,7 +81,7 @@ challenges:
     You can also hide and show these notes with the expand icon on the upper right side of the GUI. It looks like a box with two small arrows in the corners. This will expand and close the notes panel. Try it now to give your text editor more space.
   notes:
   - type: text
-    contents: The terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
+    contents: The Terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
       Windows, Solaris and Linux.
   tabs:
   - title: Code Editor
@@ -97,12 +97,12 @@ challenges:
   id: xijpanmdkvsp
   type: challenge
   title: "\U0001F44B Getting to Know Terraform"
-  teaser: Learn terraform basics and command line syntax.
+  teaser: Learn Terraform basics and command line syntax.
   assignment: |-
-    **Goal**: Familiarise yourself with the terraform CLI<br>
+    **Goal**: Familiarise yourself with the Terraform CLI<br>
     **Estimated Time**: 1-2 minutes
 
-    Let's start with some basic terraform commands.
+    Let's start with some basic Terraform commands.
     Run the following commands in the terminal on the left.
     Check the version of Terraform running on your machine:
     ```
@@ -114,13 +114,13 @@ challenges:
     ```
     Terraform runs on Windows, OSX, or Linux. You can install it on your laptop or on a cloud based workstation.
 
-    Today we'll be using the preconfigured terraform workstation on the left for all our lab exercises.
+    Today we'll be using the preconfigured Terraform workstation on the left for all our lab exercises.
   notes:
   - type: text
     contents: |-
       Terraform open source is a command line application that you can download and run from your laptop or virtual workstation.
 
-      It is written in Go and runs on macOS, Linux or Windows. You can always download the latest version of terraform from https://www.terraform.io/downloads.html
+      It is written in Go and runs on macOS, Linux or Windows. You can always download the latest version of Terraform from https://www.terraform.io/downloads.html
   - type: text
     contents: |-
       Installing Terraform on your laptop or workstation is easy. You simply download the zip file, unpack it, and place it somewhere in your PATH.
@@ -178,20 +178,20 @@ challenges:
   id: d9ctdsqaj2jc
   type: challenge
   title: "\U0001F468‍\U0001F4BB What does Terraform code look like?"
-  teaser: The terraform DSL (Domain Specific Language) is a declarative language that
+  teaser: The Terraform DSL (Domain Specific Language) is a declarative language that
     lets you build almost any type of infrastructure.
   assignment: |-
-    We've downloaded some terraform code onto your workstation. Run the following command to see the terraform code files:
+    We've downloaded some Terraform code onto your workstation. Run the following command to see the Terraform code files:
       ```
       ls *.tf
       ```
       The same files are visible in the file explorer pane on the left. Terraform files are marked with the purple T icon.
 
-      Terraform code always ends with a `.tf` extension. You can have as many terraform files as you want, but these three are commonly created first:
+      Terraform code always ends with a `.tf` extension. You can have as many Terraform files as you want, but these three are commonly created first:
 
-      **main.tf** - Where most of your terraform code is stored. This is the part that does the building of resources.<br>
+      **main.tf** - Where most of your Terraform code is stored. This is the part that does the building of resources.<br>
       **variables.tf** - Use this file to define which variables will be available to your users.<br>
-      **outputs.tf** - This file contains outputs that will be shown at the end of a successful terraform run.
+      **outputs.tf** - This file contains outputs that will be shown at the end of a successful Terraform run.
 
       Files that end in anything other than `*.tf` or `*.tfvars` are ignored by Terraform.
   notes:
@@ -199,9 +199,9 @@ challenges:
     contents: |-
       Terraform will read anything in the current directory that ends in `*.tf` or `*.tfvars`.
 
-      By convention most terraform workspaces will contain `main.tf`, `variables.tf`, and `outputs.tf` files.
+      By convention most Terraform workspaces will contain `main.tf`, `variables.tf`, and `outputs.tf` files.
 
-      You can also group your terraform code into files by purpose. For example, you might place all your load balancer configuration code into a file called `load_balancer.tf`.
+      You can also group your Terraform code into files by purpose. For example, you might place all your load balancer configuration code into a file called `load_balancer.tf`.
   tabs:
   - title: Code Editor
     type: service
@@ -217,16 +217,16 @@ challenges:
   type: challenge
   title: "\U0001F3E1 Terraform Init - Install the Providers"
   teaser: Terraform needs a provider to talk to cloud APIs. The provider is the bridge
-    that connects terraform core to your infrastructure providers.
+    that connects Terraform core to your infrastructure providers.
   assignment: |-
-    We have downloaded some terraform code for the HashiCat application. We'll be using this source code for the rest of the track.
+    We have downloaded some Terraform code for the HashiCat application. We'll be using this source code for the rest of the track.
 
-    Before we can do anything with terraform we need to initialize our workspace. Run the following    command in your terminal window:
+    Before we can do anything with Terraform we need to initialize our workspace. Run the following    command in your terminal window:
     ```
     terraform init
     ```
 
-    The *terraform init* command scans your terraform code, identifies any providers that are needed,    and downloads them.
+    The `terraform init` command scans your Terraform code, identifies any providers that are needed,    and downloads them.
 
     Run the following command to take a peek inside the `.terraform` directory:
 
@@ -238,7 +238,7 @@ challenges:
   notes:
   - type: text
     contents: |-
-      The terraform core program isn't very useful by itself. Terraform needs the help of a *provider* to be able to talk to cloud APIs. Terraform has hundreds of different providers. You can browse the provider list here:
+      The Terraform core program isn't very useful by itself. Terraform needs the help of a *provider* to be able to talk to cloud APIs. Terraform has hundreds of different providers. You can browse the provider list here:
 
       https://www.terraform.io/docs/providers/index.html
 
@@ -294,7 +294,7 @@ challenges:
 
     Now put the curly brace back onto line 4 and run the validate command again. This time you should pass the validation test.
 
-    **terraform validate** is most often used in automated CI/CD test pipelines. It allows you to quickly catch errors in your code before any other steps are taken.
+    `terraform validate` is most often used in automated CI/CD test pipelines. It allows you to quickly catch errors in your code before any other steps are taken.
   notes:
   - type: text
     contents: Terraform has a built-in syntax checker. You can run it with the `terraform
@@ -314,16 +314,16 @@ challenges:
   type: challenge
   title: "\U0001F914 Terraform Plan - Dry Run Mode"
   teaser: Terraform has a dry run mode where you can preview what will be built without
-    actually creating any resources. In this challenge we'll run terraform plan and
-    view the output.
+    actually creating any resources. In this challenge we'll run `terraform plan`
+    and view the output.
   assignment: |-
-    Run the **terraform plan** command:
+    Run the `terraform plan` command:
 
     ```
     terraform plan
     ```
 
-    When you run this command terraform will prompt you to enter the `prefix` variable.
+    When you run this command Terraform will prompt you to enter the `prefix` variable.
 
     Enter a short string of lower-case letters and/or numbers. You can use your own name here if you wish. The prefix will become part of the name for our VPC, subnet, EC2 instance and other resources.
   notes:
@@ -347,21 +347,21 @@ challenges:
   type: challenge
   title: "\U0001F39B️ Working with Terraform Variables"
   teaser: Terraform variables allow you to customize your infrastructure without editing
-    any code. You can use the same terraform code to deploy dev, staging and production
+    any code. You can use the same Terraform code to deploy dev, staging and production
     but with different variables.
   assignment: |-
-    We've created a **terraform.tfvars** file for you to edit. This is a special file where you can set any variables you wish to change from their defaults.
+    We've created a `terraform.tfvars` file for you to edit. This is a special file where you can set any variables you wish to change from their defaults.
 
-    Variables are *defined* in the **variables.tf** file. They are *set* in the **terraform.tfvars** file.
+    Variables are *defined* in the **variables.tf** file. They are *set* in the `terraform.tfvars` file.
 
-    In terraform all variables must be declared (with or without an optional default value) before you can use them.
+    In Terraform all variables must be declared (with or without an optional default value) before you can use them.
 
-    Open the **terraform.tfvars** file and set your prefix variable there. Save the file.
+    Open the `terraform.tfvars` file and set your prefix variable there. Save the file.
 
     Now run `terraform plan` again. This time you won't have to enter your prefix manually.
   notes:
   - type: text
-    contents: The **terraform.tfvars** file is a convenient place for users to configure
+    contents: The `terraform.tfvars` file is a convenient place for users to configure
       their variables.
   tabs:
   - title: Code Editor
@@ -381,9 +381,9 @@ challenges:
     You can easily provision your applications in different geographical regions by
     simply changing a single variable.
   assignment: |-
-    In one of the previous challenges we set our *prefix* variable.
+    In one of the previous challenges we set our **prefix** variable.
 
-    Choose the AWS region nearest to you and set the region variable in your **terraform.tfvars** file. You may need to close and re-open the file if it appears blank.
+    Choose the AWS region nearest to you and set the region variable in your `terraform.tfvars` file. You may need to close and re-open the file if it appears blank.
 
     You can find the details of valid AWS regions here:
 
@@ -403,11 +403,11 @@ challenges:
 
     Once you've set your location variable try running `terraform plan` again. What's different this time?
 
-    HINT: Remember that you can set any variable you wish in the **terraform.tfvars** file.
+    HINT: Remember that you can set any variable you wish in the `terraform.tfvars` file.
   notes:
   - type: text
-    contents: You can override any variable defined in the *variables.tf* file by
-      setting it in your personal *terraform.tfvars* file.
+    contents: You can override any variable defined in the `variables.tf` file by
+      setting it in your personal `terraform.tfvars` file.
   tabs:
   - title: Code Editor
     type: service
@@ -476,31 +476,31 @@ challenges:
   id: whomyx1qwy92
   type: challenge
   title: "\U0001F468‍\U0001F4BB Terraform Plan and Terraform Apply"
-  teaser: The terraform plan command can be run anytime to get a preview of changes
-    that terraform might make. When you run terraform apply these changes are implemented,
-    and terraform builds, updates, or destroys resources.
+  teaser: The `terraform plan` command can be run anytime to get a preview of changes
+    that Terraform might make. When you run Terraform apply these changes are implemented,
+    and Terraform builds, updates, or destroys resources.
   assignment: |-
     Now that we've configured our required variables we can apply our changes.
 
-    Run the *terraform plan* command first to see what will happen:
+    Run the `terraform plan` command first to see what will happen:
 
     ```
     terraform plan
     ```
     Confirm the proper prefix and location are displayed in the plan output.
 
-    Then run *terraform apply* and watch your resource group being built.
+    Then run `terraform apply` and watch your resource group being built.
 
     ```
     terraform apply
     ```
 
-    You'll need to enter *yes* when terraform prompts you with the "Do you want to perform these actions?" question.
+    You'll need to enter **yes** when Terraform prompts you with the "Do you want to perform these actions?" question.
 
     Right now our code only defines a VPC. We'll be building upon this starting point in the next challenge.
   notes:
   - type: text
-    contents: Terraform apply includes a terraform plan right before it runs. Terraform
+    contents: Terraform apply includes a Terraform plan right before it runs. Terraform
       maps out all the changes it needs to make before applying them.
   tabs:
   - title: Code Editor
@@ -519,13 +519,13 @@ challenges:
   teaser: Terraform is idempotent. Each resource in your code will be examined, and
     if it already exists Terraform will leave it alone.
   assignment: |-
-    Try running **terraform plan** again and see what happens:
+    Try running `terraform plan` again and see what happens:
 
     ```
     terraform plan
     ```
 
-    Since your VPC has already been built, terraform will report that there are no changes required.
+    Since your VPC has already been built, Terraform will report that there are no changes required.
 
     This is normal and expected.
 
@@ -558,16 +558,16 @@ challenges:
   id: yetkjpluigvg
   type: challenge
   title: "\U0001F6EB Change Your Location"
-  teaser: When your terraform code changes, your infrastructure will be modified to
+  teaser: When your Terraform code changes, your infrastructure will be modified to
     match the updated code. Terraform is a declarative language.
   assignment: |-
-    Edit the **terraform.tfvars** file to change your AWS region. You can choose any valid AWS region.
+    Edit the `terraform.tfvars` file to change your AWS region. You can choose any valid AWS region.
 
     Examples:<br>
     us-east-1     - Virgina<br>
     us-west-2     - Oregon<br>
 
-    Save the **terraform.tfvars** file and run your apply command again.
+    Save the `terraform.tfvars` file and run your apply command again.
 
     You can use the `-auto-approve` flag to avoid having to type "yes" every time you apply.
 
@@ -599,11 +599,11 @@ challenges:
   teaser: Terraform can change some resources in in place without deleting them. Adding
     tags is a non-destructive action.
   assignment: |-
-    Read the terraform documentation for the aws_vpc resource:
+    Read the Terraform documentation for the aws_vpc resource:
 
     [AWS Terraform Docs - Click Here](https://www.terraform.io/docs/providers/aws/r/vpc.html)
 
-    Add a tag to your VPC in the *main.tf* file.
+    Add a tag to your VPC in the **main.tf** file.
 
     The name of the tag should be `environment` and the value should be `Production`. The tag is case-sensitive. Make sure you use a capital P.
 
@@ -631,7 +631,7 @@ challenges:
   teaser: Terraform resources are like building blocks. You can continue adding more
     blocks until your infrastructure reaches the desired state.
   assignment: |-
-    Open the *main.tf* file again and uncomment the next resource block in the file. The type of resource is **aws_subnet** and it is named **hashicat**.
+    Open the **main.tf** file again and uncomment the next resource block in the file. The type of resource is **aws_subnet** and it is named **hashicat**.
 
     Uncomment the code by removing the `#` characters from the beginning of each line.
 
@@ -663,7 +663,7 @@ challenges:
   teaser: Terraform code can stand up everything from resource groups, to virtual
     networks, to VMs and containers.
   assignment: |-
-    We've uncommented all the rest of the terraform code in the **main.tf** file for you. Run a `terraform plan` to see what will be built:
+    We've uncommented all the rest of the Terraform code in the **main.tf** file for you. Run a `terraform plan` to see what will be built:
 
     ```
     terraform plan
@@ -677,7 +677,7 @@ challenges:
 
     It can take up to five minutes for the application to finish deploying. You will know it is complete when you see the Terraform output with your application URL at the end of the run.
 
-    You'll need to run one more command to refresh the output, because we are using a specialized terraform config for training.
+    You'll need to run one more command to refresh the output, because we are using a specialized Terraform config for training.
 
     ```
     terraform refresh
@@ -766,7 +766,7 @@ challenges:
     "cowsay Mooooooooooo!",
     ```
 
-    Now run another *terraform apply* to apply your changes:
+    Now run another `terraform apply` to apply your changes:
 
     ```
     terraform apply -auto-approve
@@ -823,13 +823,13 @@ challenges:
     [Terraform AWS Docs - Click Here](https://www.terraform.io/docs/providers/aws/r/instance.html)
     [Terraform Outputs Docs - Click Here] (https://www.terraform.io/docs/configuration/outputs.html)
 
-    Run the terraform refresh command to view your new output:
+    Run the Terraform refresh command to view your new output:
 
     ```
     terraform refresh
     ```
 
-    You can run the terraform output command to view all your outputs:
+    You can run the Terraform output command to view all your outputs:
 
     ```
     terraform output
@@ -859,10 +859,10 @@ challenges:
   id: mcwatgcefeve
   type: challenge
   title: "\U0001F436 Fun With Variables"
-  teaser: Variables give the consumers of your terraform code an easy way to customize
+  teaser: Variables give the consumers of your Terraform code an easy way to customize
     their infrastructure.
   assignment: |-
-    There are several ways to configure Terraform variables. So far we've been using the **terraform.tfvars** file to set our variables. Try re-deploying your application with different **height** and **width** variables on the command line. Reload the webapp after each apply to observe any changes.
+    There are several ways to configure Terraform variables. So far we've been using the `terraform.tfvars` file to set our variables. Try re-deploying your application with different **height** and **width** variables on the command line. Reload the webapp after each apply to observe any changes.
 
     ```
     terraform apply -auto-approve -var height=600 -var width=800
@@ -874,7 +874,7 @@ challenges:
     export TF_VAR_placeholder=placedog.net
     ```
 
-    Run another *terraform apply* command:
+    Run another `terraform apply` command:
     ```
     terraform apply -auto-approve
     ```
@@ -897,7 +897,7 @@ challenges:
       1. User manual entry - if not specified, prompt the user for entry
   - type: text
     contents: |-
-      Here are some other fun placeholder sites you can try with the *placeholder* variable:
+      Here are some other fun placeholder sites you can try with the **placeholder** variable:
 
       placedog.net<br>
       placebear.com<br>
@@ -921,7 +921,7 @@ challenges:
   id: m6a1ehvo3xgz
   type: quiz
   title: "\U0001F4DD Quiz 4 - Terraform Variables"
-  teaser: How do terraform variables get set or overridden?
+  teaser: How do Terraform variables get set or overridden?
   assignment: |
     You have the same variable set in a *.tfvars file and as an environment variable. Which one takes precedence?
   notes:
@@ -941,7 +941,7 @@ challenges:
   id: hp0pnnjyqmjm
   type: challenge
   title: ☁️ Terraform Cloud Setup
-  teaser: Terraform Cloud offers unlimited free terraform state storage for users.
+  teaser: Terraform Cloud offers unlimited free Terraform state storage for users.
     Safeguard your state files by storing them remotely in Terraform Cloud.
   assignment: |-
     Sign up for a free Terraform Cloud account at the following URL:
@@ -954,7 +954,7 @@ challenges:
 
     Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "No VCS Connection" button. Name your workspace **hashicat**.
 
-    Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local.  Be sure to save your settings! This will allow us to run terraform commands from our workstation with local variables.
+    Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local.  Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables.
   notes:
   - type: text
     contents: Terraform Cloud remote state storage is free for all users.
@@ -981,7 +981,7 @@ challenges:
 
     Edit the `remote_backend.tf` file. Replace the organization with your sandbox organization name. Replace the workspace name with **hashicat**. Save the file.
 
-    Now run a *terraform init* to migrate your state to Terraform Cloud:
+    Now run a `terraform init` to migrate your state to Terraform Cloud:
 
     ```
     terraform init
@@ -995,10 +995,10 @@ challenges:
   notes:
   - type: text
     contents: |-
-      With *local* execution mode the terraform commands and variables all remain
+      With *local* execution mode the Terraform commands and variables all remain
       on your workstation.
 
-      With *remote* execution mode terraform runs in a Terraform Cloud
+      With *remote* execution mode Terraform runs in a Terraform Cloud
       container environment. All variables must be configured in the cloud environment with this method.
   tabs:
   - title: Code Editor
@@ -1025,11 +1025,11 @@ challenges:
 
     You'll need to type "yes" when prompted to destroy your infrastructure. This is a safety feature to help prevent accidental deletion of important resources.
 
-    Wait until the destroy action has completely finished before clicking on the *Check* button.
+    Wait until the destroy action has completely finished before clicking on the **Check** button.
   notes:
   - type: text
     contents: Terraform can destroy infrastructure as easily as it can build it. Use
-      terraform with caution.
+      Terraform with caution.
   tabs:
   - title: Code Editor
     type: service
@@ -1040,4 +1040,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 600
-checksum: "15191506185639126776"
+checksum: "14845610090142879183"

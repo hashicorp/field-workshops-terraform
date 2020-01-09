@@ -51,7 +51,7 @@ challenges:
 
     Select the option that says **Terraform: Install/Update Language Server**. Install the latest version of the language server from the list. Open the command palette again and select **Terraform: Enable/Disable Language Server**.
 
-    Congratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new terraform skills.
+    Congratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new Terraform skills.
 
     Click the **Check** button to continue.
   notes:
@@ -83,7 +83,7 @@ challenges:
   assignment: |-
     Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-J** (**CMD-J** on Mac).
 
-    All terraform commands should be run from the terminal within the Code Editor.
+    All Terraform commands should be run from the terminal within the Code Editor.
 
     Try the **CTRL-J** shortcut to toggle the terminal window open and closed. If you don't see a command prompt in the terminal pane, simply click on the trash can icon and open a new terminal.
 
@@ -98,7 +98,7 @@ challenges:
     Good job, you're ready to deploy the hashicat application on AWS!
   notes:
   - type: text
-    contents: The terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
+    contents: The Terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
       Windows, Solaris and Linux.
   tabs:
   - title: Code Editor
@@ -114,7 +114,7 @@ challenges:
   id: flgornvw5xu5
   type: challenge
   title: ☁️ Terraform Cloud Setup
-  teaser: Terraform Cloud offers unlimited free terraform state storage for users.
+  teaser: Terraform Cloud offers unlimited free Terraform state storage for users.
     Safeguard your state files by storing them remotely in Terraform Cloud.
   assignment: |-
     Sign up for a free Terraform Cloud account at the following URL:
@@ -127,7 +127,7 @@ challenges:
 
     Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "No VCS Connection" button. Name your workspace **hashicat-aws**.
 
-    Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local.  Be sure to save your settings! This will allow us to run terraform commands from our workstation with local variables.
+    Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local.  Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables.
 
     Finally, provide your instructor with your organization's name. They will upgrade your organization to unlock a 30 day free trial of all paid features.
   notes:
@@ -172,7 +172,7 @@ challenges:
       of your teammates were up late fixing last night's outage. Eventually senior
       operations admin Robin shows up at your desk.\n\n>\U0001F9D3 Hey kiddo, how
       are you doing? Listen, I want your help with something. Last night we had trouble
-      rebuilding the website because the terraform state file was stored on Lars'
+      rebuilding the website because the Terraform state file was stored on Lars'
       laptop. And guess what, Lars is on vacation for the next two weeks. Why don't
       you help me configure remote state on this application so this doesn't happen
       again?"
@@ -195,7 +195,7 @@ challenges:
   title: "\U0001F4DD Quiz 1 - Terraform Remote State"
   teaser: A quiz about Terraform State
   assignment: |
-    The terraform state file always matches exactly with your current infrastructure configuration.
+    The Terraform state file always matches exactly with your current infrastructure configuration.
   notes:
   - type: text
     contents: "\U0001F431 Congratulations! You've been promoted to Junior Admin.\n"
@@ -224,7 +224,7 @@ challenges:
     echo $AWS_SECRET_ACCESS_KEY
     ```
     2. Update the **Execution Mode** settings in your workspace to **Remote**.
-    3. Change the **Apply Method** to Auto apply. This will save you the trouble of having to approve every terraform run manually. Remember to click the **Save** button at the bottom of the page!
+    3. Change the **Apply Method** to Auto apply. This will save you the trouble of having to approve every Terraform run manually. Remember to click the **Save** button at the bottom of the page!
     4. Set **Environment Variables** for your AWS credentials and mark them as **Sensitive**.
     5. Set **Terraform Variables** for your `prefix` and `region`. Learn more about these variables by looking in the variables.tf file.
 
@@ -255,13 +255,13 @@ challenges:
       are leaking on GitHub every day!\n\nhttps://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/\n\nWhen
       you store your API keys as sensitive variables they are encrypted and stored
       in an instance of HashiCorp Vault. These keys are only decrypted in a trusted,
-      secure container that runs the terraform command."
+      secure container that runs the Terraform command."
   - type: text
     contents: "\U0001F469\U0001F3FC‍\U0001F4BB Remote Execution, Local Code\n\nRemote
-      Execution allows you to use the same terraform commands that you're familiar
+      Execution allows you to use the same Terraform commands that you're familiar
       with, but the run and all your variables are safely stored in your Terraform
       Cloud workspace. This can be helpful when you're upgrading tools that were originally
-      written for Terraform Open Source.\n\nWith Remote Execution your terraform code
+      written for Terraform Open Source.\n\nWith Remote Execution your Terraform code
       is still stored on your local machine and sent to the server each time you run."
   tabs:
   - title: Code Editor
@@ -285,7 +285,7 @@ challenges:
   assignment: |-
     Teams and role-based access controls are a paid feature of Terraform Cloud. Your instructor will need to upgrade your organization to a free trial in order to complete this challenge.
 
-    In this challenge you'll create teams with different levels of access to your workspace. You can then invite other users to collaborate on code changes, approvals, and terraform runs.
+    In this challenge you'll create teams with different levels of access to your workspace. You can then invite other users to collaborate on code changes, approvals, and Terraform runs.
 
     1. Go into your organization's General Settings and click on the **Teams** link.<br>
     2. Add a team called **admins**. Admins should be able to manage policies, manage workspaces, and manage VCS settings.<br>
@@ -314,10 +314,10 @@ challenges:
   notes:
   - type: text
     contents: "A few months go by and you continue building more infrastructure with
-      Terraform Cloud. The devops team are all familiar with terraform, but some members
+      Terraform Cloud. The devops team are all familiar with Terraform, but some members
       are unable to access the Terraform Cloud organization. Your manager Hiro steps
       into your cubicle with a clipboard in hand:\n\n>\U0001F468\U0001F3FB‍\U0001F4BC
-      Thank you for all your hard work on this terraform project. I'd like to have
+      Thank you for all your hard work on this Terraform project. I'd like to have
       read access to your workspace, and we also need to get Lars and Aisha set up.
       Can you please create some teams in our organization and add your co-workers
       to them?"
@@ -345,7 +345,7 @@ challenges:
   - In your Terraform workspace
   - In a text file on your Desktop
   - As encrypted environment variables in Terraform Cloud
-  - As terraform variables in Terraform Cloud
+  - As Terraform variables in Terraform Cloud
   solution:
   - 2
   difficulty: basic
@@ -357,7 +357,7 @@ challenges:
   teaser: The team has grown and you need to implement code reviews. Terraform Cloud
     can connect to popular Version Control Systems to enable collaboration and testing.
   assignment: |-
-    In order for different teams and indivdiuals to be able to work on the same terraform code, you need to use a Version Control System (VCS). Terraform Cloud can integrate with the most popular VCS systems including GitHub, GitLab and Bitbucket.
+    In order for different teams and indivdiuals to be able to work on the same Terraform code, you need to use a Version Control System (VCS). Terraform Cloud can integrate with the most popular VCS systems including GitHub, GitLab and Bitbucket.
 
     You will need a free GitHub.com account for this challenge. We recommend using a personal account for training instead your work account (if you have one).
 
@@ -394,8 +394,8 @@ challenges:
     Click the **Check** button to let Jane know she can clone the hashicat-aws repo for QA testing.
   notes:
   - type: text
-    contents: "As terraform usage continues to increase across the organization, your
-      team needs a better way to store and organize everyone's terraform code. Until
+    contents: "As Terraform usage continues to increase across the organization, your
+      team needs a better way to store and organize everyone's Terraform code. Until
       now you haven't had much testing or code review for infrastructure changes.
       Jane, the QA lead, introduces herself:\n\n>\U0001F469‍\U0001F3A4 Hi sysadmin,
       we're trying to implement better quality assurance around our infrastructure
@@ -403,7 +403,7 @@ challenges:
       the workspace so we can implement code reviews?"
   - type: text
     contents: |-
-      Once you connect a VCS repository to your Terraform Cloud workspace, **all** changes to the code must be stored in the VCS before terraform will execute them. This ensures that you have no unauthorized changes to your infrastructure as code.
+      Once you connect a VCS repository to your Terraform Cloud workspace, **all** changes to the code must be stored in the VCS before Terraform will execute them. This ensures that you have no unauthorized changes to your infrastructure as code.
 
       In addition it allows you to enable features like code reviews, pull requests, and automated testing of your code.
   tabs:
@@ -427,7 +427,7 @@ challenges:
   type: challenge
   title: "\U0001F46C Collaborating with VCS"
   teaser: Now that you've got your version control system configured with Terraform
-    Cloud, you can collaborate on changes to your terraform built infrastructure.
+    Cloud, you can collaborate on changes to your Terraform built infrastructure.
   assignment: |-
     In this challenge you'll make a small change to the code that deploys the hashicat-aws application, and then create a "Pull Request", which is simply a way of proposing a change and optionally allowing others to review your changes.
 
@@ -516,7 +516,7 @@ challenges:
 
     These commands mean "Stage all my changes, commit them to the local git repo, then push them to the master branch of the remote repo."
 
-    Each time you push a change to master, you'll trigger a new terraform run. Keep trying until you pass the Sentinel policy check.
+    Each time you push a change to master, you'll trigger a new Terraform run. Keep trying until you pass the Sentinel policy check.
   notes:
   - type: text
     contents: "Developers love working in the cloud but sometimes they forget to tag
@@ -551,7 +551,7 @@ challenges:
   answers:
   - Code reviews
   - Cost estimation
-  - Automated testing of terraform code
+  - Automated testing of Terraform code
   - Terraform provisioners
   solution:
   - 0
@@ -563,7 +563,7 @@ challenges:
   type: challenge
   title: "\U0001F4DA Private Module Registry"
   teaser: Some of your users want a simple way to deploy databases and network configurations.
-    Enter the Private Module Registry, where you can store standard, re-usable terraform
+    Enter the Private Module Registry, where you can store standard, re-usable Terraform
     configurations that others can use in their own workspaces.
   assignment: |-
     In this challenge you'll learn to use the Private Module Registry, which allows you to store and version re-usable snippets of Terraform code. Think of modules like custom resources for your own environment.
@@ -578,7 +578,7 @@ challenges:
 
     Click on **Publish Module**.
 
-    Create a new terraform file called `vpc.tf` and use the module in this file to create a new VPC for Gaurav.
+    Create a new Terraform file called `vpc.tf` and use the module in this file to create a new VPC for Gaurav.
 
     After you have saved the `vpc.tf` file, commit it to your local git repository and push the changes to your remote fork. You will be prompted to log onto your github account to push the change.
 
@@ -593,11 +593,11 @@ challenges:
     If all went well you should see a new VPC being built in the console output. Click the `Check` button to verify your work.
   notes:
   - type: text
-    contents: "Most of the devops team is using terraform to build and configure their
+    contents: "Most of the devops team is using Terraform to build and configure their
       infrastructure. Recently users from outside the team have been requesting help
       building their own workspaces. Gaurav, the database admin, sees you at lunch
       and asks for your help:\n>\U0001F473\U0001F3FE‍♂️ Hi senior sysadmin, I need
-      to configure a lot of AWS VPCs and I heard you have a terraform module for this.
+      to configure a lot of AWS VPCs and I heard you have a Terraform module for this.
       Can you help me set up a new VPC in the hashicat-aws workspace?"
   tabs:
   - title: Code Editor
@@ -621,7 +621,7 @@ challenges:
   assignment: |-
     In the final challenge you'll directly interact with the Terraform Cloud API. Terraform Cloud has a rich API that lets you do everything you can do in the GUI and more. Intermediate and advanced users utilize the API to create complex integrations that work with external systems.
 
-    Your goal is to configure three variables in the hashicat-aws workspace and then trigger a terraform run using only the API. The three variables you need to configure are:
+    Your goal is to configure three variables in the hashicat-aws workspace and then trigger a Terraform run using only the API. The three variables you need to configure are:
     - `placeholder` An image placeholder URL. Examples: placekitten.com, placedog.net, picsum.photos
     - `height` The height in pixels for your image. Set this to 600
     - `width` The width in pixels for your image. Set this to 800
@@ -641,7 +641,7 @@ challenges:
     ```
     Copy or save this workspace ID somewhere as you will need it during the challenge.
     ### The Challenge:
-    Use the four *.json files located in the json directory to update your variables and trigger a terraform plan/apply. Use the terraform API docs to determine which commands to run. You can edit the files in your text editor to customize them for your workspace.
+    Use the four *.json files located in the json directory to update your variables and trigger a Terraform plan/apply. Use the Terraform API docs to determine which commands to run. You can edit the files in your text editor to customize them for your workspace.
 
     HINT: The global find-and-replace (magnifying glass icon) allows you to replace text across all the files in your workspace at once.
 
@@ -723,4 +723,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "13391790267853212086"
+checksum: "2154013015956286253"
