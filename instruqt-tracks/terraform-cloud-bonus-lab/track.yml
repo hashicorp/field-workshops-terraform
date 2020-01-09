@@ -58,7 +58,7 @@ challenges:
     echo $ARM_TENANT_ID
     ```
 
-    5. Trigger a run in the `dev` workspace. You should see a Sentinel failure. Ports 80 and 443 would be exposed to the entire internet, and Sentinel is preventing this from happening.
+    5. Trigger a run in the `dev` workspace. You should see a Sentinel failure. Read through the output and try to figure out which policy is failing and why. You'll need to fix your terraform code and/or variables to pass the Sentinel checks.
 
     ### Git Repo Setup
     1. Go into the github.com settings page for your hashicat repo and click on **Branches** on the left side menu.
@@ -75,12 +75,6 @@ challenges:
     You need to make some changes to the production website but they have to be tested and approved before merging your changes into the master branch.
 
     Your task is to get your code passing all Sentinel tests in the dev workspace and branch. Once that is complete submit a pull request against your fork of the hashicat repo. If you're working with a lab partner you can submit a pull request to their repo instead of your own.
-
-    The new sentinel policy you created for the bonus lab restricts security groups from allowing inbound web access on ports 80 and 443 from anywhere, or `0.0.0.0/0`.
-
-    You should replace this open network with your own public IP address. Example: `136.49.125.137/32`.
-
-    HINT: You can find your public IP address by visiting http://whatismyip.host
 
     Review the pull request, and if all tests are passing, approve and merge to master. Your changes are now safely being pushed to production.
 
@@ -104,4 +98,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 7200
-checksum: "15047576876959512610"
+checksum: "15743728892928250087"

@@ -182,3 +182,14 @@ The following schedule assumes you have a group of participants who are somewhat
 
 ### The Bonus Lab
 The bonus lab is extra content you can share with participants if you feel they're ready for it. This is a loosely structured lab with minimal setup instructions. No details are provided for commands like "git add, git commit, git push". The student is expected to know how to create a git branch, commit changes to it, push those changes, and create a pull request. They also need to know how to set up branch protection and understand how Terraform Cloud interacts with git repos and directories. In the challenge there is a sentinel policy that blocks security groups from allowing unrestricted (0.0.0.0/0) access to the web app. The participants need to figure out how to update their terraform code, commit their changes to a dev branch, push the changes to the remote dev branch, then ensure that the dev workspace runs correctly, and finally create a pull request to merge to master. As an instructor you should go through this lab and be familiar with it if you plan to teach it.
+
+### Frequently Asked Questions
+
+Q. How do credentials get handled? Does anyone clean up these resources when the workshop is over?
+A. For AWS and GCP workshops Instruqt provides an entire account or project for each student. Cleanup is done by Instruqt when the track expires or the student clicks the Stop button. On Azure, we utilize temporary credentials fetched from the CAM vault server. Automated cleanup is done by the "Dalek" bot that sweeps through every weekend. You can always encourage your participants to run `terraform destroy` at the end of a workshop to help reduce costs.
+
+Q. What happens if I get stuck or find errors during a workshop?
+A. You can always post in #se-workshops or #proj-instruqt and someone should be able to assist.
+
+Q. How do I upgrade my users organizations to trials?
+A. There is another slack channel called #team-se-trial-rqsts where you can ask an admin to upgrade your orgs to trials. We should have self-enabled trials available soon, this will get much easier then.
