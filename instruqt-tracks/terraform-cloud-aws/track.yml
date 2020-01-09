@@ -315,7 +315,7 @@ challenges:
   - type: text
     contents: "A few months go by and you continue building more infrastructure with
       Terraform Cloud. The devops team are all familiar with terraform, but some members
-      are unable to access the terraform cloud organization. Your manager Hiro steps
+      are unable to access the Terraform Cloud organization. Your manager Hiro steps
       into your cubicle with a clipboard in hand:\n\n>\U0001F468\U0001F3FB‍\U0001F4BC
       Thank you for all your hard work on this terraform project. I'd like to have
       read access to your workspace, and we also need to get Lars and Aisha set up.
