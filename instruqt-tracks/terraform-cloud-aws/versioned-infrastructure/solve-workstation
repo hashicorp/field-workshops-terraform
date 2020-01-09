@@ -56,3 +56,6 @@ EOF
 
 # Do the run
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/create_run.json https://app.terraform.io/api/v2/runs
+
+# Give the run time to finish
+sleep 60
