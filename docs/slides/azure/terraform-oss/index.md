@@ -1190,7 +1190,7 @@ Terraform Azurerm Provider Documentation<br>
 https://www.terraform.io/docs/providers/azurerm/
 
 Link to this Slide Deck<br>
-https://git.io/JeBIn
+https://git.io/JeuCI
 
 ---
 name: Feedback-Survey
