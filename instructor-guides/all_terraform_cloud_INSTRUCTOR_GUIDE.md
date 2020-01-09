@@ -193,3 +193,10 @@ A. You can always post in #se-workshops or #proj-instruqt and someone should be 
 
 Q. How do I upgrade my users organizations to trials?
 A. There is another slack channel called #team-se-trial-rqsts where you can ask an admin to upgrade your orgs to trials. We should have self-enabled trials available soon, this will get much easier then.
+
+Q. In the TF Cloud for AWS workshop sometimes the hashicat app URL doesn't load the first time I run `terraform apply`?
+A. This is because we are using a null provisioner to deploy the app, so sometimes the ec2 instance won't match what's currently deployed. Running a second `terraform apply` will fix it for all subsequent runs until you destroy.
+
+Q. What is the Hashicat application?  How does it work?
+A. The hashicat-aws and hashicat-azure applications are essentially a web server with a webpage that the user can tweak using Terraform variables. The terraform code uses a null provisioner with a random ID to ensure that provisioners run every time you do a `terraform apply`. This allows the students to do a lot of terraform runs without having to tear down and rebuild everything every time. Explain to your students that this custom code is designed for a good training experience, but in the real world the provisioner only runs the first time you do a `terraform apply`.
+
