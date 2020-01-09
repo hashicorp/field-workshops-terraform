@@ -34,18 +34,30 @@ challenges:
     2. Open the local repo in your text editor.
     3. Open a Terminal
     4. Create a new git branch called **dev** and switch to that branch.
-    5. Delete the `vpc.tf` file if it exists.
+    5. Delete any extra terraform files containing modules. For example, `vpc.tf` or `vnet.tf`. You won't need external modules for this challenge.
     6. Add, commit, and push your changes to the remote **dev** branch.
 
     ### Terraform Cloud Setup
     1. Log onto your Terraform Cloud organization and create a new workspace called **hashicat-dev**.
-    2. This time make sure it pulls from the **dev** branch instead of the master branch.
-    3. Enable another policy set from your **tfc-workshop-sentinel** repo, this time use the `bonus_lab` directory as the source. Name the policy **tfc-workshop-bonuslab**. Set this policy to be enforced organization-wide. HINT: You'll be connecting to the same sentinel repo we used before, but pointing at a **different directory**.
-    4. Echo out your credentials and store them as sensitive variables in both your **hashicat-dev** and **hashicat-cloud** workspaces. The AWS credentials from the previous lab are already gone so you'll need to delete and recreate them.
+    2. This time make sure it pulls from the **dev** branch instead of the master branch. Remember that you can choose which branch to target when you set up your workspace.
+    3. Enable another policy set from your **tfc-workshop-sentinel** repo, this time use the `bonus_lab` directory as the source. Name the policy **tfc-workshop-bonuslab**. Set this policy to be enforced organization-wide. HINT: You'll be connecting to the same sentinel repo we used before, but pointing at a **different directory**. You can select the directory you want to use when you create the policy set.
+    4. Echo out your credentials and store them as sensitive variables in both dev and production workspaces. You'll need to replace the credentials you used in the previous lab, as they may already be expired.
+
+    AWS:
     ```
     echo $AWS_ACCESS_KEY_ID
     echo $AWS_SECRET_ACCESS_KEY
     ```
+
+
+    Azure:
+    ```
+    echo $ARM_CLIENT_ID
+    echo $ARM_CLIENT_SECRET
+    echo $ARM_SUBSCRIPTION_ID
+    echo $ARM_TENANT_ID
+    ```
+
     5. Trigger a run in the `dev` workspace. You should see a Sentinel failure. Ports 80 and 443 would be exposed to the entire internet, and Sentinel is preventing this from happening.
 
     ### Git Repo Setup
@@ -87,6 +99,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 7200
-checksum: "93001718545144527"
+checksum: "15047576876959512610"

@@ -1,0 +1,193 @@
+#!/bin/bash
+source /etc/profile.d/instruqt-env.sh
+source /root/.bashrc
+/bin/set-workdir /root/hashicat-aws
+cd /root/hashicat-aws
+
+ORG="instruqt-circleci"
+TOKEN=$(cat /tmp/tfc_user_token)
+
+# Create a workspace JSON payload with remote exec enabled
+echo "Creating a workspace JSON payload..."
+cat <<-EOF > /tmp/update_workspace.json
+{
+  "data": {
+    "attributes": {
+      "name": "hashicat-azure",
+      "auto-apply": true,
+      "operations": true
+    },
+    "type": "workspaces"
+  }
+}
+EOF
+
+# Update the workspace to enable remote exec
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request PATCH --data @/tmp/update_workspace.json https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-azure
+
+# Fetch the workspace ID
+WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json"   https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-azure | jq -r .data.id)
+
+# Create JSON payloads for variables
+cat <<-EOF > /tmp/client_id.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"ARM_CLIENT_ID",
+      "value":"$ARM_CLIENT_ID",
+      "category":"env",
+      "hcl":false,
+      "sensitive":false
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id":"$WORKSPACE_ID",
+          "type":"workspaces"
+        }
+      }
+    }
+  }
+}
+EOF
+
+cat <<-EOF > /tmp/client_secret.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"ARM_CLIENT_SECRET",
+      "value":"$ARM_CLIENT_SECRET",
+      "category":"env",
+      "hcl":false,
+      "sensitive":true
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id":"$WORKSPACE_ID",
+          "type":"workspaces"
+        }
+      }
+    }
+  }
+}
+EOF
+
+cat <<-EOF > /tmp/tenant_id.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"ARM_TENANT_ID",
+      "value":"$ARM_TENANT_ID",
+      "category":"env",
+      "hcl":false,
+      "sensitive":false
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id":"$WORKSPACE_ID",
+          "type":"workspaces"
+        }
+      }
+    }
+  }
+}
+EOF
+
+cat <<-EOF > /tmp/subscription_id.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"ARM_SUBSCRIPTION_ID",
+      "value":"$ARM_SUBSCRIPTION_ID",
+      "category":"env",
+      "hcl":false,
+      "sensitive":false
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id":"$WORKSPACE_ID",
+          "type":"workspaces"
+        }
+      }
+    }
+  }
+}
+EOF
+
+cat <<-EOF > /tmp/prefix.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"prefix",
+      "value":"tweetybird",
+      "category":"terraform",
+      "hcl":false,
+      "sensitive":false
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id":"$WORKSPACE_ID",
+          "type":"workspaces"
+        }
+      }
+    }
+  }
+}
+EOF
+
+cat <<-EOF > /tmp/location.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"location",
+      "value":"centralus",
+      "category":"terraform",
+      "hcl":false,
+      "sensitive":false
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id":"$WORKSPACE_ID",
+          "type":"workspaces"
+        }
+      }
+    }
+  }
+}
+EOF
+
+# Create our variables in terraform cloud
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/client_id.json https://app.terraform.io/api/v2/vars
+
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/client_secret.json https://app.terraform.io/api/v2/vars
+
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/tenant_id.json https://app.terraform.io/api/v2/vars
+
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/subscription_id.json https://app.terraform.io/api/v2/vars
+
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/prefix.json https://app.terraform.io/api/v2/vars
+
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/location.json https://app.terraform.io/api/v2/vars
+
+# Can't run terraform apply because of a bug in Terraform Cloud
+# which leads to a completely deadlocked, useless organization
+# where all runs get stuck in the queue. :facepalm:
+
+# https://app.asana.com/0/1118351459439625/1154785911193251
+
+# echo "#############################################"
+# echo "Running terraform with remote exec enabled..."
+# echo "#############################################"
+# terraform plan
+# terraform apply -auto-approve

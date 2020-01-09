@@ -56,6 +56,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: open-a-terminal
@@ -85,6 +88,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 600
 - slug: hello-terraform
@@ -129,6 +135,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: aws-credentials
@@ -160,6 +169,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: terraform-code
@@ -195,6 +207,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: terraform-init-provider
@@ -233,6 +248,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: provider-quiz
@@ -286,6 +304,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: terraform-plan
@@ -316,6 +337,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: terraform-variables
@@ -344,6 +368,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: terraform-add-a-variable
@@ -386,6 +413,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 300
 - slug: variables-quiz
@@ -477,6 +507,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 600
 - slug: tf-plan-again
@@ -516,6 +549,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 600
 - slug: change-location
@@ -551,6 +587,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 600
 - slug: add-a-tag
@@ -580,6 +619,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 600
 - slug: add-virtual-network
@@ -609,6 +651,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 600
 - slug: complete-the-build
@@ -648,6 +693,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 600
 - slug: tf-graph-again
@@ -752,6 +800,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 600
 - slug: add-an-output
@@ -799,6 +850,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 600
 - slug: fun-with-variables
@@ -858,6 +912,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 600
 - slug: terraform-variables-quiz
@@ -906,6 +963,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 600
 - slug: configure-remote-state
@@ -945,6 +1005,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 600
 - slug: terraform-destroy
@@ -972,6 +1035,9 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 600
-checksum: "5347524024993137412"
+checksum: "15191506185639126776"
