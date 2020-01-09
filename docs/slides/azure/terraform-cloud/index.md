@@ -64,7 +64,7 @@ name: tfc-link-to-slide-deck
 .center[
 Follow along on your own computer at this link:
 
-# https://git.io/JeA7Q
+# https://git.io/JvvLK
 ]
 
 ???
