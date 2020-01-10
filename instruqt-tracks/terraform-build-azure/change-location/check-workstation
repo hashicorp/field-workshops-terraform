@@ -1,4 +1,12 @@
 #!/bin/bash
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
 cd /root/hashicat-azure
 source /root/.bashrc
 source /etc/profile.d/instruqt-env.sh

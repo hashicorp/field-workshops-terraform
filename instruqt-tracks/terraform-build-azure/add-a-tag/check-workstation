@@ -1,4 +1,12 @@
 #!/bin/bash
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
 # Checks the state file to make sure the student has added a tag.
 cd /root/hashicat-azure
 

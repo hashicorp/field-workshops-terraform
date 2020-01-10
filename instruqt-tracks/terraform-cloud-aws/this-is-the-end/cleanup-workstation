@@ -4,7 +4,6 @@ source /root/.bashrc
 /bin/set-workdir /root/hashicat-aws
 cd /root/hashicat-aws
 
-ORG=$(grep organization /root/hashicat-aws/remote_backend.tf | cut -d '"' -f2)
 TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
 
 # Delete the workspace

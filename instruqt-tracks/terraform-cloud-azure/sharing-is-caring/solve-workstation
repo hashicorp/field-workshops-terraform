@@ -5,7 +5,6 @@ source /root/.bashrc
 
 # Get our TFC token and organization from the local config files
 TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
-ORG=$(grep organization /root/hashicat-azure/remote_backend.tf | cut -d '"' -f2)
 
 # These are the terraform cloud IDs of our fictional users. They are persistent and should not be deleted from TFC.
 LARS_ID="user-V2Qt225RgAUzsWpz"
