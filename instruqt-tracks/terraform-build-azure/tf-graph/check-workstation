@@ -8,9 +8,4 @@ if [ -f /tmp/skip-check ]; then
 fi
 
 # Fix this after getting the solve script working.
-# curl -I http://localhost:5000 | grep -q "HTTP/1.0 200 OK"
-# EXITCODE=$?
-# if [ $EXITCODE -ne 0 ]; then
-#   fail-message "Oops, it looks like the Blast Radius tool is not running."
-#   exit 1
-# fi
+# curl -I http://localhost:5000 | grep -q "HTTP/1.0 200 OK" || fail-message "Oops, it looks like the Blast Radius tool is not running."

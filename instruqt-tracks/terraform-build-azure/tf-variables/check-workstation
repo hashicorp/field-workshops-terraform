@@ -7,9 +7,4 @@ if [ -f /tmp/skip-check ]; then
     exit 0
 fi
 
-grep yourname /root/hashicat-azure/terraform.tfvars 
-EXITCODE=$?
-if [ $EXITCODE -ne 1 ]; then
-  fail-message "Oops, it looks like you haven't updated your prefix variable yet."
-  exit 1
-fi
+grep yourname /root/hashicat-azure/terraform.tfvars || fail-message "Oops, it looks like you haven't updated your prefix variable yet."

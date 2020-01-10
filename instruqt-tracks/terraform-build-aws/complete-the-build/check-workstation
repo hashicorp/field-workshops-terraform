@@ -13,10 +13,4 @@ cd /root/hashicat-aws
 
 # Fetch the URL and grep the HTTP code for "200 OK"
 # Add retries in case the website isn't up and running yet.
-curl --connect-timeout 5 --max-time 10 --retry 5 --retry-delay 0 --retry-max-time 60 -I $(cat terraform.tfstate | jq -r .outputs.catapp_url.value) | grep "200 OK"
-EXITCODE=$?
-
-if [ $EXITCODE -ne 0 ]; then
-  fail-message "We were unable to load your web app. Try provisioning it again."
-  exit 1
-fi
+curl --connect-timeout 5 --max-time 10 --retry 5 --retry-delay 0 --retry-max-time 60 -I $(cat terraform.tfstate | jq -r .outputs.catapp_url.value) | grep "200 OK" || fail-message "We were unable to load your web app. Try provisioning it again."
