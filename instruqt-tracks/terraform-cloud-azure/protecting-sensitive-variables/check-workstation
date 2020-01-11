@@ -1,10 +1,17 @@
 #!/bin/bash
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 /bin/set-workdir /root/hashicat-azure
 
 TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
-ORG=$(grep organization /root/hashicat-azure/remote_backend.tf | cut -d '"' -f2)
 
 # Test whether remote exec is enabled on the workspace.
 REMOTE_EXEC_ENABLED=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-azure | jq .data.attributes.operations)

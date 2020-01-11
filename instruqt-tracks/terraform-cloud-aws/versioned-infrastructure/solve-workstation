@@ -5,7 +5,6 @@ source /root/.bashrc
 
 # Get our TFC token and organization from the local config files
 TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
-ORG=$(grep organization /root/hashicat-aws/remote_backend.tf | cut -d '"' -f2)
 WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json"   https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws | jq -r .data.id)
 
 # Update the workspace with VCS settings
