@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 # Create /tmp/skip-check to disable this check
 if [ -f /tmp/skip-check ]; then
