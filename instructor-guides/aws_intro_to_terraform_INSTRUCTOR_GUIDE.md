@@ -127,9 +127,9 @@ The following schedule assumes you have a group of participants who are brand ne
 0:55 - 1:25 - Lab 1<br>
 1:25 - 1:30 - Break<br>
 1:30 - 1:45 - Terraform in Action, Organizing Your TF Code<br>
-1:45 - 2:15 - Lab 2, Part I<br>
+1:45 - 2:15 - Lab 2<br>
 2:15 - 2:30 - Provisioning<br>
-2:30 - 3:00 - Lab 2, Part II<br>
+2:30 - 3:00 - Lab 3<br>
 3:00 - 3:15 - State & Cloud<br>
-3:15 - 3:45 - Lab 2, Part III<br>
+3:15 - 3:45 - Lab 4<br>
 3:45 - 4:00 - Wrap-up<br>
