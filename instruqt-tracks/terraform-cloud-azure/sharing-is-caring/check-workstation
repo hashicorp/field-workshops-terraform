@@ -1,4 +1,12 @@
 #!/bin/bash
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
 # TODO - DRY this out a bit.
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
@@ -6,7 +14,6 @@ source /root/.bashrc
 
 # Get our TFC token and organization from the local config files
 TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
-ORG=$(grep organization /root/hashicat-azure/remote_backend.tf | cut -d '"' -f2)
 
 # Get our team IDs. In the test environment these teams are pre-created.
 ADMINS_TEAM_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/teams | jq -r '.data | .[] | select(.attributes.name|test("admins")) | .id')

@@ -1,4 +1,12 @@
 #!/bin/bash
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 /bin/set-workdir /root/hashicat-aws
@@ -20,3 +28,6 @@ curl -I -s -L --header "Authorization: Bearer $TOKEN" --header "Content-Type: ap
 
 # Verify the workspace exists in TFC
 curl -I -s -L --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws | grep "HTTP/2 200" || fail-message "I couldn't find the hashicat-aws workspace in your organization $ORG. Make sure you created it and that it is configured in your remote_backend.tf file."
+
+# Store the ORG in /root/.bashrc
+grep $ORG /root/.bashrc || echo "export ORG=\"$ORG\"" >> /root/.bashrc
