@@ -265,7 +265,7 @@ challenges:
     contents: |
       It's quiz time!
   answers:
-  - In the /tmp direcotry
+  - In the /tmp directory
   - In the user's home directory
   - In the .terraform directory
   - None of the above
@@ -564,7 +564,7 @@ challenges:
     Edit the `terraform.tfvars` file to change your AWS region. You can choose any valid AWS region.
 
     Examples:<br>
-    us-east-1     - Virgina<br>
+    us-east-1     - Virginia<br>
     us-west-2     - Oregon<br>
 
     Save the `terraform.tfvars` file and run your apply command again.
