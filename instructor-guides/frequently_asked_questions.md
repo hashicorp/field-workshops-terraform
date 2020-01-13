@@ -25,9 +25,12 @@ A. Instructors may now override any check script by creating a file at `/tmp/ski
 **Q. Is there a way to fast-forward to a particular part of a track?**<br>
 A. Currently this is only possible for the authors of the track. However, you can use the `/tmp/skip-check` file as mentioned in the previous question to quickly skip past challenges to a particular point in a track. `/tmp/skip-check` must be created for each challenge that you want to skip.
 
-**Q. My student created an AWS SSH key and terraform can't delete it.**
+**Q. My student created an AWS SSH key and terraform can't delete it.**<br>
 A. You can log onto the AWS console directly and delete the offending resource that is blocking your run. Use the following command to see your AWS console username and password:
 ```
 env | grep AWS
 ```
 
+**Q. What is the Bonus Lab?**<br>
+A. The bonus lab is meant for intermediate to advanced users who have already completed the main track. The bonus lab is a challenging combination that tests several skills learned in the Terraform Cloud workshop. The Bonus Lab can be run after either the AWS or Azure workshop. Access it here:<br>
+https://instruqt.com/hashicorp/tracks/terraform-cloud-bonus-lab
