@@ -150,7 +150,7 @@ challenges:
     Your task is to configure remote state using your Terraform Cloud account. In order to complete this challenge you'll need the following:
 
     1. A free Terraform Cloud account - log in at https://app.terraform.io<br>
-    2. An organization called **yourname-training**. Replace yourname with any string of letters or numbers.<br>
+    2. An organization called **yourname-training**. You just created this in the previous exercise.<br>
     3. A workspace named **hashicat-aws** with its Execution Mode set to **Local** (not Remote)<br>
     4. A *user* token for authentication<br>
     5. A `.terraformrc` file to store your user token<br>
@@ -723,4 +723,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "10221047930757039464"
+checksum: "3626677872229187752"

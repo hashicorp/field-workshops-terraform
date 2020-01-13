@@ -24,3 +24,10 @@ A. Instructors may now override any check script by creating a file at /tmp/skip
 
 **Q. Is there a way to fast-forward to a particular part of a track?**<br>
 A. Currently this is only possible for the authors of the track. However, you can use the `/tmp/skip-check` file as mentioned in the previous question to quickly skip past challenges to a particular point in a track. `/tmp/skip-check` must be created for each challenge that you want to skip.
+
+**Q. My student created an AWS SSH key and terraform can't delete it.**
+A. You can log onto the AWS console directly and delete the offending resource that is blocking your run. Use the following command to see your AWS console username and password:
+```
+env | grep AWS
+```
+
