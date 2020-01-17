@@ -1,0 +1,33 @@
+#!/bin/bash
+source /etc/profile.d/instruqt-env.sh
+source /root/.bashrc
+/bin/set-workdir /root/hashicat-aws
+
+# Get our TFC token and organization from the local config files
+TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
+WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json"   https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws | jq -r .data.id)
+
+# Update the workspace with VCS settings
+echo "Creating a workspace JSON payload..."
+cat <<-EOF > /tmp/add_vcs.json
+{
+  "data": {
+    "attributes": {
+      "name": "hashicat-aws",
+      "operations": true,
+      "auto-apply": true,
+      "vcs-repo": {
+        "branch": "",
+        "ingress-submodules": false,
+        "identifier": "workshops-testbot/hashicat-aws",
+        "display-identifier": "workshops-testbot/hashicat-aws",
+        "oauth-token-id": "ot-tcRNmn3r5wrk65Kz"
+        }
+    },
+    "type": "workspaces"
+  }
+}
+EOF
+
+# Update the workspace to enable VCS
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request PATCH --data @/tmp/add_vcs.json https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws

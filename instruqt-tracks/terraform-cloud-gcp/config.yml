@@ -1,0 +1,15 @@
+version: "2"
+containers:
+- name: workstation
+  image: gcr.io/instruqt-hashicorp/hashiworkstation:vsc
+  cmd: --cert --port 8443 --auth none
+  shell: /bin/bash
+  ports:
+  - 8443
+  - 5000
+  memory: 2048
+aws_accounts:
+- name: TF-WORKSHOP
+  managed_policies:
+  - arn:aws:iam::aws:policy/AmazonEC2FullAccess
+  - arn:aws:iam::aws:policy/AmazonVPCFullAccess
