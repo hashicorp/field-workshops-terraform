@@ -93,6 +93,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root
   - title: Terminal
     type: terminal
     hostname: workstation
