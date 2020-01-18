@@ -59,7 +59,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -95,7 +95,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 600
 - slug: hello-terraform
@@ -143,7 +143,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -187,7 +187,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -229,7 +229,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -271,7 +271,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -331,7 +331,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -370,7 +370,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -405,7 +405,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -448,7 +448,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -546,7 +546,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -592,7 +592,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -639,7 +639,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -675,7 +675,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -711,7 +711,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -751,7 +751,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -862,7 +862,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -916,7 +916,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -982,7 +982,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -1037,7 +1037,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -1083,7 +1083,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -1117,10 +1117,10 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 600
-checksum: "8954432000155174265"
+checksum: "18414944407727394957"

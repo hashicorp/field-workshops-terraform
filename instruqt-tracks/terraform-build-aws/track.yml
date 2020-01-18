@@ -59,7 +59,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -95,7 +95,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -146,7 +146,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -184,7 +184,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -226,7 +226,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -271,7 +271,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -331,7 +331,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -368,7 +368,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -403,7 +403,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -452,7 +452,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -550,7 +550,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -596,7 +596,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -638,7 +638,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -674,7 +674,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -710,7 +710,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -756,7 +756,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -867,7 +867,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -921,7 +921,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -987,7 +987,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -1042,7 +1042,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -1088,7 +1088,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -1122,10 +1122,10 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 600
-checksum: "10231923943511092803"
+checksum: "6490598711360394414"

@@ -75,7 +75,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   difficulty: basic
   timelimit: 1800
 - slug: open-a-terminal
@@ -112,7 +112,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -192,7 +192,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -283,7 +283,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -430,7 +430,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -487,7 +487,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -559,7 +559,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -635,7 +635,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -711,7 +711,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -757,10 +757,10 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "3626677872229187752"
+checksum: "5797138593494152350"
