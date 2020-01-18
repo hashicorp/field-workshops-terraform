@@ -423,6 +423,14 @@ challenges:
 
       In addition it allows you to enable features like code reviews, pull requests, and automated testing of your code.
   tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -432,14 +440,6 @@ challenges:
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-aws
   difficulty: basic
   timelimit: 1800
 - slug: vcs-collaboration
@@ -763,4 +763,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "11283916412402512336"
+checksum: "5797138593494152350"
