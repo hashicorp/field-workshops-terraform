@@ -56,6 +56,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -88,6 +92,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -135,6 +143,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -169,6 +181,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -207,6 +223,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -248,6 +268,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -304,6 +328,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -337,6 +365,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -368,6 +400,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -413,6 +449,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -507,6 +547,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -549,6 +593,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -587,6 +635,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -619,6 +671,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -651,6 +707,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -693,6 +753,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -800,6 +864,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -850,6 +918,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -912,6 +984,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -963,6 +1039,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -1005,6 +1085,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -1035,9 +1119,13 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 600
-checksum: "13009636139831267340"
+checksum: "6490598711360394414"

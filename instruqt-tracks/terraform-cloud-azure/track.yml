@@ -72,6 +72,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1800
 - slug: open-a-terminal
@@ -105,6 +109,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -133,6 +141,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 600
 - slug: terraform-cloud-setup
@@ -206,6 +218,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -292,6 +308,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -435,6 +455,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -488,6 +512,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -556,6 +584,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -629,6 +661,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -707,6 +743,10 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1800
 - slug: quiz-4
@@ -743,9 +783,13 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "12419350113177536156"
+checksum: "1604999519982641510"
