@@ -1,11 +1,11 @@
 #!/bin/bash
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
-/bin/set-workdir /root/hashicat-aws
-cd /root/hashicat-aws
+/bin/set-workdir /root/hashicat-gcp
+cd /root/hashicat-gcp
 
 # The idea here was to pass these in from CircleCI
-# ORG="${TFC_ORG:-instruqt-hashicat-aws-$RANDOM}"
+# ORG="${TFC_ORG:-instruqt-hashicat-gcp-$RANDOM}"
 # TOKEN="${TFC_TOKEN:-REPLACETHISWITHYOURTOKEN}"
 
 # Hacky fix until instruqt allows us to pass these in from CircleCI
@@ -22,13 +22,13 @@ EOF
 
 # Configure the remote_backend.tf file
 echo "Configuring the remote backend file..."
-cat <<-EOF > /root/hashicat-aws/remote_backend.tf
+cat <<-EOF > /root/hashicat-gcp/remote_backend.tf
 terraform {
   backend "remote" {
     hostname = "app.terraform.io"
     organization = "$ORG"
     workspaces {
-      name = "hashicat-aws"
+      name = "hashicat-gcp"
     }
   }
 }
@@ -41,7 +41,7 @@ cat <<-EOF > /tmp/create_workspace.json
 {
   "data": {
     "attributes": {
-      "name": "hashicat-aws",
+      "name": "hashicat-gcp",
       "operations": false
     },
     "type": "workspaces"
@@ -50,7 +50,7 @@ cat <<-EOF > /tmp/create_workspace.json
 EOF
 
 # Create a workspace
-echo "Creating the hashicat-aws workspace in organization $ORG..."
+echo "Creating the hashicat-gcp workspace in organization $ORG..."
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/create_workspace.json https://app.terraform.io/api/v2/organizations/$ORG/workspaces
 
 # Run terraform init and apply

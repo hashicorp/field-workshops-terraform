@@ -1,4 +1,5 @@
 slug: terraform-cloud-gcp
+id: mjfywxvlky8d
 type: track
 title: Terraform Cloud with Google Cloud Platform
 teaser: Join the ACME devops team on their journey to fully automated provisioning
@@ -29,6 +30,7 @@ private: true
 published: true
 challenges:
 - slug: setup-our-environment
+  id: jsjmhzzadzhr
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: Configure your code editor for Terraform and open a workspace.
@@ -77,6 +79,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: open-a-terminal
+  id: gli8rk6xtjgy
   type: challenge
   title: "\U0001F5A5️ Open a Terminal"
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
@@ -116,6 +119,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: terraform-cloud-setup
+  id: hv9tg7mosrtu
   type: challenge
   title: ☁️ Terraform Cloud Setup
   teaser: Terraform Cloud offers unlimited free Terraform state storage for users.
@@ -144,6 +148,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: oh-no-an-outage
+  id: yf1h7ubtd5jk
   type: challenge
   title: "\U0001F4D2 Safekeeping Your Terraform State"
   teaser: An unexpected outage has taken down one of the production websites. It took
@@ -197,6 +202,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: quiz-1
+  id: bvqph09uews2
   type: quiz
   title: "\U0001F4DD Quiz 1 - Terraform Remote State"
   teaser: A quiz about Terraform State
@@ -213,6 +219,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: protecting-sensitive-variables
+  id: kj6nuxx09sxx
   type: challenge
   title: "\U0001F510 Securing Cloud Credentials"
   teaser: Your team has started building cloud infrastructure on GCP, but the security
@@ -286,6 +293,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: sharing-is-caring
+  id: xyrlfrkiyqxb
   type: challenge
   title: "\U0001F91D\U0001F3FC Working with Teams in Terraform Cloud"
   teaser: As your Terraform usage increases more team members want to collaborate.
@@ -340,6 +348,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: quiz-2
+  id: hyoaiw0upbho
   type: quiz
   title: "\U0001F4DD Quiz 2 - Secure Variables"
   teaser: A quiz about secure variables
@@ -358,6 +367,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: versioned-infrastructure
+  id: 75oxgo8jz6ee
   type: challenge
   title: "\U0001F4BB Version Controlled Infrastructure"
   teaser: The team has grown and you need to implement code reviews. Terraform Cloud
@@ -433,6 +443,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: vcs-collaboration
+  id: smwimw3rjodo
   type: challenge
   title: "\U0001F46C Collaborating with VCS"
   teaser: Now that you've got your version control system configured with Terraform
@@ -486,6 +497,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: a-sentinel-stands-guard
+  id: 0fpxlgi8ux53
   type: challenge
   title: "\U0001F6E1️ Terraform Compliance with Sentinel"
   teaser: Developers in your organization are building cloud resources without tagging
@@ -554,6 +566,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: quiz-3
+  id: aovfsuasqhin
   type: quiz
   title: "\U0001F4DD Quiz 3 - Version Control and Terraform"
   teaser: A quiz about version control
@@ -574,6 +587,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: private-module-registry
+  id: 0y2q3lwe6yhp
   type: challenge
   title: "\U0001F4DA Private Module Registry"
   teaser: Some of your users want a simple way to deploy databases and network configurations.
@@ -631,6 +645,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: api-driven-workflows
+  id: jkpnkvjlylpk
   type: challenge
   title: "\U0001F517 API Driven Workflows"
   teaser: Terraform Cloud has a fully featured RESTful API that you can use to integrate
@@ -706,6 +721,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: quiz-4
+  id: n3x9eszvwg1i
   type: quiz
   title: "\U0001F4DD Quiz 4 - Private Module Registry"
   teaser: A quiz about the private module registry
@@ -723,6 +739,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: this-is-the-end
+  id: idxctnamridr
   type: challenge
   title: "\U0001F469\U0001F3FB‍\U0001F52C Open Lab"
   teaser: Use this challenge to explore more on your own.
@@ -746,4 +763,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: ""
+checksum: "4451174178787638746"

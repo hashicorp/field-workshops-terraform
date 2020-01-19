@@ -1,13 +1,13 @@
 #!/bin/bash
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
-/bin/set-workdir /root/hashicat-aws/json
-/bin/mkdir /root/hashicat-aws/json
-cd /root/hashicat-aws/json
+/bin/set-workdir /root/hashicat-gcp/json
+/bin/mkdir /root/hashicat-gcp/json
+cd /root/hashicat-gcp/json
 
 # Create some payload files for the student
 for VAR in placeholder width height; do
-cat <<-EOF > /root/hashicat-aws/json/var-${VAR}.json
+cat <<-EOF > /root/hashicat-gcp/json/var-${VAR}.json
 {
   "data": {
     "type":"vars",
@@ -32,7 +32,7 @@ EOF
 done
 
 # Create the payload for the plan/apply
-cat <<-EOF > /root/hashicat-aws/json/apply.json
+cat <<-EOF > /root/hashicat-gcp/json/apply.json
 {
   "data": {
     "attributes": {

@@ -2,20 +2,20 @@
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 
-# clone the hashicat-aws repo
-git clone https://github.com/hashicorp/hashicat-aws
-GITDIR="/root/hashicat-aws"
+# clone the hashicat-gcp repo
+git clone https://github.com/hashicorp/hashicat-gcp
+GITDIR="/root/hashicat-gcp"
 /bin/set-workdir "$GITDIR"
 
 cd ${GITDIR}
 echo -e "prefix = \"workshop\"" >> ${GITDIR}/terraform.tfvars
-echo -e "\nregion = \"us-east-1\"" >> ${GITDIR}/terraform.tfvars
+echo -e "\nregion = \"us-central1\"" >> ${GITDIR}/terraform.tfvars
 
 # Just the public DNS please
 cat <<EOF > outputs.tf
 # Outputs file
 output "catapp_url" {
-  value = "http://\${aws_instance.hashicat.public_dns}"
+  value = "http://\${google_compute_instance.hashicat.network_interface.0.access_config.0.nat_ip}"
 }
 EOF
 
@@ -34,3 +34,7 @@ terraform init
 echo -e "let g:solarized_termcolors=256\nset t_Co=256\nsyntax enable\nset background=dark\ncolorscheme solarized" > /tmp/.vimrc
 mv /tmp/.vimrc /root/.vimrc
 chattr +i /root/.vimrc
+
+# Store our project ID as a Terraform env var
+grep $INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID /root/.bashrc || echo "export TF_VAR_project=\"$INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID\"" >> /root/.bashrc
+echo 'export GOOGLE_CREDENTIALS=$(echo $INSTRUQT_GCP_PROJECT_GCP_PROJECT_SERVICE_ACCOUNT_KEY | base64 -d)' >> /root/.bashrc

@@ -1,7 +1,7 @@
 #!/bin/bash
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
-/bin/set-workdir /root/hashicat-aws
+/bin/set-workdir /root/hashicat-gcp
 
 # Give the student a head start.
 cp exercises/remote_backend.tf remote_backend.tf

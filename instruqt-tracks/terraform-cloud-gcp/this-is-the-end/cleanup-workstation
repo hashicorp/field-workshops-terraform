@@ -1,14 +1,14 @@
 #!/bin/bash
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
-/bin/set-workdir /root/hashicat-aws
-cd /root/hashicat-aws
+/bin/set-workdir /root/hashicat-gcp
+cd /root/hashicat-gcp
 
 TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
 
 # Delete the workspace
-echo "Cleaning up the hashicat-aws workspace..."
-curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws
+echo "Cleaning up the hashicat-gcp workspace..."
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-gcp
 
 # Let the user know we're done
 echo "Cleanup process is complete."

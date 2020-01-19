@@ -1,7 +1,7 @@
 #!/bin/bash
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
-/bin/set-workdir /root/hashicat-aws
+/bin/set-workdir /root/hashicat-gcp
 
 # Get our TFC token and organization from the local config files
 TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
@@ -19,7 +19,7 @@ DEVS_TEAM_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content
 MANAGERS_TEAM_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/teams | jq -r '.data | .[] | select(.attributes.name|test("managers")) | .id')
 
 # Fetch our workspace ID
-WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws | jq -r .data.id)
+WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-gcp | jq -r .data.id)
 
 # Create a payload to associate the managers team
 cat <<-EOF > /tmp/managers_read_access.json
