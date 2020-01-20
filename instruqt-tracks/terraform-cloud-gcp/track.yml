@@ -171,7 +171,11 @@ challenges:
 
     Once you've got all the pieces in place, try running a `terraform init` and then `terraform apply` command in the terminal.
 
-    When you're done you should see a new state file in your Terraform Cloud workspace.
+    When you're done you should see a new state file in your Terraform Cloud workspace. Confirm that terraform has run successfully and the hashicat app is working, then delete your state file:
+
+    ```
+    rm terraform.tfstate
+    ```
 
     Report back to Robin with the *Check* button below once you've successfully deployed the hashicat application with remote state enabled.
   notes:
@@ -225,20 +229,24 @@ challenges:
   teaser: Your team has started building cloud infrastructure on GCP, but the security
     team is concerned about protecting access to everyone's cloud credentials.
   assignment: |-
-    After the GCP credentials issue, the security team is tightening down access to your GCP account. API keys must now be secured as stored variables in Terraform Cloud. Your task is to find your GCP Access Key ID and Secret Access Key, and move them into your workspace as secure environment variables.
+    After the GCP credentials issue, the security team is tightening down access to your GCP project. API keys must now be stored as encrypted variables in Terraform Cloud. Your task is to find your Google credentials, and move them into your workspace as a secure environment variable.
 
     In order to complete this challenge you'll need to do the following:
 
-    1. Find your GCP credentials with the following commands:
+    1. Find your GCP credentials with the following command. The command will output a long string of JSON all on a single line. You'll need this string in step 4.
 
     ```
-    echo $GCLOUD_SOMETHING
-    echo $GCLOUD_SOMETHING_ELSE
+    echo $GOOGLE_CREDENTIALS
     ```
     2. Update the **Execution Mode** settings in your workspace to **Remote**.
     3. Change the **Apply Method** to Auto apply. This will save you the trouble of having to approve every Terraform run manually. Remember to click the **Save** button at the bottom of the page!
-    4. Set **Environment Variables** for your GCP credentials and mark them as **Sensitive**.
-    5. Set **Terraform Variables** for your `prefix` and `region`. Learn more about these variables by looking in the variables.tf file.
+    4. Set an **Environment Variable** for your GCP credentials and mark it as **Sensitive**.
+    5. Set **Terraform Variables** for your `prefix`, `region`, and `zone`. Learn more about these variables by looking in the variables.tf file.
+    6. Set a **Terraform Variable** for your project id. You can find your Google Cloud project id with the following command:
+
+    ```
+    echo $TF_VAR_project
+    ```
 
     Test your work by running `terraform init`. Your backend configuration will be updated for remote execution.
 
@@ -260,8 +268,8 @@ challenges:
       going great until someone's GCP keys are accidentally pushed to a public code
       repository. You get this email from William, the lead infosec admin at ACME:\n\n>\U0001F46E\U0001F3FF‍♂️
       Hello junior admin, we ran a remote scan on your laptop last night and found
-      some unsecured GCP access keys. We need you to move those off your laptop and
-      store them in Terraform Cloud by the end of the day."
+      some unsecured Google Cloud access keys. We need you to move those off your
+      laptop and store them in Terraform Cloud by the end of the day."
   - type: text
     contents: "\U0001F914 Did you know?\n\nThousands of API and cryptographic keys
       are leaking on GitHub every day!\n\nhttps://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/\n\nWhen
@@ -500,12 +508,12 @@ challenges:
   id: 0fpxlgi8ux53
   type: challenge
   title: "\U0001F6E1️ Terraform Compliance with Sentinel"
-  teaser: Developers in your organization are building cloud resources without tagging
-    them properly. You need a way to enforce tagging on all your GCP instances that
+  teaser: Developers in your organization are building cloud resources without lebeling
+    them properly. You need a way to enforce labeling on all your GCP instances that
     are built with Terraform. Meet Sentinel, the compliance and security rules engine
     for Terraform.
   assignment: |-
-    In this challenge you'll use Sentinel to enforce a rule that requires any GCP instance created in your account to have the correct billable and department tags.
+    In this challenge you'll use Sentinel to enforce a rule that requires any GCP instance created in your account to have the correct billable and department labels.
 
     ### Challenge Setup
     1. Before configuring Sentinel you'll need to queue up a Destroy run. You must create a special environment variable named `CONFIRM_DESTROY` in your workspace to enable this. Set the value of this environment variable to `1`. Now you can use the **Settings >> Destruction and Deletion** menu to queue a destroy plan. Do not click the red **Delete from Terraform Cloud** button!!! Instead, click on **Queue Destroy Plan** and confirm it if necessary.
@@ -528,7 +536,7 @@ challenges:
 
     ### The Challenge
 
-    Update your code so that any `google_compute_instance` resources are properly tagged with the **Billable** and **Department** tags. You can set the Billable tag to "true" and the Department tag to "devops".
+    Update your code so that any `google_compute_instance` resources are properly labeled with the **billable** and **department** labels. You can set the billable label to "true" and the department label to "devops". NOTE: GCP labels must be lower-case.
 
     If you need a git refresher, here are the commands you'll need to push a change to your forked repo:
 
@@ -549,8 +557,8 @@ challenges:
       Hello sysadmin, we got a really big GCP bill last month and we have no idea
       how much we can bill back to the department who requested this stuff. I have
       a report that is supposed to show this stuff but it only works if everybody
-      tags their resources properly. Can you make sure all your folks are properly
-      tagging their cloud resources?"
+      labels their resources properly. Can you make sure all your folks are properly
+      labeling their cloud resources?"
   tabs:
   - title: Code Editor
     type: service
@@ -606,7 +614,9 @@ challenges:
 
     Click on **Publish Module**.
 
-    Create a new Terraform file called `vpc.tf` and use the module in this file to create a new VPC for Gaurav.
+    Create a new Terraform file called `vpc.tf` and use the module in this file to create a new VPC for Gaurav.  HINT: You might want to take a look at the [usage examples Google has provided](https://github.com/terraform-google-modules/terraform-google-network/blob/master/examples/simple_project/main.tf#L31-L59).
+
+    It's ok to make a really simple network with only one subnet and hard-coded variables. Remember to specify the correct **source** for your module. Look in the module's README in your private module registry to see the usage examples.
 
     After you have saved the `vpc.tf` file, commit it to your local git repository and push the changes to your remote fork. You will be prompted to log onto your github account to push the change.
 
@@ -625,9 +635,12 @@ challenges:
       infrastructure. Recently users from outside the team have been requesting help
       building their own workspaces. Gaurav, the database admin, sees you at lunch
       and asks for your help:\n>\U0001F473\U0001F3FE‍♂️ Hi senior sysadmin, I need
-      to configure a lot of GCP VPCs and I heard you have a Terraform module for this.
-      Can you help me set up a new VPC in the hashicat-gcp workspace?"
+      to configure a lot of GCP networks and I heard you have a Terraform module for
+      this. Can you help me set up a new network in the hashicat-gcp workspace?"
   tabs:
+  - title: Terraform Cloud
+    type: external
+    url: https://app.terraform.io
   - title: Code Editor
     type: service
     hostname: workstation
@@ -639,9 +652,6 @@ challenges:
   - title: Terminal
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
 - slug: api-driven-workflows
@@ -763,4 +773,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "4451174178787638746"
+checksum: "9168531761483322269"

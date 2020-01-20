@@ -171,7 +171,11 @@ challenges:
 
     Once you've got all the pieces in place, try running a `terraform init` and then `terraform apply` command in the terminal.
 
-    When you're done you should see a new state file in your Terraform Cloud workspace.
+    When you're done you should see a new state file in your Terraform Cloud workspace. Confirm that terraform has run successfully and the hashicat app is working, then delete your state file:
+
+    ```
+    rm terraform.tfstate
+    ```
 
     Report back to Robin with the *Check* button below once you've successfully deployed the hashicat application with remote state enabled.
   notes:
@@ -763,4 +767,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "5797138593494152350"
+checksum: "3541423283301560522"

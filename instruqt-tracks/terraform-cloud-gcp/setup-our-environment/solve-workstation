@@ -4,6 +4,9 @@
 ORG=instruqt-circleci
 TOKEN=$(cat /tmp/tfc_user_token)
 
+# Store the ORG variable in /root/.bashrc
+echo "export ORG=\"$ORG\"" >> /root/.bashrc
+
 # Delete the workspace. Might result in a 404 but that's OK as long as curl doesn't error out.
 echo "Cleaning up the hashicat-gcp workspace..."
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-gcp
@@ -11,7 +14,7 @@ curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application
 # fudge the git repo for testing; this one is already completed
 cd /root
 rm -rf hashicat-gcp
-git clone https://github.com/scarolan/hashicat-gcp
+git clone https://github.com/workshops-testbot/hashicat-gcp
 GITDIR="/root/hashicat-gcp"
 
 cd ${GITDIR}
@@ -22,6 +25,6 @@ echo -e "\nregion = \"us-east-1\"" >> ${GITDIR}/terraform.tfvars
 cat <<EOF > outputs.tf
 # Outputs file
 output "catapp_url" {
-  value = "http://\${google_compute_instance.hashicat.public_dns}"
+  value = "http://\${google_compute_instance.hashicat.network_interface.0.access_config.0.nat_ip}"
 }
 EOF

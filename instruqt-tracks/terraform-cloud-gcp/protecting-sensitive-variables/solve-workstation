@@ -28,38 +28,17 @@ curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application
 # Fetch the workspace ID
 WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json"   https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-gcp | jq -r .data.id)
 
-# TODO: Rewrite these variables for GCP
-# Create JSON payloads for variables
-cat <<-EOF > /tmp/access_key.json
-{
-  "data": {
-    "type":"vars",
-    "attributes": {
-      "key":"AWS_ACCESS_KEY_ID",
-      "value":"$AWS_ACCESS_KEY_ID",
-      "category":"env",
-      "hcl":false,
-      "sensitive":true
-    },
-    "relationships": {
-      "workspace": {
-        "data": {
-          "id":"$WORKSPACE_ID",
-          "type":"workspaces"
-        }
-      }
-    }
-  }
-}
-EOF
+# Stringify our google creds
+STRING_CREDS=$(echo $GOOGLE_CREDENTIALS | jq 'tostring')
 
-cat <<-EOF > /tmp/secret_key.json
+# Create JSON payloads for variables
+cat <<-EOF > /tmp/google_credentials.json
 {
   "data": {
     "type":"vars",
     "attributes": {
-      "key":"AWS_SECRET_ACCESS_KEY",
-      "value":"$AWS_SECRET_ACCESS_KEY",
+      "key":"GOOGLE_CREDENTIALS",
+      "value":$STRING_CREDS,
       "category":"env",
       "hcl":false,
       "sensitive":true
@@ -105,7 +84,53 @@ cat <<-EOF > /tmp/region.json
     "type":"vars",
     "attributes": {
       "key":"region",
-      "value":"us-east-1",
+      "value":"us-central1",
+      "category":"terraform",
+      "hcl":false,
+      "sensitive":false
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id":"$WORKSPACE_ID",
+          "type":"workspaces"
+        }
+      }
+    }
+  }
+}
+EOF
+
+cat <<-EOF > /tmp/zone.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"zone",
+      "value":"us-central1-a",
+      "category":"terraform",
+      "hcl":false,
+      "sensitive":false
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id":"$WORKSPACE_ID",
+          "type":"workspaces"
+        }
+      }
+    }
+  }
+}
+EOF
+
+cat <<-EOF > /tmp/project.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"project",
+      "value":"$TF_VAR_project",
       "category":"terraform",
       "hcl":false,
       "sensitive":false
@@ -123,13 +148,15 @@ cat <<-EOF > /tmp/region.json
 EOF
 
 # Create our variables in terraform cloud
-curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/access_key.json https://app.terraform.io/api/v2/vars
-
-curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/secret_key.json https://app.terraform.io/api/v2/vars
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/google_credentials.json https://app.terraform.io/api/v2/vars
 
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/prefix.json https://app.terraform.io/api/v2/vars
 
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/region.json https://app.terraform.io/api/v2/vars
+
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/zone.json https://app.terraform.io/api/v2/vars
+
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/project.json https://app.terraform.io/api/v2/vars
 
 # Can't run terraform apply because of a bug in Terraform Cloud
 # which leads to a completely deadlocked, useless organization

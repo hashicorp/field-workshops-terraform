@@ -144,6 +144,35 @@ jobs:
             instruqt track test --skip-fail-check
             echo "Running instruqt track push..."
             instruqt track push --force
+  instruqt-test-cloud-gcp:
+    docker:
+      - image: ubuntu:latest
+    steps:
+      - checkout
+      - run:
+          name: Run Instruqt Test
+          command: |
+            VERSION=$INSTRUQT_VERSION
+            apt -y update
+            apt -y install wget unzip
+            wget https://github.com/instruqt/cli/releases/download/${VERSION}/instruqt-linux-${VERSION}.zip -O /tmp/instruqt.zip
+            cd /tmp
+            unzip instruqt.zip
+            cp instruqt /usr/local/bin/instruqt
+            chmod +x /usr/local/bin/instruqt
+            echo "yes" | instruqt version
+            RETVAL=$?
+            if [[ $RETVAL -ne 0 ]]; then
+              echo "Instruqt is not installed correctly."
+              exit 1
+            else
+              echo "Instruqt is installed and updated to most recent version."
+            fi
+            echo "Running instruqt track test..."
+            cd /root/project/instruqt-tracks/terraform-cloud-gcp
+            instruqt track test --skip-fail-check
+            echo "Running instruqt track push..."
+            instruqt track push --force
   instruqt-test-sentinel:
     docker:
       - image: ubuntu:latest
@@ -190,6 +219,9 @@ workflows:
       - instruqt-test-cloud-azure:
           requires:
             - instruqt-validate
+      - instruqt-test-cloud-gcp:
+          requires:
+            - instruqt-validate
       - instruqt-test-sentinel:
           requires:
             - instruqt-validate
@@ -213,6 +245,9 @@ workflows:
           requires:
             - instruqt-validate
       - instruqt-test-cloud-azure:
+          requires:
+            - instruqt-validate
+      - instruqt-test-cloud-gcp:
           requires:
             - instruqt-validate
       - instruqt-test-sentinel:

@@ -17,7 +17,7 @@ cat <<-EOF > /tmp/placeholder.json
     "type":"vars",
     "attributes": {
       "key":"placeholder",
-      "value":"fillmurray.com",
+      "value":"www.fillmurray.com",
       "category":"terraform",
       "hcl":false
     },

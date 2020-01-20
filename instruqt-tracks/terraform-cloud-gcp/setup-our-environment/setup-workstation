@@ -9,7 +9,8 @@ GITDIR="/root/hashicat-gcp"
 
 cd ${GITDIR}
 echo -e "prefix = \"workshop\"" >> ${GITDIR}/terraform.tfvars
-echo -e "\nregion = \"us-central1\"" >> ${GITDIR}/terraform.tfvars
+echo -e "region = \"us-central1\"" >> ${GITDIR}/terraform.tfvars
+echo -e "zone = \"us-central1-a\"" >> ${GITDIR}/terraform.tfvars
 
 # Just the public DNS please
 cat <<EOF > outputs.tf
