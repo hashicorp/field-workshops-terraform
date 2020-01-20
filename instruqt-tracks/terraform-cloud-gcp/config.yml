@@ -1,0 +1,15 @@
+version: "2"
+containers:
+- name: workstation
+  image: gcr.io/instruqt-hashicorp/hashiworkstation:vsc
+  cmd: --cert --port 8443 --auth none
+  shell: /bin/bash
+  ports:
+  - 8443
+  - 5000
+  memory: 2048
+gcp_projects:
+- name: gcp-project
+  services:
+  - cloudresourcemanager.googleapis.com
+  - compute.googleapis.com

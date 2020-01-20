@@ -1,14 +1,14 @@
 #!/bin/bash
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
-/bin/set-workdir /root/hashicat-aws
-cd /root/hashicat-aws
+/bin/set-workdir /root/hashicat-gcp
+cd /root/hashicat-gcp
 
 ORG="instruqt-circleci"
 TOKEN=$(cat /tmp/tfc_user_token)
 
 # Fetch the workspace ID
-WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json"   https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws | jq -r .data.id)
+WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json"   https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-gcp | jq -r .data.id)
 
 # Create JSON payloads for variables
 cat <<-EOF > /tmp/placeholder.json

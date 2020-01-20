@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Blow away the test workspace, hashicat-aws if it exists
+# Blow away the test workspace, hashicat-gcp if it exists
 ORG=instruqt-circleci
 TOKEN=$(cat /tmp/tfc_user_token)
 
@@ -8,14 +8,14 @@ TOKEN=$(cat /tmp/tfc_user_token)
 echo "export ORG=\"$ORG\"" >> /root/.bashrc
 
 # Delete the workspace. Might result in a 404 but that's OK as long as curl doesn't error out.
-echo "Cleaning up the hashicat-aws workspace..."
-curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws
+echo "Cleaning up the hashicat-gcp workspace..."
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-gcp
 
 # fudge the git repo for testing; this one is already completed
 cd /root
-rm -rf hashicat-aws
-git clone https://github.com/workshops-testbot/hashicat-aws
-GITDIR="/root/hashicat-aws"
+rm -rf hashicat-gcp
+git clone https://github.com/workshops-testbot/hashicat-gcp
+GITDIR="/root/hashicat-gcp"
 
 cd ${GITDIR}
 echo -e "prefix = \"workshop\"" >> ${GITDIR}/terraform.tfvars
@@ -25,6 +25,6 @@ echo -e "\nregion = \"us-east-1\"" >> ${GITDIR}/terraform.tfvars
 cat <<EOF > outputs.tf
 # Outputs file
 output "catapp_url" {
-  value = "http://\${aws_instance.hashicat.public_dns}"
+  value = "http://\${google_compute_instance.hashicat.network_interface.0.access_config.0.nat_ip}"
 }
 EOF

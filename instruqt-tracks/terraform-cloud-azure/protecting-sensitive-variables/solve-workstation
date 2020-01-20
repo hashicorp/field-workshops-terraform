@@ -1,8 +1,8 @@
 #!/bin/bash
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
-/bin/set-workdir /root/hashicat-aws
-cd /root/hashicat-aws
+/bin/set-workdir /root/hashicat-azure
+cd /root/hashicat-azure
 
 ORG="instruqt-circleci"
 TOKEN=$(cat /tmp/tfc_user_token)

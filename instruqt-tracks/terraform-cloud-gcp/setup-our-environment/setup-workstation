@@ -1,0 +1,41 @@
+#!/bin/bash
+source /etc/profile.d/instruqt-env.sh
+source /root/.bashrc
+
+# clone the hashicat-gcp repo
+git clone https://github.com/hashicorp/hashicat-gcp
+GITDIR="/root/hashicat-gcp"
+/bin/set-workdir "$GITDIR"
+
+cd ${GITDIR}
+echo -e "prefix = \"workshop\"" >> ${GITDIR}/terraform.tfvars
+echo -e "region = \"us-central1\"" >> ${GITDIR}/terraform.tfvars
+echo -e "zone = \"us-central1-a\"" >> ${GITDIR}/terraform.tfvars
+
+# Just the public DNS please
+cat <<EOF > outputs.tf
+# Outputs file
+output "catapp_url" {
+  value = "http://\${google_compute_instance.hashicat.network_interface.0.access_config.0.nat_ip}"
+}
+EOF
+
+# Install VSC terraform extension and update providers
+cd /root/.local/share/code-server/extensions/
+tar -zxvf /tmp/mauve.terraform-1.4.0.tar.gz
+cd /root/.local/share/code-server/extensions/mauve.terraform-1.4.0/lspbin/
+echo 'provider "tls" {}' >> providers.tf
+terraform init
+
+# Back to our git repo and init
+cd $GITDIR
+terraform init
+
+# Fix up the ~/.vimrc file
+echo -e "let g:solarized_termcolors=256\nset t_Co=256\nsyntax enable\nset background=dark\ncolorscheme solarized" > /tmp/.vimrc
+mv /tmp/.vimrc /root/.vimrc
+chattr +i /root/.vimrc
+
+# Store our project ID as a Terraform env var
+grep $INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID /root/.bashrc || echo "export TF_VAR_project=\"$INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID\"" >> /root/.bashrc
+echo 'export GOOGLE_CREDENTIALS=$(echo $INSTRUQT_GCP_PROJECT_GCP_PROJECT_SERVICE_ACCOUNT_KEY | base64 -d)' >> /root/.bashrc
