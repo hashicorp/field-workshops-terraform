@@ -508,7 +508,7 @@ challenges:
   id: 0fpxlgi8ux53
   type: challenge
   title: "\U0001F6E1️ Terraform Compliance with Sentinel"
-  teaser: Developers in your organization are building cloud resources without lebeling
+  teaser: Developers in your organization are building cloud resources without labeling
     them properly. You need a way to enforce labeling on all your GCP instances that
     are built with Terraform. Meet Sentinel, the compliance and security rules engine
     for Terraform.
