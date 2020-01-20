@@ -200,7 +200,7 @@ challenges:
 
     Once you've got all the pieces in place, try running a `terraform init` and then `terraform apply` command in the terminal.
 
-    When you're done you should see a new state file in your Terraform Cloud workspace. Confirm that terraform has run successfully and the hashicat app is working, then delete your state file:
+    When you're done you should see a new state file in your Terraform Cloud workspace. Confirm that terraform has run successfully and the hashicat app is working, then If you ran terraform locally before configuring remote state, you'll have a local state file called `terraform.tfstate`. Delete your state file if it exists.
 
     ```
     rm terraform.tfstate
