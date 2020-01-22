@@ -3,8 +3,8 @@ class: center,middle,title-slide
 count: false
 <br><br>
 ![:scale 60%](images/tf_gcp.png)
-<br><br>
-# Terraform Cloud on Google Cloud Platform
+<br>
+# Terraform Cloud on GCP
 
 ???
 **Welcome to the Terraform Cloud on GCP workshop. This is a one day workshop that introduces free and paid features of Terraform Cloud (also Enterprise) using an GCP-based application for the tech labs. If you're brand new to Terraform you should try the Introduction to Terraform OSS on GCP Instruqt track before this one.**
@@ -422,8 +422,6 @@ terraform output  # View Terraform outputs
 terraform graph   # Create a DOT-formatted graph
 ```
 
-Need a refresher? Try the [Intro to Terraform on GCP](https://instruqt.com/hashicorp/tracks/terraform-build-gcp) lab exercises.
-
 ???
 Depending on the maturity of your audience you might take a detour back to the Intro to Terraform track. Ideally everyone in the workshop has already completed this or has equivalent experience with Terraform OSS.
 
@@ -491,10 +489,10 @@ background-image: url(images/checklist.jpg)
 name: tf-state-file
 # Terraform State
 ```tex
-  "primary": {
-      "id": "i-0413fe5b4509d65b1",
-      "attributes": {
-          "ami": "ami-06f2f779464715dc5",
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "google_compute_firewall",
 ```
 
 Terraform stores information about the resources it has built in a **state file**. This important file contains all of the data that Terraform needs to change, update, and delete infrastructure.
@@ -587,7 +585,7 @@ background-image: url(images/secure_lock.jpg)
 ## A Secure Place for API Credentials
 
 ???
-**First let's talk about sensitive variables, specifically API keys. Every time you build infrastructure on GCP you need an access key pair. The key pair includes the Access Key Id, and the Secret Access Key. These two strings paired together, with an optional time-based token, allow you to make requests to GCP API endpoints. Amazon spins up the resources and begins billing you for usage. These keys, especially if they are created by an account admin, are very powerful. The default setting in GCP is to grant admin-level access to the user. Let's look at how this can be a major problem...**
+**First let's talk about sensitive variables, specifically API keys. Every time you build infrastructure on GCP you need an access key pair. The key pair includes the Access Key Id, and the Secret Access Key. These two strings paired together, with an optional time-based token, allow you to make requests to GCP API endpoints. Google spins up the resources and begins billing you for usage. These keys, especially if they are created by an account admin, are very powerful. The default setting in GCP is to grant admin-level access to the user. Let's look at how this can be a major problem...**
 
 ---
 name: Security-and-Compliance
@@ -636,7 +634,7 @@ name: a-better-way-creds
 
 Terraform Cloud can safely store your credentials and encrypt them for you. You can use this encrypted storage for passwords, TLS Certificates, SSH keys or anything else that should not be lying around in plain text.
 
-.center[![:scale 70%](images/gcp_encrypted_vars.png)]
+.center[![:scale 100%](images/gcp_encrypted_vars.png)]
 
 ???
 **Here's an example of storing GCP credentials safely so that we can use them inside of a workspace. The user doesn't have to manage these once they are set.**
@@ -797,11 +795,11 @@ Sentinel is HashiCorp's policy enforcement language. Sentinel policies are check
 ---
 name: what-can-sentinel-do
 # Example Uses for Sentinel
-* Enforce mandatory tags on instances
+* Enforce correct network tags on instances
 * Restrict availability zones
 * Disallow 0.0.0.0/0 CIDR blocks
 * Restrict instance types of Google Compute instances
-* Require VPCs to be tagged and have DNS hostnames enabled
+* Require resources to be labeled properly
 
 You can implement these rules and many more using Sentinel.
 
@@ -863,9 +861,9 @@ background-image: url(images/lego_wallpaper.jpg)
 ---
 name: what-even-is-module
 # What is a Terraform Module?
-.center[![:scale 90%](images/gcp_vpc_module.png)]
+.center[![:scale 90%](images/gcp_network_module.png)]
 
-Modules are reusable units of Terraform code that hide unnecessary complexity from the user. This one creates a standard VPC configuration with only 8 variables.
+Modules are reusable units of Terraform code that hide unnecessary complexity from the user. This one creates a standard network configuration on Google Cloud Platform.
 
 ???
 **You'll get to use this module in the lab. If you've ever built out a VPC by hand you know that it's not a super simple process. You need to configure the correct network routes, set up your subnets, internet gateways and a bunch of other settings to get it right. This VPC module is meant to give you a standard set of inputs that you can use to configure a best-practice VPC with public and/or private subnets. This saves you the trouble of having to go write all that terraform code yourself.**
@@ -1008,7 +1006,7 @@ Why Consider Terraform Enterprise Over Open Source?
 https://www.hashicorp.com/resources/why-consider-terraform-enterprise-over-open-source
 
 Terraform GCP Provider Documentation
-https://www.terraform.io/docs/providers/gcp/
+https://www.terraform.io/docs/providers/google
 
 ---
 name: Feedback-Survey
