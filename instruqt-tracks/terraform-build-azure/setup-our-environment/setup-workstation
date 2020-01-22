@@ -17,14 +17,27 @@ end=$'\e[0m'
 # Fetch temporary Azure credentials from a Vault server
 # Requires \$VAULT_ADDR, \$VAULT_NAMESPACE, \$VAULT_CREDS_ENDPOINT and \$VAULT_TOKEN to be set as environment variables
 
+# Regex matching the shape of Azure credentials
+AZURE_REGEX="[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}"
+
 echo "Fetching dynamic Azure credentials from \${VAULT_ADDR}/v1/\${VAULT_CREDS_ENDPOINT}"
-curl -s -H "X-Vault-Token: \${VAULT_TOKEN}" -H "X-Vault-Namespace: \$VAULT_NAMESPACE" \${VAULT_ADDR}/v1/\${VAULT_CREDS_ENDPOINT} | \
+curl -s --retry 5 -H "X-Vault-Token: \${VAULT_TOKEN}" -H "X-Vault-Namespace: \$VAULT_NAMESPACE" \${VAULT_ADDR}/v1/\${VAULT_CREDS_ENDPOINT} | \
 jq -r '[.data.client_id,.data.client_secret] | @tsv' | \
 while read id secret; do
-  echo "export ARM_CLIENT_ID=\$id" >> ~/.bashrc
-  echo "export ARM_CLIENT_SECRET=\$secret" >> ~/.bashrc
+  if [[ \$ARM_CLIENT_ID =~ \$AZURE_REGEX ]] && [[ \$ARM_CLIENT_SECRET =~ \$AZURE_REGEX ]]; then
+    echo "Valid Azure credentials received. Testing them now..."
+    until \$(az login --service-principal --username=\$id --password=\$secret --tenant=\$ARM_TENANT_ID > /dev/null 2>&1); do
+      echo "Waiting for Azure credentials to be ready..."
+      sleep 10
+    done
+    echo "Azure credentials are ready. Storing them as environment variables."
+    echo "export ARM_CLIENT_ID=\$id" >> ~/.bashrc
+    echo "export ARM_CLIENT_SECRET=\$secret" >> ~/.bashrc
+  else
+    echo "Error fetching Azure credentials. Please run the script again."
+    exit 1
+  fi
 done
-sleep 30
 
 echo "\${grn}Ready to run Terraform on...\${end}"
 echo "${blu}"
