@@ -175,7 +175,7 @@ challenges:
     *Do not ever store your credentials in source code files*, as they can be accidentally exposed or copied to a public repository.
   notes:
   - type: text
-    contents: Did you know HCL stands for "Hashicorp Configuration Language"?
+    contents: Did you know HCL stands for "HashiCorp Configuration Language"?
   tabs:
   - title: Code Editor
     type: service

@@ -2,18 +2,18 @@ name: Intro-to-Terraform-Cloud
 class: center,middle,title-slide
 count: false
 <br><br>
-![:scale 60%](images/tf_aws.png)
-<br><br>
-# Terraform Cloud on AWS
+![:scale 60%](images/tf_gcp.png)
+<br>
+# Terraform Cloud on GCP
 
 ???
-**Welcome to the Terraform Cloud on AWS workshop. This is a one day workshop that introduces free and paid features of Terraform Cloud (also Enterprise) using an AWS-based application for the tech labs. If you're brand new to Terraform you should try the Introduction to Terraform OSS on AWS Instruqt track before this one.**
+**Welcome to the Terraform Cloud on GCP workshop. This is a one day workshop that introduces free and paid features of Terraform Cloud (also Enterprise) using an GCP-based application for the tech labs. If you're brand new to Terraform you should try the Introduction to Terraform OSS on GCP Instruqt track before this one.**
 
 **Terraform Cloud and Terraform Enterprise have almost identical feature sets so we'll be using Terraform Cloud as our training environment today.**
 
 INSTRUCTOR GUIDE LINK: https://github.com/hashicorp/field-workshops-terraform/blob/master/instructor-guides/all_terraform_cloud_INSTRUCTOR_GUIDE.md
 
-INSTRUCTOR NOTE: Welcome to Terraform Cloud on AWS. This slide deck is written entirely in Markdown language, which means you can make edits or additions then submit a pull request to add your changes to the master copy. To make edits to the slide deck simply fork this repository, edit the Markdown file(s), and submit a pull request with your changes. You can easily test a local copy of the slide deck with this python one-liner:
+INSTRUCTOR NOTE: Welcome to Terraform Cloud on GCP. This slide deck is written entirely in Markdown language, which means you can make edits or additions then submit a pull request to add your changes to the master copy. To make edits to the slide deck simply fork this repository, edit the Markdown file(s), and submit a pull request with your changes. You can easily test a local copy of the slide deck with this python one-liner:
 
 ```
 python -m SimpleHTTPServer
@@ -139,7 +139,7 @@ class: col-2
 * All build steps are now expressed as code
 * If you ever have to rebuild something, it's much easier!
 
-![Terraform Code on AWS](images/code_example.png)
+![Terraform Code on GCP](images/code_example.png)
 
 ???
 **At the core of Terraform is this idea of Infrastructure as Code. Instead of building things as a series of manual steps, or error-prone shell scripts that may or may not be tested and up to date, you express all your infrastructure build steps in this simple Domain Specific Language, or terraform. The official name for the Terraform config syntax is HashiCorp Config Language, or HCL. This language is easy for beginners and powerful for experts. Think of it as the DNA of your infrastructure.**
@@ -156,7 +156,7 @@ name: multi-platform-compliance
 Terraform also integrates with on premise VMs or platform services.
 
 ???
-**Terraform Cloud and Enterprise can be used to build VMs in your data center, or AWS instances in the cloud, or both. You won't have to maintain two sets of tools to build on your hybrid cloud platforms.**
+**Terraform Cloud and Enterprise can be used to build VMs in your data center, or GCP instances in the cloud, or both. You won't have to maintain two sets of tools to build on your hybrid cloud platforms.**
 
 ---
 name: self-service-infra
@@ -176,7 +176,7 @@ name: terraform-cloud-what-is-it
 # Terraform Cloud - The Big Picture
 
 .center[
-![:scale 90%](images/cloud_overview_aws.png)
+![:scale 90%](images/cloud_overview_gcp.png)
 ]
 
 ???
@@ -339,31 +339,30 @@ background-image: url(images/live_demo.jpg)
 ## Terraform Cloud in Action
 
 ???
-INSTRUCTOR NOTE: You can use the same instruqt track that the students will be using to do this demo. Make sure you've gone through the entire track yourself and have your own organization, fork of the hashicat-aws repo, and sentinel policy in place. Once you have done these steps it's easy to create a new demo:
+INSTRUCTOR NOTE: You can use the same instruqt track that the students will be using to do this demo. Make sure you've gone through the entire track yourself and have your own organization, fork of the hashicat-gcp repo, and sentinel policy in place. Once you have done these steps it's easy to create a new demo:
 
-1. Start your own copy of the Terraform Cloud on AWS track
-2. Echo out your AWS credentials and set them as environment variables in TFC:
+1. Start your own copy of the Terraform Cloud on GCP track
+2. Echo out your GCP credentials and set them as environment variables in TFC:
 ```
-echo $AWS_ACCESS_KEY_ID
-echo $AWS_SECRET_ACCESS_KEY
+echo $GOOGLE_CREDENTIALS
 ```
-3. Open a browser tab to your fork of the hashicat-aws git repo. Edit the main.tf file and make sure your aws_instance resource is missing the `Department` and `Billable` tags.
-4. Make sure you remove the VPC file (vpc.tf) from your hashicat-aws repo. This will make the demo take longer and may break if the regions aren't set up right.
+3. Open a browser tab to your fork of the hashicat-gcp git repo. Edit the main.tf file and make sure your google_compute_instance resource is missing the `Department` and `Billable` tags.
+4. Make sure you remove the VPC file (vpc.tf) from your hashicat-gcp repo. This will make the demo take longer and may break if the regions aren't set up right.
 5. Begin your demo dialog:
 
 **This is a brief demo showing off some of the features of Terraform cloud. You'll get to work with all these features during the hands-on labs today.**
 
-**Pretend I'm a brand new developer and I want to spin up a copy of my company's web application that I can use for testing. I have my own fork of the code here on github. This is the hashicat-aws application. Like the name implies, it provides kittens as a service. You give it a placeholder URL, a height, and a width, and you get a cat. Neat huh?**
+**Pretend I'm a brand new developer and I want to spin up a copy of my company's web application that I can use for testing. I have my own fork of the code here on github. This is the hashicat-gcp application. Like the name implies, it provides kittens as a service. You give it a placeholder URL, a height, and a width, and you get a cat. Neat huh?**
 
 **Let's hop over to Terraform Cloud and take a look at my workspace. Here you can see the most recent terraform runs and their status, along with the exact git commit hash that led to each run being triggered. All changes are recorded, and only code that passes our sentinel policies is allowed to run.**
 
 **Before I build anything I might want to configure some variables to adjust my infrastructure settings. Here you can see some terraform variables, prefix and region. These will determine the names of my resources and the region they will be deployed in.**
 
-**Down bottom you see the Environment Variables. These are system shell variables that are injected into the terraform cloud container at runtime. You can optionally encrypt sensitive environment variables such as these AWS keys. Note that these are write-only. Once you encrypt a variable by marking it sensitive, you won't see it here in plaintext again. These are dynamic AWS credentials that are good for only a few hours. You can paste them in manually or use the API to auto-populate them from HashiCorp Vault.**
+**Down bottom you see the Environment Variables. These are system shell variables that are injected into the terraform cloud container at runtime. You can optionally encrypt sensitive environment variables such as these GCP keys. Note that these are write-only. Once you encrypt a variable by marking it sensitive, you won't see it here in plaintext again. These are dynamic GCP credentials that are good for only a few hours. You can paste them in manually or use the API to auto-populate them from HashiCorp Vault.**
 
 **New and advanced users can utilize the GUI to trigger infrastructure builds. Let's do that now by clicking on this Queue Plan button. I'm going to put "new dev environment" down as the reason for the build. Now notice that a new terraform plan has kicked off. This is the dry run. terraform is figuring out if any of the infrastructure already exists from a previous run, and then it will build or change everything to match what's in the code. That is, unless we fail a sentinel policy...**
 
-**Oh dear it looks like we have some non-compliant terraform code that has blocked the build. This is Sentinel. Sentinel can inspect every terraform plan to ensure that users don't break the rules or build things that they shouldn't. In this case we have forgotten to tag our AWS instances with the mandatory tags, "Billable" and "Department". Since this is a hard-mandatory policy, we can't override it. We have to fix our code and get it compliant in order to proceed.**
+**Oh dear it looks like we have some non-compliant terraform code that has blocked the build. This is Sentinel. Sentinel can inspect every terraform plan to ensure that users don't break the rules or build things that they shouldn't. In this case we have forgotten to tag our GCP instances with the mandatory tags, "Billable" and "Department". Since this is a hard-mandatory policy, we can't override it. We have to fix our code and get it compliant in order to proceed.**
 
 **We'll go back over to our github repo and edit the main.tf file. In the real world you probably won't be editing files directly on the master branch of your repo, what you'd do is test this change in a branch first, have someone review the change, and then merge the change to master. But for a demo it's fine.**
 
@@ -383,7 +382,7 @@ INSTRUCTOR NOTE: Have your code commented and ready to go like this. That way yo
 
 If you want you can paste an emoji in along with your confirm message. Have fun with it.
 
-**And away we go. Terraform is building a bunch of network infrastructure and deploying my hashicat application onto a new aws instance in {REGION}. This application has been specially customized for training; it takes about 3-4 minutes to run the first time, then subsequent terraform apply commands only take 15-20 seconds. You might not use terraform this way in the real world but it's great for workshops because you can get a lot of terraform runs done in a short time without tearing down and rebuilding everything.**
+**And away we go. Terraform is building a bunch of network infrastructure and deploying my hashicat application onto a new gcp instance in {REGION}. This application has been specially customized for training; it takes about 3-4 minutes to run the first time, then subsequent terraform apply commands only take 15-20 seconds. You might not use terraform this way in the real world but it's great for workshops because you can get a lot of terraform runs done in a short time without tearing down and rebuilding everything.**
 
 **Oh look, our apply looks like it's finished. Let's see what we built.**
 
@@ -423,8 +422,6 @@ terraform output  # View Terraform outputs
 terraform graph   # Create a DOT-formatted graph
 ```
 
-Need a refresher? Try the [Intro to Terraform on AWS](https://instruqt.com/hashicorp/tracks/terraform-build-aws) lab exercises.
-
 ???
 Depending on the maturity of your audience you might take a detour back to the Intro to Terraform track. Ideally everyone in the workshop has already completed this or has equivalent experience with Terraform OSS.
 
@@ -446,7 +443,7 @@ name: what-is-a-workspace
 
 **Terraform forces us to adopt the correct behavior which is to create a contract with our code. The terraform configuration agrees to build X, Y, and Z infrastructure, and to hand off some responsibilities to (Chef|Puppet|Ansible) for application configuration and deployment.**
 
-**A workspace could be: An entire application stack from network on up. Great for dev environments that you want to be completely self-contained. Or it could be a workspace that builds core network infrastructure and nothing else. Maybe the network team has to manage that. They get to be the lords of the network and provide terraform outputs to those who need a VPC or subnet. You can also use workspaces to deploy platform services like Kubernetes. Terraform can even manage IAM policies and roles, so that you can stand up an entire AWS account from scratch using only code. (Which is exactly what you're about to do in the labs...)**
+**A workspace could be: An entire application stack from network on up. Great for dev environments that you want to be completely self-contained. Or it could be a workspace that builds core network infrastructure and nothing else. Maybe the network team has to manage that. They get to be the lords of the network and provide terraform outputs to those who need a VPC or subnet. You can also use workspaces to deploy platform services like Kubernetes. Terraform can even manage IAM policies and roles, so that you can stand up an entire GCP account from scratch using only code. (Which is exactly what you're about to do in the labs...)**
 
 ---
 name: what-is-an-organization
@@ -479,7 +476,7 @@ name: our-application
 .center[![:scale 60%](images/meow_world.png)]
 
 ???
-**This will be our application for the training today. We've already written all the Terraform code for you. This app will help us learn how different features work. Hashicat should be familiar if you've already been through Intro to Terraform on AWS. This is also the same app we used during the demo earlier.**
+**This will be our application for the training today. We've already written all the Terraform code for you. This app will help us learn how different features work. Hashicat should be familiar if you've already been through Intro to Terraform on GCP. This is also the same app we used during the demo earlier.**
 
 ---
 name: terraform-state
@@ -492,10 +489,10 @@ background-image: url(images/checklist.jpg)
 name: tf-state-file
 # Terraform State
 ```tex
-  "primary": {
-      "id": "i-0413fe5b4509d65b1",
-      "attributes": {
-          "ami": "ami-06f2f779464715dc5",
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "google_compute_firewall",
 ```
 
 Terraform stores information about the resources it has built in a **state file**. This important file contains all of the data that Terraform needs to change, update, and delete infrastructure.
@@ -588,7 +585,7 @@ background-image: url(images/secure_lock.jpg)
 ## A Secure Place for API Credentials
 
 ???
-**First let's talk about sensitive variables, specifically API keys. Every time you build infrastructure on AWS you need an access key pair. The key pair includes the Access Key Id, and the Secret Access Key. These two strings paired together, with an optional time-based token, allow you to make requests to AWS API endpoints. Amazon spins up the resources and begins billing you for usage. These keys, especially if they are created by an account admin, are very powerful. The default setting in AWS is to grant admin-level access to the user. Let's look at how this can be a major problem...**
+**First let's talk about sensitive variables, specifically API keys. Every time you build infrastructure on GCP you need an access key pair. The key pair includes the Access Key Id, and the Secret Access Key. These two strings paired together, with an optional time-based token, allow you to make requests to GCP API endpoints. Google spins up the resources and begins billing you for usage. These keys, especially if they are created by an account admin, are very powerful. The default setting in GCP is to grant admin-level access to the user. Let's look at how this can be a major problem...**
 
 ---
 name: Security-and-Compliance
@@ -602,7 +599,7 @@ https://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-thei
 ???
 **This is from a recent article about a study Sophos did on credentials stored on GitHub. They used a free API key and simple search algorithm to crawl through github and what they found was very disturbing. Hundreds of thousands of API keys, passwords and other sensitive strings were found.**
 
-**If you've never seen it in action this is what usually happens. The attacker takes control of your AWS account and begins spinning up an enormous cryptocurrency farm with the maximum number of instances allowed. Then you have to get AWS support to help you untangle the mess. It's not fun. You really, really want to protect those API keys.**
+**If you've never seen it in action this is what usually happens. The attacker takes control of your GCP account and begins spinning up an enormous cryptocurrency farm with the maximum number of instances allowed. Then you have to get GCP support to help you untangle the mess. It's not fun. You really, really want to protect those API keys.**
 
 ---
 name: Protecting-Sensitive-Variables
@@ -637,10 +634,10 @@ name: a-better-way-creds
 
 Terraform Cloud can safely store your credentials and encrypt them for you. You can use this encrypted storage for passwords, TLS Certificates, SSH keys or anything else that should not be lying around in plain text.
 
-.center[![:scale 70%](images/aws_encrypted_vars.png)]
+.center[![:scale 100%](images/gcp_encrypted_vars.png)]
 
 ???
-**Here's an example of storing AWS credentials safely so that we can use them inside of a workspace. The user doesn't have to manage these once they are set.**
+**Here's an example of storing GCP credentials safely so that we can use them inside of a workspace. The user doesn't have to manage these once they are set.**
 
 ---
 name: terraform-teams
@@ -782,10 +779,10 @@ background-image: url(images/security_lasers.jpg)
 name: what-is-sentinel
 # What is Sentinel?
 ```hcl
-# Restricting region in AWS
-aws_region_valid = rule {
+# Restricting region in GCP
+google_region_valid = rule {
   all region_values as rv {
-	rv == "us-east-1"
+	rv == "us-central1"
   }
 }
 ```
@@ -798,12 +795,11 @@ Sentinel is HashiCorp's policy enforcement language. Sentinel policies are check
 ---
 name: what-can-sentinel-do
 # Example Uses for Sentinel
-* Enforce owner allow list on aws_ami data source
-* Enforce mandatory tags on instances
+* Enforce correct network tags on instances
 * Restrict availability zones
 * Disallow 0.0.0.0/0 CIDR blocks
-* Restrict instance types of EC2 instances
-* Require VPCs to be tagged and have DNS hostnames enabled
+* Restrict instance types of Google Compute instances
+* Require resources to be labeled properly
 
 You can implement these rules and many more using Sentinel.
 
@@ -865,9 +861,9 @@ background-image: url(images/lego_wallpaper.jpg)
 ---
 name: what-even-is-module
 # What is a Terraform Module?
-.center[![:scale 90%](images/aws_vpc_module.png)]
+.center[![:scale 90%](images/gcp_network_module.png)]
 
-Modules are reusable units of Terraform code that hide unnecessary complexity from the user. This one creates a standard VPC configuration with only 8 variables.
+Modules are reusable units of Terraform code that hide unnecessary complexity from the user. This one creates a standard network configuration on Google Cloud Platform.
 
 ???
 **You'll get to use this module in the lab. If you've ever built out a VPC by hand you know that it's not a super simple process. You need to configure the correct network routes, set up your subnets, internet gateways and a bunch of other settings to get it right. This VPC module is meant to give you a standard set of inputs that you can use to configure a best-practice VPC with public and/or private subnets. This saves you the trouble of having to go write all that terraform code yourself.**
@@ -894,7 +890,7 @@ What if you had to manage dozens or hundreds of modules, with different versions
 name: private-module-registry
 class: img-right
 # Private Module Registry
-![](images/aws_pmr.png)
+![](images/gcp_pmr.png)
 
 Terraform modules are reusable packages of Terraform code that you can use to build your infrastructure.
 
@@ -1009,8 +1005,8 @@ https://www.hashicorp.com/products/terraform/
 Why Consider Terraform Enterprise Over Open Source?
 https://www.hashicorp.com/resources/why-consider-terraform-enterprise-over-open-source
 
-Terraform AWS Provider Documentation
-https://www.terraform.io/docs/providers/aws/
+Terraform GCP Provider Documentation
+https://www.terraform.io/docs/providers/google
 
 ---
 name: Feedback-Survey
