@@ -539,14 +539,14 @@ challenges:
     contents: Terraform apply includes a terraform plan right before it runs. Terraform
       maps out all the changes it needs to make before applying them.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
   - title: Text Editor
     type: code
     hostname: workstation
     path: /root/hashicat-azure
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
   - title: Terminal
     type: terminal
     hostname: workstation
@@ -1123,4 +1123,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 600
-checksum: "3839114281094177660"
+checksum: "8825588920583286730"
