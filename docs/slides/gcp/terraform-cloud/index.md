@@ -142,7 +142,7 @@ class: col-2
 ![Terraform Code on GCP](images/code_example.png)
 
 ???
-**At the core of Terraform is this idea of Infrastructure as Code. Instead of building things as a series of manual steps, or error-prone shell scripts that may or may not be tested and up to date, you express all your infrastructure build steps in this simple Domain Specific Language, or terraform. The official name for the Terraform config syntax is Hashicorp Config Language, or HCL. This language is easy for beginners and powerful for experts. Think of it as the DNA of your infrastructure.**
+**At the core of Terraform is this idea of Infrastructure as Code. Instead of building things as a series of manual steps, or error-prone shell scripts that may or may not be tested and up to date, you express all your infrastructure build steps in this simple Domain Specific Language, or terraform. The official name for the Terraform config syntax is HashiCorp Config Language, or HCL. This language is easy for beginners and powerful for experts. Think of it as the DNA of your infrastructure.**
 
 This slide is here in case you have any brand new, or non-technical people who have never seen a terraform resource before.
 
@@ -296,7 +296,7 @@ Terraform Cloud is a SaaS application that provides the following features:
 * Single Sign-On
 
 ???
-**Terraform Enteprise also supports single sign-on using your own SAML provider. This allows you to quickly map users into your organization's teams and workspaces so they can become productive right away. This feature is only available for private Terraform Enterprise installations. We won't be covering SAML or single sign-on in today's workshop.**
+**Terraform Enterprise also supports single sign-on using your own SAML provider. This allows you to quickly map users into your organization's teams and workspaces so they can become productive right away. This feature is only available for private Terraform Enterprise installations. We won't be covering SAML or single sign-on in today's workshop.**
 
 ---
 name: why-tfc-8
@@ -455,7 +455,7 @@ name: what-is-an-organization
 ]
 
 ???
-**Organzations are shared spaces where users become members of teams and collaborate on workspaces. An organization can have hundreds or thousands of workspaces, and multiple teams with different levels of access. Users may belong to multiple organizations and teams.**
+**Organizations are shared spaces where users become members of teams and collaborate on workspaces. An organization can have hundreds or thousands of workspaces, and multiple teams with different levels of access. Users may belong to multiple organizations and teams.**
 
 ---
 name: what-is-a-team
@@ -720,7 +720,7 @@ class: img-left
 
 ![:scale 70%](images/git_noobs.png)
 
-Terraform Cloud can directly integrate with source code repos in GitHub Enteprise, Gitlab, and Bitbucket. This allows you to build simple DevOps workflows with code reviews, testing and approvals.
+Terraform Cloud can directly integrate with source code repos in GitHub Enterprise, Gitlab, and Bitbucket. This allows you to build simple DevOps workflows with code reviews, testing and approvals.
 
 https://xkcd.com/1597/
 
@@ -753,7 +753,7 @@ name: vcs-driven-workflow
 When your Terraform code is stored in a version control system, you unlock extra features like pull requests, code reviews and testing. Here's an example showing some tests that run on our training lab repo.
 
 ???
-**Storing your code in VCS also enables you to build automated test pipelines and conduct code reviews to approve any pending changes. Multiple users can build and contribute changes to the same infrastructure as code base without stepping on one anothers toes.**
+**Storing your code in VCS also enables you to build automated test pipelines and conduct code reviews to approve any pending changes. Multiple users can build and contribute changes to the same infrastructure as code base without stepping on one another's toes.**
 
 ---
 name: everything-is-recorded
@@ -953,7 +953,7 @@ name: api-use-cases
 # Terraform Cloud API - Use Cases
 
 * Continuous Integration test pipelines
-* Connect with workflow managment systems
+* Connect with workflow management systems
 * External systems that need to query Terraform state for data
 * Self-service portal with Terraform on the backend
 * Custom command line scripts for specific needs
