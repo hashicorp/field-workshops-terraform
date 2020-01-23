@@ -13,12 +13,6 @@ echo "export ORG=\"$ORG\"" >> /root/.bashrc
 echo "Cleaning up the hashicat-azure workspace..."
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-azure
 
-# az delete resource group to clean up the tweetybird-workshop RG if it exists.
-az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant $ARM_TENANT_ID
-if [[ $(az group show --name tweetybird-workshop) ]]; then
-  az group delete -y --name tweetybird-workshop
-fi
-
 # fudge the git repo for testing; this one is already completed
 cd /root
 rm -rf hashicat-azure

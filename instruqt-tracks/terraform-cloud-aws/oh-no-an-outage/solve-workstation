@@ -4,10 +4,6 @@ source /root/.bashrc
 /bin/set-workdir /root/hashicat-aws
 cd /root/hashicat-aws
 
-# The idea here was to pass these in from CircleCI
-# ORG="${TFC_ORG:-instruqt-hashicat-aws-$RANDOM}"
-# TOKEN="${TFC_TOKEN:-REPLACETHISWITHYOURTOKEN}"
-
 # Hacky fix until instruqt allows us to pass these in from CircleCI
 ORG="instruqt-circleci"
 TOKEN=$(cat /tmp/tfc_user_token)
