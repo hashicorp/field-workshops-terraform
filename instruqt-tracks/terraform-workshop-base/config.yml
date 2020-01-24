@@ -1,9 +1,9 @@
 version: "2"
-containers:
+virtualmachines:
 - name: workstation
-  image: gcr.io/instruqt-hashicorp/hashiworkstation:vsc
-  cmd: --cert --port 8443 --auth none
+  image: instruqt-hashicorp/terraform-workstation
   shell: /bin/bash
+  machine_type: n1-standard-1
   ports:
   - 8443
   - 5000
@@ -13,4 +13,3 @@ containers:
     VAULT_ADDR: https://cam-vault.hashidemos.io:8200
     VAULT_CREDS_ENDPOINT: azure/creds/se-training-workstation
     VAULT_NAMESPACE: Sales/SE
-  memory: 2048

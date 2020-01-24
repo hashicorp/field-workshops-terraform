@@ -5,11 +5,26 @@
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 
-# Install VSC terraform extension and update providers. Any provider that you want syntax highlighting for should be added to the providers.tf file in the plugin directory. A terraform init command loads the syntax for that provider into Visual Studio Code.
-cd /root/.local/share/code-server/extensions/
-tar -zxvf /tmp/mauve.terraform-1.4.0.tar.gz
-cd /root/.local/share/code-server/extensions/mauve.terraform-1.4.0/lspbin/
-echo 'provider "tls" {}' >> providers.tf
+# Create VSC startup script
+cat <<-EOF > /etc/systemd/system/code-server.service
+[Unit]
+Description=Code Server
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/usr/local/bin/code-server --port 8443 --cert --auth none
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Start VSC
+systemctl start code-server
 
 # You can do anything! Clone an existing repo, or write some terraform from scratch.
 

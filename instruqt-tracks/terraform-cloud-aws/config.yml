@@ -1,13 +1,12 @@
 version: "2"
-containers:
+virtualmachines:
 - name: workstation
-  image: gcr.io/instruqt-hashicorp/hashiworkstation:vsc
-  cmd: --cert --port 8443 --auth none
+  image: instruqt-hashicorp/terraform-workstation
   shell: /bin/bash
+  machine_type: n1-standard-1
   ports:
   - 8443
   - 5000
-  memory: 2048
 aws_accounts:
 - name: TF-WORKSHOP
   managed_policies:

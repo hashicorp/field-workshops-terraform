@@ -5,7 +5,7 @@ source /root/.bashrc
 cd /root/hashicat-gcp
 
 ORG="instruqt-circleci"
-TOKEN=$(cat /tmp/tfc_user_token)
+TOKEN=$(cat /var/tfc_user_token)
 
 # Create a workspace JSON payload with remote exec enabled
 echo "Creating a workspace JSON payload..."

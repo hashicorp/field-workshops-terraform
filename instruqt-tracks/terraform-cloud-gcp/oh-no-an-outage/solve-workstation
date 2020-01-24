@@ -6,7 +6,7 @@ cd /root/hashicat-gcp
 
 # Hacky fix until instruqt allows us to pass these in from CircleCI
 ORG="instruqt-circleci"
-TOKEN=$(cat /tmp/tfc_user_token)
+TOKEN=$(cat /var/tfc_user_token)
 
 # Configure the /root/.terraformrc file
 echo "Configuring the .terraformrc file..."

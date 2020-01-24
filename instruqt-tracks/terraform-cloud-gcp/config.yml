@@ -1,13 +1,9 @@
 version: "2"
-containers:
+virtualmachines:
 - name: workstation
-  image: gcr.io/instruqt-hashicorp/hashiworkstation:vsc
-  cmd: --cert --port 8443 --auth none
+  image: instruqt-hashicorp/terraform-workstation
   shell: /bin/bash
-  ports:
-  - 8443
-  - 5000
-  memory: 2048
+  machine_type: n1-standard-1
 gcp_projects:
 - name: gcp-project
   services:

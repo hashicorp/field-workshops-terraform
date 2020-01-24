@@ -12,8 +12,8 @@ RUN sudo chmod +x /usr/local/bin/terraform
 RUN sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
 RUN sudo apt -y install graphviz
 RUN sudo /usr/bin/pip3 install BlastRadius
-RUN echo $TFC_USER_TOKEN > /tmp/tfc_user_token
-RUN echo $VAULT_TOKEN > /tmp/vault_token
+RUN echo $TFC_USER_TOKEN > /var/tfc_user_token
+RUN echo $VAULT_TOKEN > /var/vault_token
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 RUN wget https://storage.googleapis.com/instruqt-hashicorp-tracks/vsc-extensions/mauve.terraform-1.4.0.tar.gz -O /tmp/mauve.terraform-1.4.0.tar.gz
 RUN wget http://www.vcheng.org/ponysay/ponysay_3.0.2-1_all.deb -O /tmp/ponysay_3.0.2-1_all.deb
