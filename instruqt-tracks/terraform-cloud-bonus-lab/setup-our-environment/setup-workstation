@@ -35,3 +35,6 @@ systemctl start code-server
 
 # Set the user's working directory with the set-workdir script, then in subsequent challenges the user will always start in that directory.
 # /bin/set-workdir /root/my-git-repo
+
+# Ensure we load /etc/profile.d/instruqt-env.sh
+echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc

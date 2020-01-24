@@ -53,3 +53,6 @@ chattr +i /root/.vimrc
 # Store our project ID as a Terraform env var
 grep $INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID /root/.bashrc || echo "export TF_VAR_project=\"$INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID\"" >> /root/.bashrc
 echo 'export GOOGLE_CREDENTIALS=$(echo $INSTRUQT_GCP_PROJECT_GCP_PROJECT_SERVICE_ACCOUNT_KEY | base64 -d)' >> /root/.bashrc
+
+# Ensure we load /etc/profile.d/instruqt-env.sh
+echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc
