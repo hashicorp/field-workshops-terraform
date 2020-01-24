@@ -43,10 +43,9 @@ A. The bonus lab is meant for intermediate to advanced users who have already co
 https://instruqt.com/hashicorp/tracks/terraform-cloud-bonus-lab
 
 **Q. My student doesn't have any Azure credentials, what do we do to fix it?**<br>
-A. During the setup process a script called `setup_azure.sh` is run. Occassionally this script fails to complete, leaving `ARM_CLIENT_ID` and `ARM_CLIENT_SECRET` empty. If this happens you can simply run the script manually on the command line. NOTE: It can take up to *3 minutes* or even longer for the new credentials to start working. If you request new credentials you'll only reset the clock. So be patient. Also, you must run `source ~/.bashrc` to enable the creds in your current shell. So to summarize, here is the fix:
+A. During the setup process a script called `setup_azure.sh` is run. Occassionally this script fails to complete, leaving `ARM_CLIENT_ID` and `ARM_CLIENT_SECRET` empty. If this happens you can simply run the script manually on the command line. The script has a built in loop to test whether the credentials are ready to use. Also, you must run `source ~/.bashrc` to enable the creds in your current shell. So to summarize, here is the fix:
 
 ```
 setup_azure.sh
 source ~/.bashrc
-# Now wait 3 minutes
 ```
