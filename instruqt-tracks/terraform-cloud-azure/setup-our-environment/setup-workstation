@@ -77,3 +77,6 @@ terraform init
 echo -e "let g:solarized_termcolors=256\nset t_Co=256\nsyntax enable\nset background=dark\ncolorscheme solarized" > /tmp/.vimrc
 mv /tmp/.vimrc /root/.vimrc
 chattr +i /root/.vimrc
+
+# Ensure we load /etc/profile.d/instruqt-env.sh
+echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc

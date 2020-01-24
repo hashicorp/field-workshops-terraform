@@ -76,3 +76,6 @@ terraform init
 # Back to our git repo and init
 cd $GITDIR
 terraform init
+
+# Ensure we load /etc/profile.d/instruqt-env.sh
+echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc
