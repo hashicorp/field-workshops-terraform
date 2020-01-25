@@ -28,9 +28,7 @@ challenges:
 
     Find the "hamburger" or triple-line menu on the top of the navigation bar on the left. It's right underneath the Instruqt mascot logo. This is your Main Menu. You can find all the other VSC menu options here.
 
-    Right below the Main Menu you'll see a column of icons. The first icon looks like a stack of documents. This is the File Explorer. Click on the File Explorer icon then select **Open Folder**.
-
-    Select the `hashicat-aws` directory and hit `OK`.
+    You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application.
 
     Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes. Search for **Terraform** and click the green **Install** button to install the extension. You can click the **Reload Required** button to activate it.
 
