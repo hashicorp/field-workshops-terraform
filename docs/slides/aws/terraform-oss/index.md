@@ -31,7 +31,7 @@ Instructor notes are included in plain text, narrative parts are in **bold**. Yo
 layout: true
 
 .footer[
-- Copyright © 2019 HashiCorp
+- Copyright © 2020 HashiCorp
 - ![:scale 100%](https://hashicorp.github.io/field-workshops-assets/assets/logos/HashiCorp_Icon_Black.svg)
 ]
 
