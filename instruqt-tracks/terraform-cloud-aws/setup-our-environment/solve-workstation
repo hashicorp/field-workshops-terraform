@@ -2,7 +2,7 @@
 
 # Blow away the test workspace, hashicat-aws if it exists
 ORG=instruqt-circleci
-TOKEN=$(cat /tmp/tfc_user_token)
+TOKEN=$(cat /var/tfc_user_token)
 
 # Store the ORG variable in /root/.bashrc
 echo "export ORG=\"$ORG\"" >> /root/.bashrc

@@ -22,6 +22,13 @@ A. You can share the Terraform puzzles git repo with them, and suggest that they
 **Q. My student somehow got their workstation completely stuck and are unable to get past the check script in Instruqt. Help?**<br>
 A. Instructors may now override any check script by creating a file at `/tmp/skip-check` on the student workstation. This file will override the check and allow you to skip to the next lab challenge. Use with discretion.
 
+**Q. How can I start/stop/restart the VSC text editor?**<br>
+A. The new code-server has a standard systemd init script. If a student's editor locks up for some reason you can simply restart it:
+
+```
+systemctl restart-code-server
+```
+
 **Q. Is there a way to fast-forward to a particular part of a track?**<br>
 A. Currently this is only possible for the authors of the track. However, you can use the `/tmp/skip-check` file as mentioned in the previous question to quickly skip past challenges to a particular point in a track. `/tmp/skip-check` must be created for each challenge that you want to skip.
 
@@ -36,10 +43,9 @@ A. The bonus lab is meant for intermediate to advanced users who have already co
 https://instruqt.com/hashicorp/tracks/terraform-cloud-bonus-lab
 
 **Q. My student doesn't have any Azure credentials, what do we do to fix it?**<br>
-A. During the setup process a script called `setup_azure.sh` is run. Occassionally this script fails to complete, leaving `ARM_CLIENT_ID` and `ARM_CLIENT_SECRET` empty. If this happens you can simply run the script manually on the command line. NOTE: It can take up to *3 minutes* or even longer for the new credentials to start working. If you request new credentials you'll only reset the clock. So be patient. Also, you must run `source ~/.bashrc` to enable the creds in your current shell. So to summarize, here is the fix:
+A. During the setup process a script called `setup_azure.sh` is run. Occassionally this script fails to complete, leaving `ARM_CLIENT_ID` and `ARM_CLIENT_SECRET` empty. If this happens you can simply run the script manually on the command line. The script has a built in loop to test whether the credentials are ready to use. Also, you must run `source ~/.bashrc` to enable the creds in your current shell. So to summarize, here is the fix:
 
 ```
 setup_azure.sh
 source ~/.bashrc
-# Now wait 3 minutes
 ```
