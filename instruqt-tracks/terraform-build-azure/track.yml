@@ -102,9 +102,6 @@ challenges:
   title: "\U0001F44B Getting to Know Terraform"
   teaser: Learn Terraform basics and command line syntax.
   assignment: |-
-    **Goal**: Familiarise yourself with the Terraform CLI<br>
-    **Estimated Time**: 1-2 minutes
-
     Let's start with some basic Terraform commands.
     Run the following commands in the terminal on the left.
     Check the version of Terraform running on your machine:
@@ -153,9 +150,6 @@ challenges:
   title: "\U0001F510 Connecting Terraform to Azure Cloud"
   teaser: Safely connect to the Azure APIs using a service principal.
   assignment: |-
-    **Goal**: Understand methods for configuring Azure provider credentials.<br>
-    **Estimated time**: 3-5 minutes.
-
     Terraform needs credentials to be able to connect to Azure and build resources.
 
     We've pre-installed some temporary credentials in your Instruqt training environment. These credentials are stored as environment variables. You should never store sensitive API keys inside your source code.
@@ -421,8 +415,10 @@ challenges:
 
     Choose the Azure location nearest to you and set the location variable in your **terraform.tfvars** file. You may need to close and re-open the file if it appears blank.
     You can find a list of valid Azure locations here:
+
     https://azure.microsoft.com/en-us/global-infrastructure/locations/
-    Examples:
+
+    Examples:<br>
     centralus - Iowa<br>
     eastus    - Virginia<br>
     westus     - California<br>
@@ -537,14 +533,14 @@ challenges:
     contents: Terraform apply includes a terraform plan right before it runs. Terraform
       maps out all the changes it needs to make before applying them.
   tabs:
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Code Editor
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   - title: Terminal
     type: terminal
     hostname: workstation
