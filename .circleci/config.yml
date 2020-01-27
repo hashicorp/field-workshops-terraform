@@ -1,9 +1,6 @@
 version: 2
 jobs:
   instruqt-validate:
-    branches:
-      only:
-        - master
     docker:
       - image: ubuntu:latest
     steps:
@@ -32,9 +29,6 @@ jobs:
               cd $dir && instruqt track validate
             done
   instruqt-test-oss-aws:
-    branches:
-      only:
-        - master
     docker:
       - image: ubuntu:latest
     steps:
@@ -64,9 +58,6 @@ jobs:
             echo "Running instruqt track push..."
             instruqt track push --force
   instruqt-test-oss-azure:
-    branches:
-      only:
-        - master
     docker:
       - image: ubuntu:latest
     steps:
@@ -96,9 +87,6 @@ jobs:
             echo "Running instruqt track push..."
             instruqt track push --force
   instruqt-test-cloud-aws:
-    branches:
-      only:
-        - master
     docker:
       - image: ubuntu:latest
     steps:
@@ -128,9 +116,6 @@ jobs:
             echo "Running instruqt track push..."
             instruqt track push --force
   instruqt-test-cloud-azure:
-    branches:
-      only:
-        - master
     docker:
       - image: ubuntu:latest
     steps:
@@ -160,9 +145,6 @@ jobs:
             echo "Running instruqt track push..."
             instruqt track push --force
   instruqt-test-cloud-gcp:
-    branches:
-      only:
-        - master
     docker:
       - image: ubuntu:latest
     steps:
@@ -192,9 +174,6 @@ jobs:
             echo "Running instruqt track push..."
             instruqt track push --force
   instruqt-test-sentinel:
-    branches:
-      only:
-        - master
     docker:
       - image: ubuntu:latest
     steps:
@@ -256,21 +235,49 @@ workflows:
                 - master
     jobs:
       - instruqt-validate
+          filters:
+            branches:
+              only:
+                - master
       - instruqt-test-oss-aws:
           requires:
             - instruqt-validate
+          filters:
+            branches:
+              only:
+                - master
       - instruqt-test-oss-azure:
           requires:
             - instruqt-validate
+          filters:
+            branches:
+              only:
+                - master
       - instruqt-test-cloud-aws:
           requires:
             - instruqt-validate
+          filters:
+            branches:
+              only:
+                - master
       - instruqt-test-cloud-azure:
           requires:
             - instruqt-validate
+          filters:
+            branches:
+              only:
+                - master
       - instruqt-test-cloud-gcp:
           requires:
             - instruqt-validate
+          filters:
+            branches:
+              only:
+                - master
       - instruqt-test-sentinel:
           requires:
             - instruqt-validate
+          filters:
+            branches:
+              only:
+                - master
