@@ -1,6 +1,9 @@
 version: 2
 jobs:
   instruqt-validate:
+    branches:
+      only:
+        - master
     docker:
       - image: ubuntu:latest
     steps:
@@ -29,6 +32,9 @@ jobs:
               cd $dir && instruqt track validate
             done
   instruqt-test-oss-aws:
+    branches:
+      only:
+        - master
     docker:
       - image: ubuntu:latest
     steps:
@@ -55,9 +61,12 @@ jobs:
             echo "Running instruqt track test..."
             cd /root/project/instruqt-tracks/terraform-build-aws
             instruqt track test --skip-fail-check
-            #echo "Running instruqt track push..."
-            #instruqt track push --force
+            echo "Running instruqt track push..."
+            instruqt track push --force
   instruqt-test-oss-azure:
+    branches:
+      only:
+        - master
     docker:
       - image: ubuntu:latest
     steps:
@@ -84,9 +93,12 @@ jobs:
             echo "Running instruqt track test..."
             cd /root/project/instruqt-tracks/terraform-build-azure
             instruqt track test --skip-fail-check
-            #echo "Running instruqt track push..."
-            #instruqt track push --force
+            echo "Running instruqt track push..."
+            instruqt track push --force
   instruqt-test-cloud-aws:
+    branches:
+      only:
+        - master
     docker:
       - image: ubuntu:latest
     steps:
@@ -113,9 +125,12 @@ jobs:
             echo "Running instruqt track test..."
             cd /root/project/instruqt-tracks/terraform-cloud-aws
             instruqt track test --skip-fail-check
-            #echo "Running instruqt track push..."
-            #instruqt track push --force
+            echo "Running instruqt track push..."
+            instruqt track push --force
   instruqt-test-cloud-azure:
+    branches:
+      only:
+        - master
     docker:
       - image: ubuntu:latest
     steps:
@@ -142,9 +157,12 @@ jobs:
             echo "Running instruqt track test..."
             cd /root/project/instruqt-tracks/terraform-cloud-azure
             instruqt track test --skip-fail-check
-            #echo "Running instruqt track push..."
-            #instruqt track push --force
+            echo "Running instruqt track push..."
+            instruqt track push --force
   instruqt-test-cloud-gcp:
+    branches:
+      only:
+        - master
     docker:
       - image: ubuntu:latest
     steps:
@@ -171,9 +189,12 @@ jobs:
             echo "Running instruqt track test..."
             cd /root/project/instruqt-tracks/terraform-cloud-gcp
             instruqt track test --skip-fail-check
-            #echo "Running instruqt track push..."
-            #instruqt track push --force
+            echo "Running instruqt track push..."
+            instruqt track push --force
   instruqt-test-sentinel:
+    branches:
+      only:
+        - master
     docker:
       - image: ubuntu:latest
     steps:
@@ -200,8 +221,8 @@ jobs:
             echo "Running instruqt track test..."
             cd /root/project/instruqt-tracks/sentinel-for-terraform
             instruqt track test --skip-fail-check
-            #echo "Running instruqt track push..."
-            #instruqt track push --force
+            echo "Running instruqt track push..."
+            instruqt track push --force
 workflows:
   version: 2
   build-and-deploy:
