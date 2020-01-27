@@ -92,5 +92,8 @@ systemctl start code-server
 cd $GITDIR
 terraform init
 
+# Import VAULT_TOKEN in case we need to get new creds
+echo "export VAULT_TOKEN=\$(cat /var/vault_token)" >> /root/.bashrc
+
 # Ensure we load /etc/profile.d/instruqt-env.sh
 echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc

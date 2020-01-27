@@ -93,5 +93,8 @@ echo -e "let g:solarized_termcolors=256\nset t_Co=256\nsyntax enable\nset backgr
 mv /tmp/.vimrc /root/.vimrc
 chattr +i /root/.vimrc
 
+# Import VAULT_TOKEN in case we need to get new creds
+echo "export VAULT_TOKEN=\$(cat /var/vault_token)" >> /root/.bashrc
+
 # Ensure we load /etc/profile.d/instruqt-env.sh
 echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc
