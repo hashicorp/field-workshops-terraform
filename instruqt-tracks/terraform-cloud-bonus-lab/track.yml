@@ -58,6 +58,12 @@ challenges:
     echo $ARM_TENANT_ID
     ```
 
+    Google:<br>
+    Set as `GOOGLE_CREDENTIALS` in TFC; this is one long string of JSON.
+    ```
+    echo $INSTRUQT_GCP_PROJECT_GCP_PROJECT_SERVICE_ACCOUNT_KEY | base64 -d | jq -r 'tostring'
+    ```
+
     5. Trigger a run in the `dev` workspace. You should see a Sentinel failure. Read through the output and try to figure out which policy is failing and why. You'll need to fix your terraform code and/or variables to pass the Sentinel checks.
 
     ### Git Repo Setup
@@ -74,7 +80,9 @@ challenges:
     ### The challenge
     You need to make some changes to the production website but they have to be tested and approved before merging your changes into the master branch.
 
-    Your task is to get your code passing all Sentinel tests in the dev workspace and branch. Once that is complete submit a pull request against your fork of the hashicat repo. If you're working with a lab partner you can submit a pull request to their repo instead of your own.
+    Your task is to get your code passing all Sentinel tests in the dev workspace and branch. You'll need to read the Sentinel policies that you just enabled to figure out what they do.
+
+    Once that is complete submit a pull request against your fork of the hashicat repo. If you're working with a lab partner you can submit a pull request to their repo instead of your own.
 
     Review the pull request, and if all tests are passing, approve and merge to master. Your changes are now safely being pushed to production.
 
