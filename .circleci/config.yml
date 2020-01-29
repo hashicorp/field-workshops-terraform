@@ -56,7 +56,14 @@ jobs:
             echo "Running instruqt track push..."
             instruqt track push --force
             echo "Running instruqt track test..."
-            instruqt track test --skip-fail-check
+            # Retry instruqt track test up to 3 times
+            n=0
+            until [ $n -ge 3 ]
+            do
+              instruqt track test --skip-fail-check && break
+              n=$[$n+1]
+              sleep 5
+            done
   instruqt-test-oss-azure:
     docker:
       - image: ubuntu:latest
@@ -85,7 +92,14 @@ jobs:
             echo "Running instruqt track push..."
             instruqt track push --force
             echo "Running instruqt track test..."
-            instruqt track test --skip-fail-check
+            # Retry instruqt track test up to 3 times
+            n=0
+            until [ $n -ge 3 ]
+            do
+              instruqt track test --skip-fail-check && break
+              n=$[$n+1]
+              sleep 5
+            done
   instruqt-test-cloud-aws:
     docker:
       - image: ubuntu:latest
@@ -114,7 +128,14 @@ jobs:
             echo "Running instruqt track push..."
             instruqt track push --force
             echo "Running instruqt track test..."
-            instruqt track test --skip-fail-check
+            # Retry instruqt track test up to 3 times
+            n=0
+            until [ $n -ge 3 ]
+            do
+              instruqt track test --skip-fail-check && break
+              n=$[$n+1]
+              sleep 5
+            done
   instruqt-test-cloud-azure:
     docker:
       - image: ubuntu:latest
@@ -143,7 +164,14 @@ jobs:
             echo "Running instruqt track push..."
             instruqt track push --force
             echo "Running instruqt track test..."
-            instruqt track test --skip-fail-check
+            # Retry instruqt track test up to 3 times
+            n=0
+            until [ $n -ge 3 ]
+            do
+              instruqt track test --skip-fail-check && break
+              n=$[$n+1]
+              sleep 5
+            done
   instruqt-test-cloud-gcp:
     docker:
       - image: ubuntu:latest
@@ -172,7 +200,14 @@ jobs:
             echo "Running instruqt track push..."
             instruqt track push --force
             echo "Running instruqt track test..."
-            instruqt track test --skip-fail-check
+            # Retry instruqt track test up to 3 times
+            n=0
+            until [ $n -ge 3 ]
+            do
+              instruqt track test --skip-fail-check && break
+              n=$[$n+1]
+              sleep 5
+            done
   instruqt-test-sentinel:
     docker:
       - image: ubuntu:latest
@@ -201,7 +236,14 @@ jobs:
             echo "Running instruqt track push..."
             instruqt track push --force
             echo "Running instruqt track test..."
-            instruqt track test --skip-fail-check
+            # Retry instruqt track test up to 3 times
+            n=0
+            until [ $n -ge 3 ]
+            do
+              instruqt track test --skip-fail-check && break
+              n=$[$n+1]
+              sleep 5
+            done
 workflows:
   version: 2
   build-and-deploy:
