@@ -62,14 +62,7 @@ jobs:
             echo "Running instruqt track push..."
             instruqt track push --force
             echo "Running instruqt track test..."
-            # Retry instruqt track test up to 3 times
-            n=0
-            until [ $n -ge 3 ]
-            do
-              instruqt track test --skip-fail-check && break
-              n=$[$n+1]
-              sleep 5
-            done
+            instruqt track test --skip-fail-check
   instruqt-test-oss-azure:
     filters:
       branches:
@@ -101,14 +94,7 @@ jobs:
             echo "Running instruqt track push..."
             instruqt track push --force
             echo "Running instruqt track test..."
-            # Retry instruqt track test up to 3 times
-            n=0
-            until [ $n -ge 3 ]
-            do
-              instruqt track test --skip-fail-check && break
-              n=$[$n+1]
-              sleep 5
-            done
+            instruqt track test --skip-fail-check
   instruqt-test-cloud-aws:
     filters:
       branches:
@@ -140,14 +126,7 @@ jobs:
             echo "Running instruqt track push..."
             instruqt track push --force
             echo "Running instruqt track test..."
-            # Retry instruqt track test up to 3 times
-            n=0
-            until [ $n -ge 3 ]
-            do
-              instruqt track test --skip-fail-check && break
-              n=$[$n+1]
-              sleep 5
-            done
+            instruqt track test --skip-fail-check
   instruqt-test-cloud-azure:
     filters:
       branches:
@@ -179,14 +158,7 @@ jobs:
             echo "Running instruqt track push..."
             instruqt track push --force
             echo "Running instruqt track test..."
-            # Retry instruqt track test up to 3 times
-            n=0
-            until [ $n -ge 3 ]
-            do
-              instruqt track test --skip-fail-check && break
-              n=$[$n+1]
-              sleep 5
-            done
+            instruqt track test --skip-fail-check
   instruqt-test-cloud-gcp:
     filters:
       branches:
@@ -218,14 +190,7 @@ jobs:
             echo "Running instruqt track push..."
             instruqt track push --force
             echo "Running instruqt track test..."
-            # Retry instruqt track test up to 3 times
-            n=0
-            until [ $n -ge 3 ]
-            do
-              instruqt track test --skip-fail-check && break
-              n=$[$n+1]
-              sleep 5
-            done
+            instruqt track test --skip-fail-check
   instruqt-test-sentinel:
     filters:
       branches:
@@ -257,37 +222,51 @@ jobs:
             echo "Running instruqt track push..."
             instruqt track push --force
             echo "Running instruqt track test..."
-            # Retry instruqt track test up to 3 times
-            n=0
-            until [ $n -ge 3 ]
-            do
-              instruqt track test --skip-fail-check && break
-              n=$[$n+1]
-              sleep 5
-            done
+            instruqt track test --skip-fail-check
 workflows:
   version: 2
   build-and-deploy:
     jobs:
       - instruqt-validate
+          filters:
+            branches:
+              only: master
       - instruqt-test-oss-aws:
           requires:
             - instruqt-validate
+          filters:
+            branches:
+              only: master
       - instruqt-test-oss-azure:
           requires:
             - instruqt-validate
+          filters:
+            branches:
+              only: master
       - instruqt-test-cloud-aws:
           requires:
             - instruqt-validate
+          filters:
+            branches:
+              only: master
       - instruqt-test-cloud-azure:
           requires:
             - instruqt-validate
+          filters:
+            branches:
+              only: master
       - instruqt-test-cloud-gcp:
           requires:
             - instruqt-validate
+          filters:
+            branches:
+              only: master
       - instruqt-test-sentinel:
           requires:
             - instruqt-validate
+          filters:
+            branches:
+              only: master
   nightly-build:
     triggers:
       - schedule:
