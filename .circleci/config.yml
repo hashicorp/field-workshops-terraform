@@ -206,7 +206,7 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - instruqt-validate
+      - instruqt-validate:
           filters:
             branches:
               only:
