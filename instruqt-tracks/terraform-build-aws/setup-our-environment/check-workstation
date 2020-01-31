@@ -1,5 +1,7 @@
 #!/bin/bash
 set -e
+source /etc/profile.d/instruqt-env.sh
+source /root/.bashrc
 
 # Create /tmp/skip-check to disable this check
 if [ -f /tmp/skip-check ]; then
@@ -7,4 +9,7 @@ if [ -f /tmp/skip-check ]; then
     exit 0
 fi
 
-# No check script required here.
+# Make sure we have valid AWS credentials in our shell environment
+echo $AWS_ACCESS_KEY_ID | grep -P '(?<![A-Z0-9])[A-Z0-9]{20}(?![A-Z0-9])' || fail-message "Something went wrong, we were unable to find a valid AWS_ACCESS_KEY_ID environment variable in your shell. You may need to restart the track."
+
+echo $AWS_SECRET_ACCESS_KEY | grep -P '(?<![A-Za-z0-9/+=])[A-Za-z0-9/+=]{40}(?![A-Za-z0-9/+=])' || fail-message "Something went wrong, we were unable to find a valid AWS_SECRET_ACCESS_KEY environment variable in your shell. You may need to restart the track."
