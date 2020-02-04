@@ -37,7 +37,7 @@ while read id secret; do
     echo "Error fetching Azure credentials. Please run the script again."
     exit 1
   fi
-done
+done || exit 1
 
 echo "\${grn}Ready to run Terraform on...\${end}"
 echo "${blu}"
