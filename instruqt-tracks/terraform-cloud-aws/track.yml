@@ -45,6 +45,8 @@ challenges:
 
     You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application.
 
+    **All commands during the labs should be run from the hashicat-aws directory.** The exercises directory contains templates that are used by our training platform. You only need to focus on the *.tf files in the main directory.
+
     Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes. Search for **Terraform** and click the green **Install** button to install the extension. You can click the **Reload Required** button to activate it.
 
     Congratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new Terraform skills.
@@ -240,7 +242,7 @@ challenges:
     2. Update the **Execution Mode** settings in your workspace to **Remote**.
     3. Change the **Apply Method** to Auto apply. This will save you the trouble of having to approve every Terraform run manually. Remember to click the **Save** button at the bottom of the page!
     4. Set **Environment Variables** for your AWS credentials and mark them as **Sensitive**.
-    5. Set **Terraform Variables** for your `prefix` and `region`. Learn more about these variables by looking in the variables.tf file.
+    5. Set **Terraform Variables** for your `prefix` and `region`. Learn more about these variables by looking in the variables.tf file. NOTE: You *must* configure these variables on the remote workspace, as they will no longer be read from your local terraform.tfvars file.
 
     Test your work by running `terraform init`. Your backend configuration will be updated for remote execution.
 
