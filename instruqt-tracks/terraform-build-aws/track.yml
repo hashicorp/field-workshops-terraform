@@ -522,7 +522,7 @@ challenges:
     ```
     Confirm the proper prefix and location are displayed in the plan output.
 
-    Then run `terraform apply` and watch your resource group being built.
+    Then run `terraform apply` and watch your resources being built.
 
     ```
     terraform apply
