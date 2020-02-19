@@ -145,6 +145,9 @@ challenges:
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 1800
 - slug: oh-no-an-outage
@@ -353,6 +356,9 @@ challenges:
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
+  - title: Terminal
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 1800
 - slug: quiz-2
