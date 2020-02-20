@@ -98,3 +98,6 @@ echo "export VAULT_TOKEN=\$(cat /var/vault_token)" >> /root/.bashrc
 
 # Ensure we load /etc/profile.d/instruqt-env.sh
 echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc
+
+# Drop the Terraform extension vsix file into /root
+wget https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-shared/mauve.terraform-1.4.0.vsix -O /root/mauve.terraform-1.4.0.vsix
