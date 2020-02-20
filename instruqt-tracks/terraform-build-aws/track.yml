@@ -38,6 +38,8 @@ challenges:
 
     Select the file called `mauve-terraform-1.4.0.vsix`. This will enable syntax highlighting and some other features.
 
+    Enable the Terraform Language Server by clicking the main menu, then selecting **View >> Command Palette**. Type `Terraform` into the command palette and select "Enable/Disable Language Server". Install the Terraform Language server. It will take two to three minutes. If you are prompted to select a version, go back to the Command Palette and this time choose "Install/Update Language Server".
+
     Congratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new Terraform skills.
 
     Click the **Check** button to continue.
