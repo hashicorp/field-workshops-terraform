@@ -10,14 +10,14 @@ source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 /bin/set-workdir /root/hashicat-azure
 
-TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
+TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f2)
 ORG=$(grep organization /root/hashicat-azure/remote_backend.tf | cut -d '"' -f2)
 
 # Check the token length
 [[ 91 -eq $(echo $TOKEN | wc -m) ]]
 EXIT_CODE=$?
 if [[ $EXIT_CODE -ne 0 ]]; then
-  fail-message "Oops, something's not right with your token. Check your /root/.terraformrc file to be sure it has your token in it."
+  fail-message "Oops, something's not right with your token. Check your /root/.terraform.d/credentials.tfrc.json file to be sure it has your token in it."
   exit 1
 fi
 

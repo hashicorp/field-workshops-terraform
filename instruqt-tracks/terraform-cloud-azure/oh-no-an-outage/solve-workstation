@@ -8,9 +8,9 @@ cd /root/hashicat-azure
 ORG="instruqt-circleci"
 TOKEN=$(cat /var/tfc_user_token)
 
-# Configure the /root/.terraformrc file
-echo "Configuring the .terraformrc file..."
-cat <<-EOF > /root/.terraformrc
+# Configure the /root/.terraform.d/credentials.tfrc.json file
+echo "Configuring the credentials.tfrc.json file..."
+cat <<-EOF > /root/.terraform.d/credentials.tfrc.json
 credentials "app.terraform.io" {
     token = "$TOKEN"
 }

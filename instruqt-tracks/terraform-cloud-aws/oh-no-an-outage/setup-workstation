@@ -5,8 +5,3 @@ source /root/.bashrc
 
 # Give the student a head start.
 cp exercises/remote_backend.tf remote_backend.tf
-cat <<-EOF > /root/.terraformrc
-credentials "app.terraform.io" {
-    token = "replaceme"
-}
-EOF

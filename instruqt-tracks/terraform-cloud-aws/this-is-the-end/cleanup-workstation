@@ -4,7 +4,7 @@ source /root/.bashrc
 /bin/set-workdir /root/hashicat-aws
 cd /root/hashicat-aws
 
-TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
+TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f2)
 
 # Delete the workspace
 echo "Cleaning up the hashicat-aws workspace..."
