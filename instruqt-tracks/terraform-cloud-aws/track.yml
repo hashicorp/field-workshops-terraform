@@ -164,13 +164,19 @@ challenges:
     2. An organization called **yourname-training**. You just created this in the previous exercise.<br>
     3. A workspace named **hashicat-aws** with its Execution Mode set to **Local** (not Remote)<br>
     4. A *user* token for authentication<br>
-    5. A `.terraformrc` file to store your user token<br>
-    6. A `remote_backend` config stored in your workspace<br>
+    5. A `remote_backend` config stored in your workspace<br>
 
-    We've given you a head start with templates for the `/root/.terraformrc` file and your `remote_backend.tf` configuration file. You will need to edit these files and insert your own token, organization and
-    workspace names.
+    In the Terraform Cloud web UI, go into your Terraform Cloud User Settings by clicking the icon in the upper right corner. Under User Settings click on Tokens. Generate a new token for your workstation. You can call it **workshop-token**. Copy this token for the next step.
 
-    Please do not delete either of these files as they are required to complete the track successfully.
+    Use the `terraform login` command to save your token in a local config file:
+
+    ```
+    terraform login
+    ```
+
+    Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
+
+    Next edit the `remote_backend.tf` file and replace the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name. Save the file.
 
     Once you've got all the pieces in place, try running a `terraform init` and then `terraform apply` command in the terminal.
 
@@ -671,7 +677,7 @@ challenges:
     ### Challenge Setup:
     Run this command to fetch your token and store it as the TOKEN environment variable:
     ```
-    export TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
+    export TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f2)
     ```
     Next set your ORG variable with the following command, replacing MYORGNAME with your own:
     ```

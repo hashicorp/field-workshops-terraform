@@ -12,7 +12,7 @@ source /root/.bashrc
 /bin/set-workdir /root/hashicat-azure
 
 # Get our TFC token and organization from the local config files
-TOKEN=$(grep token /root/.terraformrc | cut -d '"' -f2)
+TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f2)
 
 VCS_HASHICAT=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-azure | jq -r '.data.attributes | .["vcs-repo"] | .identifier' | cut -f2 -d '/')
 
