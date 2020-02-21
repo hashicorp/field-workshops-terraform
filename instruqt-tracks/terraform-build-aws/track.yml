@@ -32,13 +32,7 @@ challenges:
 
     **All commands during the labs should be run from the hashicat-aws directory.** The exercises directory contains templates that are used by our training platform. You only need to focus on the *.tf files in the main directory.
 
-    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the **Extensions** icon on the left side navigation bar. It looks like four small boxes. Next, click the triple-dot menu up above the extensions search box.
-
-    Choose the **Install from VSIX** option.
-
-    Select the file called `mauve-terraform-1.4.0.vsix`. This will enable syntax highlighting and some other features.
-
-    Enable the Terraform Language Server by clicking the main menu, then selecting **View >> Command Palette**. Type `Terraform` into the command palette and select "Enable/Disable Language Server". Install the Terraform Language server. It will take two to three minutes. If you are prompted to select a version, go back to the Command Palette and this time choose "Install/Update Language Server".
+    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes. Search for **Terraform** and click the green **Install** button to install the extension. You can click the **Reload Required** button to activate it.
 
     Congratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new Terraform skills.
 
