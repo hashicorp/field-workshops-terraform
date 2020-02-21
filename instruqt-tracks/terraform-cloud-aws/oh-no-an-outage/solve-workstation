@@ -11,8 +11,12 @@ TOKEN=$(cat /var/tfc_user_token)
 # Configure the /root/.terraform.d/credentials.tfrc.json file
 echo "Configuring the credentials.tfrc.json file..."
 cat <<-EOF > /root/.terraform.d/credentials.tfrc.json
-credentials "app.terraform.io" {
-    token = "$TOKEN"
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "$TOKEN"
+    }
+  }
 }
 EOF
 
