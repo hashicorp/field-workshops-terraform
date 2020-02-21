@@ -683,7 +683,7 @@ challenges:
     ### Challenge Setup:
     Run this command to fetch your token and store it as the TOKEN environment variable:
     ```
-    export TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f2)
+    export TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
     ```
     Next set your ORG variable with the following command, replacing MYORGNAME with your own:
     ```
