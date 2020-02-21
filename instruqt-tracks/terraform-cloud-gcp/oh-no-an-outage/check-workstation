@@ -10,7 +10,7 @@ source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 /bin/set-workdir /root/hashicat-gcp
 
-TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f2)
+TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
 ORG=$(grep organization /root/hashicat-gcp/remote_backend.tf | cut -d '"' -f2)
 
 # Check the token length
