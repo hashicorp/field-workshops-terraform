@@ -1,10 +1,12 @@
 #!/bin/bash
 set -e
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
 
 # Allow instruqt time to do its thing
 sleep 10
+
+# Source important environment variables
+source /etc/profile.d/instruqt-env.sh
+source /root/.bashrc
 
 # Generate the Azure creds setup script
 cat <<-EOF > /bin/setup_azure.sh
@@ -58,10 +60,6 @@ chmod +x /bin/setup_azure.sh
 git clone https://github.com/hashicorp/hashicat-azure
 GITDIR="/root/hashicat-azure"
 /bin/set-workdir "${GITDIR}"
-
-# Rewind everything back to a single resource group.
-cd ${GITDIR}
-mv ${GITDIR}/terraform.tfvars.example ${GITDIR}/terraform.tfvars
 
 # Fetch dynamic creds for Azure
 export VAULT_TOKEN=$(cat /var/vault_token)

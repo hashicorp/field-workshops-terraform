@@ -59,8 +59,6 @@ GITDIR="/root/hashicat-azure"
 cd ${GITDIR}
 cp ${GITDIR}/exercises/main.tf.start ${GITDIR}/main.tf
 cp ${GITDIR}/exercises/outputs.tf.start ${GITDIR}/outputs.tf
-mv ${GITDIR}/terraform.tfvars.example ${GITDIR}/terraform.tfvars
-cd ${GITDIR}
 echo -e "\nlocation = \"centralus\"" >> ${GITDIR}/terraform.tfvars
 
 # Fetch dynamic creds for Azure

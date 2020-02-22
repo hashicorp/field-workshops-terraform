@@ -18,5 +18,4 @@ cd /root
 rm -rf hashicat-azure
 git clone https://github.com/workshops-testbot/hashicat-azure
 cd hashicat-azure
-mv terraform.tfvars.example terraform.tfvars
 terraform init
