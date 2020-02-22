@@ -77,7 +77,7 @@ Type=simple
 Restart=always
 RestartSec=1
 User=root
-ExecStart=/usr/local/bin/code-server --port 8443 --cert --auth none $(pwd)
+ExecStart=/usr/local/bin/code-server --port 8443 --cert --auth none \$(pwd)
 
 [Install]
 WantedBy=multi-user.target
