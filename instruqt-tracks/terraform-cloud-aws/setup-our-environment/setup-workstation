@@ -44,6 +44,7 @@ WantedBy=multi-user.target
 EOF
 
 # Start VSC
+cd /root/hashicat-aws
 systemctl start code-server
 
 # Back to our git repo and init

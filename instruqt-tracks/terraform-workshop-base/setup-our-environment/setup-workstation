@@ -1,7 +1,11 @@
 #!/bin/bash
 # This is the setup script for the workstation container. Use it to set the stage for your terraform training, demo, or lab.
+set -e
 
-# Ensure environment variables are available for non-interactive logins
+# Allow instruqt time to do its thing
+sleep 10
+
+# Source important environment variables
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 

@@ -1,4 +1,10 @@
 #!/bin/bash
+set -e
+
+# Allow instruqt time to do its thing
+sleep 10
+
+# Source important environment variables
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 
@@ -84,6 +90,7 @@ WantedBy=multi-user.target
 EOF
 
 # Start VSC
+cd /root/hashicat-azure
 systemctl start code-server
 
 # Back to our git repo and init
