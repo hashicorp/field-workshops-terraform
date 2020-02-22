@@ -4,4 +4,4 @@ source /root/.bashrc
 /bin/set-workdir /root/hashicat-aws
 
 # Give the student a head start.
-cp exercises/remote_backend.tf remote_backend.tf
+cp /root/hashicat-aws/exercises/remote_backend.tf /root/hashicat-aws/remote_backend.tf
