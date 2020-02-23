@@ -33,26 +33,26 @@ Supercharge your Cloud infrastructure management with Terraform Cloud.
 
 Here's the workshop syllabus showing the topics we will cover:
 
-1. OSS to Cloud/Enterprise<br>
-🌥️ Terraform Cloud Overview<br>
-👨🏽‍🏫 Review the Basics<br>
-🔗 Configure Remote State<br>
+1. OSS to Cloud/Enterprise
+🌥️ Terraform Cloud Overview
+👨🏽‍🏫 Review the Basics
+🔗 Configure Remote State
 
-2. Security and RBACs<br>
-🔐 Protect Sensitive Variables<br>
-🛡️ Work With Access Controls<br>
+2. Security and RBACs
+🔐 Protect Sensitive Variables
+🛡️ Work With Access Controls
 
-3. VCS & Policy Enforcement<br>
-🕸️ Connect to VCS<br>
-👬 Collaboration with VCS<br>
-👮 Sentinel Policy Enforcement<br>
+3. VCS & Policy Enforcement
+🕸️ Connect to VCS
+👬 Collaboration with VCS
+👮 Sentinel Policy Enforcement
 
-4. Terraform Modules & API<br>
-⚙️ Private Module Registry<br>
-🏗️ API Driven Workflows<br>
+4. Terraform Modules & API
+⚙️ Private Module Registry
+🏗️ API Driven Workflows
 
-5. Extra Resources<br>
-⚗️ Bonus Lab<br>
+5. Extra Resources
+⚗️ Bonus Lab
 🌐 Useful Links
 
 Prerequisites:
@@ -181,5 +181,5 @@ The following schedule assumes you have a group of participants who are somewhat
 6:00 - 6:30 - Optional Bonus Lab, Wrap-up
 
 ### The Bonus Lab
-The bonus lab is extra content you can share with participants if you feel they're ready for it. This is a loosely structured lab with minimal setup instructions. No details are provided for commands like "git add, git commit, git push". The student is expected to know how to create a git branch, commit changes to it, push those changes, and create a pull request. They also need to know how to set up branch protection and understand how Terraform Cloud interacts with git repos and directories. In the challenge there is a sentinel policy that blocks security groups from allowing unrestricted (0.0.0.0/0) access to the web app (AWS) or restricts the size of the VM you can build (Azure). The participants need to figure out how to update their terraform code, commit their changes to a dev branch, push the changes to the remote dev branch, then ensure that the dev workspace runs correctly, and finally create a pull request to merge to master. As an instructor you should go through this lab and be familiar with it if you plan to teach it.
+The bonus lab is extra content you can share with participants if you feel they're ready for it. This is a loosely structured lab with minimal setup instructions. No details are provided for commands like "git add, git commit, git push". The student is expected to know how to create a git branch, commit changes to it, push those changes, and create a pull request. They also need to know how to set up branch protection and understand how Terraform Cloud interacts with git repos and directories. In the challenge there is a sentinel policy that blocks security groups from allowing unrestricted (0.0.0.0/0) access to the web app (AWS) or restricts the size of the VM you can build (Azure and GCP). The participants need to figure out how to update their terraform code, commit their changes to a dev branch, push the changes to the remote dev branch, then ensure that the dev workspace runs correctly, and finally create a pull request to merge to master. As an instructor you should go through this lab and be familiar with it if you plan to teach it.
 
