@@ -52,7 +52,7 @@ env | grep AWS
 ```
 
 **Q. What is the Bonus Lab?**<br>
-A. The bonus lab is meant for intermediate to advanced users who have already completed the main track. The bonus lab is a challenging combination that tests several skills learned in the Terraform Cloud workshop. The Bonus Lab can be run after either the AWS or Azure workshop. Access it here:<br>
+A. The bonus lab is meant for intermediate to advanced users who have already completed the main track. The bonus lab is a challenging combination that tests several skills learned in the Terraform Cloud workshop. There are different sentinel policies for the bonus lab depending on whether you're using AWS, Azure or GCP. Access it here:<br>
 https://instruqt.com/hashicorp/tracks/terraform-cloud-bonus-lab
 
 **Q. My student doesn't have any Azure credentials, what do we do to fix it?**<br>
