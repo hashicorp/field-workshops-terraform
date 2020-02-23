@@ -1,10 +1,10 @@
 # Intro to Terraform on Azure - Instructor Guide
 
-This guide will prepare you to deliver a half-day [Introduction to Terraform on Azure Workshop](https://hashicorp.github.io/field-workshops-terraform/azure/terraform). This workshop content is suitable for HashiCorp community members, prospects and customers. The workshop is a combination of lecture slides and hands-on labs that introduce new users to Terraform features. This workshop focuses on open-source features and is targeted toward new users. The workshop may be presented in-person, over the web, or as a self-guided tutorial.
+This guide will prepare you to deliver a half-day [Introduction to Terraform on Azure Workshop](https://hashicorp.github.io/field-workshops-terraform/slides/azure/terraform-oss). This workshop content is suitable for HashiCorp community members, prospects and customers. The workshop is a combination of lecture slides and hands-on labs that introduce new users to Terraform features. This workshop focuses on open-source features and is targeted toward new users. The workshop may be presented in-person, over the web, or as a self-guided tutorial.
 
 The workshop alternates between lectures with accompanying slides and hands-on lab exercises. New concepts that are introduced in the slides are reinforced in the labs. Participants will learn both the theory and practice of Terraform. As an instructor you should be well familiar with the slide deck and training labs. Go through the course and make sure you understand all of the major concepts and lab exercises.
 
-When possible you should attend a live training session to observe and learn from another instructor. We will also have video recordings of this workshop available soon.
+When possible you should attend a live training session to observe and learn from another instructor.
 
 ### Prerequisites
 Prerequisites are minimal. All that is required to participate in the workshop is a web browser and Internet access. No software needs to be downloaded or installed. Self-contained lab environments run on the Instruqt platform, and markdown-based slide decks are published as Github Pages websites.
@@ -35,7 +35,7 @@ The only prerequisites for this workshop are a web browser and willingness to le
 ### Markdown Slide Deck
 The slide deck for this training is published here:
 
-#### https://hashicorp.github.io/field-workshops-terraform/slides/azure/terraform-oss/index.html#1
+#### https://hashicorp.github.io/field-workshops-terraform/slides/azure/terraform-oss
 
 Shortened URL:
 #### https://git.io/JeuCI
