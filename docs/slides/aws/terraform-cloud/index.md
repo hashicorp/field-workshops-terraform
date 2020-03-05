@@ -198,7 +198,7 @@ class: img-right
 # Terraform Cloud
 ![](images/tfc-gui.png)
 
-Terraform Cloud is a SaaS application that provides the following features:
+Terraform Cloud/Enterprise is an application that provides the following features:
 
 ???
 **Let's go through a quick bullet list of Terraform Cloud features and why they matter.**
@@ -209,7 +209,7 @@ class: img-right
 # Terraform Cloud
 ![](images/tfc-gui.png)
 
-Terraform Cloud is a SaaS application that provides the following features:
+Terraform Cloud/Enterprise is an application that provides the following features:
 
 * UI integration with VCS
 
@@ -222,7 +222,7 @@ class: img-right
 # Terraform Cloud
 ![](images/tfc-gui.png)
 
-Terraform Cloud is a SaaS application that provides the following features:
+Terraform Cloud/Enterprise is an application that provides the following features:
 
 * UI integration with VCS
 * API driven workflows
@@ -238,7 +238,7 @@ class: img-right
 # Terraform Cloud
 ![](images/tfc-gui.png)
 
-Terraform Cloud is a SaaS application that provides the following features:
+Terraform Cloud/Enterprise is an application that provides the following features:
 
 * UI integration with VCS
 * API driven workflows
@@ -253,7 +253,7 @@ class: img-right
 # Terraform Cloud
 ![](images/tfc-gui.png)
 
-Terraform Cloud is a SaaS application that provides the following features:
+Terraform Cloud/Enterprise is an application that provides the following features:
 
 * UI integration with VCS
 * API driven workflows
@@ -269,7 +269,7 @@ class: img-right
 # Terraform Cloud
 ![](images/tfc-gui.png)
 
-Terraform Cloud is a SaaS application that provides the following features:
+Terraform Cloud/Enterprise is an application that provides the following features:
 
 * UI integration with VCS
 * API driven workflows
@@ -286,14 +286,14 @@ class: img-right
 # Terraform Cloud
 ![](images/tfc-gui.png)
 
-Terraform Cloud is a SaaS application that provides the following features:
+Terraform Cloud/Enterprise is an application that provides the following features:
 
 * UI integration with VCS
 * API driven workflows
 * Central state management
 * Private Module Registry
 * Sentinel policy enforcement
-* Single Sign-On
+* Single Sign-On (on-prem Terraform Enterprise only)
 
 ???
 **Terraform Enterprise also supports single sign-on using your own SAML provider. This allows you to quickly map users into your organization's teams and workspaces so they can become productive right away. This feature is only available for private Terraform Enterprise installations. We won't be covering SAML or single sign-on in today's workshop.**
@@ -304,14 +304,14 @@ class: img-right
 # Terraform Cloud
 ![](images/tfc-gui.png)
 
-Terraform Cloud is a SaaS application that provides the following features:
+Terraform Cloud/Enterprise is an application that provides the following features:
 
 * UI integration with VCS
 * API driven workflows
 * Central state management
 * Private Module Registry
 * Sentinel policy enforcement
-* Single Sign-On
+* Single Sign-On (on-prem Terraform Enterprise only)
 * Secure API credentials
 
 ???
