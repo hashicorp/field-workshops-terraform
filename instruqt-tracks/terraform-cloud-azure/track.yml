@@ -113,7 +113,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -240,7 +240,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Terraform Cloud
@@ -330,7 +330,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Terraform Cloud
@@ -391,7 +391,7 @@ challenges:
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -480,7 +480,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Configuring Github Access
@@ -537,7 +537,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Terraform Cloud
@@ -609,7 +609,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -692,7 +692,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Terraform Cloud
@@ -760,7 +760,7 @@ challenges:
       baconmockup.com<br>
       placeimg.com<br>
   tabs:
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Terraform Cloud
@@ -814,7 +814,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic

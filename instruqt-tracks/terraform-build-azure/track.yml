@@ -58,7 +58,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -84,7 +84,7 @@ challenges:
 
     You can also hide and show these notes with the expand icon on the upper right side of the GUI. It looks like a box with two small arrows in the corners. This will expand and close the notes panel. Try it now to give your text editor more space.
 
-    **NOTE**: There is also an extra tab named *Classic Terminal* if you prefer a purely command line experience.
+    **NOTE**: There is also an extra tab named *Shell* if you prefer a purely command line experience.
   notes:
   - type: text
     contents: The Terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
@@ -143,7 +143,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -184,7 +184,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -226,7 +226,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -268,7 +268,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -328,7 +328,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -367,7 +367,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -402,7 +402,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -447,7 +447,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -555,7 +555,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -601,7 +601,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -648,7 +648,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -684,7 +684,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -720,7 +720,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -760,7 +760,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -871,7 +871,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -925,7 +925,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -991,7 +991,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -1046,7 +1046,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -1110,7 +1110,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -1144,7 +1144,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic

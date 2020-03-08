@@ -113,7 +113,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -153,7 +153,7 @@ challenges:
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -214,7 +214,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Terraform Cloud
@@ -309,7 +309,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Terraform Cloud
@@ -370,7 +370,7 @@ challenges:
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -459,7 +459,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Configuring Github Access
@@ -516,7 +516,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Terraform Cloud
@@ -588,7 +588,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -675,7 +675,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -748,7 +748,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Terraform Cloud
@@ -794,7 +794,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
