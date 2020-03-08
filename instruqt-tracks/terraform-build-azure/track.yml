@@ -484,7 +484,9 @@ challenges:
     terraform graph
     ```
 
-    This generates code that can be used to create a visual map of your infrastructure. The graph data is in [DOT graph description language format](https://en.wikipedia.org/wiki/DOT_(graph_description_language). There are several graphing tools you can use to visualize this data, including the free Blast Radius tool.
+    This generates code that can be used to create a visual map of your infrastructure. The graph data is in [DOT graph description language format](https://en.wikipedia.org/wiki/DOT_(graph_description_language). There are several graphing tools you can use to visualize this data, including the free Blast Radius tool. You can learn more about Blast Radius here:
+
+    https://28mm.github.io/blast-radius-docs/
 
     Start up a Blast Radius server with the following command:
 
