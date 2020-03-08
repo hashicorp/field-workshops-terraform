@@ -58,7 +58,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -74,7 +74,7 @@ challenges:
 
     All Terraform commands should be run from the terminal within the Code Editor.
 
-    Try the **CTRL-J** shortcut to toggle the terminal window open and closed.
+    Try the **CTRL-J** (**CMD-J** for Mac) shortcut to toggle the terminal panel open and closed.
 
     You can use the little caret ^ shaped button on the terminal pane to expand and shrink your Terminal window. This is useful for viewing logs.
 
@@ -83,6 +83,8 @@ challenges:
     Click on the File Explorer icon a couple times to toggle the File Explorer on and off. This can provide more space while you're viewing and editing code.
 
     You can also hide and show these notes with the expand icon on the upper right side of the GUI. It looks like a box with two small arrows in the corners. This will expand and close the notes panel. Try it now to give your text editor more space.
+
+    **NOTE**: There is also an extra tab named *Classic Terminal* if you prefer a purely command line experience.
   notes:
   - type: text
     contents: The Terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
@@ -96,7 +98,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -144,7 +146,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -179,7 +181,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -221,7 +223,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -266,7 +268,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -326,7 +328,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -363,7 +365,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -398,7 +400,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -446,7 +448,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -477,6 +479,14 @@ challenges:
   title: "\U0001F4C8 Terraform Graph"
   teaser: Terraform creates a graph of all the infrastructure defined in your code.
   assignment: |-
+    Try running the `terraform graph` command:
+
+    ```
+    terraform graph
+    ```
+
+    This generates code that can be used to create a visual map of your infrastructure. The graph data is in [DOT graph description language format](https://en.wikipedia.org/wiki/DOT_(graph_description_language). There are several graphing tools you can use to visualize this data, including the free Blast Radius tool.
+
     Start up a Blast Radius server with the following command:
 
     ```
@@ -544,7 +554,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -572,7 +582,7 @@ challenges:
     terraform apply
     ```
 
-    Terraform checks each resource to ensure it is in the proper state. It will not re-create your resource group if it is already provisioned correctly.
+    Terraform checks each resource to ensure it is in the proper state. It will not re-create your VPC if it is already provisioned correctly.
   notes:
   - type: text
     contents: |-
@@ -590,7 +600,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -632,7 +642,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -668,7 +678,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -704,7 +714,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -746,7 +756,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -857,7 +867,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -869,9 +879,9 @@ challenges:
   teaser: Outputs are used to convey useful information such as IP addresses, application
     URLs or other useful data.
   assignment: |-
-    Open the **outputs.tf** file in the Code Editor.
+    Open the **outputs.tf** file in the Code Editor. Note the public_dns output in the file. 
 
-    Add a second output for the `public_ip` of your web server.
+    Add a second output for the `public_ip` of your web server. It's going to look almost exactly like the first output but will instead output an IP address instead of DNS name.
 
     Name your output `catapp_ip`.
 
@@ -911,7 +921,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -977,7 +987,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -1009,17 +1019,41 @@ challenges:
   teaser: Terraform Cloud offers unlimited free Terraform state storage for users.
     Safeguard your state files by storing them remotely in Terraform Cloud.
   assignment: |-
-    Sign up for a free Terraform Cloud account at the following URL:
+    During this challenge you'll use the free remote state feature of Terraform Cloud to store your state file. In order to do this you'll need a free Terraform Cloud account. Click on the URL below and sign up for an account if you don't have one already:
 
     https://app.terraform.io/signup/account
 
     If you already have an account you can simply sign in with your existing credentials.
 
-    Once you're signed into Terraform Cloud create a new organization called YOURNAME-sandbox. Replace YOURNAME with your own name or other text.
+    Once you're signed into Terraform Cloud create a new organization called YOURNAME-training. Replace YOURNAME with your own name or other text.
 
-    Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "No VCS Connection" button. Name your workspace **hashicat**.
+    Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "No VCS Connection" button. Name your workspace **hashicat-aws**.
 
-    Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local.  Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables.
+    Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local. Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables.
+
+    Next edit the `remote_backend.tf` file and replace the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name. Save the file.
+
+    Use the `terraform login` command to generate and save your token in a local config file. You can simply follow the instructions in your terminal after you run this command. All of the defaults are fine:
+
+    ```
+    terraform login
+    ```
+
+    NOTE: You won't see your token appear on the screen when you copy and paste it into the terminal. This is expected.
+
+    Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
+
+    Now run a `terraform init` to migrate your state to Terraform Cloud.
+
+    ```
+    terraform init
+    ```
+
+    Type "yes" when it prompts you to migrate your state into Terraform Cloud.
+
+    Your state is now safely stored in Terraform Cloud.
+
+    Run another `terraform apply` and watch your state file evolve with each change. You can browse through previous state files with the Terraform Cloud UI.
   notes:
   - type: text
     contents: Terraform Cloud remote state storage is free for all users.
@@ -1032,7 +1066,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -1082,7 +1116,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -1116,7 +1150,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Classic Terminal
     type: terminal
     hostname: workstation
   difficulty: basic
