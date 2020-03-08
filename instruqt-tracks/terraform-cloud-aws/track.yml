@@ -260,7 +260,7 @@ challenges:
     3. Change the **Apply Method** to Auto apply. This will save you the trouble of having to approve every Terraform run manually. Remember to click the **Save** button at the bottom of the page!
     4. Set **Environment Variables** for your AWS credentials and mark them as **Sensitive**.
     5. Set **Terraform Variables** for your `prefix` and `region`. Learn more about these variables by looking in the variables.tf file. NOTE: You *must* configure these variables on the remote workspace, as they will no longer be read from your local terraform.tfvars file.
-    6. This code has been tested in the **us-east-1** region. Note that there are some regions that do not support the t2.micro instance type. If you encournter this, switch your region to us-east-1.
+    6. This code has been tested in the **us-east-1** region. Note that there are some regions that do not support the t2.micro instance type. If you encounter this, switch your region to us-east-1.
 
     Test your work by running `terraform init`. Your backend configuration will be updated for remote execution.
 
@@ -330,7 +330,7 @@ challenges:
     3. Add another team called **developers**. Developers should not have any organization-wide access.<br>
     4. Add a third team called **managers**. Managers should also not have any organization-wide access.
 
-    Next, assign access rights to the hashicat-aws workspace. Go into the **Team Access** page of the hashicat-aws workspace settings. If you don't see the Team Access link you may need to log out and back into Terraform Cloud.
+    Next, assign access rights to the hashicat-aws workspace. Go into the **Team Access** page of the hashicat-aws workspace settings. If you don't see the Team Access link you might need to log out and back into Terraform Cloud.
 
     * Give the **admins** group admin level access.<br>
     * Give the **developers** group write level access.<br>

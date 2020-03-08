@@ -883,7 +883,7 @@ challenges:
   assignment: |-
     Open the **outputs.tf** file in the Code Editor. Note the public_dns output in the file. 
 
-    Add a second output for the `public_ip` of your web server. It's going to look almost exactly like the first output but will instead output an IP address instead of DNS name.
+    Add a second output for the `public_ip` of your web server. It's going to look almost exactly like the first output but will instead output an IP address instead of a DNS name.
 
     Name your output `catapp_ip`.
 
@@ -1045,7 +1045,7 @@ challenges:
 
     Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
 
-    Now run a `terraform init` to migrate your state to Terraform Cloud.
+    Now run `terraform init` to migrate your state to Terraform Cloud.
 
     ```
     terraform init
@@ -1090,7 +1090,7 @@ challenges:
 
     Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
 
-    Now run a `terraform init` to migrate your state to Terraform Cloud:
+    Now run `terraform init` to migrate your state to Terraform Cloud:
 
     ```
     terraform init

@@ -354,7 +354,7 @@ challenges:
     3. Add another team called **developers**. Developers should not have any organization-wide access.<br>
     4. Add a third team called **managers**. Managers should also not have any organization-wide access.
 
-    Next, assign access rights to the hashicat-azure workspace. Go into the **Team Access** page of the hashicat-azure workspace settings. If you don't see the Team Access link you may need to log out and back into Terraform Cloud.
+    Next, assign access rights to the hashicat-azure workspace. Go into the **Team Access** page of the hashicat-azure workspace settings. If you don't see the Team Access link you might need to log out and back into Terraform Cloud.
 
     * Give the **admins** group admin level access.<br>
     * Give the **developers** group write level access.<br>
