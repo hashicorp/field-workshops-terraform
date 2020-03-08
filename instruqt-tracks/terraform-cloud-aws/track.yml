@@ -113,7 +113,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -135,9 +135,17 @@ challenges:
 
     Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "No VCS Connection" button. Name your workspace **hashicat-aws**.
 
-    Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local.  Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables.
+    DO NOT SKIP THIS NEXT STEP:
 
-    Finally, provide your instructor with your organization's name. They will upgrade your organization to unlock a 30 day free trial of all paid features.
+    Go into the workspace's **Settings >> General** settings page and change the **Execution Mode** to local.
+    
+    Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables.
+
+    Enable a free trial of Terraform Cloud paid features by navigating to: **Settings** > **Plan & Billing**, select **Trial Plan**, and click the button for **Start your free trial**.
+
+    Or, if you have an existing account where you've already used a trial, provide your instructor with your organization's name. They will upgrade your organization to unlock a 30 day free trial of all paid features.
+
+    Before you click the **Check** button, did you change your Execution Mode to Local? This is an easy step to miss so we mention it twice.
   notes:
   - type: text
     contents: Terraform Cloud remote state storage is free for all users.
@@ -145,7 +153,7 @@ challenges:
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -166,13 +174,13 @@ challenges:
     4. A *user* token for authentication<br>
     5. A `remote_backend` config stored in your workspace<br>
 
-    In the Terraform Cloud web UI, go into your Terraform Cloud User Settings by clicking the icon in the upper right corner. Under User Settings click on Tokens. Generate a new token for your workstation. You can call it **workshop-token**. Copy this token for the next step.
-
-    Use the `terraform login` command to save your token in a local config file:
+    Use the `terraform login` command to generate and save your token in a local config file. You can simply follow the instructions in your terminal after you run this command. All of the defaults are fine:
 
     ```
     terraform login
     ```
+
+    NOTE: You won't see your token appear on the screen when you copy and paste it into the terminal. This is expected.
 
     Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
 
@@ -206,7 +214,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Terraform Cloud
@@ -252,6 +260,7 @@ challenges:
     3. Change the **Apply Method** to Auto apply. This will save you the trouble of having to approve every Terraform run manually. Remember to click the **Save** button at the bottom of the page!
     4. Set **Environment Variables** for your AWS credentials and mark them as **Sensitive**.
     5. Set **Terraform Variables** for your `prefix` and `region`. Learn more about these variables by looking in the variables.tf file. NOTE: You *must* configure these variables on the remote workspace, as they will no longer be read from your local terraform.tfvars file.
+    6. This code has been tested in the **us-east-1** region. Note that there are some regions that do not support the t2.micro instance type. If you encounter this, switch your region to us-east-1.
 
     Test your work by running `terraform init`. Your backend configuration will be updated for remote execution.
 
@@ -297,7 +306,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Terraform Cloud
@@ -312,7 +321,7 @@ challenges:
   teaser: As your Terraform usage increases more team members want to collaborate.
     Let's add some teams and access rules for our organization.
   assignment: |-
-    Teams and role-based access controls are a paid feature of Terraform Cloud. Your instructor will need to upgrade your organization to a free trial in order to complete this challenge.
+    Teams and role-based access controls are a paid feature of Terraform Cloud. You will need to ensure your free trial has been activated from the earlier steps in order to complete this challenge.
 
     In this challenge you'll create teams with different levels of access to your workspace. You can then invite other users to collaborate on code changes, approvals, and Terraform runs.
 
@@ -321,13 +330,13 @@ challenges:
     3. Add another team called **developers**. Developers should not have any organization-wide access.<br>
     4. Add a third team called **managers**. Managers should also not have any organization-wide access.
 
-    Next, assign access rights to the hashicat-aws workspace. Go into the **Team Access** page of the hashicat-aws workspace settings.
+    Next, assign access rights to the hashicat-aws workspace. Go into the **Team Access** page of the hashicat-aws workspace settings. If you don't see the Team Access link you might need to log out and back into Terraform Cloud.
 
     * Give the **admins** group admin level access.<br>
     * Give the **developers** group write level access.<br>
     * Give the **managers** group read level access.
 
-    Now that you have created teams you can invite some users to your organization.
+    Now that you have created teams you can invite some users to your organization. Return to your **General Settings** for the organization, and select **Users**.
 
     If you're doing an instructor-led training, you can invite your instructor or a fellow student to your organization and place them on the developers team. You'll need the email address attached to their Terraform Cloud account to invite them.
 
@@ -358,7 +367,7 @@ challenges:
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -447,7 +456,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Configuring Github Access
@@ -504,7 +513,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Terraform Cloud
@@ -576,7 +585,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
@@ -632,6 +641,12 @@ challenges:
     git push origin master
     ```
 
+    NOTE: If you have two-factor authentication enabled you can create a Personal Access Token that can be used instead of your password. Log onto github and visit the Tokens page:
+
+    https://github.com/settings/tokens
+
+    Click on **Personal Access Tokens** and generate a new token for the workshop. You can delete it afterwards if you like. This token enables you to push changes from your workstation without having to use 2FA.
+
     HINT: The docs are your friend. They might even have an example of how the code should look.
 
     If all went well you should see a new VPC being built in the console output. Click the `Check` button to verify your work.
@@ -652,7 +667,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Terraform Cloud
@@ -728,7 +743,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Terraform Cloud
@@ -774,7 +789,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic

@@ -105,7 +105,7 @@ challenges:
     type: code
     hostname: workstation
     path: /root
-  - title: Terminal
+  - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
