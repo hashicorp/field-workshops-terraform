@@ -9,6 +9,16 @@ sleep 10
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 
+# Create code server config directory
+mkdir -p /root/.local/share/code-server/User
+
+# Set bash as the default shell
+cat <<-EOF > /root/.local/share/code-server/User/settings.json
+{
+    "terminal.integrated.shell.linux": "/bin/bash"
+}
+EOF
+
 # Create VSC startup script
 cat <<-EOF > /etc/systemd/system/code-server.service
 [Unit]
@@ -44,4 +54,4 @@ systemctl start code-server
 echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc
 
 # Drop the Terraform extension vsix file into /root
-wget https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-shared/mauve.terraform-1.4.0.vsix -O /root/mauve.terraform-1.4.0.vsix
+# wget https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-shared/mauve.terraform-1.4.0.vsix -O /root/mauve.terraform-1.4.0.vsix
