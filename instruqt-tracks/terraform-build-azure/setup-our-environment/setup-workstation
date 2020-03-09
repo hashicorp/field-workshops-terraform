@@ -77,7 +77,8 @@ mkdir -p /root/.local/share/code-server/User
 # Set bash as the default shell
 cat <<-EOF > /root/.local/share/code-server/User/settings.json
 {
-    "terminal.integrated.shell.linux": "/bin/bash"
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "terminal.integrated.fontFamily": "Inconsolata, Consolas, 'Courier New', monospace"
 }
 EOF
 
