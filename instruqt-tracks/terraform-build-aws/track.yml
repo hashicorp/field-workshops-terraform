@@ -62,7 +62,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 300
+  timelimit: 1000
 - slug: open-a-terminal
   id: 6vexl1paoaau
   type: challenge
@@ -102,7 +102,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 600
+  timelimit: 1000
 - slug: hello-terraform
   id: xijpanmdkvsp
   type: challenge
@@ -150,7 +150,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 300
+  timelimit: 1000
 - slug: aws-credentials
   id: vhz82xdtmp0i
   type: challenge
@@ -185,7 +185,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 300
+  timelimit: 1000
 - slug: terraform-code
   id: d9ctdsqaj2jc
   type: challenge
@@ -227,7 +227,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 300
+  timelimit: 1000
 - slug: terraform-init-provider
   id: qtnacizr5s9m
   type: challenge
@@ -272,7 +272,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 300
+  timelimit: 1000
 - slug: provider-quiz
   id: jfdkfnzkik7b
   type: quiz
@@ -292,7 +292,7 @@ challenges:
   solution:
   - 2
   difficulty: basic
-  timelimit: 300
+  timelimit: 1000
 - slug: terraform-validate
   id: gdxwnlmzxdzy
   type: challenge
@@ -332,7 +332,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 300
+  timelimit: 1000
 - slug: terraform-plan
   id: xvujq4r12fer
   type: challenge
@@ -369,7 +369,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 300
+  timelimit: 1000
 - slug: terraform-variables
   id: m8xbdsgyynjc
   type: challenge
@@ -404,7 +404,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 300
+  timelimit: 1000
 - slug: terraform-add-a-variable
   id: gnph0blobakx
   type: challenge
@@ -452,7 +452,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 300
+  timelimit: 1000
 - slug: variables-quiz
   id: w6ugok0xie2q
   type: quiz
@@ -472,7 +472,7 @@ challenges:
   solution:
   - 2
   difficulty: basic
-  timelimit: 300
+  timelimit: 1000
 - slug: tf-graph
   id: ssak7o3k3wev
   type: challenge
@@ -516,7 +516,7 @@ challenges:
     hostname: workstation
     port: 5000
   difficulty: basic
-  timelimit: 600
+  timelimit: 1000
 - slug: tf-plan-and-apply
   id: whomyx1qwy92
   type: challenge
@@ -560,7 +560,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 600
+  timelimit: 1000
 - slug: tf-plan-again
   id: oy8oy1cypgga
   type: challenge
@@ -606,7 +606,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 600
+  timelimit: 1000
 - slug: change-location
   id: yetkjpluigvg
   type: challenge
@@ -648,7 +648,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 600
+  timelimit: 1000
 - slug: add-a-tag
   id: 8g5jn5a3mxam
   type: challenge
@@ -684,7 +684,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 600
+  timelimit: 1000
 - slug: add-virtual-network
   id: 0xekijrqwix6
   type: challenge
@@ -720,7 +720,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 600
+  timelimit: 1000
 - slug: complete-the-build
   id: hnlvhqi0wjdq
   type: challenge
@@ -762,7 +762,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 600
+  timelimit: 1000
 - slug: tf-graph-again
   id: n6wxarjwpxc7
   type: challenge
@@ -794,7 +794,7 @@ challenges:
     hostname: workstation
     port: 5000
   difficulty: basic
-  timelimit: 600
+  timelimit: 1000
 - slug: terraform-apply-quiz
   id: bomlfx9yzrj7
   type: quiz
@@ -814,7 +814,7 @@ challenges:
   solution:
   - 2
   difficulty: basic
-  timelimit: 600
+  timelimit: 1000
 - slug: use-a-provisioner
   id: yyq6do5aksyu
   type: challenge
@@ -873,7 +873,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 600
+  timelimit: 1000
 - slug: add-an-output
   id: wzrottlveoho
   type: challenge
@@ -927,7 +927,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 600
+  timelimit: 1000
 - slug: fun-with-variables
   id: mcwatgcefeve
   type: challenge
@@ -993,7 +993,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 600
+  timelimit: 1000
 - slug: terraform-variables-quiz
   id: m6a1ehvo3xgz
   type: quiz
@@ -1013,7 +1013,7 @@ challenges:
   solution:
   - 1
   difficulty: basic
-  timelimit: 600
+  timelimit: 1000
 - slug: terraform-cloud-setup
   id: hp0pnnjyqmjm
   type: challenge
@@ -1072,7 +1072,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 600
+  timelimit: 1000
 - slug: configure-remote-state
   id: 3iunuxtrpnb6
   type: challenge
@@ -1122,7 +1122,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 600
+  timelimit: 1000
 - slug: terraform-destroy
   id: watj5kondoxx
   type: challenge
@@ -1156,5 +1156,5 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 600
+  timelimit: 1000
 checksum: "6490598711360394414"
