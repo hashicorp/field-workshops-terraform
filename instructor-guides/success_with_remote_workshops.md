@@ -56,6 +56,29 @@ The same advice goes for your webcam. Don't use the built in pinhole camera on y
 ## Zoom meeting or Zoom webinar?
 Zoom meetings can accommodate up to 100 participants by default. If you think you're going to have a workshop larger than this please reach out on Slack in the #se-workshops channel.
 
+## Enabling Break-out Sessions
+
+To enable break-out sessions open your Zoom application and under your profile picture in the top right select the Gear icon.
+
+Select "Advanced Features"
+
+"View Advanced Features" - This will open a webpage
+
+Under Meeting, select In Meeting (Advanced)
+
+Turn on Breakout Room's and select "Allow host to assign participants to breakout rooms when scheduling" (**NOTE THIS WILL DISABLE REMOTE ASSISTANCE**)
+
+## Using Break-Out Sessions In Zoom
+
+Once a Zoom begins, in the menu bezel there should be a new button called "Breakout Rooms"
+
+Select this option and configure your break-out room.
+
+You will recieve a configuration screen in which you can manually or automatically push your participants into break-out rooms. 
+
+Once selected you will receieve an additional menu that allows you to manage the break-out rooms and individual participants.
+
+
 ## Tips and Tricks
 Start the Zoom at least 10 minutes before the official start time.
 
