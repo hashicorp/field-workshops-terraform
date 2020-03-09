@@ -78,8 +78,6 @@ challenges:
 
     You can use the little caret ^ shaped button on the terminal pane to expand and shrink your Terminal window. This is useful for viewing logs.
 
-    Next, let's set your default shell to `/bin/bash`. Click on the pulldown menu at the top of the terminal pane, then click on **Select Default Shell**. Choose `/bin/bash` from the list. Now click on the **+** icon to create a new shell session. You can also close a session with the trash can icon.
-
     Click on the File Explorer icon a couple times to toggle the File Explorer on and off. This can provide more space while you're viewing and editing code.
 
     You can also hide and show these notes with the expand icon on the upper right side of the GUI. It looks like a box with two small arrows in the corners. This will expand and close the notes panel. Try it now to give your text editor more space.

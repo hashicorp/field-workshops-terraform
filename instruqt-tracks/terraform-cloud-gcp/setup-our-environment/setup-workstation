@@ -26,6 +26,16 @@ output "catapp_url" {
 }
 EOF
 
+# Create code server config directory
+mkdir -p /root/.local/share/code-server/User
+
+# Set bash as the default shell
+cat <<-EOF > /root/.local/share/code-server/User/settings.json
+{
+    "terminal.integrated.shell.linux": "/bin/bash"
+}
+EOF
+
 # Create VSC startup script
 cat <<-EOF > /etc/systemd/system/code-server.service
 [Unit]
@@ -65,4 +75,4 @@ grep $INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID /root/.bashrc || echo "export 
 echo 'export GOOGLE_CREDENTIALS=$(echo $INSTRUQT_GCP_PROJECT_GCP_PROJECT_SERVICE_ACCOUNT_KEY | base64 -d)' >> /root/.bashrc
 
 # Drop the Terraform extension vsix file into /root
-wget https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-shared/mauve.terraform-1.4.0.vsix -O /root/mauve.terraform-1.4.0.vsix
+# wget https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-shared/mauve.terraform-1.4.0.vsix -O /root/mauve.terraform-1.4.0.vsix
