@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+grep cowsay main.tf || fail-message "We couldn't find the cowsay install commands in your provisioner inline list."

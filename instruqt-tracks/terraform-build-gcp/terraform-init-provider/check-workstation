@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+[ -d /root/hashicat-gcp/.terraform ] || fail-message "Oops, it doesn't look like you've run terraform init yet."

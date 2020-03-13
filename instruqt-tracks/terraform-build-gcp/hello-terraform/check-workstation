@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+# With VM-based workstations history isn't written until the user ends the shell session
+# Hence this check won't work with default settings.
+# grep -q "terraform version" /root/.bash_history || fail-message "You haven't run terraform version yet. You can do it!"
+# grep -q "terraform help" /root/.bash_history || fail-message "You haven't run terraform help yet. We believe in you!"

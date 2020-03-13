@@ -1,0 +1,11 @@
+version: "2"
+virtualmachines:
+- name: workstation
+  image: instruqt-hashicorp/terraform-workstation
+  shell: /bin/bash
+  machine_type: n1-standard-1
+gcp_projects:
+- name: gcp-project
+  services:
+  - cloudresourcemanager.googleapis.com
+  - compute.googleapis.com

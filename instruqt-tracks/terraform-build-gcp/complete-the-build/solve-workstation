@@ -1,0 +1,21 @@
+#!/bin/bash
+source /root/.bashrc
+source /etc/profile.d/instruqt-env.sh
+cd /root/hashicat-gcp
+
+# This feels so gross
+# Try terraform apply 3 times because Ubuntu repos are flaky
+n=0
+until [ $n -ge 3 ]
+do
+  # A successful curl should break out of the loop
+  terraform apply -auto-approve && break
+  n=$[$n+1]
+  sleep 10
+done
+
+# Need another apply here to ensure that the IP and hostname are up to date.
+echo "Running terraform apply again..."
+terraform apply -auto-approve
+
+echo "Solve script complete."

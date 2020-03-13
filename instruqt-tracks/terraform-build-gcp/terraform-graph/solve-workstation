@@ -1,0 +1,4 @@
+#!/bin/bash
+# This will hang the automated test.  TODO: Fix this, find a way to run blast radius in the background.
+# cd /root/hashicat-gcp
+# /usr/local/bin/blast-radius --serve .

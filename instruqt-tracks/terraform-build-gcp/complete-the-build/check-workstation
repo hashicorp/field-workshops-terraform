@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+source /root/.bashrc
+source /etc/profile.d/instruqt-env.sh
+cd /root/hashicat-gcp
+
+# Fetch the URL and grep the HTTP code for "200 OK"
+# Add retries in case the website isn't up and running yet.
+curl --connect-timeout 5 --max-time 10 --retry 5 --retry-delay 0 --retry-max-time 60 -I $(cat terraform.tfstate | jq -r .outputs.catapp_url.value) | grep "200 OK" || fail-message "We were unable to load your web app. Try provisioning it again."
