@@ -1,0 +1,204 @@
+slug: terraform-module-lab
+id: o7fzb43piufk
+type: track
+title: Terraform Module Lab
+teaser: A preconfigured lab environment for learning about Terraform modules.
+description: This track can be used for hands-on labs working with Terraform modules.
+icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
+tags:
+- terraform
+- modules
+owner: hashicorp
+developers:
+- scarolan@hashicorp.com
+private: true
+published: true
+challenges:
+- slug: setup-our-environment
+  id: sw7bqqbs0pkd
+  type: challenge
+  title: "\U0001F3E1 Moving in - Set Up Your Workspace"
+  teaser: Configure your code editor with the Terraform extension and open a workspace.
+  assignment: |-
+    Open the Code Editor tab on the left. First get familiar with the menus.
+
+    Find the "hamburger" or triple-line menu on the top of the navigation bar on the left. It's right underneath the Instruqt mascot logo. This is your Main Menu. You can find all the other VSC menu options here.
+
+    Right below the Main Menu you'll see a column of icons. The first icon looks like a stack of documents. This is the File Explorer.
+
+    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes. Search for **Terraform** and click the green **Install** button to install the extension. You can click the **Reload Required** button to activate it.
+
+    Congratulations, you are ready to start working with Terraform.
+
+    Click the **Check** button to continue.
+  notes:
+  - type: text
+    contents: |
+      Setting up your environment...
+      Keep an eye on the bottom right corner to know when you can get started.
+  - type: text
+    contents: The terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
+      Windows, Solaris and Linux.
+  - type: text
+    contents: The terraform language is designed to be both human and machine-readable.
+  - type: text
+    contents: Most modern text editors support Terraform syntax highlighting.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/workspace
+  difficulty: basic
+  timelimit: 7200
+- slug: terraform-cloud-setup
+  id: wor8lync260t
+  type: challenge
+  title: ☁️ Terraform Cloud Setup
+  teaser: Terraform Cloud offers almost all the same features as on-premise Terraform
+    Enterprise.
+  assignment: |-
+    During this challenge you'll sign up for a free Terraform Cloud account. Click on the URL below and sign up for an account if you don't have one already:
+
+    https://app.terraform.io/signup/account
+
+    If you already have an account you can simply sign in with your existing credentials.
+
+    Next you'll configure a token for running terraform commands from your workstation.
+
+    Use the `terraform login` command to generate and save your token in a local config file. You can simply follow the instructions in your terminal after you run this command. All of the defaults are fine:
+
+    ```
+    terraform login
+    ```
+
+    NOTE: You won't see your token appear on the screen when you copy and paste it into the terminal. This is expected.
+
+    Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file. You can verify the contents of the file with the following command:
+
+    ```
+    cat /root/.terraform.d/credentials.tfrc.json
+    ```
+
+    We'll be using this token for some of the lab exercises later in the track.
+  notes:
+  - type: text
+    contents: Terraform Cloud offers features like remote state and a private module
+      registry.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/workspace
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  difficulty: basic
+  timelimit: 7200
+- slug: versioned-infrastructure
+  id: rhwwafn4nthr
+  type: challenge
+  title: "\U0001F4BB Version Controlled Infrastructure"
+  teaser: Terraform modules can be stored in your Version Control System.
+  assignment: |-
+    In order for different teams and indivdiuals to be able to work on the same Terraform code, you need to use a Version Control System (VCS). Terraform Cloud can integrate with the most popular VCS systems including GitHub, GitLab and Bitbucket.
+
+    You will need a free GitHub.com account for this challenge. We recommend using a personal account for training instead your work account (if you have one).
+
+    Follow the **Configuring GitHub Access** section of the TFC documentation to connect your GitHub account to your Terraform Organization.
+
+    https://www.terraform.io/docs/cloud/vcs/github.html
+
+    Once you've configured GitHub access, you can import modules into your private module registry.
+  notes:
+  - type: text
+    contents: Terraform modules can be stored in your Version Control System (VCS),
+      and automatically imported into the Private Module Registry
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  - title: Configuring Github Access
+    type: external
+    url: https://www.terraform.io/docs/cloud/vcs/github.html
+  - title: Terraform Cloud
+    type: external
+    url: https://app.terraform.io
+  difficulty: basic
+  timelimit: 1800
+- slug: private-module-registry
+  id: jpljzmbguwas
+  type: challenge
+  title: "\U0001F4DA Private Module Registry"
+  teaser: Some of your users want a simple way to deploy databases and network configurations.
+    Enter the Private Module Registry, where you can store standard, re-usable Terraform
+    configurations that others can use in their own workspaces.
+  assignment: |-
+    In this challenge you'll learn to use the Private Module Registry, which allows you to store and version re-usable snippets of Terraform code. Think of modules like custom resources for your own environment.
+
+    Instead of writing this module from scratch you can copy the existing vpc module from the public Terraform registry. Visit this URL to view the VPC module:
+
+    https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws
+
+    Note the **Source:** link that points at the github repository for this module. Click on the Source URL. As you did in previous challenges, create your own fork of this repository with the **Fork** button.
+
+    Back in the Terraform Cloud control panel, click on the **Modules** link at the top of the page. Click on the **+Add Module** button. Click on the Github button and select the terraform-aws-vpc module that you just forked.
+
+    Click on **Publish Module**.
+
+    Create a new Terraform file called `main.tf` in your workspace directory and use the module in this file to create a new VPC.
+
+    After you have saved the `main.tf` file, commit it to your local git repository and push the changes to your remote fork. You will be prompted to log onto your github account to push the change.
+
+    ```
+    git add .
+    git commit -m "Added VPC module"
+    git push origin master
+    ```
+
+    NOTE: If you have two-factor authentication enabled you can create a Personal Access Token that can be used instead of your password. Log onto github and visit the Tokens page:
+
+    https://github.com/settings/tokens
+
+    Click on **Personal Access Tokens** and generate a new token for the workshop. You can delete it afterwards if you like. This token enables you to push changes from your workstation without having to use 2FA.
+
+    HINT: The docs are your friend. They might even have an example of how the code should look.
+
+    If all went well you should see a new VPC being built in the console output. Click the `Check` button to verify your work.
+  notes:
+  - type: text
+    contents: Storing your modules in a git repo allows you to do code reviews and
+      tag different versions.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/workspace
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  - title: Terraform Cloud
+    type: external
+    url: https://app.terraform.io
+  difficulty: basic
+  timelimit: 1800
+checksum: "5609076489952616767"
