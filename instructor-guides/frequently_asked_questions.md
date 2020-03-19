@@ -4,7 +4,7 @@
 **Q. How do these Instruqt tracks work?**<br>
 A. Instruqt tracks contain a `config.yml` file which builds a student workstation, currently an Ubuntu Linux 18.04 virtual machine of n1-standard-1 size. The workstation has 3.6GB of RAM and the open source version of Visual Studio Code installed as a web application. This makes it very easy for students to edit their terraform code using a comfortable and familiar environment.
 
-Other tools included on the workstation are vim, nano, emacs, jq, unzip, curl, wget git, az command line, and some other [various tools and easter eggs](https://github.com/hashicorp/instruqt-packer/tree/master/terraform-workstation). Instruqt also provides an AWS account or GCP project for each student. These are deleted once the track is stopped or expires.
+Other tools included on the workstation are vim, nano, emacs, jq, unzip, curl, wget git, az command line, and some other various tools and easter eggs. Instruqt also provides an AWS account or GCP project for each student. These are deleted once the track is stopped or expires.
 
 Since Azure is not yet supported on Instruqt, we bring our own temporary credentials generated from the [CAM Vault Server](https://cam-vault.hashidemos.io:8200). There is a dynamic credentials endpoint that creates Azure credentials for the SE subscription. These credentials are good for 8 hours.
 
