@@ -1,4 +1,4 @@
-terraform_version = "0.12.24"
+terraform_version = "0.12.3"
 
 planned_values = {
 	"outputs": {},
@@ -15,7 +15,7 @@ planned_values = {
 			"tainted":        false,
 			"type":           "aws_iam_access_key",
 			"values": {
-				"pgp_key": "keybase:roger",
+				"pgp_key": "roger",
 				"user":    "roger",
 			},
 		},
@@ -32,7 +32,7 @@ resource_changes = {
 				"create",
 			],
 			"after": {
-				"pgp_key": "keybase:roger",
+				"pgp_key": "roger",
 				"user":    "roger",
 			},
 			"after_unknown": {
@@ -65,9 +65,6 @@ raw = {
 				{
 					"address": "aws_iam_access_key.roger",
 					"expressions": {
-						"pgp_key": {
-							"constant_value": "keybase:roger",
-						},
 						"user": {
 							"constant_value": "roger",
 						},
@@ -93,7 +90,7 @@ raw = {
 					"schema_version": 0,
 					"type":           "aws_iam_access_key",
 					"values": {
-						"pgp_key": "keybase:roger",
+						"pgp_key": "roger",
 						"user":    "roger",
 					},
 				},
@@ -108,7 +105,7 @@ raw = {
 					"create",
 				],
 				"after": {
-					"pgp_key": "keybase:roger",
+					"pgp_key": "roger",
 					"user":    "roger",
 				},
 				"after_unknown": {
@@ -128,5 +125,5 @@ raw = {
 			"type":          "aws_iam_access_key",
 		},
 	],
-	"terraform_version": "0.12.24",
+	"terraform_version": "0.12.3",
 }

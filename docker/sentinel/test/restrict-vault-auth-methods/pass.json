@@ -1,6 +1,11 @@
 {
+  "modules": {
+    "plan": {
+      "path": "../../common-functions/tfplan-functions.sentinel"
+    }
+  },
   "mock": {
-    "tfplan": "mock-tfplan-pass.sentinel"
+    "tfplan/v2": "mock-tfplan-pass.sentinel"
   },
   "test": {
     "main": true

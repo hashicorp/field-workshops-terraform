@@ -1,0 +1,23 @@
+# This policy requires AWS IAM access keys to use PGP keys
+
+# Import the v2 tfplan import, but use the alias "tfplan"
+import "tfplan/v2" as tfplan
+
+# Import common-functions/tfplan-functions.sentinel with alias "plan"
+import "plan"
+
+# Get all AWS IAM access keys
+allIAMAccessKeys = plan.find_resources("aws_iam_access_key")
+
+# Filter to AWS IAM access keys with violations
+# The called function prints warnings for all violations
+violatingIAMAccessKeys = plan.filter_attribute_does_not_have_prefix(
+                         allIAMAccessKeys, "pgp_key", "keybase:")
+
+# Count violations
+violations = length(violatingIAMAccessKeys)
+
+# Main rule
+main = rule {
+  violations is 0
+}

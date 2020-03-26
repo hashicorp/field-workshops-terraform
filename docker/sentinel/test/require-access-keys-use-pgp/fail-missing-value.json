@@ -1,6 +1,11 @@
 {
+  "modules": {
+    "plan": {
+      "path": "../../common-functions/tfplan-functions.sentinel"
+    }
+  },
   "mock": {
-    "tfplan": "mock-tfplan-fail-with-missing-value.sentinel"
+    "tfplan/v2": "mock-tfplan-fail-missing-value.sentinel"
   },
   "test": {
     "main": false

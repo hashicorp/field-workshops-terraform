@@ -1,4 +1,4 @@
-terraform_version = "0.12.24"
+terraform_version = "0.12.3"
 
 planned_values = {
 	"outputs": {},
@@ -15,7 +15,6 @@ planned_values = {
 			"tainted":        false,
 			"type":           "aws_iam_access_key",
 			"values": {
-				"pgp_key": "keybase:roger",
 				"user":    "roger",
 			},
 		},
@@ -32,13 +31,13 @@ resource_changes = {
 				"create",
 			],
 			"after": {
-				"pgp_key": "keybase:roger",
 				"user":    "roger",
 			},
 			"after_unknown": {
 				"encrypted_secret":     true,
 				"id":                   true,
 				"key_fingerprint":      true,
+				"pgp_key":              true,
 				"secret":               true,
 				"ses_smtp_password":    true,
 				"ses_smtp_password_v4": true,
@@ -65,9 +64,6 @@ raw = {
 				{
 					"address": "aws_iam_access_key.roger",
 					"expressions": {
-						"pgp_key": {
-							"constant_value": "keybase:roger",
-						},
 						"user": {
 							"constant_value": "roger",
 						},
@@ -93,7 +89,6 @@ raw = {
 					"schema_version": 0,
 					"type":           "aws_iam_access_key",
 					"values": {
-						"pgp_key": "keybase:roger",
 						"user":    "roger",
 					},
 				},
@@ -108,13 +103,13 @@ raw = {
 					"create",
 				],
 				"after": {
-					"pgp_key": "keybase:roger",
 					"user":    "roger",
 				},
 				"after_unknown": {
 					"encrypted_secret":     true,
 					"id":                   true,
 					"key_fingerprint":      true,
+					"pgp_key":              true,
 					"secret":               true,
 					"ses_smtp_password":    true,
 					"ses_smtp_password_v4": true,
@@ -128,5 +123,5 @@ raw = {
 			"type":          "aws_iam_access_key",
 		},
 	],
-	"terraform_version": "0.12.24",
+	"terraform_version": "0.12.3",
 }

@@ -5,7 +5,7 @@
     }
   },
   "mock": {
-    "tfplan/v2": "mock-tfplan-fail-with-null.sentinel"
+    "tfplan/v2": "mock-tfplan-fail-invalid-value.sentinel"
   },
   "test": {
     "main": false

@@ -1,6 +1,11 @@
 {
+  "modules": {
+    "state": {
+      "path": "../../common-functions/tfstate-functions.sentinel"
+    }
+  },
   "mock": {
-    "tfstate": "mock-tfstate-fail.sentinel"
+    "tfstate/v2": "mock-tfstate-fail.sentinel"
   },
   "test": {
     "main": false

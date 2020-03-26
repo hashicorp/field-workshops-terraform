@@ -1,83 +1,374 @@
-import "strings"
-import "types"
+terraform_version = "0.12.24"
 
-_modules = {
-	"root": {
-		"data": {},
-		"path": [],
-		"resources": {
-			"vault_auth_backend": {
-				"test": {
-					0: {
-						"applied": {
-							"description":        null,
-							"listing_visibility": null,
-							"local":              null,
-							"path":               "roger-k8s",
-							"type":               "kubernetes",
-						},
-					},
-					1: {
-						"applied": {
-							"description":        null,
-							"listing_visibility": null,
-							"local":              null,
-							"path":               "roger-gh",
-							"type":               "github",
-						},
-					},
-					2: {
-						"applied": {
-							"description":        null,
-							"listing_visibility": null,
-							"local":              null,
-							"path":               "roger-azure",
-							"type":               "azure",
-						},
-					},
-				},
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"vault_auth_backend.test[0]": {
+			"address":        "vault_auth_backend.test[0]",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          0,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "test",
+			"provider_name":  "vault",
+			"tainted":        false,
+			"type":           "vault_auth_backend",
+			"values": {
+				"description": null,
+				"local":       null,
+				"path":        "roger-k8s",
+				"type":        "kubernetes",
+			},
+		},
+		"vault_auth_backend.test[1]": {
+			"address":        "vault_auth_backend.test[1]",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          1,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "test",
+			"provider_name":  "vault",
+			"tainted":        false,
+			"type":           "vault_auth_backend",
+			"values": {
+				"description": null,
+				"local":       null,
+				"path":        "roger-gh",
+				"type":        "github",
+			},
+		},
+		"vault_auth_backend.test[2]": {
+			"address":        "vault_auth_backend.test[2]",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          2,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "test",
+			"provider_name":  "vault",
+			"tainted":        false,
+			"type":           "vault_auth_backend",
+			"values": {
+				"description": null,
+				"local":       null,
+				"path":        "roger-azure",
+				"type":        "azure",
 			},
 		},
 	},
 }
 
-module_paths = [
-	[],
-]
-
-terraform_version = "0.12.3"
-
 variables = {
-	"paths": [
-		"roger-k8s",
-		"roger-gh",
-		"roger-azure",
-	],
-	"types": [
-		"kubernetes",
-		"github",
-		"azure",
-	],
+	"paths": {
+		"name": "paths",
+		"value": [
+			"roger-k8s",
+			"roger-gh",
+			"roger-azure",
+		],
+	},
+	"types": {
+		"name": "types",
+		"value": [
+			"kubernetes",
+			"github",
+			"azure",
+		],
+	},
 }
 
-module = func(path) {
-	if types.type_of(path) is not "list" {
-		error("expected list, got", types.type_of(path))
-	}
-
-	if length(path) < 1 {
-		return _modules.root
-	}
-
-	addr = []
-	for path as p {
-		append(addr, "module")
-		append(addr, p)
-	}
-
-	return _modules[strings.join(addr, ".")]
+resource_changes = {
+	"vault_auth_backend.test[0]": {
+		"address": "vault_auth_backend.test[0]",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"description": null,
+				"local":       null,
+				"path":        "roger-k8s",
+				"type":        "kubernetes",
+			},
+			"after_unknown": {
+				"accessor":                  true,
+				"default_lease_ttl_seconds": true,
+				"id":                    true,
+				"listing_visibility":    true,
+				"max_lease_ttl_seconds": true,
+				"tune":                  true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          0,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "test",
+		"provider_name":  "vault",
+		"type":           "vault_auth_backend",
+	},
+	"vault_auth_backend.test[1]": {
+		"address": "vault_auth_backend.test[1]",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"description": null,
+				"local":       null,
+				"path":        "roger-gh",
+				"type":        "github",
+			},
+			"after_unknown": {
+				"accessor":                  true,
+				"default_lease_ttl_seconds": true,
+				"id":                    true,
+				"listing_visibility":    true,
+				"max_lease_ttl_seconds": true,
+				"tune":                  true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          1,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "test",
+		"provider_name":  "vault",
+		"type":           "vault_auth_backend",
+	},
+	"vault_auth_backend.test[2]": {
+		"address": "vault_auth_backend.test[2]",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"description": null,
+				"local":       null,
+				"path":        "roger-azure",
+				"type":        "azure",
+			},
+			"after_unknown": {
+				"accessor":                  true,
+				"default_lease_ttl_seconds": true,
+				"id":                    true,
+				"listing_visibility":    true,
+				"max_lease_ttl_seconds": true,
+				"tune":                  true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          2,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "test",
+		"provider_name":  "vault",
+		"type":           "vault_auth_backend",
+	},
 }
 
-data = _modules.root.data
-path = _modules.root.path
-resources = _modules.root.resources
+output_changes = {}
+
+raw = {
+	"configuration": {
+		"root_module": {
+			"resources": [
+				{
+					"address": "vault_auth_backend.test",
+					"count_expression": {
+						"references": [
+							"var.paths",
+						],
+					},
+					"expressions": {
+						"path": {
+							"references": [
+								"var.paths",
+								"count.index",
+							],
+						},
+						"type": {
+							"references": [
+								"var.types",
+								"count.index",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "test",
+					"provider_config_key": "vault",
+					"schema_version":      1,
+					"type":                "vault_auth_backend",
+				},
+			],
+			"variables": {
+				"paths": {
+					"description": "paths to Vault auth methods",
+				},
+				"types": {
+					"description": "types of Vault auth methods",
+				},
+			},
+		},
+	},
+	"format_version": "0.1",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "vault_auth_backend.test[0]",
+					"index":          0,
+					"mode":           "managed",
+					"name":           "test",
+					"provider_name":  "vault",
+					"schema_version": 1,
+					"type":           "vault_auth_backend",
+					"values": {
+						"description": null,
+						"local":       null,
+						"path":        "roger-k8s",
+						"type":        "kubernetes",
+					},
+				},
+				{
+					"address":        "vault_auth_backend.test[1]",
+					"index":          1,
+					"mode":           "managed",
+					"name":           "test",
+					"provider_name":  "vault",
+					"schema_version": 1,
+					"type":           "vault_auth_backend",
+					"values": {
+						"description": null,
+						"local":       null,
+						"path":        "roger-gh",
+						"type":        "github",
+					},
+				},
+				{
+					"address":        "vault_auth_backend.test[2]",
+					"index":          2,
+					"mode":           "managed",
+					"name":           "test",
+					"provider_name":  "vault",
+					"schema_version": 1,
+					"type":           "vault_auth_backend",
+					"values": {
+						"description": null,
+						"local":       null,
+						"path":        "roger-azure",
+						"type":        "azure",
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "vault_auth_backend.test[0]",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"description": null,
+					"local":       null,
+					"path":        "roger-k8s",
+					"type":        "kubernetes",
+				},
+				"after_unknown": {
+					"accessor":                  true,
+					"default_lease_ttl_seconds": true,
+					"id":                    true,
+					"listing_visibility":    true,
+					"max_lease_ttl_seconds": true,
+					"tune":                  true,
+				},
+				"before": null,
+			},
+			"index":         0,
+			"mode":          "managed",
+			"name":          "test",
+			"provider_name": "vault",
+			"type":          "vault_auth_backend",
+		},
+		{
+			"address": "vault_auth_backend.test[1]",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"description": null,
+					"local":       null,
+					"path":        "roger-gh",
+					"type":        "github",
+				},
+				"after_unknown": {
+					"accessor":                  true,
+					"default_lease_ttl_seconds": true,
+					"id":                    true,
+					"listing_visibility":    true,
+					"max_lease_ttl_seconds": true,
+					"tune":                  true,
+				},
+				"before": null,
+			},
+			"index":         1,
+			"mode":          "managed",
+			"name":          "test",
+			"provider_name": "vault",
+			"type":          "vault_auth_backend",
+		},
+		{
+			"address": "vault_auth_backend.test[2]",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"description": null,
+					"local":       null,
+					"path":        "roger-azure",
+					"type":        "azure",
+				},
+				"after_unknown": {
+					"accessor":                  true,
+					"default_lease_ttl_seconds": true,
+					"id":                    true,
+					"listing_visibility":    true,
+					"max_lease_ttl_seconds": true,
+					"tune":                  true,
+				},
+				"before": null,
+			},
+			"index":         2,
+			"mode":          "managed",
+			"name":          "test",
+			"provider_name": "vault",
+			"type":          "vault_auth_backend",
+		},
+	],
+	"terraform_version": "0.12.24",
+	"variables": {
+		"paths": {
+			"value": [
+				"roger-k8s",
+				"roger-gh",
+				"roger-azure",
+			],
+		},
+		"types": {
+			"value": [
+				"kubernetes",
+				"github",
+				"azure",
+			],
+		},
+	},
+}
