@@ -155,7 +155,7 @@ challenges:
   title: "\U0001F510 Connecting Terraform to GCP"
   teaser: Connecting to GCP with Google Credentials.
   assignment: |-
-    In order to authenticate to GCP and build resources, Terraform requires you to provide a set of credntials, backed by an appropriate IAM policy.
+    In order to authenticate to GCP and build resources, Terraform requires you to provide a set of credentials, backed by an appropriate IAM policy.
 
     For this training environment, we have prepared some temporary GCP credentials and stored them as an environment variable. Terraform will automatically read and use the environment variables that are configured in your shell environment.
 
@@ -346,7 +346,7 @@ challenges:
 
     When you run this command Terraform will prompt you to enter the `prefix` variable.
 
-    Enter a short string of lower-case letters and/or numbers. You can use your own name here if you wish. The prefix will become part of the name for our compute instance, as well as appear in the HashiCat application.
+    Enter a short string of lower-case letters and/or numbers. You can use your own name here if you wish. The prefix will become part of the name for our VPC, subnet, compute instance, as well as appear in the HashiCat application.
   notes:
   - type: text
     contents: |-
@@ -402,54 +402,6 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-- slug: terraform-add-a-variable
-  id: gnph0blobakx
-  type: challenge
-  title: "\U0001F5FC Change Your Location"
-  teaser: Terraform is flexible enough to deploy infrastructure anywhere in the world.
-    You can easily provision your applications in different geographical regions by
-    simply changing a single variable.
-  assignment: |-
-    In one of the previous challenges we set our **prefix** variable.
-
-    Choose the GCP region nearest to you and set the zone variable in your `terraform.tfvars` file. You may need to close and re-open the file if it appears blank.
-
-    You can find the details of valid GCP regions here:
-
-    https://cloud.google.com/about/locations/
-
-    as well as a more succinct list of valid region ids here:
-
-    https://cloud.google.com/compute/docs/regions-zones/#locations
-
-    Examples:<br>
-    us-east4-b - North Virginia<br>
-    us-west1-b - Oregon<br>
-    asia-southeast1-b - Singapore<br>
-    australia-southeast1-b - Sydney<br>
-    europe-west2-b - London
-
-    Once you've set your location variable try running `terraform plan` again. What's different this time?
-
-    HINT: Remember that you can set any variable you wish in the `terraform.tfvars` file.
-  notes:
-  - type: text
-    contents: You can override any variable defined in the `variables.tf` file by
-      setting it in your personal `terraform.tfvars` file.
-  tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-gcp
-  - title: Shell
-    type: terminal
-    hostname: workstation
-  difficulty: basic
-  timelimit: 1000
 - slug: variables-quiz
   id: w6ugok0xie2q
   type: quiz
@@ -482,7 +434,7 @@ challenges:
     terraform graph
     ```
 
-    This generates code that can be used to create a visual map of your infrastructure. The graph data is in [DOT graph description language format](https://en.wikipedia.org/wiki/DOT_(graph_description_language). There are several graphing tools you can use to visualize this data, including the free Blast Radius tool. You can learn more about Blast Radius here:
+    This generates code that can be used to create a visual map of your infrastructure. The graph data is in [DOT graph description language format](https://en.wikipedia.org/wiki/DOT_(graph_description_language)). There are several graphing tools you can use to visualize this data, including the free Blast Radius tool. You can learn more about Blast Radius here:
 
     https://28mm.github.io/blast-radius-docs/
 
@@ -529,7 +481,7 @@ challenges:
     ```
     terraform plan
     ```
-    Confirm the proper prefix and zone are displayed in the plan output.
+    Confirm the proper prefix is displayed in the plan output.
 
     Then run `terraform apply` and watch your resources being built.
 
@@ -604,84 +556,6 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-- slug: change-location
-  id: yetkjpluigvg
-  type: challenge
-  title: "\U0001F6EB Change Your Location"
-  teaser: When your Terraform code changes, your infrastructure will be modified to
-    match the updated code. Terraform is a declarative language.
-  assignment: |-
-    Edit the `terraform.tfvars` file to change your GCP region. You can choose any valid GCP region.
-
-    Examples:<br>
-    us-east1     - South Carolina<br>
-    us-west1     - Oregon<br>
-
-    Save the `terraform.tfvars` file and run your apply command again.
-
-    You can use the `-auto-approve` flag to avoid having to type "yes" every time you apply.
-
-    ```
-    terraform apply -auto-approve
-    ```
-
-    Observe the output. What happened?
-  notes:
-  - type: text
-    contents: |-
-      Terraform can create, destroy, update in place, or destroy and re-create your infrastructure. Some types of resources can be updated without deleting them. Major changes usually require a teardown and rebuild.
-
-      Terraform always tries to match the current infrastructure to what has been defined in your code.
-  tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-gcp
-  - title: Shell
-    type: terminal
-    hostname: workstation
-  difficulty: basic
-  timelimit: 1000
-- slug: add-a-tag
-  id: 8g5jn5a3mxam
-  type: challenge
-  title: "\U0001F3F7️ Add a Tag to Your Resource Group"
-  teaser: Terraform can change some resources in in place without deleting them. Adding
-    tags is a non-destructive action.
-  assignment: |-
-    Read the Terraform documentation for the google_compute_firewall resource:
-
-    [GCP Terraform Docs - Click Here](https://www.terraform.io/docs/providers/google/r/compute_firewall.html)
-
-    Add a tag to your firewall in the **main.tf** file.
-
-    The name of the tag should be `environment` and the value should be `Production`. The tag is case-sensitive. Make sure you use a capital P.
-
-    Save the file and re-run `terraform apply`.
-
-    What happens?
-  notes:
-  - type: text
-    contents: Adding, changing, or removing tags is a non-destructive action. Terraform
-      can tag your resources without re-creating them.
-  tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-gcp
-  - title: Shell
-    type: terminal
-    hostname: workstation
-  difficulty: basic
-  timelimit: 1000
 - slug: add-virtual-network
   id: 0xekijrqwix6
   type: challenge
@@ -689,7 +563,7 @@ challenges:
   teaser: Terraform resources are like building blocks. You can continue adding more
     blocks until your infrastructure reaches the desired state.
   assignment: |-
-    Open the **main.tf** file again and uncomment the next resource block in the file. The type of resource is **aws_subnet** and it is named **hashicat**.
+    Open the **main.tf** file again and uncomment the next resource block in the file. The type of resource is **google_compute_subnetwork** and it is named **hashicat**.
 
     Uncomment the code by removing the `#` characters from the beginning of each line.
 
@@ -697,13 +571,61 @@ challenges:
 
     Now run `terraform apply` again. Observe the results.
 
-    Look at the **vpc_id** parameter inside the aws_subnet resource. See how it points back at the first resource in the file? The subnet resource inherits settings from the VPC.
+    Look at the **network** parameter inside the google_compute_subnetwork resource. See how it points back at the first resource in the file? The subnet resource inherits settings from the VPC.
 
     Terraform can map out the complex web of dependencies between hundreds of interconnected resources.
   notes:
   - type: text
     contents: Terraform code can be built incrementally, one or two resources at a
       time.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-gcp
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  difficulty: basic
+  timelimit: 1000
+- slug: terraform-add-a-variable
+  id: gnph0blobakx
+  type: challenge
+  title: "\U0001F5FC Change Your Location"
+  teaser: Terraform is flexible enough to deploy infrastructure anywhere in the world.
+    You can easily provision your applications in different geographical regions by
+    simply changing a single variable.
+  assignment: |-
+    In one of the previous challenges we set our **prefix** variable.
+    
+    Choose the GCP region nearest to you and set the region variable in your `terraform.tfvars` file. You may need to close and re-open the file if it appears blank.
+    
+    You can find the details of valid GCP regions here:
+    
+    https://cloud.google.com/about/locations/
+    
+    as well as a more succinct list of valid region ids here:
+    
+    https://cloud.google.com/compute/docs/regions-zones/#locations
+    
+    Examples:<br>
+    us-east4-b - North Virginia<br>
+    us-west1-b - Oregon<br>
+    asia-southeast1-b - Singapore<br>
+    australia-southeast1-b - Sydney<br>
+    europe-west2-b - London
+    
+    Once you've set your location variable try running `terraform plan` again. What's different this time?
+    
+    HINT: Remember that you can set any variable you wish in the `terraform.tfvars` file.
+  notes:
+  - type: text
+    contents: You can override any variable defined in the `variables.tf` file by
+      setting it in your personal `terraform.tfvars` file.
   tabs:
   - title: Code Editor
     type: service
