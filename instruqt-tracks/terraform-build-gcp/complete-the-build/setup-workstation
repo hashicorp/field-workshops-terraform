@@ -6,11 +6,11 @@ cd /root/hashicat-gcp
 # Copy the completed terraform to main.tf
 cp exercises/main.tf.completed main.tf
 
-# Just the public IP please
+# # Just the public IP please
 cat <<EOF > outputs.tf
 # Outputs file
 output "catapp_url" {
-  value = "http://${google_compute_instance.hashicat.network_interface.0.access_config.0.nat_ip}"
+  value = "http://\${google_compute_instance.hashicat.network_interface.0.access_config.0.nat_ip}"
 }
 EOF
 
