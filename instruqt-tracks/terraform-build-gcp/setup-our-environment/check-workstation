@@ -10,6 +10,6 @@ if [ -f /tmp/skip-check ]; then
 fi
 
 # Make sure we have valid GCP credentials in our shell environment
-echo $GOOGLE_CREDENTIALS | grep -P '(?<![A-Z0-9])[A-Z0-9]{20}(?![A-Z0-9])' || fail-message "Something went wrong, we were unable to find a valid GOOGLE_CREDENTIALS environment variable in your shell. You may need to restart the track."
+# echo $GOOGLE_CREDENTIALS | grep -P '(?<![A-Z0-9])[A-Z0-9]{20}(?![A-Z0-9])' || fail-message "Something went wrong, we were unable to find a valid GOOGLE_CREDENTIALS environment variable in your shell. You may need to restart the track."
 
 [[ -f /bin/set-workdir ]] || fail-message "Uh oh, you're missing the set-workdir script. Please restart your track."

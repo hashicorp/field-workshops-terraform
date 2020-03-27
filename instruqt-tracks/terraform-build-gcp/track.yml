@@ -1,12 +1,12 @@
 slug: terraform-build-gcp
-?????id: i3hihwd3qqr7
+id: wykyne6vqrul
 type: track
-title: Intro to Terraform on GCP
+title: Intro to Terraform on GCP - BETA
 teaser: Provision the HashiCat application on GCP Cloud using Terraform.
-description: "This track will introduce you to Terraform on Google Cloud Platform (GCP).\n\nWe'll
-  learn Terraform setup, basic commands, and gradually build an entire application
-  stack.\n\nWhen you're finished you'll be able to view the HashiCat application in
-  your web browser.\n\nKittens as a Service! \U0001F63A"
+description: "This track will introduce you to Terraform on Google Cloud Platform
+  (GCP).\n\nWe'll learn Terraform setup, basic commands, and gradually build an entire
+  application stack.\n\nWhen you're finished you'll be able to view the HashiCat application
+  in your web browser.\n\nKittens as a Service! \U0001F63A"
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
 - terraform
@@ -14,21 +14,21 @@ tags:
 - basics
 owner: hashicorp
 developers:
-- scarolan@hashicorp.com
+- assareh@hashicorp.com
 private: true
-published: true
+published: false
 challenges:
 - slug: setup-our-environment
-  id: udre6jbrj9po
+  id: 3ukzls4q8lgb
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: Configure your code editor with the HCL extension and open a workspace.
   assignment: |-
     Open the Code Editor tab on the left. First get familiar with the menus.
 
-    Find the "hamburger" or triple-line menu on the top of the navigation bar on the left. It's right underneath the Instruqt mascot logo. This is your Main Menu. You can find all the other VSC menu options here.
+    Find the "hamburger" or triple-line menu on the top of the navigation bar on the left. It's right underneath the Instruqt mascot logo. This is your Main Menu. You can find all the other Visual Studio Code menu options here.
 
-    You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application.
+    You should see some files in the explorer bar on the left side menu. These are Terraform config files for the Hashicat application.
 
     **All commands during the labs should be run from the hashicat-gcp directory.** The exercises directory contains templates that are used by our training platform. You only need to focus on the *.tf files in the main directory.
 
@@ -64,7 +64,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: open-a-terminal
-  id: 6vexl1paoaau
+  id: gj3peqbuyrom
   type: challenge
   title: "\U0001F5A5️ Open a Terminal"
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
@@ -102,7 +102,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: hello-terraform
-  id: xijpanmdkvsp
+  id: 3mmrbdinjach
   type: challenge
   title: "\U0001F44B Getting to Know Terraform"
   teaser: Learn Terraform basics and command line syntax.
@@ -113,10 +113,14 @@ challenges:
     ```
     terraform version
     ```
+
+    <br>
     You can always get help if you're curious about command syntax:
     ```
     terraform help
     ```
+
+    <br>
     Terraform runs on Windows, OSX, or Linux. You can install it on your laptop or on a cloud based workstation.
 
     Today we'll be using the preconfigured Terraform workstation on the left for all our lab exercises.
@@ -150,7 +154,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: gcp-credentials
-  id: vhz82xdtmp0i
+  id: 17tlfcavxaoh
   type: challenge
   title: "\U0001F510 Connecting Terraform to GCP"
   teaser: Connecting to GCP with Google Credentials.
@@ -164,7 +168,7 @@ challenges:
     ```
     echo $GOOGLE_CREDENTIALS
     ```
-
+    <br>
     *Do not ever store your credentials in source code files*, as they can be accidentally exposed or copied to a public repository.
   notes:
   - type: text
@@ -184,7 +188,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-code
-  id: d9ctdsqaj2jc
+  id: ildannzkl6cs
   type: challenge
   title: "\U0001F468‍\U0001F4BB What does Terraform code look like?"
   teaser: The Terraform DSL (Domain Specific Language) is a declarative language that
@@ -194,6 +198,7 @@ challenges:
       ```
       ls *.tf
       ```
+      <br>
       The same files are visible in the file explorer pane on the left. Terraform files are marked with the purple T icon.
 
       Terraform code always ends with a `.tf` extension. You can have as many Terraform files as you want, but these three are commonly created first:
@@ -226,7 +231,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-init-provider
-  id: qtnacizr5s9m
+  id: zi2vxq9rp8al
   type: challenge
   title: "\U0001F3E1 Terraform Init - Install the Providers"
   teaser: Terraform needs a provider to talk to cloud APIs. The provider is the bridge
@@ -238,7 +243,7 @@ challenges:
     ```
     terraform init
     ```
-
+    <br>
     The `terraform init` command scans your Terraform code, identifies any providers that are needed,    and downloads them.
 
     Run the following command to take a peek inside the `.terraform` directory:
@@ -246,7 +251,7 @@ challenges:
     ```
     ls .terraform/plugins/linux_amd64/
     ```
-
+    <br>
     This hidden directory is where all modules and plugins are stored.
   notes:
   - type: text
@@ -271,7 +276,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: provider-quiz
-  id: jfdkfnzkik7b
+  id: e5mn5jpw38zy
   type: quiz
   title: "\U0001F4DD Quiz 1 - Providers and Modules"
   teaser: A quiz about Terraform init
@@ -291,7 +296,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-validate
-  id: gdxwnlmzxdzy
+  id: rzpgknisx3by
   type: challenge
   title: "\U0001F469‍⚖️ Terraform Validate - Test Your Code"
   teaser: Terraform has a built in validation tester. This is useful to see whether
@@ -308,7 +313,7 @@ challenges:
     ```
     terraform validate
     ```
-
+    <br>
     Now put the curly brace back onto line 5 and run the validate command again. This time you should pass the validation test.
 
     `terraform validate` is most often used in automated CI/CD test pipelines. It allows you to quickly catch errors in your code before any other steps are taken.
@@ -331,7 +336,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-plan
-  id: xvujq4r12fer
+  id: q7y3kbrqohlx
   type: challenge
   title: "\U0001F914 Terraform Plan - Dry Run Mode"
   teaser: Terraform has a dry run mode where you can preview what will be built without
@@ -343,10 +348,10 @@ challenges:
     ```
     terraform plan
     ```
-
+    <br>
     When you run this command Terraform will prompt you to enter the `prefix` variable.
 
-    Enter a short string of lower-case letters and/or numbers. You can use your own name here if you wish. The prefix will become part of the name for our VPC, subnet, compute instance, as well as appear in the HashiCat application.
+    Enter a short string of lower-case letters and/or numbers. You can use your own name here if you wish. The prefix will become part of the name for our VPC network, subnet, and compute instance, as well as appear in the HashiCat application.
   notes:
   - type: text
     contents: |-
@@ -368,7 +373,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-variables
-  id: m8xbdsgyynjc
+  id: xzmgkxkybuyz
   type: challenge
   title: "\U0001F39B️ Working with Terraform Variables"
   teaser: Terraform variables allow you to customize your infrastructure without editing
@@ -403,7 +408,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: variables-quiz
-  id: w6ugok0xie2q
+  id: m8ivx3wrjnff
   type: quiz
   title: "\U0001F4DD Quiz 2 - Variables"
   teaser: A quiz about Terraform variables
@@ -423,7 +428,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: tf-graph
-  id: ssak7o3k3wev
+  id: 5xdrxqufxfix
   type: challenge
   title: "\U0001F4C8 Terraform Graph"
   teaser: Terraform creates a graph of all the infrastructure defined in your code.
@@ -433,7 +438,7 @@ challenges:
     ```
     terraform graph
     ```
-
+    <br>
     This generates code that can be used to create a visual map of your infrastructure. The graph data is in [DOT graph description language format](https://en.wikipedia.org/wiki/DOT_(graph_description_language)). There are several graphing tools you can use to visualize this data, including the free Blast Radius tool. You can learn more about Blast Radius here:
 
     https://28mm.github.io/blast-radius-docs/
@@ -443,7 +448,7 @@ challenges:
     ```
     blast-radius --serve .
     ```
-
+    <br>
     Now switch to the **Terraform Graph** tab to view the infrastructure graph.
 
     Explore the Terraform graph for your infrastructure. Dependencies are automatically mapped out for you. This graph was generated using the free Blast Radius tool.
@@ -466,21 +471,22 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 1000
-- slug: tf-plan-and-apply
-  id: whomyx1qwy92
+- slug: tf-apply
+  id: 6gc3kmingzlr
   type: challenge
-  title: "\U0001F468‍\U0001F4BB Terraform Plan and Terraform Apply"
+  title: "\U0001F468‍\U0001F4BB Terraform Apply"
   teaser: The `terraform plan` command can be run anytime to get a preview of changes
     that Terraform might make. When you run Terraform apply these changes are implemented,
     and Terraform builds, updates, or destroys resources.
   assignment: |-
-    Now that we've configured our required variables we can apply our changes.
+    Now that we've configured our required prefix variable we can apply our Terraform configuration.
 
     Run the `terraform plan` command first to see what will happen:
 
     ```
     terraform plan
     ```
+    <br>
     Confirm the proper prefix is displayed in the plan output.
 
     Then run `terraform apply` and watch your resources being built.
@@ -488,10 +494,10 @@ challenges:
     ```
     terraform apply
     ```
-
+    <br>
     You'll need to enter **yes** when Terraform prompts you with the "Do you want to perform these actions?" question.
 
-    Right now our code only defines a firewall. We'll be building upon this starting point in the next challenge.
+    Right now our code only defines a VPC network. We'll be building upon this starting point in the next challenge.
   notes:
   - type: text
     contents: Terraform apply includes a Terraform plan right before it runs. Terraform
@@ -511,7 +517,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: tf-plan-again
-  id: oy8oy1cypgga
+  id: yhtkhvmomzxa
   type: challenge
   title: "\U0001F469‍\U0001F4BB Test and Repair"
   teaser: Terraform is idempotent. Each resource in your code will be examined, and
@@ -522,8 +528,8 @@ challenges:
     ```
     terraform plan
     ```
-
-    Since your firewall has already been built, Terraform will report that there are no changes required.
+    <br>
+    Since your VPC network has already been built, Terraform will report that there are no changes required.
 
     This is normal and expected.
 
@@ -532,8 +538,8 @@ challenges:
     ```
     terraform apply
     ```
-
-    Terraform checks each resource to ensure it is in the proper state. It will not re-create your firewall if it is already provisioned correctly.
+    <br>
+    Terraform checks each resource to ensure it is in the proper state. It will not re-create your VPC network if it is already provisioned correctly.
   notes:
   - type: text
     contents: |-
@@ -557,7 +563,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: add-virtual-network
-  id: 0xekijrqwix6
+  id: wzf4haig6ua2
   type: challenge
   title: "\U0001F5A7 Add a Virtual Network"
   teaser: Terraform resources are like building blocks. You can continue adding more
@@ -571,7 +577,7 @@ challenges:
 
     Now run `terraform apply` again. Observe the results.
 
-    Look at the **network** parameter inside the google_compute_subnetwork resource. See how it points back at the first resource in the file? The subnet resource inherits settings from the VPC.
+    Look at the **network** parameter inside the google_compute_subnetwork resource. See how it points back at the first resource in the file? The subnet resource inherits settings from the VPC network.
 
     Terraform can map out the complex web of dependencies between hundreds of interconnected resources.
   notes:
@@ -593,34 +599,34 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-add-a-variable
-  id: gnph0blobakx
+  id: xln4zbrkpsyq
   type: challenge
   title: "\U0001F5FC Change Your Location"
   teaser: Terraform is flexible enough to deploy infrastructure anywhere in the world.
     You can easily provision your applications in different geographical regions by
     simply changing a single variable.
   assignment: |-
-    In one of the previous challenges we set our **prefix** variable.
-    
-    Choose the GCP region nearest to you and set the region variable in your `terraform.tfvars` file. You may need to close and re-open the file if it appears blank.
-    
+    In one of the previous challenges we set our **prefix** variable. Let's set another variable.
+
+    Choose the GCP region nearest to you and set the **region** variable in your `terraform.tfvars` file. You may need to close and re-open the file if it appears blank.
+
     You can find the details of valid GCP regions here:
-    
+
     https://cloud.google.com/about/locations/
-    
+
     as well as a more succinct list of valid region ids here:
-    
+
     https://cloud.google.com/compute/docs/regions-zones/#locations
-    
+
     Examples:<br>
-    us-east4-b - North Virginia<br>
-    us-west1-b - Oregon<br>
-    asia-southeast1-b - Singapore<br>
-    australia-southeast1-b - Sydney<br>
-    europe-west2-b - London
-    
-    Once you've set your location variable try running `terraform plan` again. What's different this time?
-    
+    us-east4 - North Virginia<br>
+    us-west1 - Oregon<br>
+    asia-southeast1 - Singapore<br>
+    australia-southeast1 - Sydney<br>
+    europe-west2 - London
+
+    Once you've set your location variable, try running `terraform plan` again. What's different this time?
+
     HINT: Remember that you can set any variable you wish in the `terraform.tfvars` file.
   notes:
   - type: text
@@ -641,24 +647,24 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: complete-the-build
-  id: hnlvhqi0wjdq
+  id: iyhj1byjxdeh
   type: challenge
   title: "\U0001F3D7️ Complete the Build"
-  teaser: Terraform code can stand up everything from resource groups, to virtual
-    networks, to VMs and containers.
+  teaser: Terraform code can stand up everything from a GCP project, to virtual networks,
+    to VMs and containers.
   assignment: |-
-    We've uncommented all the rest of the Terraform code in the **main.tf** file for you. Run a `terraform plan` to see what will be built:
+    We've uncommented the rest of the Terraform code in the **main.tf** file for you. Run a `terraform plan` to see what will be built:
 
     ```
     terraform plan
     ```
-
+    <br>
     Now run an apply to build the HashiCat application:
 
     ```
     terraform apply -auto-approve
     ```
-
+    <br>
     It can take up to five minutes for the application to finish deploying. You will know it is complete when you see the Terraform output with your application URL at the end of the run.
 
     If the application won't load just run `terraform apply` again. This will attempt to reinstall the webserver and start your application if it's not running. Our customized training code sometimes does not show the app on the first apply.
@@ -683,7 +689,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: tf-graph-again
-  id: n6wxarjwpxc7
+  id: y89dud0bht6w
   type: challenge
   title: "\U0001F4C8 Terraform Graph"
   teaser: Revist graph to see what has changed.
@@ -693,7 +699,7 @@ challenges:
     ```
     blast-radius --serve .
     ```
-
+    <br>
     Now switch to the **Terraform Graph** tab to view the infrastructure graph.
 
     Explore the Terraform graph for your infrastructure. Dependencies are automatically mapped out for you. This graph was generated using the free Blast Radius tool.
@@ -715,7 +721,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-apply-quiz
-  id: bomlfx9yzrj7
+  id: tby2thvtbp3x
   type: quiz
   title: "\U0001F4DD Quiz 3 - Terraform Apply"
   teaser: What happens when you run `terraform apply` without a plan file?
@@ -735,7 +741,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: use-a-provisioner
-  id: yyq6do5aksyu
+  id: 1xekde3bzvtp
   type: challenge
   title: "\U0001F6E0️ Use a Provisioner"
   teaser: Terraform works great with many different provisioning tools including Chef,
@@ -749,13 +755,13 @@ challenges:
     "sudo apt -y install cowsay",
     "cowsay Mooooooooooo!",
     ```
-
+    <br>
     Now run another `terraform apply` to apply your changes:
 
     ```
     terraform apply -auto-approve
     ```
-
+    <br>
     Scroll back through the log output. You should see an ASCII art cow saying "Moooooooo!"
   notes:
   - type: text
@@ -794,34 +800,21 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: add-an-output
-  id: wzrottlveoho
+  id: ftpvbidce7bs
   type: challenge
   title: "\U0001F5A8️ Add an Output"
   teaser: Outputs are used to convey useful information such as IP addresses, application
     URLs or other useful data.
-  assignment: |-
-    Open the **outputs.tf** file in the Code Editor. Note the compute instance nat_ip output in the file. 
-
-    Add a second output for the `public_ip` of your web server. It's going to look almost exactly like the first output but will instead output an IP address instead of a DNS name.
-
-    Name your output `catapp_ip`.
-
-    You may refer to the docs page to see what types of outputs are valid:
-
-    [Terraform AWS Docs - Click Here](https://www.terraform.io/docs/providers/aws/r/instance.html)
-    [Terraform Outputs Docs - Click Here] (https://www.terraform.io/docs/configuration/outputs.html)
-
-    Run the Terraform refresh command to view your new output:
-
-    ```
-    terraform refresh
-    ```
-
-    You can run the Terraform output command to view all your outputs:
-
-    ```
-    terraform output
-    ```
+  assignment: "Open the **outputs.tf** file in the Code Editor. Note the catapp_url
+    output in the file. \n\nAdd a second output for the `private_ip` of your web server.
+    It's going to look a lot like the first output but will instead output the internal
+    private IP address instead of the external one.\n\nName your output `private_ip`.\n\nYou
+    may refer to the docs page to see what types of outputs are valid:\n\n[Terraform
+    GCP Docs - Click Here](https://registry.terraform.io/providers/hashicorp/google/2.20.3/docs/resources/compute_instance)\n\n[Terraform
+    Outputs Docs - Click Here] (https://www.terraform.io/docs/configuration/outputs.html)\n\nRun
+    the Terraform refresh command to view your new output:\n\n```\nterraform refresh\n```\n\n\nYou
+    can run the Terraform output command to view all your outputs:\n\n```\nterraform
+    output\n```"
   notes:
   - type: text
     contents: You can mix plain text along with Terraform data in your outputs. Outputs
@@ -848,7 +841,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: fun-with-variables
-  id: mcwatgcefeve
+  id: xj61q9rz0x8t
   type: challenge
   title: "\U0001F436 Fun With Variables"
   teaser: Variables give the consumers of your Terraform code an easy way to customize
@@ -859,23 +852,23 @@ challenges:
     ```
     terraform apply -auto-approve -var height=600 -var width=800
     ```
-
+    <br>
     Next try setting an environment variable that Terraform can read. Run this command to set the placeholder variable:
 
     ```
     export TF_VAR_placeholder=placedog.net
     ```
-
+    <br>
     Run another `terraform apply` command:
     ```
     terraform apply -auto-approve
     ```
-
+    <br>
     Now try it again with the same variable set differently on the command line:
     ```
     terraform apply -auto-approve -var placeholder=placebear.com
     ```
-
+    <br>
     Which variable took precedence? Why?
   notes:
   - type: text
@@ -914,7 +907,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-variables-quiz
-  id: m6a1ehvo3xgz
+  id: ix3atfsug8ng
   type: quiz
   title: "\U0001F4DD Quiz 4 - Terraform Variables"
   teaser: How do Terraform variables get set or overridden?
@@ -934,7 +927,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-cloud-setup
-  id: hp0pnnjyqmjm
+  id: b2qm2auioab8
   type: challenge
   title: ☁️ Terraform Cloud Setup
   teaser: Terraform Cloud offers unlimited free Terraform state storage for users.
@@ -959,7 +952,7 @@ challenges:
     ```
     terraform login
     ```
-
+    <br>
     NOTE: You won't see your token appear on the screen when you copy and paste it into the terminal. This is expected.
 
     Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
@@ -969,7 +962,7 @@ challenges:
     ```
     terraform init
     ```
-
+    <br>
     Type "yes" when it prompts you to migrate your state into Terraform Cloud.
 
     Your state is now safely stored in Terraform Cloud.
@@ -993,7 +986,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: configure-remote-state
-  id: 3iunuxtrpnb6
+  id: xlgoqnxy7i2m
   type: challenge
   title: "\U0001F39B️ Configure Remote State"
   teaser: The terraform command line tool can store its state in Terraform Cloud.
@@ -1006,7 +999,7 @@ challenges:
     ```
     terraform login
     ```
-
+    <br>
     Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
 
     Now run `terraform init` to migrate your state to Terraform Cloud:
@@ -1014,7 +1007,7 @@ challenges:
     ```
     terraform init
     ```
-
+    <br>
     Type "yes" when it prompts you to migrate your state into Terraform Cloud.
 
     Your state is now safely stored in Terraform Cloud.
@@ -1043,7 +1036,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-destroy
-  id: watj5kondoxx
+  id: sabxjydwrm3z
   type: challenge
   title: "\U0001F525 Terraform Destroy"
   teaser: Terraform can build infrastructure and also destroy it when you are done
@@ -1054,7 +1047,7 @@ challenges:
     ```
     terraform destroy
     ```
-
+    <br>
     You'll need to type "yes" when prompted to destroy your infrastructure. This is a safety feature to help prevent accidental deletion of important resources.
 
     Wait until the destroy action has completely finished before clicking on the **Check** button.
@@ -1076,4 +1069,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "6490598711360394414"
+checksum: "1968804349080010369"
