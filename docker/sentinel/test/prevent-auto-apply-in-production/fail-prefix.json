@@ -1,8 +1,0 @@
-{
-  "mock": {
-    "tfrun": "mock-tfrun-fail-prefix.sentinel"
-  },
-  "test": {
-    "main": false
-  }
-}

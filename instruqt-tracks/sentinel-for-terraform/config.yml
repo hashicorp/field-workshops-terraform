@@ -1,5 +1,0 @@
-version: "2"
-containers:
-- name: sentinel
-  image: rberlind/sentinel-for-terraform:2
-  shell: /bin/sh

@@ -1,0 +1,54 @@
+#!/bin/bash -l
+
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+cd /root/sentinel
+
+grep -qL "<resource_type>" restrict-gcp-instance-image-1.sentinel && fail-message "You have not replaced '<resource_type>' in restrict-gcp-instance-image-1.sentinel yet."
+
+grep -q "google_compute_instance" restrict-gcp-instance-image-1.sentinel || fail-message "You have not replaced '<resource_type>' with 'google_compute_instance' in restrict-gcp-instance-image-1.sentinel yet."
+
+grep -qL "<expression_1>" restrict-gcp-instance-image-1.sentinel && fail-message "You have not replaced '<expression_1>' in restrict-gcp-instance-image-1.sentinel yet."
+
+fgrep -q "boot_disk.0.initialize_params.0.image" restrict-gcp-instance-image-1.sentinel || fail-message "You have not replaced '<expression_1>' with 'boot_disk.0.initialize_params.0.image' in restrict-gcp-instance-image-1.sentinel yet."
+
+grep -qL "<expression_2>" restrict-gcp-instance-image-1.sentinel && fail-message "You have not replaced '<expression_2>' in restrict-gcp-instance-image-1.sentinel yet."
+
+grep -q "length(violatingGCPComputeInstances)" restrict-gcp-instance-image-1.sentinel || fail-message "You have not replaced '<expression_2>' with 'length(violatingGCPComputeInstances)' in restrict-gcp-instance-image-1.sentinel yet."
+
+grep -q "cp restrict-gcp-instance-image-1.sentinel restrict-gcp-instance-image.sentinel" /root/.bash_history || fail-message "You have not copied restrict-gcp-instance-image-1.sentinel to restrict-gcp-instance-image.sentinel yet."
+
+grep -q "sentinel test -run=image.sentinel -verbose" /root/.bash_history || grep -q "sentinel test -run=image.sentinel" /root/.bash_history || fail-message "You haven't tested the restrict-gcp-instance-image-1.sentinel policy against the test cases yet. Please run 'sentinel test -run=image.sentinel -verbose'"
+
+grep -qL "<expression_1>" restrict-gcp-instance-image-2.sentinel && fail-message "You have not replaced '<expression_1>' in restrict-gcp-instance-image-2.sentinel yet."
+
+fgrep -q "instance.change.after.boot_disk" restrict-gcp-instance-image-2.sentinel || fail-message "You have not replaced '<expression_1>' with 'instance.change.after.boot_disk' in restrict-gcp-instance-image-2.sentinel yet."
+
+grep -qL "<expression_2>" restrict-gcp-instance-image-2.sentinel && fail-message "You have not replaced '<expression_2>' in restrict-gcp-instance-image-2.sentinel yet."
+
+fgrep -q "boot_disk[0].initialize_params" restrict-gcp-instance-image-2.sentinel || fail-message "You have not replaced '<expression_2>' with 'boot_disk[0].initialize_params' in restrict-gcp-instance-image-2.sentinel yet."
+
+grep -qL "<expression_3>" restrict-gcp-instance-image-2.sentinel && fail-message "You have not replaced '<expression_3>' in restrict-gcp-instance-image-2.sentinel yet."
+
+matches=$(fgrep "boot_disk[0].initialize_params[0].image" restrict-gcp-instance-image-2.sentinel | wc -l)
+if [ $matches -ne 2 ]; then
+    fail-message "You have not replaced both occurences of '<expression_3>' with 'boot_disk[0].initialize_params[0].image' in restrict-gcp-instance-image-2.sentinel yet."
+fi
+
+grep -qL "<add_main_rule>" restrict-gcp-instance-image-2.sentinel && fail-message "You have not replaced '<add_main_rule>' in restrict-gcp-instance-image-2.sentinel yet."
+
+grep -q "main = rule {.*violations is 0.*}" restrict-gcp-instance-image-2.sentinel || grep -q "main = rule {.*violations.*==.*0.*}" restrict-gcp-instance-image-2.sentinel || fail-message "You have not replaced '<add_main_rule>' in restrict-gcp-instance-image-2.sentinel with 'main = rule { violations is 0 }' or something equivalent yet."
+
+sentinel test -run=gcp
+rc=$?
+if [ $rc -ne 0 ]; then
+    fail-message "Your second version of the policy did not pass both test cases. Please revise and test it again."
+fi
+
+exit 0
