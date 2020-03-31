@@ -83,7 +83,7 @@ challenges:
     type: terminal
     hostname: sentinel
   difficulty: basic
-  timelimit: 300
+  timelimit: 600
 - slug: sentinel-first-policy
   id: 8dk3ssld9wr8
   type: challenge
@@ -338,7 +338,7 @@ challenges:
     type: terminal
     hostname: sentinel
   difficulty: basic
-  timelimit: 1800
+  timelimit: 2400
 - slug: exercise-3
   id: ey54gtsigcyg
   type: challenge
@@ -447,7 +447,7 @@ challenges:
     type: terminal
     hostname: sentinel
   difficulty: basic
-  timelimit: 1800
+  timelimit: 2400
 - slug: exercise-4
   id: a2yfxvsia329
   type: challenge
@@ -552,7 +552,7 @@ challenges:
     type: terminal
     hostname: sentinel
   difficulty: basic
-  timelimit: 1800
+  timelimit: 2400
 - slug: exercise-5
   id: bptuhy7qvsp9
   type: challenge
@@ -738,5 +738,5 @@ challenges:
     type: terminal
     hostname: sentinel
   difficulty: basic
-  timelimit: 1200
-checksum: "13254703134172388741"
+  timelimit: 1800
+checksum: "18050253062280779233"
