@@ -1,0 +1,11 @@
+#!/bin/bash -l
+
+set -e
+
+grep -q "sentinel version" /root/.bash_history || fail-message "You haven't checked the Sentinel version yet."
+
+grep -q "sentinel test -h" /root/.bash_history || grep -q "sentinel test -help" /root/.bash_history || grep -q "sentinel test --help" /root/.bash_history || fail-message "You haven't run 'sentinel test -h' yet."
+
+grep -q "sentinel apply -h" /root/.bash_history || grep -q "sentinel apply -help" /root/.bash_history || grep -q "sentinel apply --help" /root/.bash_history || fail-message "You haven't run 'sentinel apply -h' yet."
+
+exit 0

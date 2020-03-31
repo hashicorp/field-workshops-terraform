@@ -1,8 +1,0 @@
-{
-  "mock": {
-    "tfplan": "mock-tfplan-fail-with-empty-string.sentinel"
-  },
-  "test": {
-    "main": false
-  }
-}

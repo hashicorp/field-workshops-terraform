@@ -1,0 +1,15 @@
+#!/bin/sh -l
+
+# Get the Sentinel version
+sentinel version
+echo -e "sentinel version\n" >> /root/.bash_history
+
+# Get help for the test command
+sentinel test -h
+echo -e "sentinel test -h\n" >> /root/.bash_history
+
+# Get help for the apply command
+sentinel apply -h
+echo -e "sentinel apply -h\n" >> /root/.bash_history
+
+exit 0

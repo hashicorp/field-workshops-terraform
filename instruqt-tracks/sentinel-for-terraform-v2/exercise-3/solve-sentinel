@@ -1,0 +1,31 @@
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/sentinel
+
+# Edit the first version of the policy
+sed -i 's/<data_source_type>/aws_acm_certificate/g' restrict-acm-certificate-domains-1.sentinel
+sed -i 's/<attribute>/domain/g' restrict-acm-certificate-domains-1.sentinel
+sed -i 's/<expression>/cert.values.domain/g' restrict-acm-certificate-domains-1.sentinel
+
+# Copy the first version of the policy
+cp restrict-acm-certificate-domains-1.sentinel restrict-acm-certificate-domains.sentinel
+
+# Test the first version of the policy
+sentinel test -run=domains.sentinel -verbose
+
+# Edit the second version of the policy
+sed -i 's/<expression>/cert.values.domain/g' restrict-acm-certificate-domains-2.sentinel
+sed -i 's/<condition>/domain matches parent_domain/g' restrict-acm-certificate-domains-2.sentinel
+sed -i 's/<regex>/(.+)\\\\.hashidemos\\\\.io$/g' restrict-acm-certificate-domains-2.sentinel
+
+# Copy the second version of the policy
+cp restrict-acm-certificate-domains-2.sentinel restrict-acm-certificate-domains.sentinel
+
+# Test the second version of the policy
+sentinel test -run=domains.sentinel -verbose
+
+exit 0

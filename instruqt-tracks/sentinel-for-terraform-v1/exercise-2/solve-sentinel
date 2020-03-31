@@ -1,0 +1,13 @@
+#!/bin/sh -l
+
+# Edit the require-access-keys-use-pgp.sentinel policy
+sed -i 's/<resource_type>/aws_iam_access_key/g' require-access-keys-use-pgp.sentinel
+sed -i 's/<condition>/r.applied.pgp_key else "" not in ["", null]/g' require-access-keys-use-pgp.sentinel
+sed -i 's/<expression>/r.applied.pgp_key/g' require-access-keys-use-pgp.sentinel
+sed -i 's/<function>/validate_keys/g' require-access-keys-use-pgp.sentinel
+
+# Test the require-access-keys-use-pgp.sentinel policy
+echo -e "sentinel test -run=keys -verbose\n" >> /root/.bash_history
+sentinel test -run=keys -verbose
+
+exit 0

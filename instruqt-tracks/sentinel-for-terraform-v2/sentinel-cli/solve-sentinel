@@ -1,0 +1,16 @@
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+# Get the Sentinel version
+sentinel version
+
+# Get help for the test command
+sentinel test -h
+
+# Get help for the apply command
+sentinel apply -h
+
+exit 0

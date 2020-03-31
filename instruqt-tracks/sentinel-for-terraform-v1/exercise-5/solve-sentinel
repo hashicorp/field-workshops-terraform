@@ -1,0 +1,16 @@
+#!/bin/sh -l
+
+# Edit the require-modules-from-pmr.sentinel policy
+sed -i 's/<declare_imports>/import "tfconfig"/g' require-modules-from-pmr.sentinel
+sed -i 's/<expression_1>/tfconfig.modules/g' require-modules-from-pmr.sentinel
+sed -i 's/<condition>/m.source matches "^" + address + "\\\\\/" + organization + "(.*)"/g' require-modules-from-pmr.sentinel
+sed -i 's/<expression_2>/m.source/g' require-modules-from-pmr.sentinel
+sed -i 's/<function>/require_modules_from_pmr/g' require-modules-from-pmr.sentinel
+sed -i 's/<arg1>/address/g' require-modules-from-pmr.sentinel
+sed -i 's/<arg2>/organization/g' require-modules-from-pmr.sentinel
+
+# Test the require-modules-from-pmr.sentinel policy
+echo -e "sentinel test -run=pmr -verbose\n" >> /root/.bash_history
+sentinel test -run=pmr -verbose
+
+exit 0
