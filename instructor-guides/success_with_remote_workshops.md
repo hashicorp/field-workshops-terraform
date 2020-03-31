@@ -54,7 +54,7 @@ Make sure you have a reliable microphone and headset. The microphone is also sup
 The same advice goes for your webcam. Don't use the built in pinhole camera on your laptop for a remote training. Get a good Logitech or other camera that is high resolution and high bandwidth. Mount the camera around eye level. If you have an external monitor you can often mount it right on the top of the monitor.
 
 ## Zoom meeting or Zoom webinar?
-Zoom meetings can accommodate up to 100 participants by default. If you think you're going to have a workshop larger than this please reach out on Slack in the #se-workshops channel.
+HashiCorp Zoom meetings can accommodate up to 500 participants by default. Zoom Breakout rooms, on the other hand, cap out at 200. If you think you're going to have a workshop larger than 200 attendees, please reach out on Slack in the #se-workshops channel.
 
 ## Enabling Break-out Sessions
 
