@@ -98,7 +98,7 @@ Once you've gotten an invite to the HashiCorp organization you can create tempor
 4. Select the track you want to make available.
 5. Set the invite to expire in a month or two.
 6. Make the track available to your user for at least a week.
-7. Turn on the **Allow Anonymous** switch so you can hand the URL out on the day of training.
+7. Do not enable **Allow Anonymous** setting if you want to be able to track users progress and emails.
 
 ### The Live Demo
 After chapter 1 there is a slide that says *Live Demo*. You can use an instruqt track to do a brief Terraform demo for your participants.
