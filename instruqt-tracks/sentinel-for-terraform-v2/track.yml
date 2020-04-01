@@ -376,7 +376,7 @@ challenges:
     You next need to replace `<expression>` with a suitable expression representing the value of the domain. By this point, the right expression should already be in your policy.
 
     ## Examine the Test Cases and Mocks
-    Now open the test cases and mock files on the "Test Cases" tab. You'll see that the "fail.json" test case refers to the the "tfstate-functions.sentinel" module and the "mock-tfstate-fail.sentinel" mock file and expects the main rule to return `false`. You'll also see that the "pass.json" test case refers to the same module and the "mock-tfstate-pass.sentinel" mock file and expects the main rule to return `true`.
+    Now open the test cases and mock files on the "Test Cases" tab. You'll see that the "fail.json" test case refers to the "tfstate-functions.sentinel" module and the "mock-tfstate-fail.sentinel" mock file and expects the main rule to return `false`. You'll also see that the "pass.json" test case refers to the same module and the "mock-tfstate-pass.sentinel" mock file and expects the main rule to return `true`.
 
     The mock files are simplified versions of mocks generated from plans of Terraform Cloud runs done against Terraform code that used the AWS provider to retrieve information from two AWS ACM certificates.
 
@@ -743,4 +743,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 1800
-checksum: "13006186852850733878"
+checksum: "2712159050156516483"
