@@ -622,13 +622,13 @@ challenges:
     contents: You can override any variable defined in the `variables.tf` file by
       setting it in your personal `terraform.tfvars` file.
   tabs:
-  - title: Shell
-    type: terminal
-    hostname: workstation
   - title: Code Editor
     type: service
     hostname: workstation
     port: 8443
+  - title: Shell
+    type: terminal
+    hostname: workstation
   - title: Text Editor
     type: code
     hostname: workstation
