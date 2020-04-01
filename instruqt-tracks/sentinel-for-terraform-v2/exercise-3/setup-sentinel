@@ -10,7 +10,7 @@ cat <<-'EOF' > /root/sentinel/restrict-acm-certificate-domains-1.sentinel
 import "tfstate/v2" as tfstate
 
 # Import common-functions/tfstate-functions.sentinel with alias "state"
-import "state"
+import "tfstate-functions" as state
 
 # Get all AWS ACM certs
 allACMCerts = state.find_datasources("<data_source_type>")
@@ -39,7 +39,7 @@ cat <<-'EOF' > /root/sentinel/restrict-acm-certificate-domains-2.sentinel
 import "tfstate/v2" as tfstate
 
 # Import common-functions/tfstate-functions.sentinel with alias "state"
-import "state"
+import "tfstate-functions" as state
 
 # Get all AWS ACM certs
 allACMCerts = state.find_datasources("aws_acm_certificate")
@@ -84,7 +84,7 @@ mkdir -p /root/sentinel/test/restrict-acm-certificate-domains
 cat <<-'EOF' > /root/sentinel/test/restrict-acm-certificate-domains/fail.json
 {
   "modules": {
-    "state": {
+    "tfstate-functions": {
       "path": "../../common-functions/tfstate-functions.sentinel"
     }
   },
@@ -100,7 +100,7 @@ EOF
 cat <<-'EOF' > /root/sentinel/test/restrict-acm-certificate-domains/pass.json
 {
   "modules": {
-    "state": {
+    "tfstate-functions": {
       "path": "../../common-functions/tfstate-functions.sentinel"
     }
   },

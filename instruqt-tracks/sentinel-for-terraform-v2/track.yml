@@ -165,6 +165,8 @@ challenges:
 
     We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it. The policy uses the "find_resources" and "filter_attribute_not_in_list" functions from the "tfplan-functions.sentinel" module in the /root/sentinel/common-functions directory. This module was copied from [tfplan-functions.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/common-functions/tfplan-functions.sentinel).
 
+    Note that the import statement uses the alias `plan` for the "tfplan-functions" import to keep lines that use it shorter. This also makes it clear which file the module is derived from.
+
     At this point, we recommend you look at the tree diagram in the [Import Overview](https://www.terraform.io/docs/cloud/sentinel/import/tfplan-v2.html#import-overview) for the `tfplan/v2` import that these functions use.
 
     When referring to an attribute in the `tfplan/v2` import, you have to use the attribute's key in the `after` map of the `change` collection of a resource or data source contained in the `resource_changes` collection. In other words, a policy evaluating attribute "x" with the `tfplan/v2` import ultimately ends up using an expression like `rc.change.after.x`.
@@ -351,6 +353,8 @@ challenges:
     Your task is to write and test a Sentinel policy that requires that all AWS Certificate Manager (ACM) Certificates referenced by a data source in Terraform's AWS Provider have domains that are subdomains of "hashidemos.io".
 
     We've made things easier by writing most of the policy for you (in two versions) and by providing the test cases and mocks that you need to test it. The policy uses the "find_datasources" function from the "tfstate-functions.sentinel" module in the /root/sentinel/common-functions directory. This module was copied from [tfstate-functions.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/common-functions/tfstate-functions.sentinel).
+
+    Note that the import statement uses the alias `state` for the "tfstate-functions" import to keep lines that use it shorter. This also makes it clear which file the module is derived from.
 
     At this point, we recommend you look at the tree diagram in the [Import Overview](https://www.terraform.io/docs/cloud/sentinel/import/tfstate-v2.html#import-overview) for the `tfstate/v2` import.
 
@@ -739,4 +743,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 1800
-checksum: "18050253062280779233"
+checksum: "13006186852850733878"

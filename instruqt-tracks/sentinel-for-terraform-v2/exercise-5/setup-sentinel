@@ -104,7 +104,7 @@ cat <<-'EOF' > /root/sentinel/test/require-modules-from-pmr/fail.json
     "organization": "Cloud-Operations"
   },
   "modules": {
-    "modules": {
+    "module-functions": {
       "path": "../../module-functions.sentinel"
     }
   },
@@ -312,7 +312,7 @@ cat <<-'EOF' > /root/sentinel/test/require-modules-from-pmr/pass.json
     "organization": "Cloud-Operations"
   },
   "modules": {
-    "modules": {
+    "module-functions": {
       "path": "../../module-functions.sentinel"
     }
   },
