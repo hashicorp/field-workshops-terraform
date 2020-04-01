@@ -215,6 +215,10 @@ challenges:
 
       You can also group your Terraform code into files by purpose. For example, you might place all your load balancer configuration code into a file called `load_balancer.tf`.
   tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
   - title: Text Editor
     type: code
     hostname: workstation
@@ -222,10 +226,6 @@ challenges:
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
   difficulty: basic
   timelimit: 1000
 - slug: terraform-init-provider
