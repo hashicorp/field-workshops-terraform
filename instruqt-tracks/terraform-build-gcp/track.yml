@@ -16,27 +16,29 @@ owner: hashicorp
 developers:
 - assareh@hashicorp.com
 private: true
-published: false
+published: true
 challenges:
 - slug: setup-our-environment
   id: 3ukzls4q8lgb
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: Configure your code editor with the HCL extension and open a workspace.
-  assignment: |-
-    Open the Code Editor tab on the left. First get familiar with the menus.
-
-    Find the "hamburger" or triple-line menu on the top of the navigation bar on the left. It's right underneath the Instruqt mascot logo. This is your Main Menu. You can find all the other Visual Studio Code menu options here.
-
-    You should see some files in the explorer bar on the left side menu. These are Terraform config files for the Hashicat application.
-
-    **All commands during the labs should be run from the hashicat-gcp directory.** The exercises directory contains templates that are used by our training platform. You only need to focus on the *.tf files in the main directory.
-
-    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes. Search for **Terraform** and click the green **Install** button to install the extension. You can click the **Reload Required** button to activate it.
-
-    Congratulations, you are ready to start working with Terraform on GCP. We'll use the hashicat-gcp example app in the rest of the challenges as you learn new Terraform skills.
-
-    Click the **Check** button to continue.
+  assignment: "Open the Code Editor tab on the left. First get familiar with the menus.\n\nFind
+    the \"hamburger\" or triple-line menu on the top of the navigation bar on the
+    left. It's right underneath the Instruqt mascot logo. This is your Main Menu.
+    You can find all the other Visual Studio Code menu options here. In the File menu
+    you should see that we have Auto Save enabled. \n\nYou should see some files in
+    the explorer bar on the left side menu. These are Terraform config files for the
+    Hashicat application.\n\n**All commands during the labs should be run from the
+    hashicat-gcp directory.** The exercises directory contains templates that are
+    used by our training platform. You only need to focus on the *.tf files in the
+    main directory.\n\nNext you should install the Terraform extension to enable syntax
+    highlighting in your code. Click on the extensions icon - it looks like four small
+    boxes. Search for **Terraform** and click the green **Install** button to install
+    the extension. You can click the **Reload Required** button to activate it.\n\nCongratulations,
+    you are ready to start working with Terraform on GCP. We'll use the hashicat-gcp
+    example app in the rest of the challenges as you learn new Terraform skills.\n\nClick
+    the **Check** button to continue."
   notes:
   - type: text
     contents: |
@@ -113,14 +115,10 @@ challenges:
     ```
     terraform version
     ```
-
-    <br>
     You can always get help if you're curious about command syntax:
     ```
     terraform help
     ```
-
-    <br>
     Terraform runs on Windows, OSX, or Linux. You can install it on your laptop or on a cloud based workstation.
 
     Today we'll be using the preconfigured Terraform workstation on the left for all our lab exercises.
@@ -168,7 +166,7 @@ challenges:
     ```
     echo $GOOGLE_CREDENTIALS
     ```
-    <br>
+
     *Do not ever store your credentials in source code files*, as they can be accidentally exposed or copied to a public repository.
   notes:
   - type: text
@@ -243,8 +241,8 @@ challenges:
     ```
     terraform init
     ```
-    <br>
-    The `terraform init` command scans your Terraform code, identifies any providers that are needed,    and downloads them.
+
+    The `terraform init` command scans your Terraform code, identifies any providers that are needed, and downloads them.
 
     Run the following command to take a peek inside the `.terraform` directory:
 
@@ -301,22 +299,15 @@ challenges:
   title: "\U0001F469‍⚖️ Terraform Validate - Test Your Code"
   teaser: Terraform has a built in validation tester. This is useful to see whether
     your Terraform code is valid and parses correctly.
-  assignment: |-
-    Terraform comes with a built-in subcommand called *validate*. This is useful when you want to do a quick syntax check of your code to make sure it parses correctly.
-
-    Click on the File Explorer icon on the left. It looks like a stack of papers.
-
-    Edit the main.tf file and remove the curly brace on line 5 of the file.
-
-    Validate your code:
-
-    ```
-    terraform validate
-    ```
-    <br>
-    Now put the curly brace back onto line 5 and run the validate command again. This time you should pass the validation test.
-
-    `terraform validate` is most often used in automated CI/CD test pipelines. It allows you to quickly catch errors in your code before any other steps are taken.
+  assignment: "Terraform comes with a built-in subcommand called `validate`. This
+    is useful when you want to do a quick syntax check of your code to make sure it
+    parses correctly.\n\nClick on the File Explorer icon on the left. It looks like
+    a stack of papers.\n\nEdit the main.tf file and remove the curly brace on line
+    5 of the file. The code editor will auto save the file. \n\nValidate your code:\n\n```\nterraform
+    validate\n```\n<br>\nNow put the curly brace back onto line 5 and run the validate
+    command again. This time you should pass the validation test.\n\n`terraform validate`
+    is most often used in automated CI/CD test pipelines. It allows you to quickly
+    catch errors in your code before any other steps are taken."
   notes:
   - type: text
     contents: Terraform has a built-in syntax checker. You can run it with the `terraform
@@ -348,7 +339,7 @@ challenges:
     ```
     terraform plan
     ```
-    <br>
+
     When you run this command Terraform will prompt you to enter the `prefix` variable.
 
     Enter a short string of lower-case letters and/or numbers. You can use your own name here if you wish. The prefix will become part of the name for our VPC network, subnet, and compute instance, as well as appear in the HashiCat application.
@@ -386,7 +377,7 @@ challenges:
 
     In Terraform all variables must be declared (with or without an optional default value) before you can use them.
 
-    Open the `terraform.tfvars` file and set your prefix variable there. Save the file.
+    Open the `terraform.tfvars` file and set your prefix variable there.
 
     Now run `terraform plan` again. This time you won't have to enter your prefix manually.
   notes:
@@ -438,7 +429,7 @@ challenges:
     ```
     terraform graph
     ```
-    <br>
+
     This generates code that can be used to create a visual map of your infrastructure. The graph data is in [DOT graph description language format](https://en.wikipedia.org/wiki/DOT_(graph_description_language)). There are several graphing tools you can use to visualize this data, including the free Blast Radius tool. You can learn more about Blast Radius here:
 
     https://28mm.github.io/blast-radius-docs/
@@ -448,8 +439,8 @@ challenges:
     ```
     blast-radius --serve .
     ```
-    <br>
-    Now switch to the **Terraform Graph** tab to view the infrastructure graph.
+
+    Now switch to the **Terraform Graph** tab to view the infrastructure graph. If the web page is blank, you may need to click the reload icon in Instruqt, which is directly to the right of the **Terraform Graph** tab and looks like a circular arrow.
 
     Explore the Terraform graph for your infrastructure. Dependencies are automatically mapped out for you. This graph was generated using the free Blast Radius tool.
 
@@ -494,7 +485,7 @@ challenges:
     ```
     terraform apply
     ```
-    <br>
+
     You'll need to enter **yes** when Terraform prompts you with the "Do you want to perform these actions?" question.
 
     Right now our code only defines a VPC network. We'll be building upon this starting point in the next challenge.
@@ -573,8 +564,6 @@ challenges:
 
     Uncomment the code by removing the `#` characters from the beginning of each line.
 
-    Save the file.
-
     Now run `terraform apply` again. Observe the results.
 
     Look at the **network** parameter inside the google_compute_subnetwork resource. See how it points back at the first resource in the file? The subnet resource inherits settings from the VPC network.
@@ -633,6 +622,9 @@ challenges:
     contents: You can override any variable defined in the `variables.tf` file by
       setting it in your personal `terraform.tfvars` file.
   tabs:
+  - title: Shell
+    type: terminal
+    hostname: workstation
   - title: Code Editor
     type: service
     hostname: workstation
@@ -641,9 +633,6 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-gcp
-  - title: Shell
-    type: terminal
-    hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: complete-the-build
@@ -672,8 +661,8 @@ challenges:
     Open your web application in a new browser tab. You'll need to copy and paste the URL into your address bar.
   notes:
   - type: text
-    contents: The -auto-approve flag can be used to override the "Are you sure?" questions
-      that appear before an apply or destroy. Use with caution!
+    contents: The `-auto-approve` flag can be used to override the "Are you sure?"
+      questions that appear before an apply or destroy. Use with caution!
   tabs:
   - title: Code Editor
     type: service
@@ -699,8 +688,8 @@ challenges:
     ```
     blast-radius --serve .
     ```
-    <br>
-    Now switch to the **Terraform Graph** tab to view the infrastructure graph.
+
+    Now switch to the **Terraform Graph** tab to view the infrastructure graph. If the web page is blank, you may need to click the reload icon in Instruqt, which is directly to the right of the **Terraform Graph** tab and looks like a circular arrow.
 
     Explore the Terraform graph for your infrastructure. Dependencies are automatically mapped out for you. This graph was generated using the free Blast Radius tool.
 
@@ -755,7 +744,7 @@ challenges:
     "sudo apt -y install cowsay",
     "cowsay Mooooooooooo!",
     ```
-    <br>
+
     Now run another `terraform apply` to apply your changes:
 
     ```
@@ -858,17 +847,17 @@ challenges:
     ```
     export TF_VAR_placeholder=placedog.net
     ```
-    <br>
+
     Run another `terraform apply` command:
     ```
     terraform apply -auto-approve
     ```
-    <br>
+
     Now try it again with the same variable set differently on the command line:
     ```
     terraform apply -auto-approve -var placeholder=placebear.com
     ```
-    <br>
+
     Which variable took precedence? Why?
   notes:
   - type: text
@@ -933,7 +922,7 @@ challenges:
   teaser: Terraform Cloud offers unlimited free Terraform state storage for users.
     Safeguard your state files by storing them remotely in Terraform Cloud.
   assignment: |-
-    During this challenge you'll use the free remote state feature of Terraform Cloud to store your state file. In order to do this you'll need a free Terraform Cloud account. Click on the URL below and sign up for an account if you don't have one already:
+    During this challenge and the next one you'll use the remote state feature of Terraform Cloud to store your state file. In order to do this you'll need a Terraform Cloud account. Click on the URL below and sign up for a free account if you don't have one already:
 
     https://app.terraform.io/signup/account
 
@@ -943,31 +932,7 @@ challenges:
 
     Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "No VCS Connection" button. Name your workspace **hashicat-gcp**.
 
-    Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local. Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables.
-
-    Next edit the `remote_backend.tf` file and replace the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name. Save the file.
-
-    Use the `terraform login` command to generate and save your token in a local config file. You can simply follow the instructions in your terminal after you run this command. All of the defaults are fine:
-
-    ```
-    terraform login
-    ```
-    <br>
-    NOTE: You won't see your token appear on the screen when you copy and paste it into the terminal. This is expected.
-
-    Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
-
-    Now run `terraform init` to migrate your state to Terraform Cloud.
-
-    ```
-    terraform init
-    ```
-    <br>
-    Type "yes" when it prompts you to migrate your state into Terraform Cloud.
-
-    Your state is now safely stored in Terraform Cloud.
-
-    Run another `terraform apply` and watch your state file evolve with each change. You can browse through previous state files with the Terraform Cloud UI.
+    Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local. Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables, which we'll do in the next challenge.
   notes:
   - type: text
     contents: Terraform Cloud remote state storage is free for all users.
@@ -992,17 +957,21 @@ challenges:
   teaser: The terraform command line tool can store its state in Terraform Cloud.
     All that is required is a user token.
   assignment: |-
-    In the Terraform Cloud web UI, go into your Terraform Cloud User Settings by clicking the icon in the upper right corner. Under User Settings click on Tokens. Generate a new token for your workstation. You can call it **workshop-token**. Copy this token for the next step.
+    During this challenge we'll configure Terraform Cloud as a remote state backend, and then migrate our existing state file to Terraform Cloud.
 
-    Use the `terraform login` command to save your token in a local config file:
+    Edit the `remote_backend.tf` file and replace the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name.
+
+    Use the `terraform login` command to generate and save your token in a local config file. You can simply follow the instructions in your terminal after you run this command. All of the defaults are fine:
 
     ```
     terraform login
     ```
     <br>
+    NOTE: You won't see your token appear on the screen when you copy and paste it into the terminal. This is expected.
+
     Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
 
-    Now run `terraform init` to migrate your state to Terraform Cloud:
+    Now run `terraform init` to migrate your state to Terraform Cloud.
 
     ```
     terraform init
@@ -1012,7 +981,7 @@ challenges:
 
     Your state is now safely stored in Terraform Cloud.
 
-    Run another `terraform apply` and watch your state file evolve with each change. You can browse through previous state files with the Terraform Cloud UI.
+    Run a `terraform apply -auto-approve` and watch your state file evolve with each change. You can browse through previous state files with the Terraform Cloud UI.
   notes:
   - type: text
     contents: |-
@@ -1069,4 +1038,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "7011834015529768607"
+checksum: "14558306284752986903"
