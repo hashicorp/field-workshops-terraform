@@ -83,7 +83,7 @@ main = rule {
 }
 EOF
 
-cat <<-'EOF' > /root/sentinel/module-functions.sentinel
+cat <<-'EOF' > /root/sentinel/common-functions/module-functions.sentinel
 # Functions that use the tfconfig import to restrict modules
 
 ##### Imports #####
@@ -105,7 +105,7 @@ cat <<-'EOF' > /root/sentinel/test/require-modules-from-pmr/fail.json
   },
   "modules": {
     "module-functions": {
-      "path": "../../module-functions.sentinel"
+      "path": "../../common-functions/module-functions.sentinel"
     }
   },
   "mock": {
@@ -313,7 +313,7 @@ cat <<-'EOF' > /root/sentinel/test/require-modules-from-pmr/pass.json
   },
   "modules": {
     "module-functions": {
-      "path": "../../module-functions.sentinel"
+      "path": "../../common-functions/module-functions.sentinel"
     }
   },
   "mock": {

@@ -630,7 +630,7 @@ challenges:
 
     Here are the steps you should follow:
 
-      1. Copy the entire `require_modules_from_pmr` function to the bottom of the "module-functions.sentinel" file.
+      1. Copy the entire `require_modules_from_pmr` function to the bottom of the "module-functions.sentinel" file that is in the /root/sentinel/common-functions directory.
       1. Save the "module-functions.sentinel" file.
       1. Replace `<import_statement>` in the "require-modules-from-pmr-2.sentinel" policy with a suitable import statement that will allow that policy to call the function from the "module-functions.sentinel" file. We recommend that you look at the test cases to see the name they are using for the module that points at that file.
       1. Replace `<function_call>` with a call to the `require_modules_from_pmr` function in the module referenced by the import statement you just added.
@@ -743,4 +743,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 1800
-checksum: "2712159050156516483"
+checksum: "10275254563827397516"

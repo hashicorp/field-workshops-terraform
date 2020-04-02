@@ -22,7 +22,7 @@ cp require-modules-from-pmr-1.sentinel require-modules-from-pmr.sentinel
 sentinel test -run=pmr.sentinel -verbose
 
 # Copy require_modules_from_pmr function to module-functions.sentinel
-cat <<-'EOF' >> /root/sentinel/module-functions.sentinel
+cat <<-'EOF' >> /root/sentinel/common-functions/module-functions.sentinel
 # Require all modules directly under root module to come from PMR
 require_modules_from_pmr = func(tf_address, tf_org) {
 
