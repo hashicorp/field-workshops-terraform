@@ -12,7 +12,7 @@ description: |-
 
   This track is intended for use with these PowerPoint [slides](https://github.com/hashicorp/field-workshops-terraform/blob/master/docs/slides/multi-cloud/sentinel-for-terraform/Sentinel-for-Terraform-v2.pptx) which you should download.
 
-  We recommend starting this track when you can set aside at least 2 hours of uninterrupted time. (The total allocation of 4 hours is for use of the track in a workshop setting in which slides are alternated with the track challenges.) If you find yourself running out of time or are interrupted, we recommend saving all your completed policies outside the track so that you can quickly restore them if forced to begin the track again.
+  We recommend starting this track when you can set aside at least 4 hours of uninterrupted time. If you find yourself running out of time or are interrupted, we recommend saving all your completed policies outside the track so that you can quickly restore them if forced to begin the track again.
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
 - terraform
@@ -66,7 +66,7 @@ challenges:
       To learn more, see https://docs.hashicorp.com/sentinel.
   - type: text
     contents: |-
-      We've launched the Sentinel CLI 0.15.1 on a Ubuntu VM running in GCP so that you don't need to download or install it.
+      We've launched the Sentinel CLI 0.15.2 on a Ubuntu VM running in GCP so that you don't need to download or install it.
 
       After learning how to use the Sentinel CLI in the first challenge, you will run a very simple policy in the second challenge.
 
@@ -77,7 +77,7 @@ challenges:
 
       The information in the notes and their links will help you solve the challenges. We're intentionally giving you links instead of the actual information to simulate what you will have to do in the real world.
 
-      When someone asks you to write a Sentinel policy that makes sure all S3 buckets are encrypted, they probably won't tell you which Terraform resource provisions an S3 bucket or which of its attributes determine its encryption. You're going to have to figure these things out on your own by searching for and reading relevant documentation.
+      When someone asks you to write a Sentinel policy that makes sure all S3 buckets are encrypted, they probably won't tell you which Terraform resource provisions an S3 bucket or which of its attributes (arguments or exported attributes) determine its encryption. You're going to have to figure these things out on your own by searching for and reading relevant documentation.
   tabs:
   - title: Sentinel CLI
     type: terminal
@@ -151,7 +151,7 @@ challenges:
     type: terminal
     hostname: sentinel
   difficulty: basic
-  timelimit: 1200
+  timelimit: 1800
 - slug: exercise-1
   id: keumj2hbfikj
   type: challenge
@@ -168,6 +168,12 @@ challenges:
     Note that the import statement uses the alias `plan` for the "tfplan-functions" import to keep lines that use it shorter. This also makes it clear which file the module is derived from.
 
     At this point, we recommend you look at the tree diagram in the [Import Overview](https://www.terraform.io/docs/cloud/sentinel/import/tfplan-v2.html#import-overview) for the `tfplan/v2` import that these functions use.
+
+    Terraform and Sentinel documentation often refer to the `attributes` of resources and data sources, but these include two different things:
+      * The `arguments` which are the inputs to the resources and data sources and are specified in Terraform code.
+      * The `exported attributes` which cannot be set in the Terraform code but are instead returned by the providers that provision the resources or read the data sources.
+
+    When you search a Terraform resource or data source document for "attributes" to restrict, you will mostly be interested in its "arguments".
 
     When referring to an attribute in the `tfplan/v2` import, you have to use the attribute's key in the `after` map of the `change` collection of a resource or data source contained in the `resource_changes` collection. In other words, a policy evaluating attribute "x" with the `tfplan/v2` import ultimately ends up using an expression like `rc.change.after.x`.
 
@@ -206,7 +212,7 @@ challenges:
     contents: |-
       In this challenge, you will complete the first of five exercises from the [Writing and Testing Sentinel Policies for Terraform](https://www.hashicorp.com/resources/writing-and-testing-sentinel-policies-for-terraform) guide.
 
-      We recommend reviewing slides 54-64 of the Sentinel-for-Terraform-v2.pptx presentation at this point. You'll be using the [tfplan/v2](https://www.terraform.io/docs/cloud/sentinel/import/tfplan-v2.html) import just as the sample policy in those slides does.
+      We recommend reviewing slides 18-21 and 72-80 of the Sentinel-for-Terraform-v2.pptx presentation at this point. You'll be using the [tfplan/v2](https://www.terraform.io/docs/cloud/sentinel/import/tfplan-v2.html) import just as the sample policy in the second group of slides does.
 
       We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it after you complete it.
   - type: text
@@ -231,7 +237,7 @@ challenges:
     type: terminal
     hostname: sentinel
   difficulty: basic
-  timelimit: 1800
+  timelimit: 2400
 - slug: exercise-2
   id: ncom9gdfdtlo
   type: challenge
@@ -313,9 +319,9 @@ challenges:
   notes:
   - type: text
     contents: |-
-      In this challenge, you will complete Exercise 2 from the [Writing and Testing Sentinel Policies for Terraform](https://www.hashicorp.com/resources/writing-and-testing-sentinel-policies-for-terraform) guide.
+      In this challenge, you will complete Exercise 2 from the "Writing and Testing Sentinel Policies for Terraform" guide.
 
-      We recommend reviewing slides 21-31 of the Sentinel-for-Terraform-v2.pptx presentation at this point. Pay special attention to the descriptions of Sentinel's [for](https://docs.hashicorp.com/sentinel/language/loops/) loop, [if/else](https://docs.hashicorp.com/sentinel/language/conditionals/) conditional, and [else](https://docs.hashicorp.com/sentinel/language/spec/#else-operator) operator. You'll use all of these in the second version of the policy you write.
+      We recommend reviewing slides 39, 42-47, and 50 of the Sentinel-for-Terraform-v2.pptx presentation at this point. Pay special attention to the descriptions of Sentinel's [for](https://docs.hashicorp.com/sentinel/language/loops/) loop, [if/else](https://docs.hashicorp.com/sentinel/language/conditionals/) conditional, [else](https://docs.hashicorp.com/sentinel/language/spec/#else-operator) operator, and [strings](https://docs.hashicorp.com/sentinel/imports/strings) import. You'll use all of these in the second version of the policy you write.
 
       We've made things easier by writing most of the policy for you (in two versions) and by providing the test cases and mocks that you need to test it.
   - type: text
@@ -340,7 +346,7 @@ challenges:
     type: terminal
     hostname: sentinel
   difficulty: basic
-  timelimit: 2400
+  timelimit: 2700
 - slug: exercise-3
   id: ey54gtsigcyg
   type: challenge
@@ -424,9 +430,9 @@ challenges:
   notes:
   - type: text
     contents: |-
-      In this challenge, you will complete Excerise 3 from the [Writing and Testing Sentinel Policies for Terraform](https://www.hashicorp.com/resources/writing-and-testing-sentinel-policies-for-terraform) guide.
+      In this challenge, you will complete Excerise 3 from the "Writing and Testing Sentinel Policies for Terraform" guide.
 
-      We recommend reviewing slides 90-91 of the Sentinel-for-Terraform-v2.pptx presentation. In this exercise, you will use the [tfstate/v2](https://www.terraform.io/docs/cloud/sentinel/import/tfstate-v2.html) import.
+      We recommend reviewing slides 22-23, 41, and 46 of the Sentinel-for-Terraform-v2.pptx presentation. In this exercise, you will use the [tfstate/v2](https://www.terraform.io/docs/cloud/sentinel/import/tfstate-v2.html) import, the [filter](https://docs.hashicorp.com/sentinel/language/collection-operations/#filter-expression) expression, and the [matches](https://docs.hashicorp.com/sentinel/language/spec/#matches-operator) operator.
 
       We've made things easier by writing most of the policy for you (in two versions) and by providing the test cases and mocks that you need to test it.
   - type: text
@@ -451,7 +457,7 @@ challenges:
     type: terminal
     hostname: sentinel
   difficulty: basic
-  timelimit: 2400
+  timelimit: 2700
 - slug: exercise-4
   id: a2yfxvsia329
   type: challenge
@@ -531,9 +537,9 @@ challenges:
   notes:
   - type: text
     contents: |-
-      In this challenge, you will complete Exercise 4 from the [Writing and Testing Sentinel Policies for Terraform](https://www.hashicorp.com/resources/writing-and-testing-sentinel-policies-for-terraform) guide.
+      In this challenge, you will complete Exercise 4 from the "Writing and Testing Sentinel Policies for Terraform" guide.
 
-      We recommend reviewing slides 89-90 of the Sentinel-for-Terraform-v2.pptx presentation. In this exercise, you will learn how to evaluate an attribute that is contained in a block contained in another block of a resource. A block is treated by Sentinel as a list of maps.
+      We recommend reviewing slides TO_BE_DETERMINED of the Sentinel-for-Terraform-v2.pptx presentation. In this exercise, you will learn how to evaluate an attribute that is contained in a block contained in another block of a resource. A block is treated by Sentinel as a list of maps.
 
       We've made things easier by writing most of the policy for you (in two versions) and by providing the test cases and mocks that you need to test it.
   - type: text
@@ -556,7 +562,7 @@ challenges:
     type: terminal
     hostname: sentinel
   difficulty: basic
-  timelimit: 2400
+  timelimit: 2700
 - slug: exercise-5
   id: bptuhy7qvsp9
   type: challenge
@@ -592,7 +598,7 @@ challenges:
 
     Next, you need to replace `<condition_2>` with a condition that tests if the module call has a `source` from the desired Private Module Registry. Since this condition is placed after `not`, the function will print a violation message for modules that are not in the PMR and set the `validated` flag to `false`.
 
-    While you could use the `matches` operator in your replacement of `<condition_2>`, please use the `has_prefix` function from Sentinel's [strings](https://docs.hashicorp.com/sentinel/imports/strings) import in your solution.
+    While you could use the `matches` operator in your replacement of `<condition_2>`, **please use the `has_prefix` function from Sentinel's [strings](https://docs.hashicorp.com/sentinel/imports/strings) import in your solution**.
 
     In general, a well-designed function should not reference things defined outside of it. So, please do not reference the Sentinel parameters, `address` and `organization` from the top of the policy; instead, reference the function's arguments, `tf_address` and `tf_org`.
 
@@ -653,9 +659,9 @@ challenges:
   notes:
   - type: text
     contents: |-
-      In this challenge, you will complete Exercise 5 from the [Writing and Testing Sentinel Policies for Terraform](https://www.hashicorp.com/resources/writing-and-testing-sentinel-policies-for-terraform) guide.
+      In this challenge, you will complete Exercise 5 from the "Writing and Testing Sentinel Policies for Terraform" guide.
 
-      We recommend reviewing slide 92 of the Sentinel-for-Terraform-v2.pptx presentation.
+      We recommend reviewing slides 24-26 of the Sentinel-for-Terraform-v2.pptx presentation.
 
       We've made things easier by writing most of the policy for you (in two versions) and by providing the test cases and mocks that you need to test it. The mocks simulate the use of two Azure modules both from the public Terraform Registry and from a Private Module Registry in an organization on the Terraform Cloud server.
   - type: text
@@ -678,7 +684,7 @@ challenges:
     type: terminal
     hostname: sentinel
   difficulty: basic
-  timelimit: 1800
+  timelimit: 2700
 - slug: extra-credit
   id: mb8omuerb9en
   type: challenge
@@ -721,7 +727,7 @@ challenges:
     contents: |-
       In this extra credit challenge, you will use the [tfrun](https://www.terraform.io/docs/cloud/sentinel/import/tfrun.html) import to prevent production workspaces from having [Auto Apply](https://www.terraform.io/docs/cloud/workspaces/settings.html#auto-apply-and-manual-apply) enabled.
 
-      We recommend reviewing slide 93 of the Sentinel-for-Terraform-v2.pptx presentation.
+      We recommend reviewing slides 27-28 of the Sentinel-for-Terraform-v2.pptx presentation.
 
       We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it.
   - type: text
@@ -742,5 +748,5 @@ challenges:
     type: terminal
     hostname: sentinel
   difficulty: basic
-  timelimit: 1800
-checksum: "10275254563827397516"
+  timelimit: 2400
+checksum: "4094486231391782818"
