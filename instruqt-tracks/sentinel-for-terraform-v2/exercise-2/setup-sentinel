@@ -9,7 +9,7 @@ cat <<-'EOF' > /root/sentinel/require-access-keys-use-pgp-1.sentinel
 import "tfplan/v2" as tfplan
 
 # Import common-functions/tfplan-functions.sentinel with alias "plan"
-import "plan"
+import "tfplan-functions" as plan
 
 # Get all AWS IAM access keys
 allIAMAccessKeys = plan.find_resources("<resource_type>")
@@ -35,7 +35,7 @@ cat <<-'EOF' > /root/sentinel/require-access-keys-use-pgp-2.sentinel
 import "tfplan/v2" as tfplan
 
 # Import common-functions/tfplan-functions.sentinel with alias "plan"
-import "plan"
+import "tfplan-functions" as plan
 
 # Standard strings import
 import "strings"
@@ -76,7 +76,7 @@ mkdir -p /root/sentinel/test/require-access-keys-use-pgp
 cat <<-'EOF' > /root/sentinel/test/require-access-keys-use-pgp/fail-invalid-value.json
 {
   "modules": {
-    "plan": {
+    "tfplan-functions": {
       "path": "../../common-functions/tfplan-functions.sentinel"
     }
   },
@@ -92,7 +92,7 @@ EOF
 cat <<-'EOF' > /root/sentinel/test/require-access-keys-use-pgp/fail-missing-value.json
 {
   "modules": {
-    "plan": {
+    "tfplan-functions": {
       "path": "../../common-functions/tfplan-functions.sentinel"
     }
   },
@@ -108,7 +108,7 @@ EOF
 cat <<-'EOF' > /root/sentinel/test/require-access-keys-use-pgp/fail-with-null.json
 {
   "modules": {
-    "plan": {
+    "tfplan-functions": {
       "path": "../../common-functions/tfplan-functions.sentinel"
     }
   },
@@ -269,7 +269,7 @@ EOF
 cat <<-'EOF' > /root/sentinel/test/require-access-keys-use-pgp/pass.json
 {
   "modules": {
-    "plan": {
+    "tfplan-functions": {
       "path": "../../common-functions/tfplan-functions.sentinel"
     }
   },

@@ -9,7 +9,7 @@ cat <<-'EOF' > /root/sentinel/restrict-gcp-instance-image-1.sentinel
 import "tfplan/v2" as tfplan
 
 # Import common-functions/tfplan-functions.sentinel with alias "plan"
-import "plan"
+import "tfplan-functions" as plan
 
 # Get all GCP compute instances
 allGCPComputeInstances = plan.find_resources("<resource_type>")
@@ -36,7 +36,7 @@ cat <<-'EOF' > /root/sentinel/restrict-gcp-instance-image-2.sentinel
 import "tfplan/v2" as tfplan
 
 # Import common-functions/tfplan-functions.sentinel with alias "plan"
-import "plan"
+import "tfplan-functions" as plan
 
 # Standard types import
 import "types"
@@ -86,7 +86,7 @@ mkdir -p /root/sentinel/test/restrict-gcp-instance-image
 cat <<-'EOF' > /root/sentinel/test/restrict-gcp-instance-image/fail-no-initialize-params.json
 {
   "modules": {
-    "plan": {
+    "tfplan-functions": {
       "path": "../../common-functions/tfplan-functions.sentinel"
     }
   },
@@ -102,7 +102,7 @@ EOF
 cat <<-'EOF' > /root/sentinel/test/restrict-gcp-instance-image/fail-invalid-image.json
 {
   "modules": {
-    "plan": {
+    "tfplan-functions": {
       "path": "../../common-functions/tfplan-functions.sentinel"
     }
   },
@@ -554,7 +554,7 @@ EOF
 cat <<-'EOF' > /root/sentinel/test/restrict-gcp-instance-image/pass.json
 {
   "modules": {
-    "plan": {
+    "tfplan-functions": {
       "path": "../../common-functions/tfplan-functions.sentinel"
     }
   },

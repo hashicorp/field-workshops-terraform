@@ -10,7 +10,7 @@ fi
 
 cd /root/sentinel
 
-grep -qL "<data_source_type>" restrict-acm-certificate-domains.sentinel && fail-message "You have not replaced '<data_source_type>' in restrict-acm-certificate-domains-1.sentinel yet."
+grep -qL "<data_source_type>" restrict-acm-certificate-domains-1.sentinel && fail-message "You have not replaced '<data_source_type>' in restrict-acm-certificate-domains-1.sentinel yet."
 
 grep -q "aws_acm_certificate" restrict-acm-certificate-domains-1.sentinel || fail-message "You have not replaced '<data_source_type>' with 'aws_acm_certificate' in restrict-acm-certificate-domains-1.sentinel yet."
 

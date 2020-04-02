@@ -165,6 +165,8 @@ challenges:
 
     We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it. The policy uses the "find_resources" and "filter_attribute_not_in_list" functions from the "tfplan-functions.sentinel" module in the /root/sentinel/common-functions directory. This module was copied from [tfplan-functions.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/common-functions/tfplan-functions.sentinel).
 
+    Note that the import statement uses the alias `plan` for the "tfplan-functions" import to keep lines that use it shorter. This also makes it clear which file the module is derived from.
+
     At this point, we recommend you look at the tree diagram in the [Import Overview](https://www.terraform.io/docs/cloud/sentinel/import/tfplan-v2.html#import-overview) for the `tfplan/v2` import that these functions use.
 
     When referring to an attribute in the `tfplan/v2` import, you have to use the attribute's key in the `after` map of the `change` collection of a resource or data source contained in the `resource_changes` collection. In other words, a policy evaluating attribute "x" with the `tfplan/v2` import ultimately ends up using an expression like `rc.change.after.x`.
@@ -352,6 +354,8 @@ challenges:
 
     We've made things easier by writing most of the policy for you (in two versions) and by providing the test cases and mocks that you need to test it. The policy uses the "find_datasources" function from the "tfstate-functions.sentinel" module in the /root/sentinel/common-functions directory. This module was copied from [tfstate-functions.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/common-functions/tfstate-functions.sentinel).
 
+    Note that the import statement uses the alias `state` for the "tfstate-functions" import to keep lines that use it shorter. This also makes it clear which file the module is derived from.
+
     At this point, we recommend you look at the tree diagram in the [Import Overview](https://www.terraform.io/docs/cloud/sentinel/import/tfstate-v2.html#import-overview) for the `tfstate/v2` import.
 
     When referring to an attribute in the `tfstate/v2` import, you have to use the attribute's key in the `values` map of a resource or data source contained in the import's `resources` collection. So, a policy evaluating attribute "x" with the `tfstate/v2` import ultimately ends up using an expression like `r.values.x`. (Recall that the `tfplan/v2` import uses an expression like `rc.change.after.x`.)
@@ -372,7 +376,7 @@ challenges:
     You next need to replace `<expression>` with a suitable expression representing the value of the domain. By this point, the right expression should already be in your policy.
 
     ## Examine the Test Cases and Mocks
-    Now open the test cases and mock files on the "Test Cases" tab. You'll see that the "fail.json" test case refers to the the "tfstate-functions.sentinel" module and the "mock-tfstate-fail.sentinel" mock file and expects the main rule to return `false`. You'll also see that the "pass.json" test case refers to the same module and the "mock-tfstate-pass.sentinel" mock file and expects the main rule to return `true`.
+    Now open the test cases and mock files on the "Test Cases" tab. You'll see that the "fail.json" test case refers to the "tfstate-functions.sentinel" module and the "mock-tfstate-fail.sentinel" mock file and expects the main rule to return `false`. You'll also see that the "pass.json" test case refers to the same module and the "mock-tfstate-pass.sentinel" mock file and expects the main rule to return `true`.
 
     The mock files are simplified versions of mocks generated from plans of Terraform Cloud runs done against Terraform code that used the AWS provider to retrieve information from two AWS ACM certificates.
 
@@ -626,7 +630,7 @@ challenges:
 
     Here are the steps you should follow:
 
-      1. Copy the entire `require_modules_from_pmr` function to the bottom of the "module-functions.sentinel" file.
+      1. Copy the entire `require_modules_from_pmr` function to the bottom of the "module-functions.sentinel" file that is in the /root/sentinel/common-functions directory.
       1. Save the "module-functions.sentinel" file.
       1. Replace `<import_statement>` in the "require-modules-from-pmr-2.sentinel" policy with a suitable import statement that will allow that policy to call the function from the "module-functions.sentinel" file. We recommend that you look at the test cases to see the name they are using for the module that points at that file.
       1. Replace `<function_call>` with a call to the `require_modules_from_pmr` function in the module referenced by the import statement you just added.
@@ -739,4 +743,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 1800
-checksum: "18050253062280779233"
+checksum: "10275254563827397516"

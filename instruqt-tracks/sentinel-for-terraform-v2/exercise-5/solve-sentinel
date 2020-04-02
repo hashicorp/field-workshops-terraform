@@ -22,7 +22,7 @@ cp require-modules-from-pmr-1.sentinel require-modules-from-pmr.sentinel
 sentinel test -run=pmr.sentinel -verbose
 
 # Copy require_modules_from_pmr function to module-functions.sentinel
-cat <<-'EOF' >> /root/sentinel/module-functions.sentinel
+cat <<-'EOF' >> /root/sentinel/common-functions/module-functions.sentinel
 # Require all modules directly under root module to come from PMR
 require_modules_from_pmr = func(tf_address, tf_org) {
 
@@ -56,7 +56,7 @@ require_modules_from_pmr = func(tf_address, tf_org) {
 EOF
 
 # Edit the second version of the policy
-sed -i 's/<import_statement>/import "modules"/g' require-modules-from-pmr-2.sentinel
+sed -i 's/<import_statement>/import "module-functions" as modules/g' require-modules-from-pmr-2.sentinel
 sed -i 's/<function_call>/modules.require_modules_from_pmr(address, organization)/g' require-modules-from-pmr-2.sentinel
 
 # Copy the second version of the policy

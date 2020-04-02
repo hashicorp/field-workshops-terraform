@@ -827,7 +827,7 @@ cat <<-'EOF' > /root/sentinel/restrict-vault-auth-methods.sentinel
 import "tfplan/v2" as tfplan
 
 # Import common-functions/tfplan-functions.sentinel with alias "plan"
-import "plan"
+import "tfplan-functions" as plan
 
 # Allowed Vault Auth Methods
 allowed_methods = [
@@ -859,7 +859,7 @@ mkdir -p /root/sentinel/test/restrict-vault-auth-methods
 cat <<-'EOF' > /root/sentinel/test/restrict-vault-auth-methods/fail.json
 {
   "modules": {
-    "plan": {
+    "tfplan-functions": {
       "path": "../../common-functions/tfplan-functions.sentinel"
     }
   },
@@ -875,7 +875,7 @@ EOF
 cat <<-'EOF' > /root/sentinel/test/restrict-vault-auth-methods/pass.json
 {
   "modules": {
-    "plan": {
+    "tfplan-functions": {
       "path": "../../common-functions/tfplan-functions.sentinel"
     }
   },

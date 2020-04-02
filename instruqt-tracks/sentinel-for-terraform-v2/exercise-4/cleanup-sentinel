@@ -1,0 +1,9 @@
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+rm /root/sentinel/restrict-gcp-instance-image.sentinel
+
+exit 0
