@@ -43,7 +43,9 @@ fi
 
 grep -qL "<add_main_rule>" restrict-gcp-instance-image-2.sentinel && fail-message "You have not replaced '<add_main_rule>' in restrict-gcp-instance-image-2.sentinel yet."
 
-grep -q "main = rule {.*violations is 0.*}" restrict-gcp-instance-image-2.sentinel || grep -q "main = rule {.*violations.*==.*0.*}" restrict-gcp-instance-image-2.sentinel || fail-message "You have not replaced '<add_main_rule>' in restrict-gcp-instance-image-2.sentinel with 'main = rule { violations is 0 }' or something equivalent yet."
+grep -q "main = rule {" restrict-gcp-instance-image-2.sentinel || fail-message "You have not added 'main = rule {' in restrict-gcp-instance-image-2.sentinel yet."
+
+grep -q "violations is 0" restrict-gcp-instance-image-2.sentinel || grep -q "violations == 0" restrict-gcp-instance-image-2.sentinel || fail-message "You have not added 'violations is 0' or 'violations == 0' to your main rule in restrict-gcp-instance-image-2.sentinel yet."
 
 sentinel test -run=gcp
 rc=$?

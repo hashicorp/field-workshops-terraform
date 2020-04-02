@@ -20,7 +20,7 @@ grep -q "pgp_key" require-access-keys-use-pgp-1.sentinel || fail-message "You ha
 
 grep -qL "<condition>" require-access-keys-use-pgp-1.sentinel && fail-message "You have not replaced '<condition>' in require-access-keys-use-pgp-1.sentinel yet."
 
-grep -q "violations is 0" require-access-keys-use-pgp-1.sentinel || grep -q "violations == 0" require-access-keys-use-pgp-1.sentinel || fail-message "You have not replaced '<condition>' with 'violations = 0' or 'violations == 0' in require-access-keys-use-pgp-1.sentinel yet."
+grep -q "violations is 0" require-access-keys-use-pgp-1.sentinel || grep -q "violations == 0" require-access-keys-use-pgp-1.sentinel || fail-message "You have not replaced '<condition>' with 'violations is 0' or 'violations == 0' in require-access-keys-use-pgp-1.sentinel yet."
 
 grep -q "cp require-access-keys-use-pgp-1.sentinel require-access-keys-use-pgp.sentinel" /root/.bash_history || fail-message "You have not copied require-access-keys-use-pgp-1.sentinel to require-access-keys-use-pgp.sentinel yet."
 

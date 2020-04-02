@@ -60,10 +60,10 @@ filter_images = func(instances, image) {
     if types.type_of(<expression_2>) is not "list" {
       violators[address] = instance
       print(address, "does not have image defined: it should be debian-cloud/debian-9")
-    } else if <expression_3> is not "debian-cloud/debian-9" {
+    } else if <expression_3> is not image {
       violators[address] = instance
       print(address, "has image", <expression_3>,
-            "but is supposed to use debian-cloud/debian-9")
+            "but is supposed to use", image)
     } // end if
   } // end for
 
