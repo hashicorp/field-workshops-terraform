@@ -9,7 +9,7 @@ source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 
 # Clone the hashicat-gcp repo
-git clone https://github.com/assareh/hashicat-gcp
+git clone https://github.com/hashicorp/hashicat-gcp
 GITDIR="/root/hashicat-gcp"
 /bin/set-workdir "${GITDIR}"
 

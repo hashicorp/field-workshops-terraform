@@ -1,8 +1,8 @@
 slug: terraform-build-gcp
 id: wykyne6vqrul
 type: track
-title: Intro to Terraform on GCP - BETA
-teaser: Provision the HashiCat application on GCP Cloud using Terraform.
+title: Intro to Terraform on Google Cloud Platform
+teaser: Provision the HashiCat application on GCP using Terraform.
 description: "This track will introduce you to Terraform on Google Cloud Platform
   (GCP).\n\nWe'll learn Terraform setup, basic commands, and gradually build an entire
   application stack.\n\nWhen you're finished you'll be able to view the HashiCat application
@@ -1038,4 +1038,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "14558306284752986903"
+checksum: "13174136683256592501"
