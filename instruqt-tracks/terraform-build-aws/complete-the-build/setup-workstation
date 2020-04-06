@@ -10,7 +10,7 @@ cp exercises/main.tf.completed main.tf
 cat <<EOF > outputs.tf
 # Outputs file
 output "catapp_url" {
-  value = "http://\${aws_instance.hashicat.public_dns}"
+  value = "http://\${aws_eip.hashicat.public_dns}"
 }
 EOF
 
