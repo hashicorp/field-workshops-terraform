@@ -384,11 +384,11 @@ challenges:
   assignment: |-
     We've created a `terraform.tfvars` file for you to edit. This is a special file where you can set any variables you wish to change from their defaults.
 
-    Variables are *defined* in the **variables.tf** file. They are *set* in the `terraform.tfvars` file.
+    Variables are *declared* in the **variables.tf** file. They are *set* or *defined* in the `terraform.tfvars` file.
 
     In Terraform all variables must be declared (with or without an optional default value) before you can use them.
 
-    Open the `terraform.tfvars` file and set your prefix variable by deleting the `#` at the beginning of the line and replacing "yourname" with your own name.. Save the file.
+    Open the `terraform.tfvars` file and set your prefix variable by deleting the `#` at the beginning of the line and replacing "yourname" with your own name. The file will auto-save.
 
     Now run `terraform plan` again. This time you won't have to enter your prefix manually.
   notes:
