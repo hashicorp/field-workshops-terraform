@@ -1,0 +1,2 @@
+#!/bin/bash
+/bin/set-workdir /root/hashicat-gcp

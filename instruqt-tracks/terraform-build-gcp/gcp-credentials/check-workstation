@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+# With VM-based workstations history isn't written until the user ends the shell session
+# # Hence this check won't work with default settings.
+# grep -q "GOOGLE_CREDENTIALS" /root/.bash_history || fail-message "You haven't checked your credentials yet. We believe in you!"
