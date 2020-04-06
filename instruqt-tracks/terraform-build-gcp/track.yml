@@ -478,7 +478,7 @@ challenges:
     terraform plan
     ```
     <br>
-    Confirm the proper prefix is displayed in the plan output.
+    Confirm the proper prefix is displayed in the plan output.  Look for **# google_compute_network.hashicat** and find the output next to **+ name**.
 
     Then run `terraform apply` and watch your resources being built.
 
