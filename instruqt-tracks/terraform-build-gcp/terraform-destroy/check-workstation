@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+cd /root/hashicat-gcp
+RESOURCES=$(cat terraform.tfstate | jq '.resources | .[]')
+
+if [ ! -z $RESOURCES ]; then
+  fail-message "Oops, looks like you still have some resources. Try running `terraform destroy` again."
+  exit 1
+fi

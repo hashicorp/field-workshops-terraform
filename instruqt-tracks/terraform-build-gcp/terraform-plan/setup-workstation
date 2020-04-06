@@ -1,0 +1,7 @@
+#!/bin/bash
+/bin/set-workdir /root/hashicat-gcp
+
+echo "# This is your variables file, you can override any default variables here." > terraform.tfvars
+echo "# Uncomment the line below and change it to your own name." >> terraform.tfvars
+echo "" >> terraform.tfvars
+echo "#prefix = \"yourname\"" >> terraform.tfvars

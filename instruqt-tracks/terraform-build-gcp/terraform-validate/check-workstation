@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+cd /root/hashicat-gcp
+/usr/local/bin/terraform validate || fail-message "Oops, it looks like there is still an error in your Terraform code."
