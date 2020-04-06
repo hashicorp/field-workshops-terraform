@@ -95,7 +95,7 @@ challenges:
 
     You can also hide and show these notes with the expand icon on the upper right side of the GUI. It looks like a box with two small arrows in the corners. This will expand and close the notes panel. Try it now to give your text editor more space.
 
-    NOTE: If you prefer a classic command line experience we've provided another tab titled **Terminal**. The vim text editor is also installed on your workstation.
+    NOTE: If you prefer a classic command line experience we've provided another tab titled **Shell**. The vim text editor is also installed on your workstation.
 
     Good job, you're ready to deploy the hashicat application on GCP!
   notes:
