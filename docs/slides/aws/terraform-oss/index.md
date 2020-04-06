@@ -899,7 +899,7 @@ class: img-right
 
 The terraform resource graph visually depicts dependencies between resources.
 
-The location and prefix variables are required to create the resource group, which is in turn required to build the virtual network.
+The region and prefix variables are required to create the resource group, which is in turn required to build the virtual network.
 
 ???
 This is a good spot to talk a bit about how the dependency graph gets formed.

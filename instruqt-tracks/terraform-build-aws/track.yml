@@ -82,6 +82,8 @@ challenges:
 
     You can also hide and show these notes with the expand icon on the upper right side of the GUI. It looks like a box with two small arrows in the corners. This will expand and close the notes panel. Try it now to give your text editor more space.
 
+    Auto-save is enabled so you don't have to save your files manually. You can always tell if a file is saved or not by looking for an X or a circle on the file tab. If it's an X, then the file has been saved.
+
     **NOTE**: There is also an extra tab named *Shell* if you prefer a purely command line experience.
   notes:
   - type: text
@@ -110,13 +112,17 @@ challenges:
     Let's start with some basic Terraform commands.
     Run the following commands in the terminal on the left.
     Check the version of Terraform running on your machine:
+
     ```
     terraform version
     ```
+
     You can always get help if you're curious about command syntax:
+
     ```
     terraform help
     ```
+
     Terraform runs on Windows, OSX, or Linux. You can install it on your laptop or on a cloud based workstation.
 
     Today we'll be using the preconfigured Terraform workstation on the left for all our lab exercises.
@@ -382,7 +388,7 @@ challenges:
 
     In Terraform all variables must be declared (with or without an optional default value) before you can use them.
 
-    Open the `terraform.tfvars` file and set your prefix variable there. Save the file.
+    Open the `terraform.tfvars` file and set your prefix variable by deleting the `#` at the beginning of the line and replacing "yourname" with your own name.. Save the file.
 
     Now run `terraform plan` again. This time you won't have to enter your prefix manually.
   notes:
@@ -430,7 +436,7 @@ challenges:
     ap-southeast-2 - Sydney<br>
     eu-north-1 - London
 
-    Once you've set your location variable try running `terraform plan` again. What's different this time?
+    Choosing a region close to you can help improve speed and performance.
 
     HINT: Remember that you can set any variable you wish in the `terraform.tfvars` file.
   notes:
@@ -493,7 +499,7 @@ challenges:
     blast-radius --serve .
     ```
 
-    Now switch to the **Terraform Graph** tab to view the infrastructure graph.
+    Now switch to the **Terraform Graph** tab to view the infrastructure graph. If the web page is blank, you may need to click the reload icon (which looks like a circular arrow)
 
     Explore the Terraform graph for your infrastructure. Dependencies are automatically mapped out for you. This graph was generated using the free Blast Radius tool.
 
@@ -605,18 +611,14 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-- slug: change-location
+- slug: change-prefix
   id: yetkjpluigvg
   type: challenge
-  title: "\U0001F6EB Change Your Location"
+  title: "\U0001F6EB Change Your Prefix"
   teaser: When your Terraform code changes, your infrastructure will be modified to
     match the updated code. Terraform is a declarative language.
   assignment: |-
-    Edit the `terraform.tfvars` file to change your AWS region. You can choose any valid AWS region.
-
-    Examples:<br>
-    us-east-1     - Virginia<br>
-    us-west-2     - Oregon<br>
+    Edit the `terraform.tfvars` file to change your prefix. You could simply add a number to the end if you like. Or change it to something entirely new.
 
     Save the `terraform.tfvars` file and run your apply command again.
 
@@ -745,7 +747,7 @@ challenges:
     Open your web application in a new browser tab. You'll need to copy and paste the URL into your address bar.
   notes:
   - type: text
-    contents: The -auto-approve flag can be used to override the "Are you sure?" questions
+    contents: The `-auto-approve` flag can be used to override the "Are you sure?" questions
       that appear before an apply or destroy. Use with caution!
   tabs:
   - title: Code Editor
@@ -773,7 +775,7 @@ challenges:
     blast-radius --serve .
     ```
 
-    Now switch to the **Terraform Graph** tab to view the infrastructure graph.
+    Now switch to the **Terraform Graph** tab to view the infrastructure graph. If the web page is blank, you may need to click the reload icon (which looks like a circular arrow)
 
     Explore the Terraform graph for your infrastructure. Dependencies are automatically mapped out for you. This graph was generated using the free Blast Radius tool.
 
@@ -829,7 +831,7 @@ challenges:
     "cowsay Mooooooooooo!",
     ```
 
-    Now run another `terraform apply` to apply your changes:
+    Now run another `terraform apply -auto-approve` to apply your changes:
 
     ```
     terraform apply -auto-approve
@@ -945,12 +947,14 @@ challenges:
     export TF_VAR_placeholder=placedog.net
     ```
 
-    Run another `terraform apply` command:
+    Run another `terraform apply -auto-approve` command:
+
     ```
     terraform apply -auto-approve
     ```
 
     Now try it again with the same variable set differently on the command line:
+
     ```
     terraform apply -auto-approve -var placeholder=placebear.com
     ```
@@ -1031,7 +1035,7 @@ challenges:
 
     Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local. Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables.
 
-    Next edit the `remote_backend.tf` file and replace the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name. Save the file.
+    Return to your Code Editor tab and edit the `remote_backend.tf` file, replacing the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name. Save the file.
 
     Use the `terraform login` command to generate and save your token in a local config file. You can simply follow the instructions in your terminal after you run this command. All of the defaults are fine:
 
@@ -1053,7 +1057,7 @@ challenges:
 
     Your state is now safely stored in Terraform Cloud.
 
-    Run another `terraform apply` and watch your state file evolve with each change. You can browse through previous state files with the Terraform Cloud UI.
+    Run another `terraform apply -auto-approve` and watch your state file evolve with each change. You can browse through previous state files with the Terraform Cloud UI.
   notes:
   - type: text
     contents: Terraform Cloud remote state storage is free for all users.
@@ -1098,7 +1102,7 @@ challenges:
 
     Your state is now safely stored in Terraform Cloud.
 
-    Run another `terraform apply` and watch your state file evolve with each change. You can browse through previous state files with the Terraform Cloud UI.
+    Run another `terraform apply -auto-approve` and watch your state file evolve with each change. You can browse through previous state files with the Terraform Cloud UI.
   notes:
   - type: text
     contents: |-
