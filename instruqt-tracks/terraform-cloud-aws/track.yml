@@ -95,6 +95,8 @@ challenges:
 
     You can also hide and show these notes with the expand icon on the upper right side of the GUI. It looks like a box with two small arrows in the corners. This will expand and close the notes panel. Try it now to give your text editor more space.
 
+    Auto-save is enabled so you don't have to save your files manually. You can always tell if a file is saved or not by looking for an X or a circle on the file tab. If it's an X, then the file has been saved.
+
     NOTE: If you prefer a classic command line experience we've provided another tab titled **Shell**. The vim text editor is also installed on your workstation.
 
     Good job, you're ready to deploy the hashicat application on AWS!
@@ -184,7 +186,7 @@ challenges:
 
     Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
 
-    Next edit the `remote_backend.tf` file and replace the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name. Save the file.
+    Return to your Code Editor tab and edit the `remote_backend.tf` file, replacing the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name. Save the file.
 
     Once you've got all the pieces in place, try running a `terraform init` and then `terraform apply` command in the terminal.
 

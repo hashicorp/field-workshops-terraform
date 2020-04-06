@@ -79,6 +79,8 @@ challenges:
     Click on the File Explorer icon a couple times to toggle the File Explorer on and off. This can provide more space while you're viewing and editing code.
 
     You can also hide and show these notes with the expand icon on the upper right side of the GUI. It looks like a box with two small arrows in the corners. This will expand and close the notes panel. Try it now to give your text editor more space.
+
+    Auto-save is enabled so you don't have to save your files manually. You can always tell if a file is saved or not by looking for an X or a circle on the file tab. If it's an X, then the file has been saved.
   notes:
   - type: text
     contents: The terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
