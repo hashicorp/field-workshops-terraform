@@ -404,7 +404,7 @@ challenges:
   title: "\U0001F4DD Quiz 2 - Variables"
   teaser: A quiz about Terraform variables
   assignment: |
-    Where are Terraform variables *defined*?
+    Where are terraform variables *declared*?
   notes:
   - type: text
     contents: |
