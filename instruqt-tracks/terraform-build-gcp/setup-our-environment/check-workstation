@@ -10,6 +10,6 @@ if [ -f /tmp/skip-check ]; then
 fi
 
 # Make sure we have valid GCP credentials in our shell environment
-echo $GOOGLE_CREDENTIALS | jq -r .private_key > /tmp/privkey && chmod 600 /tmp/privkey && ssh-keygen -y -e -f /tmp/privkey || fail-message "Uh oh, you don't seem to have valid Google Cloud credentials. Please stop and restart the track.
+echo $GOOGLE_CREDENTIALS | jq -r .private_key > /tmp/privkey && chmod 600 /tmp/privkey && ssh-keygen -y -e -f /tmp/privkey || fail-message "Uh oh, you don't seem to have valid Google Cloud credentials. Please stop and restart the track."
 
 [[ -f /bin/set-workdir ]] || fail-message "Uh oh, you're missing the set-workdir script. Please restart your track."
