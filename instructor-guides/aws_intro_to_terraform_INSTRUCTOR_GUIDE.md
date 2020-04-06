@@ -91,7 +91,7 @@ Scroll through the main.tf file and point out some of the resources that are bei
 
 Run an apply with some different variables:
 ```
-terraform apply -auto-approve -var height=1000 width=1200
+terraform apply -auto-approve -var height=1000 -var width=1200
 ```
 
 > This terraform code has been optimized to re-deploy our application on every run. What's happening now is terraform is checking the state of my network, security groups, and vm settings. In the real world you probably would not use Terraform in this way (forcing a redeploy of the application every run). But for demo and learning purposes it helps us get some practice running terraform apply and seeing instant feedback.
