@@ -133,10 +133,12 @@ challenges:
 
     Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "No VCS Connection" button. Name your workspace **hashicat-aws**.
 
+    No really...you *must* name your workspace **hashicat-aws**. If you don't the exercises will break. Do not attempt to name it something else.
+
     DO NOT SKIP THIS NEXT STEP:
 
     Go into the workspace's **Settings >> General** settings page and change the **Execution Mode** to local.
-    
+
     Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables.
 
     Enable a free trial of Terraform Cloud paid features by navigating to: **Settings** > **Plan & Billing**, select **Trial Plan**, and click the button for **Start your free trial**.
