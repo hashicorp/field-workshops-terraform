@@ -488,7 +488,7 @@ challenges:
     terraform graph
     ```
 
-    This generates code that can be used to create a visual map of your infrastructure. The graph data is in [DOT graph description language format](https://en.wikipedia.org/wiki/DOT_(graph_description_language). There are several graphing tools you can use to visualize this data, including the free Blast Radius tool. You can learn more about Blast Radius here:
+    This generates code that can be used to create a visual map of your infrastructure. The graph data is in [DOT graph description language format](https://en.wikipedia.org/wiki/DOT_(graph_description_language)). There are several graphing tools you can use to visualize this data, including the free Blast Radius tool. You can learn more about Blast Radius here:
 
     https://28mm.github.io/blast-radius-docs/
 
@@ -1029,17 +1029,17 @@ challenges:
   teaser: Terraform Cloud offers unlimited free Terraform state storage for users.
     Safeguard your state files by storing them remotely in Terraform Cloud.
   assignment: |-
-    Sign up for a free Terraform Cloud account at the following URL:
+    During this challenge and the next one, you'll use the remote state feature of Terraform Cloud to store your state file in the cloud. In order to do this you'll need a Terraform Cloud account. Click on the URL below and sign up for a free account if you don't have one already:
 
     https://app.terraform.io/signup/account
 
     If you already have an account you can simply sign in with your existing credentials.
 
-    Once you're signed into Terraform Cloud create a new organization called YOURNAME-sandbox. Replace YOURNAME with your own name or other text.
+    Once you're signed into Terraform Cloud create a new organization called YOURNAME-training. Replace YOURNAME with your own name or other text.
 
-    Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "No VCS Connection" button. Name your workspace **hashicat**.
+    Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "No VCS Connection" button. Name your workspace **hashicat-azure**.
 
-    Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local.  Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables.
+    Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local. Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables, which we'll do in the next challenge.
   notes:
   - type: text
     contents: Terraform Cloud remote state storage is free for all users.
@@ -1064,26 +1064,16 @@ challenges:
   teaser: The Terraform command line tool can store its state in Terraform Cloud.
     All that is required is a user token.
   assignment: |-
-    During this challenge you'll use the free remote state feature of Terraform Cloud to store your state file. In order to do this you'll need a free Terraform Cloud account. Click on the URL below and sign up for an account if you don't have one already:
+    During this challenge we'll configure Terraform Cloud as a remote state backend, and then migrate our existing state file to Terraform Cloud.
 
-    https://app.terraform.io/signup/account
-
-    If you already have an account you can simply sign in with your existing credentials.
-
-    Once you're signed into Terraform Cloud create a new organization called YOURNAME-training. Replace YOURNAME with your own name or other text.
-
-    Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "No VCS Connection" button. Name your workspace **hashicat-azure**.
-
-    Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local. Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables.
-
-    Return to your Code Editor tab and edit the `remote_backend.tf` file, replacing the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name. Save the file.
+    Edit the `remote_backend.tf` file and replace the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name.
 
     Use the `terraform login` command to generate and save your token in a local config file. You can simply follow the instructions in your terminal after you run this command. All of the defaults are fine:
 
     ```
     terraform login
     ```
-
+    <br>
     NOTE: You won't see your token appear on the screen when you copy and paste it into the terminal. This is expected.
 
     Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
@@ -1093,12 +1083,12 @@ challenges:
     ```
     terraform init
     ```
-
+    <br>
     Type "yes" when it prompts you to migrate your state into Terraform Cloud.
 
     Your state is now safely stored in Terraform Cloud.
 
-    Run another `terraform apply -auto-approve` and watch your state file evolve with each change. You can browse through previous state files with the Terraform Cloud UI.
+    Run a `terraform apply -auto-approve` and watch your state file evolve with each change. You can browse through previous state files with the Terraform Cloud UI.
   notes:
   - type: text
     contents: |-
