@@ -49,6 +49,8 @@ challenges:
 
     Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes. Search for **Terraform** and click the green **Install** button to install the extension. You can click the **Reload Required** button to activate it.
 
+    We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
+
     Congratulations, you are ready to start working with Terraform on GCP. We'll use the hashicat-gcp example app in the rest of the challenges as you learn new Terraform skills.
 
     Click the **Check** button to continue.
@@ -83,7 +85,7 @@ challenges:
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
     on Linux, Windows, or MacOS.
   assignment: |-
-    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-J** (**CMD-J** on Mac).
+    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-`** (Windows) or **CMD-`** (Mac). That is a backtick character, usually found in the upper left corner of your keyboard..
 
     All Terraform commands should be run from the terminal within the Code Editor.
 
@@ -176,19 +178,26 @@ challenges:
     4. A *user* token for authentication<br>
     5. A `remote_backend` config stored in your workspace<br>
 
-    Use the `terraform login` command to generate and save your token in a local config file. You can simply follow the instructions in your terminal after you run this command. All of the defaults are fine:
+    Let's generate a new **user token** for use on your workstation. Visit the User Settings > Tokens page in Terraform Cloud:
 
-    ```
-    terraform login
-    ```
+    https://app.terraform.io/app/settings/tokens
 
-    NOTE: You won't see your token appear on the screen when you copy and paste it into the terminal. This is expected.
+    Click on the **Create an API token** button. You can name the token whatever you like. Copy the entire token using your mouse or the small copy-paste icon.
+
+    Next, go back to your Instruqt workstation code editor and open the `/root/.terraform.d/credentials.tfrc.json` file. Replace the part that says YOURTOKEN with what you copied from Terraform Cloud. Close the file.
 
     Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
 
     Return to your Code Editor tab and edit the `remote_backend.tf` file, replacing the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name. Save the file.
 
     Once you've got all the pieces in place, try running a `terraform init` and then `terraform apply` command in the terminal.
+
+    ```
+    terraform init
+    terraform apply
+    ```
+
+    Remember to type *yes* in the terminal when you are prompted by Terraform to confirm the apply.
 
     When you're done you should see a new state file in your Terraform Cloud workspace. Confirm that terraform has run successfully and the hashicat app is working, then If you ran terraform locally before configuring remote state, you'll have a local state file called `terraform.tfstate`. Delete your state file if it exists.
 
@@ -197,6 +206,8 @@ challenges:
     ```
 
     Report back to Robin with the *Check* button below once you've successfully deployed the hashicat application with remote state enabled.
+
+    If you'd like to see the hashicat application in your web browser, simply copy the link from the output of your Terraform run, and paste it into the URL bar in another tab or window.
   notes:
   - type: text
     contents: "It's Monday morning and you're the first one into the office. Most
@@ -269,13 +280,13 @@ challenges:
 
     Test your work by running `terraform init`. Your backend configuration will be updated for remote execution.
 
-    Next try running `terraform plan`. You should see a remote execution run begin on Terraform Cloud. A copy of the output will be streamed back to your terminal. Run a terraform apply to see it in action:
+    Next try running `terraform plan`. This will trigger what's known as a speculative plan. You can view this plan by copying the link from your terminal.  This plan will not show up in your ordinary terraform runs that are triggered via the UI or API.
+
+    A copy of the plan output will be streamed back to your terminal. Run a terraform apply to see it in action. The apply will show up if you navigate to the runs page in the Terraform Cloud UI.
 
     ```
-    terraform apply -auto-approve
+    terraform apply
     ```
-
-    The `-auto-approve` flag will override the approval phase and go directly to the build.
 
     Congratulations, your GCP keys are now safely encrypted and stored in your Terraform Cloud workspace.
 
@@ -353,7 +364,7 @@ challenges:
 
     Note that you will not see any users in your organization until they accept your invitations.
 
-    You will need at least two users in your organization to pass this challenge.
+    You will need at least two users (including yourself) in your organization to pass this challenge. The users you invite do not have to accept the invite to be counted.
   notes:
   - type: text
     contents: "A few months go by and you continue building more infrastructure with
@@ -498,6 +509,8 @@ challenges:
     Your partner should now review and approve the pull request. Or if you're working alone you can review your own pull request and merge the changes.
 
     Once you've merged your changes to the master branch, watch the Terraform run that starts in the UI.
+
+    You can do this by clicking on the **Details** link next to the hashicat-aws check on the GitHub screen. This will take you straight to the speculative plan run in Terraform Cloud.
   notes:
   - type: text
     contents: "The marketing team at ACME is running a special promotion next week
@@ -538,7 +551,9 @@ challenges:
     In this challenge you'll use Sentinel to enforce a rule that requires any GCP instance created in your account to have the correct billable and department labels.
 
     ### Challenge Setup
-    1. Before configuring Sentinel you'll need to queue up a Destroy run. You must create a special environment variable named `CONFIRM_DESTROY` in your workspace to enable this. Set the value of this environment variable to `1`. Now you can use the **Settings >> Destruction and Deletion** menu to queue a destroy plan. Do not click the red **Delete from Terraform Cloud** button!!! Instead, click on **Queue Destroy Plan** and confirm it if necessary.
+    1. Before configuring Sentinel you'll need to queue up a Destroy run. Click on your workspace **Settings >> Destruction and Deletion** menu to queue a destroy plan. You'll need to check the box that says "Allow destroy plans" to proceed.
+
+    Do not click the red **Delete from Terraform Cloud** button!!! Instead, click on **Queue Destroy Plan** and confirm it if necessary.
 
     2. Create a fork of the following GitHub repo, which contains a Sentinel Policy Set that you can use in your own organization. As you did with the hashicat-gcp repo, use the **Fork** button in the upper right corner of the screen to create your own copy.
 
@@ -640,7 +655,15 @@ challenges:
 
     It's ok to make a really simple network with only one subnet and hard-coded variables. Remember to specify the correct **source** for your module. Look in the module's README in your private module registry to see the usage examples.
 
-    After you have saved the `vpc.tf` file, commit it to your local git repository and push the changes to your remote fork. You will be prompted to log onto your github account to push the change.
+    After you have saved the `vpc.tf` file, commit it to your local git repository and push the changes to your remote fork. You'll need to run a `git pull` command first to pull in the changes you made in the previous collaboration challenge.
+
+    ```
+    git pull origin master
+    ```
+
+    The pull command will pop open the nano text editor with a merge message. Simply hit **CTRL-X** to save the file and complete the merge.
+
+    Next you can add, commit, and push your latest changes to your remote fork. You will be prompted to log onto your github account to push the change.
 
     ```
     git add .
@@ -656,7 +679,7 @@ challenges:
 
     HINT: The docs are your friend. They might even have an example of how the code should look.
 
-    If all went well you should see a new VPC being built in the console output. Click the `Check` button to verify your work.
+    If all went well you should see a new VPC being built in the console output. Wait until your terraform apply command is complete, then click the `Check` button to verify your work.
   notes:
   - type: text
     contents: "Most of the devops team is using Terraform to build and configure their

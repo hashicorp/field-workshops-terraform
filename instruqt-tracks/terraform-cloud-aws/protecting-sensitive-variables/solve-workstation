@@ -38,7 +38,7 @@ cat <<-EOF > /tmp/access_key.json
       "value":"$AWS_ACCESS_KEY_ID",
       "category":"env",
       "hcl":false,
-      "sensitive":true
+      "sensitive":false
     },
     "relationships": {
       "workspace": {

@@ -35,6 +35,8 @@ challenges:
 
     Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes. Search for **Terraform** and click the green **Install** button to install the extension. You can click the **Reload Required** button to activate it.
 
+    We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
+
     Congratulations, you are ready to start working with Terraform.
 
     Click the **Check** button to continue.
@@ -68,7 +70,7 @@ challenges:
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
     on Linux, Windows, or MacOS.
   assignment: |-
-    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-J** (**CMD-J** on Mac).
+    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-`** (Windows) or **CMD-`** (Mac). That is a backtick character, usually found in the upper left corner of your keyboard..
 
     All terraform commands should be run from the terminal within the Code Editor.
 
@@ -96,4 +98,4 @@ challenges:
     path: /root
   difficulty: basic
   timelimit: 600
-checksum: "14932170025251271519"
+checksum: "11918360151711486130"
