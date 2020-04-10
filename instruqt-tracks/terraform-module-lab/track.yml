@@ -181,7 +181,7 @@ challenges:
 
     HINT: The docs are your friend. They might even have an example of how the code should look.
 
-    If all went well you should see a new VPC being built in the console output. Click the `Check` button to verify your work.
+    If all went well you should see a new VPC being built in the console output. Wait until your terraform apply command is complete, then click the `Check` button to verify your work.
   notes:
   - type: text
     contents: Storing your modules in a git repo allows you to do code reviews and

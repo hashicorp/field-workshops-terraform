@@ -218,6 +218,13 @@ challenges:
 
     Once you've got all the pieces in place, try running a `terraform init` and then `terraform apply` command in the terminal.
 
+    ```
+    terraform init
+    terraform apply
+    ```
+
+    Remember to type *yes* in the terminal when you are prompted by Terraform to confirm the apply.
+
     When you're done you should see a new state file in your Terraform Cloud workspace. Confirm that terraform has run successfully and the hashicat app is working, then If you ran terraform locally before configuring remote state, you'll have a local state file called `terraform.tfstate`. Delete your state file if it exists.
 
     ```
@@ -225,6 +232,8 @@ challenges:
     ```
 
     Report back to Robin with the *Check* button below once you've successfully deployed the hashicat application with remote state enabled.
+
+    If you'd like to see the hashicat application in your web browser, simply copy the link from the output of your Terraform run, and paste it into the URL bar in another tab or window.
   notes:
   - type: text
     contents: "It's Monday morning and you're the first one into the office. Most
@@ -292,13 +301,13 @@ challenges:
 
     Test your work by running `terraform init`. Your backend configuration will be updated for remote execution.
 
-    Next try running `terraform plan`. You should see a remote execution run begin on Terraform Cloud. A copy of the output will be streamed back to your terminal. Run a Terraform apply to see it in action:
+    Next try running `terraform plan`. This will trigger what's known as a speculative plan. You can view this plan by copying the link from your terminal.  This plan will not show up in your ordinary terraform runs that are triggered via the UI or API.
+
+    A copy of the plan output will be streamed back to your terminal. Run a terraform apply to see it in action. The apply will show up if you navigate to the runs page in the Terraform Cloud UI.
 
     ```
-    terraform apply -auto-approve
+    terraform apply
     ```
-
-    The `-auto-approve` flag will override the approval phase and go directly to the build.
 
     Congratulations, your Azure keys are now safely encrypted and stored in your Terraform Cloud workspace.
 
@@ -376,7 +385,7 @@ challenges:
 
     Note that you will not see any users in your organization until they accept your invitations.
 
-    You will need at least two users in your organization to pass this challenge.
+    You will need at least two users (including yourself) in your organization to pass this challenge. The users you invite do not have to accept the invite to be counted.
   notes:
   - type: text
     contents: "A few months go by and you continue building more infrastructure with
@@ -521,6 +530,8 @@ challenges:
     Your partner should now review and approve the pull request. Or if you're working alone you can review your own pull request and merge the changes.
 
     Once you've merged your changes to the master branch, watch the Terraform run that starts in the UI.
+
+    You can do this by clicking on the **Details** link next to the hashicat-aws check on the GitHub screen. This will take you straight to the speculative plan run in Terraform Cloud.
   notes:
   - type: text
     contents: "The marketing team at ACME is running a special promotion next week
@@ -561,7 +572,9 @@ challenges:
     In this challenge you'll use Sentinel to enforce a rule that requires any Azure Virtual Machine created in your account to have the correct billable and department tags.
 
     ### Challenge Setup
-    1. Before configuring Sentinel you'll need to queue up a Destroy run. You must create a special environment variable named `CONFIRM_DESTROY` in your workspace to enable this. Set the value of this environment variable to `1`. Now you can use the **Settings >> Destruction and Deletion** menu to queue a destroy plan. Do not click the red **Delete from Terraform Cloud** button!!! Instead, click on **Queue Destroy Plan** and confirm it if necessary.
+    1. Before configuring Sentinel you'll need to queue up a Destroy run. Click on your workspace **Settings >> Destruction and Deletion** menu to queue a destroy plan. You'll need to check the box that says "Allow destroy plans" to proceed.
+
+    Do not click the red **Delete from Terraform Cloud** button!!! Instead, click on **Queue Destroy Plan** and confirm it if necessary.
 
     2. Create a fork of the following GitHub repo, which contains a Sentinel Policy Set that you can use in your own organization. As you did with the hashicat-azure repo, use the **Fork** button in the upper right corner of the screen to create your own copy.
 
@@ -661,11 +674,18 @@ challenges:
 
     Create a new Terraform file called `vnet.tf` and use the module in this file to create a new Virtual Network for Gaurav.
 
-    After you have saved the `vnet.tf` file, commit it to your local git repository and push the changes to your remote fork. You will be prompted to log onto your github account to push the change.
+    After you have saved the `vnet.tf` file, commit it to your local git repository and push the changes to your remote fork. You'll need to run a `git pull` command first to pull in the changes you made in the previous collaboration challenge.
+
+    ```
+    git pull origin master
+    ```
+    The pull command will pop open the nano text editor with a merge message. Simply hit **CTRL-X** to save the file and complete the merge.
+
+    Next you can add, commit, and push your latest changes to your remote fork. You will be prompted to log onto your github account to push the change.
 
     ```
     git add .
-    git commit -m "Added Azure Network module"
+    git commit -m "Added vnet module"
     git push origin master
     ```
 
@@ -677,7 +697,7 @@ challenges:
 
     HINT: The docs are your friend. They might even have an example of how the code should look.
 
-    If all went well you should see a new network being built in the console output. Click the `Check` button to verify your work.
+    If all went well you should see a new network being built in the console output. Wait until your terraform apply command is complete, then click the `Check` button to verify your work.
   notes:
   - type: text
     contents: "Most of the devops team is using Terraform to build and configure their
