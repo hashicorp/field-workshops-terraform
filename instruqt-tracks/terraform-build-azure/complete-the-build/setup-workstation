@@ -1,5 +1,4 @@
 #!/bin/bash
 cd /root/hashicat-azure
 cp exercises/main.tf.completed main.tf
-cp exercises/outputs.tf.completed outputs.tf
 /usr/local/bin/terraform init
