@@ -45,8 +45,6 @@ challenges:
 
     You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application.
 
-    **All commands during the labs should be run from the hashicat-azure directory.** The exercises directory contains templates that are used by our training platform. You only need to focus on the *.tf files in the main directory.
-
     Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes. Search for **Terraform** and click the green **Install** button to install the extension. You can click the **Reload Required** button to activate it.
 
     We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
@@ -85,9 +83,9 @@ challenges:
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
     on Linux, Windows, or MacOS.
   assignment: |-
-    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-`** (Windows) or **CMD-`** (Mac). That is a backtick character, usually found in the upper left corner of your keyboard..
+    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-`** (Windows) or **CMD-`** (Mac). That is a backtick character, usually found in the upper left corner of your keyboard.
 
-    All Terraform commands should be run from the terminal within the Code Editor.
+    All Terraform commands should be run from the terminal within the Code Editor.  Make sure you are in the hashicat-azure directory when you run terraform commands.
 
     Try the **CTRL-J** shortcut to toggle the terminal window open and closed. If you don't see a command prompt in the terminal pane, simply click on the trash can icon and open a new terminal.
 
@@ -133,7 +131,7 @@ challenges:
 
     **Keep your prefix string all lower case, and between 5-12 characters long. Do not use an underscore in your prefix.**
 
-    The prefix will become part of your application hostname, and therefore must be DNS-compliant. Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, and the hyphen (-).  A hostname may not start with a hyphen.  Save the file.
+    The prefix will become part of your application hostname, and therefore must be DNS-compliant. Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, and the hyphen (-).  A hostname may not start with a hyphen.
   notes:
   - type: text
     contents: The **terraform.tfvars** file is a convenient place for users to configure
