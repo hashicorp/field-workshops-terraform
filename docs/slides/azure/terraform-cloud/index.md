@@ -1019,7 +1019,7 @@ Your feedback is important to us!
 
 The survey is short, we promise:
 
-# http://bit.ly/hashiworkshopfeedback
+# https://go.hashi.co/workshop-feedback
 ]
 
 ---
