@@ -83,7 +83,7 @@ challenges:
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
     on Linux, Windows, or MacOS.
   assignment: |-
-    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-`** (Windows) or **CMD-`** (Mac). That is a backtick character, usually found in the upper left corner of your keyboard..
+    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-`** (Windows) or **CMD-`** (Mac). That is a backtick character, usually found in the upper left corner of your keyboard.
 
     All Terraform commands should be run from the terminal within the Code Editor.  Make sure you are in the hashicat-aws directory when you run terraform commands.
 
@@ -186,7 +186,7 @@ challenges:
 
     Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
 
-    Return to your Code Editor tab and edit the `remote_backend.tf` file, replacing the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name. Save the file.
+    Return to your Code Editor tab and edit the `remote_backend.tf` file, replacing the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name.
 
     Once you've got all the pieces in place, try running a `terraform init` and then `terraform apply` command in the terminal.
 

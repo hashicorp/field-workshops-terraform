@@ -83,7 +83,7 @@ challenges:
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
     on Linux, Windows, or MacOS.
   assignment: |-
-    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-`** (Windows) or **CMD-`** (Mac). That is a backtick character, usually found in the upper left corner of your keyboard..
+    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-`** (Windows) or **CMD-`** (Mac). That is a backtick character, usually found in the upper left corner of your keyboard.
 
     All Terraform commands should be run from the terminal within the Code Editor.  Make sure you are in the hashicat-azure directory when you run terraform commands.
 
@@ -131,7 +131,7 @@ challenges:
 
     **Keep your prefix string all lower case, and between 5-12 characters long. Do not use an underscore in your prefix.**
 
-    The prefix will become part of your application hostname, and therefore must be DNS-compliant. Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, and the hyphen (-).  A hostname may not start with a hyphen.  Save the file.
+    The prefix will become part of your application hostname, and therefore must be DNS-compliant. Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, and the hyphen (-).  A hostname may not start with a hyphen.
   notes:
   - type: text
     contents: The **terraform.tfvars** file is a convenient place for users to configure

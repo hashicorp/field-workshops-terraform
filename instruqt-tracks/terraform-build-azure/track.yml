@@ -70,7 +70,7 @@ challenges:
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
     on Linux, Windows, or MacOS.
   assignment: |-
-    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-`** (Windows) or **CMD-`** (Mac). That is a backtick character, usually found in the upper left corner of your keyboard..
+    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-`** (Windows) or **CMD-`** (Mac). That is a backtick character, usually found in the upper left corner of your keyboard.
 
     All Terraform commands should be run from the terminal within the Code Editor.  Make sure you are in the hashicat-azure directory when you run terraform commands.
 
@@ -502,7 +502,7 @@ challenges:
 
     Explore the Terraform graph for your infrastructure. Dependencies are automatically mapped out for you. This graph was generated using the free Blast Radius tool.
 
-    You can use your mouse or touchpad to zoom and drag the graph around. Click on different graph nodes to see dependencies more clearly.
+    **NOTE:** Due to a known bug you may not be able to drag and zoom the graph. The main point of this exercise is to see how terraform maps out complex infrastructure. So don't worry if your graph doesn't show color.
 
     Terraform uses this graph to determine which resources can be built in parallel for maximum efficiency.
   notes:
@@ -672,7 +672,7 @@ challenges:
 
     The name of the tag should be `environment` and the value should be `Production`. The tag is case-sensitive. Make sure you use a capital P.
 
-    Save the file and re-run `terraform apply`.
+    Re-run `terraform apply`.
 
     What happens?
   notes:
@@ -703,8 +703,6 @@ challenges:
     Open the **main.tf** file again and uncomment the next resource block in the file. The type of resource is **azurerm_virtual_network** and it is named **vnet**.
 
     Uncomment the code by removing the `#` characters from the beginning of each line.
-
-    Save the file.
 
     Now run `terraform apply` again. Observe the results.
 
@@ -785,7 +783,7 @@ challenges:
 
     Explore the Terraform graph for your infrastructure. Dependencies are automatically mapped out for you. This graph was generated using the free Blast Radius tool.
 
-    You can use your mouse or touchpad to zoom and drag the graph around. Click on different graph nodes to see dependencies more clearly.
+    **NOTE:** Due to a known bug you may not be able to drag and zoom the graph. The main point of this exercise is to see how terraform maps out complex infrastructure. So don't worry if your graph doesn't show color.
 
     Terraform uses this graph to determine which resources can be built in parallel for maximum efficiency.
   notes:

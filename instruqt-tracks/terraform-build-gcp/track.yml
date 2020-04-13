@@ -70,7 +70,7 @@ challenges:
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
     on Linux, Windows, or MacOS.
   assignment: |-
-    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-`** (Windows) or **CMD-`** (Mac). That is a backtick character, usually found in the upper left corner of your keyboard..
+    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-`** (Windows) or **CMD-`** (Mac). That is a backtick character, usually found in the upper left corner of your keyboard.
 
     All Terraform commands should be run from the terminal within the Code Editor.  Make sure you are in the hashicat-gcp directory when you run terraform commands.
 
@@ -442,7 +442,7 @@ challenges:
 
     Explore the Terraform graph for your infrastructure. Dependencies are automatically mapped out for you. This graph was generated using the free Blast Radius tool.
 
-    You can use your mouse or touchpad to zoom and drag the graph around. Click on different graph nodes to see dependencies more clearly.
+    **NOTE:** Due to a known bug you may not be able to drag and zoom the graph. The main point of this exercise is to see how terraform maps out complex infrastructure. So don't worry if your graph doesn't show color.
 
     Terraform uses this graph to determine which resources can be built in parallel for maximum efficiency.
   notes:
@@ -691,7 +691,7 @@ challenges:
 
     Explore the Terraform graph for your infrastructure. Dependencies are automatically mapped out for you. This graph was generated using the free Blast Radius tool.
 
-    You can use your mouse or touchpad to zoom and drag the graph around. Click on different graph nodes to see dependencies more clearly.
+    **NOTE:** Due to a known bug you may not be able to drag and zoom the graph. The main point of this exercise is to see how terraform maps out complex infrastructure. So don't worry if your graph doesn't show color.
 
     Terraform uses this graph to determine which resources can be built in parallel for maximum efficiency.
   notes:
