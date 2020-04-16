@@ -1,7 +1,7 @@
 name: GCP-Terraform-Workshop
 class: center
 count: false
-![:scale 60%](images/tf_aws.png)
+![:scale 60%](images/tf_gcp.png)
 <br><br>
 # GCP Terraform Workshop
 ## Build GCP Resources with Infrastructure as Code
