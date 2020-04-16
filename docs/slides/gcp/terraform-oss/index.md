@@ -1194,19 +1194,19 @@ class: img-caption
 name: additional-resources
 class: compact
 # Additional Resources
-If you'd like to learn more about Terraform on AWS try the links below:
+If you'd like to learn more about Terraform on GCP try the links below:
 
 HashiCorp Learning Portal<br>
 https://learn.hashicorp.com/terraform/
 
-Terraform - Beyond the Basics with AWS<br>
-https://aws.amazon.com/blogs/apn/terraform-beyond-the-basics-with-aws/
+Terraform - Managing Google Cloud Projects with Terraform<br>
+https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform
 
-Terraform AWS Provider Documentation<br>
-https://www.terraform.io/docs/providers/aws/index.html
+Terraform GCP Provider Documentation<br>
+https://www.terraform.io/docs/providers/google/index.html
 
 Link to this Slide Deck<br>
-https://git.io/Jvdam
+https://git.io/JffrU
 
 ---
 name: Feedback-Survey
