@@ -58,7 +58,7 @@ name: Link-to-Slide-Deck
 <br><br><br>
 Follow along on your own computer at this link:
 
-### <https://git.io/JerH6>
+### <https://git.io/JvdX7>
 
 ---
 name: Table-of-Contents
@@ -70,7 +70,7 @@ name: Table-of-Contents
 1. Terraform In Action: plan, apply, destroy
 1. Organizing Your Terraform Code<br>
 🧪 **Lab - Terraform in Action**<br>
-1. Provision and Configure GCP Instances<br>
+1. Provision and Configure Google Compute Instances<br>
 🔬 **Lab - Provisioning with Terraform**<br>
 1. Manage and Change Infrastructure State<br>
 1. Terraform Cloud<br>
@@ -93,9 +93,9 @@ We use the word chapter here, because the training should feel like a story unfo
 
 ---
 name: How-to-Provision-an-GCP-Instance
-# How to Provision an GCP Instance
+# How to Provision an Google Compute Instance
 
-Let's look at a few different ways you could provision a new GCP Instance. Before we start we'll need to gather some basic information including (but not limited to):
+Let's look at a few different ways you could provision a new Google Compute Instance. Before we start we'll need to gather some basic information including (but not limited to):
 
 - Instance Name
 - Operating System (Image)
@@ -161,7 +161,7 @@ We are not here to bash on CloudFormation Templates or any other JSON/YAML based
 name: Provision-with-Terraform-2
 # Method 3: Provision with Terraform
 ```terraform
-resource aws_instance "web" {
+resource google_compute_instance "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
 
@@ -170,7 +170,7 @@ resource aws_instance "web" {
   }
 }
 ```
-.center[Example Terraform code for building an GCP instance.]
+.center[Example Terraform code for building an Google Compute Instance.]
 
 ???
 **And finally we have option #3, Terraform. Terraform uses a Domain Specific Language, or DSL that is designed to be both human-friendly and machine-readable. This is an example snippet of Terraform code. Now watch as I flip back to the previous slide. Would you rather have to write and maintain this complex and messy JSON, or this simple, compact terraform code?**
@@ -181,7 +181,7 @@ Advance back to the previous slide to illustrate the difference between JSON and
 name: What-is-Terraform
 # What is Terraform?
 ```terraform
-resource aws_instance "catapp" {
+resource google_compute_instance "catapp" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   tags = {
@@ -676,7 +676,7 @@ resource type "name" {
 ```
 
 **resource** = Top level keyword<br>
-**type** = Type of resource. Example: `aws_instance`.<br>
+**type** = Type of resource. Example: `google_compute_instance`.<br>
 **name** = Arbitrary name to refer to this resource. Used internally by terraform. This field *cannot* be a variable.
 
 ???
@@ -799,7 +799,7 @@ Data sources are a way of querying a provider to return an existing resource, so
 name: dependency-mapping
 class: compact
 # Terraform Dependency Mapping
-Terraform can automatically keep track of dependencies for you. Look at the two resources below. Note the highlighted lines in the aws_instance resource. This is how we tell one resource to refer to another in terraform.
+Terraform can automatically keep track of dependencies for you. Look at the two resources below. Note the highlighted lines in the google_compute_instance resource. This is how we tell one resource to refer to another in terraform.
 
 ```terraform
 resource aws_key_pair "my-keypair" {
@@ -807,7 +807,7 @@ resource aws_key_pair "my-keypair" {
   public_key = file(var.public_key)
 }
 
-resource "aws_instance" "web" {
+resource "google_compute_instance" "web" {
 * ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
 * key_name      = aws_key_pair.my-keypair.name
@@ -934,7 +934,7 @@ In this chapter we:
 name: Chapter-4
 class: title
 # Chapter 4
-## Provision and Configure GCP Instances
+## Provision and Configure Google Compute Instances
 
 ---
 name: intro-to-provisioners
@@ -1105,12 +1105,12 @@ class: compact
 # Terraform State Quiz
 | Configuration           | State                   | Reality                 | Operation |
 | ----------------------- | ----------------------- | ----------------------- |:---------:|
-| aws_instance |                         |                         |    ???    |
-| aws_instance | aws_instance |                         |    ???    |
-| aws_instance | aws_instance | aws_instance |    ???    |
-|                         | aws_instance | aws_instance |    ???    |
-|                         |                         | aws_instance |    ???    |
-|                         | aws_instance |                         |    ???    |
+| google_compute_instance |                         |                         |    ???    |
+| google_compute_instance | google_compute_instance |                         |    ???    |
+| google_compute_instance | google_compute_instance | google_compute_instance |    ???    |
+|                         | google_compute_instance | google_compute_instance |    ???    |
+|                         |                         | google_compute_instance |    ???    |
+|                         | google_compute_instance |                         |    ???    |
 
 What happens in each scenario? Discuss.
 
@@ -1120,12 +1120,12 @@ class: compact
 # Terraform State Quiz
 | Configuration           | State                   | Reality                 | Operation    |
 | ----------------------- | ----------------------- | ----------------------- |:------------:|
-| aws_instance |                         |                         | create       |
-| aws_instance | aws_instance |                         | create       |
-| aws_instance | aws_instance | aws_instance | no-op        |
-|                         | aws_instance | aws_instance | delete       |
-|                         |                         | aws_instance | no-op        |
-|                         | aws_instance |                         | update state |
+| google_compute_instance |                         |                         | create       |
+| google_compute_instance | google_compute_instance |                         | create       |
+| google_compute_instance | google_compute_instance | google_compute_instance | no-op        |
+|                         | google_compute_instance | google_compute_instance | delete       |
+|                         |                         | google_compute_instance | no-op        |
+|                         | google_compute_instance |                         | update state |
 
 What happens in each scenario? Discuss.
 
@@ -1199,14 +1199,14 @@ If you'd like to learn more about Terraform on GCP try the links below:
 HashiCorp Learning Portal<br>
 https://learn.hashicorp.com/terraform/
 
-Terraform - Beyond the Basics with GCP<br>
-https://aws.amazon.com/blogs/apn/terraform-beyond-the-basics-with-aws/
+Managing Google Cloud Projects with Terraform<br>
+https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform
 
 Terraform GCP Provider Documentation<br>
-https://www.terraform.io/docs/providers/aws/index.html
+https://www.terraform.io/docs/providers/google/index.html
 
 Link to this Slide Deck<br>
-https://git.io/JerH6
+https://git.io/JvdX7
 
 ---
 name: Feedback-Survey
