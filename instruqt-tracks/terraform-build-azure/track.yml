@@ -30,9 +30,9 @@ challenges:
 
     You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application.
 
-    **All commands during the labs should be run from the hashicat-azure directory.** The exercises directory contains templates that are used by our training platform. You only need to focus on the *.tf files in the main directory.
-
     Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes. Search for **Terraform** and click the green **Install** button to install the extension. You can click the **Reload Required** button to activate it.
+
+    We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
 
     Congratulations, you are ready to start working with Terraform on Azure. We'll use the hashicat-azure example app in the rest of the challenges as you learn new Terraform skills.
 
@@ -70,11 +70,11 @@ challenges:
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
     on Linux, Windows, or MacOS.
   assignment: |-
-    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-J** (**CMD-J** on Mac).
+    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-`** (Windows) or **CMD-`** (Mac). That is a backtick character, usually found in the upper left corner of your keyboard.
 
-    All Terraform commands should be run from the terminal within the Code Editor.
+    All Terraform commands should be run from the terminal within the Code Editor.  Make sure you are in the hashicat-azure directory when you run terraform commands.
 
-    Try the **CTRL-J** (**CMD-J** for Mac) shortcut to toggle the terminal panel open and closed.
+    Try the **CTRL-`** (**CMD-`** for Mac) shortcut to toggle the terminal panel open and closed.
 
     You can use the little caret ^ shaped button on the terminal pane to expand and shrink your Terminal window. This is useful for viewing logs.
 
@@ -502,7 +502,7 @@ challenges:
 
     Explore the Terraform graph for your infrastructure. Dependencies are automatically mapped out for you. This graph was generated using the free Blast Radius tool.
 
-    You can use your mouse or touchpad to zoom and drag the graph around. Click on different graph nodes to see dependencies more clearly.
+    **NOTE:** Due to a known bug you may not be able to drag and zoom the graph. The main point of this exercise is to see how terraform maps out complex infrastructure. So don't worry if your graph doesn't show color.
 
     Terraform uses this graph to determine which resources can be built in parallel for maximum efficiency.
   notes:
@@ -672,7 +672,7 @@ challenges:
 
     The name of the tag should be `environment` and the value should be `Production`. The tag is case-sensitive. Make sure you use a capital P.
 
-    Save the file and re-run `terraform apply`.
+    Re-run `terraform apply`.
 
     What happens?
   notes:
@@ -703,8 +703,6 @@ challenges:
     Open the **main.tf** file again and uncomment the next resource block in the file. The type of resource is **azurerm_virtual_network** and it is named **vnet**.
 
     Uncomment the code by removing the `#` characters from the beginning of each line.
-
-    Save the file.
 
     Now run `terraform apply` again. Observe the results.
 
@@ -785,7 +783,7 @@ challenges:
 
     Explore the Terraform graph for your infrastructure. Dependencies are automatically mapped out for you. This graph was generated using the free Blast Radius tool.
 
-    You can use your mouse or touchpad to zoom and drag the graph around. Click on different graph nodes to see dependencies more clearly.
+    **NOTE:** Due to a known bug you may not be able to drag and zoom the graph. The main point of this exercise is to see how terraform maps out complex infrastructure. So don't worry if your graph doesn't show color.
 
     Terraform uses this graph to determine which resources can be built in parallel for maximum efficiency.
   notes:
@@ -1068,13 +1066,13 @@ challenges:
 
     Edit the `remote_backend.tf` file and replace the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name.
 
-    Use the `terraform login` command to generate and save your token in a local config file. You can simply follow the instructions in your terminal after you run this command. All of the defaults are fine:
+    Let's generate a new **user token** for use on your workstation. Visit the User Settings > Tokens page in Terraform Cloud:
 
-    ```
-    terraform login
-    ```
-    <br>
-    NOTE: You won't see your token appear on the screen when you copy and paste it into the terminal. This is expected.
+    https://app.terraform.io/app/settings/tokens
+
+    Click on the **Create an API token** button. You can name the token whatever you like. Copy the entire token using your mouse or the small copy-paste icon.
+
+    Next, go back to your Instruqt workstation code editor and open the `/root/.terraform.d/credentials.tfrc.json` file. Replace the part that says YOURTOKEN with what you copied from Terraform Cloud. Close the file.
 
     Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
 

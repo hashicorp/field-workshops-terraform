@@ -1017,7 +1017,7 @@ Your feedback is important to us!
 
 The survey is short, we promise:
 
-# http://bit.ly/hashiworkshopfeedback
+# https://bit.ly/hashiworkshopfeedback
 ]
 
 ---
