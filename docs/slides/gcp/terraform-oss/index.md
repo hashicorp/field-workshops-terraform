@@ -1,12 +1,12 @@
 name: GCP-Terraform-Workshop
 class: center
 count: false
-![:scale 60%](images/tf_aws.png)
+![:scale 60%](images/tf_gcp.png)
 <br><br>
 # GCP Terraform Workshop
 ## Build GCP Resources with Infrastructure as Code
 ???
-INSTRUCTOR GUIDE LINK: https://github.com/hashicorp/field-workshops-terraform/blob/master/instructor-guides/aws_intro_to_terraform_INSTRUCTOR_GUIDE.md
+INSTRUCTOR GUIDE LINK: https://github.com/hashicorp/field-workshops-terraform/blob/master/instructor-guides/gcp_intro_to_terraform_INSTRUCTOR_GUIDE.md
 
 This slide presentation is stored as Markdown code, specifically using the RemarkJS engine to render it. All standard markdown tags are supported, and you can also use some HTML within this document.
 
@@ -58,7 +58,7 @@ name: Link-to-Slide-Deck
 <br><br><br>
 Follow along on your own computer at this link:
 
-### <https://git.io/JerH6>
+### <https://git.io/Jvdam>
 
 ---
 name: Table-of-Contents
@@ -70,7 +70,7 @@ name: Table-of-Contents
 1. Terraform In Action: plan, apply, destroy
 1. Organizing Your Terraform Code<br>
 🧪 **Lab - Terraform in Action**<br>
-1. Provision and Configure GCP Instances<br>
+1. Provision and Configure GCP Compute Instances<br>
 🔬 **Lab - Provisioning with Terraform**<br>
 1. Manage and Change Infrastructure State<br>
 1. Terraform Cloud<br>
@@ -92,21 +92,21 @@ class: title
 We use the word chapter here, because the training should feel like a story unfolding. The instructor's job is to guide the learners through this interactive story.
 
 ---
-name: How-to-Provision-an-GCP-Instance
-# How to Provision an GCP Instance
+name: How-to-Provision-a-GCP-Instance
+# How to Provision a Compute Engine Instance
 
-Let's look at a few different ways you could provision a new GCP Instance. Before we start we'll need to gather some basic information including (but not limited to):
+Let's look at a few different ways you could provision a new Compute Engine Instance. Before we start we'll need to gather some basic information including (but not limited to):
 
 - Instance Name
 - Operating System (Image)
-- VM Size
+- Machine Type (VM Size)
 - Geographical Location (Region)
-- Security Groups
+- Service Account
 
 ???
-**Has anyone got experience using GCP? How do most of us normally get started? That's right, we log onto the AWS Console and start clicking around. All of the major cloud providers make this part really easy. You get your account, log on and start clicking buttons. Let's take a peek at what that looks like...**
+**Has anyone got experience using Google Cloud? How do most of us normally get started? That's right, we log onto the GCP Console and start clicking around. All of the major cloud providers make this part really easy. You get your account, log on and start clicking buttons. Let's take a peek at what that looks like...**
 
-We chose the GCP Console as a starting point because most AWS users will be familiar with it. From this familiar starting point we begin our journey...
+We chose the GCP Console as a starting point because most GCP users will be familiar with it. From this familiar starting point we begin our journey...
 
 ---
 name: GCP-Console-Provision
@@ -114,15 +114,15 @@ name: GCP-Console-Provision
 ![:scale 70%](images/aws_provision.png)
 
 ???
-**This should look familiar if you've ever used GCP. From the EC2 Panel, you click on Instances > Launch Instance, and you'll see a list of different AWS Machine Images (AMIs) you can use to provision your Instance. Some of these are provided by AWS, others are provided by third parties in the marketplace. You either search or browse for the thing you need, and click on it. Easy.**
+**This should look familiar if you've ever used GCP. From the EC2 Panel, you click on Instances > Launch Instance, and you'll see a list of different GCP Machine Images (AMIs) you can use to provision your Instance. Some of these are provided by GCP, others are provided by third parties in the marketplace. You either search or browse for the thing you need, and click on it. Easy.**
 
 ---
-name: GCP-Console-Provision-2
-# Method 1: GCP Portal (GUI)
+name: AWS-Console-Provision-2
+# Method 1: AWS Portal (GUI)
 ![:scale 60%](images/aws_provision_2.png)
 
 ???
-**Once you've chosen your AMI, you will fill in some more details - the instance type, the VPC you want it to launch in, any associated IAM roles you want to assign it, external storage, tags, security groups... it's a long list of options! The GCP console can be handy for spinning up individual VMs and dev or test environments. The good news is that it's really easy to spin up infrastructure this way. The bad news is that it doesn't scale, and chances are that nobody is keeping track of what got built.**
+**Once you've chosen your AMI, you will fill in some more details - the instance type, the VPC you want it to launch in, any associated IAM roles you want to assign it, external storage, tags, security groups... it's a long list of options! The AWS console can be handy for spinning up individual VMs and dev or test environments. The good news is that it's really easy to spin up infrastructure this way. The bad news is that it doesn't scale, and chances are that nobody is keeping track of what got built.**
 
 It's really easy to make a big mess of things if you simply give everyone a console account and turn them loose in the cloud environment.
 
@@ -132,19 +132,19 @@ class: compact
 # Method 2: CloudFormation Templates
 ```json
 {
-  "GCPTemplateFormatVersion" : "2010-09-09",
+  "AWSTemplateFormatVersion" : "2010-09-09",
 
-  "Description" : "GCP CloudFormation Sample Template EC2InstanceWithSecurityGroupSample: Create an Amazon EC2 instance running the Amazon Linux AMI. The AMI is chosen based on the region in which the stack is run. This example creates an EC2 security group for the instance to give you SSH access. **WARNING** This template creates an Amazon EC2 instance. You will be billed for the AWS resources used if you create a stack from this template.",
+  "Description" : "AWS CloudFormation Sample Template EC2InstanceWithSecurityGroupSample: Create an Amazon EC2 instance running the Amazon Linux AMI. The AMI is chosen based on the region in which the stack is run. This example creates an EC2 security group for the instance to give you SSH access. **WARNING** This template creates an Amazon EC2 instance. You will be billed for the AWS resources used if you create a stack from this template.",
 
   "Parameters" : {
     "KeyName": {
       "Description" : "Name of an existing EC2 KeyPair to enable SSH access to the instance",
-      "Type": "GCP::EC2::KeyPair::KeyName",
+      "Type": "AWS::EC2::KeyPair::KeyName",
       "ConstraintDescription" : "must be the name of an existing EC2 KeyPair."
     },
 ```
 
-CloudFormation Templates provide a consistent and reliable way to provision GCP resources. JSON is easy for computers to read, but can be challenging for humans to edit and troubleshoot.
+CloudFormation Templates provide a consistent and reliable way to provision AWS resources. JSON is easy for computers to read, but can be challenging for humans to edit and troubleshoot.
 
 ???
 **Which brings us to method #2, CloudFormation Templates, also known as CFTs. Have any of you used CFTs? What's that experience like?**
@@ -170,7 +170,7 @@ resource aws_instance "web" {
   }
 }
 ```
-.center[Example Terraform code for building an GCP instance.]
+.center[Example Terraform code for building an AWS instance.]
 
 ???
 **And finally we have option #3, Terraform. Terraform uses a Domain Specific Language, or DSL that is designed to be both human-friendly and machine-readable. This is an example snippet of Terraform code. Now watch as I flip back to the previous slide. Would you rather have to write and maintain this complex and messy JSON, or this simple, compact terraform code?**
@@ -213,7 +213,7 @@ Infrastructure as Code (IaC) is the process of managing and provisioning cloud i
 ]
 
 ???
-**You might be thinking...why can't I just do this by hand? After all the GCP portal is really easy, and I can just stand up my infrastructure manually. Here's why:**
+**You might be thinking...why can't I just do this by hand? After all the AWS portal is really easy, and I can just stand up my infrastructure manually. Here's why:**
 
 **Terraform ensures that when you build any type of infrastructure that it gets built correctly every single time, exactly the same way. Let's try a thought experiment. If I gave every single one of you the same build document and asked you to set up a server, I guarantee there will be differences in those machines when you hand them over. They may not be major differences, but over time these can pile up and cause all sorts of uncertainty and issues in your environment.**
 
@@ -357,34 +357,34 @@ Name: Why-Terraform-1
 .center[### <https://blog.1password.com/terraforming-1password/>]
 
 ???
-1Password did a great blog post illustrating the difference between GCP Cloudformation (JSON) and Terraform.
+1Password did a great blog post illustrating the difference between AWS Cloudformation (JSON) and Terraform.
 
 https://blog.1password.com/terraforming-1password/
 
 1Password were able to move their entire production infrastructure to Terraform in a few short weeks. Now they can tear down and completely rebuild their production environment in a matter of hours.
 
 ---
-Name: Why-Terraform-on-GCP
-# Why Terraform on GCP?
+Name: Why-Terraform-on-AWS
+# Why Terraform on AWS?
 
 * Supports multi-cloud & hybrid infrastructure
 
 ???
-**Why specifcially should you use Terraform on GCP? The first reason is that Terraform supports your hybrid or multi-cloud strategy. If you need to build some infrastructure on-prem, and some in AWS, Terraform is a natural fit. Your technical staff only has to learn a single language to be able to provision in either environment.**
+**Why specifcially should you use Terraform on AWS? The first reason is that Terraform supports your hybrid or multi-cloud strategy. If you need to build some infrastructure on-prem, and some in AWS, Terraform is a natural fit. Your technical staff only has to learn a single language to be able to provision in either environment.**
 
 ---
-Name: Why-Terraform-on-GCP
-# Why Terraform on GCP?
+Name: Why-Terraform-on-AWS
+# Why Terraform on AWS?
 
 * Supports multi-cloud & hybrid infrastructure
 * Migrate from other cloud providers
 
 ???
-**Terraform is also great for migrating between cloud providers. Let's say you wanted to move some workloads from GCP to AWS. The code changes in Terraform would be much easier to implement than they would via CloudFormation Templates. I was able to migrate a simple demo application from one cloud to another in a few short hours, because there was almost no learning curve. Terraform code looks the same no matter where you run it.**
+**Terraform is also great for migrating between cloud providers. Let's say you wanted to move some workloads from AWS to AWS. The code changes in Terraform would be much easier to implement than they would via CloudFormation Templates. I was able to migrate a simple demo application from one cloud to another in a few short hours, because there was almost no learning curve. Terraform code looks the same no matter where you run it.**
 
 ---
-Name: Why-Terraform-on-GCP
-# Why Terraform on GCP?
+Name: Why-Terraform-on-AWS
+# Why Terraform on AWS?
 
 * Supports multi-cloud & hybrid infrastructure
 * Migrate from other cloud providers
@@ -394,8 +394,8 @@ Name: Why-Terraform-on-GCP
 **It's not unusual to see provisioning times drop from days or weeks to hours or minutes when users adopt Terraform. Ineffective manual steps and change approvals can be replaced with fast code pipelines that have rigorous testing and security built right in. Now instead of waiting for days for a change request to be approved, users can self-provision their infrastructure without bottlenecks or slow approval processes.**
 
 ---
-Name: Why-Terraform-on-GCP
-# Why Terraform on GCP?
+Name: Why-Terraform-on-AWS
+# Why Terraform on AWS?
 
 * Supports multi-cloud & hybrid infrastructure
 * Migrate from other cloud providers
@@ -406,8 +406,8 @@ Name: Why-Terraform-on-GCP
 **Have you heard the saying 'measure twice, cut once?'? Terraform forces your operations teams to be disciplined and consistent with every single build. Have a change or setting that was overlooked during the build? Now you can immediately correct that mistake inside the code, so that a particular step never gets missed again. All future builds will contain the change. This can also improve relations between developers and operations, because the contract is clear. What gets built is always defined in the code, and never left to guesswork or manual processes.**
 
 ---
-Name: Why-Terraform-on-GCP
-# Why Terraform on GCP?
+Name: Why-Terraform-on-AWS
+# Why Terraform on AWS?
 
 * Supports multi-cloud & hybrid infrastructure
 * Migrate from other cloud providers
@@ -424,11 +424,11 @@ class: title
 # Live Demo
 
 ???
-**Let's do a short demo! I'm going to show you how easy it can be to provision infrastructure in GCP. I'll do the demo on one of the lab workstations that you'll be using for this training.**
+**Let's do a short demo! I'm going to show you how easy it can be to provision infrastructure in AWS. I'll do the demo on one of the lab workstations that you'll be using for this training.**
 
 **This is a workstation just like the ones you'll be using for today's workshops. I'm going to run a terraform apply command to build out the lab environment. We're actually cheating a little bit here, as we prebaked most of the environment before class to save us some time. Just like your favorite cooking show!**
 
-**You can see the results of the Terraform run here in my terminal window. This output is showing me the URL of the application server I just built. And if we pop over here to the GCP portal you'll see all of the different parts of my lab environment.**
+**You can see the results of the Terraform run here in my terminal window. This output is showing me the URL of the application server I just built. And if we pop over here to the AWS portal you'll see all of the different parts of my lab environment.**
 
 **This is Infrastructure as code. By the end of today's training you'll be able to create your own infrastructure using Terraform.**
 
@@ -440,7 +440,7 @@ class: title
 ## Terraform Basics
 
 ???
-**Now that you have terraform installed and working with GCP, we can do a few dry runs before building real infrastructure. Follow along carefully, copying and pasting the commands on each slide into your terminal as we go.**
+**Now that you have terraform installed and working with AWS, we can do a few dry runs before building real infrastructure. Follow along carefully, copying and pasting the commands on each slide into your terminal as we go.**
 
 ---
 name: what-is-terraform-oss
@@ -637,7 +637,7 @@ name: lab-exercise-0
 name: lab-exercise-1
 # 👩‍💻 Lab Exercise: Terraform Basics
 <br><br>
-In this lab you'll learn how to set up your editor, use the Terraform command line tool, integrate with GCP, and do a few dry runs with different settings.
+In this lab you'll learn how to set up your editor, use the Terraform command line tool, integrate with AWS, and do a few dry runs with different settings.
 
 Your instructor will provide the URL for the lab environment.
 
@@ -899,7 +899,7 @@ class: img-right
 
 The terraform resource graph visually depicts dependencies between resources.
 
-The region and prefix variables are required to create the resource group, which is in turn required to build the virtual network.
+The location and prefix variables are required to create the resource group, which is in turn required to build the virtual network.
 
 ???
 This is a good spot to talk a bit about how the dependency graph gets formed.
@@ -907,7 +907,7 @@ This is a good spot to talk a bit about how the dependency graph gets formed.
 ---
 name: lab-exercise-2a
 # 👩‍💻 Lab Exercise: Terraform in Action
-Let's use Terraform to build, manage, and destroy GCP resources. This is a three part lab. In part one you'll build the HashiCat application stack.
+Let's use Terraform to build, manage, and destroy AWS resources. This is a three part lab. In part one you'll build the HashiCat application stack.
 
 Your instructor will provide the URL for the second lab environment. Bookmark it for easy reference.
 
@@ -934,7 +934,7 @@ In this chapter we:
 name: Chapter-4
 class: title
 # Chapter 4
-## Provision and Configure GCP Instances
+## Provision and Configure AWS Instances
 
 ---
 name: intro-to-provisioners
@@ -1105,12 +1105,12 @@ class: compact
 # Terraform State Quiz
 | Configuration           | State                   | Reality                 | Operation |
 | ----------------------- | ----------------------- | ----------------------- |:---------:|
-| aws_instance |                         |                         |    ???    |
-| aws_instance | aws_instance |                         |    ???    |
-| aws_instance | aws_instance | aws_instance |    ???    |
-|                         | aws_instance | aws_instance |    ???    |
-|                         |                         | aws_instance |    ???    |
-|                         | aws_instance |                         |    ???    |
+| google_compute_instance |                         |                         |    ???    |
+| google_compute_instance | google_compute_instance |                         |    ???    |
+| google_compute_instance | google_compute_instance | google_compute_instance |    ???    |
+|                         | google_compute_instance | google_compute_instance |    ???    |
+|                         |                         | google_compute_instance |    ???    |
+|                         | google_compute_instance |                         |    ???    |
 
 What happens in each scenario? Discuss.
 
@@ -1120,12 +1120,12 @@ class: compact
 # Terraform State Quiz
 | Configuration           | State                   | Reality                 | Operation    |
 | ----------------------- | ----------------------- | ----------------------- |:------------:|
-| aws_instance |                         |                         | create       |
-| aws_instance | aws_instance |                         | create       |
-| aws_instance | aws_instance | aws_instance | no-op        |
-|                         | aws_instance | aws_instance | delete       |
-|                         |                         | aws_instance | no-op        |
-|                         | aws_instance |                         | update state |
+| google_compute_instance |                         |                         | create       |
+| google_compute_instance | google_compute_instance |                         | create       |
+| google_compute_instance | google_compute_instance | google_compute_instance | no-op        |
+|                         | google_compute_instance | google_compute_instance | delete       |
+|                         |                         | google_compute_instance | no-op        |
+|                         | google_compute_instance |                         | update state |
 
 What happens in each scenario? Discuss.
 
@@ -1199,14 +1199,14 @@ If you'd like to learn more about Terraform on GCP try the links below:
 HashiCorp Learning Portal<br>
 https://learn.hashicorp.com/terraform/
 
-Terraform - Beyond the Basics with GCP<br>
-https://aws.amazon.com/blogs/apn/terraform-beyond-the-basics-with-aws/
+Terraform - Managing Google Cloud Projects with Terraform<br>
+https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform
 
 Terraform GCP Provider Documentation<br>
-https://www.terraform.io/docs/providers/aws/index.html
+https://www.terraform.io/docs/providers/google/index.html
 
 Link to this Slide Deck<br>
-https://git.io/JerH6
+https://git.io/JffrU
 
 ---
 name: Feedback-Survey
