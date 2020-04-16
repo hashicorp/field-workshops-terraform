@@ -1105,12 +1105,12 @@ class: compact
 # Terraform State Quiz
 | Configuration           | State                   | Reality                 | Operation |
 | ----------------------- | ----------------------- | ----------------------- |:---------:|
-| aws_instance |                         |                         |    ???    |
-| aws_instance | aws_instance |                         |    ???    |
-| aws_instance | aws_instance | aws_instance |    ???    |
-|                         | aws_instance | aws_instance |    ???    |
-|                         |                         | aws_instance |    ???    |
-|                         | aws_instance |                         |    ???    |
+| google_compute_instance |                         |                         |    ???    |
+| google_compute_instance | google_compute_instance |                         |    ???    |
+| google_compute_instance | google_compute_instance | google_compute_instance |    ???    |
+|                         | google_compute_instance | google_compute_instance |    ???    |
+|                         |                         | google_compute_instance |    ???    |
+|                         | google_compute_instance |                         |    ???    |
 
 What happens in each scenario? Discuss.
 
@@ -1120,12 +1120,12 @@ class: compact
 # Terraform State Quiz
 | Configuration           | State                   | Reality                 | Operation    |
 | ----------------------- | ----------------------- | ----------------------- |:------------:|
-| aws_instance |                         |                         | create       |
-| aws_instance | aws_instance |                         | create       |
-| aws_instance | aws_instance | aws_instance | no-op        |
-|                         | aws_instance | aws_instance | delete       |
-|                         |                         | aws_instance | no-op        |
-|                         | aws_instance |                         | update state |
+| google_compute_instance |                         |                         | create       |
+| google_compute_instance | google_compute_instance |                         | create       |
+| google_compute_instance | google_compute_instance | google_compute_instance | no-op        |
+|                         | google_compute_instance | google_compute_instance | delete       |
+|                         |                         | google_compute_instance | no-op        |
+|                         | google_compute_instance |                         | update state |
 
 What happens in each scenario? Discuss.
 
