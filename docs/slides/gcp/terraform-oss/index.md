@@ -693,8 +693,8 @@ The terraform core program requires at least one provider to build anything.
 You can manually configure which version(s) of a provider you would like to use. If you leave this option out, Terraform will default to the latest available version of the provider.
 
 ```hcl
-provider "aws" {
-  version = "=2.35.0"
+provider "google" {
+  version = "~> 2.0.0"
 }
 ```
 
@@ -725,14 +725,11 @@ class: compact
 An execution plan has been generated and is shown below.
 
 Terraform will perform the following actions:
-  # aws_vpc.main will be created
-  + resource "aws_vpc" "main" {
-      + cidr_block                       = "10.0.0.0/16"
-      + instance_tenancy                 = "dedicated"
+  # google_compute_subnetwork.hashicat will be created
+  + resource "google_compute_subnetwork" "hashicat" {
+      + ip_cidr_range                    = "10.0.10.0/24"
+      + region                           = "us-central1"
         ...
-      + tags                             = {
-          + "Name" = "main"
-        }
     }
 
 Plan: 1 to add, 0 to change, 0 to destroy.
@@ -748,14 +745,11 @@ class: compact
 An execution plan has been generated and is shown below.
 
 Terraform will perform the following actions:
-  # aws_vpc.main will be destroyed
-  - resource "aws_vpc" "main" {
-      - cidr_block                       = "10.0.0.0/16" -> null
-      - instance_tenancy                 = "dedicated" -> null
+  # google_compute_subnetwork.hashicat will be destroyed
+  - resource "google_compute_subnetwork" "hashicat" {
+      - ip_cidr_range                    = "10.0.10.0/24" -> null
+      - region                           = "us-central1" -> null
         ...
-      - tags                             = {
-          - "Name" = "main"
-        } -> null
     }
 
 Plan: 0 to add, 0 to change, 1 to destroy.
@@ -782,17 +776,9 @@ class: compact
 # Terraform Data Sources
 
 ```terraform
-data "aws_ami" "ubuntu" {
-  most_recent = true
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
-  }
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-  owners = ["099720109477"] # Canonical
+data "google_compute_image" "my_image" {
+  family  = "debian-9"
+  project = "debian-cloud"
 }
 ```
 Data sources are a way of querying a provider to return an existing resource, so that we can access its parameters for our own use.
@@ -802,21 +788,26 @@ Data sources are a way of querying a provider to return an existing resource, so
 name: dependency-mapping
 class: compact
 # Terraform Dependency Mapping
-Terraform can automatically keep track of dependencies for you. Look at the two resources below. Note the highlighted lines in the aws_instance resource. This is how we tell one resource to refer to another in terraform.
+Terraform can automatically keep track of dependencies for you. Look at the two resources below. Note the highlighted lines in the google_compute_instance resource. This is how we tell one resource to refer to another in terraform.
 
 ```terraform
-resource aws_key_pair "my-keypair" {
-  key_name   = "my-keypair"
-  public_key = file(var.public_key)
+data "google_compute_image" "my_image" {
+  family  = "debian-9"
+  project = "debian-cloud"
 }
 
-resource "aws_instance" "web" {
-* ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
-* key_name      = aws_key_pair.my-keypair.name
+resource "google_compute_instance" "default" {
+  # ...
+
+  boot_disk {
+    initialize_params {
+*     image = data.google_compute_image.my_image.self_link
+    }
+  }
+}
 ```
 ???
-**Apart from the SSH keypair, you can also see how we reference the data source block from the previous slide. Flick back to the previous slide to show the relationship.**
+**You can also see how we reference the data source block from the previous slide. This shows we can reference the Google Compute Image based on the data block we defined earlier.**
 
 ---
 name: organizing-your-terraform
@@ -840,15 +831,16 @@ The first file is called main.tf. This is where you normally store your terrafor
 
 ```bash
 # This is the main.tf file.
-resource aws_vpc "main" {
-  cidr_block       = var.cidr_block
-  instance_tenancy = var.instance_tenancy
+resource "google_compute_network" "hashicat" {
+  name                    = "${var.prefix}-vpc"
+  auto_create_subnetworks = false
 }
 
-resource aws_subnet "main" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = var.cidr_block
-  }
+resource "google_compute_subnetwork" "hashicat" {
+  name          = "${var.prefix}-subnet"
+  region        = var.region
+  network       = google_compute_network.hashicat.self_link
+  ip_cidr_range = var.subnet_prefix
 }
 ...
 ```
@@ -864,13 +856,13 @@ class: compact
 The second file is called variables.tf. This is where you define your variables and optionally set some defaults.
 
 ```bash
-variable "cidr_block" {
-  description = "The address space that is used within the VPC. Changing this forces a new resource to be created."
+variable "prefix" {
+  description = "This prefix will be included in the name of some resources."
 }
 
-variable "instance_tenancy" {
-  description = "A tenancy option for instances launched into the VPC. Acceptable values are 'dedicated' and ''"
-  default     = "dedicated"
+variable "region" {
+  description = "The region where the resources are created."
+  default     = "us-central1"
 }
 ```
 
@@ -882,17 +874,13 @@ The outputs file is where you configure any messages or data you want to show at
 
 ```terraform
 output "catapp_url" {
-  value = "http://${aws_route53_record.hashicat.fqdn}"
+  value = "http://${google_compute_instance.hashicat.network_interface.0.access_config.0.nat_ip}"
 }
 
-
-output "private_key" {
-  value = "${tls_private_key.hashicat.private_key_pem}"
-}
 ```
 
 ???
-**This bit here with the EOF is an example of a HEREDOC. It allows you store multi-line text in an output.**
+**Since we likely don't know the value of an IP address before the compute instances is created, we can use this output keyword to display the value of the IP address after the instance has been provisioned.**
 
 ---
 name: tf-dependency-graph
@@ -902,7 +890,7 @@ class: img-right
 
 The terraform resource graph visually depicts dependencies between resources.
 
-The location and prefix variables are required to create the resource group, which is in turn required to build the virtual network.
+The region and prefix variables are required to create the resource group, which is in turn required to build the virtual network.
 
 ???
 This is a good spot to talk a bit about how the dependency graph gets formed.
@@ -910,7 +898,7 @@ This is a good spot to talk a bit about how the dependency graph gets formed.
 ---
 name: lab-exercise-2a
 # 👩‍💻 Lab Exercise: Terraform in Action
-Let's use Terraform to build, manage, and destroy AWS resources. This is a three part lab. In part one you'll build the HashiCat application stack.
+Let's use Terraform to build, manage, and destroy GCP resources. This is a three part lab. In part one you'll build the HashiCat application stack.
 
 Your instructor will provide the URL for the second lab environment. Bookmark it for easy reference.
 
