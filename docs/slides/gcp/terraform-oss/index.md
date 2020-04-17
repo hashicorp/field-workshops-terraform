@@ -1,12 +1,12 @@
 name: GCP-Terraform-Workshop
 class: center
 count: false
-![:scale 60%](images/tf_aws.png)
+![:scale 60%](images/tf_gcp.png)
 <br><br>
 # GCP Terraform Workshop
 ## Build GCP Resources with Infrastructure as Code
 ???
-INSTRUCTOR GUIDE LINK: https://github.com/hashicorp/field-workshops-terraform/blob/master/instructor-guides/aws_intro_to_terraform_INSTRUCTOR_GUIDE.md
+INSTRUCTOR GUIDE LINK: https://github.com/hashicorp/field-workshops-terraform/blob/master/instructor-guides/gcp_intro_to_terraform_INSTRUCTOR_GUIDE.md
 
 This slide presentation is stored as Markdown code, specifically using the RemarkJS engine to render it. All standard markdown tags are supported, and you can also use some HTML within this document.
 
@@ -58,7 +58,7 @@ name: Link-to-Slide-Deck
 <br><br><br>
 Follow along on your own computer at this link:
 
-### <https://git.io/JerH6>
+### <https://git.io/JvdX7>
 
 ---
 name: Table-of-Contents
@@ -70,7 +70,7 @@ name: Table-of-Contents
 1. Terraform In Action: plan, apply, destroy
 1. Organizing Your Terraform Code<br>
 🧪 **Lab - Terraform in Action**<br>
-1. Provision and Configure GCP Instances<br>
+1. Provision and Configure Google Compute Instances<br>
 🔬 **Lab - Provisioning with Terraform**<br>
 1. Manage and Change Infrastructure State<br>
 1. Terraform Cloud<br>
@@ -92,85 +92,91 @@ class: title
 We use the word chapter here, because the training should feel like a story unfolding. The instructor's job is to guide the learners through this interactive story.
 
 ---
-name: How-to-Provision-an-GCP-Instance
-# How to Provision an GCP Instance
+name: How-to-Provision-a-GCP-Instance
+# How to Provision a Google Compute Instance
 
-Let's look at a few different ways you could provision a new GCP Instance. Before we start we'll need to gather some basic information including (but not limited to):
+Let's look at a few different ways you could provision a new Google Compute Instance. Before we start we'll need to gather some basic information including (but not limited to):
 
 - Instance Name
-- Operating System (Image)
-- VM Size
 - Geographical Location (Region)
-- Security Groups
+- Machine Type (VM Size)
+- Operating System (Image)
+- Service Account
+- Networking
 
 ???
-**Has anyone got experience using GCP? How do most of us normally get started? That's right, we log onto the AWS Console and start clicking around. All of the major cloud providers make this part really easy. You get your account, log on and start clicking buttons. Let's take a peek at what that looks like...**
+**Has anyone got experience using Google Cloud? How do most of us normally get started? That's right, we log onto the GCP Console and start clicking around. All of the major cloud providers make this part really easy. You get your account, log on and start clicking buttons. Let's take a peek at what that looks like...**
 
-We chose the GCP Console as a starting point because most AWS users will be familiar with it. From this familiar starting point we begin our journey...
+We chose the GCP Console as a starting point because most GCP users will be familiar with it. From this familiar starting point we begin our journey...
 
 ---
 name: GCP-Console-Provision
 # Method 1: GCP Console (GUI)
-![:scale 70%](images/aws_provision.png)
+.center[![:scale 80%](images/gcp_provision.png)]
 
 ???
-**This should look familiar if you've ever used GCP. From the EC2 Panel, you click on Instances > Launch Instance, and you'll see a list of different AWS Machine Images (AMIs) you can use to provision your Instance. Some of these are provided by AWS, others are provided by third parties in the marketplace. You either search or browse for the thing you need, and click on it. Easy.**
+**This should look familiar if you've ever used GCP. From the Compute Engine panel, you click on VM Instances > Create, and you'll see a screen where you can begin configuring the instance you'd like to provision. There's a link to the Marketplace where you'll see a whole list of different base images you can use to provision your VM. Some of these are provided by Google, others are provided by third parties in the marketplace. You either search or browse for the thing you need, and click on it. Easy.**
 
 ---
 name: GCP-Console-Provision-2
-# Method 1: GCP Portal (GUI)
-![:scale 60%](images/aws_provision_2.png)
+# Method 1: GCP Console (GUI)
+.center[![:scale 50%](images/gcp_provision_2.png)]
 
 ???
-**Once you've chosen your AMI, you will fill in some more details - the instance type, the VPC you want it to launch in, any associated IAM roles you want to assign it, external storage, tags, security groups... it's a long list of options! The GCP console can be handy for spinning up individual VMs and dev or test environments. The good news is that it's really easy to spin up infrastructure this way. The bad news is that it doesn't scale, and chances are that nobody is keeping track of what got built.**
+**Once you've chosen your image, you will fill in some more details - labels, the region and zone, the machine configuration, storage, the network you want it to launch in, the service account and scopes you want to assign it..it's a long list of options! The GCP console can be handy for spinning up individual VMs and dev or test environments. The good news is that it's really easy to spin up infrastructure this way. The bad news is that it doesn't scale, and chances are that nobody is keeping track of what got built.**
 
 It's really easy to make a big mess of things if you simply give everyone a console account and turn them loose in the cloud environment.
 
 ---
-name: CloudFormation-Templates
+name: DeploymentManager-Templates
 class: compact
-# Method 2: CloudFormation Templates
-```json
-{
-  "GCPTemplateFormatVersion" : "2010-09-09",
-
-  "Description" : "GCP CloudFormation Sample Template EC2InstanceWithSecurityGroupSample: Create an Amazon EC2 instance running the Amazon Linux AMI. The AMI is chosen based on the region in which the stack is run. This example creates an EC2 security group for the instance to give you SSH access. **WARNING** This template creates an Amazon EC2 instance. You will be billed for the AWS resources used if you create a stack from this template.",
-
-  "Parameters" : {
-    "KeyName": {
-      "Description" : "Name of an existing EC2 KeyPair to enable SSH access to the instance",
-      "Type": "GCP::EC2::KeyPair::KeyName",
-      "ConstraintDescription" : "must be the name of an existing EC2 KeyPair."
-    },
+# Method 2: Deployment Manager Templates
+```yaml
+resources:
+- name: vm-created-by-deployment-manager
+  type: compute.v1.instance
+  properties:
+    zone: us-central1-a
+    machineType: zones/us-central1-a/machineTypes/n1-standard-1
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      initializeParams:
+        sourceImage: projects/debian-cloud/global/images/family/debian-9
+    networkInterfaces:
+    - network: global/networks/default
 ```
 
-CloudFormation Templates provide a consistent and reliable way to provision GCP resources. JSON is easy for computers to read, but can be challenging for humans to edit and troubleshoot.
+GDM templates provide a consistent and reliable way to provision GCP resources. YAML is easy for computers to read, but can be challenging for humans to edit and troubleshoot.
 
 ???
-**Which brings us to method #2, CloudFormation Templates, also known as CFTs. Have any of you used CFTs? What's that experience like?**
+**Which brings us to method #2, Google Cloud Deployment Manager templates. Have any of you used Deployment Manager templates? What's that experience like?**
 
-**CFTs are written in JSON, which stands for JavaScript Object Notation. It is an open-standard format for transmitting data between computers. And don't get me wrong, JSON is great. If you happen to be a computer. Computers are really good at reading these files full of key-value pairs and lists.**
+**GDM templates are written in YAML, which stands for YAML Ain't Markup Language. It is an open-standard format for transmitting data between computers. And don't get me wrong, JSON is great. If you happen to be a computer. Computers are really good at reading these files full of key-value pairs and lists.**
 
 **The problem is that editing and maintaining huge JSON files is hard for humans. Because JSON is not a programming language, you'll end up writing a lot more lines of complex code that is hard to understand and change.**
 
-**CloudFormation Templates - easy for computers to read, hard for humans to troubleshoot and maintain.**
+**Deployment Manager templates - easy for computers to read, hard for humans to troubleshoot and maintain.**
 
-We are not here to bash on CloudFormation Templates or any other JSON/YAML based provisioning tools. The simple fact is these data formats are not well suited for logical operations (if/then, for loops, etc.)
+We are not here to bash on Deployment Manager templates or any other JSON/YAML based provisioning tools. The simple fact is these data formats are not well suited for logical operations (if/then, for loops, etc.)
 
 ---
 name: Provision-with-Terraform-2
 # Method 3: Provision with Terraform
 ```terraform
-resource aws_instance "web" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+resource "google_compute_instance" "web" {
+  name         = "my-first-vm"
+  machine_type = "n1-standard-1"
+  zone         = "us-central1-a"
 
-  tags = {
-    Name = "HelloWorld"
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-9"
+    }
   }
-}
+...
 ```
-.center[Example Terraform code for building an GCP instance.]
+.center[Example Terraform code for building a Google Compute instance.]
 
 ???
 **And finally we have option #3, Terraform. Terraform uses a Domain Specific Language, or DSL that is designed to be both human-friendly and machine-readable. This is an example snippet of Terraform code. Now watch as I flip back to the previous slide. Would you rather have to write and maintain this complex and messy JSON, or this simple, compact terraform code?**
@@ -181,12 +187,13 @@ Advance back to the previous slide to illustrate the difference between JSON and
 name: What-is-Terraform
 # What is Terraform?
 ```terraform
-resource aws_instance "catapp" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
-  tags = {
-    Name = "${var.prefix}-meow"
-  }
+resource "google_compute_instance" "hashicat" {
+  name         = "${var.prefix}-hashicat"
+  zone         = "${var.region}-b"
+  machine_type = var.machine_type
+
+  tags         = ["http-server"]
+}
 ```
 * Executable Documentation
 * Human and machine readable
@@ -213,7 +220,7 @@ Infrastructure as Code (IaC) is the process of managing and provisioning cloud i
 ]
 
 ???
-**You might be thinking...why can't I just do this by hand? After all the GCP portal is really easy, and I can just stand up my infrastructure manually. Here's why:**
+**You might be thinking...why can't I just do this by hand? After all the GCP console is really easy, and I can just stand up my infrastructure manually. Here's why:**
 
 **Terraform ensures that when you build any type of infrastructure that it gets built correctly every single time, exactly the same way. Let's try a thought experiment. If I gave every single one of you the same build document and asked you to set up a server, I guarantee there will be differences in those machines when you hand them over. They may not be major differences, but over time these can pile up and cause all sorts of uncertainty and issues in your environment.**
 
@@ -335,42 +342,13 @@ name: Config-Hell
 **This is a fun web comic. Those of you who have spent hours poking at a nested JSON template, trying to figure out which layer of curly braces you are in will understand this...**
 
 ---
-Name: Terraform-vs-JSON
-# Terraform vs. JSON
-CFT JSON:
-```json
-"name": "{ "Fn::Join" : [ "-", [ PilotServerName, vm ] ] }",
-```
-
-Terraform:
-```hcl
-name = "${var.PilotServerName}-vm"
-```
-
-Terraform code (HCL) is easy to learn and easy to read. It is also 50-70% more compact than an equivalent JSON configuration.
-
----
-Name: Why-Terraform-1
-# Why Terraform?
-.center[![:scale 60%](images/1password_terraform.png)]
-
-.center[### <https://blog.1password.com/terraforming-1password/>]
-
-???
-1Password did a great blog post illustrating the difference between GCP Cloudformation (JSON) and Terraform.
-
-https://blog.1password.com/terraforming-1password/
-
-1Password were able to move their entire production infrastructure to Terraform in a few short weeks. Now they can tear down and completely rebuild their production environment in a matter of hours.
-
----
 Name: Why-Terraform-on-GCP
 # Why Terraform on GCP?
 
 * Supports multi-cloud & hybrid infrastructure
 
 ???
-**Why specifcially should you use Terraform on GCP? The first reason is that Terraform supports your hybrid or multi-cloud strategy. If you need to build some infrastructure on-prem, and some in AWS, Terraform is a natural fit. Your technical staff only has to learn a single language to be able to provision in either environment.**
+**Why specifcially should you use Terraform on GCP? The first reason is that Terraform supports your hybrid or multi-cloud strategy. If you need to build some infrastructure on-prem, and some in GCP, Terraform is a natural fit. Your technical staff only has to learn a single language to be able to provision in either environment.**
 
 ---
 Name: Why-Terraform-on-GCP
@@ -380,7 +358,7 @@ Name: Why-Terraform-on-GCP
 * Migrate from other cloud providers
 
 ???
-**Terraform is also great for migrating between cloud providers. Let's say you wanted to move some workloads from GCP to AWS. The code changes in Terraform would be much easier to implement than they would via CloudFormation Templates. I was able to migrate a simple demo application from one cloud to another in a few short hours, because there was almost no learning curve. Terraform code looks the same no matter where you run it.**
+**Terraform is also great for migrating between cloud providers. Let's say you wanted to move some workloads from AWS to GCP. The code changes in Terraform would be much easier to implement than they would via Deployment Manager templates. I was able to migrate a simple demo application from one cloud to another in a few short hours, because there was almost no learning curve. Terraform code looks the same no matter where you run it.**
 
 ---
 Name: Why-Terraform-on-GCP
@@ -428,7 +406,7 @@ class: title
 
 **This is a workstation just like the ones you'll be using for today's workshops. I'm going to run a terraform apply command to build out the lab environment. We're actually cheating a little bit here, as we prebaked most of the environment before class to save us some time. Just like your favorite cooking show!**
 
-**You can see the results of the Terraform run here in my terminal window. This output is showing me the URL of the application server I just built. And if we pop over here to the GCP portal you'll see all of the different parts of my lab environment.**
+**You can see the results of the Terraform run here in my terminal window. This output is showing me the URL of the application server I just built. And if we pop over here to the GCP console you'll see all of the different parts of my lab environment.**
 
 **This is Infrastructure as code. By the end of today's training you'll be able to create your own infrastructure using Terraform.**
 
@@ -499,11 +477,10 @@ Type `terraform subcommand help` to view help on a particular subcommand.
 name: terraform-code
 # Terraform Code
 ```terraform
-resource aws_vpc "main" {
-  cidr_block       = "10.0.0.0/16"
-  instance_tenancy = "dedicated"
-}
-```
+resource "google_compute_network" "main" {
+  name                    = "${var.prefix}-vpc"
+  auto_create_subnetworks = false
+}```
 
 Terraform code is based on the [HCL2 toolkit](https://github.com/hashicorp/hcl2). HCL stands for HashiCorp Configuration Language.
 
@@ -549,9 +526,9 @@ name: terraform-init
 
 Initializing provider plugins...
 - Checking for available provider plugins...
-- Downloading plugin for provider "aws" (hashicorp/aws) 2.35.0...
+- Downloading plugin for provider "google" (hashicorp/google) 2.20.0...
 ...
- provider.aws: version = "~> 2.35"
+ provider.google: version = "~> 2.20"
 
 Terraform has been successfully initialized!
 
@@ -568,12 +545,12 @@ name: terraform-plan
 *$ terraform plan
 An execution plan has been generated and is shown below.
 Terraform will perform the following actions:
-  # aws_vpc.main will be created
-  + resource "aws_vpc" "main" {
-      + arn                              = (known after apply)
-      + cidr_block                       = "10.0.0.0/16"
+  # google_compute_network.main will be created
+  + resource "google_compute_network" "main" {
+      + auto_create_subnetworks         = false
       ...
-      + instance_tenancy                 = "dedicated"
+      + name                            = "main-vpc"
+      + self_link                       = (known after apply)
     }
 ```
 Preview your changes with `terraform plan` before you apply them.
@@ -591,9 +568,9 @@ variable "prefix" {
   description = "This prefix will be included in the name of most resources."
 }
 
-variable "instance_tenancy" {
-  description = "A tenancy option for instances launched into the VPC."
-* default     = "dedicated"
+variable "region" {
+  description = "The region where the compute network is created."
+* default     = "us-central1"
 }
 ```
 
@@ -676,7 +653,7 @@ resource type "name" {
 ```
 
 **resource** = Top level keyword<br>
-**type** = Type of resource. Example: `aws_instance`.<br>
+**type** = Type of resource. Example: `google_compute_instance`.<br>
 **name** = Arbitrary name to refer to this resource. Used internally by terraform. This field *cannot* be a variable.
 
 ???
@@ -690,8 +667,8 @@ The terraform core program requires at least one provider to build anything.
 You can manually configure which version(s) of a provider you would like to use. If you leave this option out, Terraform will default to the latest available version of the provider.
 
 ```hcl
-provider "aws" {
-  version = "=2.35.0"
+provider "google" {
+  version = "~> 2.0.0"
 }
 ```
 
@@ -707,7 +684,7 @@ name: provider-versioning
 version allowed. ~> 0.9 is equivalent to >= 0.9, < 1.0, and ~> 0.8.4
 is equivalent to >= 0.8.4, < 0.9
 ```
-Re-usable modules should constrain only the minimum allowed version, such as >= 2.35.0.
+Re-usable modules should constrain only the minimum allowed version, such as >= 2.20.0.
 
 ???
 **This specifies the earliest version that the module is compatible with while leaving the user of the module flexibility to upgrade to newer versions of Terraform without altering the module.**
@@ -722,14 +699,11 @@ class: compact
 An execution plan has been generated and is shown below.
 
 Terraform will perform the following actions:
-  # aws_vpc.main will be created
-  + resource "aws_vpc" "main" {
-      + cidr_block                       = "10.0.0.0/16"
-      + instance_tenancy                 = "dedicated"
+  # google_compute_subnetwork.hashicat will be created
+  + resource "google_compute_subnetwork" "hashicat" {
+      + ip_cidr_range                    = "10.0.10.0/24"
+      + region                           = "us-central1"
         ...
-      + tags                             = {
-          + "Name" = "main"
-        }
     }
 
 Plan: 1 to add, 0 to change, 0 to destroy.
@@ -745,14 +719,11 @@ class: compact
 An execution plan has been generated and is shown below.
 
 Terraform will perform the following actions:
-  # aws_vpc.main will be destroyed
-  - resource "aws_vpc" "main" {
-      - cidr_block                       = "10.0.0.0/16" -> null
-      - instance_tenancy                 = "dedicated" -> null
+  # google_compute_subnetwork.hashicat will be destroyed
+  - resource "google_compute_subnetwork" "hashicat" {
+      - ip_cidr_range                    = "10.0.10.0/24" -> null
+      - region                           = "us-central1" -> null
         ...
-      - tags                             = {
-          - "Name" = "main"
-        } -> null
     }
 
 Plan: 0 to add, 0 to change, 1 to destroy.
@@ -779,17 +750,9 @@ class: compact
 # Terraform Data Sources
 
 ```terraform
-data "aws_ami" "ubuntu" {
-  most_recent = true
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
-  }
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-  owners = ["099720109477"] # Canonical
+data "google_compute_image" "my_image" {
+  family  = "debian-9"
+  project = "debian-cloud"
 }
 ```
 Data sources are a way of querying a provider to return an existing resource, so that we can access its parameters for our own use.
@@ -799,21 +762,26 @@ Data sources are a way of querying a provider to return an existing resource, so
 name: dependency-mapping
 class: compact
 # Terraform Dependency Mapping
-Terraform can automatically keep track of dependencies for you. Look at the two resources below. Note the highlighted lines in the aws_instance resource. This is how we tell one resource to refer to another in terraform.
+Terraform can automatically keep track of dependencies for you. Look at the two resources below. Note the highlighted lines in the google_compute_instance resource. This is how we tell one resource to refer to another in terraform.
 
 ```terraform
-resource aws_key_pair "my-keypair" {
-  key_name   = "my-keypair"
-  public_key = file(var.public_key)
+data "google_compute_image" "my_image" {
+  family  = "debian-9"
+  project = "debian-cloud"
 }
 
-resource "aws_instance" "web" {
-* ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
-* key_name      = aws_key_pair.my-keypair.name
+resource "google_compute_instance" "default" {
+  # ...
+
+  boot_disk {
+    initialize_params {
+*     image = data.google_compute_image.my_image.self_link
+    }
+  }
+}
 ```
 ???
-**Apart from the SSH keypair, you can also see how we reference the data source block from the previous slide. Flick back to the previous slide to show the relationship.**
+**You can also see how we reference the data source block from the previous slide. This shows we can reference the Google Compute Image based on the data block we defined earlier.**
 
 ---
 name: organizing-your-terraform
@@ -837,15 +805,16 @@ The first file is called main.tf. This is where you normally store your terrafor
 
 ```bash
 # This is the main.tf file.
-resource aws_vpc "main" {
-  cidr_block       = var.cidr_block
-  instance_tenancy = var.instance_tenancy
+resource "google_compute_network" "hashicat" {
+  name                    = "${var.prefix}-vpc"
+  auto_create_subnetworks = false
 }
 
-resource aws_subnet "main" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = var.cidr_block
-  }
+resource "google_compute_subnetwork" "hashicat" {
+  name          = "${var.prefix}-subnet"
+  region        = var.region
+  network       = google_compute_network.hashicat.self_link
+  ip_cidr_range = var.subnet_prefix
 }
 ...
 ```
@@ -861,13 +830,13 @@ class: compact
 The second file is called variables.tf. This is where you define your variables and optionally set some defaults.
 
 ```bash
-variable "cidr_block" {
-  description = "The address space that is used within the VPC. Changing this forces a new resource to be created."
+variable "prefix" {
+  description = "This prefix will be included in the name of some resources."
 }
 
-variable "instance_tenancy" {
-  description = "A tenancy option for instances launched into the VPC. Acceptable values are 'dedicated' and ''"
-  default     = "dedicated"
+variable "region" {
+  description = "The region where the resources are created."
+  default     = "us-central1"
 }
 ```
 
@@ -879,23 +848,19 @@ The outputs file is where you configure any messages or data you want to show at
 
 ```terraform
 output "catapp_url" {
-  value = "http://${aws_route53_record.hashicat.fqdn}"
+  value = "http://${google_compute_instance.hashicat.network_interface.0.access_config.0.nat_ip}"
 }
 
-
-output "private_key" {
-  value = "${tls_private_key.hashicat.private_key_pem}"
-}
 ```
 
 ???
-**This bit here with the EOF is an example of a HEREDOC. It allows you store multi-line text in an output.**
+**Since we likely don't know the value of an IP address before the compute instances is created, we can use this output keyword to display the value of the IP address after the instance has been provisioned.**
 
 ---
 name: tf-dependency-graph
 class: img-right
 # Terraform Dependency Graph
-.center[![:scale 100%](images/blast_radius_graph_1.png)]
+.center[![:scale 85%](images/blast_radius_graph_1.png)]
 
 The terraform resource graph visually depicts dependencies between resources.
 
@@ -934,7 +899,7 @@ In this chapter we:
 name: Chapter-4
 class: title
 # Chapter 4
-## Provision and Configure GCP Instances
+## Provision and Configure Google Compute Instances
 
 ---
 name: intro-to-provisioners
@@ -1060,7 +1025,7 @@ The state file is Terraform's source of record for everything it knows about.
   "lineage": "452b4191-89f6-db17-a3b1-4470dcb00607",
   "outputs": {
     "catapp_url": {
-      "value": "http://go-hashicat-5c0265179ccda553.workshop.aws.hashidemos.io",
+      "value": "http://go-hashicat-5c0265179ccda553.workshop.gcp.hashidemos.io",
       "type": "string"
     },
 ```
@@ -1105,12 +1070,12 @@ class: compact
 # Terraform State Quiz
 | Configuration           | State                   | Reality                 | Operation |
 | ----------------------- | ----------------------- | ----------------------- |:---------:|
-| aws_instance |                         |                         |    ???    |
-| aws_instance | aws_instance |                         |    ???    |
-| aws_instance | aws_instance | aws_instance |    ???    |
-|                         | aws_instance | aws_instance |    ???    |
-|                         |                         | aws_instance |    ???    |
-|                         | aws_instance |                         |    ???    |
+| google_compute_instance |                         |                         |    ???    |
+| google_compute_instance | google_compute_instance |                         |    ???    |
+| google_compute_instance | google_compute_instance | google_compute_instance |    ???    |
+|                         | google_compute_instance | google_compute_instance |    ???    |
+|                         |                         | google_compute_instance |    ???    |
+|                         | google_compute_instance |                         |    ???    |
 
 What happens in each scenario? Discuss.
 
@@ -1120,12 +1085,12 @@ class: compact
 # Terraform State Quiz
 | Configuration           | State                   | Reality                 | Operation    |
 | ----------------------- | ----------------------- | ----------------------- |:------------:|
-| aws_instance |                         |                         | create       |
-| aws_instance | aws_instance |                         | create       |
-| aws_instance | aws_instance | aws_instance | no-op        |
-|                         | aws_instance | aws_instance | delete       |
-|                         |                         | aws_instance | no-op        |
-|                         | aws_instance |                         | update state |
+| google_compute_instance |                         |                         | create       |
+| google_compute_instance | google_compute_instance |                         | create       |
+| google_compute_instance | google_compute_instance | google_compute_instance | no-op        |
+|                         | google_compute_instance | google_compute_instance | delete       |
+|                         |                         | google_compute_instance | no-op        |
+|                         | google_compute_instance |                         | update state |
 
 What happens in each scenario? Discuss.
 
@@ -1199,14 +1164,14 @@ If you'd like to learn more about Terraform on GCP try the links below:
 HashiCorp Learning Portal<br>
 https://learn.hashicorp.com/terraform/
 
-Terraform - Beyond the Basics with GCP<br>
-https://aws.amazon.com/blogs/apn/terraform-beyond-the-basics-with-aws/
+Managing Google Cloud Projects with Terraform<br>
+https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform
 
-Terraform GCP Provider Documentation<br>
-https://www.terraform.io/docs/providers/aws/index.html
+Terraform Google Provider Documentation<br>
+https://www.terraform.io/docs/providers/google/index.html
 
 Link to this Slide Deck<br>
-https://git.io/JerH6
+https://git.io/JvdX7
 
 ---
 name: Feedback-Survey
