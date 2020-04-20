@@ -17,10 +17,10 @@ allIAMAccessKeys = plan.find_resources("<resource_type>")
 # Filter to AWS IAM access keys with violations
 # The called function prints warnings for all violations
 violatingIAMAccessKeys = plan.filter_attribute_does_not_have_prefix(
-                         allIAMAccessKeys, "<attribute>", "keybase:")
+                         allIAMAccessKeys, "<attribute>", "keybase:", true)
 
 # Count violations
-violations = length(violatingIAMAccessKeys)
+violations = length(violatingIAMAccessKeys["messages"])
 
 # Main rule
 main = rule {

@@ -18,7 +18,7 @@ allGCPComputeInstances = plan.find_resources("<resource_type>")
 # Prints warnings for all violations
 violatingGCPComputeInstances =
   plan.filter_attribute_is_not_value(allGCPComputeInstances,
-  "<expression_1>", "debian-cloud/debian-9")
+  "<expression_1>", "debian-cloud/debian-9", true)
 
 # Count violations
 violations = <expression_2>
