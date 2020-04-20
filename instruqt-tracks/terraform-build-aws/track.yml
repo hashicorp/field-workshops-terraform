@@ -656,13 +656,13 @@ challenges:
   teaser: Terraform can change some resources in in place without deleting them. Adding
     tags is a non-destructive action.
   assignment: |-
-    Read the Terraform documentation for the aws_vpc resource:
+    Several resource types support AWS's tags. Read the Terraform documentation for the `aws_vpc` resource to learn about the `tags` argument and its format.
 
-    [AWS Terraform Docs - Click Here](https://www.terraform.io/docs/providers/aws/r/vpc.html)
-
-    Add a tag to your VPC in the **main.tf** file.
-
-    The name of the tag should be `environment` and the value should be `Production`. The tag is case-sensitive. Make sure you use a capital P.
+    [Terraform Docs: the aws_vpc resource - Click Here](https://www.terraform.io/docs/providers/aws/r/vpc.html)
+    
+    Add a tag to your VPC resource in the **main.tf** file. The name of the tag should be `environment` and the value should be `Production`. (The tag is case-sensitive. Make sure you use a capital P.)
+    
+    Hint: Read the examples carefully! Unlike the other resource arguments you've seen, the value of the `tags` argument must be a **map** (a `{key = "value"}` data structure). For more about Terraform's data types, [see the Terraform language documentation](https://www.terraform.io/docs/configuration/expressions.html#types-and-values).
 
     Re-run `terraform apply`.
 
