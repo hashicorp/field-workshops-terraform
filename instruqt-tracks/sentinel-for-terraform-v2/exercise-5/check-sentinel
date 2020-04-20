@@ -10,7 +10,7 @@ fgrep -q "tfconfig.module_calls" require-modules-from-pmr-1.sentinel || fail-mes
 
 fgrep -qL "<condition_1>" require-modules-from-pmr-1.sentinel && fail-message "You have not replaced '<condition_1>' in require-modules-from-pmr-1.sentinel with a condition that requires the current module call to have an index that does not contain a colon yet."
 
-fgrep -q 'index not matches "(.+):(.+)"' require-modules-from-pmr-1.sentinel || fgrep -q 'index matches "^[^:]*$"' require-modules-from-pmr-1.sentinel || fail-message "You have not replaced '<condition_1>' with 'index not matches \"(.+):(.+)\"' or 'index matches \"^[^:]*$\"' yet."
+fgrep -q 'index not matches "(.+):(.+)"' require-modules-from-pmr-1.sentinel || fgrep -q 'index not matches ".+:.+"' require-modules-from-pmr-1.sentinel || fgrep -q 'index matches "^[^:]*$"' require-modules-from-pmr-1.sentinel || fail-message "You have not replaced '<condition_1>' with 'index not matches \"(.+):(.+)\"' or 'index matches \"^[^:]*$\"' yet."
 
 fgrep -qL "<condition_2>" require-modules-from-pmr-1.sentinel && fail-message "You have not replaced '<condition_2>' in require-modules-from-pmr-1.sentinel with a condition that tests if the module call has a source from the desired private module registry yet."
 

@@ -47,6 +47,7 @@ challenges:
     ```
     sentinel apply -h
     ```
+    Please read the output to learn about the "apply" command.
 
     Note that you can also use the "-help" and "--help" flags instead of "-h".
 
@@ -54,6 +55,7 @@ challenges:
     ```
     sentinel test -h
     ```
+    Please read the output to learn about the "test" command.
 
     The "sentinel apply" and "sentinel test" commands both evaluate a Sentinel policy, but the latter tests it against multiple test case files.
   notes:
@@ -182,7 +184,7 @@ challenges:
     At any point while solving the challenge, you can click the green "Check" button to get a hint suggesting something that you still need to do.
 
     ## Complete the Policy
-    Open the "restrict-vault-auth-methods.sentinel" policy on the "Policies" tab. You'll see several placeholders in angular brackets throughout the policy. You need to replace those placeholders with suitable Sentinel expressions.
+    Open the "restrict-vault-auth-methods.sentinel" policy on the "Policies" tab. You'll see several placeholders in angular brackets throughout the policy. You need to replace those placeholders with suitable Sentinel expressions. In this and the remaining challenges, please do **not** edit the mock files; that would be cheating!
 
     Replace `<method1>`, `<method2>`, `<method3>`, and `<method4>` in the `allowed_methods` list with suitable values. If you did not read the second screen while this challenge was loading, we suggest you read it now by clicking on the note icon in the upper right corner and then clicking the right arrow icon. Click the X icon to return to this challenge. Be sure to check the Vault auth method pages to see what the correct values are and note that case matters.
 
@@ -212,14 +214,14 @@ challenges:
     contents: |-
       In this challenge, you will complete the first of five exercises from the [Writing and Testing Sentinel Policies for Terraform](https://www.hashicorp.com/resources/writing-and-testing-sentinel-policies-for-terraform) guide.
 
-      We recommend reviewing slides 60-68, 76-82, and 83-88 of the Sentinel-for-Terraform-v2.pptx presentation at this point. You'll be using the [tfplan/v2](https://www.terraform.io/docs/cloud/sentinel/import/tfplan-v2.html) import just as the sample policy in the second group of slides does.
+      We recommend reviewing slides 61-69, 77-83, and 84-89 of the Sentinel-for-Terraform-v2.pptx presentation at this point.
 
       We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it after you complete it.
   - type: text
     contents: |-
       Your task is to complete and test a Sentinel policy that restricts the Vault authentication methods (backends) provisioned by Terraform's Vault Provider.
 
-      Don't worry if you don't know much about Vault. You can find the information you need in these URLs:
+      Don't worry if you don't know much about Vault. You'll find what you need in these URLs:
       https://www.terraform.io/docs/providers/vault/r/auth_backend.html
       https://www.vaultproject.io/docs/auth/index.html
 
@@ -254,20 +256,20 @@ challenges:
     At any point while solving the challenge, you can click the green "Check" button to get a hint suggesting something that you still need to do.
 
     ## Complete the First Version
-    On the "Policies" tab, you'll see that there are two new policies that start with "require-access-keys-use-pgp". Open the "require-access-keys-use-pgp-1.sentinel" policy which is the simpler of the two. You'll see several placeholders in angular brackets throughout the policy. You need to replace those placeholders with suitable Sentinel expressions.
+    On the "Policies" tab, you'll see that there are two new policies that start with "require-access-keys-use-pgp". (You can position your cursor over the veritical black line between the list of files and the file display area, click and hold your left mouse button, and slide to the right to make it easier to distinguish the file names.) Open the "require-access-keys-use-pgp-1.sentinel" policy which is the simpler of the two. You'll see several placeholders in angular brackets throughout the policy. You need to replace those placeholders with suitable Sentinel expressions.
 
     Replace `<resource_type>` in the call to the `find_resources` function in the "require-access-keys-use-pgp-1.sentinel" policy with a suitable resource type from the AWS provider. If you did not read the second screen while this challenge was loading, we suggest you read it now by clicking on the note icon in the upper right corner and then clicking the right arrow icon. Click the X icon to return to the challenge.
 
     Now that you have found the documentation page for the resource you are restricting, you can determine the specific attribute that is used to set a PGP key on an AWS IAM access key. Replace `<attribute>` with that attribute in the call to the "filter_attribute_does_not_have_prefix" function in the "require-access-keys-use-pgp-1.sentinel" policy.
 
-    We also recommend that you look at the code of the "filter_attribute_does_not_have_prefix" function in the "tfplan-functions.sentinel" module under the "common-functions" directory. It does the following things:
+    The "filter_attribute_does_not_have_prefix" function in the "tfplan-functions.sentinel" module does the following things:
       * Iterates over all resources in the list passed to it.
-      * Calls the `evaluate_attribute` function to evaluate the value of the specified attribute for the current resource.
-      * Checks if the value is `null` and uses the `else null` expression to convert the `undefined` value into `null` to cover the case that the resource did not have the attribute defined.
+      * Calls the `evaluate_attribute` function to evaluate the value of the specified attribute for the current resource and uses the `else null` expression to convert the `undefined` value into `null` to cover the case that the resource did not have the attribute defined.
+      * Checks if the value is `null`.
       * Uses the boolean expression `not strings.has_prefix(v, prefix)` to determine if the attribute does not start with the prefix (which in our case is "keybase:").
-      * Adds violating resources to the `violators` map.
-      * Prints warning messages for violators.
-      * Returns the list of all violators.
+      * Adds violating resources to the `violators` map and corresponding violation messages to the `messages` map.
+      * If `prtmsg` is `true`, prints warning messages for violators.
+      * Returns a map with the `violators` and `messages` maps and their common length.
 
     Understanding this code will help you complete the "require-access-keys-use-pgp-2.sentinel" policy after you successfully complete and test the "require-access-keys-use-pgp-1.sentinel" policy.
 
@@ -301,7 +303,9 @@ challenges:
 
     Then replace `<condition_1>` with a condition that tests if the `pgp_key` attribute was missing. This condition should use the `pgp_key` variable.
 
-    Next, replace `<condition_2>` with a condition that tests if the `pgp_key` variable does not start with "keybase:". While there are several ways of doing this, please use the "strings" import which is also used in the "filter_attribute_does_not_have_prefix" function that was used by the "require-access-keys-use-pgp-1.sentinel" policy.
+    Next, replace `<condition_2>` with a condition that tests if the `pgp_key` variable does **not** start with "keybase:". While there are several ways of doing this, please use the "strings" import which is also used in the "filter_attribute_does_not_have_prefix" function that was used by the "require-access-keys-use-pgp-1.sentinel" policy.
+
+    Note that this version of the policy sets `violations` to `length(violatingIAMAccessKeys)` instead of `violatingIAMAccessKeys["length"]` since `violatingIAMAccessKeys` is just a regular map without a key called `length` as had been the case when it was returned by the filter function.
 
     After making all of the above substitutions, save the "require-access-keys-use-pgp-2.sentinel" policy.  As before, you also need to copy it. Please do so with this command:
     ```
@@ -321,7 +325,7 @@ challenges:
     contents: |-
       In this challenge, you will complete Exercise 2 from the "Writing and Testing Sentinel Policies for Terraform" guide.
 
-      We recommend reviewing slides 31, 34-39, 42, and 89-90 of the Sentinel-for-Terraform-v2.pptx presentation at this point. Pay special attention to the descriptions of Sentinel's [for](https://docs.hashicorp.com/sentinel/language/loops/) loop, [if/else](https://docs.hashicorp.com/sentinel/language/conditionals/) conditional, [else](https://docs.hashicorp.com/sentinel/language/spec/#else-operator) operator, and [strings](https://docs.hashicorp.com/sentinel/imports/strings) import. You'll use all of these in the second version of the policy you write.
+      We recommend reviewing slides 31, 34-39, 42, and 90-91 of the Sentinel-for-Terraform-v2.pptx presentation at this point. Pay special attention to the descriptions of Sentinel's [for](https://docs.hashicorp.com/sentinel/language/loops/) loop, [if/else](https://docs.hashicorp.com/sentinel/language/conditionals/) conditional, [else](https://docs.hashicorp.com/sentinel/language/spec/#else-operator) operator, and [strings](https://docs.hashicorp.com/sentinel/imports/strings) import. You'll use all of these in the second version of the policy you write.
 
       We've made things easier by writing most of the policy for you (in two versions) and by providing the test cases and mocks that you need to test it.
   - type: text
@@ -432,7 +436,7 @@ challenges:
     contents: |-
       In this challenge, you will complete Excerise 3 from the "Writing and Testing Sentinel Policies for Terraform" guide.
 
-      We recommend reviewing slides 101-104, 33, and 38 of the Sentinel-for-Terraform-v2.pptx presentation. In this exercise, you will use the [tfstate/v2](https://www.terraform.io/docs/cloud/sentinel/import/tfstate-v2.html) import, the [filter](https://docs.hashicorp.com/sentinel/language/collection-operations/#filter-expression) expression, and the [matches](https://docs.hashicorp.com/sentinel/language/spec/#matches-operator) operator.
+      We recommend reviewing slides 102-105, 33, and 38 of the Sentinel-for-Terraform-v2.pptx presentation. In this exercise, you will use the [tfstate/v2](https://www.terraform.io/docs/cloud/sentinel/import/tfstate-v2.html) import, the [filter](https://docs.hashicorp.com/sentinel/language/collection-operations/#filter-expression) expression, and the [matches](https://docs.hashicorp.com/sentinel/language/spec/#matches-operator) operator.
 
       We've made things easier by writing most of the policy for you (in two versions) and by providing the test cases and mocks that you need to test it.
   - type: text
@@ -484,7 +488,7 @@ challenges:
 
     You now need to replace `<expression_1>` in the "restrict-gcp-instance-image-1.sentinel" policy with a reference to the attribute that represents the image of a Google compute instance. Use an expression like the final one given in the last paragraph.
 
-    Next, you need to replace `<expression_2>` in the "restrict-gcp-instance-image-1.sentinel" policy with an expression that gives the number of GCP compute instances with violations. This expression will be very similar to expressions that have been assigned to the `violations` variable in earlier exercises.
+    Next, you need to replace `<expression_2>` in the "restrict-gcp-instance-image-1.sentinel" policy with an expression that gives the number of GCP compute instances with violations. This expression will be similar to expressions that have been assigned to the `violations` variable in earlier exercises.
 
     ## Examine the Test Cases and Mocks
     Now open the test cases and mock files on the "Test Cases" tab. You'll see that the test cases, "fail-invalid-image.json" and "fail-no-initialize-params.json", refer to the "mock-tfplan-fail-invalid-image.sentinel" and "mock-tfplan-fail-no-initialize-params.sentinel" mock files respectively and expect the main rule to return `false`. You'll also see that the test case, "pass.json", refers to the "mock-tfplan-pass.sentinel" mock file and expects the main rule to return `true`. All 3 test cases also refer to the "tfplan-functions.sentinel" module.
@@ -510,13 +514,13 @@ challenges:
 
     Accordingly, please open the "restrict-gcp-instance-image-2.sentinel" policy and observe that it also has several placeholders in angular brackets that need to be replaced.
 
-    First, replace `<expression_1>` in the line that assigns a value to the `boot_disk` variable with an expression that gives the data of the `boot_disk` block of the "google_compute_instance" resource. For a hint, see line 19 of the "require-access-keys-use-pgp-2.sentinel" policy on the "Policies" tab, but don't bother adding `else null` to your expression.
+    First, replace `<expression_1>` in the line that assigns a value to the `boot_disk` variable with an expression that gives the data of the `boot_disk` block of the "google_compute_instance" resource. For a hint about the structure of your replacement, see line 19 of the "require-access-keys-use-pgp-2.sentinel" policy on the "Policies" tab, but don't bother adding `else null` to your expression.
 
     We use the `types` import to check if `<expression_2>` is a list since we will try to access elements of it in the `else` statement and would get an error if it is not a list (which would be the case if it were missing or `null`). We did not need to check the type of the `boot_disk` block because it is a required block of the resource and therefore cannot be missing.
 
     So, please replace `<expression_2>` with an expression that gives the data of the `initialize_params` block of the first map of the `boot_disk` block.  Use the `[n].` notation rather than the `.n.` notation that the `evaluate_attribute` function requires.
 
-    You now need to replace two occurences of `<expression_3>` in the `filter_images` function with a complex expression that refers to the value of the image set in the first `initialize_params` block of the first `boot_disk` block. In addition to specifying the correct attribute of the `initialize_params` block, keep in mind that it needs to be indexed just like `boot_disk` block was indexed.
+    You now need to replace two occurences of `<expression_3>` in the `filter_images` function with a complex expression that refers to the value of the image set in the first `initialize_params` block of the first `boot_disk` block. In addition to specifying the correct attribute of the `initialize_params` block, keep in mind that it needs to be indexed just like `boot_disk` block was indexed. Your replacement for `<expression_3>` should start with what you used when replacing `<expression_2>`.
 
     Finally, you need to replace `<add_main_rule>` with a main rule that evaluates the number of GCP compute instances that had violations. This will look very similar to the main rule in your other policies.
 
@@ -539,7 +543,7 @@ challenges:
     contents: |-
       In this challenge, you will complete Exercise 4 from the "Writing and Testing Sentinel Policies for Terraform" guide.
 
-      We recommend reviewing slides 105-109 of the Sentinel-for-Terraform-v2.pptx presentation. In this exercise, you will learn how to evaluate an attribute that is contained in a block contained in another block of a resource. A block is treated by Sentinel as a list of maps.
+      We recommend reviewing slides 106-110 of the Sentinel-for-Terraform-v2.pptx presentation. In this exercise, you will learn how to evaluate an attribute that is contained in a block contained in another block of a resource. A block is treated by Sentinel as a list of maps.
 
       We've made things easier by writing most of the policy for you (in two versions) and by providing the test cases and mocks that you need to test it.
   - type: text
@@ -591,9 +595,9 @@ challenges:
 
     We only want the policy to restrict module calls made from the root module. While module calls generally have an index with the form `<module_address>:<name>`, the first part, `<module_address>:`, is ommitted for module calls made from the root module.
 
-    Accordingly, replace `<condition_1>` with a condition that requires the current module call to have an index that does not contain a colon. There are two ways of doing this with the [matches](https://docs.hashicorp.com/sentinel/language/spec/#matches-operator) operator:
+    Accordingly, replace `<condition_1>` with a condition that requires the current module call to have an index that does not contain a colon. There are at least two ways of doing this with the [matches](https://docs.hashicorp.com/sentinel/language/spec/#matches-operator) operator:
 
-      1. The simpler way uses `if index matches "<regex1>"` in which <regex1\> uses `(.+)` twice to match one or more characters.
+      1. The simpler way uses `if index matches "<regex1>"` in which <regex1\> uses `.+` or `(.+)` twice to match one or more characters.
       2. The slightly more complex way uses `if index matches "<regex2>"` in which <regex2\> contains a [negated character class](https://www.regular-expressions.info/charclass.html) and ensures that nothing in it occurs from the beginning (^) to the end ($) of the index.
 
     Next, you need to replace `<condition_2>` with a condition that tests if the module call has a `source` from the desired Private Module Registry. Since this condition is placed after `not`, the function will print a violation message for modules that are not in the PMR and set the `validated` flag to `false`.
@@ -606,7 +610,7 @@ challenges:
 
     Next, you need to replace `<expression_2>` with an expression that gives the source of the module in the violation message.
 
-    Now that you've completed the `require_modules_from_pmr` function, you need to call it, replacing `<function>(<arg1>, <arg2>)` with a call to the function that passes in suitable arguments to it. The result is assigned to a boolean variable, `modules_from_pmr` which is evaluated by the `main` rule. This would be a good place to use the Sentinel parameters, `address` and `organization`, defined at the top of the policy.
+    Now that you've completed the `require_modules_from_pmr` function, you need to call it, replacing `<function>(<arg1>, <arg2>)` with a call to the function that passes in suitable arguments to it. The result is assigned to a boolean variable, `modules_from_pmr` which is evaluated by the `main` rule. This would be a good place to use the Sentinel parameters, `address` and `organization`, defined at the top of the policy. Also, you can concatentate variables and static strings with the `+` operator.
 
     After making all the above substitutions, save the "require-modules-from-pmr-1.sentinel" policy by clicking the disk icon above the file.
 
@@ -638,8 +642,8 @@ challenges:
 
       1. Copy the entire `require_modules_from_pmr` function to the bottom of the "module-functions.sentinel" file that is in the /root/sentinel/common-functions directory.
       1. Save the "module-functions.sentinel" file.
-      1. Replace `<import_statement>` in the "require-modules-from-pmr-2.sentinel" policy with a suitable import statement that will allow that policy to call the function from the "module-functions.sentinel" file. We recommend that you look at the test cases to see the name they are using for the module that points at that file.
-      1. Replace `<function_call>` with a call to the `require_modules_from_pmr` function in the module referenced by the import statement you just added.
+      1. Replace `<import_statement>` in the "require-modules-from-pmr-2.sentinel" policy with a suitable import statement that will allow that policy to call the function from the "module-functions.sentinel" file. We recommend that you look at the test cases to see the name they are using for the module that points at that file. **Please use the alias `modules`.**
+      1. Replace `<function_call>` with a call to the `require_modules_from_pmr` function in the module referenced by the import statement you just added. Be sure to include two suitable parameters in the function call.
       1. Save the "require-modules-from-pmr-2.sentinel" policy.
 
     As before, you also need to create a copy of the  "require-modules-from-pmr-2.sentinel" policy. Please do so with this command:
@@ -661,7 +665,7 @@ challenges:
     contents: |-
       In this challenge, you will complete Exercise 5 from the "Writing and Testing Sentinel Policies for Terraform" guide.
 
-      We recommend reviewing slides 110-114 of the Sentinel-for-Terraform-v2.pptx presentation.
+      We recommend reviewing slides 111-115 of the Sentinel-for-Terraform-v2.pptx presentation.
 
       We've made things easier by writing most of the policy for you (in two versions) and by providing the test cases and mocks that you need to test it. The mocks simulate the use of two Azure modules both from the public Terraform Registry and from a Private Module Registry in an organization on the Terraform Cloud server.
   - type: text
@@ -705,7 +709,7 @@ challenges:
 
     The first thing you need to do is replace `<condition_1>` and `<condition_2>` in the `validate_auto_apply` function with conditions that test if the workspace name starts with "prod-" or ends with "-prod". You will probably want to use Sentinel's [strings](https://docs.hashicorp.com/sentinel/imports/strings) import or [matches](https://docs.hashicorp.com/sentinel/language/spec/#matches-operator) operator as you have done in earlier challenges. If you use the `strings` import, be sure to declare it at the top of the policy. If you use the `matches` operator, note that the comment at the top of the policy gives you regex expressions you can use with it.
 
-    Next, you need to replace `<condition_3>` with a condition that requires that the workspace does not have auto apply enabled. Review the [tfrun](https://www.terraform.io/docs/cloud/sentinel/import/tfrun.html) import's documentation to figure out what to use.
+    Next, you need to replace `<condition_3>` with a condition that tests if the workspace has auto apply enabled. Review the [tfrun](https://www.terraform.io/docs/cloud/sentinel/import/tfrun.html) import's documentation to figure out what to use.
 
     You should now replace `<expression_1>` in the `validate_auto_apply` function with an expression that gives the name of the workspace.
 
@@ -727,7 +731,7 @@ challenges:
     contents: |-
       In this extra credit challenge, you will use the [tfrun](https://www.terraform.io/docs/cloud/sentinel/import/tfrun.html) import to prevent production workspaces from having [Auto Apply](https://www.terraform.io/docs/cloud/workspaces/settings.html#auto-apply-and-manual-apply) enabled.
 
-      We recommend reviewing slides 120-124 of the Sentinel-for-Terraform-v2.pptx presentation.
+      We recommend reviewing slides 121-125 of the Sentinel-for-Terraform-v2.pptx presentation.
 
       We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it.
   - type: text
@@ -749,4 +753,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 2400
-checksum: "12766745146884854292"
+checksum: "18000419555057913749"
