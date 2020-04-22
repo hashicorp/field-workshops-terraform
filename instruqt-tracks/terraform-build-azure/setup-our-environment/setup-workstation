@@ -9,6 +9,12 @@ echo "Sourcing environment variables..."
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 
+# Ensure we load /etc/profile.d/instruqt-env.sh
+echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc
+
+# Import VAULT_TOKEN in case we need to get new creds
+echo "export VAULT_TOKEN=\$(cat /var/vault_token)" >> /root/.bashrc
+
 # Generate the Azure creds setup script
 cat <<-EOF > /bin/setup_azure.sh
 #!/bin/bash
@@ -109,9 +115,3 @@ systemctl start code-server
 # Back to our git repo and init
 cd $GITDIR
 terraform init
-
-# Import VAULT_TOKEN in case we need to get new creds
-echo "export VAULT_TOKEN=\$(cat /var/vault_token)" >> /root/.bashrc
-
-# Ensure we load /etc/profile.d/instruqt-env.sh
-echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc
