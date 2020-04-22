@@ -5,6 +5,7 @@ set -e
 sleep 10
 
 # Source important environment variables
+echo "Sourcing environment variables..."
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 
@@ -68,6 +69,7 @@ cp ${GITDIR}/exercises/outputs.tf.start ${GITDIR}/outputs.tf
 echo -e "\nlocation = \"centralus\"" >> ${GITDIR}/terraform.tfvars
 
 # Fetch dynamic creds for Azure
+echo "Fetching dynamic credentials from the CAM vault server."
 export VAULT_TOKEN=$(cat /var/vault_token)
 /bin/setup_azure.sh
 
@@ -113,6 +115,3 @@ echo "export VAULT_TOKEN=\$(cat /var/vault_token)" >> /root/.bashrc
 
 # Ensure we load /etc/profile.d/instruqt-env.sh
 echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc
-
-# Drop the Terraform extension vsix file into /root
-# wget https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-shared/mauve.terraform-1.4.0.vsix -O /root/mauve.terraform-1.4.0.vsix
