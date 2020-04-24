@@ -10,7 +10,7 @@ description: |-
 
   In this track, you will write and test policies that restrict resources, data sources, and modules provisioned by Terraform in AWS, Azure, and GCP. This version of the track uses the older v1 versions of the `tfplan`, `tfstate`, and `tfconfig` Sentinel imports which can be used with both Terraform 0.11 and 0.12. If you are only using Terraform 0.12, we recommend you use the [v2 version](https://play.instruqt.com/hashicorp/tracks/sentinel-for-terraform-v2) of this track which uses the newer v2 versions of those imports.
 
-  This track is intended for use with these PowerPoint [slides](https://github.com/hashicorp/field-workshops-terraform/blob/master/docs/slides/multi-cloud/sentinel-for-terraform/Sentinel-for-Terraform-v1.pptx) which you should download.
+  This track is intended for use with these PowerPoint [slides](https://storage.googleapis.com/instruqt-hashicorp-tracks/sentinel-shared/Sentinel-for-Terraform-v1.pptx) which you should download.
 
   We recommend starting this track when you can set aside at least 2 hours of uninterrupted time. (The total allocation of 4 hours is for use of the track in a workshop setting in which slides are alternated with the track challenges.) If you find yourself running out of time or are interrupted, we recommend saving all your completed policies outside the track so that you can quickly restore them if forced to begin the track again.
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
@@ -520,4 +520,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 1800
-checksum: "9150084627994857432"
+checksum: "5902640863005601132"
