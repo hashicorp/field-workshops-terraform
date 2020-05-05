@@ -8,7 +8,8 @@ cat <<-'EOF' > /root/sentinel/restrict-gcp-instance-image-1.sentinel
 # Import the v2 tfplan import, but use the alias "tfplan"
 import "tfplan/v2" as tfplan
 
-# Import common-functions/tfplan-functions.sentinel with alias "plan"
+# Import common-functions/tfplan-functions/tfplan-functions.sentinel
+# with alias "plan"
 import "tfplan-functions" as plan
 
 # Get all GCP compute instances
@@ -35,7 +36,8 @@ cat <<-'EOF' > /root/sentinel/restrict-gcp-instance-image-2.sentinel
 # Import the v2 tfplan import, but use the alias "tfplan"
 import "tfplan/v2" as tfplan
 
-# Import common-functions/tfplan-functions.sentinel with alias "plan"
+# Import common-functions/tfplan-functions/tfplan-functions.sentinel
+# with alias "plan"
 import "tfplan-functions" as plan
 
 # Standard types import
@@ -87,7 +89,7 @@ cat <<-'EOF' > /root/sentinel/test/restrict-gcp-instance-image/fail-no-initializ
 {
   "modules": {
     "tfplan-functions": {
-      "path": "../../common-functions/tfplan-functions.sentinel"
+      "path": "../../common-functions/tfplan-functions/tfplan-functions.sentinel"
     }
   },
   "mock": {
@@ -103,7 +105,7 @@ cat <<-'EOF' > /root/sentinel/test/restrict-gcp-instance-image/fail-invalid-imag
 {
   "modules": {
     "tfplan-functions": {
-      "path": "../../common-functions/tfplan-functions.sentinel"
+      "path": "../../common-functions/tfplan-functions/tfplan-functions.sentinel"
     }
   },
   "mock": {
@@ -555,7 +557,7 @@ cat <<-'EOF' > /root/sentinel/test/restrict-gcp-instance-image/pass.json
 {
   "modules": {
     "tfplan-functions": {
-      "path": "../../common-functions/tfplan-functions.sentinel"
+      "path": "../../common-functions/tfplan-functions/tfplan-functions.sentinel"
     }
   },
   "mock": {

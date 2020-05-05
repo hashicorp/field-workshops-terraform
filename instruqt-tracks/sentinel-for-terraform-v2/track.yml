@@ -165,7 +165,7 @@ challenges:
 
     Your task is to complete and test a Sentinel policy that restricts the Vault authentication methods (backends) provisioned by the `vault_auth_backend` resource of Terraform's Vault Provider to the following choices: Azure, Kubernetes, GitHub, and AppRole.
 
-    We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it. The policy uses the "find_resources" and "filter_attribute_not_in_list" functions from the "tfplan-functions.sentinel" module in the /root/sentinel/common-functions directory. This module was copied from [tfplan-functions.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/common-functions/tfplan-functions.sentinel).
+    We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it. The policy uses the "find_resources" and "filter_attribute_not_in_list" functions from the "tfplan-functions.sentinel" module in the /root/sentinel/common-functions/tfplan-functions directory. This module was copied from [tfplan-functions.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/common-functions/tfplan-functions/tfplan-functions.sentinel).
 
     Note that the import statement uses the alias `plan` for the "tfplan-functions" import to keep lines that use it shorter. This also makes it clear which file the module is derived from.
 
@@ -362,7 +362,7 @@ challenges:
 
     Your task is to complete and test a Sentinel policy that requires that all AWS Certificate Manager (ACM) Certificates referenced by a data source in Terraform's AWS Provider have domains that are subdomains of "hashidemos.io".
 
-    We've made things easier by writing most of the policy for you (in two versions) and by providing the test cases and mocks that you need to test it. The policy uses the "find_datasources" function from the "tfstate-functions.sentinel" module in the /root/sentinel/common-functions directory. This module was copied from [tfstate-functions.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/common-functions/tfstate-functions.sentinel).
+    We've made things easier by writing most of the policy for you (in two versions) and by providing the test cases and mocks that you need to test it. The policy uses the "find_datasources" function from the "tfstate-functions.sentinel" module in the /root/sentinel/common-functions/tfstate-functions directory. This module was copied from [tfstate-functions.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/common-functions/tfstate-functions/tfstate-functions.sentinel).
 
     Note that the import statement uses the alias `state` for the "tfstate-functions" import to keep lines that use it shorter. This also makes it clear which file the module is derived from.
 
@@ -473,7 +473,7 @@ challenges:
 
     Your task is to complete and test a Sentinel policy that requires Google Cloud Platform (GCP) compute instances provisioned by Terraform's Google Provider to use the public image "debian-cloud/debian-9". In a real-world policy, you would allow multiple images, but we wanted to keep things simple for this exercise.
 
-    We've made things easier by writing most of the policy for you (in two versions) and by providing the test cases and mocks that you need to test it. The policy uses the "find_resources" function from the "tfplan-functions.sentinel" module in the /root/sentinel/common-functions directory.
+    We've made things easier by writing most of the policy for you (in two versions) and by providing the test cases and mocks that you need to test it. The policy uses the "find_resources" function from the "tfplan-functions.sentinel" module in the /root/sentinel/common-functions/tfplan-functions directory.
 
     At any point while solving the challenge, you can click the green "Check" button to get a hint suggesting something that you still need to do.
 
@@ -640,7 +640,7 @@ challenges:
 
     Here are the steps you should follow:
 
-      1. Copy the entire `require_modules_from_pmr` function to the bottom of the "module-functions.sentinel" file that is in the /root/sentinel/common-functions directory.
+      1. Copy the entire `require_modules_from_pmr` function to the bottom of the "module-functions.sentinel" file that is in the /root/sentinel/common-functions/module-functions directory.
       1. Save the "module-functions.sentinel" file.
       1. Replace `<import_statement>` in the "require-modules-from-pmr-2.sentinel" policy with a suitable import statement that will allow that policy to call the function from the "module-functions.sentinel" file. We recommend that you look at the test cases to see the name they are using for the module that points at that file. **Please use the alias `modules`.**
       1. Replace `<function_call>` with a call to the `require_modules_from_pmr` function in the module referenced by the import statement you just added. Be sure to include two suitable parameters in the function call.
@@ -753,4 +753,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 2400
-checksum: "2152970955288312782"
+checksum: "1970876910189329837"

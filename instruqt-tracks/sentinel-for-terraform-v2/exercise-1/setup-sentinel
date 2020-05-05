@@ -3,9 +3,10 @@
 set -e
 
 # common-functions
-mkdir /root/sentinel/common-functions
+mkdir -p /root/sentinel/common-functions/tfplan-functions
+mkdir -p /root/sentinel/common-functions/tfstate-functions
 
-cat <<-'EOF' > /root/sentinel/common-functions/tfplan-functions.sentinel
+cat <<-'EOF' > /root/sentinel/common-functions/tfplan-functions/tfplan-functions.sentinel
 # Common functions that use the tfplan/v2 import
 
 # The filter functions all accept a collection of resource changes, an attribute,
@@ -13,7 +14,7 @@ cat <<-'EOF' > /root/sentinel/common-functions/tfplan-functions.sentinel
 # and indicates whether the filter function should print violation messages.
 # The filter functions return a map consisting of 2 items:
 #   * "resources": a map consisting of resource changes that violate a condition
-#   * "length":    the length of the resources and messages collections
+#   * "messages":  a map of violation messages associated with the resources
 # Note that both the resources and messages collections are indexed by the
 # address of the resources, so they will have the same order and length.
 # The filter functions all call evaluate_attribute() to evaluate attributes
@@ -750,7 +751,7 @@ filter_attribute_has_suffix = func(resources, attr, suffix, prtmsg) {
 }
 EOF
 
-cat <<-'EOF' > /root/sentinel/common-functions/tfstate-functions.sentinel
+cat <<-'EOF' > /root/sentinel/common-functions/tfstate-functions/tfstate-functions.sentinel
 # Common functions that use the tfstate/v2 import
 
 # The filter functions all accept a collection of resources, an attribute,
@@ -1494,7 +1495,8 @@ cat <<-'EOF' > /root/sentinel/restrict-vault-auth-methods.sentinel
 # Import the v2 tfplan import, but use the alias "tfplan"
 import "tfplan/v2" as tfplan
 
-# Import common-functions/tfplan-functions.sentinel with alias "plan"
+# Import common-functions/tfplan-functions/tfplan-functions.sentinel
+# with alias "plan"
 import "tfplan-functions" as plan
 
 # Allowed Vault Auth Methods
@@ -1528,7 +1530,7 @@ cat <<-'EOF' > /root/sentinel/test/restrict-vault-auth-methods/fail.json
 {
   "modules": {
     "tfplan-functions": {
-      "path": "../../common-functions/tfplan-functions.sentinel"
+      "path": "../../common-functions/tfplan-functions/tfplan-functions.sentinel"
     }
   },
   "mock": {
@@ -1544,7 +1546,7 @@ cat <<-'EOF' > /root/sentinel/test/restrict-vault-auth-methods/pass.json
 {
   "modules": {
     "tfplan-functions": {
-      "path": "../../common-functions/tfplan-functions.sentinel"
+      "path": "../../common-functions/tfplan-functions/tfplan-functions.sentinel"
     }
   },
   "mock": {

@@ -8,7 +8,8 @@ cat <<-'EOF' > /root/sentinel/require-access-keys-use-pgp-1.sentinel
 # Import the v2 tfplan import, but use the alias "tfplan"
 import "tfplan/v2" as tfplan
 
-# Import common-functions/tfplan-functions.sentinel with alias "plan"
+# Import common-functions/tfplan-functions/tfplan-functions.sentinel
+# with alias "plan"
 import "tfplan-functions" as plan
 
 # Get all AWS IAM access keys
@@ -34,7 +35,8 @@ cat <<-'EOF' > /root/sentinel/require-access-keys-use-pgp-2.sentinel
 # Import the v2 tfplan import, but use the alias "tfplan"
 import "tfplan/v2" as tfplan
 
-# Import common-functions/tfplan-functions.sentinel with alias "plan"
+# Import common-functions/tfplan-functions/tfplan-functions.sentinel
+# with alias "plan"
 import "tfplan-functions" as plan
 
 # Standard strings import
@@ -77,7 +79,7 @@ cat <<-'EOF' > /root/sentinel/test/require-access-keys-use-pgp/fail-invalid-valu
 {
   "modules": {
     "tfplan-functions": {
-      "path": "../../common-functions/tfplan-functions.sentinel"
+      "path": "../../common-functions/tfplan-functions/tfplan-functions.sentinel"
     }
   },
   "mock": {
@@ -93,7 +95,7 @@ cat <<-'EOF' > /root/sentinel/test/require-access-keys-use-pgp/fail-missing-valu
 {
   "modules": {
     "tfplan-functions": {
-      "path": "../../common-functions/tfplan-functions.sentinel"
+      "path": "../../common-functions/tfplan-functions/tfplan-functions.sentinel"
     }
   },
   "mock": {
@@ -109,7 +111,7 @@ cat <<-'EOF' > /root/sentinel/test/require-access-keys-use-pgp/fail-with-null.js
 {
   "modules": {
     "tfplan-functions": {
-      "path": "../../common-functions/tfplan-functions.sentinel"
+      "path": "../../common-functions/tfplan-functions/tfplan-functions.sentinel"
     }
   },
   "mock": {
@@ -270,7 +272,7 @@ cat <<-'EOF' > /root/sentinel/test/require-access-keys-use-pgp/pass.json
 {
   "modules": {
     "tfplan-functions": {
-      "path": "../../common-functions/tfplan-functions.sentinel"
+      "path": "../../common-functions/tfplan-functions/tfplan-functions.sentinel"
     }
   },
   "mock": {
