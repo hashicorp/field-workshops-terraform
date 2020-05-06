@@ -54,6 +54,9 @@ challenges:
     type: code
     hostname: workstation
     path: /root/workspace
+  - title: Shell
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 7200
 - slug: terraform-cloud-setup
