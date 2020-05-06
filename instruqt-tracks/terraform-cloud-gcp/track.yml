@@ -90,7 +90,7 @@ challenges:
 
     All Terraform commands should be run from the terminal within the Code Editor.  Make sure you are in the hashicat-gcp directory when you run terraform commands.
 
-    Try the **CTRL-J** shortcut to toggle the terminal window open and closed. If you don't see a command prompt in the terminal pane, simply click on the trash can icon and open a new terminal.
+    Try the **CTRL-J** (Windows) or **CMD-J** (Mac) shortcut to toggle the terminal window open and closed. If you don't see a command prompt in the terminal pane, simply click on the trash can icon and open a new terminal.
 
     You can use the little caret ^ shaped button on the terminal pane to expand and shrink your Terminal window. This is useful for viewing logs.
 
@@ -142,11 +142,11 @@ challenges:
 
     DO NOT SKIP THIS NEXT STEP:
 
-    Go into the workspace's **Settings >> General** settings page and change the **Execution Mode** to local.
+    Go into the workspace's **Settings >> General** settings page and change the **Execution Mode** to **Local**.
 
     Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables.
 
-    Enable a free trial of Terraform Cloud paid features by navigating to: **Settings** > **Plan & Billing**, select **Trial Plan**, and click the button for **Start your free trial**.
+    Enable a free trial of Terraform Cloud paid features by navigating to the top menu bar's **Settings** > **Plan & Billing**, select **Trial Plan**, and click the button for **Start your free trial**.
 
     Or, if you have an existing account where you've already used a trial, provide your instructor with your organization's name. They will upgrade your organization to unlock a 30 day free trial of all paid features.
 
