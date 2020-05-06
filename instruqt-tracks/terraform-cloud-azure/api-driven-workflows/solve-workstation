@@ -6,6 +6,7 @@ cd /root/hashicat-azure
 
 # Students should run the 'fastforward' command to create this file.
 # Otherwise it is assumed that this is a CI/CD run.
+# The /root/skipconfig.json file is required for skipping challenges.
 if [[ -f /root/skipconfig.json ]]; then
   ORG=$(jq -r .org < /root/skipconfig.json)
   TOKEN=$(jq -r .token < /root/skipconfig.json)
