@@ -9,7 +9,8 @@ cat <<-'EOF' > /root/sentinel/restrict-acm-certificate-domains-1.sentinel
 # Import the v2 tfstate import, but use the alias "tfstate"
 import "tfstate/v2" as tfstate
 
-# Import common-functions/tfstate-functions.sentinel with alias "state"
+# Import common-functions/tfstate-functions/tfstate-functions.sentinel
+# with alias "state"
 import "tfstate-functions" as state
 
 # Get all AWS ACM certs
@@ -38,7 +39,8 @@ cat <<-'EOF' > /root/sentinel/restrict-acm-certificate-domains-2.sentinel
 # Import the v2 tfstate import, but use the alias "tfstate"
 import "tfstate/v2" as tfstate
 
-# Import common-functions/tfstate-functions.sentinel with alias "state"
+# Import common-functions/tfstate-functions/tfstate-functions.sentinel
+# with alias "state"
 import "tfstate-functions" as state
 
 # Get all AWS ACM certs
@@ -85,7 +87,7 @@ cat <<-'EOF' > /root/sentinel/test/restrict-acm-certificate-domains/fail.json
 {
   "modules": {
     "tfstate-functions": {
-      "path": "../../common-functions/tfstate-functions.sentinel"
+      "path": "../../common-functions/tfstate-functions/tfstate-functions.sentinel"
     }
   },
   "mock": {
@@ -101,7 +103,7 @@ cat <<-'EOF' > /root/sentinel/test/restrict-acm-certificate-domains/pass.json
 {
   "modules": {
     "tfstate-functions": {
-      "path": "../../common-functions/tfstate-functions.sentinel"
+      "path": "../../common-functions/tfstate-functions/tfstate-functions.sentinel"
     }
   },
   "mock": {
