@@ -75,5 +75,49 @@ echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc
 grep $INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID /root/.bashrc || echo "export TF_VAR_project=\"$INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID\"" >> /root/.bashrc
 echo 'export GOOGLE_CREDENTIALS=$(echo $INSTRUQT_GCP_PROJECT_GCP_PROJECT_SERVICE_ACCOUNT_KEY | base64 -d)' >> /root/.bashrc
 
-# Drop the Terraform extension vsix file into /root
-# wget https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-shared/mauve.terraform-1.4.0.vsix -O /root/mauve.terraform-1.4.0.vsix
+# Create a catch-up script that enables the user to fast-forward
+cat <<-EOF > /usr/bin/fastforward
+#!/bin/bash
+echo "******************************************************************"
+echo "* Skip to Challenge Configuration Script"
+echo "******************************************************************"
+echo
+echo "This script will set up your Terraform Cloud token and organization"
+echo "configuration. Once that is done you may use the 'skip to challenge'"
+echo "feature of Instruqt to fast-forward to a particular point in the"
+echo "training."
+echo
+echo "Please enter your Terraform Cloud organization name."
+read ORG
+echo
+echo "Please enter your workspace name."
+read WORKSPACE
+echo
+echo "Please enter your Terraform Cloud user token."
+read TOKEN
+echo
+echo "Organization: \$ORG"
+echo "Workspace   : \$WORKSPACE"
+echo "Token       : \$TOKEN"
+read -p "Do these look right to you? Y/n " -n 1 -r
+echo
+if [[ ! \$REPLY =~ ^[Yy]\$ ]]
+then
+  echo "Please try again."
+  exit 1
+fi
+echo
+echo "Saving your settings in /root/skipconfig.json"
+cat <<-EOM > /root/skipconfig.json
+{
+  org: "\$ORG",
+  workspace: "\$WORKSPACE",
+  token: "\$TOKEN"
+}
+EOM
+
+ponysay -f twilight -f applejack -f rainbow -f pinkie -f rarity -f fluttershy "Ready to Skip Challenges!"
+
+EOF
+
+chmod +x /usr/bin/fastforward
