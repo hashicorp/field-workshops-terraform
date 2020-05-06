@@ -511,7 +511,7 @@ challenges:
 
     Once you've merged your changes to the master branch, watch the Terraform run that starts in the UI.
 
-    You can do this by clicking on the **Details** link next to the hashicat-aws check on the GitHub screen. This will take you straight to the speculative plan run in Terraform Cloud.
+    You can do this by clicking on the **Details** link next to the hashicat-gcp check on the GitHub screen. This will take you straight to the speculative plan run in Terraform Cloud.
   notes:
   - type: text
     contents: "The marketing team at ACME is running a special promotion next week
