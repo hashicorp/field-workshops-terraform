@@ -5,8 +5,15 @@ source /root/.bashrc
 cd /root/hashicat-azure
 
 # Hacky fix until instruqt allows us to pass these in from CircleCI
-ORG="instruqt-circleci"
-TOKEN=$(cat /var/tfc_user_token)
+# Students should run the 'fastforward' command to create this file.
+# Otherwise it is assumed that this is a CI/CD run.
+if [[ -f /root/skipconfig.json ]]; then
+  ORG=$(jq -r .org < /root/skipconfig.json)
+  TOKEN=$(jq -r .token < /root/skipconfig.json)
+else
+  ORG="instruqt-circleci"
+  TOKEN=$(cat /var/tfc_user_token)
+fi
 
 # Configure the /root/.terraform.d/credentials.tfrc.json file
 echo "Configuring the credentials.tfrc.json file..."
