@@ -61,6 +61,9 @@ challenges:
     type: code
     hostname: workstation
     path: /root
+  - title: Shell
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 600
 - slug: open-a-terminal
@@ -96,6 +99,9 @@ challenges:
     type: code
     hostname: workstation
     path: /root
+  - title: Shell
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 600
-checksum: "11918360151711486130"
+checksum: "14069881001562870197"
