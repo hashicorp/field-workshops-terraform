@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Blow away the test workspace, hashicat-aws if it exists
-ORG=instruqt-circleci
+ORG="instruqt-circleci"
 TOKEN=$(cat /var/tfc_user_token)
 
 # Store the ORG variable in /root/.bashrc

@@ -148,9 +148,9 @@ echo
 echo "Saving your settings in /root/skipconfig.json"
 cat <<-EOM > /root/skipconfig.json
 {
-  org: "\$ORG",
-  workspace: "\$WORKSPACE",
-  token: "\$TOKEN"
+  "org": "\$ORG",
+  "workspace": "\$WORKSPACE",
+  "token": "\$TOKEN"
 }
 EOM
 

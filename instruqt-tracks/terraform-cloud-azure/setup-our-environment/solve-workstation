@@ -3,7 +3,7 @@ source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 
 # Blow away the test workspace, hashicat-azure if it exists
-ORG=instruqt-circleci
+ORG="instruqt-circleci"
 TOKEN=$(cat /var/tfc_user_token)
 
 # Store the ORG variable in /root/.bashrc
