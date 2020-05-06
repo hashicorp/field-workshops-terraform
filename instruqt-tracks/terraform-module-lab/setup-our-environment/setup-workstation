@@ -69,9 +69,22 @@ echo
 echo "Please enter your Terraform Cloud user token."
 read TOKEN
 echo
+echo "Please enter your GitHub user name."
+echo
+read GITUSER
+echo
+echo "Please enter your oauth-id. You can find it at this URL:"
+echo "https://app.terraform.io/app/YOURORG/settings/version-control"
+echo "If you haven't set up VCS integration yet, simply hit enter."
+echo
+read OAUTHID
+echo
 echo "Organization: \$ORG"
 echo "Workspace   : \$WORKSPACE"
 echo "Token       : \$TOKEN"
+echo "GitHub User : \$GITUSER"
+echo "OAuth ID    : \$OAUTHID"
+echo
 read -p "Do these look right to you? Y/n " -n 1 -r
 echo
 if [[ ! \$REPLY =~ ^[Yy]\$ ]]
@@ -85,7 +98,9 @@ cat <<-EOM > /root/skipconfig.json
 {
   "org": "\$ORG",
   "workspace": "\$WORKSPACE",
-  "token": "\$TOKEN"
+  "token": "\$TOKEN",
+  "gituser": "\$GITUSER",
+  "oauthid": "\$OAUTHID"
 }
 EOM
 
