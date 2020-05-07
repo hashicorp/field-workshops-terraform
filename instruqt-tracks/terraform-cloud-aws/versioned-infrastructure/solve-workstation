@@ -7,6 +7,14 @@ source /root/.bashrc
 TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
 WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json"   https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws | jq -r .data.id)
 
+if [[ -f /root/skipconfig.json ]]; then
+  GITUSER=$(jq -r .gituser < /root/skipconfig.json)
+  OAUTHID=$(jq -r .oauthid < /root/skipconfig.json)
+else
+  GITUSER="workshops-testbot"
+  OAUTHID="ot-tcRNmn3r5wrk65Kz"
+fi
+
 # Update the workspace with VCS settings
 echo "Creating a workspace JSON payload..."
 cat <<-EOF > /tmp/add_vcs.json
@@ -19,9 +27,9 @@ cat <<-EOF > /tmp/add_vcs.json
       "vcs-repo": {
         "branch": "",
         "ingress-submodules": false,
-        "identifier": "workshops-testbot/hashicat-aws",
-        "display-identifier": "workshops-testbot/hashicat-aws",
-        "oauth-token-id": "ot-tcRNmn3r5wrk65Kz"
+        "identifier": "$GITUSER/hashicat-aws",
+        "display-identifier": "$GITUSER/hashicat-aws",
+        "oauth-token-id": "$OAUTHID"
         }
     },
     "type": "workspaces"
