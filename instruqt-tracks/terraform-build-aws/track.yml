@@ -659,9 +659,9 @@ challenges:
     Several resource types support AWS's tags. Read the Terraform documentation for the `aws_vpc` resource to learn about the `tags` argument and its format.
 
     [Terraform Docs: the aws_vpc resource - Click Here](https://www.terraform.io/docs/providers/aws/r/vpc.html)
-    
+
     Add a tag to your VPC resource in the **main.tf** file. The name of the tag should be `environment` and the value should be `Production`. (The tag is case-sensitive. Make sure you use a capital P.)
-    
+
     Hint: Read the examples carefully! Unlike the other resource arguments you've seen, the value of the `tags` argument must be a **map** (a `{key = "value"}` data structure). For more about Terraform's data types, [see the Terraform language documentation](https://www.terraform.io/docs/configuration/expressions.html#types-and-values).
 
     Re-run `terraform apply`.
@@ -879,7 +879,7 @@ challenges:
   teaser: Outputs are used to convey useful information such as IP addresses, application
     URLs or other useful data.
   assignment: |-
-    Open the **outputs.tf** file in the Code Editor. Note the public_dns output in the file. 
+    Open the **outputs.tf** file in the Code Editor. Note the public_dns output in the file.
 
     Add a second output for the `public_ip` of your web server. It's going to look almost exactly like the first output but will instead output an IP address instead of a DNS name.
 
