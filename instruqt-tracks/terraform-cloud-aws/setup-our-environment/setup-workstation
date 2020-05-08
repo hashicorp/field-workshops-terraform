@@ -92,7 +92,6 @@ echo "Please enter your Terraform Cloud user token."
 read TOKEN
 echo
 echo "Please enter your GitHub user name."
-echo
 read GITUSER
 echo
 echo "Please enter your oauth-id. You can find it at this URL:"
