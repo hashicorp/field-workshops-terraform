@@ -79,7 +79,7 @@ echo "Please enter your GitHub user name."
 read GITUSER
 echo
 echo "Please enter your oauth-id. You can find it at this URL:"
-echo "https://app.terraform.io/app/YOURORG/settings/version-control"
+echo "https://app.terraform.io/app/${ORG}/settings/version-control"
 echo "If you haven't set up VCS integration yet, simply hit enter."
 echo
 read OAUTHID
