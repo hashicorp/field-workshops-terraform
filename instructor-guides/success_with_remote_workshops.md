@@ -74,7 +74,7 @@ Once a Zoom begins, in the menu bezel there should be a new button called "Break
 
 Select this option and configure your break-out room.
 
-You will recieve a configuration screen in which you can manually or automatically push your participants into break-out rooms. 
+You will recieve a configuration screen in which you can manually or automatically push your participants into break-out rooms.
 
 Once selected you will receieve an additional menu that allows you to manage the break-out rooms and individual participants.
 
