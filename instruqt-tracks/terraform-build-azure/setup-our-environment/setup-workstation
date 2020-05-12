@@ -86,7 +86,8 @@ mkdir -p /root/.local/share/code-server/User
 cat <<-EOF > /root/.local/share/code-server/User/settings.json
 {
     "terminal.integrated.shell.linux": "/bin/bash",
-    "terminal.integrated.fontFamily": "Inconsolata, Consolas, 'Courier New', monospace"
+    "terminal.integrated.fontFamily": "Inconsolata, Consolas, 'Courier New', monospace",
+    "terminal.integrated.copyOnSelection": true
 }
 EOF
 
