@@ -42,6 +42,9 @@ EOF
 # Start VSC
 systemctl start code-server
 
+# Import VAULT_TOKEN into shell
+echo "export VAULT_TOKEN=\$(cat /var/vault_token)" >> /root/.bashrc
+
 # Generate the Azure creds setup script
 cat <<-EOF > /bin/setup_azure.sh
 #!/bin/bash
