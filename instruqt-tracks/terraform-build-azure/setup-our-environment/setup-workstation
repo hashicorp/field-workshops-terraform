@@ -44,6 +44,8 @@ while read id secret; do
       sleep 10
     done
     echo "Azure credentials are ready. Storing them as environment variables."
+    echo "export ARM_TENANT_ID=\$ARM_TENANT_ID" >> ~/.bashrc
+    echo "export ARM_SUBSCRIPTION_ID=\$ARM_SUBSCRIPTION_ID" >> ~/.bashrc
     echo "export ARM_CLIENT_ID=\$id" >> ~/.bashrc
     echo "export ARM_CLIENT_SECRET=\$secret" >> ~/.bashrc
   else
