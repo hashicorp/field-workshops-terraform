@@ -11,3 +11,13 @@ virtualmachines:
     VAULT_CREDS_ENDPOINT: azure/creds/se-training-workstation
     VAULT_NAMESPACE: Sales/SE
   machine_type: n1-standard-1
+gcp_projects:
+- name: gcp-project
+  services:
+  - cloudresourcemanager.googleapis.com
+  - compute.googleapis.com
+aws_accounts:
+- name: TF-WORKSHOP
+  managed_policies:
+  - arn:aws:iam::aws:policy/AmazonEC2FullAccess
+  - arn:aws:iam::aws:policy/AmazonVPCFullAccess
