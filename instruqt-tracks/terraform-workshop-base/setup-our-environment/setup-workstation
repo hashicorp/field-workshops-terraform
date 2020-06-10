@@ -42,6 +42,61 @@ EOF
 # Start VSC
 systemctl start code-server
 
+# Generate the Azure creds setup script
+cat <<-EOF > /bin/setup_azure.sh
+#!/bin/bash
+# Define some colors
+red=$'\e[1;31m'
+grn=$'\e[1;32m'
+yel=$'\e[1;33m'
+blu=$'\e[1;34m'
+mag=$'\e[1;35m'
+cyn=$'\e[1;36m'
+end=$'\e[0m'
+
+# Fetch temporary Azure credentials from a Vault server
+# Requires \$VAULT_ADDR, \$VAULT_NAMESPACE, \$VAULT_CREDS_ENDPOINT and \$VAULT_TOKEN to be set as environment variables
+
+# Regex matching the shape of Azure credentials
+AZURE_REGEX="[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}"
+
+echo "Fetching dynamic Azure credentials from \${VAULT_ADDR}/v1/\${VAULT_CREDS_ENDPOINT}"
+curl -s --retry 5 -H "X-Vault-Token: \${VAULT_TOKEN}" -H "X-Vault-Namespace: \$VAULT_NAMESPACE" \${VAULT_ADDR}/v1/\${VAULT_CREDS_ENDPOINT} | \
+jq -r '[.data.client_id,.data.client_secret] | @tsv' | \
+while read id secret; do
+  if [[ \$id =~ \$AZURE_REGEX ]] && [[ \$secret =~ \$AZURE_REGEX ]]; then
+    echo "Valid Azure credentials received. Testing them now..."
+    until \$(az login --service-principal --username=\$id --password=\$secret --tenant=\$ARM_TENANT_ID > /dev/null 2>&1); do
+      echo "Waiting for Azure credentials to be ready..."
+      sleep 10
+    done
+    echo "Azure credentials are ready. Storing them as environment variables."
+    echo "export ARM_TENANT_ID=\$ARM_TENANT_ID" >> ~/.bashrc
+    echo "export ARM_SUBSCRIPTION_ID=\$ARM_SUBSCRIPTION_ID" >> ~/.bashrc
+    echo "export ARM_CLIENT_ID=\$id" >> ~/.bashrc
+    echo "export ARM_CLIENT_SECRET=\$secret" >> ~/.bashrc
+  else
+    echo "Error fetching Azure credentials. Please run the script again."
+    exit 1
+  fi
+done || exit 1
+
+echo "\${grn}Ready to run Terraform on...\${end}"
+echo "${blu}"
+echo '     /\'
+echo '    /  \    _____   _ _  ___ _'
+echo "   / /\\\ \\\  |_  / | | | \\\'__/ _\\\"
+echo '  / ____ \  / /| |_| | | |  __/'
+echo ' /_/    \_\/___|\__,_|_|  \___|'
+echo "${end}"
+echo "\${mag}Setup script complete. Your Azure credentials are valid for 8 hours.\${end}"
+EOF
+
+chmod +x /bin/setup_azure.sh
+
+# Ensure we load /etc/profile.d/instruqt-env.sh
+echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc
+
 # You can do anything! Clone an existing repo, or write some terraform from scratch.
 
 # A few example repos to get you started:
@@ -51,66 +106,3 @@ systemctl start code-server
 
 # Set the user's working directory with the set-workdir script, then in subsequent challenges the user will always start in that directory.
 # /bin/set-workdir /root/my-git-repo
-
-# Ensure we load /etc/profile.d/instruqt-env.sh
-echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc
-
-# Create a catch-up script that enables the user to fast-forward
-cat <<-EOF > /usr/bin/fastforward
-#!/bin/bash
-echo "******************************************************************"
-echo "* Skip to Challenge Configuration Script"
-echo "******************************************************************"
-echo
-echo "This script will set up your Terraform Cloud token and organization"
-echo "configuration. Once that is done you may use the 'skip to challenge'"
-echo "feature of Instruqt to fast-forward to a particular point in the"
-echo "training."
-echo
-echo "Please enter your Terraform Cloud organization name."
-read ORG
-echo
-echo "Please enter your workspace name."
-read WORKSPACE
-echo
-echo "Please enter your Terraform Cloud user token."
-read TOKEN
-echo
-echo "Please enter your GitHub user name."
-read GITUSER
-echo
-echo "Please enter your oauth-id. You can find it at this URL:"
-echo "https://app.terraform.io/app/${ORG}/settings/version-control"
-echo "If you haven't set up VCS integration yet, simply hit enter."
-read OAUTHID
-echo
-echo "Organization: \$ORG"
-echo "Workspace   : \$WORKSPACE"
-echo "Token       : \$TOKEN"
-echo "GitHub User : \$GITUSER"
-echo "OAuth ID    : \$OAUTHID"
-echo
-read -p "Do these look right to you? Y/n " -n 1 -r
-echo
-if [[ ! \$REPLY =~ ^[Yy]\$ ]]
-then
-  echo "Please try again."
-  exit 1
-fi
-echo
-echo "Saving your settings in /root/skipconfig.json"
-cat <<-EOM > /root/skipconfig.json
-{
-  "org": "\$ORG",
-  "workspace": "\$WORKSPACE",
-  "token": "\$TOKEN",
-  "gituser": "\$GITUSER",
-  "oauthid": "\$OAUTHID"
-}
-EOM
-
-ponysay -f twilight -f applejack -f rainbow -f pinkie -f rarity -f fluttershy "Ready to Skip Challenges!"
-
-EOF
-
-chmod +x /usr/bin/fastforward
