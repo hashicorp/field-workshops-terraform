@@ -65,7 +65,7 @@ challenges:
     type: terminal
     hostname: workstation
   difficulty: basic
-  timelimit: 600
+  timelimit: 28800
 - slug: open-a-terminal
   id: u0nx1awt6n9c
   type: challenge
