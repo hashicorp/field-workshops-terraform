@@ -98,6 +98,9 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
+  - title: Shell
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: hello-terraform
@@ -308,7 +311,7 @@ challenges:
 
     Click on the File Explorer icon on the left. It looks like a stack of papers.
 
-    Edit the main.tf file and remove the curly brace on line 4 of the file.
+    Edit the main.tf file and remove the double quotes between `azurerm_resource_group` and `myresourcegroup` on line 5 of the file, keeping the space that was between them.
 
     Validate your code:
 
@@ -316,7 +319,7 @@ challenges:
     terraform validate
     ```
 
-    Now put the curly brace back onto line 4 and run the validate command again. This time you should pass the validation test.
+    Now put the double quotes back in line 5 and run the validate command again. This time you should pass the validation test.
 
     **terraform validate** is most often used in automated CI/CD test pipelines. It allows you to quickly catch errors in your code before any other steps are taken.
   notes:
@@ -751,8 +754,8 @@ challenges:
     Open your web application in a new browser tab. You'll need to copy and paste the URL into your address bar.
   notes:
   - type: text
-    contents: The `-auto-approve` flag can be used to override the "Are you sure?" questions
-      that appear before an apply or destroy. Use with caution!
+    contents: The `-auto-approve` flag can be used to override the "Are you sure?"
+      questions that appear before an apply or destroy. Use with caution!
   tabs:
   - title: Code Editor
     type: service
@@ -1143,4 +1146,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "8825588920583286730"
+checksum: "338305656444026146"
