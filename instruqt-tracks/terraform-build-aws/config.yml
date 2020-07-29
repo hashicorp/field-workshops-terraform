@@ -4,9 +4,6 @@ virtualmachines:
   image: instruqt-hashicorp/terraform-workstation-prod
   shell: /bin/bash
   machine_type: n1-standard-1
-  ports:
-  - 8443
-  - 5000
 aws_accounts:
 - name: TF-WORKSHOP
   managed_policies:

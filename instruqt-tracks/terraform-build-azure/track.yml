@@ -30,7 +30,9 @@ challenges:
 
     You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application.
 
-    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes. Search for **Terraform** and click the green **Install** button to install the extension. You can click the **Reload Required** button to activate it.
+    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes.
+
+    Search for **Terraform** and be sure to select the "Terraform 1.4.x" extension from mauve. **Do not select the "HashiCorp Terraform 2.x.y" extension** since it will not work in the version of the the Visual Studio Code Server that this track is using. Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it.
 
     We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
 
@@ -1146,4 +1148,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "338305656444026146"
+checksum: "13921121013627371136"

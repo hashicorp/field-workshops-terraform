@@ -19,7 +19,7 @@ private: true
 published: true
 challenges:
 - slug: setup-our-environment
-  id: 3ukzls4q8lgb
+  id: iwy0y3xnwoug
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: Configure your code editor with the HCL extension and open a workspace.
@@ -30,7 +30,9 @@ challenges:
 
     You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application.
 
-    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes. Search for **Terraform** and click the green **Install** button to install the extension. You can click the **Reload Required** button to activate it.
+    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes.
+
+    Search for **Terraform** and be sure to select the "Terraform 1.4.x" extension from mauve. **Do not select the "HashiCorp Terraform 2.x.y" extension** since it will not work in the version of the the Visual Studio Code Server that this track is using. Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it.
 
     We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
 
@@ -64,7 +66,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: open-a-terminal
-  id: gj3peqbuyrom
+  id: ph04qplyikti
   type: challenge
   title: "\U0001F5A5️ Open a Terminal"
   teaser: Terraform commands are run from a terminal window. Terraform can be installed
@@ -102,7 +104,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: hello-terraform
-  id: 3mmrbdinjach
+  id: ywoomemahyjg
   type: challenge
   title: "\U0001F44B Getting to Know Terraform"
   teaser: Learn Terraform basics and command line syntax.
@@ -150,7 +152,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: gcp-credentials
-  id: 17tlfcavxaoh
+  id: 0jfdfianuvso
   type: challenge
   title: "\U0001F510 Connecting Terraform to GCP"
   teaser: Connecting to GCP with Google Credentials.
@@ -184,7 +186,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-code
-  id: ildannzkl6cs
+  id: ep819mvquvfz
   type: challenge
   title: "\U0001F468‍\U0001F4BB What does Terraform code look like?"
   teaser: The Terraform DSL (Domain Specific Language) is a declarative language that
@@ -227,7 +229,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-init-provider
-  id: zi2vxq9rp8al
+  id: xqjwxzyqgovz
   type: challenge
   title: "\U0001F3E1 Terraform Init - Install the Providers"
   teaser: Terraform needs a provider to talk to cloud APIs. The provider is the bridge
@@ -272,7 +274,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: provider-quiz
-  id: e5mn5jpw38zy
+  id: akjg23kjagyb
   type: quiz
   title: "\U0001F4DD Quiz 1 - Providers and Modules"
   teaser: A quiz about Terraform init
@@ -292,7 +294,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-validate
-  id: rzpgknisx3by
+  id: 5lw6oh7gkgma
   type: challenge
   title: "\U0001F469‍⚖️ Terraform Validate - Test Your Code"
   teaser: Terraform has a built in validation tester. This is useful to see whether
@@ -325,7 +327,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-plan
-  id: q7y3kbrqohlx
+  id: qynplfqy792d
   type: challenge
   title: "\U0001F914 Terraform Plan - Dry Run Mode"
   teaser: Terraform has a dry run mode where you can preview what will be built without
@@ -362,7 +364,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-variables
-  id: xzmgkxkybuyz
+  id: ua2eq9kzrnc5
   type: challenge
   title: "\U0001F39B️ Working with Terraform Variables"
   teaser: Terraform variables allow you to customize your infrastructure without editing
@@ -397,7 +399,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: variables-quiz
-  id: m8ivx3wrjnff
+  id: f52k9olell3f
   type: quiz
   title: "\U0001F4DD Quiz 2 - Variables"
   teaser: A quiz about Terraform variables
@@ -417,7 +419,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: tf-graph
-  id: 5xdrxqufxfix
+  id: 1yron0ldujiy
   type: challenge
   title: "\U0001F4C8 Terraform Graph"
   teaser: Terraform creates a graph of all the infrastructure defined in your code.
@@ -461,7 +463,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: tf-apply
-  id: 6gc3kmingzlr
+  id: 7e7wxtavuwfl
   type: challenge
   title: "\U0001F468‍\U0001F4BB Terraform Apply"
   teaser: The `terraform plan` command can be run anytime to get a preview of changes
@@ -506,7 +508,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: tf-plan-again
-  id: yhtkhvmomzxa
+  id: emge3jei9mhg
   type: challenge
   title: "\U0001F469‍\U0001F4BB Test and Repair"
   teaser: Terraform is idempotent. Each resource in your code will be examined, and
@@ -552,7 +554,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: add-virtual-network
-  id: wzf4haig6ua2
+  id: yczv2x5h1oy1
   type: challenge
   title: "\U0001F5A7 Add a Virtual Network"
   teaser: Terraform resources are like building blocks. You can continue adding more
@@ -586,7 +588,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-add-a-variable
-  id: xln4zbrkpsyq
+  id: xjx3ttlhkile
   type: challenge
   title: "\U0001F5FC Change Your Location"
   teaser: Terraform is flexible enough to deploy infrastructure anywhere in the world.
@@ -634,7 +636,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: complete-the-build
-  id: iyhj1byjxdeh
+  id: ghjx8usnjyr9
   type: challenge
   title: "\U0001F3D7️ Complete the Build"
   teaser: Terraform code can stand up everything from a GCP project, to virtual networks,
@@ -676,7 +678,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: tf-graph-again
-  id: y89dud0bht6w
+  id: spkrgorlkh27
   type: challenge
   title: "\U0001F4C8 Terraform Graph"
   teaser: Revist graph to see what has changed.
@@ -708,7 +710,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-apply-quiz
-  id: tby2thvtbp3x
+  id: uazp9mdggs3r
   type: quiz
   title: "\U0001F4DD Quiz 3 - Terraform Apply"
   teaser: What happens when you run `terraform apply` without a plan file?
@@ -728,7 +730,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: use-a-provisioner
-  id: 1xekde3bzvtp
+  id: xgqv8izcag5g
   type: challenge
   title: "\U0001F6E0️ Use a Provisioner"
   teaser: Terraform works great with many different provisioning tools including Chef,
@@ -787,7 +789,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: add-an-output
-  id: ftpvbidce7bs
+  id: klojaiqiwydp
   type: challenge
   title: "\U0001F5A8️ Add an Output"
   teaser: Outputs are used to convey useful information such as IP addresses, application
@@ -828,7 +830,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: fun-with-variables
-  id: xj61q9rz0x8t
+  id: vw0r0cfqjjox
   type: challenge
   title: "\U0001F436 Fun With Variables"
   teaser: Variables give the consumers of your Terraform code an easy way to customize
@@ -894,7 +896,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-variables-quiz
-  id: ix3atfsug8ng
+  id: 63v5yqxkudwy
   type: quiz
   title: "\U0001F4DD Quiz 4 - Terraform Variables"
   teaser: How do Terraform variables get set or overridden?
@@ -914,7 +916,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-cloud-setup
-  id: b2qm2auioab8
+  id: luiv2wpftyhp
   type: challenge
   title: ☁️ Terraform Cloud Setup
   teaser: Terraform Cloud offers unlimited free Terraform state storage for users.
@@ -949,7 +951,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: configure-remote-state
-  id: xlgoqnxy7i2m
+  id: oyk8ahcyfqkd
   type: challenge
   title: "\U0001F39B️ Configure Remote State"
   teaser: The terraform command line tool can store its state in Terraform Cloud.
@@ -1003,7 +1005,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-destroy
-  id: sabxjydwrm3z
+  id: vr2l7n2itbvy
   type: challenge
   title: "\U0001F525 Terraform Destroy"
   teaser: Terraform can build infrastructure and also destroy it when you are done
@@ -1036,4 +1038,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "12239207304498755792"
+checksum: "11015432262076807581"

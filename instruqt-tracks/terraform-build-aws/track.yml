@@ -30,7 +30,9 @@ challenges:
 
     You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application.
 
-    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes. Search for **Terraform** and click the green **Install** button to install the extension. You can click the **Reload Required** button to activate it.
+    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes.
+
+    Search for **Terraform** and be sure to select the "Terraform 1.4.x" extension from mauve. **Do not select the "HashiCorp Terraform 2.x.y" extension** since it will not work in the version of the the Visual Studio Code Server that this track is using. Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it.
 
     We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
 
@@ -723,8 +725,8 @@ challenges:
   id: hnlvhqi0wjdq
   type: challenge
   title: "\U0001F3D7️ Complete the Build"
-  teaser: Terraform code can stand up everything from VPCs, to virtual
-    networks, to VMs and containers.
+  teaser: Terraform code can stand up everything from VPCs, to virtual networks, to
+    VMs and containers.
   assignment: |-
     We've uncommented all the rest of the Terraform code in the **main.tf** file for you. Run a `terraform plan` to see what will be built:
 
@@ -745,8 +747,8 @@ challenges:
     Open your web application in a new browser tab. You'll need to copy and paste the URL into your address bar.
   notes:
   - type: text
-    contents: The `-auto-approve` flag can be used to override the "Are you sure?" questions
-      that appear before an apply or destroy. Use with caution!
+    contents: The `-auto-approve` flag can be used to override the "Are you sure?"
+      questions that appear before an apply or destroy. Use with caution!
   tabs:
   - title: Code Editor
     type: service
@@ -1137,4 +1139,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "6490598711360394414"
+checksum: "549620836788757061"
