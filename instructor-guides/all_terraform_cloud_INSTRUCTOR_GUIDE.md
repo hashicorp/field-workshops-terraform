@@ -100,6 +100,9 @@ Once you've gotten an invite to the HashiCorp organization you can create tempor
 6. Make the track available to your user for at least a week.
 7. Do not enable **Allow Anonymous** setting if you want to be able to track users progress and emails.
 
+### Configuring the Instruqt Pools
+We recommend that you configure Instruqt pools for each Instruqt track used in this workshop 1-2 hours before your workshop begins. Please see this Confluence [doc](https://hashicorp.atlassian.net/wiki/spaces/SE/pages/511574174/Instruqt+and+Remark+Contributor+Guide#InstruqtandRemarkContributorGuide-ConfiguringInstruqtPools) for instructions.
+
 ### The Live Demo
 After chapter 1 there is a slide that says *Live Demo*. You can use an instruqt track to do a brief Terraform demo for your participants.
 
@@ -182,4 +185,3 @@ The following schedule assumes you have a group of participants who are somewhat
 
 ### The Bonus Lab
 The bonus lab is extra content you can share with participants if you feel they're ready for it. This is a loosely structured lab with minimal setup instructions. No details are provided for commands like "git add, git commit, git push". The student is expected to know how to create a git branch, commit changes to it, push those changes, and create a pull request. They also need to know how to set up branch protection and understand how Terraform Cloud interacts with git repos and directories. In the challenge there is a sentinel policy that blocks security groups from allowing unrestricted (0.0.0.0/0) access to the web app (AWS) or restricts the size of the VM you can build (Azure and GCP). The participants need to figure out how to update their terraform code, commit their changes to a dev branch, push the changes to the remote dev branch, then ensure that the dev workspace runs correctly, and finally create a pull request to merge to master. As an instructor you should go through this lab and be familiar with it if you plan to teach it.
-
