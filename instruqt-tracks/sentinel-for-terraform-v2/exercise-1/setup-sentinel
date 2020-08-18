@@ -2,6 +2,15 @@
 
 set -e
 
+mkdir -p /root/sentinel
+echo "cd /root/sentinel" >> /root/.profile
+
+# Install Sentinel
+SENTINEL_VERSION=0.15.2
+wget https://releases.hashicorp.com/sentinel/${SENTINEL_VERSION}/sentinel_${SENTINEL_VERSION}_linux_amd64.zip
+unzip -d /bin sentinel_${SENTINEL_VERSION}_linux_amd64.zip
+rm sentinel_${SENTINEL_VERSION}_linux_amd64.zip
+
 # common-functions
 mkdir -p /root/sentinel/common-functions/tfplan-functions
 mkdir -p /root/sentinel/common-functions/tfstate-functions
