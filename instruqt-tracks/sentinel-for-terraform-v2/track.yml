@@ -8,9 +8,11 @@ description: |-
 
   Governance and security teams can write Sentinel policies to restrict what can be provisioned in Terraform Cloud and Terraform Enterprise workspaces. Sentinel allows these teams to control costs and enforce security standards.
 
-  In this track, you will write and test policies that restrict resources, data sources, and modules provisioned by Terraform in AWS, Azure, and GCP. This version of the track uses the newer v2 versions of the tfplan, tfstate, and tfconfig Sentinel imports.  However, since these v2 imports can only be used with Terraform 0.12, if you are still using Terraform 0.11, we recommend you use the [v1 version](https://play.instruqt.com/hashicorp/tracks/sentinel-for-terraform-v1) of this track which uses the older v1 versions of those imports.
+  In this track, you will write and test policies that restrict resources, data sources, and modules provisioned by Terraform in AWS, Azure, and GCP. This version of the track uses the newer v2 versions of the tfplan, tfstate, and tfconfig Sentinel imports.  However, since these v2 imports can only be used with Terraform 0.12 and 0.13, if you are still using Terraform 0.11, we recommend you use the [v1 version](https://play.instruqt.com/hashicorp/tracks/sentinel-for-terraform-v1) of this track which uses the older v1 versions of those imports.
 
   This track is intended for use with these PowerPoint [slides](https://storage.cloud.google.com/instruqt-hashicorp-tracks/sentinel-shared/Sentinel-for-Terraform-v2.pptx) which you should download.
+
+  You should first run the [Sentinel CLI Basics](https://play.instruqt.com/hashicorp/tracks/sentinel-cli-basics) track which introduces the Sentinel CLI.
 
   We recommend starting this track when you can set aside at least 4 hours of uninterrupted time. If you find yourself running out of time or are interrupted, we recommend saving all your completed policies outside the track so that you can quickly restore them if forced to begin the track again.
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
@@ -23,137 +25,6 @@ developers:
 private: false
 published: true
 challenges:
-- slug: sentinel-cli
-  id: pawegwbqbpub
-  type: challenge
-  title: The Sentinel CLI
-  teaser: Learn about the Sentinel CLI commands.
-  assignment: |-
-    The Sentinel Command Line Interface (CLI) allows you to apply and test Sentinel policies including those that use mocks generated from Terraform Cloud plans.
-
-    Let's start with some basic Sentinel commands, running them in the "Sentinel CLI" tab on the left.
-
-    Check the version of Sentinel running on your machine:
-    ```
-    sentinel version
-    ```
-
-    See the list of Sentinel CLI commands:
-    ```
-    sentinel
-    ```
-
-    Get help for the "sentinel apply" command:
-    ```
-    sentinel apply -h
-    ```
-    Please read the output to learn about the "apply" command.
-
-    Note that you can also use the "-help" and "--help" flags instead of "-h".
-
-    Get help for the "sentinel test" command:
-    ```
-    sentinel test -h
-    ```
-    Please read the output to learn about the "test" command.
-
-    The "sentinel apply" and "sentinel test" commands both evaluate a Sentinel policy, but the latter tests it against multiple test case files.
-  notes:
-  - type: text
-    contents: |-
-      [Sentinel](https://docs.hashicorp.com/sentinel) allows customers to implement policy-as-code in the same way that Terraform implements infrastructure-as-code.
-
-      The Sentinel Command Line Interface (CLI) allows you to apply and test Sentinel policies including those that use mocks generated from Terraform Cloud and Terraform Enterprise plans.
-
-      To learn more, see https://docs.hashicorp.com/sentinel.
-  - type: text
-    contents: |-
-      We've launched the Sentinel CLI 0.15.2 on a Ubuntu VM running in GCP so that you don't need to download or install it.
-
-      After learning how to use the Sentinel CLI in the first challenge, you will run a very simple policy in the second challenge.
-
-      In the rest of the challenges, you will complete and test policies that has been mostly written for you but have placeholders in angular brackets that you must replace with suitable Sentinel code. When doing this, do not keep the angular brackets, but do keep any quotes that might surround them.
-  - type: text
-    contents: |-
-      Please be sure to review all the notes screens (like this one) before each challenge and to open the key links in them in browser tabs outside of the Instruqt UI.
-
-      The information in the notes and their links will help you solve the challenges. We're intentionally giving you links instead of the actual information to simulate what you will have to do in the real world.
-
-      When someone asks you to write a Sentinel policy that makes sure all S3 buckets are encrypted, they probably won't tell you which Terraform resource provisions an S3 bucket or which of its attributes (arguments or exported attributes) determine its encryption. You're going to have to figure these things out on your own by searching for and reading relevant documentation.
-  tabs:
-  - title: Sentinel CLI
-    type: terminal
-    hostname: sentinel
-  difficulty: basic
-  timelimit: 600
-- slug: sentinel-first-policy
-  id: 8dk3ssld9wr8
-  type: challenge
-  title: Run Your First Sentinel Policy
-  teaser: Apply and test your first Sentinel policy.
-  assignment: |-
-    ## Apply the Policy
-    Now that you are familiar with the Sentinel CLI commands, let's apply and test your first Sentinel policy.
-
-    Take a look at the "require-even-number.sentinel" policy on the "First Policy" tab. This checks that a parameter called "the_number" is an even integer; it's default value is 1.
-
-    Apply the "require-even-number.sentinel" policy with the default value of 1 on the "Sentinel CLI" tab:
-    ```
-    sentinel apply require-even-number.sentinel
-    ```
-    This will fail since 1 is an odd number.
-
-    Apply the "require-even-number.sentinel" policy with a value of 2:
-    ```
-    sentinel apply -param the_number=2 require-even-number.sentinel
-    ```
-    This will pass since 2 is an even number.
-
-    Run that command again, but add `-trace` before the name of the policy to make Sentinel print more information:
-    ```
-    sentinel apply -param the_number=2 -trace require-even-number.sentinel
-    ```
-    Note that adding `-trace` causes the `sentinel test` command to print output from any of the policy's `print` statements even when a test case passes.
-
-    ## Test the Policy
-    Now, we will test the policy with the "sentinel test" command using test cases. For any policy, the test cases must be placed under the directory test/<policy\> under the directory containing the policy where <policy\> is the name of the policy without the ".sentinel" extension.
-
-    Edit the "fail.json" test case for the "require-even-number.sentinel" policy on the "Test Cases" tab, replacing `<an_odd_number>` with any odd number.  Save the "fail.json" file by clicking the disk icon above the file.
-
-    Edit the "pass.json" test case for the "require-even-number.sentinel" policy on the "Test Cases" tab, replacing `<an_even_number>` with any even number. Save the "pass.json" file by clicking the disk icon above the file.
-
-    Test the "require-even-number.sentinel" policy against both test cases on the "Sentinel CLI" tab:
-    ```
-    sentinel test -run=number -verbose
-    ```
-    Both test cases should pass and show you the numbers that were used.
-
-    Note that when specifying a policy with the "-run" argument, you can match any portion of the policy name. Often, you will want to use something that only matches a single policy in the current directory.
-  notes:
-  - type: text
-    contents: |-
-      The Sentinel "apply" command lets you evaluate Sentinel policies:
-      https://docs.hashicorp.com/sentinel/commands/apply
-
-      The Sentinel "test" command lets you test a Sentinel policy against multiple test cases:
-      https://docs.hashicorp.com/sentinel/commands/test
-
-      Both commands use Sentinel CLI configuration files:
-      https://docs.hashicorp.com/sentinel/commands/config
-  tabs:
-  - title: First Policy
-    type: code
-    hostname: sentinel
-    path: /root/sentinel/require-even-number.sentinel
-  - title: Test Cases
-    type: code
-    hostname: sentinel
-    path: /root/sentinel/test/require-even-number/
-  - title: Sentinel CLI
-    type: terminal
-    hostname: sentinel
-  difficulty: basic
-  timelimit: 1800
 - slug: exercise-1
   id: keumj2hbfikj
   type: challenge
@@ -161,7 +32,7 @@ challenges:
   teaser: Restrict Vault authentication methods.
   assignment: |-
     ## Introduction
-    In this challenge, you will complete Exercise 1 from the "Writing and Testing Sentinel Policies for Terraform" guide.
+    In this challenge, you will write your first Sentinel policy for Terraform.
 
     Your task is to complete and test a Sentinel policy that restricts the Vault authentication methods (backends) provisioned by the `vault_auth_backend` resource of Terraform's Vault Provider to the following choices: Azure, Kubernetes, GitHub, and AppRole.
 
@@ -212,7 +83,26 @@ challenges:
   notes:
   - type: text
     contents: |-
-      In this challenge, you will complete the first of five exercises from the [Writing and Testing Sentinel Policies for Terraform](https://www.hashicorp.com/resources/writing-and-testing-sentinel-policies-for-terraform) guide.
+      [Sentinel](https://docs.hashicorp.com/sentinel) allows customers to implement policy-as-code in the same way that Terraform implements infrastructure-as-code.
+
+      The Sentinel Command Line Interface (CLI) allows you to apply and test Sentinel policies including those that use mocks generated from Terraform Cloud and Terraform Enterprise plans.
+
+      You should run the [Sentinel CLI Basics](https://play.instruqt.com/hashicorp/tracks/sentinel-cli-basics) track before starting this track.
+  - type: text
+    contents: |-
+      We've launched the Sentinel CLI 0.15.2 on a Ubuntu VM running in GCP so that you don't need to download or install it.
+
+      In this track, you will complete and test policies that have been mostly written for you but have placeholders in angular brackets that you must replace with suitable Sentinel code. When doing this, do not keep the angular brackets, but do keep any quotes that might surround them.
+  - type: text
+    contents: |-
+      Please be sure to review all the notes screens (like this one) before each challenge and to open the key links in them in browser tabs outside of the Instruqt UI.
+
+      The information in the notes and their links will help you solve the challenges. We're intentionally giving you links instead of the actual information to simulate what you will have to do in the real world.
+
+      When someone asks you to write a Sentinel policy that makes sure all S3 buckets are encrypted, they probably won't tell you which Terraform resource provisions an S3 bucket or which of its attributes (arguments or exported attributes) determine its encryption. You're going to have to figure these things out on your own by searching for and reading relevant documentation.
+  - type: text
+    contents: |-
+      In this challenge, you will write your first Sentinel policy for Terraform.
 
       We recommend reviewing slides 61-69, 77-83, and 84-89 of the Sentinel-for-Terraform-v2.pptx presentation at this point.
 
@@ -239,7 +129,7 @@ challenges:
     type: terminal
     hostname: sentinel
   difficulty: basic
-  timelimit: 2400
+  timelimit: 3000
 - slug: exercise-2
   id: ncom9gdfdtlo
   type: challenge
@@ -247,7 +137,7 @@ challenges:
   teaser: Restrict AWS IAM access keys.
   assignment: |-
     ## Introduction
-    In this challenge, you will complete Exercise 2 from the "Writing and Testing Sentinel Policies for Terraform" guide.
+    In this challenge, you will write a second Sentinel policy for Terraform.
 
     Your task is to complete and test a Sentinel policy that requires that all AWS IAM access keys provisioned by Terraform's AWS Provider include a PGP key that starts with "keybase:". This means that a specific attribute on a specific resource of that provider must start with "keybase:".
 
@@ -323,7 +213,7 @@ challenges:
   notes:
   - type: text
     contents: |-
-      In this challenge, you will complete Exercise 2 from the "Writing and Testing Sentinel Policies for Terraform" guide.
+      In this challenge, you will write a second Sentinel policy for Terraform.
 
       We recommend reviewing slides 31, 34-39, 42, and 90-91 of the Sentinel-for-Terraform-v2.pptx presentation at this point. Pay special attention to the descriptions of Sentinel's [for](https://docs.hashicorp.com/sentinel/language/loops/) loop, [if/else](https://docs.hashicorp.com/sentinel/language/conditionals/) conditional, [else](https://docs.hashicorp.com/sentinel/language/spec/#else-operator) operator, and [strings](https://docs.hashicorp.com/sentinel/imports/strings) import. You'll use all of these in the second version of the policy you write.
 
@@ -350,7 +240,7 @@ challenges:
     type: terminal
     hostname: sentinel
   difficulty: basic
-  timelimit: 2700
+  timelimit: 3000
 - slug: exercise-3
   id: ey54gtsigcyg
   type: challenge
@@ -358,7 +248,7 @@ challenges:
   teaser: Restrict domains of AWS Certificate Manager (ACM) Certificates.
   assignment: |-
     ## Introduction
-    In this challenge, you will complete Exercise 3 from the "Writing and Testing Sentinel Policies for Terraform" guide.
+    In this challenge, you will write a third Sentinel policy for Terraform.
 
     Your task is to complete and test a Sentinel policy that requires that all AWS Certificate Manager (ACM) Certificates referenced by a data source in Terraform's AWS Provider have domains that are subdomains of "hashidemos.io".
 
@@ -434,7 +324,7 @@ challenges:
   notes:
   - type: text
     contents: |-
-      In this challenge, you will complete Excerise 3 from the "Writing and Testing Sentinel Policies for Terraform" guide.
+      In this challenge, you will write a third Sentinel policy for Terraform.
 
       We recommend reviewing slides 102-105, 33, and 38 of the Sentinel-for-Terraform-v2.pptx presentation. In this exercise, you will use the [tfstate/v2](https://www.terraform.io/docs/cloud/sentinel/import/tfstate-v2.html) import, the [filter](https://docs.hashicorp.com/sentinel/language/collection-operations/#filter-expression) expression, and the [matches](https://docs.hashicorp.com/sentinel/language/spec/#matches-operator) operator.
 
@@ -461,7 +351,7 @@ challenges:
     type: terminal
     hostname: sentinel
   difficulty: basic
-  timelimit: 2700
+  timelimit: 3000
 - slug: exercise-4
   id: a2yfxvsia329
   type: challenge
@@ -469,7 +359,7 @@ challenges:
   teaser: Restrict images used by Google Cloud Platform compute instances.
   assignment: |-
     ## Introduction
-    In this challenge, you will complete Exercise 4 from the "Writing and Testing Sentinel Policies for Terraform" guide.
+    In this challenge, you will write a fourth Sentinel policy for Terraform.
 
     Your task is to complete and test a Sentinel policy that requires Google Cloud Platform (GCP) compute instances provisioned by Terraform's Google Provider to use the public image "debian-cloud/debian-9". In a real-world policy, you would allow multiple images, but we wanted to keep things simple for this exercise.
 
@@ -541,7 +431,7 @@ challenges:
   notes:
   - type: text
     contents: |-
-      In this challenge, you will complete Exercise 4 from the "Writing and Testing Sentinel Policies for Terraform" guide.
+      In this challenge, you will write a fourth Sentinel policy for Terraform.
 
       We recommend reviewing slides 106-110 of the Sentinel-for-Terraform-v2.pptx presentation. In this exercise, you will learn how to evaluate an attribute that is contained in a block contained in another block of a resource. A block is treated by Sentinel as a list of maps.
 
@@ -566,7 +456,7 @@ challenges:
     type: terminal
     hostname: sentinel
   difficulty: basic
-  timelimit: 2700
+  timelimit: 3000
 - slug: exercise-5
   id: bptuhy7qvsp9
   type: challenge
@@ -574,7 +464,7 @@ challenges:
   teaser: Only allow modules from the Private Module Registry.
   assignment: |-
     ## Introduction
-    In this challenge, you will complete Exercise 5 from the "Writing and Testing Sentinel Policies for Terraform" guide.
+    In this challenge, you will write a fifth Sentinel policy for Terraform.
 
     Your task is to complete and test a Sentinel policy that requires that all modules loaded by the root module come from the [Private Module Registry](https://www.terraform.io/docs/cloud/registry/index.html) (PMR) of a Terraform Cloud organization.
 
@@ -663,7 +553,7 @@ challenges:
   notes:
   - type: text
     contents: |-
-      In this challenge, you will complete Exercise 5 from the "Writing and Testing Sentinel Policies for Terraform" guide.
+      In this challenge, you will write a fifth Sentinel policy for Terraform.
 
       We recommend reviewing slides 111-115 of the Sentinel-for-Terraform-v2.pptx presentation.
 
@@ -688,7 +578,7 @@ challenges:
     type: terminal
     hostname: sentinel
   difficulty: basic
-  timelimit: 2700
+  timelimit: 3000
 - slug: extra-credit
   id: mb8omuerb9en
   type: challenge
@@ -726,6 +616,8 @@ challenges:
     All 4 test cases should pass with green output. Additionally, the fail test cases will print violation warnings.
 
     If all 4 test cases did not pass, or if Sentinel reported errors for specific lines of the policy, fix your policy and try testing it again until all 4 test cases do pass.
+
+    Congratulations on completing the Sentinel in Terraform track! This is one of the more challenging workshop tracks.  Well done, if you were able to complete all the policies.  And kudos for trying even if you struggled a bit. Perhaps you can go through it a second time and do better?
   notes:
   - type: text
     contents: |-
@@ -752,5 +644,5 @@ challenges:
     type: terminal
     hostname: sentinel
   difficulty: basic
-  timelimit: 2400
-checksum: "1970876910189329837"
+  timelimit: 3000
+checksum: "16051541474303469003"

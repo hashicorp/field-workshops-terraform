@@ -262,6 +262,45 @@ jobs:
               echo "Instruqt track test failed three times."
               exit 1
             fi
+  instruqt-test-sentinel-cli-basics:
+    docker:
+      - image: ubuntu:latest
+    steps:
+      - checkout
+      - run:
+          name: Run Instruqt Test
+          command: |
+            VERSION=$INSTRUQT_VERSION
+            apt -y update
+            apt -y install wget unzip
+            wget https://github.com/instruqt/cli/releases/download/${VERSION}/instruqt-linux-${VERSION}.zip -O /tmp/instruqt.zip
+            cd /tmp
+            unzip instruqt.zip
+            cp instruqt /usr/local/bin/instruqt
+            chmod +x /usr/local/bin/instruqt
+            echo "yes" | instruqt version
+            RETVAL=$?
+            if [[ $RETVAL -ne 0 ]]; then
+              echo "Instruqt is not installed correctly."
+              exit 1
+            else
+              echo "Instruqt is installed and updated to most recent version."
+            fi
+            cd /root/project/instruqt-tracks/sentinel-cli-basics
+            echo "Running instruqt track push..."
+            instruqt track push --force
+            echo "Running instruqt track test..."
+            # Retry instruqt track test up to 3 times
+            n=0
+            until [ $n -ge 3 ]; do
+              instruqt track test --skip-fail-check && break
+              n=$[$n+1]
+              sleep 5
+            done
+            if [ $n -ge 3 ]; then
+              echo "Instruqt track test failed three times."
+              exit 1
+            fi
   instruqt-test-sentinel-v1:
     docker:
       - image: ubuntu:latest
@@ -391,6 +430,13 @@ workflows:
             branches:
               only:
                 - master
+      - instruqt-test-sentinel-cli-basics:
+          requires:
+            - instruqt-validate
+          filters:
+            branches:
+              only:
+                - master
       - instruqt-test-sentinel-v1:
           requires:
             - instruqt-validate
@@ -431,6 +477,9 @@ workflows:
           requires:
             - instruqt-validate
       - instruqt-test-cloud-gcp:
+          requires:
+            - instruqt-validate
+      - instruqt-test-sentinel-cli-basics:
           requires:
             - instruqt-validate
       - instruqt-test-sentinel-v1:
