@@ -2,11 +2,18 @@ slug: terraform-build-aws
 id: i3hihwd3qqr7
 type: track
 title: Intro to Terraform on AWS
-teaser: Provision the HashiCat application on AWS Cloud using Terraform.
-description: "This track will introduce you to Terraform on Amazon Web Services (AWS).\n\nWe'll
-  learn Terraform setup, basic commands, and gradually build an entire application
-  stack.\n\nWhen you're finished you'll be able to view the HashiCat application in
-  your web browser.\n\nKittens as a Service! \U0001F63A"
+teaser: |
+  Provision the HashiCat application on AWS Cloud using Terraform.
+description: |-
+  This track will introduce you to Terraform on Amazon Web Services (AWS).
+
+  We'll learn Terraform setup, basic commands, and gradually build an entire application
+  stack.
+
+  When you're finished you'll be able to view the HashiCat application in your
+  web browser.
+
+  Kittens as a Service! \U0001F63A"
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
 - terraform
@@ -15,6 +22,8 @@ tags:
 owner: hashicorp
 developers:
 - scarolan@hashicorp.com
+- roger@hashicorp.com
+- lance@hashicorp.com
 private: true
 published: true
 challenges:
@@ -1139,4 +1148,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "549620836788757061"
+checksum: "16064961057555005954"

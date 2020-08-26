@@ -2,8 +2,8 @@ slug: terraform-workshop-base
 id: hi9eo2mucqot
 type: track
 title: Terraform Workshop Environment
-teaser: An instruqt track template that you can copy and use for in your own demos
-  and workshops.
+teaser: |
+  An instruqt track template that you can copy and use for in your own demos and workshops.
 description: |-
   This track can be copied and used as a starting point for Azure, GCP or AWS Terraform workshops. You can use it as-is for freestyle training, or customize it for specific use cases.
 
@@ -17,6 +17,8 @@ tags:
 - template
 owner: hashicorp
 developers:
+- roger@hashicorp.com
+- lance@hashicorp.com
 - scarolan@hashicorp.com
 private: true
 published: true
@@ -106,4 +108,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 600
-checksum: "11729189479911234986"
+checksum: "10423752362996897767"

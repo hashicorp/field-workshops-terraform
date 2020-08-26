@@ -2,8 +2,8 @@ slug: terraform-cloud-bonus-lab
 id: gxdsws9y9bsu
 type: track
 title: Bonus Lab - Terraform Cloud
-teaser: Ready for more? Test your Terraform Cloud skills with this intermediate level
-  lab challenge.
+teaser: |
+  Ready for more? Test your Terraform Cloud skills with this intermediate level lab challenge.
 description: If you've completed one of the Terraform Cloud tracks and would like
   an extra challenge, try this bonus lab. In this track you'll build an approval pipeline
   and development branch for your Terraform code, then ensure that all tests pass
@@ -17,6 +17,8 @@ tags:
 owner: hashicorp
 developers:
 - scarolan@hashicorp.com
+- roger@hashicorp.com
+- lance@hashicorp.com
 private: true
 published: true
 challenges:
@@ -110,4 +112,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 7200
-checksum: "16011051812239516204"
+checksum: "4277045747344556916"

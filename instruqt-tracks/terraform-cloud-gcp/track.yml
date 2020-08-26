@@ -2,8 +2,8 @@ slug: terraform-cloud-gcp
 id: mjfywxvlky8d
 type: track
 title: Terraform Cloud with Google Cloud Platform
-teaser: Join the ACME devops team on their journey to fully automated provisioning
-  with GCP.
+teaser: |
+  Join the ACME devops team on their journey to fully automated provisioning with GCP.
 description: |-
   Work with the devops team at Acme Inc. as they go from manual provisioning with Terraform to a fully automated devops workflow with code reviews, testing, and automated provisioning in Google Cloud Platform. This workshop covers the following topics:
 
@@ -26,6 +26,8 @@ tags:
 owner: hashicorp
 developers:
 - scarolan@hashicorp.com
+- roger@hashicorp.com
+- lance@hashicorp.com
 private: true
 published: true
 challenges:
@@ -827,4 +829,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "11474073460297929312"
+checksum: "8537704839009875104"
