@@ -2,8 +2,8 @@ slug: terraform-cloud-azure
 id: ywejivwkxtlp
 type: track
 title: Terraform Cloud with Azure
-teaser: Join the ACME devops team on their journey to fully automated provisioning
-  with Azure Cloud.
+teaser: |
+  Join the ACME devops team on their journey to fully automated provisioning with Azure Cloud.
 description: |-
   Work with the devops team at Acme Inc. as they go from manual provisioning with Terraform to a fully automated devops workflow with code reviews, testing, and automated provisioning in Azure Cloud. This workshop covers the following topics:
 
@@ -26,6 +26,8 @@ tags:
 owner: hashicorp
 developers:
 - scarolan@hashicorp.com
+- roger@hashicorp.com
+- lance@hashicorp.com
 private: true
 published: true
 challenges:
@@ -621,14 +623,14 @@ challenges:
       tags their resources properly. Can you make sure all your folks are properly
       tagging their cloud resources?"
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
   - title: Text Editor
     type: code
     hostname: workstation
     path: /root/hashicat-azure
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
   - title: Shell
     type: terminal
     hostname: workstation
@@ -846,4 +848,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "5666428744213210191"
+checksum: "15535067165371807845"

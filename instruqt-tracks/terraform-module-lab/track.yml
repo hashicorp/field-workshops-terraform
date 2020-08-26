@@ -2,14 +2,18 @@ slug: terraform-module-lab
 id: o7fzb43piufk
 type: track
 title: Terraform Module Lab
-teaser: A preconfigured lab environment for learning about Terraform modules.
-description: This track can be used for hands-on labs working with Terraform modules.
+teaser: |
+  A preconfigured lab environment for learning about Terraform modules.
+description: |
+  This track can be used for hands-on labs working with Terraform modules.
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
 - terraform
 - modules
 owner: hashicorp
 developers:
+- roger@hashicorp.com
+- lance@hashicorp.com
 - scarolan@hashicorp.com
 private: true
 published: true
@@ -208,4 +212,4 @@ challenges:
     url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
-checksum: "5609076489952616767"
+checksum: "8197690687032234365"

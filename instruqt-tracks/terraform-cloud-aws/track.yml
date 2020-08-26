@@ -2,8 +2,8 @@ slug: terraform-cloud-aws
 id: 2hgi8e9hftli
 type: track
 title: Terraform Cloud with AWS
-teaser: Join the ACME devops team on their journey to fully automated provisioning
-  with AWS Cloud.
+teaser: |
+  Join the ACME devops team on their journey to fully automated provisioning with AWS Cloud.
 description: |-
   Work with the devops team at Acme Inc. as they go from manual provisioning with Terraform to a fully automated devops workflow with code reviews, testing, and automated provisioning in AWS Cloud. This workshop covers the following topics:
 
@@ -26,6 +26,8 @@ tags:
 owner: hashicorp
 developers:
 - scarolan@hashicorp.com
+- roger@hashicorp.com
+- lance@hashicorp.com
 private: true
 published: true
 challenges:
@@ -822,4 +824,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "18249141665565571033"
+checksum: "14348339700341433888"
