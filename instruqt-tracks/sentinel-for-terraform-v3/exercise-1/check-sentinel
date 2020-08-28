@@ -1,0 +1,55 @@
+#!/bin/bash -l
+
+set -e
+
+# Run 'touch /tmp/skip-check' to disable this check
+if [ -f /tmp/skip-check ]; then
+  rm /tmp/skip-check
+  exit 0
+fi
+
+cd /root/sentinel
+
+grep -qL "<method1>" restrict-vault-auth-methods.sentinel && fail-message "You have not replaced '<method1>' in restrict-vault-auth-methods.sentinel yet."
+
+grep -q "azure" restrict-vault-auth-methods.sentinel || fail-message "You have not added 'azure' to the allowed_methods list yet."
+
+grep -qL "<method2>" restrict-vault-auth-methods.sentinel && fail-message "You have not replaced '<method2>' in restrict-vault-auth-methods.sentinel yet."
+
+grep -q "kubernetes" restrict-vault-auth-methods.sentinel || fail-message "You have not added 'kubernetes' to the allowed_methods list yet."
+
+grep -qL "<method3>" restrict-vault-auth-methods.sentinel && fail-message "You have not replaced '<method3>' in restrict-vault-auth-methods.sentinel yet."
+
+grep -q "github" restrict-vault-auth-methods.sentinel || fail-message "You have not added 'github' to the allowed_methods list yet."
+
+grep -qL "<method4>" restrict-vault-auth-methods.sentinel && fail-message "You have not replaced '<method4>' in restrict-vault-auth-methods.sentinel yet."
+
+grep -q "approle" restrict-vault-auth-methods.sentinel || fail-message "You have not added 'approle' to the allowed_methods list yet."
+
+grep -qL "<resource_type>" restrict-vault-auth-methods.sentinel && fail-message "You have not replaced '<resource_type>' in restrict-vault-auth-methods.sentinel yet."
+
+grep -q "vault_auth_backend" restrict-vault-auth-methods.sentinel || fail-message "You have not replaced '<resource_type>' with 'vault_auth_backend' yet."
+
+grep -qL "<attribute>" restrict-vault-auth-methods.sentinel && fail-message "You have not replaced '<attribute>' in restrict-vault-auth-methods.sentinel yet."
+
+matches=$(grep type restrict-vault-auth-methods.sentinel | wc -l)
+if [ $matches -ne 1 ]; then
+    fail-message "You have not replaced '<attribute>' with 'type' yet."
+fi
+
+grep -qL "<list>" restrict-vault-auth-methods.sentinel && fail-message "You have not replaced '<list>' in restrict-vault-auth-methods.sentinel yet."
+
+matches=$(grep allowed_methods restrict-vault-auth-methods.sentinel | wc -l)
+if [ $matches -ne 2 ]; then
+    fail-message "You have not replaced '<list>' with 'allowed_methods' yet."
+fi
+
+grep -q "sentinel test -run=vault -verbose" /root/.bash_history || grep -q "sentinel test -run=vault" /root/.bash_history || fail-message "You haven't tested the restrict-vault-auth-methods.sentinel policy against the test cases yet. Please run 'sentinel test -run=vault -verbose'"
+
+sentinel test -run=vault
+rc=$?
+if [ $rc -ne 0 ]; then
+    fail-message "Your policy did not pass both test cases. Please revise and test it again."
+fi
+
+exit 0
