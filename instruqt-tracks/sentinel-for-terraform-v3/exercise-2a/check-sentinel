@@ -1,0 +1,33 @@
+#!/bin/bash -l
+
+set -e
+
+# Run 'touch /tmp/skip-check' to disable this check
+if [ -f /tmp/skip-check ]; then
+  rm /tmp/skip-check
+  exit 0
+fi
+
+cd /root/sentinel
+
+grep -qL "<resource_type>" require-access-keys-use-pgp-a.sentinel && fail-message "You have not replaced '<resource_type>' in require-access-keys-use-pgp-a.sentinel yet."
+
+grep -q "aws_iam_access_key" require-access-keys-use-pgp-a.sentinel || fail-message "You have not replaced '<resource_type>' with 'aws_iam_access_key' in require-access-keys-use-pgp-a.sentinel yet."
+
+grep -qL "<attribute>" require-access-keys-use-pgp-a.sentinel && fail-message "You have not replaced '<attribute>' in require-access-keys-use-pgp-a.sentinel yet."
+
+grep -q "pgp_key" require-access-keys-use-pgp-a.sentinel || fail-message "You have not replaced '<attribute>' with 'pgp_key' in require-access-keys-use-pgp-a.sentinel yet."
+
+grep -qL "<condition>" require-access-keys-use-pgp-a.sentinel && fail-message "You have not replaced '<condition>' in require-access-keys-use-pgp-a.sentinel yet."
+
+grep -q "violations is 0" require-access-keys-use-pgp-a.sentinel || grep -q "violations == 0" require-access-keys-use-pgp-a.sentinel || fail-message "You have not replaced '<condition>' with 'violations is 0' or 'violations == 0' in require-access-keys-use-pgp-a.sentinel yet."
+
+grep -q "sentinel test -run=pgp-a.sentinel -verbose" /root/.bash_history || fail-message "You haven't tested require-access-keys-use-pgp-a.sentinel yet. Please run 'sentinel test -run=pgp-a.sentinel -verbose'"
+
+sentinel test -run=pgp-a.sentinel
+rc=$?
+if [ $rc -ne 0 ]; then
+    fail-message "Your policy require-access-keys-use-pgp-a.sentinel did not pass all 4 test cases. Please revise and test it again."
+fi
+
+exit 0

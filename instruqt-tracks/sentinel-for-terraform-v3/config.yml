@@ -1,0 +1,6 @@
+version: "2"
+virtualmachines:
+- name: sentinel
+  image: instruqt-hashicorp/ubuntu-base
+  shell: /bin/bash -l
+  machine_type: n1-standard-1

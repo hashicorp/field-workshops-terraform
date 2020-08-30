@@ -1,0 +1,17 @@
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/sentinel
+
+# Edit the first version of the policy
+sed -i 's/<resource_type>/aws_iam_access_key/g' require-access-keys-use-pgp-a.sentinel
+sed -i 's/<attribute>/pgp_key/g' require-access-keys-use-pgp-a.sentinel
+sed -i 's/<condition>/violations is 0/g' require-access-keys-use-pgp-a.sentinel
+
+# Test the first version of the policy
+sentinel test -run=pgp-a.sentinel -verbose
+
+exit 0

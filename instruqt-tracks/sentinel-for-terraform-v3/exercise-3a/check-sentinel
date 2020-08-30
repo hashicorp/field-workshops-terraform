@@ -1,0 +1,36 @@
+#!/bin/bash -l
+
+set -e
+
+# Run 'touch /tmp/skip-check' to disable this check
+if [ -f /tmp/skip-check ]; then
+  rm /tmp/skip-check
+  exit 0
+fi
+
+cd /root/sentinel
+
+grep -qL "<data_source_type>" restrict-acm-certificate-domains-a.sentinel && fail-message "You have not replaced '<data_source_type>' in restrict-acm-certificate-domains-a.sentinel yet."
+
+grep -q "aws_acm_certificate" restrict-acm-certificate-domains-a.sentinel || fail-message "You have not replaced '<data_source_type>' with 'aws_acm_certificate' in restrict-acm-certificate-domains-a.sentinel yet."
+
+grep -qL "<attribute>" restrict-acm-certificate-domains-a.sentinel && fail-message "You have not replaced '<attribute>' in restrict-acm-certificate-domains-a.sentinel yet."
+
+grep -q "cert.values.domain" restrict-acm-certificate-domains-a.sentinel || fail-message "You have not replaced '<attribute>' with 'cert.values.domain' in restrict-acm-certificate-domains-a.sentinel yet."
+
+grep -qL "<expression>" restrict-acm-certificate-domains-a.sentinel && fail-message "You have not replaced '<expression>' in restrict-acm-certificate-domains-a.sentinel yet."
+
+matches=$(grep "cert.values.domain" restrict-acm-certificate-domains-a.sentinel | wc -l)
+if [ $matches -ne 2 ]; then
+    fail-message "You have not replaced '<expression>' with 'cert.values.domain' in restrict-acm-certificate-domains-a.sentinel yet."
+fi
+
+grep -q "sentinel test -run=domains-a.sentinel -verbose" /root/.bash_history || grep -q "sentinel test -run=domains-a.sentinel" /root/.bash_history || fail-message "You haven't tested the restrict-acm-certificate-domains-a.sentinel policy against the test cases yet. Please run 'sentinel test -run=domains-a.sentinel -verbose'"
+
+sentinel test -run=domains-a.sentinel
+rc=$?
+if [ $rc -ne 0 ]; then
+    fail-message "Your policy restrict-acm-certificate-domains-a.sentinel did not pass both test cases. Please revise and test it again."
+fi
+
+exit 0

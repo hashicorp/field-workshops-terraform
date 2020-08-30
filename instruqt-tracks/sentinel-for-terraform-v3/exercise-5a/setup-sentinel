@@ -1,0 +1,278 @@
+#!/bin/bash -l
+
+set -e
+
+cat <<-'EOF' > /root/sentinel/require-modules-from-pmr-a.sentinel
+# This policy validates that all modules loaded directly by the
+# root module are in the Private Module Registry (PMR) of a TFC
+# organization.
+
+# Import the v2 tfplan import, but use the alias "tfplan"
+import "tfconfig/v2" as tfconfig
+
+# Standard strings import
+import "strings"
+
+##### Parameters #####
+# The address of the TFC or TFE server
+param address default "app.terraform.io"
+
+# The organization on the TFC or TFE server
+param organization
+
+# Require all modules directly under root module to come from PMR
+require_modules_from_pmr = func(tf_address, tf_org) {
+
+  validated = true
+
+  # Iterate over all modules but focus on calls from the root module.
+  # A module call represents one module referencing another module
+  # with a module block.
+  for <expression_1> as index, mc {
+    # Ignore modules with index matching "<address>:<name>"
+    # since these are not called from the root module.
+    if <condition_1> {
+      if not <condition_2> {
+        print("Your root module called the module", index, "with source", <expression_2>)
+        validated = false
+      } // end second if
+    } // end first if
+  } // end for
+
+  if not validated {
+    print("All modules called from the root module must come from the",
+          "private module registry", tf_address + "/" + tf_org)
+  }
+
+  return validated
+}
+
+# Call the validation function
+modules_from_pmr = <function>(<arg1>, <arg2>)
+
+# Main rule
+main = rule {
+  modules_from_pmr
+}
+EOF
+
+mkdir -p /root/sentinel/test/require-modules-from-pmr-a
+
+cat <<-'EOF' > /root/sentinel/test/require-modules-from-pmr-a/fail.json
+{
+  "param": {
+    "organization": "Cloud-Operations"
+  },
+  "mock": {
+    "tfconfig/v2": "mock-tfconfig-fail.sentinel"
+  },
+  "test": {
+    "main": false
+  }
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/require-modules-from-pmr-a/mock-tfconfig-fail.sentinel
+
+module_calls = {
+  "module.windowsserver:os": {
+    "config": {
+      "vm_os_simple": {
+        "references": [
+          "var.vm_os_simple",
+        ],
+      },
+    },
+    "count":              {},
+    "for_each":           {},
+    "module_address":     "module.windowsserver",
+    "name":               "os",
+    "source":             "./os",
+    "version_constraint": "",
+  },
+  "network": {
+    "config": {
+      "allow_ssh_traffic": {
+        "constant_value": true,
+      },
+      "location": {
+        "references": [
+          "var.location",
+        ],
+      },
+      "resource_group_name": {
+        "references": [
+          "var.windows_dns_prefix",
+        ],
+      },
+    },
+    "count":              {},
+    "for_each":           {},
+    "module_address":     "",
+    "name":               "network",
+    "source":             "Azure/network/azurerm",
+    "version_constraint": "1.1.1",
+  },
+  "windowsserver": {
+    "config": {
+      "admin_password": {
+        "references": [
+          "var.admin_password",
+        ],
+      },
+      "location": {
+        "references": [
+          "var.location",
+        ],
+      },
+      "public_ip_dns": {
+        "references": [
+          "var.windows_dns_prefix",
+        ],
+      },
+      "resource_group_name": {
+        "references": [
+          "var.windows_dns_prefix",
+        ],
+      },
+      "storage_account_type": {
+        "references": [
+          "var.storage_account_type",
+        ],
+      },
+      "vm_hostname": {
+        "constant_value": "demohost",
+      },
+      "vm_os_simple": {
+        "constant_value": "WindowsServer",
+      },
+      "vm_size": {
+        "references": [
+          "var.vm_size",
+        ],
+      },
+      "vnet_subnet_id": {
+        "references": [
+          "module.network.vnet_subnets",
+        ],
+      },
+    },
+    "count":              {},
+    "for_each":           {},
+    "module_address":     "",
+    "name":               "windowsserver",
+    "source":             "Azure/compute/azurerm",
+    "version_constraint": "1.1.6",
+  },
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/require-modules-from-pmr-a/mock-tfconfig-pass.sentinel
+module_calls = {
+  "module.windowsserver:os": {
+    "config": {
+      "vm_os_simple": {
+        "references": [
+          "var.vm_os_simple",
+        ],
+      },
+    },
+    "count":              {},
+    "for_each":           {},
+    "module_address":     "module.windowsserver",
+    "name":               "os",
+    "source":             "./os",
+    "version_constraint": "",
+  },
+  "network": {
+    "config": {
+      "allow_ssh_traffic": {
+        "constant_value": true,
+      },
+      "location": {
+        "references": [
+          "var.location",
+        ],
+      },
+      "resource_group_name": {
+        "references": [
+          "var.windows_dns_prefix",
+        ],
+      },
+    },
+    "count":              {},
+    "for_each":           {},
+    "module_address":     "",
+    "name":               "network",
+    "source":             "app.terraform.io/Cloud-Operations/network/azurerm",
+    "version_constraint": "1.1.1",
+  },
+  "windowsserver": {
+    "config": {
+      "admin_password": {
+        "references": [
+          "var.admin_password",
+        ],
+      },
+      "location": {
+        "references": [
+          "var.location",
+        ],
+      },
+      "public_ip_dns": {
+        "references": [
+          "var.windows_dns_prefix",
+        ],
+      },
+      "resource_group_name": {
+        "references": [
+          "var.windows_dns_prefix",
+        ],
+      },
+      "storage_account_type": {
+        "references": [
+          "var.storage_account_type",
+        ],
+      },
+      "vm_hostname": {
+        "constant_value": "demohost",
+      },
+      "vm_os_simple": {
+        "constant_value": "WindowsServer",
+      },
+      "vm_size": {
+        "references": [
+          "var.vm_size",
+        ],
+      },
+      "vnet_subnet_id": {
+        "references": [
+          "module.network.vnet_subnets",
+        ],
+      },
+    },
+    "count":              {},
+    "for_each":           {},
+    "module_address":     "",
+    "name":               "windowsserver",
+    "source":             "app.terraform.io/Cloud-Operations/compute/azurerm",
+    "version_constraint": "1.1.6",
+  },
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/require-modules-from-pmr-a/pass.json
+{
+  "param": {
+    "organization": "Cloud-Operations"
+  },
+  "mock": {
+    "tfconfig/v2": "mock-tfconfig-pass.sentinel"
+  },
+  "test": {
+    "main": true
+  }
+}
+EOF
+
+exit 0

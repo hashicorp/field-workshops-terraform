@@ -1,0 +1,21 @@
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/sentinel
+
+# Edit the first version of the policy
+sed -i 's/<expression_1>/tfconfig.module_calls/g' require-modules-from-pmr-a.sentinel
+sed -i 's/<condition_1>/index not matches "(.+):(.+)"/g' require-modules-from-pmr-a.sentinel
+sed -i 's:<condition_2>:strings.has_prefix(mc.source, tf_address + "/" + tf_org):g' require-modules-from-pmr-a.sentinel
+sed -i 's/<expression_2>/mc.source/g' require-modules-from-pmr-a.sentinel
+sed -i 's/<function>/require_modules_from_pmr/g' require-modules-from-pmr-a.sentinel
+sed -i 's/<arg1>/address/g' require-modules-from-pmr-a.sentinel
+sed -i 's/<arg2>/organization/g' require-modules-from-pmr-a.sentinel
+
+# Test the first version of the policy
+sentinel test -run=pmr-a.sentinel -verbose
+
+exit 0

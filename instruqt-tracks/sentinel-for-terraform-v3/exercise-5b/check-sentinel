@@ -1,0 +1,23 @@
+#!/bin/bash -l
+
+set -e
+
+cd /root/sentinel
+
+fgrep -q "require_modules_from_pmr = func(tf_address, tf_org)" common-functions/module-functions/module-functions.sentinel || fail-message "You have not copied the 'require_modules_from_pmr' function into common-functions/module-functions/module-functions.sentinel yet."
+
+fgrep -qL "<import_statement>" require-modules-from-pmr-b.sentinel && fail-message "You have not replaced '<import_statement>' with an import statement in require-modules-from-pmr-b.sentinel yet."
+
+fgrep -q 'import "module-functions" as modules' require-modules-from-pmr-b.sentinel || fail-message "You have not replaced '<import_statement>' with 'import "module-functions" as modules' in require-modules-from-pmr-b.sentinel yet."
+
+fgrep -qL "<function_call>" require-modules-from-pmr-b.sentinel && fail-message "You have not replaced '<function_call>' with a call to the function 'require_modules_from_pmr' in require-modules-from-pmr-b.sentinel yet."
+
+fgrep -q 'modules.require_modules_from_pmr(address, organization)' require-modules-from-pmr-b.sentinel || fail-message "You have not replaced '<function_call>' with 'modules.require_modules_from_pmr(address, organization)' in require-modules-from-pmr-b.sentinel yet."
+
+sentinel test -run=pmr-b.sentinel
+rc=$?
+if [ $rc -ne 0 ]; then
+    fail-message "Your policy require-modules-from-pmr-b.sentinel did not pass both test cases. Please revise and test it again."
+fi
+
+exit 0

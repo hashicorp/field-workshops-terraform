@@ -1,0 +1,50 @@
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/sentinel
+
+# Copy require_modules_from_pmr function to module-functions.sentinel
+cat <<-'EOF' >> /root/sentinel/common-functions/module-functions/module-functions.sentinel
+# Require all modules directly under root module to come from PMR
+require_modules_from_pmr = func(tf_address, tf_org) {
+
+  validated = true
+
+  # Iterate over all modules but focus on calls from the root module.
+  # A module call represents one module referencing another module
+  # with a module block.
+  for tfconfig.module_calls as index, mc {
+    # Ignore modules with index matching "<address>:<name>"
+    # since these are not called from the root module.
+    # Since <address> would start with "module." for a non-root module,
+    # we could look for indices that do not match "^module\\.(.+):(.+)"
+    if index not matches "(.+):(.+)" {
+    # The following line could be used instead of the previous line
+    # if index matches "^[^:]*$" {
+      if not strings.has_prefix(mc.source, tf_address + "/" + tf_org) {
+        print("Your root module called the module", index, "with source", mc.source)
+        validated = false
+      } // end second if
+    } // end first if
+  } // end for
+
+  if not validated {
+    print("All modules called from the root module must come from the",
+          "private module registry", tf_address + "/" + tf_org)
+  }
+
+  return validated
+}
+EOF
+
+# Edit the second version of the policy
+sed -i 's/<import_statement>/import "module-functions" as modules/g' require-modules-from-pmr-b.sentinel
+sed -i 's/<function_call>/modules.require_modules_from_pmr(address, organization)/g' require-modules-from-pmr-b.sentinel
+
+# Test the second version of the policy
+sentinel test -run=pmr-b.sentinel -verbose
+
+exit 0
