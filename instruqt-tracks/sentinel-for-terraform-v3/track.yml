@@ -25,6 +25,7 @@ developers:
 - roger@hashicorp.com
 private: false
 published: true
+show_timer: true
 challenges:
 - slug: exercise-1
   id: jlxuexs2iznt
@@ -92,7 +93,7 @@ challenges:
       You should run the [Sentinel CLI Basics](https://play.instruqt.com/hashicorp/tracks/sentinel-cli-basics) track before starting this track.
   - type: text
     contents: |-
-      We've launched the Sentinel CLI 0.15.2 on a Ubuntu VM running in GCP so that you don't need to download or install it.
+      We've launched the Sentinel CLI 0.15.6 on a Ubuntu VM running in GCP so that you don't need to download or install it.
 
       In this track, you will complete and test policies that have been mostly written for you but have placeholders in angular brackets that you must replace with suitable Sentinel code. When doing this, do not keep the angular brackets, but do keep any quotes that might surround them.
   - type: text
@@ -235,7 +236,7 @@ challenges:
 
     First, in the assignment of the `pgp_key` variable, replace `<expression>` with Sentinel code that will convert `key.change.after.pgp_key` to `null` if it is missing.
 
-    Then replace `<condition_1>` with a condition that tests if the `pgp_key` attribute was missing. This condition should use the `pgp_key` variable.
+    Then replace `<condition_1>` with a condition that tests if the `pgp_key` attribute was missing or null. This condition should use the `pgp_key` variable.
 
     Next, replace `<condition_2>` with a condition that tests if the `pgp_key` variable does **not** start with "keybase:". While there are several ways of doing this, please use the "strings" import which is also used in the "filter_attribute_does_not_have_prefix" function that was used by the "require-access-keys-use-pgp-a.sentinel" policy.
 
@@ -773,4 +774,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 1800
-checksum: "8308058173547489329"
+checksum: "18241319682764043351"

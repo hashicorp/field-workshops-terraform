@@ -5,9 +5,6 @@ set -e
 cat <<-'EOF' > /root/sentinel/require-access-keys-use-pgp-a.sentinel
 # This policy requires AWS IAM access keys to use PGP keys
 
-# Import the v2 tfplan import, but use the alias "tfplan"
-import "tfplan/v2" as tfplan
-
 # Import common-functions/tfplan-functions/tfplan-functions.sentinel
 # with alias "plan"
 import "tfplan-functions" as plan

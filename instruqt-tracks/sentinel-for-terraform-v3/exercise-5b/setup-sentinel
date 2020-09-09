@@ -10,9 +10,6 @@ cat <<-'EOF' > /root/sentinel/require-modules-from-pmr-b.sentinel
 # root module are in the Private Module Registry (PMR) of a TFC
 # organization.
 
-# Import the v2 tfplan import, but use the alias "tfplan"
-import "tfconfig/v2" as tfconfig
-
 # Import module-functions.sentinel as "modules"
 <import_statement>
 

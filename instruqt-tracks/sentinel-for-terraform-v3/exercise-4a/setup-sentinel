@@ -5,9 +5,6 @@ set -e
 cat <<-'EOF' > /root/sentinel/restrict-gcp-instance-image-a.sentinel
 # This policy restricts the public images that GCP compute instances use
 
-# Import the v2 tfplan import, but use the alias "tfplan"
-import "tfplan/v2" as tfplan
-
 # Import common-functions/tfplan-functions/tfplan-functions.sentinel
 # with alias "plan"
 import "tfplan-functions" as plan

@@ -6,7 +6,7 @@ mkdir -p /root/sentinel
 echo "cd /root/sentinel" >> /root/.profile
 
 # Install Sentinel
-SENTINEL_VERSION=0.15.2
+SENTINEL_VERSION=0.15.6
 wget https://releases.hashicorp.com/sentinel/${SENTINEL_VERSION}/sentinel_${SENTINEL_VERSION}_linux_amd64.zip
 unzip -d /bin sentinel_${SENTINEL_VERSION}_linux_amd64.zip
 rm sentinel_${SENTINEL_VERSION}_linux_amd64.zip
@@ -1500,9 +1500,6 @@ EOF
 # restrict-vault-auth-methods
 cat <<-'EOF' > /root/sentinel/restrict-vault-auth-methods.sentinel
 # This policy restricts which Vault auth methods can be created
-
-# Import the v2 tfplan import, but use the alias "tfplan"
-import "tfplan/v2" as tfplan
 
 # Import common-functions/tfplan-functions/tfplan-functions.sentinel
 # with alias "plan"
