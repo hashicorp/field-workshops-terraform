@@ -6,9 +6,6 @@ cat <<-'EOF' > /root/sentinel/restrict-acm-certificate-domains-a.sentinel
 # This policy uses the tfstate import to restrict ACM certificates
 # to have domains that are sub-domains of hashidemos.io
 
-# Import the v2 tfstate import, but use the alias "tfstate"
-import "tfstate/v2" as tfstate
-
 # Import common-functions/tfstate-functions/tfstate-functions.sentinel
 # with alias "state"
 import "tfstate-functions" as state

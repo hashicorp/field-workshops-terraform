@@ -20,6 +20,7 @@ developers:
 - roger@hashicorp.com
 private: false
 published: true
+show_timer: true
 challenges:
 - slug: sentinel-cli
   id: krvmyfhnkqkx
@@ -66,7 +67,7 @@ challenges:
       To learn more, see https://docs.hashicorp.com/sentinel.
   - type: text
     contents: |-
-      We've launched the Sentinel CLI 0.15.2 on a Ubuntu VM running in GCP so that you don't need to download or install it.
+      We've launched the Sentinel CLI 0.15.6 on a Ubuntu VM running in GCP so that you don't need to download or install it.
 
       After learning how to use the Sentinel CLI in the first challenge, you will run a very simple policy in the second challenge.
   tabs:
@@ -145,4 +146,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 2400
-checksum: "6005213471291559855"
+checksum: "540363501604633372"
