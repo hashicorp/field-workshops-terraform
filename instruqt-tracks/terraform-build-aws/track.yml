@@ -46,7 +46,7 @@ challenges:
 
     We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
 
-    Please execute all commands on the "Shell" tab. While the Code Editor allows you to open a terminal window inside it, it is not currently possible to paste `terraform` commands from the assignment into it within Instruqt.
+    **Please execute all commands on the "Shell" tab.** While the Code Editor allows you to open a terminal window inside it, it is not currently possible to paste `terraform` commands from the assignment into it within Instruqt.
 
     Congratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new Terraform skills.
 
@@ -741,7 +741,7 @@ challenges:
   type: challenge
   title: "\U0001F4C8 Terraform Graph"
   teaser: |
-    Revist graph to see what has changed.
+    Revisit graph to see what has changed.
   assignment: |-
     Start up a Blast Radius server with the following command:
 

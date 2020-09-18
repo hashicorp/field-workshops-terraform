@@ -79,7 +79,7 @@ We recommend that you configure Instruqt pools for each Instruqt track used in t
 After chapter 1 there is a slide that says *Live Demo*. You can use an instruqt track to do a brief Terraform demo for your participants, or insert your own demo here. Follow these steps to do the demo in instruqt:
 
 #### Setup
-1. Right before you start the training, visit https://instruqt.com/hashicorp/tracks/terraform-build-azure and start the track. You do not have to complete the track, we're just using Instruqt to stand up a demo environment. Open the `/root/hashicat-azure` folder with VSC. On the "Shell" tab run `terraform apply -auto-approve`. Open the Meow World application in another browser tab. Open the Azure portal and navigate to your resource group in the UI (In the Team Solutions Engineering subscription). You are now ready to demo.
+1. Right before you start the training, visit https://instruqt.com/hashicorp/tracks/terraform-build-azure and start the track. You do not have to complete the track, we're just using Instruqt to stand up a demo environment. Open the `/root/hashicat-azure` folder with VSC. Copy the *.completed files from the exercises directory and overwrite main.tf and outputs.tf. On the "Shell" tab, run `terraform init; terraform apply -auto-approve`. Open the Meow World application in another browser tab. Open the Azure portal and navigate to your resource group in the UI (In the Team Solutions Engineering subscription). You are now ready to demo.
 
 2. Walk through the demo scenario. You can use this talk track as a guideline or create your own.
 
