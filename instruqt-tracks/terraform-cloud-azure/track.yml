@@ -35,7 +35,8 @@ challenges:
   id: hhsegltjsdbz
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
-  teaser: Configure your code editor for Terraform and open a workspace.
+  teaser: |
+    Configure your code editor for Terraform and open a workspace.
   assignment: |-
     Welcome to your first day as an intern at ACME Inc. [ACME](https://www.youtube.com/watch?v=9m7evoFF83c) is a multi-national conglomerate that sells anvils, rocket powered roller skates, portable holes, earthquake pills and birdseed.
 
@@ -52,6 +53,8 @@ challenges:
     Search for **Terraform** and be sure to select the "Terraform 1.4.x" extension from mauve. **Do not select the "HashiCorp Terraform 2.x.y" extension** since it will not work in the version of the the Visual Studio Code Server that this track is using. Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it.
 
     We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
+
+    **Please execute all commands on the "Shell" tab.** While the Code Editor allows you to open a terminal window inside it, it is not currently possible to paste `terraform` commands from the assignment into it within Instruqt.
 
     Congratulations, you are ready to start working with Terraform on Azure. We'll use the hashicat-azure example app in the rest of the challenges as you learn new Terraform skills.
 
@@ -83,54 +86,12 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-- slug: open-a-terminal
-  id: kkkfbyqttxx5
-  type: challenge
-  title: "\U0001F5A5️ Open a Terminal"
-  teaser: Terraform commands are run from a terminal window. Terraform can be installed
-    on Linux, Windows, or MacOS.
-  assignment: |-
-    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-`** (Windows) or **CMD-`** (Mac). That is a backtick character, usually found in the upper left corner of your keyboard.
-
-    All Terraform commands should be run from the terminal within the Code Editor.  Make sure you are in the hashicat-azure directory when you run terraform commands.
-
-    Try the **CTRL-J** shortcut to toggle the terminal window open and closed. If you don't see a command prompt in the terminal pane, simply click on the trash can icon and open a new terminal.
-
-    You can use the little caret ^ shaped button on the terminal pane to expand and shrink your Terminal window. This is useful for viewing logs.
-
-    Click on the File Explorer icon a couple times to toggle the File Explorer on and off. This can provide more space while you're viewing and editing code.
-
-    You can also hide and show these notes with the expand icon on the upper right side of the GUI. It looks like a box with two small arrows in the corners. This will expand and close the notes panel. Try it now to give your text editor more space.
-
-    Auto-save is enabled so you don't have to save your files manually. You can always tell if a file is saved or not by looking for an X or a circle on the file tab. If it's an X, then the file has been saved.
-
-    NOTE: If you prefer a classic command line experience we've provided another tab titled **Shell**. The vim text editor is also installed on your workstation.
-
-    Good job, you're ready to deploy the hashicat application on Azure!
-  notes:
-  - type: text
-    contents: The Terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
-      Windows, Solaris and Linux.
-  tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
-  - title: Shell
-    type: terminal
-    hostname: workstation
-  difficulty: basic
-  timelimit: 1800
 - slug: tf-variables
   id: 3jl25ljwvyo1
   type: challenge
   title: "\U0001F39B️ Set Your Prefix Variable"
-  teaser: In order to make your website URL unique, you'll need to set the *prefix*
-    variable.
+  teaser: |
+    In order to make your website URL unique, you'll need to set the *prefix* variable.
   assignment: |-
     We've created a **terraform.tfvars** file for you to edit.
 
@@ -158,8 +119,8 @@ challenges:
   id: xkegpjvvhefh
   type: challenge
   title: ☁️ Terraform Cloud Setup
-  teaser: Terraform Cloud offers unlimited free Terraform state storage for users.
-    Safeguard your state files by storing them remotely in Terraform Cloud.
+  teaser: |
+    Terraform Cloud offers unlimited free Terraform state storage for users. Safeguard your state files by storing them remotely in Terraform Cloud.
   assignment: |-
     Sign up for a free Terraform Cloud account at the following URL:
 
@@ -197,9 +158,8 @@ challenges:
   id: yjyi8oj0itwx
   type: challenge
   title: "\U0001F4D2 Safekeeping Your Terraform State"
-  teaser: An unexpected outage has taken down one of the production websites. It took
-    longer than expected to recover because the Terraform state file was stored on
-    someone's laptop. Terraform Cloud's remote state feature is here to help.
+  teaser: |
+    An unexpected outage has taken down one of the production websites. It took longer than expected to recover because the Terraform state file was stored on someone's laptop. Terraform Cloud's remote state feature is here to help.
   assignment: |-
     Your task is to configure remote state using your Terraform Cloud account. In order to complete this challenge you'll need the following:
 
@@ -221,14 +181,14 @@ challenges:
 
     Return to your Code Editor tab and edit the `remote_backend.tf` file, replacing the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name. Save the file.
 
-    Once you've got all the pieces in place, try running a `terraform init` and then `terraform apply` command in the terminal.
+    Once you've got all the pieces in place, try running a `terraform init` and then `terraform apply` command on the "Shell" tab.
 
     ```
     terraform init
     terraform apply
     ```
 
-    Remember to type *yes* in the terminal when you are prompted by Terraform to confirm the apply.
+    Remember to type *yes* on the "Shell" tab when you are prompted by Terraform to confirm the apply.
 
     When you're done you should see a new state file in your Terraform Cloud workspace. Confirm that terraform has run successfully and the hashicat app is working, then If you ran terraform locally before configuring remote state, you'll have a local state file called `terraform.tfstate`. Delete your state file if it exists.
 
@@ -270,7 +230,8 @@ challenges:
   id: 8a5uhvi5mqfp
   type: quiz
   title: "\U0001F4DD Quiz 1 - Terraform Remote State"
-  teaser: A quiz about Terraform State
+  teaser: |
+    A quiz about Terraform State
   assignment: |
     The Terraform state file always matches exactly with your current infrastructure configuration.
   notes:
@@ -287,8 +248,8 @@ challenges:
   id: zwnz5hjcihvl
   type: challenge
   title: "\U0001F510 Securing Cloud Credentials"
-  teaser: Your team has started building cloud infrastructure on Azure, but the security
-    team is concerned about protecting access to everyone's cloud credentials.
+  teaser: |
+    Your team has started building cloud infrastructure on Azure, but the security team is concerned about protecting access to everyone's cloud credentials.
   assignment: |-
     After the Azure credentials issue, the security team is tightening down access to your Azure account. API keys must now be secured as stored variables in Terraform Cloud. Your task is to find your Azure credentials, and move them into your workspace as secure environment variables.
 
@@ -306,9 +267,9 @@ challenges:
 
     Test your work by running `terraform init`. Your backend configuration will be updated for remote execution.
 
-    Next try running `terraform plan`. This will trigger what's known as a speculative plan. You can view this plan by copying the link from your terminal.  This plan will not show up in your ordinary terraform runs that are triggered via the UI or API.
+    Next try running `terraform plan`. This will trigger what's known as a speculative plan. You can view this plan by copying the link from your "Shell" tab.  This plan will not show up in your ordinary terraform runs that are triggered via the UI or API.
 
-    A copy of the plan output will be streamed back to your terminal. Run a terraform apply to see it in action. The apply will show up if you navigate to the runs page in the Terraform Cloud UI.
+    A copy of the plan output will be streamed back to your "Shell" tab. Run a terraform apply to see it in action. The apply will show up if you navigate to the runs page in the Terraform Cloud UI.
 
     ```
     terraform apply
@@ -316,7 +277,7 @@ challenges:
 
     Congratulations, your Azure keys are now safely encrypted and stored in your Terraform Cloud workspace.
 
-    You can continue to run `terraform plan` and `terraform apply` in your terminal, but the execution is now done in Terraform Cloud.
+    You can continue to run `terraform plan` and `terraform apply` in your "Shell" tab, but the execution is now done in Terraform Cloud.
   notes:
   - type: text
     contents: "After a few weeks on the job you're starting to get into the rhythm
@@ -360,8 +321,8 @@ challenges:
   id: o5i1gijyobly
   type: challenge
   title: "\U0001F91D\U0001F3FC Working with Teams in Terraform Cloud"
-  teaser: As your Terraform usage increases more team members want to collaborate.
-    Let's add some teams and access rules for our organization.
+  teaser: |
+    As your Terraform usage increases more team members want to collaborate. Let's add some teams and access rules for our organization.
   assignment: |-
     Teams and role-based access controls are a paid feature of Terraform Cloud. You will need to ensure your free trial has been activated from the earlier steps in order to complete this challenge.
 
@@ -418,7 +379,8 @@ challenges:
   id: yrxvfe5m6gch
   type: quiz
   title: "\U0001F4DD Quiz 2 - Secure Variables"
-  teaser: A quiz about secure variables
+  teaser: |
+    A quiz about secure variables
   assignment: |
     Where should you store sensitive credentials like API keys?
   notes:
@@ -437,8 +399,8 @@ challenges:
   id: sjpkbtwfy8jy
   type: challenge
   title: "\U0001F4BB Version Controlled Infrastructure"
-  teaser: The team has grown and you need to implement code reviews. Terraform Cloud
-    can connect to popular Version Control Systems to enable collaboration and testing.
+  teaser: |
+    The team has grown and you need to implement code reviews. Terraform Cloud can connect to popular Version Control Systems to enable collaboration and testing.
   assignment: |-
     In order for different teams and indivdiuals to be able to work on the same Terraform code, you need to use a Version Control System (VCS). Terraform Cloud can integrate with the most popular VCS systems including GitHub, GitLab and Bitbucket.
 
@@ -513,8 +475,8 @@ challenges:
   id: 0oyaeu7muj2n
   type: challenge
   title: "\U0001F46C Collaborating with VCS"
-  teaser: Now that you've got your version control system configured with Terraform
-    Cloud, you can collaborate on changes to your Terraform built infrastructure.
+  teaser: |
+    Now that you've got your version control system configured with Terraform Cloud, you can collaborate on changes to your Terraform built infrastructure.
   assignment: |-
     In this challenge you'll make a small change to the code that deploys the hashicat-azure application, and then create a "Pull Request", which is simply a way of proposing a change and optionally allowing others to review your changes.
 
@@ -569,10 +531,8 @@ challenges:
   id: nheiyb6b8ywx
   type: challenge
   title: "\U0001F6E1️ Terraform Compliance with Sentinel"
-  teaser: Developers in your organization are building cloud resources without tagging
-    them properly. You need a way to enforce tagging on all your Azure instances that
-    are built with Terraform. Meet Sentinel, the compliance and security rules engine
-    for Terraform.
+  teaser: |
+    Developers in your organization are building cloud resources without tagging them properly. You need a way to enforce tagging on all your Azure instances that are built with Terraform. Meet Sentinel, the governance engine for Terraform.
   assignment: |-
     In this challenge you'll use Sentinel to enforce a rule that requires any Azure Virtual Machine created in your account to have the correct billable and department tags.
 
@@ -640,7 +600,8 @@ challenges:
   id: oywvzir3qzns
   type: quiz
   title: "\U0001F4DD Quiz 3 - Version Control and Terraform"
-  teaser: A quiz about version control
+  teaser: |
+    A quiz about version control
   assignment: |
     VCS-backed workspaces enable the following features (choose two)
   notes:
@@ -661,9 +622,8 @@ challenges:
   id: ytmsd9gbq40h
   type: challenge
   title: "\U0001F4DA Private Module Registry"
-  teaser: Some of your users want a simple way to deploy databases and network configurations.
-    Enter the Private Module Registry, where you can store standard, re-usable Terraform
-    configurations that others can use in their own workspaces.
+  teaser: |
+    Some of your users want a simple way to deploy databases and network configurations. Enter the Private Module Registry, where you can store standard, re-usable Terraform configurations that others can use in their own workspaces.
   assignment: |-
     In this challenge you'll learn to use the Private Module Registry, which allows you to store and version re-usable snippets of Terraform code. Think of modules like custom resources for your own environment.
 
@@ -733,8 +693,8 @@ challenges:
   id: f52at0jcg8el
   type: challenge
   title: "\U0001F517 API Driven Workflows"
-  teaser: Terraform Cloud has a fully featured RESTful API that you can use to integrate
-    with external systems. Where we're going, we don't need a GUI!
+  teaser: |
+    Terraform Cloud has a fully featured RESTful API that you can use to integrate with external systems. Where we're going, we don't need a GUI!
   assignment: |-
     In the final challenge you'll directly interact with the Terraform Cloud API. Terraform Cloud has a rich API that lets you do everything you can do in the GUI and more. Intermediate and advanced users utilize the API to create complex integrations that work with external systems.
 
@@ -809,7 +769,8 @@ challenges:
   id: a3i52f1yri6v
   type: quiz
   title: "\U0001F4DD Quiz 4 - Private Module Registry"
-  teaser: A quiz about the private module registry
+  teaser: |
+    A quiz about the private module registry
   assignment: |
     The Terraform private module registry automatically syncs modules from the public registry.
   notes:
@@ -827,10 +788,12 @@ challenges:
   id: yxtlghkqz8o2
   type: challenge
   title: "\U0001F469\U0001F3FB‍\U0001F52C Open Lab"
-  teaser: Use this challenge to explore more on your own.
-  assignment: Congratulations, you've learned all the major features of Terraform
-    Cloud. You can continue to build and experiment with Terraform, or simply click
-    the Check button to complete the track.
+  teaser: |
+    Use this challenge to explore more on your own.
+  assignment: |-
+    Congratulations, you've learned all the major features of Terraform Cloud.
+
+    You can continue to build and experiment with Terraform, or simply click the Check button to complete the track.
   notes:
   - type: video
     url: https://www.youtube.com/embed/gBzJGckMYO4
@@ -848,4 +811,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "8753687154383639764"
+checksum: "17092147375743671699"
