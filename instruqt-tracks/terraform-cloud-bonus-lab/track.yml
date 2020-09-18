@@ -26,18 +26,19 @@ challenges:
   id: b0ek2h24eln1
   type: challenge
   title: "\U0001F432 Bonus Lab - The Gauntlet \U0001F9D9\U0001F3FC‍♀️"
-  teaser: Welcome back to a familiar environment. You'll have to rely on your skills
-    and knowledge to complete the bonus lab, also known as The Gauntlet.
+  teaser: |
+    Welcome back to a familiar environment. You'll have to rely on your skills and knowledge to complete the bonus lab, also known as The Gauntlet.
   assignment: |-
     Welcome back! This is the bonus lab for the Terraform Cloud tracks. There are prerequisites that must be set up before you can begin the bonus lab. This is an intermediate level challenge.
+
+    Run all commands on the "Shell" tab.
 
     ### Workstation Setup
     1. Clone a local copy of your fork of the **hashicat** repo that you created earlier.
     2. Open the local repo in your text editor.
-    3. Open a Terminal
-    4. Create a new git branch called **dev** and switch to that branch.
-    5. Delete any extra terraform files containing modules. For example, `vpc.tf` or `vnet.tf`. You won't need external modules for this challenge.
-    6. Add, commit, and push your changes to the remote **dev** branch.
+    3. Create a new git branch called **dev** and switch to that branch.
+    4. Delete any extra terraform files containing modules. For example, `vpc.tf` or `vnet.tf`. You won't need external modules for this challenge.
+    5. Add, commit, and push your changes to the remote **dev** branch.
 
     ### Terraform Cloud Setup
     1. Log onto your Terraform Cloud organization and create a new workspace called **hashicat-dev**.
@@ -112,4 +113,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 7200
-checksum: "4277045747344556916"
+checksum: "2983228259820797752"

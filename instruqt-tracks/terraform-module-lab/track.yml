@@ -22,7 +22,8 @@ challenges:
   id: sw7bqqbs0pkd
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
-  teaser: Configure your code editor with the Terraform extension and open a workspace.
+  teaser: |
+    Configure your code editor with the Terraform extension and open a workspace.
   assignment: |-
     Open the Code Editor tab on the left. First get familiar with the menus.
 
@@ -35,6 +36,8 @@ challenges:
     Search for **Terraform** and be sure to select the "Terraform 1.4.x" extension from mauve. **Do not select the "HashiCorp Terraform 2.x.y" extension** since it will not work in the version of the the Visual Studio Code Server that this track is using. Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it.
 
     We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
+
+    Please execute all commands on the "Shell" tab. While the Code Editor allows you to open a terminal window inside it, it is not currently possible to paste `terraform` commands from the assignment into it within Instruqt.
 
     Congratulations, you are ready to start working with Terraform.
 
@@ -69,8 +72,8 @@ challenges:
   id: wor8lync260t
   type: challenge
   title: ☁️ Terraform Cloud Setup
-  teaser: Terraform Cloud offers almost all the same features as on-premise Terraform
-    Enterprise.
+  teaser: |
+    Terraform Cloud offers almost all the same features as on-premise Terraform Enterprise.
   assignment: |-
     During this challenge you'll sign up for a free Terraform Cloud account. Click on the URL below and sign up for an account if you don't have one already:
 
@@ -117,7 +120,8 @@ challenges:
   id: rhwwafn4nthr
   type: challenge
   title: "\U0001F4BB Version Controlled Infrastructure"
-  teaser: Terraform modules can be stored in your Version Control System.
+  teaser: |
+    Terraform modules can be stored in your Version Control System.
   assignment: |-
     In order for different teams and indivdiuals to be able to work on the same Terraform code, you need to use a Version Control System (VCS). Terraform Cloud can integrate with the most popular VCS systems including GitHub, GitLab and Bitbucket.
 
@@ -156,9 +160,8 @@ challenges:
   id: jpljzmbguwas
   type: challenge
   title: "\U0001F4DA Private Module Registry"
-  teaser: Some of your users want a simple way to deploy databases and network configurations.
-    Enter the Private Module Registry, where you can store standard, re-usable Terraform
-    configurations that others can use in their own workspaces.
+  teaser: |
+    Some of your users want a simple way to deploy databases and network configurations. Enter the Private Module Registry, where you can store standard, re-usable Terraform configurations that others can use in their own workspaces.
   assignment: |-
     In this challenge you'll learn to use the Private Module Registry, which allows you to store and version re-usable snippets of Terraform code. Think of modules like custom resources for your own environment.
 
@@ -212,4 +215,4 @@ challenges:
     url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
-checksum: "8197690687032234365"
+checksum: "5172348709454285358"

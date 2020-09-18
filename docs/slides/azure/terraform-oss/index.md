@@ -433,7 +433,7 @@ class: title
 
 **This is a workstation just like the ones you'll be using for today's workshops. I'm going to run a terraform apply command to build out the lab environment. We're actually cheating a little bit here, as we prebaked most of the environment before class to save us some time. Just like your favorite cooking show!**
 
-**You can see the results of the terraform run here in my terminal window. This output is showing me the URL of the application server I just built. And if we pop over here to the Azure portal you'll see all of the different parts of my lab environment.**
+**You can see the results of the terraform run here in my shell. This output is showing me the URL of the application server I just built. And if we pop over here to the Azure portal you'll see all of the different parts of my lab environment.**
 
 **This is Infrastructure as code. By the end of today's training you'll be able to create your own infrastructure using Terraform.**
 
@@ -444,7 +444,7 @@ class: title
 ## Terraform Basics
 
 ???
-**Now that you have terraform installed and working with Azure, we can do a few dry runs before building real infrastructure. Follow along carefully, copying and pasting the commands on each slide into your terminal as we go.**
+**Now that you have terraform installed and working with Azure, we can do a few dry runs before building real infrastructure. Follow along carefully, copying and pasting the commands on each slide into your shell as we go.**
 
 ---
 name: what-is-terraform-oss

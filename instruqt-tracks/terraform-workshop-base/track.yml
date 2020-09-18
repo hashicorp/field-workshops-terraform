@@ -27,7 +27,8 @@ challenges:
   id: 2l7dzxr3bgya
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
-  teaser: Configure your code editor with the HCL extension and open a workspace.
+  teaser: |
+    Configure your code editor with the HCL extension and open a workspace.
   assignment: |-
     Open the Code Editor tab on the left. First get familiar with the menus.
 
@@ -40,6 +41,8 @@ challenges:
     Search for **Terraform** and be sure to select the "Terraform 1.4.x" extension from mauve. **Do not select the "HashiCorp Terraform 2.x.y" extension** since it will not work in the version of the the Visual Studio Code Server that this track is using. Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it.
 
     We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
+
+    Please execute all commands on the "Shell" tab. While the Code Editor allows you to open a terminal window inside it, it is not currently possible to paste `terraform` commands from the assignment into it within Instruqt.
 
     Congratulations, you are ready to start working with Terraform.
 
@@ -70,42 +73,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 28800
-- slug: open-a-terminal
-  id: u0nx1awt6n9c
-  type: challenge
-  title: "\U0001F5A5️ Open a Terminal"
-  teaser: Terraform commands are run from a terminal window. Terraform can be installed
-    on Linux, Windows, or MacOS.
-  assignment: |-
-    Click on the Main Menu and select **Terminal > New Terminal** or use the keyboard shortcut **CTRL-`** (Windows) or **CMD-`** (Mac). That is a backtick character, usually found in the upper left corner of your keyboard.
-
-    All terraform commands should be run from the terminal within the Code Editor.
-
-    Try the **CTRL-J** shortcut to toggle the terminal window open and closed.
-
-    You can use the little caret ^ shaped button on the terminal pane to expand and shrink your Terminal window. This is useful for viewing logs.
-
-    Click on the File Explorer icon a couple times to toggle the File Explorer on and off. This can provide more space while you're viewing and editing code.
-
-    You can also hide and show these notes with the expand icon on the upper right side of the GUI. It looks like a box with two small arrows in the corners. This will expand and close the notes panel. Try it now to give your text editor more space.
-
-    Auto-save is enabled so you don't have to save your files manually. You can always tell if a file is saved or not by looking for an X or a circle on the file tab. If it's an X, then the file has been saved.
-  notes:
-  - type: text
-    contents: The terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
-      Windows, Solaris and Linux.
-  tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root
-  - title: Shell
-    type: terminal
-    hostname: workstation
-  difficulty: basic
-  timelimit: 600
-checksum: "10423752362996897767"
+checksum: "1152631756001038093"
