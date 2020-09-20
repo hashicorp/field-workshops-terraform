@@ -310,17 +310,19 @@ challenges:
     In this challenge you'll create teams with different levels of access to your workspace. You can then invite other users to collaborate on code changes, approvals, and Terraform runs.
 
     1. Go into your organization's General Settings and click on the **Teams** link.<br>
-    2. Add a team called **admins**. Admins should be able to manage policies, manage workspaces, and manage VCS settings.<br>
+    2. Add a team called **admins**. Admins should be able to manage policies, manage workspaces, and manage VCS settings. Be sure to click the "Update team organization access" button after checking all 3 checkboxes.<br>
     3. Add another team called **developers**. Developers should not have any organization-wide access.<br>
     4. Add a third team called **managers**. Managers should also not have any organization-wide access.
 
     Next, assign access rights to the hashicat-gcp workspace. Go into the **Team Access** page of the hashicat-gcp workspace settings. If you don't see the Team Access link you might need to log out and back into Terraform Cloud.
 
+    You'll want to click the "Add team and permissions" button and then click the "Select team" button next to each team to which you wish to grant workspace access. Then click the "Assign permissions" button for the desired permission.
+
     * Give the **admins** group admin level access.<br>
     * Give the **developers** group write level access.<br>
     * Give the **managers** group read level access.
 
-    Now that you have created teams you can invite some users to your organization. Return to your **General Settings** for the organization, and select **Users**.
+    Now that you have created teams and given them workspace access you can invite some users to your organization. Return to your **General Settings** for the organization, and select **Users**. Then click the "Invite a user" button.
 
     If you're doing an instructor-led training, you can invite your instructor or a fellow student to your organization and place them on the developers team. You'll need the email address attached to their Terraform Cloud account to invite them.
 
