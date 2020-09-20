@@ -1,7 +1,7 @@
 slug: terraform-build-gcp
 id: wykyne6vqrul
 type: track
-title: Intro to Terraform on Google Cloud Platform
+title: Intro to Terraform on Google
 teaser: |
   Provision the HashiCat application on GCP using Terraform.
 description: |-
