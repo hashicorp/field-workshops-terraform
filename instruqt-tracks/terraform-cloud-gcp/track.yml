@@ -120,9 +120,6 @@ challenges:
   - type: text
     contents: Terraform Cloud remote state storage is free for all users.
   tabs:
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
   - title: Shell
     type: terminal
     hostname: workstation
@@ -203,9 +200,6 @@ challenges:
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
 - slug: quiz-1
