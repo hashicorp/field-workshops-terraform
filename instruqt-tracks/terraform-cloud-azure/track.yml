@@ -86,35 +86,6 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-- slug: tf-variables
-  id: 3jl25ljwvyo1
-  type: challenge
-  title: "\U0001F39B️ Set Your Prefix Variable"
-  teaser: |
-    In order to make your website URL unique, you'll need to set the *prefix* variable.
-  assignment: |-
-    We've created a **terraform.tfvars** file for you to edit.
-
-    Open the **terraform.tfvars** file and set your prefix variable by deleting the `#` at the beginning of the line and replacing "yourname" with your own name..
-
-    **Keep your prefix string all lower case, and between 5-12 characters long. Do not use an underscore in your prefix.**
-
-    The prefix will become part of your application hostname, and therefore must be DNS-compliant. Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, and the hyphen (-).  A hostname may not start with a hyphen.
-  notes:
-  - type: text
-    contents: The **terraform.tfvars** file is a convenient place for users to configure
-      their variables.
-  tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
-  difficulty: basic
-  timelimit: 600
 - slug: terraform-cloud-setup
   id: xkegpjvvhefh
   type: challenge
@@ -181,6 +152,14 @@ challenges:
 
     Return to your Code Editor tab and edit the `remote_backend.tf` file, replacing the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name. Save the file.
 
+    We've created a **terraform.tfvars** file for you to edit.
+
+    Open the **terraform.tfvars** file and set your prefix variable by replacing "yourname" with your own name. However, to ensure uniqueness within Azure, we recommend you use your first and last names with or without a hyphen between them.
+
+    **Keep your prefix string all lower case, and between 5-12 characters long. Do not use an underscore in your prefix.**
+
+    The prefix will become part of your application hostname, and therefore must be DNS-compliant. Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, and the hyphen (-).  A hostname may not start with a hyphen.
+
     Once you've got all the pieces in place, try running a `terraform init` and then `terraform apply` command on the "Shell" tab.
 
     ```
@@ -190,11 +169,19 @@ challenges:
 
     Remember to type *yes* on the "Shell" tab when you are prompted by Terraform to confirm the apply.
 
-    When you're done you should see a new state file in your Terraform Cloud workspace. Confirm that terraform has run successfully and the hashicat app is working, then If you ran terraform locally before configuring remote state, you'll have a local state file called `terraform.tfstate`. Delete your state file if it exists.
+    When the `terraform apply` finishes, you should see output like this:
+    ```
+    Apply complete! Resources: 8 added, 0 changed, 0 destroyed.
 
+    Outputs:
+
+    catapp_url = http://sean-carolan-meow.centralus.cloudapp.azure.com
     ```
-    rm terraform.tfstate
-    ```
+    Please click on the URL to test that your application is working. If it won't load, please run the `terraform apply` command again. That usually fixes this problem.
+
+    Additionally, you should see a new state file on the "States" tab of your Terraform Cloud workspace.
+
+    Note: If you ran terraform locally before configuring the remote backend, you might have a local state file called `terraform.tfstate`. If so, please delete it by running `rm terraform.tfstate`.
 
     Report back to Robin with the *Check* button below once you've successfully deployed the hashicat application with remote state enabled.
 
@@ -537,7 +524,7 @@ challenges:
     In this challenge you'll use Sentinel to enforce a rule that requires any Azure Virtual Machine created in your account to have the correct billable and department tags.
 
     ### Challenge Setup
-    1. Before configuring Sentinel you'll need to queue up a Destroy run. Click on your workspace **Settings >> Destruction and Deletion** menu to queue a destroy plan. You'll need to check the box that says "Allow destroy plans" to proceed.
+    1. Before configuring Sentinel you'll need to queue up a Destroy run. Click on your workspace **Settings >> Destruction and Deletion** menu to queue a destroy plan. Make sure that "Allow destroy plans" is enabled.
 
     Do not click the red **Delete from Terraform Cloud** button!!! Instead, click on **Queue Destroy Plan** and confirm it if necessary.
 
@@ -811,4 +798,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "17092147375743671699"
+checksum: "288679616861079873"

@@ -55,3 +55,11 @@ fi
 
 # Store the ORG in /root/.bashrc
 grep $ORG /root/.bashrc || echo "export ORG=\"$ORG\"" >> /root/.bashrc
+
+# Check that user has set prefix variable
+grep yourname /root/hashicat-azure/terraform.tfvars
+EXITCODE=$?
+if [ $EXITCODE -ne 1 ]; then
+  fail-message "Oops, it looks like you haven't updated your prefix variable yet."
+  exit 1
+fi

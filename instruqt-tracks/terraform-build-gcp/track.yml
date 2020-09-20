@@ -14,7 +14,7 @@ description: |-
   When you're finished you'll be able to view the HashiCat application
   in your web browser.
 
-  Kittens as a Service! \U0001F63A
+  Kittens as a Service!
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
 - terraform
