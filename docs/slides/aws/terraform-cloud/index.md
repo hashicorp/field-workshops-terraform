@@ -13,7 +13,7 @@ count: false
 
 INSTRUCTOR GUIDE LINK: https://github.com/hashicorp/field-workshops-terraform/blob/master/instructor-guides/all_terraform_cloud_INSTRUCTOR_GUIDE.md
 
-INSTRUCTOR NOTE: Welcome to Terraform Cloud on AWS. This slide deck is written entirely in Markdown language, which means you can make edits or additions then submit a pull request to add your changes to the master copy. To make edits to the slide deck simply fork this repository, edit the Markdown file(s), and submit a pull request with your changes. You can easily test a local copy of the slide deck with this python one-liner:
+INSTRUCTOR NOTE: Welcome to Terraform Cloud on AWS. This slide deck is written entirely in Markdown language, which means you can make edits or additions then submit a pull request to add your changes to the main branch. To make edits to the slide deck simply fork this repository, edit the Markdown file(s), and submit a pull request with your changes. You can easily test a local copy of the slide deck with this python one-liner:
 
 ```
 python -m SimpleHTTPServer
