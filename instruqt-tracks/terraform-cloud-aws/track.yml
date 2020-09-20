@@ -164,11 +164,19 @@ challenges:
 
     Remember to type *yes* on the "Shell" tab when you are prompted by Terraform to confirm the apply.
 
-    When you're done you should see a new state file in your Terraform Cloud workspace. Confirm that terraform has run successfully and the hashicat app is working, then If you ran terraform locally before configuring remote state, you'll have a local state file called `terraform.tfstate`. Delete your state file if it exists.
+    When the `terraform apply` finishes, you should see output like this:
+    ```
+    Apply complete! Resources: 41 added, 0 changed, 3 destroyed.
 
+    Outputs:
+
+    catapp_url = http://ec2-107-22-209-41.compute-1.amazonaws.com
     ```
-    rm terraform.tfstate
-    ```
+    Please click on the URL to test that your application is working. If it won't load, please run the `terraform apply` command again. That usually fixes this problem.
+
+    Additionally, you should see a new state file on the "States" tab of your Terraform Cloud workspace.
+
+    Note: If you ran terraform locally before configuring the remote backend, you might have a local state file called `terraform.tfstate`. If so, please delete it by running `rm terraform.tfstate`.
 
     Report back to Robin with the *Check* button below once you've successfully deployed the hashicat application with remote state enabled.
 
@@ -513,7 +521,7 @@ challenges:
     In this challenge you'll use Sentinel to enforce a rule that requires any AWS instance created in your account to have the correct billable and department tags.
 
     ### Challenge Setup
-    1. Before configuring Sentinel you'll need to queue up a Destroy run. Click on your workspace **Settings >> Destruction and Deletion** menu to queue a destroy plan. You'll need to check the box that says "Allow destroy plans" to proceed.
+    1. Before configuring Sentinel you'll need to queue up a Destroy run. Click on your workspace **Settings >> Destruction and Deletion** menu to queue a destroy plan. Make sure that "Allow destroy plans" is enabled.
 
     Do not click the red **Delete from Terraform Cloud** button!!! Instead, click on **Queue Destroy Plan** and confirm it if necessary.
 

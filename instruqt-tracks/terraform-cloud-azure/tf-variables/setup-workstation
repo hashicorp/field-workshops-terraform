@@ -1,3 +1,0 @@
-#!/bin/bash
-/bin/set-workdir /root/hashicat-azure
-echo -e "prefix = \"changeme\"" > terraform.tfvars

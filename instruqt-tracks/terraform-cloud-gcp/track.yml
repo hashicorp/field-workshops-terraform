@@ -164,11 +164,19 @@ challenges:
 
     Remember to type *yes* on the "Shell" tab when you are prompted by Terraform to confirm the apply.
 
-    When you're done you should see a new state file in your Terraform Cloud workspace. Confirm that terraform has run successfully and the hashicat app is working, then If you ran terraform locally before configuring remote state, you'll have a local state file called `terraform.tfstate`. Delete your state file if it exists.
+    When the `terraform apply` finishes, you should see output like this:
+    ```
+    Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
 
+    Outputs:
+
+    catapp_url = http://35.193.203.233
     ```
-    rm terraform.tfstate
-    ```
+    Please click on the URL to test that your application is working. If it won't load, please run the `terraform apply` command again. That usually fixes this problem.
+
+    Additionally, you should see a new state file on the "States" tab of your Terraform Cloud workspace.
+
+    Note: If you ran terraform locally before configuring the remote backend, you might have a local state file called `terraform.tfstate`. If so, please delete it by running `rm terraform.tfstate`.
 
     Report back to Robin with the *Check* button below once you've successfully deployed the hashicat application with remote state enabled.
 
@@ -236,7 +244,7 @@ challenges:
     ```
     2. Update the **Execution Mode** settings in your workspace to **Remote**.
     3. Change the **Apply Method** to Auto apply. This will save you the trouble of having to approve every Terraform run manually. Remember to click the **Save** button at the bottom of the page!
-    4. Set an **Environment Variable** for your GCP credentials and mark it as **Sensitive**.
+    4. Set an **Environment Variable** called `GOOGLE_CREDENTIALS` for your GCP credentials and mark it as **Sensitive**.
     5. Set **Terraform Variables** for your `prefix`, `region`, and `zone`. Learn more about these variables by looking in the variables.tf file.
     6. Set a **Terraform Variable** for your project id. You can find your Google Cloud project id with the following command:
 
@@ -516,7 +524,7 @@ challenges:
     In this challenge you'll use Sentinel to enforce a rule that requires any GCP instance created in your account to have the correct billable and department labels.
 
     ### Challenge Setup
-    1. Before configuring Sentinel you'll need to queue up a Destroy run. Click on your workspace **Settings >> Destruction and Deletion** menu to queue a destroy plan. You'll need to check the box that says "Allow destroy plans" to proceed.
+    1. Before configuring Sentinel you'll need to queue up a Destroy run. Click on your workspace **Settings >> Destruction and Deletion** menu to queue a destroy plan. Make sure that "Allow destroy plans" is enabled.
 
     Do not click the red **Delete from Terraform Cloud** button!!! Instead, click on **Queue Destroy Plan** and confirm it if necessary.
 
