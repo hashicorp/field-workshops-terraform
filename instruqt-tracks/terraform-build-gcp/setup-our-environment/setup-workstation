@@ -8,6 +8,12 @@ sleep 10
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
 
+# Update Terraform
+echo "Installing Terraform and command line tools."
+wget https://releases.hashicorp.com/terraform/0.13.3/terraform_0.13.3_linux_amd64.zip -O /tmp/terraform.zip
+unzip -o /tmp/terraform.zip -d /usr/local/bin
+chmod +x /usr/local/bin/terraform
+
 # Clone the hashicat-gcp repo
 git clone https://github.com/hashicorp/hashicat-gcp
 GITDIR="/root/hashicat-gcp"

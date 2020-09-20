@@ -12,6 +12,12 @@ source /root/.bashrc
 # Ensure we load /etc/profile.d/instruqt-env.sh
 echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc
 
+# Update Terraform
+echo "Installing Terraform and command line tools."
+wget https://releases.hashicorp.com/terraform/0.13.3/terraform_0.13.3_linux_amd64.zip -O /tmp/terraform.zip
+unzip -o /tmp/terraform.zip -d /usr/local/bin
+chmod +x /usr/local/bin/terraform
+
 # Import VAULT_TOKEN in case we need to get new creds
 echo "export VAULT_TOKEN=\$(cat /var/vault_token)" >> /root/.bashrc
 
