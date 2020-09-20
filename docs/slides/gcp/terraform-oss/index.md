@@ -15,7 +15,7 @@ If you need to change the look and feel of the slide deck just use the style.css
 HTML comments like this one will show up in the source code, but not in the slides or speaker notes.
 --->
 
-Welcome to the beginner's guide to Terraform on GCP. This slide deck is written entirely in Markdown language, which means you can make edits or additions, then submit a pull request to add your changes to the master copy. To make edits to the slide deck simply fork this repository, edit the Markdown files, and submit a pull request with your changes.
+Welcome to the beginner's guide to Terraform on GCP. This slide deck is written entirely in Markdown language, which means you can make edits or additions, then submit a pull request to add your changes to the main branch. To make edits to the slide deck simply fork this repository, edit the Markdown files, and submit a pull request with your changes.
 
 The Markdown content is contained in the docs/ subdirectories.
 
