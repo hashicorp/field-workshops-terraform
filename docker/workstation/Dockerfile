@@ -22,7 +22,7 @@ RUN sudo mv /tmp/vim-colors-solarized/colors /root/.vim/colors
 RUN sudo echo -e "let g:solarized_termcolors=256\nset t_Co=256\nsyntax enable\nset background=dark\ncolorscheme solarized" > /tmp/.vimrc
 RUN sudo mv /tmp/.vimrc /root/.vimrc
 RUN wget https://releases.hashicorp.com/terraform/0.12.20/terraform_0.12.20_linux_amd64.zip -O /tmp/terraform.zip
-RUN sudo unzip /tmp/terraform.zip -d /usr/local/bin
+RUN sudo unzip -o /tmp/terraform.zip -d /usr/local/bin
 RUN sudo chmod +x /usr/local/bin/terraform
 ENV VAULT_TOKEN $VAULT_TOKEN
 ENV SHELL=/bin/bash
