@@ -479,13 +479,13 @@ challenges:
     Welcome to ${PREFIX}'s app. Replace this text with your own.
     ```
 
-    Finally at the bottom of the screen, select the option that says "Create a new branch for this commit and start a pull request."
+    At the bottom of the screen, select the option that says "Create a new branch for this commit and start a pull request." Then, click the "Propose changes" button. Finally, submit a pull request by clicking the "Create pull request" button.
 
-    Your partner should now review and approve the pull request. Or if you're working alone you can review your own pull request and merge the changes.
+    You'll notice that a check is run against your Terraform Cloud workspace. If you right-click the "Details" link of the check and then open the link in a new tab, you'll see the speculative plan that has been run in your workspace.
 
-    Once you've merged your changes to the master branch, watch the Terraform run that starts in the UI.
+    Your partner should now review and approve the pull request. Or, if you're working alone you can review your own pull request and merge the changes.
 
-    You can do this by clicking on the **Details** link next to the hashicat-gcp check on the GitHub screen. This will take you straight to the speculative plan run in Terraform Cloud.
+    Once you've merged your changes to the master branch, watch the Terraform run that starts in the Terraform Cloud UI.
   notes:
   - type: text
     contents: "The marketing team at ACME is running a special promotion next week
