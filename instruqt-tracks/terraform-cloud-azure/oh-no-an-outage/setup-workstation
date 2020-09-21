@@ -18,4 +18,3 @@ cat <<-EOF > /root/.terraform.d/credentials.tfrc.json
 EOF
 
 /bin/set-workdir /root/hashicat-azure
-echo -e "prefix = \"changeme\"" > terraform.tfvars

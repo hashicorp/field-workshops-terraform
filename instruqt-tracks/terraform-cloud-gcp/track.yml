@@ -1,7 +1,7 @@
 slug: terraform-cloud-gcp
 id: mjfywxvlky8d
 type: track
-title: Terraform Cloud with Google Cloud Platform
+title: Terraform Cloud with GCP
 teaser: |
   Join the ACME devops team on their journey to fully automated provisioning with GCP.
 description: |-
@@ -120,6 +120,14 @@ challenges:
   - type: text
     contents: Terraform Cloud remote state storage is free for all users.
   tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root
   - title: Shell
     type: terminal
     hostname: workstation
@@ -151,6 +159,8 @@ challenges:
     Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
 
     Return to your Code Editor tab and edit the `remote_backend.tf` file, replacing the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name. Save the file.
+
+    Also, please edit the terraform.tfvars file and set `prefix` to your name.
 
     Once you've got all the pieces in place, try running a `terraform init` and then `terraform apply` command on the "Shell" tab.
 
@@ -239,7 +249,7 @@ challenges:
     2. Update the **Execution Mode** settings in your workspace to **Remote**.
     3. Change the **Apply Method** to Auto apply. This will save you the trouble of having to approve every Terraform run manually. Remember to click the **Save** button at the bottom of the page!
     4. Set an **Environment Variable** called `GOOGLE_CREDENTIALS` for your GCP credentials and mark it as **Sensitive**.
-    5. Set **Terraform Variables** for your `prefix`, `region`, and `zone`. Learn more about these variables by looking in the variables.tf file.
+    5. Set **Terraform Variables** for your `prefix`, `region`, and `zone`. Learn more about these variables by looking in the variables.tf file. **Please be sure to set `prefix` to the same value you had set in your terraform.tfvars file to avoid problems.**
     6. Set a **Terraform Variable** for your project id. You can find your Google Cloud project id with the following command:
 
     ```
@@ -350,12 +360,20 @@ challenges:
       Cloud. Your instructor will need to upgrade your organization to a free trial
       in order to complete this challenge.
   tabs:
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Terraform Cloud
+    type: external
+    url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
 - slug: quiz-2
@@ -393,11 +411,19 @@ challenges:
 
     https://github.com/hashicorp/hashicat-gcp
 
-    Run the following commands to update your git configuration for your own repository. Don't forget to replace YOURGITUSER with your own git username.
+    Run the following commands to update your git configuration for your own repository. Don't forget to replace YOURGITUSER with your own git username in the second command.
 
     ```
     git remote remove origin
     git remote add origin https://github.com/YOURGITUSER/hashicat-gcp
+    ```
+
+    Also run these commands:
+
+    ```
+    git pull
+    git branch --set-upstream-to=origin/master master
+    git config --global core.editor "vi"
     ```
 
     Next use these commands to set your email and name:
@@ -409,11 +435,27 @@ challenges:
     git config --global user.name "Your Name"
     ```
 
+    To complete your `git` operations, please commit and push your modified remote_backend.tf file with these commands on your "Shell" tab:
+
+    ```
+    git add .
+    git commit -m "adding remote backend"
+    git push origin master
+    ```
+
+    Note that you'll have to provide your GitHub username and password or personal access token in order to complete the `git push` command.
+
+    If you have two-factor authentication enabled and don't remember your personal access token,  you'll need to create a new one. To do that, log onto GitHub and visit the Tokens page:
+
+    https://github.com/settings/tokens
+
+    Then click on **Personal Access Tokens** and generate a new token for the workshop. You can delete it afterwards if you like. This token enables you to push changes from your workstation.
+
     Now that you have your own copy of the hashicat-gcp repo to work with, follow the **Configuring GitHub Access** section of the TFC documentation to connect your GitHub account to your Terraform Organization.
 
     https://www.terraform.io/docs/cloud/vcs/github.html
 
-    Once you've configured GitHub access, you can update your workspace to use your hashicat-gcp repository as the source for all Terraform runs. Go into the **Settings > Version Control** settings page for your workspace. Connect your workspace to the fork of your hashicat-gcp repository on GitHub. You can leave all the VCS settings at their defaults.
+    Once you've configured GitHub access for your workspace, you can update your workspace to use your hashicat-gcp repository as the source for all Terraform runs. Go into the **Settings > Version Control** settings page for your workspace. Connect your workspace to the fork of your hashicat-gcp repository on GitHub. You can leave all the VCS settings at their defaults.
 
     The first VCS-backed apply should trigger immediately. Click on the Runs tab to view the run in action.
 
@@ -463,9 +505,11 @@ challenges:
   assignment: |-
     In this challenge you'll make a small change to the code that deploys the hashicat-gcp application, and then create a "Pull Request", which is simply a way of proposing a change and optionally allowing others to review your changes.
 
-    Find a partner, or if you're alone you can do this exercise solo. Exchange github usernames and browse to the other person's fork of the hashicat-gcp repository. For example:
+    Find a partner, or if you're alone you can do this exercise solo. Exchange github usernames and browse to the other person's **fork** of the hashicat-gcp repository. For example:
 
     https://github.com/YOURNAME/hashicat-gcp
+
+    **Please do NOT issue your pull request against the hashicorp/hashicat-gcp repository!**
 
     Browse to the `files/deploy_app.sh` file and click on the small pencil icon in the upper right corner of the text area. This will allow you to edit the file right in your browser.
 
@@ -478,6 +522,8 @@ challenges:
     At the bottom of the screen, select the option that says "Create a new branch for this commit and start a pull request." Then, click the "Propose changes" button. Finally, submit a pull request by clicking the "Create pull request" button.
 
     You'll notice that a check is run against your Terraform Cloud workspace. If you right-click the "Details" link of the check and then open the link in a new tab, you'll see the speculative plan that has been run in your workspace.
+
+    However, be sure to close that new browser tab if you open it since the GitHub check being run against Terraform Cloud will not be marked as complete until you do.
 
     Your partner should now review and approve the pull request. Or, if you're working alone you can review your own pull request and merge the changes.
 
@@ -520,21 +566,20 @@ challenges:
     In this challenge you'll use Sentinel to enforce a rule that requires any GCP instance created in your account to have the correct billable and department labels.
 
     ### Challenge Setup
-    1. Before configuring Sentinel you'll need to queue up a Destroy run. Click on your workspace **Settings >> Destruction and Deletion** menu to queue a destroy plan. Make sure that "Allow destroy plans" is enabled.
 
-    Do not click the red **Delete from Terraform Cloud** button!!! Instead, click on **Queue Destroy Plan** and confirm it if necessary.
-
-    2. Create a fork of the following GitHub repo, which contains a Sentinel Policy Set that you can use in your own organization. As you did with the hashicat-gcp repo, use the **Fork** button in the upper right corner of the screen to create your own copy.
+    1. Create a fork of the following GitHub repo, which contains a Sentinel Policy Set that you can use in your own organization. As you did with the hashicat-gcp repo, use the **Fork** button in the upper right corner of the screen to create your own copy.
 
     https://github.com/hashicorp/tfc-workshops-sentinel
 
-    3. Go into the **Organization Settings** for your training organization and click on **Policy Sets**.
+    Before moving on, please look at the [enforce-mandatory-labels](https://github.com/hashicorp/tfc-workshops-sentinel/blob/master/gcp/enforce-mandatory-labels.sentinel) policy. This policy requires all Google Compute Instances to have `department` and `billable` labels. It uses some functions from a Sentinel module in a different repository called [terraform-guides](https://github.com/hashicorp/terraform-guides). You'll find many useful Sentinel policies and functions in its [governance/third-generation](https://github.com/hashicorp/terraform-guides/tree/master/governance/third-generation) directory.
 
-    4. Use the **Connect a new policy set** button to connect your new GitHub repo to your organization. Remember, the repository is named **tfc-workshops-sentinel**.
+    2. Go into the **Organization Settings** for your training organization and click on **Policy Sets**.
 
-    5. Under **Description** you can enter "Sentinel Policies for our GCP resources".
+    3. Use the **Connect a new policy set** button to connect your new GitHub repo to your organization. Remember, the repository is named **tfc-workshops-sentinel**.
 
-    6. In the **More Options** menu set the **Policies Path** to `/gcp`. This tells Terraform Cloud to use the GCP specific policies that are stored in the repo.
+    4. Under **Description** you can enter "Sentinel Policies for our GCP resources".
+
+    5. In the **More Options** menu set the **Policies Path** to `/gcp`. This tells Terraform Cloud to use the GCP specific policies that are stored in the repo.
 
     6. Leave everything else at its default setting and click on the **Connect Policy Set** button at the bottom of the page.
 
@@ -542,17 +587,31 @@ challenges:
 
     ### The Challenge
 
-    Update your code so that any `google_compute_instance` resources are properly labeled with the **billable** and **department** labels. You can set the billable label to "true" and the department label to "devops". NOTE: GCP labels must be lower-case.
+    First, add the **department** label with a value of "devops" to the google_compute_instance resource in your main.tf file.
 
-    If you need a git refresher, here are the commands you'll need to push a change to your forked repo:
+    Then run the following commands to push the change to your forked repository:
 
     ```
     git add .
-    git commit -m "Updated my code."
+    git commit -m "Added the first label"
     git push origin master
     ```
 
-    These commands mean "Stage all my changes, commit them to the local git repo, then push them to the master branch of the remote repo."
+    These commands mean "Pull any remote changes, add all my changes, commit them to the local git repo, then push them to the master branch of the remote repo." Note that you will have to provide your GitHub credentinals for the `git push` command.
+
+    If you're prompted to do a `git pull` by the `push` in order to incorporate remote changes, you'll need to run `git pull`. This will display a document in the `vi` text editor with a merge message. Simply type `:wq` to save the file. Then run `git status` to see if any files changed. Then check the changed files to make sure they are correct. Then repeat the `git push origin master` command.
+
+    A plan that successfully runs will be followed by a Sentinel policy check against the enforce-mandatory-labels.sentinel policy. This policy will fail because you have (intentionally) not yet added the **billable** label to your google_compute_instance resource. As a consequence, you will not be able to apply the run.
+
+    Now, add the **billable** label to the google_compute_instance resource in your main.tf file with a value of "true" and then run these commands to push the change to your repository:
+
+    ```
+    git add .
+    git commit -m "Added the second tag"
+    git push origin master
+    ```
+
+    This time, the Sentinel policy should pass because your Google compute instance now has both labels.
 
     Each time you push a change to master, you'll trigger a new Terraform run. Keep trying until you pass the Sentinel policy check.
   notes:
@@ -614,23 +673,23 @@ challenges:
 
     https://registry.terraform.io/modules/terraform-google-modules/network/google
 
-    Note the **Source:** link that points at the github repository for this module. Click on the Source URL. As you did in previous challenges, create your own fork of this repository with the **Fork** button.
+    Note the **Source Code** link that points at the GitHub repository for this module. Click on the Source URL. As you did in previous challenges, create your own fork of this repository with the **Fork** button.
 
     Back in the Terraform Cloud control panel, click on the **Modules** link at the top of the page. Click on the **+Add Module** button. Click on the Github button and select the terraform-google-network module that you just forked.
 
     Click on **Publish Module**.
 
-    Create a new Terraform file called `vpc.tf` and use the module in this file to create a new VPC for Gaurav.  HINT: You might want to take a look at the [usage examples Google has provided](https://github.com/terraform-google-modules/terraform-google-network/blob/master/examples/simple_project/main.tf#L31-L59).
+    Create a new Terraform file called `vpc.tf` in the hashicat-gcp directory and use the module in this file to create a new VPC for Gaurav.  HINT: You might want to take a look at the [usage examples Google has provided](https://github.com/terraform-google-modules/terraform-google-network/blob/master/examples/simple_project/main.tf#L31-L59).
 
-    It's ok to make a really simple network with only one subnet and hard-coded variables. Remember to specify the correct **source** for your module. Look in the module's README in your private module registry to see the usage examples.
+    It's ok to make a really simple network with only one subnet and hard-coded variables, although using references to attributes of other resources in your main.tf file would be even better. Remember to specify the correct **source** for your module. Look in the module's README in your private module registry to see the usage examples.
 
     After you have saved the `vpc.tf` file, commit it to your local git repository and push the changes to your remote fork. You'll need to run a `git pull` command first to pull in the changes you made in the previous collaboration challenge.
 
     ```
-    git pull origin master
+    git pull
     ```
 
-    The pull command will pop open the nano text editor with a merge message. Simply hit **CTRL-X** to save the file and complete the merge.
+    The pull command will pop open the `vi` text editor with a merge message. Simply type `:wq` to save the file and complete the merge.
 
     Next you can add, commit, and push your latest changes to your remote fork. You will be prompted to log onto your github account to push the change.
 
@@ -639,14 +698,6 @@ challenges:
     git commit -m "Added VPC module"
     git push origin master
     ```
-
-    NOTE: If you have two-factor authentication enabled you can create a Personal Access Token that can be used instead of your password. Log onto github and visit the Tokens page:
-
-    https://github.com/settings/tokens
-
-    Click on **Personal Access Tokens** and generate a new token for the workshop. You can delete it afterwards if you like. This token enables you to push changes from your workstation without having to use 2FA.
-
-    HINT: The docs are your friend. They might even have an example of how the code should look.
 
     If all went well you should see a new VPC being built in the console output. Wait until your terraform apply command is complete, then click the `Check` button to verify your work.
   notes:
@@ -658,9 +709,6 @@ challenges:
       to configure a lot of GCP networks and I heard you have a Terraform module for
       this. Can you help me set up a new network in the hashicat-gcp workspace?"
   tabs:
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
   - title: Code Editor
     type: service
     hostname: workstation
@@ -796,4 +844,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "8354193567118392237"
+checksum: "15526010898436985001"

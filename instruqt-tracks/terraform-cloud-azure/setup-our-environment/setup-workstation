@@ -63,9 +63,13 @@ echo "\${mag}Setup script complete. Your Azure credentials are valid for 8 hours
 EOF
 
 chmod +x /bin/setup_azure.sh
+
+# Clone the hashicat-azure repo
 git clone https://github.com/hashicorp/hashicat-azure
 GITDIR="/root/hashicat-azure"
 /bin/set-workdir "${GITDIR}"
+
+echo -e "prefix = \"yourname\"" >> ${GITDIR}/terraform.tfvars
 
 # Fetch dynamic creds for Azure
 export VAULT_TOKEN=$(cat /var/vault_token)

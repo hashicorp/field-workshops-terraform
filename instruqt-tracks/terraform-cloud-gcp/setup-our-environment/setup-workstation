@@ -20,17 +20,9 @@ GITDIR="/root/hashicat-gcp"
 /bin/set-workdir "$GITDIR"
 
 cd ${GITDIR}
-echo -e "prefix = \"workshop\"" >> ${GITDIR}/terraform.tfvars
+echo -e "prefix = \"yourname\"" >> ${GITDIR}/terraform.tfvars
 echo -e "region = \"us-central1\"" >> ${GITDIR}/terraform.tfvars
 echo -e "zone = \"us-central1-a\"" >> ${GITDIR}/terraform.tfvars
-
-# Just the public DNS please
-cat <<EOF > outputs.tf
-# Outputs file
-output "catapp_url" {
-  value = "http://\${google_compute_instance.hashicat.network_interface.0.access_config.0.nat_ip}"
-}
-EOF
 
 # Create code server config directory
 mkdir -p /root/.local/share/code-server/User
