@@ -99,9 +99,9 @@ challenges:
 
     If you already have an account you can simply sign in with your existing credentials.
 
-    Once you're signed into Terraform Cloud create a new organization called YOURNAME-training. Replace YOURNAME with your own name or other text.
+    Once you're signed into Terraform Cloud, you'll see a screen with several options. Please click the "Not right now, skip questions" link and confirm that you want to skip the questions. Then create a new organization called YOURNAME-training. Replace YOURNAME with your own name or other text.
 
-    Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "No VCS Connection" button. Name your workspace **hashicat-gcp**.
+    Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicap-gcp**, and click the "Create workspace" button.
 
     No really...you *must* name your workspace **hashicat-gcp**. If you don't the exercises will break. Do not attempt to name it something else.
 
@@ -844,4 +844,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "15526010898436985001"
+checksum: "11515988088793114409"
