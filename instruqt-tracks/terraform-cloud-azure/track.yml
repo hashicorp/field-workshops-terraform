@@ -99,9 +99,9 @@ challenges:
 
     If you already have an account you can simply sign in with your existing credentials.
 
-    Once you're signed into Terraform Cloud create a new organization called YOURNAME-training. Replace YOURNAME with your own name or other text.
+    Once you're signed into Terraform Cloud, you'll see a screen with several options. Please click the "Not right now, skip questions" link and confirm that you want to skip the questions. Then create a new organization called YOURNAME-training. Replace YOURNAME with your own name or other text.
 
-    Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "No VCS Connection" button. Name your workspace **hashicat-azure**.
+    Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicap-azure**, and click the "Create workspace" button.
 
     No really...you *must* name your workspace **hashicat-azure**. If you don't the exercises will break. Do not attempt to name it something else.
 
@@ -120,6 +120,14 @@ challenges:
   - type: text
     contents: Terraform Cloud remote state storage is free for all users.
   tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Shell
     type: terminal
     hostname: workstation
@@ -353,12 +361,20 @@ challenges:
       Cloud. Your instructor will need to upgrade your organization to a free trial
       in order to complete this challenge.
   tabs:
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Terraform Cloud
+    type: external
+    url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
 - slug: quiz-2
@@ -396,11 +412,19 @@ challenges:
 
     https://github.com/hashicorp/hashicat-azure
 
-    Run the following commands to update your git configuration for your own repository. Don't forget to replace YOURGITUSER with your own git username.
+    Run the following commands to update your git configuration for your own repository. Don't forget to replace YOURGITUSER with your own git username in the second command.
 
     ```
     git remote remove origin
     git remote add origin https://github.com/YOURGITUSER/hashicat-azure
+    ```
+
+    Also run these commands:
+
+    ```
+    git pull
+    git branch --set-upstream-to=origin/master master
+    git config --global core.editor "vi"
     ```
 
     Next use these commands to set your email and name:
@@ -412,11 +436,27 @@ challenges:
     git config --global user.name "Your Name"
     ```
 
+    To complete your `git` operations, please commit and push your modified remote_backend.tf file with these commands on your "Shell" tab:
+
+    ```
+    git add .
+    git commit -m "adding remote backend"
+    git push origin master
+    ```
+
+    Note that you'll have to provide your GitHub username and password or personal access token in order to complete the `git push` command.
+
+    If you have two-factor authentication enabled and don't remember your personal access token,  you'll need to create a new one. To do that, log onto GitHub and visit the Tokens page:
+
+    https://github.com/settings/tokens
+
+    Then click on **Personal Access Tokens** and generate a new token for the workshop. You can delete it afterwards if you like. This token enables you to push changes from your workstation.
+
     Now that you have your own copy of the hashicat-azure repo to work with, follow the **Configuring GitHub Access** section of the TFC documentation to connect your GitHub account to your Terraform Organization.
 
     https://www.terraform.io/docs/cloud/vcs/github.html
 
-    Once you've configured GitHub access, you can update your workspace to use your hashicat-azure repository as the source for all Terraform runs. Go into the **Settings > Version Control** settings page for your workspace. Connect your workspace to the fork of your hashicat-azure repository on GitHub. You can leave all the VCS settings at their defaults.
+    Once you've configured GitHub access for your workspace, you can update your workspace to use your hashicat-azure repository as the source for all Terraform runs. Go into the **Settings > Version Control** settings page for your workspace. Connect your workspace to the fork of your hashicat-azure repository on GitHub. You can leave all the VCS settings at their defaults.
 
     The first VCS-backed apply should trigger immediately. Click on the Runs tab to view the run in action.
 
@@ -466,9 +506,11 @@ challenges:
   assignment: |-
     In this challenge you'll make a small change to the code that deploys the hashicat-azure application, and then create a "Pull Request", which is simply a way of proposing a change and optionally allowing others to review your changes.
 
-    Find a partner, or if you're alone you can do this exercise solo. Exchange github usernames and browse to the other person's fork of the hashicat-azure repository. For example:
+    Find a partner, or if you're alone you can do this exercise solo. Exchange github usernames and browse to the other person's **fork** of the hashicat-azure repository. For example:
 
     https://github.com/YOURNAME/hashicat-azure
+
+    **Please do NOT issue your pull request against the hashicorp/hashicat-azure repository!**
 
     Browse to the `files/deploy_app.sh` file and click on the small pencil icon in the upper right corner of the text area. This will allow you to edit the file right in your browser.
 
@@ -481,6 +523,8 @@ challenges:
     At the bottom of the screen, select the option that says "Create a new branch for this commit and start a pull request." Then, click the "Propose changes" button. Finally, submit a pull request by clicking the "Create pull request" button.
 
     You'll notice that a check is run against your Terraform Cloud workspace. If you right-click the "Details" link of the check and then open the link in a new tab, you'll see the speculative plan that has been run in your workspace.
+
+    However, be sure to close that new browser tab if you open it since the GitHub check being run against Terraform Cloud will not be marked as complete until you do.
 
     Your partner should now review and approve the pull request. Or, if you're working alone you can review your own pull request and merge the changes.
 
@@ -523,21 +567,20 @@ challenges:
     In this challenge you'll use Sentinel to enforce a rule that requires any Azure Virtual Machine created in your account to have the correct billable and department tags.
 
     ### Challenge Setup
-    1. Before configuring Sentinel you'll need to queue up a Destroy run. Click on your workspace **Settings >> Destruction and Deletion** menu to queue a destroy plan. Make sure that "Allow destroy plans" is enabled.
 
-    Do not click the red **Delete from Terraform Cloud** button!!! Instead, click on **Queue Destroy Plan** and confirm it if necessary.
-
-    2. Create a fork of the following GitHub repo, which contains a Sentinel Policy Set that you can use in your own organization. As you did with the hashicat-azure repo, use the **Fork** button in the upper right corner of the screen to create your own copy.
+    1. Create a fork of the following GitHub repo, which contains a Sentinel Policy Set that you can use in your own organization. As you did with the hashicat-azure repo, use the **Fork** button in the upper right corner of the screen to create your own copy.
 
     https://github.com/hashicorp/tfc-workshops-sentinel
 
-    3. Go into the **Organization Settings** for your training organization and click on **Policy Sets**.
+    Before moving on, please look at the [enforce-mandatory-tags](https://github.com/hashicorp/tfc-workshops-sentinel/blob/master/azure/enforce-mandatory-tags.sentinel) policy. This policy requires all Azure VMs to have `Department` and `Billable` tags. It uses some functions from a Sentinel module in a different repository called [terraform-guides](https://github.com/hashicorp/terraform-guides). You'll find many useful Sentinel policies and functions in its [governance/third-generation](https://github.com/hashicorp/terraform-guides/tree/master/governance/third-generation) directory.
 
-    4. Use the **Connect a new policy set** button to connect your new GitHub repo to your organization. Remember, the repository is named **tfc-workshops-sentinel**.
+    2. Go into the **Organization Settings** for your training organization and click on **Policy Sets**.
 
-    5. Under **Description** you can enter "Sentinel Policies for our Azure resources".
+    3. Use the **Connect a new policy set** button to connect your new GitHub repo to your organization. Remember, the repository is named **tfc-workshops-sentinel**.
 
-    6. In the **More Options** menu set the **Policies Path** to `/azure`. This tells Terraform Cloud to use the Azure specific policies that are stored in the repo.
+    4. Under **Description** you can enter "Sentinel Policies for our Azure resources".
+
+    5. In the **More Options** menu set the **Policies Path** to `/azure`. This tells Terraform Cloud to use the Azure specific policies that are stored in the repo.
 
     6. Leave everything else at its default setting and click on the **Connect Policy Set** button at the bottom of the page.
 
@@ -545,17 +588,31 @@ challenges:
 
     ### The Challenge
 
-    Update your code so that any `azurerm_virtual_machine` resources are properly tagged with the **Billable** and **Department** tags. You can set the Billable tag to "true" and the Department tag to "devops".
+    First, add the **Department** tag with a value of "devops" to the azurerm_virtual_machine resource in your main.tf file.
 
-    If you need a git refresher, here are the commands you'll need to push a change to your forked repo:
+    Then run the following commands to push the change to your forked repository:
 
     ```
     git add .
-    git commit -m "Updated my code."
+    git commit -m "Added the first tag"
     git push origin master
     ```
 
-    These commands mean "Stage all my changes, commit them to the local git repo, then push them to the master branch of the remote repo."
+    These commands mean "Pull any remote changes, add all my changes, commit them to the local git repo, then push them to the master branch of the remote repo." Note that you will have to provide your GitHub credentinals for the `git push` command.
+
+    If you're prompted to do a `git pull` by the `push` in order to incorporate remote changes, you'll need to run `git pull`. This will display a document in the `vi` text editor with a merge message. Simply type `:wq` to save the file. Then run `git status` to see if any files changed. Then check the changed files to make sure they are correct. Then repeat the `git push origin master` command.
+
+    A plan that successfully runs will be followed by a Sentinel policy check against the enforce-mandatory-tags.sentinel policy. This policy will fail because you have (intentionally) not yet added the **Billable** tag to your azurerm_virtual_machine resource. As a consequence, you will not be able to apply the run.
+
+    Now, add the **Billable** tag to the azurerm_virtual machine resource in your main.tf file with a value of "true" and then run these commands to push the change to your repository:
+
+    ```
+    git add .
+    git commit -m "Added the second tag"
+    git push origin master
+    ```
+
+    This time, the Sentinel policy should pass because your Azure VM now has both tags.
 
     Each time you push a change to master, you'll trigger a new Terraform run. Keep trying until you pass the Sentinel policy check.
   notes:
@@ -569,14 +626,14 @@ challenges:
       tags their resources properly. Can you make sure all your folks are properly
       tagging their cloud resources?"
   tabs:
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Code Editor
     type: service
     hostname: workstation
     port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
@@ -617,20 +674,24 @@ challenges:
 
     https://registry.terraform.io/modules/Azure/network/azurerm/2.0.0
 
-    Note the **Source:** link that points at the github repository for this module. Click on the Source URL. As you did in previous challenges, create your own fork of this repository with the **Fork** button.
+    Note the **Source Code** link that points at the GitHub repository for this module. Click on the Source URL. As you did in previous challenges, create your own fork of this repository with the **Fork** button.
 
     Back in the Terraform Cloud control panel, click on the **Modules** link at the top of the page. Click on the **+Add Module** button. Click on the Github button and select the terraform-azurerm-vnet module that you just forked.
 
     Click on **Publish Module**.
 
-    Create a new Terraform file called `vnet.tf` and use the module in this file to create a new Virtual Network for Gaurav.
+    Create a new Terraform file called `vnet.tf` in the hashicat-azure directory and use the module in this file to create a new Virtual Network for Gaurav. You can copy the module creation code from the "Provision Instructions" section of the module's page in your Private Module Registry.
+
+    You'll also have to add the required variables listed on the Inputs tab of the module. For inputs that reference resources already created in your main.tf file, we recommend that you use references that refer to the appropriate attributes of those resources. But you could also use hard-coded values after finding them in your current state file.
+
+    HINT: The docs in the GitHub source of the module are your friend. They might even have an example of how the code should look.
 
     After you have saved the `vnet.tf` file, commit it to your local git repository and push the changes to your remote fork. You'll need to run a `git pull` command first to pull in the changes you made in the previous collaboration challenge.
 
     ```
-    git pull origin master
+    git pull
     ```
-    The pull command will pop open the nano text editor with a merge message. Simply hit **CTRL-X** to save the file and complete the merge.
+    The pull command will pop open the `vi` text editor with a merge message. Simply type `:wq` to save the file and complete the merge.
 
     Next you can add, commit, and push your latest changes to your remote fork. You will be prompted to log onto your github account to push the change.
 
@@ -639,14 +700,6 @@ challenges:
     git commit -m "Added vnet module"
     git push origin master
     ```
-
-    NOTE: If you have two-factor authentication enabled you can create a Personal Access Token that can be used instead of your password. Log onto github and visit the Tokens page:
-
-    https://github.com/settings/tokens
-
-    Click on **Personal Access Tokens** and generate a new token for the workshop. You can delete it afterwards if you like. This token enables you to push changes from your workstation without having to use 2FA.
-
-    HINT: The docs are your friend. They might even have an example of how the code should look.
 
     If all went well you should see a new network being built in the console output. Wait until your terraform apply command is complete, then click the `Check` button to verify your work.
   notes:
@@ -670,9 +723,6 @@ challenges:
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
 - slug: api-driven-workflows
@@ -735,12 +785,6 @@ challenges:
       baconmockup.com<br>
       placeimg.com<br>
   tabs:
-  - title: Shell
-    type: terminal
-    hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
   - title: Code Editor
     type: service
     hostname: workstation
@@ -749,6 +793,12 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  - title: Terraform Cloud
+    type: external
+    url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
 - slug: quiz-4
@@ -797,4 +847,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "288679616861079873"
+checksum: "499493213888960792"

@@ -408,7 +408,7 @@ challenges:
     us-west-1 - North California<br>
     ap-southeast-1 - Singapore<br>
     ap-southeast-2 - Sydney<br>
-    eu-north-1 - London
+    eu-west-1 - Belgium
 
     Choosing a region close to you can help improve speed and performance.
 
@@ -1115,4 +1115,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "8865471235269810921"
+checksum: "12201848693314525549"

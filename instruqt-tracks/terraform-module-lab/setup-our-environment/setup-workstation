@@ -114,3 +114,29 @@ ponysay -f twilight -f applejack -f rainbow -f pinkie -f rarity -f fluttershy "R
 EOF
 
 chmod +x /usr/bin/fastforward
+
+
+# Create a remote_backend.tf file
+cat <<-EOF > /root/workspace/remote_backend.tf
+terraform {
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "YOURORGANIZATION"
+    workspaces {
+      name = "YOURWORKSPACE"
+    }
+  }
+}
+EOF
+
+# Set up Terraform credentials file
+mkdir /root/.terraform.d
+cat <<-EOF > /root/.terraform.d/credentials.tfrc.json
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "YOURTOKEN"
+    }
+  }
+}
+EOF

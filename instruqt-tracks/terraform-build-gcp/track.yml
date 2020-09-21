@@ -1,7 +1,7 @@
 slug: terraform-build-gcp
 id: wykyne6vqrul
 type: track
-title: Intro to Terraform on Google
+title: Intro to Terraform on GCP
 teaser: |
   Provision the HashiCat application on GCP using Terraform.
 description: |-
@@ -608,13 +608,13 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
-  - title: Shell
-    type: terminal
-    hostname: workstation
   - title: Text Editor
     type: code
     hostname: workstation
     path: /root/hashicat-gcp
+  - title: Shell
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: complete-the-build
@@ -1036,4 +1036,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "6546930036716814080"
+checksum: "7586440429699802332"

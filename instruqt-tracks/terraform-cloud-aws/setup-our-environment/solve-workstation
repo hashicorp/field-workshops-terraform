@@ -27,12 +27,4 @@ GITDIR="/root/hashicat-aws"
 
 cd ${GITDIR}
 echo -e "prefix = \"workshop\"" >> ${GITDIR}/terraform.tfvars
-echo -e "\nregion = \"us-east-1\"" >> ${GITDIR}/terraform.tfvars
-
-# Just the public DNS please
-cat <<EOF > outputs.tf
-# Outputs file
-output "catapp_url" {
-  value = "http://\${aws_eip.hashicat.public_dns}"
-}
-EOF
+echo -e "region = \"us-east-1\"" >> ${GITDIR}/terraform.tfvars
