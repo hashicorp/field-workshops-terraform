@@ -120,7 +120,7 @@ challenges:
 
       If you look at the links for various Vault auth methods under the second of these links, you'll see that the `vault auth enable` command always specifies the auth method type with a single lower-case string identical to or similar to the full name of the auth method. These strings are also what the Terraform Vault Provider uses when creating Vault auth methods.
   tabs:
-  - title: Policies
+  - title: Sentinel Policies
     type: code
     hostname: sentinel
     path: /root/sentinel/
@@ -511,7 +511,7 @@ challenges:
 
     Accordingly, please open the "restrict-gcp-instance-image-b.sentinel" policy and observe that it also has several placeholders in angular brackets that need to be replaced.
 
-    First, replace `<expression_1>` in the line that assigns a value to the `boot_disk` variable with an expression that gives the data of the `boot_disk` block of the "google_compute_instance" resource. For a hint about the structure of your replacement, see line 19 of the "require-access-keys-use-pgp-b.sentinel" policy on the "Policies" tab, but don't bother adding `else null` to your expression.
+    First, replace `<expression_1>` in the line that assigns a value to the `boot_disk` variable with an expression that gives the data of the `boot_disk` block of the "google_compute_instance" resource. For a hint about the structure of your replacement, see line 18 of the "require-access-keys-use-pgp-b.sentinel" policy on the "Policies" tab, but don't bother adding `else null` to your expression.
 
     We use the `types` import to check if `<expression_2>` is a list since we will try to access elements of it in the `else` statement and would get an error if it is not a list (which would be the case if it were missing or `null`). We did not need to check the type of the `boot_disk` block because it is a required block of the resource and therefore cannot be missing.
 
@@ -774,4 +774,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 1800
-checksum: "18241319682764043351"
+checksum: "12770385458511956458"

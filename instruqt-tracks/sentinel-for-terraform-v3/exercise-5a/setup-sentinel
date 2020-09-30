@@ -3,6 +3,7 @@
 set -e
 
 cat <<-'EOF' > /root/sentinel/require-modules-from-pmr-a.sentinel
+# require-modules-from-pmr-a.sentinel
 # This policy validates that all modules loaded directly by the
 # root module are in the Private Module Registry (PMR) of a TFC
 # organization.

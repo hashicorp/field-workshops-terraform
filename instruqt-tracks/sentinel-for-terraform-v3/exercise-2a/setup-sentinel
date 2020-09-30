@@ -3,6 +3,7 @@
 set -e
 
 cat <<-'EOF' > /root/sentinel/require-access-keys-use-pgp-a.sentinel
+# require-access-keys-use-pgp-a.sentinel
 # This policy requires AWS IAM access keys to use PGP keys
 
 # Import common-functions/tfplan-functions/tfplan-functions.sentinel
