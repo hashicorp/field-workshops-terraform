@@ -3,6 +3,7 @@
 set -e
 
 cat <<-'EOF' > /root/sentinel/restrict-acm-certificate-domains-a.sentinel
+# restrict-acm-certificate-domains-a.sentinel
 # This policy uses the tfstate import to restrict ACM certificates
 # to have domains that are sub-domains of hashidemos.io
 

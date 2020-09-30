@@ -1499,6 +1499,7 @@ EOF
 
 # restrict-vault-auth-methods
 cat <<-'EOF' > /root/sentinel/restrict-vault-auth-methods.sentinel
+# restrict-vault-auth-methods.sentinel
 # This policy restricts which Vault auth methods can be created
 
 # Import common-functions/tfplan-functions/tfplan-functions.sentinel
