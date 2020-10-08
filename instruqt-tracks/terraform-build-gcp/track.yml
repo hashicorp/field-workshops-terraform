@@ -223,7 +223,7 @@ challenges:
     Run the following command to take a peek inside the `.terraform` directory:
 
     ```
-    ls .terraform/plugins/linux_amd64/
+    ls .terraform/plugins
     ```
     <br>
     This hidden directory is where all modules and plugins are stored.
@@ -928,7 +928,7 @@ challenges:
 
     Once you're signed into Terraform Cloud create a new organization called YOURNAME-training. Replace YOURNAME with your own name or other text.
 
-    Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "No VCS Connection" button. Name your workspace **hashicat-gcp**.
+    Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "CLI-driven workflow" panel. Name your workspace **hashicat-gcp**.
 
     Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local. Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables, which we'll do in the next challenge.
   notes:

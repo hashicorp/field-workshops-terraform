@@ -9,5 +9,5 @@ source /root/.bashrc
 # echo $ARM_CLIENT_SECRET
 
 # Wait for Azure creds to become valid...
-sleep 10
+sleep 30
 /usr/local/bin/terraform apply -auto-approve
