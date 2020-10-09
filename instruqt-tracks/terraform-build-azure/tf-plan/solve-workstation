@@ -13,4 +13,4 @@ echo $ARM_CLIENT_SECRET
 #echo "Sleeping"
 #sleep 60
 
-/usr/local/bin/terraform apply -auto-approve
+/usr/local/bin/terraform plan
