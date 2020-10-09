@@ -2,12 +2,20 @@
 cd /root/hashicat-azure
 source /etc/profile.d/instruqt-env.sh
 source /root/.bashrc
-# echo "Azure Credentials are:"
-# echo $ARM_SUBSCRIPTION_ID
-# echo $ARM_TENANT_ID
-# echo $ARM_CLIENT_ID
-# echo $ARM_CLIENT_SECRET
+echo "Azure Credentials are:"
+echo $ARM_SUBSCRIPTION_ID
+echo $ARM_TENANT_ID
+echo $ARM_CLIENT_ID
+echo $ARM_CLIENT_SECRET
 
 # Wait for Azure creds to become valid...
-sleep 30
+echo "Sleeping"
+sleep 60
+
+echo "Azure Credentials are:"
+echo $ARM_SUBSCRIPTION_ID
+echo $ARM_TENANT_ID
+echo $ARM_CLIENT_ID
+echo $ARM_CLIENT_SECRET
+
 /usr/local/bin/terraform apply -auto-approve
