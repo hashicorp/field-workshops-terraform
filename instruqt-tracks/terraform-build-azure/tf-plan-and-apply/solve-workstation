@@ -13,4 +13,17 @@ echo $ARM_CLIENT_SECRET
 #echo "Sleeping"
 #sleep 60
 
+for i in {0..10}
+do
+  echo $ARM_CLIENT_SECRET
+  if [ -z  "$ARM_CLIENT_SECRET" ]
+  then
+    echo "ARM_CLIENT_SECRET not set yet"
+    sleep 6
+  else
+    echo "$ARM_CLIENT_SECRET"
+    break
+  fi
+done
+
 /usr/local/bin/terraform apply -auto-approve
