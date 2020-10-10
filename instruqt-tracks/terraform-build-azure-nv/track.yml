@@ -1,34 +1,30 @@
-slug: terraform-build-aws
-id: i3hihwd3qqr7
+slug: terraform-intro-azure
+id: y5vh1ylranxj
 type: track
-title: Intro to Terraform on AWS
+title: Intro to Terraform on Azuree
 teaser: |
-  Provision the HashiCat application on AWS Cloud using Terraform.
+  Provision the HashiCat application on Azure Cloud using Terraform.
 description: |-
-  This track will introduce you to Terraform on Amazon Web Services (AWS).
+  This track will introduce you to Terraform on Microsoft Azure.
 
-  We'll learn Terraform setup, basic commands, and gradually build an entire application
-  stack.
+  We'll learn about Terraform setup, basic commands, and gradually build an entire application stack.
 
-  When you're finished you'll be able to view the HashiCat application in your
-  web browser.
+  When you're finished you'll be able to view the HashiCat application in your web browser.
 
   Kittens as a Service!
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
 - terraform
-- aws
+- azure
 - basics
 owner: hashicorp
 developers:
-- scarolan@hashicorp.com
 - roger@hashicorp.com
-- lance@hashicorp.com
 private: true
 published: true
 challenges:
 - slug: setup-our-environment
-  id: udre6jbrj9po
+  id: yaudkqu8ak9b
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: |
@@ -48,7 +44,7 @@ challenges:
 
     **Please execute all commands on the "Shell" tab.** While the Code Editor allows you to open a terminal window inside it, it is not currently possible to paste `terraform` commands from the assignment into it within Instruqt.
 
-    Congratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new Terraform skills.
+    Congratulations, you are ready to start working with Terraform on Azure. We'll use the hashicat-azure example app in the rest of the challenges as you learn new Terraform skills.
 
     Click the **Check** button to continue.
   notes:
@@ -71,14 +67,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: hello-terraform
-  id: xijpanmdkvsp
+  id: lrxgnpoxexbk
   type: challenge
   title: "\U0001F44B Getting to Know Terraform"
   teaser: |
@@ -98,7 +94,7 @@ challenges:
     terraform help
     ```
 
-    Terraform runs on Windows, OSX, or Linux. You can install it on your laptop or on a cloud based workstation.
+    Terraform runs on Windows, OSX, or Linux. You can install it on your laptop or on a cloud based workstation. Terraform is also pre-installed in Azure Cloud Shell.
 
     Today we'll be using the preconfigured Terraform workstation on the left for all our lab exercises.
   notes:
@@ -124,34 +120,40 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-- slug: aws-credentials
-  id: vhz82xdtmp0i
+- slug: azure-credentials
+  id: ngrigdvxm2mj
   type: challenge
-  title: "\U0001F510 Connecting Terraform to AWS"
+  title: "\U0001F510 Connecting Terraform to Azure Cloud"
   teaser: |
-    Connecting to AWS with Access Keys and Secret Keys.
+    Safely connect to the Azure APIs using a service principal.
   assignment: |-
-    In order to authenticate to AWS and build resources, Terraform requires you to provide a set of credentials, backed by an appropriate IAM policy.
+    Terraform needs credentials to be able to connect to Azure and build resources.
 
-    For this training environment, we have prepared some temporary AWS credentials and stored them as environment variables. Terraform will automatically read and use the environment variables that are configured in your shell environment.
+    We've pre-installed some temporary credentials in your Instruqt training environment. These credentials are stored as environment variables. You should never store sensitive API keys inside your source code.
 
-    Run the following commands in the "Shell" tab to see your temporary credentials:
+    Terraform can automatically read and use the environment variables that are in your shell environment.
 
+    Run the following command to see your temporary credentials:
     ```
-    echo $AWS_ACCESS_KEY_ID
-    echo $AWS_SECRET_ACCESS_KEY
+    env | grep ARM_CLIENT
     ```
 
     *Do not ever store your credentials in source code files*, as they can be accidentally exposed or copied to a public repository.
   notes:
   - type: text
-    contents: Did you know HCL stands for "HashiCorp Configuration Language"?
+    contents: |-
+      Microsoft has a great tutorial for setting up Azure credentials on your laptop or virtual workstation:
+      https://docs.microsoft.com/en-us/azure/virtual-machines/linux/terraform-install-configure
+  - type: text
+    contents: |-
+      Azure Cloud Shell is another easy way to get started with Terraform. With Azure Cloud Shell, Terraform is pre-installed and ready to go.
+      https://docs.microsoft.com/en-us/azure/virtual-machines/linux/terraform-install-configure#use-azure-cloud-shell
   tabs:
   - title: Code Editor
     type: service
@@ -160,32 +162,32 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: terraform-code
-  id: d9ctdsqaj2jc
+  id: endtunoxkdqq
   type: challenge
   title: "\U0001F468‍\U0001F4BB What does Terraform code look like?"
   teaser: |
     The Terraform DSL (Domain Specific Language) is a declarative language that lets you build almost any type of infrastructure.
   assignment: |-
     We've downloaded some Terraform code onto your workstation. Run the following command to see the Terraform code files:
-      ```
-      ls *.tf
-      ```
-      The same files are visible in the file explorer pane on the left. Terraform files are marked with the purple T icon.
+    ```
+    ls *.tf
+    ```
+    The same files are visible in the file explorer pane on the left. Terraform files are marked with the purple T icon.
 
-      Terraform code always ends with a `.tf` extension. You can have as many Terraform files as you want, but these three are commonly created first:
+    Terraform code always ends with a `.tf` extension. You can have as many Terraform files as you want, but these three are commonly created first:
 
-      **main.tf** - Where most of your Terraform code is stored. This is the part that does the building of resources.<br>
-      **variables.tf** - Use this file to define which variables will be available to your users.<br>
-      **outputs.tf** - This file contains outputs that will be shown at the end of a successful Terraform run.
+    **main.tf** - Where most of your Terraform code is stored. This is the part that does the building of resources.<br>
+    **variables.tf** - Use this file to define which variables will be available to your users.<br>
+    **outputs.tf** - This file contains outputs that will be shown at the end of a successful Terraform run.
 
-      Files that end in anything other than `*.tf` or `*.tfvars` are ignored by Terraform.
+    Files that end in anything other than `*.tf` or `*.tfvars` are ignored by Terraform.
   notes:
   - type: text
     contents: |-
@@ -202,16 +204,16 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-- slug: terraform-init-provider
-  id: qtnacizr5s9m
+- slug: tf-init-provider
+  id: m3iuc3ctc5vm
   type: challenge
-  title: "\U0001F3E1 Terraform Init - Install the Providers"
+  title: ☁️ Terraform Init - Install the Azure Provider
   teaser: |
     Terraform needs a provider to talk to cloud APIs. The provider is the bridge that connects Terraform core to your infrastructure providers.
   assignment: |-
@@ -221,24 +223,21 @@ challenges:
     ```
     terraform init
     ```
-
     The `terraform init` command scans your Terraform code, identifies any providers that are needed, and downloads them.
 
     Run the following command to take a peek inside the `.terraform` directory:
-
     ```
     ls .terraform/plugins
     ```
-
     This hidden directory is where all modules and plugins are stored.
   notes:
   - type: text
     contents: |-
-      The Terraform core program isn't very useful by itself. Terraform needs the help of a *provider* to be able to talk to cloud APIs. Terraform has hundreds of different providers. You can browse the provider list here:
+      The Terraform core program isn't very useful by itself. Terraform needs the help of a **provider** to be able to talk to cloud APIs. Terraform has hundreds of different providers. You can browse the provider list here:
 
       https://www.terraform.io/docs/providers/index.html
 
-      Today we'll be using a few different providers, but the main one is the *aws* provider.
+      Today we'll be using the **azurerm** provider. AzureRM stands for Azure Resource Manager.
   tabs:
   - title: Code Editor
     type: service
@@ -247,14 +246,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: provider-quiz
-  id: jfdkfnzkik7b
+  id: u7k2ysirbkdb
   type: quiz
   title: "\U0001F4DD Quiz 1 - Providers and Modules"
   teaser: |
@@ -274,18 +273,18 @@ challenges:
   - 2
   difficulty: basic
   timelimit: 1000
-- slug: terraform-validate
-  id: gdxwnlmzxdzy
+- slug: tf-validate
+  id: 6u73c0ulnne5
   type: challenge
   title: "\U0001F469‍⚖️ Terraform Validate - Test Your Code"
   teaser: |
     Terraform has a built in validation tester. This is useful to see whether your Terraform code is valid and parses correctly.
   assignment: |-
-    Terraform comes with a built-in subcommand called *validate*. This is useful when you want to do a quick syntax check of your code to make sure it parses correctly.
+    Terraform comes with a built-in subcommand called **validate**. This is useful when you want to do a quick syntax check of your code to make sure it parses correctly.
 
     Click on the File Explorer icon on the left. It looks like a stack of papers.
 
-    Edit the main.tf file and remove the double quotes between `aws_vpc` and `hashicat` on line 6 of the file, keeping the space that was between them.
+    Edit the main.tf file and remove the double quotes between `azurerm_resource_group` and `myresourcegroup` on line 5 of the file, keeping the space that was between them.
 
     Validate your code:
 
@@ -293,9 +292,9 @@ challenges:
     terraform validate
     ```
 
-    Now put the double quotes back in line 6 and run the validate command again. This time you should pass the validation test.
+    Now put the double quotes back in line 5 and run the validate command again. This time you should pass the validation test.
 
-    `terraform validate` is most often used in automated CI/CD test pipelines. It allows you to quickly catch errors in your code before any other steps are taken.
+    **terraform validate** is most often used in automated CI/CD test pipelines. It allows you to quickly catch errors in your code before any other steps are taken.
   notes:
   - type: text
     contents: Terraform has a built-in syntax checker. You can run it with the `terraform
@@ -308,28 +307,30 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-- slug: terraform-plan
-  id: xvujq4r12fer
+- slug: tf-plan
+  id: w0wscttkkccr
   type: challenge
   title: "\U0001F914 Terraform Plan - Dry Run Mode"
   teaser: |
-    Terraform has a dry run mode where you can preview what will be built without actually creating any resources. In this challenge we'll run `terraform plan` and view the output.
+    Terraform has a dry run mode where you can preview what will be built without actually creating any resources. In this challenge we'll run Terraform plan and view the output.
   assignment: |-
-    Run the `terraform plan` command:
-
+    Run the **terraform plan** command:
     ```
     terraform plan
     ```
-
     When you run this command Terraform will prompt you to enter the `prefix` variable.
 
-    Enter a short string of lower-case letters and/or numbers. You can use your own name here if you wish. The prefix will become part of the name for our VPC, subnet, EC2 instance and other resources.
+    Enter a short string of lower-case letters and/or numbers. You can use your own name here if you wish.
+
+    **Keep your prefix string all lower case, and between 5-12 characters long. Do not use an underscore in your prefix.**
+
+    The prefix will become part of your application hostname, and therefore must be DNS-compliant. Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, and the hyphen (-).  A hostname may not start with a hyphen.
   notes:
   - type: text
     contents: |-
@@ -344,31 +345,31 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-- slug: terraform-variables
-  id: m8xbdsgyynjc
+- slug: tf-variables
+  id: vw2pxmysaqgv
   type: challenge
   title: "\U0001F39B️ Working with Terraform Variables"
   teaser: |
     Terraform variables allow you to customize your infrastructure without editing any code. You can use the same Terraform code to deploy dev, staging and production but with different variables.
   assignment: |-
-    We've created a `terraform.tfvars` file for you to edit. This is a special file where you can set any variables you wish to change from their defaults.
+    We've created a **terraform.tfvars** file for you to edit. This is a special file where you can set any variables you wish to change from their defaults.
 
-    Variables are *declared* in the **variables.tf** file. They are *set* or *defined* in the `terraform.tfvars` file.
+    Variables are *declared* in the **variables.tf** file. They are *set* or *defined* in the **terraform.tfvars** file.
 
     In Terraform all variables must be declared (with or without an optional default value) before you can use them.
 
-    Open the `terraform.tfvars` file and set your prefix variable by deleting the `#` at the beginning of the line and replacing "yourname" with your own name. The file will auto-save.
+    Open the **terraform.tfvars** file and set your prefix variable by deleting the `#` at the beginning of the line and replacing "yourname" with your own name. The file will auto-save.
 
     Now run `terraform plan` again. This time you won't have to enter your prefix manually.
   notes:
   - type: text
-    contents: The `terraform.tfvars` file is a convenient place for users to configure
+    contents: The **terraform.tfvars** file is a convenient place for users to configure
       their variables.
   tabs:
   - title: Code Editor
@@ -378,45 +379,42 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-- slug: terraform-add-a-variable
-  id: gnph0blobakx
+- slug: tf-add-a-variable
+  id: ypytywctsyqw
   type: challenge
   title: "\U0001F5FC Change Your Location"
   teaser: |
     Terraform is flexible enough to deploy infrastructure anywhere in the world. You can easily provision your applications in different geographical regions by simply changing a single variable.
   assignment: |-
-    In the previous challenge we set our **prefix** variable.
+    In the previous challenge we set our *prefix* variable.
 
-    Choose the AWS region nearest to you and set the region variable in your `terraform.tfvars` file. You may need to close and re-open the file if it appears blank.
+    Choose the Azure location nearest to you and set the location variable in your **terraform.tfvars** file. You may need to close and re-open the file if it appears blank.
+    You can find a list of valid Azure locations here:
 
-    You can find the details of valid AWS regions here:
-
-    https://aws.amazon.com/about-aws/global-infrastructure/regions_az/
-
-    as well as a more succinct list of valid region ids here:
-
-    https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions
+    https://azure.microsoft.com/en-us/global-infrastructure/locations/
 
     Examples:<br>
-    us-east-1 - North Virginia<br>
-    us-west-1 - North California<br>
-    ap-southeast-1 - Singapore<br>
-    ap-southeast-2 - Sydney<br>
-    eu-west-1 - Belgium
+    centralus - Iowa<br>
+    eastus    - Virginia<br>
+    westus     - California<br>
+    uksouth    - London<br>
+    southindia - Chennai<br>
+    eastasia   - Hong Kong<br>
+    canadacentral - Toronto
 
-    Choosing a region close to you can help improve speed and performance.
+    Once you've set your location variable try running `terraform plan` again. What's different this time?
 
-    HINT: Remember that you can set any variable you wish in the `terraform.tfvars` file.
+    HINT: Remember that you can set any variable you wish in the **terraform.tfvars** file.
   notes:
   - type: text
-    contents: You can override any variable defined in the `variables.tf` file by
-      setting it in your personal `terraform.tfvars` file.
+    contents: You can override any variable defined in the *variables.tf* file by
+      setting it in your personal *terraform.tfvars* file.
   tabs:
   - title: Code Editor
     type: service
@@ -425,14 +423,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: variables-quiz
-  id: w6ugok0xie2q
+  id: jalca5hkxl0n
   type: quiz
   title: "\U0001F4DD Quiz 2 - Variables"
   teaser: |
@@ -453,7 +451,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: tf-graph
-  id: ssak7o3k3wev
+  id: yw8kkevaoj82
   type: challenge
   title: "\U0001F4C8 Terraform Graph"
   teaser: |
@@ -498,11 +496,11 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: tf-plan-and-apply
-  id: whomyx1qwy92
+  id: yhw1rqpmf4tv
   type: challenge
   title: "\U0001F468‍\U0001F4BB Terraform Plan and Terraform Apply"
   teaser: |
-    The `terraform plan` command can be run anytime to get a preview of changes that Terraform might make. When you run Terraform apply these changes are implemented, and Terraform builds, updates, or destroys resources.
+    The terraform plan command can be run anytime to get a preview of changes that Terraform might make. When you run terraform apply these changes are implemented, and Terraform builds, updates, or destroys resources.
   assignment: |-
     Now that we've configured our required variables we can apply our changes.
 
@@ -513,18 +511,18 @@ challenges:
     ```
     Confirm the proper prefix and location are displayed in the plan output.
 
-    Then run `terraform apply` and watch your resources being built.
+    Then run *terraform apply* and watch your resource group being built.
 
     ```
     terraform apply
     ```
 
-    You'll need to enter **yes** when Terraform prompts you with the "Do you want to perform these actions?" question.
+    You'll need to enter *yes* when Terraform prompts you with the "Do you want to perform these actions?" question.
 
-    Right now our code only defines a VPC. We'll be building upon this starting point in the next challenge.
+    Right now our code only defines a single Azure resource group. We'll be building upon this starting point in the next challenge.
   notes:
   - type: text
-    contents: Terraform apply includes a Terraform plan right before it runs. Terraform
+    contents: Terraform apply includes a terraform plan right before it runs. Terraform
       maps out all the changes it needs to make before applying them.
   tabs:
   - title: Code Editor
@@ -534,14 +532,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: tf-plan-again
-  id: oy8oy1cypgga
+  id: 6qneqfyux5wi
   type: challenge
   title: "\U0001F469‍\U0001F4BB Test and Repair"
   teaser: |
@@ -553,7 +551,7 @@ challenges:
     terraform plan
     ```
 
-    Since your VPC has already been built, Terraform will report that there are no changes required.
+    Since your Azure resource group has already been built, Terraform will report that there are no changes required.
 
     This is normal and expected.
 
@@ -563,7 +561,7 @@ challenges:
     terraform apply
     ```
 
-    Terraform checks each resource to ensure it is in the proper state. It will not re-create your VPC if it is already provisioned correctly.
+    Terraform checks each resource to ensure it is in the proper state. It will not re-create your resource group if it is already provisioned correctly.
   notes:
   - type: text
     contents: |-
@@ -580,22 +578,22 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: change-prefix
-  id: yetkjpluigvg
+  id: t80ag9x0kaii
   type: challenge
   title: "\U0001F6EB Change Your Prefix"
   teaser: |
     When your Terraform code changes, your infrastructure will be modified to match the updated code. Terraform is a declarative language.
   assignment: |-
-    Edit the `terraform.tfvars` file to change your prefix. You could simply add a number to the end if you like. Or change it to something entirely new.
+    Edit the **terraform.tfvars** file to change your prefix.
 
-    Save the `terraform.tfvars` file and run your apply command again.
+    Save the **terraform.tfvars** file and run your apply command again.
 
     You can use the `-auto-approve` flag to avoid having to type "yes" every time you apply.
 
@@ -618,26 +616,26 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: add-a-tag
-  id: 8g5jn5a3mxam
+  id: rj4ytwkkv1jx
   type: challenge
-  title: "\U0001F3F7️ Add a Tag to Your VPC"
+  title: "\U0001F3F7️ Add a Tag to Your Resource Group"
   teaser: |
     Terraform can change some resources in in place without deleting them. Adding tags is a non-destructive action.
   assignment: |-
-    Several resource types support AWS's tags. Read the Terraform documentation for the `aws_vpc` resource to learn about the `tags` argument and its format.
+    Read the Terraform documentation for the azurerm_resource_group resource:
 
-    [Terraform Docs: the aws_vpc resource - Click Here](https://www.terraform.io/docs/providers/aws/r/vpc.html)
+    [Azure Terraform Docs - Click Here](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html)
 
-    Add a tag to your VPC resource in the **main.tf** file. The name of the tag should be `environment` and the value should be `Production`. (The tag is case-sensitive. Make sure you use a capital P.)
+    Add a tag to your resource group in the **main.tf** file using the `tags` argument of the `azurerm_resource_group` resource.
 
-    Hint: Read the examples carefully! Unlike the other resource arguments you've seen, the value of the `tags` argument must be a **map** (a `{key = "value"}` data structure). Additionally, you must use `=` after `tags` and after `environment`. For more about Terraform's data types, see the [Terraform language documentation](https://www.terraform.io/docs/configuration/expressions.html#types-and-values).
+    The name of the tag should be `environment` and the value should be `Production`. The tag is case-sensitive. Make sure you use a capital P. You'll need to use `=` after `tags` and after `environment`.
 
     Re-run `terraform apply`.
 
@@ -654,26 +652,26 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: add-virtual-network
-  id: 0xekijrqwix6
+  id: grlsp4h75du2
   type: challenge
   title: "\U0001F5A7 Add a Virtual Network"
   teaser: |
     Terraform resources are like building blocks. You can continue adding more blocks until your infrastructure reaches the desired state.
   assignment: |-
-    Open the **main.tf** file again and uncomment the next resource block in the file. The type of resource is **aws_subnet** and it is named **hashicat**.
+    Open the **main.tf** file again and uncomment the next resource block in the file. The type of resource is **azurerm_virtual_network** and it is named **vnet**.
 
     Uncomment the code by removing the `#` characters from the beginning of each line.
 
     Now run `terraform apply` again. Observe the results.
 
-    Look at the **vpc_id** parameter inside the aws_subnet resource. See how it points back at the first resource in the file? The subnet resource inherits settings from the VPC.
+    Look at the **location** and **resource_group_name** parameters inside the vnet resource. See how they point back at the first resource in the file? The virtual network resource inherits settings from the resource group.
 
     Terraform can map out the complex web of dependencies between hundreds of interconnected resources.
   notes:
@@ -688,18 +686,18 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: complete-the-build
-  id: hnlvhqi0wjdq
+  id: jt1psndgmqez
   type: challenge
   title: "\U0001F3D7️ Complete the Build"
   teaser: |
-    Terraform code can stand up everything from VPCs, to virtual networks, to VMs and containers.
+    Terraform code can stand up everything from resource groups, to virtual networks, to VMs and containers.
   assignment: |-
     We've uncommented all the rest of the Terraform code in the **main.tf** file for you. Run a `terraform plan` to see what will be built:
 
@@ -715,8 +713,6 @@ challenges:
 
     It can take up to five minutes for the application to finish deploying. You will know it is complete when you see the Terraform output with your application URL at the end of the run.
 
-    If the application won't load just run `terraform apply` again. This will attempt to reinstall the webserver and start your application if it's not running.
-
     Open your web application in a new browser tab. You'll need to copy and paste the URL into your address bar.
   notes:
   - type: text
@@ -730,14 +726,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: tf-graph-again
-  id: n6wxarjwpxc7
+  id: cppvzhda26uw
   type: challenge
   title: "\U0001F4C8 Terraform Graph"
   teaser: |
@@ -770,7 +766,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-apply-quiz
-  id: bomlfx9yzrj7
+  id: 4mjonb6mh2om
   type: quiz
   title: "\U0001F4DD Quiz 3 - Terraform Apply"
   teaser: |
@@ -791,7 +787,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: use-a-provisioner
-  id: yyq6do5aksyu
+  id: psf9r0pbtnlm
   type: challenge
   title: "\U0001F6E0️ Use a Provisioner"
   teaser: |
@@ -843,31 +839,31 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: add-an-output
-  id: wzrottlveoho
+  id: 3vc0wbbejvyn
   type: challenge
   title: "\U0001F5A8️ Add an Output"
   teaser: |
     Outputs are used to convey useful information such as IP addresses, application URLs or other useful data.
   assignment: |-
-    Open the **outputs.tf** file in the Code Editor. Note the public_dns output in the file.
+    Open the **outputs.tf** file in the Code Editor.
 
-    Add a second output for the `public_ip` of your web server. It's going to look almost exactly like the first output but will instead output an IP address instead of a DNS name.
+    Add a second output for the `ip_address` of your web server. It's going to look almost exactly like the first output but will instead output an IP address instead of a DNS name.
 
     Name your output `catapp_ip`.
 
     You may refer to the docs page to see what types of outputs are valid:
 
-    [Terraform AWS Docs - Click Here](https://www.terraform.io/docs/providers/aws/r/instance.html)
+    [Terraform Azure Docs - Click Here](https://www.terraform.io/docs/providers/azurerm/r/public_ip.html)
     [Terraform Outputs Docs - Click Here](https://www.terraform.io/docs/configuration/outputs.html)
 
-    Run the Terraform refresh command to view your new output:
+    Run the terraform refresh command to view your new output:
 
     ```
     terraform refresh
@@ -897,20 +893,20 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: fun-with-variables
-  id: mcwatgcefeve
+  id: lvo8hfuqkagv
   type: challenge
   title: "\U0001F436 Fun With Variables"
   teaser: |
     Variables give the consumers of your Terraform code an easy way to customize their infrastructure.
   assignment: |-
-    There are several ways to configure Terraform variables. So far we've been using the `terraform.tfvars` file to set our variables. Try re-deploying your application with different **height** and **width** variables on the command line. Reload the webapp after each apply to observe any changes.
+    There are several ways to configure Terraform variables. So far we've been using the **terraform.tfvars** file to set our variables. Try re-deploying your application with different **height** and **width** variables on the command line. Reload the webapp after each apply to observe any changes.
 
     ```
     terraform apply -auto-approve -var height=600 -var width=800
@@ -965,14 +961,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: terraform-variables-quiz
-  id: m6a1ehvo3xgz
+  id: g7h6193ig5us
   type: quiz
   title: "\U0001F4DD Quiz 4 - Terraform Variables"
   teaser: |
@@ -993,7 +989,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-cloud-setup
-  id: hp0pnnjyqmjm
+  id: fxiiwbiui1iz
   type: challenge
   title: ☁️ Terraform Cloud Setup
   teaser: |
@@ -1007,9 +1003,9 @@ challenges:
 
     Once you're signed into Terraform Cloud create a new organization called YOURNAME-training. Replace YOURNAME with your own name or other text.
 
-    Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "CLI-driven workflow" panel. Name your workspace **hashicat-aws**.
+    Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "CLI-driven workflow" panel. Name your workspace **hashicat-azure**.
 
-    Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local. Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables, which we'll do in the next challenge.
+    Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local. **Be sure to save your settings!** This will allow us to run Terraform commands from our workstation with local variables, which we'll do in the next challenge.
   notes:
   - type: text
     contents: Terraform Cloud remote state storage is free for all users.
@@ -1021,18 +1017,18 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: configure-remote-state
-  id: 3iunuxtrpnb6
+  id: klzwoyj1awmq
   type: challenge
   title: "\U0001F39B️ Configure Remote State"
   teaser: |
-    The terraform command line tool can store its state in Terraform Cloud. All that is required is a user token.
+    The Terraform command line tool can store its state in Terraform Cloud. All that is required is a user token.
   assignment: |-
     During this challenge we'll configure Terraform Cloud as a remote state backend, and then migrate our existing state file to Terraform Cloud.
 
@@ -1044,7 +1040,13 @@ challenges:
 
     Click on the **Create an API token** button. You can name the token whatever you like. Copy the entire token using your mouse or the small copy-paste icon.
 
-    Next, go back to your Instruqt workstation code editor and open the `/root/.terraform.d/credentials.tfrc.json` file. Replace the part that says YOURTOKEN with what you copied from Terraform Cloud. Close the file.
+    Back in the Instruqt track, you need to add your API token to a file called "credentials.tfrc.json". You can do this in two different ways:
+
+    The easier way is to select the "Credentials File" tab and open the `/root/.terraform.d/credentials.tfrc.json` file directly.
+
+    But if you prefer to use the Code Editor, you can click on the hamburger icon (the one with 3 horizontal lines) in the upper right corner of it, select File > Open, click on "..", select ".terraform.d", and then select the "credentials.tfrc.json" file.
+
+    In either case, replace the part that says YOURTOKEN with what you copied from Terraform Cloud. Close the file.
 
     Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
 
@@ -1056,7 +1058,7 @@ challenges:
     <br>
     Type "yes" when it prompts you to migrate your state into Terraform Cloud.
 
-    Your state is now safely stored in Terraform Cloud.
+    Your state is now safely stored in Terraform Cloud. You can check this on the States tab of your workspace.
 
     Run a `terraform apply -auto-approve` and watch your state file evolve with each change. You can browse through previous state files with the Terraform Cloud UI.
   notes:
@@ -1075,14 +1077,18 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
+  - title: Credentials File
+    type: code
+    hostname: workstation
+    path: /root/.terraform.d/credentials.tfrc.json
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: terraform-destroy
-  id: watj5kondoxx
+  id: 7purfxeier9u
   type: challenge
   title: "\U0001F525 Terraform Destroy"
   teaser: |
@@ -1096,7 +1102,7 @@ challenges:
 
     You'll need to type "yes" when prompted to destroy your infrastructure. This is a safety feature to help prevent accidental deletion of important resources.
 
-    Wait until the destroy action has completely finished before clicking on the **Check** button.
+    Wait until the destroy action has completely finished before clicking on the *Check* button.
   notes:
   - type: text
     contents: Terraform can destroy infrastructure as easily as it can build it. Use
@@ -1109,10 +1115,10 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "10587628498265462725"
+checksum: "9862731030052810482"

@@ -1,0 +1,16 @@
+version: "2"
+containers:
+- name: cloud-client
+  image: gcr.io/instruqt/cloud-client
+  shell: /bin/bash -l
+  ports:
+  - 80
+virtualmachines:
+- name: workstation
+  image: instruqt-hashicorp/terraform-workstation-test
+  shell: /bin/bash -l
+  machine_type: n1-standard-1
+azure_subscriptions:
+- name: terraform
+  roles:
+  - Owner

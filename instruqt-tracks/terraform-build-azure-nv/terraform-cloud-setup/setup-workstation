@@ -1,0 +1,22 @@
+#!/bin/bash -l
+
+set -e
+
+set-workdir /root/hashicat-azure
+
+cd /root/hashicat-azure
+
+cp exercises/remote_backend.tf remote_backend.tf
+
+mkdir /root/.terraform.d
+cat <<-EOF > /root/.terraform.d/credentials.tfrc.json
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "YOURTOKEN"
+    }
+  }
+}
+EOF
+
+exit 0
