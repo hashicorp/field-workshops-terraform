@@ -1,6 +1,9 @@
 #!/bin/bash -l
 set -e
 
+# Sleep
+sleep 15
+
 # Create /tmp/skip-check to disable this check
 if [ -f /tmp/skip-check ]; then
     rm /tmp/skip-check
@@ -31,6 +34,8 @@ if [ $found_client_secret -lt 1 ]; then
   fail-message "Did not find ARM_CLIENT_SECRET"
 fi
 
-[[ -f /bin/set-workdir ]] || fail-message "Uh oh, you're missing the set-workdir script. Please restart your track."
+if [ ! -f /bin/set-workdir ]; then
+ fail-message "Uh oh, you're missing the set-workdir script. Please restart your track."
+fi
 
 exit 0

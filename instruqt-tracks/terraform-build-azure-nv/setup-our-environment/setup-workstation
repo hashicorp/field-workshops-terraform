@@ -14,6 +14,7 @@ set -e
 
 git clone https://github.com/hashicorp/hashicat-azure
 GITDIR="/root/hashicat-azure"
+
 set-workdir /root/hashicat-azure
 
 # Rewind everything back to a single resource group.
@@ -28,9 +29,14 @@ mkdir -p /root/.local/share/code-server/User
 # Set bash as the default shell
 cat <<-EOF > /root/.local/share/code-server/User/settings.json
 {
-    "terminal.integrated.shell.linux": "/bin/bash",
-    "terminal.integrated.fontFamily": "Inconsolata, Consolas, 'Courier New', monospace",
-    "terminal.integrated.copyOnSelection": true
+  "terminal.integrated.shell.linux": "/bin/bash",
+  "terminal.integrated.fontFamily": "Inconsolata, Consolas, 'Courier New', monospace",
+  "terminal.integrated.copyOnSelection": true,
+  "workbench.colorTheme": "Visual Studio Dark",
+  "window.menuBarVisibility": "visible",
+  "files.autoSave": "afterDelay",
+  "editor.minimap.enabled": false,
+  "workbench.startupEditor": "none"
 }
 EOF
 
@@ -46,11 +52,14 @@ Type=simple
 Restart=always
 RestartSec=1
 User=root
-ExecStart=/usr/local/bin/code-server --port 8443 --cert --auth none /root/hashicat-azure
+ExecStart=/usr/bin/code-server --host 0.0.0.0 --port 8443 --cert --auth none /root/hashicat-azure
 
 [Install]
 WantedBy=multi-user.target
 EOF
+
+# Enable VSC
+systemctl enable code-server
 
 # Start VSC
 systemctl start code-server

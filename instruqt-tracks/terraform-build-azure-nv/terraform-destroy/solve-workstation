@@ -6,6 +6,10 @@ set -o history
 
 cd /root/hashicat-azure
 
+# Remove remote_backend.tf so destroy done locally
+rm remote_backend.tf
+
+# Destroy whatever test created
 terraform destroy -auto-approve
 
 echo '{ "resources": [] }' > terraform.tfstate

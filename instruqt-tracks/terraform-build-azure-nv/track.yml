@@ -1,7 +1,7 @@
 slug: terraform-intro-azure
 id: y5vh1ylranxj
 type: track
-title: Intro to Terraform on Azuree
+title: Intro to Terraform on Azure
 teaser: |
   Provision the HashiCat application on Azure Cloud using Terraform.
 description: |-
@@ -32,17 +32,20 @@ challenges:
   assignment: |-
     Open the Code Editor tab on the left. First get familiar with the menus. This is running the Visual Studio Code editor. You can also use the simpler "Text Editor" tab if you prefer.
 
-    Find the "hamburger" or triple-line menu on the top of the navigation bar on the left. It's right underneath the Instruqt mascot logo. This is your Main Menu. You can find all the other VSC menu options here.
+    If you do use the VS Code Editor, please perform the following steps:
+
+    Notice the menu bar with File, Edit, and other menus at the top of the VS Cod Editor. You can find all the menus on this menu bar.
 
     You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application.
+    1. Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes.
 
-    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes.
-
-    Search for **Terraform** and be sure to select the "Terraform 1.4.x" extension from mauve. **Do not select the "HashiCorp Terraform 2.x.y" extension** since it will not work in the version of the the Visual Studio Code Server that this track is using. Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it.
+    Search for **Terraform** and be sure to select the "HashiCorp Terraform 2.x.y" extension. **Do not select the "Terraform 1.4.0" extension from mauve.**. Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it.
 
     We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
 
-    **Please execute all commands on the "Shell" tab.** While the Code Editor allows you to open a terminal window inside it, it is not currently possible to paste `terraform` commands from the assignment into it within Instruqt.
+    We recommend executing all commands on the "Shell" tab. But you can also open and use a terminal window at the bottom of the Visual Code Editor by using the Terminal > New Terminal menu or the **<ctrl>-`** shortcut.
+
+    If you do use the VS Code terminal, you can toggle its size up and down with the `^` and inverted `^` buttons above it. You can get rid of it with the garbage can and `x` icons.
 
     Congratulations, you are ready to start working with Terraform on Azure. We'll use the hashicat-azure example app in the rest of the challenges as you learn new Terraform skills.
 
@@ -394,7 +397,7 @@ challenges:
   assignment: |-
     In the previous challenge we set our *prefix* variable.
 
-    Choose the Azure location nearest to you and set the location variable in your **terraform.tfvars** file. You may need to close and re-open the file if it appears blank.
+    Choose the Azure location nearest to you and set the `location` variable in your **terraform.tfvars** file. You may need to close and re-open the file if it appears blank.
     You can find a list of valid Azure locations here:
 
     https://azure.microsoft.com/en-us/global-infrastructure/locations/
@@ -403,9 +406,6 @@ challenges:
     centralus - Iowa<br>
     eastus    - Virginia<br>
     westus     - California<br>
-    uksouth    - London<br>
-    southindia - Chennai<br>
-    eastasia   - Hong Kong<br>
     canadacentral - Toronto
 
     Once you've set your location variable try running `terraform plan` again. What's different this time?
@@ -1044,9 +1044,9 @@ challenges:
 
     The easier way is to select the "Credentials File" tab and open the `/root/.terraform.d/credentials.tfrc.json` file directly.
 
-    But if you prefer to use the Code Editor, you can click on the hamburger icon (the one with 3 horizontal lines) in the upper right corner of it, select File > Open, click on "..", select ".terraform.d", and then select the "credentials.tfrc.json" file.
+    But if you prefer to use the VS Code Editor, you can use the File > Open menu, click on "..", select ".terraform.d", and then select the "credentials.tfrc.json" file.
 
-    In either case, replace the part that says YOURTOKEN with what you copied from Terraform Cloud. Close the file.
+    In either case, replace the part that says YOURTOKEN with what you copied from Terraform Cloud. Save and close the file.
 
     Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
 
@@ -1121,4 +1121,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "9862731030052810482"
+checksum: "11029362069836924267"

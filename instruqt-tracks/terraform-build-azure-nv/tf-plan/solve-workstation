@@ -6,6 +6,6 @@ set -o history
 
 cd /root/hashicat-azure
 
-terraform plan
+echo "hashicat" | terraform plan
 
 exit 0
