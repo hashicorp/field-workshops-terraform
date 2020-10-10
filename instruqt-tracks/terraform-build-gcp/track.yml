@@ -380,6 +380,53 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
+- slug: terraform-add-a-variable
+  id: xjx3ttlhkile
+  type: challenge
+  title: "\U0001F5FC Change Your Location"
+  teaser: |
+    Terraform is flexible enough to deploy infrastructure anywhere in the world. You can easily provision your applications in different geographical regions by simply changing a single variable.
+  assignment: |-
+    In the previous challenge we set our **prefix** variable. Let's set another variable.
+
+    Choose the GCP region nearest to you and set the **region** variable in your `terraform.tfvars` file. You may need to close and re-open the file if it appears blank.
+
+    You can find the details of valid GCP regions here:
+
+    https://cloud.google.com/about/locations/
+
+    as well as a more succinct list of valid region ids here:
+
+    https://cloud.google.com/compute/docs/regions-zones/#locations
+
+    Examples:<br>
+    us-east4 - North Virginia<br>
+    us-west1 - Oregon<br>
+    asia-southeast1 - Singapore<br>
+    australia-southeast1 - Sydney<br>
+    europe-west2 - London
+
+    Once you've set your location variable, try running `terraform plan` again. What's different this time?
+
+    HINT: Remember that you can set any variable you wish in the `terraform.tfvars` file.
+  notes:
+  - type: text
+    contents: You can override any variable defined in the `variables.tf` file by
+      setting it in your personal `terraform.tfvars` file.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-gcp
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  difficulty: basic
+  timelimit: 1000
 - slug: variables-quiz
   id: f52k9olell3f
   type: quiz
@@ -536,6 +583,44 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
+- slug: change-prefix
+  id: adutewsygtuk
+  type: challenge
+  title: "\U0001F6EB Change Your Prefix"
+  teaser: |
+    When your Terraform code changes, your infrastructure will be modified to match the updated code. Terraform is a declarative language.
+  assignment: |-
+    Edit the `terraform.tfvars` file to change your prefix. You could simply add a number to the end if you like. Or change it to something entirely new.
+
+    Save the `terraform.tfvars` file and run your apply command again.
+
+    You can use the `-auto-approve` flag to avoid having to type "yes" every time you apply.
+
+    ```
+    terraform apply -auto-approve
+    ```
+
+    Observe the output. What happened?
+  notes:
+  - type: text
+    contents: |-
+      Terraform can create, destroy, update in place, or destroy and re-create your infrastructure. Some types of resources can be updated without deleting them. Major changes usually require a teardown and rebuild.
+
+      Terraform always tries to match the current infrastructure to what has been defined in your code.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: workstation
+    port: 8443
+  - title: Text Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  difficulty: basic
+  timelimit: 1000
 - slug: add-virtual-network
   id: yczv2x5h1oy1
   type: challenge
@@ -556,53 +641,6 @@ challenges:
   - type: text
     contents: Terraform code can be built incrementally, one or two resources at a
       time.
-  tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-gcp
-  - title: Shell
-    type: terminal
-    hostname: workstation
-  difficulty: basic
-  timelimit: 1000
-- slug: terraform-add-a-variable
-  id: xjx3ttlhkile
-  type: challenge
-  title: "\U0001F5FC Change Your Location"
-  teaser: |
-    Terraform is flexible enough to deploy infrastructure anywhere in the world. You can easily provision your applications in different geographical regions by simply changing a single variable.
-  assignment: |-
-    In one of the previous challenges we set our **prefix** variable. Let's set another variable.
-
-    Choose the GCP region nearest to you and set the **region** variable in your `terraform.tfvars` file. You may need to close and re-open the file if it appears blank.
-
-    You can find the details of valid GCP regions here:
-
-    https://cloud.google.com/about/locations/
-
-    as well as a more succinct list of valid region ids here:
-
-    https://cloud.google.com/compute/docs/regions-zones/#locations
-
-    Examples:<br>
-    us-east4 - North Virginia<br>
-    us-west1 - Oregon<br>
-    asia-southeast1 - Singapore<br>
-    australia-southeast1 - Sydney<br>
-    europe-west2 - London
-
-    Once you've set your location variable, try running `terraform plan` again. What's different this time?
-
-    HINT: Remember that you can set any variable you wish in the `terraform.tfvars` file.
-  notes:
-  - type: text
-    contents: You can override any variable defined in the `variables.tf` file by
-      setting it in your personal `terraform.tfvars` file.
   tabs:
   - title: Code Editor
     type: service
@@ -1036,4 +1074,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "14393829278041010125"
+checksum: "15022388284981877451"

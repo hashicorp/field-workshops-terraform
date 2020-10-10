@@ -1,0 +1,58 @@
+#!/bin/bash -l
+set -e
+
+# Allow instruqt time to do its thing
+# sleep 10
+
+# Source important environment variables
+# echo "Sourcing environment variables..."
+# source /etc/profile.d/instruqt-env.sh
+# source /root/.bashrc
+
+# Ensure we load /etc/profile.d/instruqt-env.sh
+# echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc
+
+git clone https://github.com/hashicorp/hashicat-azure
+GITDIR="/root/hashicat-azure"
+set-workdir /root/hashicat-azure
+
+# Rewind everything back to a single resource group.
+cd ${GITDIR}
+cp ${GITDIR}/exercises/main.tf.start ${GITDIR}/main.tf
+cp ${GITDIR}/exercises/outputs.tf.start ${GITDIR}/outputs.tf
+echo -e "\nlocation = \"centralus\"" >> ${GITDIR}/terraform.tfvars
+
+# Create code server config directory
+mkdir -p /root/.local/share/code-server/User
+
+# Set bash as the default shell
+cat <<-EOF > /root/.local/share/code-server/User/settings.json
+{
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "terminal.integrated.fontFamily": "Inconsolata, Consolas, 'Courier New', monospace",
+    "terminal.integrated.copyOnSelection": true
+}
+EOF
+
+# Create VSC startup script
+cat <<-EOF > /etc/systemd/system/code-server.service
+[Unit]
+Description=Code Server
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/usr/local/bin/code-server --port 8443 --cert --auth none /root/hashicat-azure
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Start VSC
+systemctl start code-server
+
+exit 0

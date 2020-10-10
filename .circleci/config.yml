@@ -109,7 +109,6 @@ jobs:
   instruqt-test-oss-azure:
     docker:
       - image: ubuntu:latest
-    resource_class: large
     steps:
       - checkout
       - run:
@@ -131,7 +130,7 @@ jobs:
             else
               echo "Instruqt is installed and updated to most recent version."
             fi
-            cd /root/project/instruqt-tracks/terraform-build-azure
+            cd /root/project/instruqt-tracks/terraform-build-azure-nv
             echo "Running instruqt track push..."
             instruqt track push --force
             echo "Running instruqt track test..."

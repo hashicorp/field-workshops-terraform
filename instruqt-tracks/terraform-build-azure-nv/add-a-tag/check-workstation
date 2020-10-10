@@ -1,0 +1,20 @@
+#!/bin/bash -l
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+# Checks the state file to make sure the student has added a tag.
+cd /root/hashicat-azure
+
+# Check for tags
+TAG=$(cat terraform.tfstate | jq -r '.resources[] | select(.type == "azurerm_resource_group")| .instances[] | .attributes | .tags | .environment')
+
+if [ $TAG != "Production" ]; then
+   fail-message "You haven't added your Production environment tag yet."
+fi
+
+exit 0

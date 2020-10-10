@@ -1,7 +1,7 @@
-slug: terraform-build-azure
+slug: terraform-build-azure-old
 id: u38r24o3ett6
 type: track
-title: Intro to Terraform on Azure
+title: Intro to Terraform on Azure (old)
 teaser: |
   Provision the HashiCat application on Azure Cloud using Terraform.
 description: |-
@@ -1122,4 +1122,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "12981188718627582477"
+checksum: "1978711725506258682"
