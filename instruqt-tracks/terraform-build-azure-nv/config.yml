@@ -7,7 +7,7 @@ containers:
   - 80
 virtualmachines:
 - name: workstation
-  image: instruqt-hashicorp/terraform-workstation-test
+  image: instruqt-hashicorp/terraform-workstation-3-5-0
   shell: /bin/bash -l
   machine_type: n1-standard-1
 azure_subscriptions:

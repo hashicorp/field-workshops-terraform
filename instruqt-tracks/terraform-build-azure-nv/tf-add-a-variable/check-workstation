@@ -7,11 +7,6 @@ if [ -f /tmp/skip-check ]; then
     exit 0
 fi
 
-grep location /root/hashicat-azure/terraform.tfvars
-EXITCODE=$?
-if [ $EXITCODE -ne 1 ]; then
-  fail-message "Oops, it looks like you haven't added your location to terraform.tfvars yet."
-  exit 1
-fi
+grep -q "location" /root/hashicat-azure/terraform.tfvars || fail-message "Oops, it looks like you haven't added your location to terraform.tfvars yet."
 
 exit 0
