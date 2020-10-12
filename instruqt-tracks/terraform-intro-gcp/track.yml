@@ -1,34 +1,27 @@
-slug: terraform-build-aws
-id: i3hihwd3qqr7
+slug: terraform-intro-gcp
+id: wykyne6vqrul
 type: track
-title: Intro to Terraform on AWS
+title: Intro to Terraform on GCP
 teaser: |
-  Provision the HashiCat application on AWS Cloud using Terraform.
+  Provision the HashiCat application on GCP using Terraform.
 description: |-
-  This track will introduce you to Terraform on Amazon Web Services (AWS).
-
-  We'll learn Terraform setup, basic commands, and gradually build an entire application
-  stack.
-
-  When you're finished you'll be able to view the HashiCat application in your
-  web browser.
+  This track will introduce you to Terraform on Google Cloud Platform (GCP). We'll learn Terraform setup, basic commands, and gradually build an entire application stack. When you're finished you'll be able to view the HashiCat application in your web browser.
 
   Kittens as a Service!
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
 - terraform
-- aws
+- gcp
 - basics
 owner: hashicorp
 developers:
-- scarolan@hashicorp.com
+- assareh@hashicorp.com
 - roger@hashicorp.com
-- lance@hashicorp.com
 private: true
 published: true
 challenges:
 - slug: setup-our-environment
-  id: udre6jbrj9po
+  id: iwy0y3xnwoug
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: |
@@ -52,7 +45,7 @@ challenges:
 
     If you do use the VS Code terminal, you can toggle its size up and down with the `^` and inverted `^` buttons above it. You can get rid of it with the garbage can and `x` icons.
 
-    Congratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new Terraform skills.
+    Congratulations, you are ready to start working with Terraform on GCP. We'll use the hashicat-gcp example app in the rest of the challenges as you learn new Terraform skills.
 
     Click the **Check** button to continue.
   notes:
@@ -75,14 +68,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: hello-terraform
-  id: xijpanmdkvsp
+  id: ywoomemahyjg
   type: challenge
   title: "\U0001F44B Getting to Know Terraform"
   teaser: |
@@ -92,17 +85,13 @@ challenges:
     Run the following commands in the "Shell" tab or in a terminal in the VS Code editor.
 
     Check the version of Terraform running on your machine:
-
     ```
     terraform version
     ```
-
     You can always get help if you're curious about command syntax:
-
     ```
     terraform help
     ```
-
     Terraform runs on Windows, OSX, or Linux. You can install it on your laptop or on a cloud based workstation.
 
     Today we'll be using the preconfigured Terraform workstation on the left for all our lab exercises.
@@ -129,28 +118,27 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-- slug: aws-credentials
-  id: vhz82xdtmp0i
+- slug: gcp-credentials
+  id: 0jfdfianuvso
   type: challenge
-  title: "\U0001F510 Connecting Terraform to AWS"
+  title: "\U0001F510 Connecting Terraform to GCP"
   teaser: |
-    Connecting to AWS with Access Keys and Secret Keys.
+    Connecting to GCP with Google Credentials.
   assignment: |-
-    In order to authenticate to AWS and build resources, Terraform requires you to provide a set of credentials, backed by an appropriate IAM policy.
+    In order to authenticate to GCP and build resources, Terraform requires you to provide a set of credentials, backed by an appropriate IAM policy.
 
-    For this training environment, we have prepared some temporary AWS credentials and stored them as environment variables. Terraform will automatically read and use the environment variables that are configured in your shell environment.
+    For this training environment, we have prepared some temporary GCP credentials and stored them as an environment variable. Terraform will automatically read and use the environment variables that are configured in your shell environment.
 
-    Run the following commands in the "Shell" tab or in a terminal in the VS Code editor to see your temporary credentials:
+    Run the following command in the "Shell" tab or in a terminal in the VS Code editor to see your temporary credentials:
 
     ```
-    echo $AWS_ACCESS_KEY_ID
-    echo $AWS_SECRET_ACCESS_KEY
+    echo $GOOGLE_CREDENTIALS
     ```
 
     *Do not ever store your credentials in source code files*, as they can be accidentally exposed or copied to a public repository.
@@ -165,14 +153,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: terraform-code
-  id: d9ctdsqaj2jc
+  id: ep819mvquvfz
   type: challenge
   title: "\U0001F468‍\U0001F4BB What does Terraform code look like?"
   teaser: |
@@ -182,6 +170,7 @@ challenges:
       ```
       ls *.tf
       ```
+      <br>
       The same files are visible in the file explorer pane on the left. Terraform files are marked with the purple T icon.
 
       Terraform code always ends with a `.tf` extension. You can have as many Terraform files as you want, but these three are commonly created first:
@@ -207,14 +196,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: terraform-init-provider
-  id: qtnacizr5s9m
+  id: xqjwxzyqgovz
   type: challenge
   title: "\U0001F3E1 Terraform Init - Install the Providers"
   teaser: |
@@ -234,7 +223,7 @@ challenges:
     ```
     ls .terraform/plugins
     ```
-
+    <br>
     This hidden directory is where all modules and plugins are stored.
   notes:
   - type: text
@@ -243,7 +232,7 @@ challenges:
 
       https://www.terraform.io/docs/providers/index.html
 
-      Today we'll be using a few different providers, but the main one is the *aws* provider.
+      Today we'll be using a few different providers, but the main one is the *gcp* provider.
   tabs:
   - title: Code Editor
     type: service
@@ -252,14 +241,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: provider-quiz
-  id: jfdkfnzkik7b
+  id: akjg23kjagyb
   type: quiz
   title: "\U0001F4DD Quiz 1 - Providers and Modules"
   teaser: |
@@ -280,7 +269,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-validate
-  id: gdxwnlmzxdzy
+  id: 5lw6oh7gkgma
   type: challenge
   title: "\U0001F469‍⚖️ Terraform Validate - Test Your Code"
   teaser: |
@@ -290,7 +279,7 @@ challenges:
 
     Click on the File Explorer icon on the left. It looks like a stack of papers.
 
-    Edit the main.tf file and remove the double quotes between `aws_vpc` and `hashicat` on line 6 of the file, keeping the space that was between them.
+    Edit the main.tf file and remove the double quotes between `google_compute_network` and `hashicat` on line 7 of the file, keeping the space that was between them.
 
     Validate your code:
 
@@ -298,7 +287,7 @@ challenges:
     terraform validate
     ```
 
-    Now put the double quotes back in line 6 and run the validate command again. This time you should pass the validation test.
+    Now put the double quotes back in line 7 and run the `validate` command again. This time you should pass the validation test.
 
     `terraform validate` is most often used in automated CI/CD test pipelines. It allows you to quickly catch errors in your code before any other steps are taken.
   notes:
@@ -313,14 +302,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: terraform-plan
-  id: xvujq4r12fer
+  id: qynplfqy792d
   type: challenge
   title: "\U0001F914 Terraform Plan - Dry Run Mode"
   teaser: |
@@ -334,7 +323,7 @@ challenges:
 
     When you run this command Terraform will prompt you to enter the `prefix` variable.
 
-    Enter a short string of lower-case letters and/or numbers. You can use your own name here if you wish. The prefix will become part of the name for our VPC, subnet, EC2 instance and other resources.
+    Enter a short string of lower-case letters and/or numbers. You can use your own name here if you wish. The prefix will become part of the name for our VPC network, subnet, and compute instance, as well as appear in the HashiCat application.
   notes:
   - type: text
     contents: |-
@@ -349,14 +338,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: terraform-variables
-  id: m8xbdsgyynjc
+  id: ua2eq9kzrnc5
   type: challenge
   title: "\U0001F39B️ Working with Terraform Variables"
   teaser: |
@@ -368,7 +357,7 @@ challenges:
 
     In Terraform all variables must be declared (with or without an optional default value) before you can use them.
 
-    Open the `terraform.tfvars` file and set your prefix variable by deleting the `#` at the beginning of the line and replacing "yourname" with your own name. The file will auto-save.
+    Open the `terraform.tfvars` file and set your prefix variable there.
 
     Now run `terraform plan` again. This time you won't have to enter your prefix manually.
   notes:
@@ -383,39 +372,39 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: terraform-add-a-variable
-  id: gnph0blobakx
+  id: xjx3ttlhkile
   type: challenge
   title: "\U0001F5FC Change Your Location"
   teaser: |
     Terraform is flexible enough to deploy infrastructure anywhere in the world. You can easily provision your applications in different geographical regions by simply changing a single variable.
   assignment: |-
-    In the previous challenge we set our **prefix** variable.
+    In the previous challenge we set our **prefix** variable. Let's set another variable.
 
-    Choose the AWS region nearest to you and set the region variable in your `terraform.tfvars` file. You may need to close and re-open the file if it appears blank.
+    Choose the GCP region nearest to you and set the **region** variable in your `terraform.tfvars` file. You may need to close and re-open the file if it appears blank.
 
-    You can find the details of valid AWS regions here:
+    You can find the details of valid GCP regions here:
 
-    https://aws.amazon.com/about-aws/global-infrastructure/regions_az/
+    https://cloud.google.com/about/locations/
 
     as well as a more succinct list of valid region ids here:
 
-    https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions
+    https://cloud.google.com/compute/docs/regions-zones/#locations
 
     Examples:<br>
-    us-east-1 - North Virginia<br>
-    us-west-1 - North California<br>
-    ap-southeast-1 - Singapore<br>
-    ap-southeast-2 - Sydney<br>
-    eu-west-1 - Belgium
+    us-east4 - North Virginia<br>
+    us-west1 - Oregon<br>
+    asia-southeast1 - Singapore<br>
+    australia-southeast1 - Sydney<br>
+    europe-west2 - London
 
-    Choosing a region close to you can help improve speed and performance.
+    Once you've set your location variable, try running `terraform plan` again. What's different this time?
 
     HINT: Remember that you can set any variable you wish in the `terraform.tfvars` file.
   notes:
@@ -430,14 +419,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: variables-quiz
-  id: w6ugok0xie2q
+  id: f52k9olell3f
   type: quiz
   title: "\U0001F4DD Quiz 2 - Variables"
   teaser: |
@@ -458,7 +447,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: tf-graph
-  id: ssak7o3k3wev
+  id: 1yron0ldujiy
   type: challenge
   title: "\U0001F4C8 Terraform Graph"
   teaser: |
@@ -480,7 +469,7 @@ challenges:
     blast-radius --serve .
     ```
 
-    Now switch to the **Terraform Graph** tab to view the infrastructure graph. If the web page is blank, you may need to click the reload icon (which looks like a circular arrow)
+    Now switch to the **Terraform Graph** tab to view the infrastructure graph. If the web page is blank, you may need to click the reload icon in Instruqt, which is directly to the right of the **Terraform Graph** tab and looks like a circular arrow.
 
     Explore the Terraform graph for your infrastructure. Dependencies are automatically mapped out for you. This graph was generated using the free Blast Radius tool.
 
@@ -502,21 +491,22 @@ challenges:
     port: 5000
   difficulty: basic
   timelimit: 1000
-- slug: tf-plan-and-apply
-  id: whomyx1qwy92
+- slug: tf-apply
+  id: 7e7wxtavuwfl
   type: challenge
-  title: "\U0001F468‍\U0001F4BB Terraform Plan and Terraform Apply"
+  title: "\U0001F468‍\U0001F4BB Terraform Apply"
   teaser: |
     The `terraform plan` command can be run anytime to get a preview of changes that Terraform might make. When you run Terraform apply these changes are implemented, and Terraform builds, updates, or destroys resources.
   assignment: |-
-    Now that we've configured our required variables we can apply our changes.
+    Now that we've configured our required prefix variable we can apply our Terraform configuration.
 
     Run the `terraform plan` command first to see what will happen:
 
     ```
     terraform plan
     ```
-    Confirm the proper prefix and location are displayed in the plan output.
+
+    Confirm the proper prefix is displayed in the plan output. Look for **# google_compute_network.hashicat** and find the output next to **+ name**.
 
     Then run `terraform apply` and watch your resources being built.
 
@@ -526,7 +516,7 @@ challenges:
 
     You'll need to enter **yes** when Terraform prompts you with the "Do you want to perform these actions?" question.
 
-    Right now our code only defines a VPC. We'll be building upon this starting point in the next challenge.
+    Right now our code only defines a VPC network. We'll be building upon this starting point in the next challenge.
   notes:
   - type: text
     contents: Terraform apply includes a Terraform plan right before it runs. Terraform
@@ -539,14 +529,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: tf-plan-again
-  id: oy8oy1cypgga
+  id: emge3jei9mhg
   type: challenge
   title: "\U0001F469‍\U0001F4BB Test and Repair"
   teaser: |
@@ -557,8 +547,8 @@ challenges:
     ```
     terraform plan
     ```
-
-    Since your VPC has already been built, Terraform will report that there are no changes required.
+    <br>
+    Since your VPC network has already been built, Terraform will report that there are no changes required.
 
     This is normal and expected.
 
@@ -567,8 +557,8 @@ challenges:
     ```
     terraform apply
     ```
-
-    Terraform checks each resource to ensure it is in the proper state. It will not re-create your VPC if it is already provisioned correctly.
+    <br>
+    Terraform checks each resource to ensure it is in the proper state. It will not re-create your VPC network if it is already provisioned correctly.
   notes:
   - type: text
     contents: |-
@@ -585,14 +575,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: change-prefix
-  id: yetkjpluigvg
+  id: adutewsygtuk
   type: challenge
   title: "\U0001F6EB Change Your Prefix"
   teaser: |
@@ -629,56 +619,20 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-- slug: add-a-tag
-  id: 8g5jn5a3mxam
-  type: challenge
-  title: "\U0001F3F7️ Add a Tag to Your VPC"
-  teaser: |
-    Terraform can change some resources in in place without deleting them. Adding tags is a non-destructive action.
-  assignment: |-
-    Several resource types support AWS's tags. Read the Terraform documentation for the `aws_vpc` resource to learn about the `tags` argument and its format.
-
-    [Terraform Docs: the aws_vpc resource - Click Here](https://www.terraform.io/docs/providers/aws/r/vpc.html)
-
-    Add a tag to your VPC resource in the **main.tf** file. The name of the tag should be `environment` and the value should be `Production`. (The tag is case-sensitive. Make sure you use a capital P.)
-
-    Hint: Read the examples carefully! Unlike the other resource arguments you've seen, the value of the `tags` argument must be a **map** (a `{key = "value"}` data structure). Additionally, you must use `=` after `tags` and after `environment`. For more about Terraform's data types, see the [Terraform language documentation](https://www.terraform.io/docs/configuration/expressions.html#types-and-values).
-
-    Re-run `terraform apply`.
-
-    What happens?
-  notes:
-  - type: text
-    contents: Adding, changing, or removing tags is a non-destructive action. Terraform
-      can tag your resources without re-creating them.
-  tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-aws
-  - title: Shell
-    type: terminal
-    hostname: workstation
-  difficulty: basic
-  timelimit: 1000
 - slug: add-virtual-network
-  id: 0xekijrqwix6
+  id: yczv2x5h1oy1
   type: challenge
   title: "\U0001F5A7 Add a Virtual Network"
   teaser: |
     Terraform resources are like building blocks. You can continue adding more blocks until your infrastructure reaches the desired state.
   assignment: |-
-    Open the **main.tf** file again and uncomment the next resource block in the file. The type of resource is **aws_subnet** and it is named **hashicat**.
+    Open the **main.tf** file again and uncomment the next resource block in the file. The type of resource is **google_compute_subnetwork** and it is named **hashicat**.
 
     Uncomment the code by removing the `#` characters from the beginning of each line.
 
     Now run `terraform apply` again. Observe the results.
 
-    Look at the **vpc_id** parameter inside the aws_subnet resource. See how it points back at the first resource in the file? The subnet resource inherits settings from the VPC.
+    Look at the **network** parameter inside the google_compute_subnetwork resource. See how it points back at the first resource in the file? The subnet resource inherits settings from the VPC network.
 
     Terraform can map out the complex web of dependencies between hundreds of interconnected resources.
   notes:
@@ -693,31 +647,31 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: complete-the-build
-  id: hnlvhqi0wjdq
+  id: ghjx8usnjyr9
   type: challenge
   title: "\U0001F3D7️ Complete the Build"
   teaser: |
-    Terraform code can stand up everything from VPCs, to virtual networks, to VMs and containers.
+    Terraform code can stand up everything from a GCP project, to virtual networks, to VMs and containers.
   assignment: |-
-    We've uncommented all the rest of the Terraform code in the **main.tf** file for you. Run a `terraform plan` to see what will be built:
+    We've uncommented the rest of the Terraform code in the **main.tf** file for you. Run a `terraform plan` to see what will be built:
 
     ```
     terraform plan
     ```
-
+    <br>
     Now run an apply to build the HashiCat application:
 
     ```
     terraform apply -auto-approve
     ```
-
+    <br>
     It can take up to five minutes for the application to finish deploying. You will know it is complete when you see the Terraform output with your application URL at the end of the run.
 
     If the application won't load just run `terraform apply` again. This will attempt to reinstall the webserver and start your application if it's not running.
@@ -735,14 +689,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: tf-graph-again
-  id: n6wxarjwpxc7
+  id: spkrgorlkh27
   type: challenge
   title: "\U0001F4C8 Terraform Graph"
   teaser: |
@@ -754,7 +708,7 @@ challenges:
     blast-radius --serve .
     ```
 
-    Now switch to the **Terraform Graph** tab to view the infrastructure graph. If the web page is blank, you may need to click the reload icon (which looks like a circular arrow)
+    Now switch to the **Terraform Graph** tab to view the infrastructure graph. If the web page is blank, you may need to click the reload icon in Instruqt, which is directly to the right of the **Terraform Graph** tab and looks like a circular arrow.
 
     Explore the Terraform graph for your infrastructure. Dependencies are automatically mapped out for you. This graph was generated using the free Blast Radius tool.
 
@@ -775,7 +729,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-apply-quiz
-  id: bomlfx9yzrj7
+  id: uazp9mdggs3r
   type: quiz
   title: "\U0001F4DD Quiz 3 - Terraform Apply"
   teaser: |
@@ -796,7 +750,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: use-a-provisioner
-  id: yyq6do5aksyu
+  id: xgqv8izcag5g
   type: challenge
   title: "\U0001F6E0️ Use a Provisioner"
   teaser: |
@@ -816,7 +770,7 @@ challenges:
     ```
     terraform apply -auto-approve
     ```
-
+    <br>
     Scroll back through the log output. You should see an ASCII art cow saying "Moooooooo!"
   notes:
   - type: text
@@ -848,28 +802,28 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: add-an-output
-  id: wzrottlveoho
+  id: klojaiqiwydp
   type: challenge
   title: "\U0001F5A8️ Add an Output"
   teaser: |
     Outputs are used to convey useful information such as IP addresses, application URLs or other useful data.
   assignment: |-
-    Open the **outputs.tf** file in the Code Editor. Note the public_dns output in the file.
+    Open the **outputs.tf** file in the Code Editor. Note the catapp_url output in the file.
 
-    Add a second output for the `public_ip` of your web server. It's going to look almost exactly like the first output but will instead output an IP address instead of a DNS name.
+    Add a second output for the `private_ip` of your web server. It's going to look a lot like the first output but will instead output the internal private IP address instead of the external one.
 
-    Name your output `catapp_ip`.
+    Name your output `private_ip`.
 
     You may refer to the docs page to see what types of outputs are valid:
 
-    [Terraform AWS Docs - Click Here](https://www.terraform.io/docs/providers/aws/r/instance.html)
+    [Terraform GCP Docs - Click Here](https://registry.terraform.io/providers/hashicorp/google/2.20.3/docs/resources/compute_instance)
     [Terraform Outputs Docs - Click Here](https://www.terraform.io/docs/configuration/outputs.html)
 
     Run the Terraform refresh command to view your new output:
@@ -902,14 +856,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: fun-with-variables
-  id: mcwatgcefeve
+  id: vw0r0cfqjjox
   type: challenge
   title: "\U0001F436 Fun With Variables"
   teaser: |
@@ -920,7 +874,7 @@ challenges:
     ```
     terraform apply -auto-approve -var height=600 -var width=800
     ```
-
+    <br>
     Next try setting an environment variable that Terraform can read. Run this command to set the placeholder variable:
 
     ```
@@ -928,13 +882,11 @@ challenges:
     ```
 
     Run another `terraform apply -auto-approve` command:
-
     ```
     terraform apply -auto-approve
     ```
 
     Now try it again with the same variable set differently on the command line:
-
     ```
     terraform apply -auto-approve -var placeholder=placebear.com
     ```
@@ -972,14 +924,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: terraform-variables-quiz
-  id: m6a1ehvo3xgz
+  id: 63v5yqxkudwy
   type: quiz
   title: "\U0001F4DD Quiz 4 - Terraform Variables"
   teaser: |
@@ -1000,7 +952,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-cloud-setup
-  id: hp0pnnjyqmjm
+  id: luiv2wpftyhp
   type: challenge
   title: ☁️ Terraform Cloud Setup
   teaser: |
@@ -1014,7 +966,7 @@ challenges:
 
     Once you're signed into Terraform Cloud create a new organization called YOURNAME-training. Replace YOURNAME with your own name or other text.
 
-    Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "CLI-driven workflow" panel. Name your workspace **hashicat-aws**.
+    Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "CLI-driven workflow" panel. Name your workspace **hashicat-gcp**.
 
     Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to local. Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables, which we'll do in the next challenge.
   notes:
@@ -1028,14 +980,14 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
 - slug: configure-remote-state
-  id: 3iunuxtrpnb6
+  id: oyk8ahcyfqkd
   type: challenge
   title: "\U0001F39B️ Configure Remote State"
   teaser: |
@@ -1088,7 +1040,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Credentials File
     type: code
     hostname: workstation
@@ -1099,7 +1051,7 @@ challenges:
   difficulty: basic
   timelimit: 1000
 - slug: terraform-destroy
-  id: watj5kondoxx
+  id: vr2l7n2itbvy
   type: challenge
   title: "\U0001F525 Terraform Destroy"
   teaser: |
@@ -1110,7 +1062,7 @@ challenges:
     ```
     terraform destroy
     ```
-
+    <br>
     You'll need to type "yes" when prompted to destroy your infrastructure. This is a safety feature to help prevent accidental deletion of important resources.
 
     Wait until the destroy action has completely finished before clicking on the **Check** button.
@@ -1126,10 +1078,10 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "10587628498265462725"
+checksum: "3375667244031697184"
