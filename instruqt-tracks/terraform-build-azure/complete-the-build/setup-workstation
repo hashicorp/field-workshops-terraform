@@ -1,5 +1,14 @@
-#!/bin/bash
+#!/bin/bash -l
+set -e
+
+set-workdir /root/hashicat-azure
+
 cd /root/hashicat-azure
+
 cp exercises/main.tf.completed main.tf
+
 cp exercises/outputs.tf.build outputs.tf
-/usr/local/bin/terraform init
+
+terraform init
+
+exit 0

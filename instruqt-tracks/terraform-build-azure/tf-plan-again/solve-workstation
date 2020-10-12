@@ -1,6 +1,11 @@
-#!/bin/bash
-cd /root/hashicat-azure
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
+#!/bin/bash -l
 
-/usr/local/bin/terraform plan
+#Enable bash history
+HISTFILE=~/.bash_history
+set -o history
+
+cd /root/hashicat-azure
+
+terraform plan
+
+exit 0

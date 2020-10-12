@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 set -e
 
 # Create /tmp/skip-check to disable this check
@@ -8,4 +8,6 @@ if [ -f /tmp/skip-check ]; then
 fi
 
 # Fix this after getting the solve script working.
-# curl -I http://localhost:5000 | grep -q "HTTP/1.0 200 OK" || fail-message "Oops, it looks like the Blast Radius tool is not running."
+curl -I http://localhost:5000 | grep -q "HTTP/1.0 200 OK" || fail-message "Oops, it looks like the Blast Radius tool is not running."
+
+exit 0

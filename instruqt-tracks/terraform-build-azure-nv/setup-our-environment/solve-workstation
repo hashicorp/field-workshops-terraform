@@ -1,9 +1,0 @@
-#!/bin/bash -l
-
-# Enable bash history
-HISTFILE=/root/.bash_history
-set -o history
-
-echo "Nothing to solve"
-
-exit 0

@@ -4,10 +4,8 @@ type: track
 title: Bonus Lab - Terraform Cloud
 teaser: |
   Ready for more? Test your Terraform Cloud skills with this intermediate level lab challenge.
-description: If you've completed one of the Terraform Cloud tracks and would like
-  an extra challenge, try this bonus lab. In this track you'll build an approval pipeline
-  and development branch for your Terraform code, then ensure that all tests pass
-  in a dev environment before approving the change to production.
+description: |-
+  If you've completed one of the Terraform Cloud tracks and would like an extra challenge, try this bonus lab. In this track you'll build an approval pipeline and development branch for your Terraform code, then ensure that all tests pass in a dev environment before approving the change to production.
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
 - terraform
@@ -16,9 +14,7 @@ tags:
 - gcp
 owner: hashicorp
 developers:
-- scarolan@hashicorp.com
 - roger@hashicorp.com
-- lance@hashicorp.com
 private: true
 published: true
 challenges:
@@ -31,7 +27,9 @@ challenges:
   assignment: |-
     Welcome back! This is the bonus lab for the Terraform Cloud tracks. There are prerequisites that must be set up before you can begin the bonus lab. This is an intermediate level challenge.
 
-    Run all commands on the "Shell" tab.
+    We recommend executing all commands on the "Shell" tab. But you can also open and use a terminal window at the bottom of the Visual Code Editor by using the Terminal > New Terminal menu or the **<ctrl>-`** shortcut.
+
+    If you do use the VS Code terminal, you can toggle its size up and down with the `^` and inverted `^` buttons above it. You can get rid of it with the garbage can and `x` icons.
 
     ### Workstation Setup
     1. Clone a local copy of your fork of the **hashicat** repo that you created earlier.

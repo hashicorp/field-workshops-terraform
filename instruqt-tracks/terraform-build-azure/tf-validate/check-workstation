@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 set -e
 
 # Create /tmp/skip-check to disable this check
@@ -8,4 +8,6 @@ if [ -f /tmp/skip-check ]; then
 fi
 
 cd /root/hashicat-azure
-/usr/local/bin/terraform validate || fail-message "Oops, it looks like there is still an error in your Terraform code."
+terraform validate || fail-message "Oops, it looks like there is still an error in your Terraform code."
+
+exit 0

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 set -e
 
 # Create /tmp/skip-check to disable this check
@@ -10,3 +10,5 @@ fi
 cd /root/hashicat-azure
 
 curl -I $(cat terraform.tfstate | jq -r .outputs.catapp_url.value) | grep "200 OK" || fail-message "We were unable to load your web app. Try provisioning it again."
+
+exit 0

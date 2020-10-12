@@ -36,17 +36,21 @@ challenges:
   assignment: |-
     Open the Code Editor tab on the left. First get familiar with the menus. This is running the Visual Studio Code editor. You can also use the simpler "Text Editor" tab if you prefer.
 
-    Find the "hamburger" or triple-line menu on the top of the navigation bar on the left. It's right underneath the Instruqt mascot logo. This is your Main Menu. You can find all the other VSC menu options here.
+    If you do use the VS Code Editor, please perform the following steps:
 
-    You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application.
+    Notice the menu bar with File, Edit, and other menus at the top of the VS Cod Editor. You can find all the menus on this menu bar.
 
-    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes.
+    You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application. Open file called "main.tf.
 
-    Search for **Terraform** and be sure to select the "Terraform 1.4.x" extension from mauve. **Do not select the "HashiCorp Terraform 2.x.y" extension** since it will not work in the version of the the Visual Studio Code Server that this track is using. Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it.
+    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes with one slightly out of position.
+
+    Search for **Terraform** and be sure to select the "HashiCorp Terraform 2.x.y" extension. **Do not select the "Terraform 1.4.0" extension from mauve.** Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it. Then click the icon with two pages under the File menu so you can see your Terraform files again.
 
     We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
 
-    **Please execute all commands on the "Shell" tab.** While the Code Editor allows you to open a terminal window inside it, it is not currently possible to paste `terraform` commands from the assignment into it within Instruqt.
+    We recommend executing all commands on the "Shell" tab. But you can also open and use a terminal window at the bottom of the Visual Code Editor by using the Terminal > New Terminal menu or the **<ctrl>-`** shortcut.
+
+    If you do use the VS Code terminal, you can toggle its size up and down with the `^` and inverted `^` buttons above it. You can get rid of it with the garbage can and `x` icons.
 
     Congratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new Terraform skills.
 
@@ -85,7 +89,8 @@ challenges:
     Learn Terraform basics and command line syntax.
   assignment: |-
     Let's start with some basic Terraform commands.
-    Run the following commands in the "Shell" tab.
+    Run the following commands in the "Shell" tab or in a terminal in the VS Code editor.
+
     Check the version of Terraform running on your machine:
 
     ```
@@ -141,7 +146,7 @@ challenges:
 
     For this training environment, we have prepared some temporary AWS credentials and stored them as environment variables. Terraform will automatically read and use the environment variables that are configured in your shell environment.
 
-    Run the following commands in the "Shell" tab to see your temporary credentials:
+    Run the following commands in the "Shell" tab or in a terminal in the VS Code editor to see your temporary credentials:
 
     ```
     echo $AWS_ACCESS_KEY_ID
@@ -597,11 +602,11 @@ challenges:
 
     Save the `terraform.tfvars` file and run your apply command again.
 
-    You can use the `-auto-approve` flag to avoid having to type "yes" every time you apply.
+    ```
+    terraform apply
+    ```
 
-    ```
-    terraform apply -auto-approve
-    ```
+    Type "yes" when prompted.
 
     Observe the output. What happened?
   notes:
@@ -935,6 +940,8 @@ challenges:
     ```
 
     Which variable took precedence? Why?
+
+    See this [doc](https://www.terraform.io/docs/configuration/variables.html#variable-definition-precedence) if you're unsure.
   notes:
   - type: text
     contents: |-
@@ -1044,7 +1051,13 @@ challenges:
 
     Click on the **Create an API token** button. You can name the token whatever you like. Copy the entire token using your mouse or the small copy-paste icon.
 
-    Next, go back to your Instruqt workstation code editor and open the `/root/.terraform.d/credentials.tfrc.json` file. Replace the part that says YOURTOKEN with what you copied from Terraform Cloud. Close the file.
+    Back in the Instruqt track, you need to add your API token to a file called "credentials.tfrc.json". You can do this in two different ways:
+
+    The easier way is to select the "Credentials File" tab and open the `/root/.terraform.d/credentials.tfrc.json` file directly.
+
+    But if you prefer to use the VS Code Editor, you can use the File > Open menu, click on "..", select ".terraform.d", and then select the "credentials.tfrc.json" file.
+
+    In either case, replace the part that says YOURTOKEN with what you copied from Terraform Cloud. If you use the "Credentials File" tab,  sure to save the file.
 
     Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
 
@@ -1076,6 +1089,10 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-aws
+  - title: Credentials File
+    type: code
+    hostname: workstation
+    path: /root/.terraform.d/credentials.tfrc.json
   - title: Shell
     type: terminal
     hostname: workstation

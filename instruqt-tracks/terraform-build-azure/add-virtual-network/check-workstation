@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 set -e
 
 # Create /tmp/skip-check to disable this check
@@ -7,13 +7,13 @@ if [ -f /tmp/skip-check ]; then
     exit 0
 fi
 
-# Checks the state file to make sure the student has added a tag.
 cd /root/hashicat-azure
 
-# Needs a solve script!
-# RESOURCE=$(cat terraform.tfstate | jq -r '.resources | .[1] | .type')
+# Check state file for vnet
+VNET=$(cat terraform.tfstate | jq -r '.resources[] | select(.type == "azurerm_virtual_network") | .type')
 
-# if [ $RESOURCE != "azurerm_virtual_network" ]; then
-#   fail-message "We didn't find your azurerm_virtual_network resource. Try again."
-#   exit 1
-# fi
+if [ $VNET != "azurerm_virtual_network" ]; then
+  fail-message "We didn't find your azurerm_virtual_network resource. Try again."
+fi
+
+exit 0

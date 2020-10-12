@@ -1,31 +1,10 @@
-#!/bin/bash
+#!/bin/bash -l
+
 # This is the setup script for the workstation container. Use it to set the stage for your terraform training, demo, or lab.
 set -e
 
 # Allow instruqt time to do its thing
 sleep 10
-
-# Source important environment variables
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
-
-# Update Terraform
-echo "Installing Terraform and command line tools."
-wget https://releases.hashicorp.com/terraform/0.13.3/terraform_0.13.3_linux_amd64.zip -O /tmp/terraform.zip
-unzip -o /tmp/terraform.zip -d /usr/local/bin
-chmod +x /usr/local/bin/terraform
-
-# Create code server config directory
-mkdir -p /root/.local/share/code-server/User
-
-# Set bash as the default shell
-cat <<-EOF > /root/.local/share/code-server/User/settings.json
-{
-    "terminal.integrated.shell.linux": "/bin/bash",
-    "terminal.integrated.fontFamily": "Inconsolata, Consolas, 'Courier New', monospace",
-    "terminal.integrated.copyOnSelection": true
-}
-EOF
 
 # Create VSC startup script
 cat <<-EOF > /etc/systemd/system/code-server.service
@@ -39,13 +18,14 @@ Type=simple
 Restart=always
 RestartSec=1
 User=root
-ExecStart=/usr/local/bin/code-server --port 8443 --cert --auth none \$(pwd)
+ExecStart=/usr/bin/code-server --host 0.0.0.0 --port 8443 --cert --auth none \$(pwd)
 
 [Install]
 WantedBy=multi-user.target
 EOF
 
 # Start VSC
+systemctl enable code-server
 systemctl start code-server
 
 # You can do anything! Clone an existing repo, or write some terraform from scratch.
@@ -57,9 +37,6 @@ systemctl start code-server
 
 # Set the user's working directory with the set-workdir script, then in subsequent challenges the user will always start in that directory.
 # /bin/set-workdir /root/my-git-repo
-
-# Ensure we load /etc/profile.d/instruqt-env.sh
-echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc
 
 # Create a catch-up script that enables the user to fast-forward
 cat <<-EOF > /usr/bin/fastforward
@@ -120,3 +97,5 @@ ponysay -f twilight -f applejack -f rainbow -f pinkie -f rarity -f fluttershy "R
 EOF
 
 chmod +x /usr/bin/fastforward
+
+exit 0

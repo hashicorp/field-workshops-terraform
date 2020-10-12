@@ -1,40 +1,18 @@
-#!/bin/bash
+#!/bin/bash -l
 set -e
 
 # Allow instruqt time to do its thing
 sleep 10
 
-# Source important environment variables
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
-
-# Update Terraform
-echo "Installing Terraform and command line tools."
-wget https://releases.hashicorp.com/terraform/0.13.3/terraform_0.13.3_linux_amd64.zip -O /tmp/terraform.zip
-unzip -o /tmp/terraform.zip -d /usr/local/bin
-chmod +x /usr/local/bin/terraform
-
 # clone the hashicat-gcp repo
 git clone https://github.com/hashicorp/hashicat-gcp
 GITDIR="/root/hashicat-gcp"
-/bin/set-workdir "$GITDIR"
+set-workdir "$GITDIR"
 
 cd ${GITDIR}
 echo -e "prefix = \"yourname\"" >> ${GITDIR}/terraform.tfvars
 echo -e "region = \"us-central1\"" >> ${GITDIR}/terraform.tfvars
 echo -e "zone = \"us-central1-a\"" >> ${GITDIR}/terraform.tfvars
-
-# Create code server config directory
-mkdir -p /root/.local/share/code-server/User
-
-# Set bash as the default shell
-cat <<-EOF > /root/.local/share/code-server/User/settings.json
-{
-    "terminal.integrated.shell.linux": "/bin/bash",
-    "terminal.integrated.fontFamily": "Inconsolata, Consolas, 'Courier New', monospace",
-    "terminal.integrated.copyOnSelection": true
-}
-EOF
 
 # Create VSC startup script
 cat <<-EOF > /etc/systemd/system/code-server.service
@@ -48,27 +26,15 @@ Type=simple
 Restart=always
 RestartSec=1
 User=root
-ExecStart=/usr/local/bin/code-server --port 8443 --cert --auth none /root/hashicat-gcp
+ExecStart=/usr/bin/code-server --host 0.0.0.0 --port 8443 --cert --auth none /root/hashicat-gcp
 
 [Install]
 WantedBy=multi-user.target
 EOF
 
 # Start VSC
-cd /root/hashicat-gcp
+systemctl enable code-server
 systemctl start code-server
-
-# Back to our git repo and init
-cd $GITDIR
-terraform init
-
-# Fix up the ~/.vimrc file
-echo -e "let g:solarized_termcolors=256\nset t_Co=256\nsyntax enable\nset background=dark\ncolorscheme solarized" > /tmp/.vimrc
-mv /tmp/.vimrc /root/.vimrc
-chattr +i /root/.vimrc
-
-# Ensure we load /etc/profile.d/instruqt-env.sh
-echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc
 
 # Store our project ID as a Terraform env var
 grep $INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID /root/.bashrc || echo "export TF_VAR_project=\"$INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID\"" >> /root/.bashrc
@@ -133,3 +99,5 @@ ponysay -f twilight -f applejack -f rainbow -f pinkie -f rarity -f fluttershy "R
 EOF
 
 chmod +x /usr/bin/fastforward
+
+exit 0

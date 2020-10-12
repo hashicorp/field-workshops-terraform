@@ -1,2 +1,13 @@
-#!/bin/bash
-echo -e "terraform version\nterraform help" > /root/.bash_history
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-azure
+
+echo -e "terraform version" > /root/.bash_history
+
+echo -e "terraform help" > /root/.bash_history
+
+exit 0

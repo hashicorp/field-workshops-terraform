@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 set -e
 
 # Create /tmp/skip-check to disable this check
@@ -10,12 +10,12 @@ fi
 cd /root/hashicat-azure
 if [ ! -f terraform.tfstate ]; then
   fail-message "Oops, it looks like you haven't run terraform apply yet."
-  exit 1
 fi
 
 MYRG=$(cat terraform.tfstate | jq -r '.resources | .[].name')
 
 if [ $MYRG != "myresourcegroup" ]; then
   fail-message "It looks like your resource group has not been built yet. Please try again."
-  exit 1
 fi
+
+exit 0

@@ -1,3 +1,11 @@
-#!/bin/bash
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
 cd /root/hashicat-azure
+
 echo -e "prefix = \"hashicat-$RANDOM\"\nlocation=\"centralus\"" > terraform.tfvars
+
+exit 0
