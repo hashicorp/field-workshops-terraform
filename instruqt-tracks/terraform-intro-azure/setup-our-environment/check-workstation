@@ -1,14 +1,14 @@
 #!/bin/bash -l
 set -e
 
-# Sleep
-sleep 15
-
 # Create /tmp/skip-check to disable this check
 if [ -f /tmp/skip-check ]; then
     rm /tmp/skip-check
     exit 0
 fi
+
+# Sleep
+sleep 15
 
 # Make sure we have valid Azure credentials in our shell
 found_subscription_id=$(echo $ARM_SUBSCRIPTION_ID | wc -m)

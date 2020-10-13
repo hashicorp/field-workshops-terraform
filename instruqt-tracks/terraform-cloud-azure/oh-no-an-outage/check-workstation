@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 
 # Create /tmp/skip-check to disable this check
 if [ -f /tmp/skip-check ]; then
@@ -6,9 +6,12 @@ if [ -f /tmp/skip-check ]; then
     exit 0
 fi
 
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
-/bin/set-workdir /root/hashicat-azure
+sleep 10
+
+#source /etc/profile.d/instruqt-env.sh
+# source /root/.bashrc
+# set-workdir /root/hashicat-azure
+cd /root/hashicat-azure
 
 TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
 ORG=$(grep organization /root/hashicat-azure/remote_backend.tf | cut -d '"' -f2)
@@ -63,3 +66,5 @@ if [ $EXITCODE -ne 1 ]; then
   fail-message "Oops, it looks like you haven't updated your prefix variable yet."
   exit 1
 fi
+
+exit 0

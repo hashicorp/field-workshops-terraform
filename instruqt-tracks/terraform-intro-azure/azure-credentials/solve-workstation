@@ -6,6 +6,6 @@ set -o history
 
 cd /root/hashicat-azure
 
-echo -e "env | grep ARM_CLIENT" > /root/.bash_history
+env | grep ARM_CLIENT
 
 exit 0

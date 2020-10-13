@@ -138,7 +138,7 @@ challenges:
     Run the following command in the "Shell" tab or in a terminal in the VS Code editor to see your temporary credentials:
 
     ```
-    echo $GOOGLE_CREDENTIALS
+    echo $GOOGLE_CREDENTIALS | jq
     ```
 
     *Do not ever store your credentials in source code files*, as they can be accidentally exposed or copied to a public repository.
@@ -404,7 +404,9 @@ challenges:
     australia-southeast1 - Sydney<br>
     europe-west2 - London
 
-    Once you've set your location variable, try running `terraform plan` again. What's different this time?
+    Choosing a region close to you can help improve speed and performance.
+
+    Once you've set your **region** variable, try running `terraform plan` again. What's different this time?
 
     HINT: Remember that you can set any variable you wish in the `terraform.tfvars` file.
   notes:
@@ -469,7 +471,7 @@ challenges:
     blast-radius --serve .
     ```
 
-    Now switch to the **Terraform Graph** tab to view the infrastructure graph. If the web page is blank, you may need to click the reload icon in Instruqt, which is directly to the right of the **Terraform Graph** tab and looks like a circular arrow.
+    Now switch to the **Terraform Graph** tab to view the infrastructure graph. If the web page is blank, you may need to click the refresh icon in Instruqt, which is directly to the right of the **Terraform Graph** tab and looks like a circular arrow.
 
     Explore the Terraform graph for your infrastructure. Dependencies are automatically mapped out for you. This graph was generated using the free Blast Radius tool.
 
@@ -494,7 +496,7 @@ challenges:
 - slug: tf-apply
   id: 7e7wxtavuwfl
   type: challenge
-  title: "\U0001F468‍\U0001F4BB Terraform Apply"
+  title: "\U0001F468‍\U0001F4BB Terraform Plan and Apply"
   teaser: |
     The `terraform plan` command can be run anytime to get a preview of changes that Terraform might make. When you run Terraform apply these changes are implemented, and Terraform builds, updates, or destroys resources.
   assignment: |-
@@ -708,7 +710,7 @@ challenges:
     blast-radius --serve .
     ```
 
-    Now switch to the **Terraform Graph** tab to view the infrastructure graph. If the web page is blank, you may need to click the reload icon in Instruqt, which is directly to the right of the **Terraform Graph** tab and looks like a circular arrow.
+    Now switch to the **Terraform Graph** tab to view the infrastructure graph. If the web page is blank, you may need to click the refresh icon in Instruqt, which is directly to the right of the **Terraform Graph** tab and looks like a circular arrow.
 
     Explore the Terraform graph for your infrastructure. Dependencies are automatically mapped out for you. This graph was generated using the free Blast Radius tool.
 
@@ -817,13 +819,13 @@ challenges:
   assignment: |-
     Open the **outputs.tf** file in the Code Editor. Note the catapp_url output in the file.
 
-    Add a second output for the `private_ip` of your web server. It's going to look a lot like the first output but will instead output the internal private IP address instead of the external one.
+    Add a second output for the `network_ip` of your web server. It's going to look a lot like the first output but will instead output the internal IP address instead of the external one.
 
-    Name your output `private_ip`.
+    Name your output `catapp_ip`.
 
     You may refer to the docs page to see what types of outputs are valid:
 
-    [Terraform GCP Docs - Click Here](https://registry.terraform.io/providers/hashicorp/google/2.20.3/docs/resources/compute_instance)
+    [Terraform GCP Docs - Click Here](https://www.terraform.io/docs/providers/google/r/compute_instance.html#attributes-reference)
     [Terraform Outputs Docs - Click Here](https://www.terraform.io/docs/configuration/outputs.html)
 
     Run the Terraform refresh command to view your new output:
@@ -1018,7 +1020,7 @@ challenges:
     ```
     terraform init
     ```
-    <br>
+
     Type "yes" when it prompts you to migrate your state into Terraform Cloud.
 
     Your state is now safely stored in Terraform Cloud.
@@ -1084,4 +1086,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "3375667244031697184"
+checksum: "10036889096121338848"

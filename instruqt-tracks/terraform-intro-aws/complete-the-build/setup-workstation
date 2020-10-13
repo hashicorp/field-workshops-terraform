@@ -1,6 +1,7 @@
-#!/bin/bash
-source /root/.bashrc
-source /etc/profile.d/instruqt-env.sh
+#!/bin/bash -l
+
+set-workdir /root/hashicat-aws
+
 cd /root/hashicat-aws
 
 # Copy the completed terraform to main.tf
@@ -16,3 +17,5 @@ EOF
 
 # Run terraform init to bring in new providers
 terraform init
+
+exit 0

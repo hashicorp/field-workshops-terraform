@@ -1,7 +1,7 @@
-#!/bin/bash
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
-/bin/set-workdir /root/hashicat-azure
+#!/bin/bash -l
+#source /etc/profile.d/instruqt-env.sh
+#source /root/.bashrc
+#/bin/set-workdir /root/hashicat-azure
 cd /root/hashicat-azure
 
 # Students should run the 'fastforward' command to create this file.
@@ -92,3 +92,5 @@ curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/height.json https://app.terraform.io/api/v2/vars
 
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/width.json https://app.terraform.io/api/v2/vars
+
+exit 0

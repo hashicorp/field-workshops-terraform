@@ -1,7 +1,9 @@
-#!/bin/bash
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
-/bin/set-workdir /root/hashicat-azure
+#!/bin/bash -l
+#source /etc/profile.d/instruqt-env.sh
+#source /root/.bashrc
+#/bin/set-workdir /root/hashicat-azure
+
+cd /root/hashicat-azure
 
 # Get our TFC token and organization from the local config files
 TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
@@ -39,3 +41,5 @@ EOF
 
 # Update the workspace to enable VCS
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request PATCH --data @/tmp/add_vcs.json https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-azure
+
+exit 0

@@ -1,6 +1,11 @@
-#!/bin/bash
-# These two lines ensure the environment looks similar to an interactive login.
-source /root/.bashrc
-source /etc/profile.d/instruqt-env.sh
-# Emulate the student running this command
-echo "GOOGLE_CREDENTIALS" >> /root/.bash_history
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-gcp
+
+echo $GOOGLE_CREDENTIALS
+
+exit 0

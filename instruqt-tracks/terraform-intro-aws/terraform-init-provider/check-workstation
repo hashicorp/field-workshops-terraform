@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 set -e
 
 # Create /tmp/skip-check to disable this check
@@ -7,4 +7,6 @@ if [ -f /tmp/skip-check ]; then
     exit 0
 fi
 
-[ -d /root/hashicat-aws/.terraform ] || fail-message "Oops, it doesn't look like you've run terraform init yet."
+[ -d /root/hashicat-aws/.terraform ] || fail-message "Oops, you haven't run terraform init yet."
+
+exit 0

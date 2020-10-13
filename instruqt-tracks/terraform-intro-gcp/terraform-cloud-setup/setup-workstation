@@ -1,9 +1,13 @@
-#!/bin/bash
+#!/bin/bash -l
+
+set -e
+
+set-workdir /root/hashicat-gcp
 
 cd /root/hashicat-gcp
+
 cp exercises/remote_backend.tf remote_backend.tf
 
-mkdir /root/.terraform.d
 cat <<-EOF > /root/.terraform.d/credentials.tfrc.json
 {
   "credentials": {
@@ -13,3 +17,5 @@ cat <<-EOF > /root/.terraform.d/credentials.tfrc.json
   }
 }
 EOF
+
+exit 0

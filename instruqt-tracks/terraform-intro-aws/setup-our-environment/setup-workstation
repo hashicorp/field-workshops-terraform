@@ -7,7 +7,7 @@ sleep 10
 # Clone the hashicat-aws repo
 git clone https://github.com/hashicorp/hashicat-aws
 GITDIR="/root/hashicat-aws"
-set-workdir "${GITDIR}"
+set-workdir /root/hashicat-aws
 
 # Rewind everything back to a single resource group.
 cd ${GITDIR}

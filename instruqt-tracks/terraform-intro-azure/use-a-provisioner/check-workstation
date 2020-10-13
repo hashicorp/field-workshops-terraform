@@ -7,6 +7,8 @@ if [ -f /tmp/skip-check ]; then
     exit 0
 fi
 
-grep cowsay main.tf || fail-message "We couldn't find the cowsay install commands in your provisioner inline list."
+cd /root/hashicat-azure
+
+grep -q "cowsay" main.tf || fail-message "We couldn't find the cowsay install commands in your provisioner inline list."
 
 exit 0

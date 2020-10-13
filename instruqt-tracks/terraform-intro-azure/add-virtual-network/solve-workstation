@@ -13,4 +13,6 @@ sed -i 's/#   address_space       = \[var.address_space\]/  address_space       
 sed -i 's/#   resource_group_name = azurerm_resource_group.myresourcegroup.name/  resource_group_name = azurerm_resource_group.myresourcegroup.name/' main.tf
 sed -i 's/# }/}/' main.tf
 
+terraform apply -auto-approve
+
 exit 0

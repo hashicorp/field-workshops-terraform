@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/bash -l
+set -e
 
 # Create /tmp/skip-check to disable this check
 if [ -f /tmp/skip-check ]; then
@@ -6,10 +7,6 @@ if [ -f /tmp/skip-check ]; then
     exit 0
 fi
 
-# Strip comments, then grep through what's left for the placeholder "yourname"
-grep -v "#" /root/hashicat-aws/terraform.tfvars | grep yourname
-EXITCODE=$?
-if [ $EXITCODE -ne 1 ]; then
-  fail-message "Oops, it looks like you haven't updated your prefix variable yet."
-  exit 1
-fi
+grep -qL "yourname" /root/hashicat-aws/terraform.tfvars && fail-message "Oops, it looks like you haven't updated your prefix variable yet."
+
+exit 0

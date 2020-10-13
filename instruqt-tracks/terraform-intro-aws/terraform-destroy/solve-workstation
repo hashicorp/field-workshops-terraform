@@ -1,7 +1,28 @@
-#!/bin/bash
-cd /root/hashicat-aws
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
+#!/bin/bash -l
 
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-aws
+
+# Remove remote_backend.tf so destroy done locally
 rm remote_backend.tf
-/usr/local/bin/terraform destroy -auto-approve
+
+# Destroy whatever test created
+terraform destroy -auto-approve
+
+# Edit terraform.tfstate
+rm terraform.tfstate
+cat <<-EOF > /root/hashicat-aws/terraform.tfstate
+{
+  "version": 4,
+  "terraform_version": "0.13.4",
+  "serial": 2,
+  "lineage": "7bef6427-9617-8455-d6ee-9766f45ca6b4",
+  "outputs": {},
+  "resources": []
+}
+EOF
+
+exit 0

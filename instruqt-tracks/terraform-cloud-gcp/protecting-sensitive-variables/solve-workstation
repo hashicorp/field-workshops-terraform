@@ -1,7 +1,5 @@
-#!/bin/bash
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
-/bin/set-workdir /root/hashicat-gcp
+#!/bin/bash -l
+
 cd /root/hashicat-gcp
 
 # Students should run the 'fastforward' command to create this file.
@@ -166,14 +164,12 @@ curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application
 
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/project.json https://app.terraform.io/api/v2/vars
 
-# Can't run terraform apply because of a bug in Terraform Cloud
-# which leads to a completely deadlocked, useless organization
-# where all runs get stuck in the queue. :facepalm:
-
-# https://app.asana.com/0/1118351459439625/1154785911193251
-
 # echo "#############################################"
 # echo "Running terraform with remote exec enabled..."
 # echo "#############################################"
 # terraform plan
-# terraform apply -auto-approve
+terraform apply -auto-approve
+
+sleep 30
+
+exit 0

@@ -1,6 +1,9 @@
-#!/bin/bash
-source /root/.bashrc
-source /etc/profile.d/instruqt-env.sh
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
 cd /root/hashicat-gcp
 
 # This feels so gross
@@ -19,3 +22,5 @@ echo "Running terraform apply again..."
 terraform apply -auto-approve
 
 echo "Solve script complete."
+
+exit 0

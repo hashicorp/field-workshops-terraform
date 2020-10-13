@@ -1,8 +1,13 @@
-#!/bin/bash
-source /root/.bashrc
-source /etc/profile.d/instruqt-env.sh
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
 cd /root/hashicat-aws
 
 cp exercises/main.tf.cowsay main.tf
 
-/usr/local/bin/terraform apply -auto-approve
+terraform apply -auto-approve
+
+exit 0

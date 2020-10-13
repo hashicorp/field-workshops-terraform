@@ -211,7 +211,7 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1067
-- slug: tf-init-provider
+- slug: terraform-init-provider
   id: m3iuc3ctc5vm
   type: challenge
   title: ☁️ Terraform Init - Install the Azure Provider
@@ -274,7 +274,7 @@ challenges:
   - 2
   difficulty: basic
   timelimit: 1067
-- slug: tf-validate
+- slug: terraform-validate
   id: 6u73c0ulnne5
   type: challenge
   title: "\U0001F469‍⚖️ Terraform Validate - Test Your Code"
@@ -314,7 +314,7 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1067
-- slug: tf-plan
+- slug: terraform-plan
   id: w0wscttkkccr
   type: challenge
   title: "\U0001F914 Terraform Plan - Dry Run Mode"
@@ -352,7 +352,7 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1067
-- slug: tf-variables
+- slug: terraform-variables
   id: vw2pxmysaqgv
   type: challenge
   title: "\U0001F39B️ Working with Terraform Variables"
@@ -386,7 +386,7 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1067
-- slug: tf-add-a-variable
+- slug: terraform-add-a-variable
   id: ypytywctsyqw
   type: challenge
   title: "\U0001F5FC Change Your Location"
@@ -406,6 +406,8 @@ challenges:
     westus     - California<br>
     canadacentral - Toronto<br>
     uksouth - London, UK<br>
+
+    Choosing a location close to you can help improve speed and performance.
 
     Once you've set your location variable try running `terraform plan` again. What's different this time?
 
@@ -472,7 +474,7 @@ challenges:
     blast-radius --serve .
     ```
 
-    Now switch to the **Terraform Graph** tab to view the infrastructure graph. If the web page is blank, you may need to click the reload icon (which looks like a circular arrow)
+    Now switch to the **Terraform Graph** tab to view the infrastructure graph. If the web page is blank, you may need to click the refresh icon (which looks like a circular arrow)
 
     Explore the Terraform graph for your infrastructure. Dependencies are automatically mapped out for you. This graph was generated using the free Blast Radius tool.
 
@@ -744,7 +746,7 @@ challenges:
     blast-radius --serve .
     ```
 
-    Now switch to the **Terraform Graph** tab to view the infrastructure graph. If the web page is blank, you may need to click the reload icon (which looks like a circular arrow)
+    Now switch to the **Terraform Graph** tab to view the infrastructure graph. If the web page is blank, you may need to click the refresh icon (which looks like a circular arrow)
 
     Explore the Terraform graph for your infrastructure. Dependencies are automatically mapped out for you. This graph was generated using the free Blast Radius tool.
 
@@ -859,7 +861,7 @@ challenges:
 
     You may refer to the docs page to see what types of outputs are valid:
 
-    [Terraform Azure Docs - Click Here](https://www.terraform.io/docs/providers/azurerm/r/public_ip.html)
+    [Terraform Azure Docs - Click Here](https://www.terraform.io/docs/providers/azurerm/r/public_ip.html#attributes-reference)
     [Terraform Outputs Docs - Click Here](https://www.terraform.io/docs/configuration/outputs.html)
 
     Run the terraform refresh command to view your new output:
@@ -1056,7 +1058,7 @@ challenges:
     ```
     terraform init
     ```
-    <br>
+
     Type "yes" when it prompts you to migrate your state into Terraform Cloud.
 
     Your state is now safely stored in Terraform Cloud. You can check this on the States tab of your workspace.
@@ -1113,13 +1115,13 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Shell
-    type: terminal
-    hostname: workstation
   - title: Code Editor
     type: service
     hostname: workstation
     port: 8443
+  - title: Shell
+    type: terminal
+    hostname: workstation
   difficulty: basic
   timelimit: 1067
-checksum: "6534440232816747041"
+checksum: "16304104145570246559"

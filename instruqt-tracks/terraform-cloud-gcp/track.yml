@@ -105,7 +105,7 @@ challenges:
 
     Once you're signed into Terraform Cloud, you'll see a screen with several options. Please click the "Not right now, skip questions" link and confirm that you want to skip the questions. Then create a new organization called YOURNAME-training. Replace YOURNAME with your own name or other text.
 
-    Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicap-gcp**, and click the "Create workspace" button.
+    Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicat-gcp**, and click the "Create workspace" button.
 
     No really...you *must* name your workspace **hashicat-gcp**. If you don't the exercises will break. Do not attempt to name it something else.
 
@@ -601,7 +601,13 @@ challenges:
 
     ### The Challenge
 
-    First, add the **department** label with a value of "devops" to the google_compute_instance resource in your main.tf file.
+    You'll first need to run a `git pull` command to pull in the changes you made in the "Collaborating with VCS" challenge:
+
+    ```
+    git pull
+    ```
+
+    Then, add the **department** label with a value of "devops" to the google_compute_instance resource in your main.tf file.
 
     Then run the following commands to push the change to your forked repository:
 
@@ -697,19 +703,11 @@ challenges:
 
     It's ok to make a really simple network with only one subnet and hard-coded variables, although using references to attributes of other resources in your main.tf file would be even better. Remember to specify the correct **source** for your module. Look in the module's README in your private module registry to see the usage examples.
 
-    After you have saved the `vpc.tf` file, commit it to your local git repository and push the changes to your remote fork. You'll need to run a `git pull` command first to pull in the changes you made in the previous collaboration challenge.
-
-    ```
-    git pull
-    ```
-
-    The pull command will pop open the `vi` text editor with a merge message. Simply type `:wq` to save the file and complete the merge.
-
-    Next you can add, commit, and push your latest changes to your remote fork. You will be prompted to log onto your github account to push the change.
+    After you have saved the `vpc.tf` file, you can add, commit, and push your latest changes to your remote fork. You will be prompted to log onto your github account to push the change.
 
     ```
     git add .
-    git commit -m "Added VPC module"
+    git commit -m "Added vpc module"
     git push origin master
     ```
 
@@ -765,7 +763,7 @@ challenges:
     ```
     Copy or save this workspace ID somewhere as you will need it during the challenge.
     ### The Challenge:
-    Use the four *.json files located in the json directory to update your variables and trigger a Terraform plan/apply. Use the Terraform API docs to determine which commands to run. You can edit the files in your text editor to customize them for your workspace.
+    Use the four *.json files located in the json directory to update your variables and trigger a Terraform plan/apply. Use the Terraform API docs (which are in one of this challenge's notes) to determine which commands to run. You can edit the files in your text editor to customize them for your workspace. Be sure to include `@` before the JSON file names.
 
     HINT: The global find-and-replace (magnifying glass icon) allows you to replace text across all the files in your workspace at once.
 
@@ -858,4 +856,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "11515988088793114409"
+checksum: "17673338882722007073"

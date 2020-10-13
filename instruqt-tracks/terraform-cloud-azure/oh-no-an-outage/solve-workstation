@@ -1,7 +1,8 @@
-#!/bin/bash
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
-/bin/set-workdir /root/hashicat-azure
+#!/bin/bash -l
+#source /etc/profile.d/instruqt-env.sh
+#source /root/.bashrc
+#set-workdir /root/hashicat-azure
+
 cd /root/hashicat-azure
 
 # Students should run the 'fastforward' command to create this file.
@@ -66,3 +67,5 @@ echo -e "prefix = \"hashicat-$RANDOM\"" > terraform.tfvars
 # Run terraform init and apply
 terraform init
 terraform apply -auto-approve
+
+exit 0

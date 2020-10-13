@@ -1,0 +1,19 @@
+#!/bin/bash -l
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+cd /root/hashicat-gcp
+
+# Check state file for network
+SUBNET=$(cat terraform.tfstate | jq -r '.resources[] | select(.type == "google_compute_subnetwork") | .type')
+
+if [ $SUBNET != "google_compute_subnetwork" ]; then
+  fail-message "We didn't find your google_compute_subnetwork resource. Try again."
+fi
+
+exit 0

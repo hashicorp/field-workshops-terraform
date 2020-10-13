@@ -1,2 +1,13 @@
-#!/bin/bash
-echo -e "terraform version\nterraform help" > /root/.bash_history
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-gcp
+
+terraform version
+
+terraform help
+
+exit 0

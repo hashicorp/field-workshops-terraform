@@ -1,4 +1,11 @@
-#!/bin/bash
-# TODO - write a check for this
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
 cd /root/hashicat-aws
+
 echo -e "region = \"us-east-1\"" >> terraform.tfvars
+
+exit 0

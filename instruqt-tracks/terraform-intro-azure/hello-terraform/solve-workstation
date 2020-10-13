@@ -6,8 +6,8 @@ set -o history
 
 cd /root/hashicat-azure
 
-echo -e "terraform version" > /root/.bash_history
+terraform version
 
-echo -e "terraform help" > /root/.bash_history
+terraform help
 
 exit 0

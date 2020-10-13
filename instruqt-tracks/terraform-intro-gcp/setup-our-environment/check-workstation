@@ -1,7 +1,5 @@
-#!/bin/bash
+#!/bin/bash -l
 set -e
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
 
 # Create /tmp/skip-check to disable this check
 if [ -f /tmp/skip-check ]; then
@@ -9,7 +7,14 @@ if [ -f /tmp/skip-check ]; then
     exit 0
 fi
 
+# Sleep
+sleep 15
+
 # Make sure we have valid GCP credentials in our shell environment
 echo $GOOGLE_CREDENTIALS | jq -r .private_key > /tmp/privkey && chmod 600 /tmp/privkey && ssh-keygen -y -e -f /tmp/privkey || fail-message "Uh oh, you don't seem to have valid Google Cloud credentials. Please stop and restart the track."
 
-[[ -f /bin/set-workdir ]] || fail-message "Uh oh, you're missing the set-workdir script. Please restart your track."
+if [ ! -f /bin/set-workdir ]; then
+ fail-message "Uh oh, you're missing the set-workdir script. Please restart your track."
+fi
+
+exit 0
