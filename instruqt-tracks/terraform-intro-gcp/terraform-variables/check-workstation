@@ -1,0 +1,12 @@
+#!/bin/bash -l
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+grep -qL "yourname" /root/hashicat-gcp/terraform.tfvars && fail-message "Oops, it looks like you haven't updated your prefix variable yet."
+
+exit 0

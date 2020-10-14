@@ -1,0 +1,17 @@
+#!/bin/bash -l
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+cd /root/hashicat-aws
+OUTPUT=$(cat terraform.tfstate | jq -r .outputs.catapp_ip.value)
+
+if [ -z $OUTPUT ]; then
+  fail-message "We didn't find your catapp_ip output. Try again."
+fi
+
+exit 0

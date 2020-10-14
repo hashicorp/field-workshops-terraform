@@ -1,0 +1,15 @@
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-aws
+
+# Update our prefix
+sed -i "s/^prefix.*/prefix = \"hashicat-$RANDOM\"/g" terraform.tfvars
+
+# Run apply again
+terraform apply -auto-approve
+
+exit 0

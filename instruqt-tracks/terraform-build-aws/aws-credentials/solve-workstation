@@ -1,6 +1,0 @@
-#!/bin/bash
-# These two lines ensure the environment looks similar to an interactive login.
-source /root/.bashrc
-source /etc/profile.d/instruqt-env.sh
-# Emulate the student running this command
-echo "AWS_SECRET_ACCESS_KEY" >> /root/.bash_history

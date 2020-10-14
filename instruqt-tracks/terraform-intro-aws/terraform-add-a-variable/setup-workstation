@@ -1,0 +1,6 @@
+#!/bin/bash -l
+set -e
+
+set-workdir /root/hashicat-aws
+
+exit 0

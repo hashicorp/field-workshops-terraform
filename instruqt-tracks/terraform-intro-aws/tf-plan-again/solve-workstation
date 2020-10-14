@@ -1,0 +1,11 @@
+#!/bin/bash -l
+
+#Enable bash history
+HISTFILE=~/.bash_history
+set -o history
+
+cd /root/hashicat-aws
+
+terraform plan
+
+exit 0

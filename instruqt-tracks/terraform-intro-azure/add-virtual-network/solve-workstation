@@ -1,0 +1,18 @@
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-azure
+
+sed -i 's/# resource "azurerm_virtual_network" "vnet" {/resource "azurerm_virtual_network" "vnet" {/' main.tf
+sed -i 's/#   name                = "${var.prefix}-vnet"/  name                = "${var.prefix}-vnet"/' main.tf
+sed -i 's/#   location            = azurerm_resource_group.myresourcegroup.location/  location            = azurerm_resource_group.myresourcegroup.location/' main.tf
+sed -i 's/#   address_space       = \[var.address_space\]/  address_space       = [var.address_space]/' main.tf
+sed -i 's/#   resource_group_name = azurerm_resource_group.myresourcegroup.name/  resource_group_name = azurerm_resource_group.myresourcegroup.name/' main.tf
+sed -i 's/# }/}/' main.tf
+
+terraform apply -auto-approve
+
+exit 0

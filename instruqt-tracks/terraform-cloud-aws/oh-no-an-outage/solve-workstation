@@ -1,7 +1,9 @@
-#!/bin/bash
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
-/bin/set-workdir /root/hashicat-aws
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
 cd /root/hashicat-aws
 
 # Students should run the 'fastforward' command to create this file.
@@ -63,3 +65,5 @@ curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application
 # Run terraform init and apply
 terraform init
 terraform apply -auto-approve
+
+exit 0

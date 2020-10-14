@@ -1,0 +1,19 @@
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-aws
+
+sed -i 's/# resource "aws_subnet" "hashicat" {/resource "aws_subnet" "hashicat" {/' main.tf
+sed -i 's/#   vpc_id     = aws_vpc.hashicat.id/  vpc_id     = aws_vpc.hashicat.id/' main.tf
+sed -i 's/#   cidr_block = var.subnet_prefix/  cidr_block = var.subnet_prefix/' main.tf
+sed -i 's/#   tags = {/  tags = {/' main.tf
+sed -i 's/#     name = "${var.prefix}-subnet"/    name = "${var.prefix}-subnet"/' main.tf
+sed -i 's/#   }/  }/' main.tf
+sed -i 's/# }/}/' main.tf
+
+terraform apply -auto-approve
+
+exit 0

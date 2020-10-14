@@ -1,0 +1,41 @@
+#!/bin/bash -l
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+# Sleep
+sleep 15
+
+# Make sure we have valid Azure credentials in our shell
+found_subscription_id=$(echo $ARM_SUBSCRIPTION_ID | wc -m)
+if [ $found_subscription_id -lt 1 ]; then
+  fail-message "Did not find ARM_SUBSCRIPTION_ID."
+fi
+
+# Make sure we have valid Azure credentials in our shell
+found_tenant_id=$(echo $ARM_TENANT_ID | wc -m)
+if [ $found_tenant_id -lt 1 ]; then
+  fail-message "Did not find ARM_TENANT_ID"
+fi
+
+# Make sure we have valid Azure credentials in our shell
+found_client_id=$(echo $ARM_CLIENT_ID | wc -m)
+if [ $found_client_id -lt 1 ]; then
+  fail-message "Did not find ARM_CLIENT_ID"
+fi
+
+# Make sure we have valid Azure credentials in our shell
+found_client_secret=$(echo $ARM_CLIENT_SECRET | wc -m)
+if [ $found_client_secret -lt 1 ]; then
+  fail-message "Did not find ARM_CLIENT_SECRET"
+fi
+
+if [ ! -f /bin/set-workdir ]; then
+ fail-message "Uh oh, you're missing the set-workdir script. Please restart your track."
+fi
+
+exit 0

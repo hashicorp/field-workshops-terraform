@@ -1,0 +1,22 @@
+#!/bin/bash -l
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+# Sleep
+sleep 15
+
+# Make sure we have valid AWS credentials in our shell environment
+echo $AWS_ACCESS_KEY_ID | grep -P '(?<![A-Z0-9])[A-Z0-9]{20}(?![A-Z0-9])' || fail-message "Something went wrong, we were unable to find a valid AWS_ACCESS_KEY_ID environment variable in your shell. You may need to restart the track."
+
+echo $AWS_SECRET_ACCESS_KEY | grep -P '(?<![A-Za-z0-9/+=])[A-Za-z0-9/+=]{40}(?![A-Za-z0-9/+=])' || fail-message "Something went wrong, we were unable to find a valid AWS_SECRET_ACCESS_KEY environment variable in your shell. You may need to restart the track."
+
+if [ ! -f /bin/set-workdir ]; then
+ fail-message "Uh oh, you're missing the set-workdir script. Please restart your track."
+fi
+
+exit 0

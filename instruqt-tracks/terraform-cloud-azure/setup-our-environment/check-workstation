@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 set -e
 
 # Create /tmp/skip-check to disable this check
@@ -7,4 +7,8 @@ if [ -f /tmp/skip-check ]; then
     exit 0
 fi
 
+cd /root/hashicat-azure
+
 [[ -f /bin/set-workdir ]] || fail-message "Uh oh, you're missing the set-workdir script. Please restart your track."
+
+exit 0

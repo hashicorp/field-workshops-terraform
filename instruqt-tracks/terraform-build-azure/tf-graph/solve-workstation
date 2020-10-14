@@ -1,4 +1,0 @@
-#!/bin/bash
-cd /root/hashicat-azure
-# This needs to be fixed so it runs cleanly.
-# /usr/local/bin/blast-radius --serve .

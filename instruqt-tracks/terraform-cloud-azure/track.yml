@@ -25,9 +25,7 @@ tags:
 - enterprise
 owner: hashicorp
 developers:
-- scarolan@hashicorp.com
 - roger@hashicorp.com
-- lance@hashicorp.com
 private: true
 published: true
 challenges:
@@ -36,25 +34,29 @@ challenges:
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: |
-    Configure your code editor for Terraform and open a workspace.
+    Configure your code editor for Terraform.
   assignment: |-
     Welcome to your first day as an intern at ACME Inc. [ACME](https://www.youtube.com/watch?v=9m7evoFF83c) is a multi-national conglomerate that sells anvils, rocket powered roller skates, portable holes, earthquake pills and birdseed.
 
     After employee orientation you sit down at your workstation and open your text editor, Visual Studio Code.
 
-    Open the Code Editor tab on the left. First get familiar with the menus.
+    Open the Code Editor tab on the left. First get familiar with the menus. This is running the Visual Studio Code editor. You can also use the simpler "Text Editor" tab if you prefer.
 
-    Find the "hamburger" or triple-line menu on the top of the navigation bar on the left. It's right underneath the Instruqt mascot logo. This is your Main Menu. You can find all the other menu options here.
+    If you do use the VS Code Editor, please perform the following steps:
 
-    You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application.
+    Notice the menu bar with File, Edit, and other menus at the top of the VS Cod Editor. You can find all the menus on this menu bar.
 
-    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes.
+    You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application. Open file called "main.tf.
 
-    Search for **Terraform** and be sure to select the "Terraform 1.4.x" extension from mauve. **Do not select the "HashiCorp Terraform 2.x.y" extension** since it will not work in the version of the the Visual Studio Code Server that this track is using. Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it.
+    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes with one slightly out of position.
+
+    Search for **Terraform** and be sure to select the "HashiCorp Terraform 2.x.y" extension. **Do not select the "Terraform 1.4.0" extension from mauve.** Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it. Then click the icon with two pages under the File menu so you can see your Terraform files again.
 
     We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
 
-    **Please execute all commands on the "Shell" tab.** While the Code Editor allows you to open a terminal window inside it, it is not currently possible to paste `terraform` commands from the assignment into it within Instruqt.
+    We recommend executing all commands on the "Shell" tab. But you can also open and use a terminal window at the bottom of the Visual Code Editor by using the Terminal > New Terminal menu or the **<ctrl>-`** shortcut.
+
+    If you do use the VS Code terminal, you can toggle its size up and down with the `^` and inverted `^` buttons above it. You can get rid of it with the garbage can and `x` icons.
 
     Congratulations, you are ready to start working with Terraform on Azure. We'll use the hashicat-azure example app in the rest of the challenges as you learn new Terraform skills.
 
@@ -101,7 +103,7 @@ challenges:
 
     Once you're signed into Terraform Cloud, you'll see a screen with several options. Please click the "Not right now, skip questions" link and confirm that you want to skip the questions. Then create a new organization called YOURNAME-training. Replace YOURNAME with your own name or other text.
 
-    Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicap-azure**, and click the "Create workspace" button.
+    Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicat-azure**, and click the "Create workspace" button.
 
     No really...you *must* name your workspace **hashicat-azure**. If you don't the exercises will break. Do not attempt to name it something else.
 
@@ -154,7 +156,13 @@ challenges:
 
     Click on the **Create an API token** button. You can name the token whatever you like. Copy the entire token using your mouse or the small copy-paste icon.
 
-    Next, go back to your Instruqt workstation code editor and open the `/root/.terraform.d/credentials.tfrc.json` file. Replace the part that says YOURTOKEN with what you copied from Terraform Cloud. Close the file.
+    Back in the Instruqt track, you need to add your API token to a file called "credentials.tfrc.json". You can do this in two different ways:
+
+    The easier way is to select the "Credentials File" tab and open the `/root/.terraform.d/credentials.tfrc.json` file directly.
+
+    But if you prefer to use the VS Code Editor, you can use the File > Open menu, click on "..", select ".terraform.d", and then select the "credentials.tfrc.json" file.
+
+    In either case, replace the part that says YOURTOKEN with what you copied from Terraform Cloud. If you use the "Credentials File" tab,  sure to save the file.
 
     Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
 
@@ -213,6 +221,10 @@ challenges:
     type: code
     hostname: workstation
     path: /root/hashicat-azure
+  - title: Credentials File
+    type: code
+    hostname: workstation
+    path: /root/.terraform.d/credentials.tfrc.json
   - title: Shell
     type: terminal
     hostname: workstation
@@ -255,13 +267,13 @@ challenges:
     3. Update the **Execution Mode** settings in your workspace to **Remote**.
     4. Change the **Apply Method** to Auto apply. This will save you the trouble of having to approve every Terraform run manually. Remember to click the **Save** button at the bottom of the page!
     5. Set **Environment Variables** for your Azure credentials and mark the **ARM_CLIENT_SECRET** as **Sensitive**. The other three environment variables may remain in plaintext.
-    6. Set **Terraform Variables** for your `prefix` and `location`. Learn more about these variables by looking in the variables.tf file. NOTE: You *must* configure these variables on the remote workspace, as they will no longer be read from your local terraform.tfvars file.
+    6. Set **Terraform Variables** for your `prefix` and `location`. Learn more about these variables by looking in the variables.tf file. Set the same values you had used in your terraform.tfvars file to avoid all the resources being destroyed and re-created. NOTE: You *must* configure these variables on the remote workspace, as they will no longer be read from your local terraform.tfvars file.
 
     Test your work by running `terraform init`. Your backend configuration will be updated for remote execution.
 
-    Next try running `terraform plan`. This will trigger what's known as a speculative plan. You can view this plan by copying the link from your "Shell" tab.  This plan will not show up in your ordinary terraform runs that are triggered via the UI or API.
+    Next try running `terraform plan`. This will trigger what's known as a speculative plan. You can view this plan by copying the link from your "Shell" tab.  This plan will not show up in your ordinary terraform runs that are triggered via the UI or API. A copy of the plan output will be streamed back to your "Shell" tab.
 
-    A copy of the plan output will be streamed back to your "Shell" tab. Run a terraform apply to see it in action. The apply will show up if you navigate to the runs page in the Terraform Cloud UI.
+    Run a terraform apply. This apply **will** show up if you navigate to the runs page in the Terraform Cloud UI.
 
     ```
     terraform apply
@@ -588,7 +600,13 @@ challenges:
 
     ### The Challenge
 
-    First, add the **Department** tag with a value of "devops" to the azurerm_virtual_machine resource in your main.tf file.
+    You'll first need to run a `git pull` command to pull in the changes you made in the "Collaborating with VCS" challenge:
+
+    ```
+    git pull
+    ```
+
+    Then, add the **Department** tag with a value of "devops" to the azurerm_virtual_machine resource in your main.tf file.
 
     Then run the following commands to push the change to your forked repository:
 
@@ -598,7 +616,7 @@ challenges:
     git push origin master
     ```
 
-    These commands mean "Pull any remote changes, add all my changes, commit them to the local git repo, then push them to the master branch of the remote repo." Note that you will have to provide your GitHub credentinals for the `git push` command.
+    These commands mean add all my changes, commit them to the local git repo, then push them to the master branch of the remote repo." Note that you will have to provide your GitHub credentinals for the `git push` command.
 
     If you're prompted to do a `git pull` by the `push` in order to incorporate remote changes, you'll need to run `git pull`. This will display a document in the `vi` text editor with a merge message. Simply type `:wq` to save the file. Then run `git status` to see if any files changed. Then check the changed files to make sure they are correct. Then repeat the `git push origin master` command.
 
@@ -672,28 +690,23 @@ challenges:
 
     Instead of writing this module from scratch you can copy the existing Azure network module from the public Terraform registry. Visit this URL to view the Azure Network module:
 
-    https://registry.terraform.io/modules/Azure/network/azurerm/2.0.0
+    https://registry.terraform.io/modules/Azure/network/azurerm
 
     Note the **Source Code** link that points at the GitHub repository for this module. Click on the Source URL. As you did in previous challenges, create your own fork of this repository with the **Fork** button.
 
-    Back in the Terraform Cloud control panel, click on the **Modules** link at the top of the page. Click on the **+Add Module** button. Click on the Github button and select the terraform-azurerm-vnet module that you just forked.
+    Back in the Terraform Cloud control panel, click on the **Modules** link at the top of the page. Click on the **+Add Module** button. Click on the Github button and select the terraform-azurerm-network module that you just forked.
 
     Click on **Publish Module**.
+
+    After the module is completely published, please select version 3.0.1 of the module in the "Versions" drop-down box in the upper right corner. **Newer versions will not work with the version of the Azure provider pinned in the `providers` block of main.tf; so please do not use them.**
 
     Create a new Terraform file called `vnet.tf` in the hashicat-azure directory and use the module in this file to create a new Virtual Network for Gaurav. You can copy the module creation code from the "Provision Instructions" section of the module's page in your Private Module Registry.
 
     You'll also have to add the required variables listed on the Inputs tab of the module. For inputs that reference resources already created in your main.tf file, we recommend that you use references that refer to the appropriate attributes of those resources. But you could also use hard-coded values after finding them in your current state file.
 
-    HINT: The docs in the GitHub source of the module are your friend. They might even have an example of how the code should look.
+    HINT: The docs in the GitHub source of the module are your friend. They might even have an example of how the code should look. But note that different versions of a module can have different required inputs, so make sure you are looking at the 3.0.1 version.
 
-    After you have saved the `vnet.tf` file, commit it to your local git repository and push the changes to your remote fork. You'll need to run a `git pull` command first to pull in the changes you made in the previous collaboration challenge.
-
-    ```
-    git pull
-    ```
-    The pull command will pop open the `vi` text editor with a merge message. Simply type `:wq` to save the file and complete the merge.
-
-    Next you can add, commit, and push your latest changes to your remote fork. You will be prompted to log onto your github account to push the change.
+    After you have saved the `vnet.tf` file, you can add, commit, and push your latest changes to your remote fork. You will be prompted to log onto your github account to push the change.
 
     ```
     git add .
@@ -754,7 +767,7 @@ challenges:
     ```
     Copy or save this workspace ID somewhere as you will need it during the challenge.
     ### The Challenge:
-    Use the four *.json files located in the json directory to update your variables and trigger a Terraform plan/apply. Use the Terraform API docs to determine which commands to run. You can edit the files in your text editor to customize them for your workspace.
+    Use the four *.json files located in the json directory to update your variables and trigger a Terraform plan/apply. Use the Terraform API docs (which are in one of this challenge's notes) to determine which commands to run. You can edit the files in your text editor to customize them for your workspace. Be sure to include `@` before the JSON file names.
 
     HINT: The global find-and-replace (magnifying glass icon) allows you to replace text across all the files in your workspace at once.
 
@@ -847,4 +860,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "499493213888960792"
+checksum: "11316531635254522647"

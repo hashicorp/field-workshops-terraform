@@ -1,7 +1,5 @@
-#!/bin/bash
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
-/bin/set-workdir /root/hashicat-gcp
+#!/bin/bash -l
+
 cd /root/hashicat-gcp
 
 TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
@@ -12,3 +10,5 @@ curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application
 
 # Let the user know we're done
 echo "Cleanup process is complete."
+
+exit 0

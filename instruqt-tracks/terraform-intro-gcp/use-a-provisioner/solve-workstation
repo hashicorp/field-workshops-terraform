@@ -1,0 +1,13 @@
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-gcp
+
+cp exercises/main.tf.cowsay main.tf
+
+terraform apply -auto-approve
+
+exit 0

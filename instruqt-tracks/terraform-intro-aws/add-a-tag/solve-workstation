@@ -1,0 +1,11 @@
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-aws
+
+sed -i '11 a \ \ \ \ environment = "Production"' main.tf
+
+exit 0

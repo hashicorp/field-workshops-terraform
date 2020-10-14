@@ -1,0 +1,21 @@
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-aws
+
+# Insert an output for the catapp_ip public IP address.
+cat <<-EOF >> outputs.tf
+
+output "catapp_ip" {
+  value = aws_eip.hashicat.public_ip
+}
+EOF
+
+terraform refresh
+
+terraform output
+
+exit 0

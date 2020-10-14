@@ -1,6 +1,10 @@
-#!/bin/bash
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-azure
 
 # Blow away the test workspace, hashicat-azure if it exists
 # Students should run the 'fastforward' command to create this file.
@@ -26,4 +30,9 @@ cd /root
 rm -rf hashicat-azure
 git clone https://github.com/workshops-testbot/hashicat-azure
 cd hashicat-azure
-terraform init
+
+# Update terraform.tfvars
+cd /root/hashicat-azure
+echo -e "prefix = \"workshop\"" > /root/hashicat-azure/terraform.tfvars
+
+exit 0

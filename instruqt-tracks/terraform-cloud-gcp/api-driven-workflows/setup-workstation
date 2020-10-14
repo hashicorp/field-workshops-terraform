@@ -1,9 +1,9 @@
-#!/bin/bash
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
-/bin/set-workdir /root/hashicat-gcp/json
-/bin/mkdir /root/hashicat-gcp/json
+#!/bin/bash -l
+set -e
+
+mkdir /root/hashicat-gcp/json
 cd /root/hashicat-gcp/json
+set-workdir /root/hashicat-gcp/json
 
 # Create some payload files for the student
 for VAR in placeholder width height; do
@@ -51,3 +51,5 @@ cat <<-EOF > /root/hashicat-gcp/json/apply.json
   }
 }
 EOF
+
+exit 0

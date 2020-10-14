@@ -1,4 +1,0 @@
-#!/bin/bash
-# TODO - write a check for this
-cd /root/hashicat-gcp
-echo -e "region = \"us-central1\"" >> terraform.tfvars

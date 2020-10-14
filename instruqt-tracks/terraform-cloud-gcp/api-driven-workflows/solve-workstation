@@ -1,7 +1,9 @@
-#!/bin/bash
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
-/bin/set-workdir /root/hashicat-gcp
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
 cd /root/hashicat-gcp
 
 # Students should run the 'fastforward' command to create this file.
@@ -92,3 +94,5 @@ curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/height.json https://app.terraform.io/api/v2/vars
 
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/width.json https://app.terraform.io/api/v2/vars
+
+exit 0

@@ -1,0 +1,30 @@
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-gcp
+
+# Write out vpc.tf
+cat <<-EOF > vpc.tf
+module "vpc" {
+  source  = "terraform-google-modules/network/google"
+  project_id   = var.project
+  network_name = "gaurav-network"
+
+  subnets = [
+    {
+      subnet_name   = "gaurav-subnet"
+      subnet_ip     = "10.100.10.0/24"
+      subnet_region = "us-central1"
+    }
+  ]
+}
+EOF
+
+terraform apply -auto-approve
+
+sleep 60
+
+exit 0

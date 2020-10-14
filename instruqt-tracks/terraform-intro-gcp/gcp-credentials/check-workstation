@@ -1,0 +1,12 @@
+#!/bin/bash -l
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+grep -q "echo \$GOOGLE_CREDENTIALS" /root/.bash_history || fail-message "You haven't checked your credentials yet."
+
+exit 0

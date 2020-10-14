@@ -11,7 +11,7 @@ Prerequisites are minimal. All that is required to participate in the workshop i
 
 The Instruqt lab environment includes an embedded version of Visual Studio Code. This ensures the workshop participants have a familiar, easy-to-use text editor for working with Terraform.
 
-However, all commands must be run in the "Shell" tab because pasting into the terminal within the VS Code Editor does not currently work in Instruqt.
+Commands can be run on the "Shell" tab or in a terminal within the VS Code Editor.
 
 ### Email invitation
 Here is some boilerplate text you can use or customize when inviting or announcing your workshop:
