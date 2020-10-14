@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 set -e
 
 # Create /tmp/skip-check to disable this check
@@ -15,3 +15,5 @@ source /root/.bashrc
 TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
 
 curl -s --header "Authorization: Bearer $TOKEN"   https://app.terraform.io/api/v2/organizations/$ORG/policy-sets | jq -r '.data | .[] | .attributes.name' | grep tfc-workshops-sentinel || fail-message "Uh oh, it looks like you haven't attached the tfc-workshops-sentinel policy set to your organization. Make sure you have forked the repo and added the policy set to your organization."
+
+exit 0

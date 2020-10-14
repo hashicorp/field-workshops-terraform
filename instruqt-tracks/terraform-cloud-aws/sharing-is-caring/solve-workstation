@@ -1,7 +1,10 @@
-#!/bin/bash
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
-/bin/set-workdir /root/hashicat-aws
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-aws
 
 # Get our TFC token and organization from the local config files
 TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
@@ -105,3 +108,5 @@ curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/developers_write_access.json https://app.terraform.io/api/v2/team-workspaces
 
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/admins_admin_access.json https://app.terraform.io/api/v2/team-workspaces
+
+exit 0

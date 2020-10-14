@@ -8,9 +8,6 @@ fi
 
 sleep 10
 
-#source /etc/profile.d/instruqt-env.sh
-# source /root/.bashrc
-# set-workdir /root/hashicat-azure
 cd /root/hashicat-azure
 
 TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
@@ -21,7 +18,6 @@ ORG=$(grep organization /root/hashicat-azure/remote_backend.tf | cut -d '"' -f2)
 EXIT_CODE=$?
 if [[ $EXIT_CODE -ne 0 ]]; then
   fail-message "Oops, something's not right with your token. Check your /root/.terraform.d/credentials.tfrc.json file to be sure it has your token in it."
-  exit 1
 fi
 
 # Does the user have an organization configured
@@ -29,7 +25,6 @@ grep -q YOURORGANIZATION /root/hashicat-azure/remote_backend.tf
 EXIT_CODE=$?
 if [[ $EXIT_CODE -ne 1 ]]; then
   fail-message "Oops, it looks like you haven't added your organization name to the remote_backend.tf file yet."
-  exit 1
 fi
 
 # Does the user have a workspace configured
@@ -37,7 +32,6 @@ grep -q hashicat-azure /root/hashicat-azure/remote_backend.tf
 EXIT_CODE=$?
 if [[ $EXIT_CODE -ne 0 ]]; then
   fail-message "Oops, we couldn't find the hashicat-azure workspace in your remote_backend.tf config file. Try again."
-  exit 1
 fi
 
 # Verify the organization exists in TFC
@@ -45,7 +39,6 @@ curl -I -s -L --header "Authorization: Bearer $TOKEN" --header "Content-Type: ap
 EXIT_CODE=$?
 if [[ $EXIT_CODE -ne 0 ]]; then
   fail-message "I couldn't find your organization, $ORG in Terraform Cloud. Make sure you created it and that it is configured in your remote_backend.tf file."
-  exit 1
 fi
 
 # Verify the workspace exists in TFC
@@ -53,7 +46,6 @@ curl -I -s -L --header "Authorization: Bearer $TOKEN" --header "Content-Type: ap
 EXIT_CODE=$?
 if [[ $EXIT_CODE -ne 0 ]]; then
   fail-message "I couldn't find the hashicat-azure workspace in your organization $ORG. Make sure you created it and that it is configured in your remote_backend.tf file."
-  exit 1
 fi
 
 # Store the ORG in /root/.bashrc
@@ -64,7 +56,6 @@ grep yourname /root/hashicat-azure/terraform.tfvars
 EXITCODE=$?
 if [ $EXITCODE -ne 1 ]; then
   fail-message "Oops, it looks like you haven't updated your prefix variable yet."
-  exit 1
 fi
 
 exit 0

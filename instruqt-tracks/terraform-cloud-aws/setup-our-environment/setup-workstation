@@ -7,7 +7,7 @@ sleep 10
 # clone the hashicat-aws repo
 git clone https://github.com/hashicorp/hashicat-aws
 GITDIR="/root/hashicat-aws"
-set-workdir "$GITDIR"
+set-workdir /root/hashicat-aws
 
 cd ${GITDIR}
 echo -e "prefix = \"yourname\"" >> ${GITDIR}/terraform.tfvars

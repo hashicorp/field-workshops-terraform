@@ -1,7 +1,10 @@
-#!/bin/bash
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
-/bin/set-workdir /root/hashicat-aws
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-aws
 
 # Get our TFC token and organization from the local config files
 TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
@@ -39,3 +42,5 @@ EOF
 
 # Update the workspace to enable VCS
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request PATCH --data @/tmp/add_vcs.json https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws
+
+exit 0

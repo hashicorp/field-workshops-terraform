@@ -1,7 +1,8 @@
-#!/bin/bash
-source /etc/profile.d/instruqt-env.sh
-source /root/.bashrc
-/bin/set-workdir /root/hashicat-gcp
+#!/bin/bash -l
+set -e
+
+set-workdir /root/hashicat-gcp
+cd /root/hashicat-gcp
 
 # Give the student a head start.
 cp exercises/remote_backend.tf remote_backend.tf
@@ -16,3 +17,5 @@ cat <<-EOF > /root/.terraform.d/credentials.tfrc.json
   }
 }
 EOF
+
+exit 0

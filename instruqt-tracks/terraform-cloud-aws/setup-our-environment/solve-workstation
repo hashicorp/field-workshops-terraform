@@ -1,4 +1,10 @@
-#!/bin/bash
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-aws
 
 # Blow away the test workspace, hashicat-aws if it exists
 # Students should run the 'fastforward' command to create this file.

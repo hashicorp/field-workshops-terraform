@@ -1,7 +1,9 @@
 #!/bin/bash -l
-#source /etc/profile.d/instruqt-env.sh
-#source /root/.bashrc
-#/bin/set-workdir /root/hashicat-aws
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
 cd /root/hashicat-aws
 
 # Students should run the 'fastforward' command to create this file.

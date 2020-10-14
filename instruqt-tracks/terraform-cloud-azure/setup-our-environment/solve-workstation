@@ -1,6 +1,8 @@
 #!/bin/bash -l
-#source /etc/profile.d/instruqt-env.sh
-#source /root/.bashrc
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
 
 cd /root/hashicat-azure
 

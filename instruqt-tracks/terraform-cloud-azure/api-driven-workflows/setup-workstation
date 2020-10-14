@@ -1,9 +1,9 @@
 #!/bin/bash -l
-#source /etc/profile.d/instruqt-env.sh
-#source /root/.bashrc
-set-workdir /root/hashicat-azure/json
-/bin/mkdir /root/hashicat-azure/json
+set -e
+
+mkdir /root/hashicat-azure/json
 cd /root/hashicat-azure/json
+set-workdir /root/hashicat-azure/json
 
 # Create some payload files for the student
 for VAR in placeholder width height; do

@@ -7,9 +7,7 @@ if [ -f /tmp/skip-check ]; then
     exit 0
 fi
 
-#source /etc/profile.d/instruqt-env.sh
-#source /root/.bashrc
-/bin/set-workdir /root/hashicat-aws
+cd /root/hashicat-aws
 
 TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
 

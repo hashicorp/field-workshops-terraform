@@ -7,10 +7,6 @@ if [ -f /tmp/skip-check ]; then
     exit 0
 fi
 
-# TODO - DRY this out a bit.
-# source /etc/profile.d/instruqt-env.sh
-# source /root/.bashrc
-# /bin/set-workdir /root/hashicat-azure
 cd /root/hashicat-azure
 
 # Get our TFC token and organization from the local config files
