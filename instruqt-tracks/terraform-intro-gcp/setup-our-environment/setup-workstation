@@ -15,6 +15,12 @@ cp ${GITDIR}/exercises/main.tf.start ${GITDIR}/main.tf
 cp ${GITDIR}/exercises/outputs.tf.start ${GITDIR}/outputs.tf
 mv ${GITDIR}/terraform.tfvars.example ${GITDIR}/terraform.tfvars
 
+# Store our project ID as a Terraform env var
+export TF_VAR_project=$INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID
+grep $INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID /root/.bashrc || echo "export TF_VAR_project=\"$INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID\"" >> /root/.bashrc
+export GOOGLE_CREDENTIALS=$(echo $INSTRUQT_GCP_PROJECT_GCP_PROJECT_SERVICE_ACCOUNT_KEY | base64 -d | jq 'tostring')
+echo "export GOOGLE_CREDENTIALS=$GOOGLE_CREDENTIALS" >> /root/.bashrc
+
 # Start up Visual Studio Code server
 # Create VSC startup script
 cat <<-EOF > /etc/systemd/system/code-server.service
@@ -34,12 +40,13 @@ ExecStart=/usr/bin/code-server --host 0.0.0.0 --port 8443 --cert --auth none /ro
 WantedBy=multi-user.target
 EOF
 
+# Add GCP creds to systemd environment
+systemctl import-environment INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID
+systemctl import-environment TF_VAR_project
+systemctl import-environment GOOGLE_CREDENTIALS
+
 # Start VSC
 systemctl enable code-server
 systemctl start code-server
-
-# Store our project ID as a Terraform env var
-grep $INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID /root/.bashrc || echo "export TF_VAR_project=\"$INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID\"" >> /root/.bashrc
-echo 'export GOOGLE_CREDENTIALS=$(echo $INSTRUQT_GCP_PROJECT_GCP_PROJECT_SERVICE_ACCOUNT_KEY | base64 -d)' >> /root/.bashrc
 
 exit 0

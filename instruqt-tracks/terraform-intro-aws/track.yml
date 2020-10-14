@@ -329,7 +329,9 @@ challenges:
 
     When you run this command Terraform will prompt you to enter the `prefix` variable.
 
-    Enter a short string of lower-case letters and/or numbers. You can use your own name here if you wish. The prefix will become part of the name for our VPC, subnet, EC2 instance and other resources.
+    Enter a short string of lower-case letters and/or numbers. We recommend that you use your first and last name.
+
+    The prefix will become part of the name for our VPC, subnet, EC2 instance and other resources.
   notes:
   - type: text
     contents: |-
@@ -1129,4 +1131,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "2665246642536675128"
+checksum: "11066000112727208385"

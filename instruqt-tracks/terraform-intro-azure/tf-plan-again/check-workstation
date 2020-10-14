@@ -7,6 +7,6 @@ if [ -f /tmp/skip-check ]; then
     exit 0
 fi
 
-grep -q "terraform plan" /root/.bash_history || fail-message "You have not re-run terraform plan yet."
+# grep -q "terraform plan" /root/.bash_history || fail-message "You have not re-run terraform plan yet."
 
 exit 0

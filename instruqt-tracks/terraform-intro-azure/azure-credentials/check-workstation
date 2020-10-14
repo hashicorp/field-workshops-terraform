@@ -7,6 +7,6 @@ if [ -f /tmp/skip-check ]; then
     exit 0
 fi
 
-grep -q "env | grep ARM_CLIENT" /root/.bash_history || fail-message "You haven't checked your Azure credentials yet."
+# grep -q "env | grep ARM_CLIENT" /root/.bash_history || fail-message "You haven't checked your Azure credentials yet."
 
 exit 0
