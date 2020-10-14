@@ -327,7 +327,7 @@ challenges:
     ```
     When you run this command Terraform will prompt you to enter the `prefix` variable.
 
-    Enter a short string of lower-case letters and/or numbers. You can use your own name here if you wish.
+    Enter a short string of lower-case letters and/or numbers. We recommend that you use your first and last name.
 
     **Keep your prefix string all lower case, and between 5-12 characters long. Do not use an underscore in your prefix.**
 
@@ -1124,4 +1124,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1067
-checksum: "16304104145570246559"
+checksum: "12723157040512874749"

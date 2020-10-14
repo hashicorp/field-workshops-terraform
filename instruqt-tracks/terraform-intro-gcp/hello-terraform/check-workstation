@@ -7,8 +7,8 @@ if [ -f /tmp/skip-check ]; then
     exit 0
 fi
 
-grep -q "terraform version" /root/.bash_history || fail-message "You haven't run terraform version yet."
+# grep -q "terraform version" /root/.bash_history || fail-message "You haven't run terraform version yet."
 
-grep -q "terraform help" /root/.bash_history || fail-message "You haven't run terraform help yet."
+# grep -q "terraform help" /root/.bash_history || fail-message "You haven't run terraform help yet."
 
 exit 0

@@ -7,6 +7,6 @@ if [ -f /tmp/skip-check ]; then
     exit 0
 fi
 
-grep -q "echo \$GOOGLE_CREDENTIALS" /root/.bash_history || fail-message "You haven't checked your credentials yet."
+# grep -q "echo \$GOOGLE_CREDENTIALS" /root/.bash_history || fail-message "You haven't checked your credentials yet."
 
 exit 0
