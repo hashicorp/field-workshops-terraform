@@ -35,9 +35,9 @@ challenges:
 
     You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application. Open file called "main.tf.
 
-    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes with one slightly out of position.
+    Next you should install the HashiCorp Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes with one slightly out of position.
 
-    Search for **Terraform** and be sure to select the "HashiCorp Terraform 2.x.y" extension. **Do not select the "Terraform 1.4.0" extension from mauve.** Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it. Then click the icon with two pages under the File menu so you can see your Terraform files again.
+    Search for **HashiCorp** and select the "HashiCorp Terraform 2.x.y" extension. Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it. Then click the icon with two pages under the File menu so you can see your Terraform files again.
 
     We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
 
@@ -353,13 +353,9 @@ challenges:
   teaser: |
     Terraform variables allow you to customize your infrastructure without editing any code. You can use the same Terraform code to deploy dev, staging and production but with different variables.
   assignment: |-
-    We've created a `terraform.tfvars` file for you to edit. This is a special file where you can set any variables you wish to change from their defaults.
+    In Terraform all variables must be declared (with or without an optional default value) before you can use them. Variables are usually declared in the "variables.tf" file although they can also be declared in other "*.tf" files. Their values can be set in the "terraform.tfvars" file and in other ways which we'll explore later.
 
-    Variables are *declared* in the **variables.tf** file. They are *set* or *defined* in the `terraform.tfvars` file.
-
-    In Terraform all variables must be declared (with or without an optional default value) before you can use them.
-
-    Open the **terraform.tfvars** file and set your prefix variable by deleting the `#` at the beginning of the line and replacing "yourname" with your own name. The file will auto-save.
+    Open the "terraform.tfvars" file and set your `prefix` variable by deleting the `# ` at the beginning of the line and replacing "yourname" with your own name (first and last with or without a hyphen between them and all lower case).
 
     Now run `terraform plan` again. This time you won't have to enter your prefix manually.
   notes:
@@ -387,34 +383,29 @@ challenges:
   teaser: |
     Terraform is flexible enough to deploy infrastructure anywhere in the world. You can easily provision your applications in different geographical regions by simply changing a single variable.
   assignment: |-
-    In the previous challenge we set our **prefix** variable. Let's set another variable.
+    In the previous challenge we set our `prefix` variable in the "terraform.tfvars" file. Let's set two more variables that will determine the location where your GCP infrastructure will be deployed.
 
-    Choose the GCP region nearest to you and set the **region** variable in your `terraform.tfvars` file. You may need to close and re-open the file if it appears blank.
+    First run another plan so you'll be able to compare what happens after you change the location.
 
-    You can find the details of valid GCP regions here:
+    ```
+    terraform plan
+    ```
 
-    https://cloud.google.com/about/locations/
+    Choose a GCP region near you but different from the default one which is "us-central1". Add `region` and `zone` variables to your "terraform.tfvars" file, setting them to your desired region and one of its zones.
 
-    as well as a more succinct list of valid region ids here:
-
-    https://cloud.google.com/compute/docs/regions-zones/#locations
-
-    Examples:<br>
-    us-east4 - North Virginia<br>
-    us-west1 - Oregon<br>
-    asia-southeast1 - Singapore<br>
-    australia-southeast1 - Sydney<br>
-    europe-west2 - London
+    See this [page](https://cloud.google.com/compute/docs/regions-zones) for a list of regions and zones. For regions, strip off the `-a`, `-b`, or `-c` from the zones listed on that page.
 
     Choosing a region close to you can help improve speed and performance.
 
-    Once you've set your **region** variable, try running `terraform plan` again. What's different this time?
+    Once you've set your `region` and `zone` variables, try running `terraform plan` again. What's different this time?
 
-    HINT: Remember that you can set any variable you wish in the `terraform.tfvars` file.
+    Remember that you can set values for any variable declared in your "variables.tf" file in the "terraform.tfvars" file.
   notes:
   - type: text
-    contents: You can override any variable defined in the `variables.tf` file by
-      setting it in your personal `terraform.tfvars` file.
+    contents: |-
+      You can override any variable defined in the "variables.tf" file by setting it in your personal `terraform.tfvars` file.
+
+      In this challenge, you will pick the location where your GCP resources should be deployed.
   tabs:
   - title: Code Editor
     type: service
@@ -523,8 +514,10 @@ challenges:
     Right now our code only defines a VPC network. We'll be building upon this starting point in the next challenge.
   notes:
   - type: text
-    contents: Terraform apply includes a Terraform plan right before it runs. Terraform
-      maps out all the changes it needs to make before applying them.
+    contents: |-
+      By default, the `terraform apply` command runs a Terraform plan to show you what changes it wants to make.
+
+      Terraform maps out all the changes it needs to make before applying them.
   tabs:
   - title: Code Editor
     type: service
@@ -768,6 +761,10 @@ challenges:
     "sudo apt -y install cowsay",
     "cowsay Mooooooooooo!",
     ```
+
+    After copying them into your buffer, it will be easier to paste them if you hide the assignment by clicking the icon that looks like a picture frame next to the circular refresh icon. Click it again to redisplay the assignment.
+
+    This might be a good time to use the `terraform fmt` command to line up the commands nicely.
 
     Now run another `terraform apply -auto-approve` to apply your changes:
 
@@ -1072,8 +1069,10 @@ challenges:
     Wait until the destroy action has completely finished before clicking on the **Check** button.
   notes:
   - type: text
-    contents: Terraform can destroy infrastructure as easily as it can build it. Use
-      Terraform with caution.
+    contents: |-
+      Terraform can destroy infrastructure as easily as it can build it.
+
+      Use `terraform destroy` with caution.
   tabs:
   - title: Code Editor
     type: service
@@ -1088,4 +1087,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "16874763366103748551"
+checksum: "12028904269042378311"
