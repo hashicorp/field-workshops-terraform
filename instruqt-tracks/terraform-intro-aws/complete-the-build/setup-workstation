@@ -7,7 +7,7 @@ cd /root/hashicat-aws
 # Copy the completed terraform to main.tf
 cp exercises/main.tf.completed main.tf
 
-# Just the public DNS please
+# Just the public DNS
 cat <<EOF > outputs.tf
 # Outputs file
 output "catapp_url" {

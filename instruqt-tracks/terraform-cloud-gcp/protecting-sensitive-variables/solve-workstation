@@ -25,7 +25,7 @@ cat <<-EOF > /tmp/update_workspace.json
     "attributes": {
       "name": "hashicat-gcp",
       "auto-apply": true,
-      "operations": true
+      "execution-mode": "remote"
     },
     "type": "workspaces"
   }
@@ -168,10 +168,7 @@ curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application
 
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/project.json https://app.terraform.io/api/v2/vars
 
-# echo "#############################################"
-# echo "Running terraform with remote exec enabled..."
-# echo "#############################################"
-# terraform plan
+# Run remote apply
 terraform apply -auto-approve
 
 sleep 30

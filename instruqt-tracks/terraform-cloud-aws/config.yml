@@ -9,3 +9,4 @@ aws_accounts:
   managed_policies:
   - arn:aws:iam::aws:policy/AmazonEC2FullAccess
   - arn:aws:iam::aws:policy/AmazonVPCFullAccess
+  - arn:aws:iam::aws:policy/AmazonS3FullAccess

@@ -7,12 +7,20 @@ sleep 10
 # clone the hashicat-gcp repo
 git clone https://github.com/hashicorp/hashicat-gcp
 GITDIR="/root/hashicat-gcp"
+
+# Set workdir
 set-workdir /root/hashicat-gcp
 
 cd ${GITDIR}
-echo -e "prefix = \"yourname\"" >> ${GITDIR}/terraform.tfvars
-echo -e "region = \"us-central1\"" >> ${GITDIR}/terraform.tfvars
-echo -e "zone = \"us-central1-a\"" >> ${GITDIR}/terraform.tfvars
+mv terraform.tfvars.example terraform.tfvars
+echo -e "# region = \"\"" >> terraform.tfvars
+echo -e "# zone = \"\"" >> terraform.tfvars
+
+# Store our project ID as a Terraform env var
+export TF_VAR_project=$INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID
+grep $INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID /root/.bashrc || echo "export TF_VAR_project=\"$INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID\"" >> /root/.bashrc
+export GOOGLE_CREDENTIALS=$(echo $INSTRUQT_GCP_PROJECT_GCP_PROJECT_SERVICE_ACCOUNT_KEY | base64 -d | jq 'tostring')
+echo "export GOOGLE_CREDENTIALS=$GOOGLE_CREDENTIALS" >> /root/.bashrc
 
 # Create VSC startup script
 cat <<-EOF > /etc/systemd/system/code-server.service
@@ -32,13 +40,14 @@ ExecStart=/usr/bin/code-server --host 0.0.0.0 --port 8443 --cert --auth none /ro
 WantedBy=multi-user.target
 EOF
 
+# Add GCP creds to systemd environment
+systemctl import-environment INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID
+systemctl import-environment TF_VAR_project
+systemctl import-environment GOOGLE_CREDENTIALS
+
 # Start VSC
 systemctl enable code-server
 systemctl start code-server
-
-# Store our project ID as a Terraform env var
-grep $INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID /root/.bashrc || echo "export TF_VAR_project=\"$INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID\"" >> /root/.bashrc
-echo 'export GOOGLE_CREDENTIALS=$(echo $INSTRUQT_GCP_PROJECT_GCP_PROJECT_SERVICE_ACCOUNT_KEY | base64 -d)' >> /root/.bashrc
 
 # Create a catch-up script that enables the user to fast-forward
 cat <<-EOF > /usr/bin/fastforward

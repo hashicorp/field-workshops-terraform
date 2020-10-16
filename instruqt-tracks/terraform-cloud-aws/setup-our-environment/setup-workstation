@@ -7,11 +7,13 @@ sleep 10
 # clone the hashicat-aws repo
 git clone https://github.com/hashicorp/hashicat-aws
 GITDIR="/root/hashicat-aws"
+
+# Set workdir
 set-workdir /root/hashicat-aws
 
 cd ${GITDIR}
-echo -e "prefix = \"yourname\"" >> ${GITDIR}/terraform.tfvars
-echo -e "region = \"us-east-1\"" >> ${GITDIR}/terraform.tfvars
+mv terraform.tfvars.example terraform.tfvars
+echo -e "# region = \"us-east-1\"" >> terraform.tfvars
 
 # Create VSC startup script
 cat <<-EOF > /etc/systemd/system/code-server.service
@@ -30,6 +32,10 @@ ExecStart=/usr/bin/code-server --host 0.0.0.0 --port 8443 --cert --auth none /ro
 [Install]
 WantedBy=multi-user.target
 EOF
+
+# Add AWS keys to systemd environment
+systemctl import-environment AWS_ACCESS_KEY_ID
+systemctl import-environment AWS_SECRET_ACCESS_KEY
 
 # Start VSC
 systemctl enable code-server

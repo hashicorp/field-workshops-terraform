@@ -30,9 +30,7 @@ cd /root
 rm -rf hashicat-azure
 git clone https://github.com/workshops-testbot/hashicat-azure
 cd hashicat-azure
-
-# Update terraform.tfvars
-cd /root/hashicat-azure
-echo -e "prefix = \"workshop\"" > /root/hashicat-azure/terraform.tfvars
+mv terraform.tfvars.example terraform.tfvars
+echo -e "# location = \"\"" >> terraform.tfvars
 
 exit 0

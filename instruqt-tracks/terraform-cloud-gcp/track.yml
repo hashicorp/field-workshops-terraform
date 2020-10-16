@@ -52,7 +52,9 @@ challenges:
 
     Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes with one slightly out of position.
 
-    Search for **Terraform** and be sure to select the "HashiCorp Terraform 2.x.y" extension. **Do not select the "Terraform 1.4.0" extension from mauve.** Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it. Then click the icon with two pages under the File menu so you can see your Terraform files again.
+    Search for **HashiCorp** and select the "HashiCorp Terraform 2.x.y" extension. Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it. Then click the icon with two pages under the File menu so you can see your Terraform files again.
+
+    If you see a popup saying that Terraform 0.8 is installed, just close it. We have updated Terraform for you. You can check the version by running `terraform version`.
 
     We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
 
@@ -166,11 +168,17 @@ challenges:
 
     In either case, replace the part that says YOURTOKEN with what you copied from Terraform Cloud. If you use the "Credentials File" tab,  sure to save the file.
 
-    Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
+    Your token is now safely stored in the "credentials.tfrc.json" file.
 
-    Return to your Code Editor tab and edit the `remote_backend.tf` file, replacing the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name. Save the file.
+    Return to your Code Editor tab and edit the "remote_backend.tf" file, replacing the `YOURORGANIZATION` and `YOURWORKSPACE` placeholders with your organization name and workspace name. Save the file.
 
-    Also, please edit the terraform.tfvars file and set `prefix` to your name. Also set `region` to a valid GCP region such as `us-east1` or `us-west1` and `zone` to a valid GCP zone within your selected region such as `us-east1-b` or `us-west1-b`. Learn more about these variables by looking in the variables.tf file.
+    Also, please edit the "terraform.tfvars" file, setting `prefix` to your name (first and last with or without a hyphen between them and all lower case), setting `region` to a valid GCP region such as "us-east1", "us-west1", "europe-west2", or "asia-southeast1", and setting `zone` to a valid GCP zone within your selected region.
+
+    See this [page](https://cloud.google.com/compute/docs/regions-zones) for a list of regions and zones. For regions, strip off the "-a", "-b", or "-c" from the zones listed on that page.
+
+    Uncomment the variable values by removing "# " from each line.
+
+    The variables are actually declared in the "variables.tf" file. The "terraform.tfvars" file is just being used to set values for them.
 
     Once you've got all the pieces in place, try running a `terraform init` and then `terraform apply` command on the "Shell" tab.
 
@@ -260,19 +268,20 @@ challenges:
     ```
     echo $GOOGLE_CREDENTIALS
     ```
-    2. Update the **Execution Mode** settings in your workspace to **Remote**.
-    3. Change the **Apply Method** to Auto apply. This will save you the trouble of having to approve every Terraform run manually. Remember to click the **Save** button at the bottom of the page!
+    2. Update the **Execution Mode** settings in your workspace to **Remote** on the Settings > General tab.
+    3. Change the **Apply Method** to "Auto apply" on the same page. This will save you the trouble of having to approve every Terraform run manually. Remember to click the **Save** button at the bottom of the page!
     4. Set an **Environment Variable** called `GOOGLE_CREDENTIALS` for your GCP credentials and mark it as **Sensitive**.
-    5. Set **Terraform Variables** for your `prefix`, `region`, and `zone`. Set the same values you had used in your terraform.tfvars file to avoid all the resources being destroyed and re-created. NOTE: You *must* configure these variables on the remote workspace, as they will no longer be read from your local terraform.tfvars file.
-    6. Set a **Terraform Variable** for your project id. You can find your Google Cloud project id with the following command:
+    5. Set **Terraform Variables** for your `prefix`, `region`, and `zone` on the Variables tab. Set the same values you used in your terraform.tfvars file to avoid all the resources being destroyed and re-created (unless you like waiting longer). NOTE: You *must* configure these variables on the remote workspace, as they will no longer be read from your local terraform.tfvars file.
+    6. Set a **Terraform Variable** called `project` with your project id which you can find with the following command:
 
     ```
     echo $TF_VAR_project
     ```
+    You had not needed to include this when running in local mode because the setup script for this track had exported an environment variable called `TF_VAR_project` and set it to your project ID for you. But environment variables are not read from your local environment when running in remote mode.
 
     Test your work by running `terraform init`. Your backend configuration will be updated for remote execution.
 
-    Next try running `terraform plan`. This will trigger what's known as a speculative plan. You can view this plan by copying the link from your "Shell" tab.  This plan will not show up in your ordinary terraform runs that are triggered via the UI or API. A copy of the plan output will be streamed back to your "Shell" tab.
+    Next try running `terraform plan`. This will trigger what's known as a speculative plan. You can view this plan by copying the link from your "Shell" tab or from your VS Code Editor terminal. (But note that the "Follow Link|Open" mechanism in the terminal does not currently work.) This plan will not show up in your ordinary terraform runs that are triggered via the UI or API. A copy of the plan output will be streamed back to your "Shell" tab.
 
     Run a terraform apply. This apply **will** show up if you navigate to the runs page in the Terraform Cloud UI.
 
@@ -431,6 +440,7 @@ challenges:
     git remote remove origin
     git remote add origin https://github.com/YOURGITUSER/hashicat-gcp
     ```
+    If the second command is split across two lines after copying it from the assignment and you are unable to edit it, try making your browser window wider or hiding the assignment termporarily so it fits on one line.
 
     Also run these commands:
 
@@ -456,6 +466,8 @@ challenges:
     git commit -m "adding remote backend"
     git push origin master
     ```
+
+    At this time, the last command **must** be run on the "Shell" tab since authenticating to GitHub from the VS Code Editor's terminal does not work.
 
     Note that you'll have to provide your GitHub username and password or personal access token in order to complete the `git push` command.
 
@@ -502,9 +514,6 @@ challenges:
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Configuring Github Access
-    type: external
-    url: https://www.terraform.io/docs/cloud/vcs/github.html
   - title: Terraform Cloud
     type: external
     url: https://app.terraform.io
@@ -537,7 +546,7 @@ challenges:
 
     You'll notice that a check is run against your Terraform Cloud workspace. If you right-click the "Details" link of the check and then open the link in a new tab, you'll see the speculative plan that has been run in your workspace.
 
-    However, be sure to close that new browser tab if you open it since the GitHub check being run against Terraform Cloud will not be marked as complete until you do.
+    However, if you do open the link, you might need to refresh the GitHub page in order to see that the check has passed and so that the "Merge pull request" button will be enabled.
 
     Your partner should now review and approve the pull request. Or, if you're working alone you can review your own pull request and merge the changes.
 
@@ -617,9 +626,7 @@ challenges:
     git push origin master
     ```
 
-    These commands mean "Pull any remote changes, add all my changes, commit them to the local git repo, then push them to the master branch of the remote repo." Note that you will have to provide your GitHub credentinals for the `git push` command.
-
-    If you're prompted to do a `git pull` by the `push` in order to incorporate remote changes, you'll need to run `git pull`. This will display a document in the `vi` text editor with a merge message. Simply type `:wq` to save the file. Then run `git status` to see if any files changed. Then check the changed files to make sure they are correct. Then repeat the `git push origin master` command.
+    These commands mean add "all your changes, commit them to the local git repo, then push them to the master branch of the remote repo." Note that you will have to provide your GitHub credentinals for the `git push` command.
 
     A plan that successfully runs will be followed by a Sentinel policy check against the enforce-mandatory-labels.sentinel policy. This policy will fail because you have (intentionally) not yet added the **billable** label to your google_compute_instance resource. As a consequence, you will not be able to apply the run.
 
@@ -627,7 +634,7 @@ challenges:
 
     ```
     git add .
-    git commit -m "Added the second tag"
+    git commit -m "Added the second label"
     git push origin master
     ```
 
@@ -685,23 +692,37 @@ challenges:
   type: challenge
   title: "\U0001F4DA Private Module Registry"
   teaser: |
-    Some of your users want a simple way to deploy databases and network configurations. Enter the Private Module Registry, where you can store standard, re-usable Terraform configurations that others can use in their own workspaces.
+    Some of your users want a simple way to deploy databases and network configurations. Enter the Private Module Registry, in which you can store standard, re-usable Terraform code that others can use in their own workspaces.
   assignment: |-
-    In this challenge you'll learn to use the Private Module Registry, which allows you to store and version re-usable snippets of Terraform code. Think of modules like custom resources for your own environment.
+    In this challenge you'll learn to use the Private Module Registry, which allows you to store and version re-usable modules of Terraform code.
 
-    Instead of writing this module from scratch you can copy the existing vpc module from the public Terraform registry. Visit this URL to view the VPC module:
+    Instead of writing this module from scratch you can copy the existing vpc module from the public Terraform registry. Visit this [URL](https://registry.terraform.io/modules/terraform-google-modules/network/google) to view the VPC module.
 
-    https://registry.terraform.io/modules/terraform-google-modules/network/google
+    Note the "Source Code" link that points at the GitHub repository for this module. Click on the Source URL. As you did in previous challenges, create your own fork of this repository with the "Fork" button.
 
-    Note the **Source Code** link that points at the GitHub repository for this module. Click on the Source URL. As you did in previous challenges, create your own fork of this repository with the **Fork** button.
+    Back in the Terraform Cloud UI, click on the "Modules" tab at the top of the page. Click on the "+Add Module" button. Click on the "GitHub" button and select the terraform-google-network repository that you just forked.
 
-    Back in the Terraform Cloud control panel, click on the **Modules** link at the top of the page. Click on the **+Add Module** button. Click on the Github button and select the terraform-google-network module that you just forked.
+    Click on the "Publish module" button.
 
-    Click on **Publish Module**.
+    After the module is completely published, please select version `2.5.0` of the module in the "Versions" drop-down box in the upper right corner.
 
-    Create a new Terraform file called `vpc.tf` in the hashicat-gcp directory and use the module in this file to create a new VPC for Gaurav.  HINT: You might want to take a look at the [usage examples Google has provided](https://github.com/terraform-google-modules/terraform-google-network/blob/master/examples/simple_project/main.tf#L31-L59).
+    Click on the "Inputs" tab of the module. This indicates that you have to specify the `network_name`, `project_id`, and `subnets` module variables (inputs) for this module.
 
-    It's ok to make a really simple network with only one subnet and hard-coded variables, although using references to attributes of other resources in your main.tf file would be even better. Remember to specify the correct **source** for your module. Look in the module's README in your private module registry to see the usage examples.
+    Create a new Terraform file called `vpc.tf` in the hashicat-gcp directory and use the module in this file to create a new VPC for Gaurav. You can copy the module creation code from the "Provision Instructions" section of the module's page in your Private Module Registry and then add the required inputs as follows:
+      * Set `network_name` to any name you want such as `gaurav-network`.
+      * Set `project_id` to `var.project` (and make sure that the VS Code Editor does not change this to `var.project_id`).
+      * Set `subnets` like this:
+      ```
+      subnets = [
+        {
+          subnet_name   = "gaurav-subnet"
+          subnet_ip     = "10.100.10.0/24"
+          subnet_region = var.region
+        }
+      ]
+      ```
+
+    Since you are editing a new file, you need to save it even if you are using the VS Code Editor. Use the File > Save menu and type "vpc.tf" for the name. If you are using the Instruqt Text Editor, just click the disk icon above the file.
 
     After you have saved the `vpc.tf` file, you can add, commit, and push your latest changes to your remote fork. You will be prompted to log onto your github account to push the change.
 
@@ -856,4 +877,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "7163545397985910777"
+checksum: "1317128218779349885"
