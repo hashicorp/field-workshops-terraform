@@ -25,7 +25,7 @@ cat <<-EOF > /tmp/update_workspace.json
     "attributes": {
       "name": "hashicat-azure",
       "auto-apply": true,
-      "operations": true
+      "execution-mode": "remote"
     },
     "type": "workspaces"
   }
@@ -190,16 +190,7 @@ curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application
 
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/location.json https://app.terraform.io/api/v2/vars
 
-# Can't run terraform apply because of a bug in Terraform Cloud
-# which leads to a completely deadlocked, useless organization
-# where all runs get stuck in the queue. :facepalm:
-
-# https://app.asana.com/0/1118351459439625/1154785911193251
-
-# echo "#############################################"
-# echo "Running terraform with remote exec enabled..."
-# echo "#############################################"
-# terraform plan
+# Run remote apply
 terraform apply -auto-approve
 
 sleep 30

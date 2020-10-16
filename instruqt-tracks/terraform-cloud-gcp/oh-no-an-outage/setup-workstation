@@ -7,7 +7,7 @@ cd /root/hashicat-gcp
 # Give the student a head start.
 cp exercises/remote_backend.tf remote_backend.tf
 
-mkdir /root/.terraform.d
+mkdir -p /root/.terraform.d
 cat <<-EOF > /root/.terraform.d/credentials.tfrc.json
 {
   "credentials": {

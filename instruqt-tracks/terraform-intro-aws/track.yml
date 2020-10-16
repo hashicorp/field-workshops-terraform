@@ -41,6 +41,8 @@ challenges:
 
     Search for **HashiCorp** and select the "HashiCorp Terraform 2.x.y" extension. Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it. Then click the icon with two pages under the File menu so you can see your Terraform files again.
 
+    If you see a popup saying that Terraform 0.8 is installed, just close it. We have updated Terraform for you. You can check the version by running `terraform version`.
+
     We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
 
     We recommend executing all commands on the "Shell" tab. But you can also open and use a terminal window at the bottom of the Visual Code Editor by using the Terminal > New Terminal menu or the **<ctrl>-`** shortcut.
@@ -1130,4 +1132,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "14146319799116953125"
+checksum: "7447299001212280757"

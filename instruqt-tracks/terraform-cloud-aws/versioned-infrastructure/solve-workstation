@@ -41,6 +41,7 @@ cat <<-EOF > /tmp/add_vcs.json
 EOF
 
 # Update the workspace to enable VCS
+# This triggers a run
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request PATCH --data @/tmp/add_vcs.json https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws
 
 exit 0

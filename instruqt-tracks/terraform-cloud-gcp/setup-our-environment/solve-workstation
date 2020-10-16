@@ -27,11 +27,9 @@ curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application
 cd /root
 rm -rf hashicat-gcp
 git clone https://github.com/workshops-testbot/hashicat-gcp
-
-# # Update terraform.tfvars
-cd /root/hashicat-gcp
-echo -e "prefix = \"workshop\"" >> /root/hashicat-gcp/terraform.tfvars
-echo -e "region = \"us-central1\"" >> /root/hashicat-gcp/terraform.tfvars
-echo -e "zone = \"us-central1-a\"" >> /root/hashicat-gcp/terraform.tfvars
+cd hashicat-gcp
+mv terraform.tfvars.example terraform.tfvars
+echo -e "# region = \"\"" >> terraform.tfvars
+echo -e "# zone = \"\"" >> terraform.tfvars
 
 exit 0

@@ -11,7 +11,9 @@ GITDIR="/root/hashicat-azure"
 # Set workdir
 set-workdir /root/hashicat-azure
 
-echo -e "prefix = \"yourname\"" >> ${GITDIR}/terraform.tfvars
+cd ${GITDIR}
+mv terraform.tfvars.example terraform.tfvars
+echo -e "# location = \"\"" >> terraform.tfvars
 
 # Start up Visual Studio Code server
 # Create VSC startup script
@@ -31,6 +33,12 @@ ExecStart=/usr/bin/code-server --host 0.0.0.0 --port 8443 --cert --auth none /ro
 [Install]
 WantedBy=multi-user.target
 EOF
+
+# Add Azure creds to systemd environment
+systemctl import-environment ARM_SUBSCRIPTION_ID
+systemctl import-environment ARM_TENANT_ID
+systemctl import-environment ARM_CLIENT_ID
+systemctl import-environment ARM_CLIENT_SECRET
 
 # Start VSC
 systemctl enable code-server

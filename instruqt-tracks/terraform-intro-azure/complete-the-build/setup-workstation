@@ -5,10 +5,18 @@ set-workdir /root/hashicat-azure
 
 cd /root/hashicat-azure
 
+# Copy the completed terraform to main.tf
 cp exercises/main.tf.completed main.tf
 
-cp exercises/outputs.tf.build outputs.tf
+# Just the public DNS
+cat <<EOF > outputs.tf
+# Outputs file
+output "catapp_url" {
+  value = "http://${azurerm_public_ip.catapp-pip.fqdn}"
+}
+EOF
 
+# Run terraform init to bring in new providers
 terraform init
 
 exit 0

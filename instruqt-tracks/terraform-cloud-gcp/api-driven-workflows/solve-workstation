@@ -95,4 +95,7 @@ curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application
 
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/width.json https://app.terraform.io/api/v2/vars
 
+# In theory, we should trigger an apply with the API, but if the first
+# apply worked then we know the new one would too.
+
 exit 0

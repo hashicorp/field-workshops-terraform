@@ -51,7 +51,7 @@ cat <<-EOF > /tmp/create_workspace.json
   "data": {
     "attributes": {
       "name": "hashicat-azure",
-      "operations": false
+      "execution-mode": "local"
     },
     "type": "workspaces"
   }
@@ -62,11 +62,13 @@ EOF
 echo "Creating the hashicat-azure workspace in organization $ORG..."
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/create_workspace.json https://app.terraform.io/api/v2/organizations/$ORG/workspaces
 
-# Create random prefix in terraform.tfvars
+# Update terraform.tfvars
 echo -e "prefix = \"hashicat-$RANDOM\"" > terraform.tfvars
+echo -e "location = \"centralus\"" >> terraform.tfvars
 
 # Run terraform init and apply
 terraform init
+# This run is a local run
 terraform apply -auto-approve
 
 exit 0
