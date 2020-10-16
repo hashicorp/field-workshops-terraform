@@ -12,7 +12,7 @@ cp exercises/main.tf.completed main.tf
 cat <<EOF > outputs.tf
 # Outputs file
 output "catapp_url" {
-  value = "http://${azurerm_public_ip.catapp-pip.fqdn}"
+  value = "http://\${azurerm_public_ip.catapp-pip.fqdn}"
 }
 EOF
 
