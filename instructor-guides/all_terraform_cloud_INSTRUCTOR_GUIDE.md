@@ -134,7 +134,7 @@ Please note the following restrictions on skipping:
 
 Note that in the rest of this section, "*" is a placeholder for "aws", "azure", or "gcp", depending on which of the TFC tracks you are running.
 
-The solve script will do the following for you when skipping:
+The solve scripts will do the following for you when skipping:
 * Configure your "credentials.tfrc.json" and "remote_backend.tf" files, create the "hashicat-*" workspace and configure it to use local execution, update your "terraform.tfvars" file, and do the first `terraform init` and `terraform apply -auto-approve` (in the "Safekeeping Your Terraform State" solve script).
 * Convert your "hashicat-*" workspace to use remote execution, create workspace variables (both environment and Terraform), and trigger your first remote run with `terraform apply -auto-approve` (in the "Securing Cloud Credentials" solve script).
 * Create the `admins`, `developers`, and `managers` teams in your organization if they don't already exist and assign them team permissions in your "hashicat-*" workspace (in the "Working with Teams in Terraform Cloud" solve script).
