@@ -612,7 +612,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
@@ -1089,4 +1089,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1000
-checksum: "12371380739277696974"
+checksum: "7953569792025566598"

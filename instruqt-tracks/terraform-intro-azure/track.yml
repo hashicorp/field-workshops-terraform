@@ -307,13 +307,13 @@ challenges:
     type: service
     hostname: workstation
     port: 8443
+  - title: Shell
+    type: terminal
+    hostname: workstation
   - title: Text Editor
     type: code
     hostname: workstation
     path: /root/hashicat-azure
-  - title: Shell
-    type: terminal
-    hostname: workstation
   difficulty: basic
   timelimit: 1067
 - slug: terraform-plan
@@ -1129,4 +1129,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1067
-checksum: "17265440078710956674"
+checksum: "526770914849282766"

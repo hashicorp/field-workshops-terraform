@@ -11,11 +11,33 @@ TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
 WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json"   https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-azure | jq -r .data.id)
 
 if [[ -f /root/skipconfig.json ]]; then
-  GITUSER=$(jq -r .gituser < /root/skipconfig.json)
+  GITUSERID=$(jq -r .gituserid < /root/skipconfig.json)
+  GITPWD=$(jq -r .gitpwd < /root/skipconfig.json)
+  GITUSERNAME=$(jq -r .gitusername < /root/skipconfig.json)
+  GITEMAIL=$(jq -r .gitemail < /root/skipconfig.json)
   OAUTHID=$(jq -r .oauthid < /root/skipconfig.json)
 else
-  GITUSER="workshops-testbot"
+  GITUSERID="workshops-testbot"
   OAUTHID="ot-tcRNmn3r5wrk65Kz"
+fi
+
+if [[ "$GITUSERID" != "workshops-testbot" ]]; then
+  # Update git settings
+  git remote remove origin
+  git remote add origin https://github.com/$GITUSERID/hashicat-azure
+  git pull
+  git branch --set-upstream-to=origin/master master
+  git config --global core.editor "vi"
+  git config --global user.email "$GITEMAIL"
+  git config --global user.name "$GITUSERNAME"
+  git add .
+  git commit -m "adding remote backend"
+  cat <<-EOF > /root/.netrc
+  machine github.com
+  login $GITUSERID
+  password $GITPWD
+EOF
+  git push origin master
 fi
 
 # Update the workspace with VCS settings
@@ -30,8 +52,8 @@ cat <<-EOF > /tmp/add_vcs.json
       "vcs-repo": {
         "branch": "",
         "ingress-submodules": false,
-        "identifier": "$GITUSER/hashicat-azure",
-        "display-identifier": "$GITUSER/hashicat-azure",
+        "identifier": "$GITUSERID/hashicat-azure",
+        "display-identifier": "$GITUSERID/hashicat-azure",
         "oauth-token-id": "$OAUTHID"
         }
     },

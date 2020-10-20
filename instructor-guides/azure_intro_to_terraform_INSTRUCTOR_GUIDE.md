@@ -61,6 +61,19 @@ https://instruqt.com/hashicorp/tracks/terraform-build-azure
 
 Go through this track start to finish and make sure you understand all the challenges. Students may have questions during the labs. When presenting a workshop be sure to give enough time for all your participants to go through the labs. Remember that this is probably their first time working a tool like Terraform.
 
+### Preparation Steps
+We recommend you perform the following steps before TA-ing or teaching this workshop if you have previously done so:
+
+1. Delete your fork of the "hashicat-azure" repository and then re-fork it from https://github.com/hashicorp/hashicat-azure. This will ensure that you have the latest version without changes that you pushed while running through the workshop in the past.
+2. Delete your "hashicat-azure" workspace from your TFC organization.
+
+### Skipping in the Intro to Terraform Tracks
+HashiCorp employees (if members of the Instruqt HashiCorp organization) can skip ahead in the Intro to Terraform tracks. This has actually been the case for some time, but had never previously been documented.
+
+To actually skip one or more challenges while running one of this track, return to the track's home page and click the "Skip to" button of the challenge you wish to skip to.
+
+We have not yet enabled skipping for end-users even though Instruqt now supports that. It is debatable whether allowing end-users to skip challenges is really desireable. They'll learn more if they don't skip.
+
 #### Creating Instruqt Invites
 Once you've gotten an invite to the HashiCorp organization you can create temporary invite links for your students:
 

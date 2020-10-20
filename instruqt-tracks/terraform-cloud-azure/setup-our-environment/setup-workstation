@@ -65,8 +65,17 @@ echo
 echo "Please enter your Terraform Cloud user token."
 read TOKEN
 echo
-echo "Please enter your GitHub user name."
-read GITUSER
+echo "Please enter your GitHub user ID."
+read GITUSERID
+echo
+echo "Please enter your GitHub password or personal access token."
+read GITPWD
+echo
+echo "Please enter your GitHub user name (<first_name> <last_name>)."
+read GITUSERNAME
+echo
+echo "Please enter your GitHub email."
+read GITEMAIL
 echo
 echo "Please enter your oauth-id. You can find it at this URL:"
 echo "https://app.terraform.io/app/${ORG}/settings/version-control"
@@ -76,7 +85,10 @@ echo
 echo "Organization: \$ORG"
 echo "Workspace   : \$WORKSPACE"
 echo "Token       : \$TOKEN"
-echo "GitHub User : \$GITUSER"
+echo "GitHub User ID : \$GITUSERID"
+echo "GitHub Password : \$GITPWD"
+echo "GitHub User Name : \$GITUSERNAME"
+echo "GitHub Email : \$GITEMAIL"
 echo "OAuth ID    : \$OAUTHID"
 echo
 read -p "Do these look right to you? Y/n " -n 1 -r
@@ -93,10 +105,16 @@ cat <<-EOM > /root/skipconfig.json
   "org": "\$ORG",
   "workspace": "\$WORKSPACE",
   "token": "\$TOKEN",
-  "gituser": "\$GITUSER",
+  "gituserid": "\$GITUSERID",
+  "gitpwd": "\$GITPWD",
+  "gitusername": "\$GITUSERNAME",
+  "gitemail": "\$GITEMAIL",
   "oauthid": "\$OAUTHID"
 }
 EOM
+
+# Store the ORG in /root/.bashrc
+grep \$ORG /root/.bashrc || echo "export ORG=\"\$ORG\"" >> /root/.bashrc
 
 ponysay -f twilight -f applejack -f rainbow -f pinkie -f rarity -f fluttershy "Ready to Skip Challenges!"
 

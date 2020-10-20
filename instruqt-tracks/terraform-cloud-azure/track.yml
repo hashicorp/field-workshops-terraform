@@ -131,7 +131,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
@@ -390,7 +390,7 @@ challenges:
   - title: Text Editor
     type: code
     hostname: workstation
-    path: /root/hashicat-aws
+    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
@@ -866,4 +866,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "14523005626077351632"
+checksum: "5223103848178421180"

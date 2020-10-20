@@ -137,7 +137,7 @@ cat <<-EOF > /tmp/prefix.json
     "type":"vars",
     "attributes": {
       "key":"prefix",
-      "value":"hashicat-$RANDOM",
+      "value":"$PREFIX",
       "category":"terraform",
       "hcl":false,
       "sensitive":false

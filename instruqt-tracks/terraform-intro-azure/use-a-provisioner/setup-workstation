@@ -2,6 +2,6 @@
 
 set -e
 
-set-workdir /root/hashicat-aws
+set-workdir /root/hashicat-azure
 
 exit 0

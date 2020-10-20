@@ -1,6 +1,6 @@
 # Terraform Cloud Workshops - Instructor Guide
 
-This guide will prepare you to deliver a 3/4 to full day [Terraform Cloud on AWS/Azure/GCP Workshop](https://hashicorp.github.io/workshops).
+This guide will prepare you to deliver a 3/4 day [Terraform Cloud on AWS/Azure/GCP Workshop](https://hashicorp.github.io/workshops).
 
 Because the content is almost identical, we will cover the instructions for all three major cloud vendors (Azure/AWS/GCP) in one document.
 
@@ -18,7 +18,7 @@ Prerequisites for these workshops are as follows:
 * A trial-enabled organization in Terraform Cloud
 * A Github.com account
 
-We strongly recommend having your participants sign up for terraform cloud *before* the training so you can upgrade their organizations, and also know how many people are committed to attending the workshop. If this is not possible you'll need to make sure you have an admin handy who can upgrade organizations on the day of training.
+We strongly recommend having your participants sign up for Terraform Cloud *before* the training so you can upgrade their organizations, and also know how many people are committed to attending the workshop. If this is not possible you'll need to make sure you have an admin handy who can upgrade organizations on the day of training.
 
 **Work with your local SME or Terraform Cloud admin to get your organizations upgraded to trials.**
 
@@ -100,6 +100,47 @@ Once you've gotten an invite to the HashiCorp organization you can create tempor
 6. Make the track available to your user for at least a week.
 7. Do not enable **Allow Anonymous** setting if you want to be able to track users progress and emails.
 
+### Preparation Steps
+We recommend you perform the following steps before TA-ing or teaching any of the TFC workshops if you have previously done so:
+
+1. Delete your fork of the "hashicat-aws", "hashicat-azure", or "hashicat-gcp" repository and then re-fork it from https://github.com/hashicorp/hashicat-aws, https://github.com/hashicorp/hashicat-azure, or https://github.com/hashicorp/hashicat-gcp. This will ensure that you have the latest version without changes that you pushed while running through the workshop in the past.
+2. Delete your fork of the https://github.com/hashicorp/tfc-workshops-sentinel repository and re-fork it. This will ensure that you have the latest version.
+3. Delete your "hashicat-aws", "hashicat-azure", or "hashicat-gcp" workspace from your TFC organization.
+
+### Skipping in the Terraform Cloud tracks
+HashiCorp employees (if members of the Instruqt HashiCorp organization) can now skip ahead in the TFC tracks. This has actually been the case for some time, but had never previously been documented. In actuality, the skipping would not have worked very well since the solve script needed to support skipping were not fully implemented.
+
+We have not yet enabled skipping for end-users even though Instruqt now supports that. It is debatable whether allowing end-users to skip challenges is really desireable. They'll learn more if they don't skip.
+
+Skipping for HashiCorp users is enabled through the combination of a `fastforward` script written by the first challenge's solve script and the remaining solve scripts which looks for a file, "/root/skipconfig.json", created by that script if a user runs it.
+
+So, if you would like to skip challenges while running one of these tracks, you should do the following:
+
+1. Run the `fastforward` script during a challenge (preferably the first). Just type `fastforward`.
+2. This script will prompt you to enter your TFC organization, the name of your TFC workspace, your TFC token, your GitHub user ID, your GitHub password or personal access token, your GitHub user name (first and last names), your GitHub email, and an OAuth ID for a VCS connection in your TFC organization.
+3. Providing all of those will enable later solve scripts in the current TFC track to properly skip ahead to later challenges.
+
+To actually skip one or more challenges while running one of the TFC tracks, return to the track's home page and click the "Skip to" button of the challenge you wish to skip to.
+
+Please note the following restrictions on skipping:
+* You must have already forked the `hashicat-aws`, `hashicat-azure`, or `hashicat-gcp` repository from the hashicorp GitHub organization into your own personal GitHub organization before trying to skip past the "Version Controlled Infrastructure" (versioned-infrastructure) challenge.
+* You must have already set up a VCS Connection in your TFC organization before trying to skip past the "Version Controlled Infrastructure" (versioned-infrastructure) challenge.
+* You must have already forked the `tfc-workshops-sentinel` repository with Sentinel policies from the HashiCorp GitHub organization into your own personal GitHub organization with before trying to skip past the "Terraform Compliance with Sentinel" (a-sentinel-stands-guard) challenge.
+* Do not skip the first challenge since that will cause the track to clone a slightly different version of the hashicat application intended for use with CircleCI tests.
+
+Note that in the rest of this section, "*" is a placeholder for "aws", "azure", or "gcp", depending on which of the TFC tracks you are running.
+
+The solve script will do the following for you when skipping:
+* Configure your "credentials.tfrc.json" and "remote_backend.tf" files, create the "hashicat-*" workspace and configure it to use local execution, update your "terraform.tfvars" file, and do the first `terraform init` and `terraform apply -auto-approve` (in the "Safekeeping Your Terraform State" solve script).
+* Convert your "hashicat-*" workspace to use remote execution, create workspace variables (both environment and Terraform), and trigger your first remote run with `terraform apply -auto-approve` (in the "Securing Cloud Credentials" solve script).
+* Create the `admins`, `developers`, and `managers` teams in your organization if they don't already exist and assign them team permissions in your "hashicat-*" workspace (in the "Working with Teams in Terraform Cloud" solve script).
+* Execute various `git` commands, push your modified "remote_backend.tf" file to your fork of the "hashicat-*" repository, and update your workspace to use your VCS connection to that repository (in the "Version Controlled Infrastructure" solve script). This will trigger another run.
+* Create the "tfc-workshops-sentinel-aws", "tfc-workshops-sentinel-azure", or "tfc-workshops-sentinel-gcps" Sentinel policy set in your organization, attach your "hashicat-*" workspace to it, add tags to your VM in your "main.tf" file and execute `git` commands including two `git push` commands to push the tags one at a time to your fork of the "hashicat" repository (in the "Terraform Compliance with Sentinel" solve script). Each `git push` will trigger another run; the first will fail the Sentinel policy check while the second will pass it.
+* Write out a new file that uses a Terraform module and execute several `git` commands including `git push` to add the module to your workspace (in the "Private Module Registry" solve script). This will also trigger a run against your workspace.
+* Execute TFC API commands to add variables to your workspace (in the "API Driven Workflows" solve script). (Technically, the script should also use the TFC API to trigger another run, but we've left this out to speed things up.)
+
+Finally, we want to emphasize again that skipping is currently only enabled for members of the Instruqt HashiCorp organization.
+
 ### Configuring the Instruqt Pools
 We recommend that you configure Instruqt pools for each Instruqt track used in this workshop 1-2 hours before your workshop begins. Please see this Confluence [doc](https://hashicorp.atlassian.net/wiki/spaces/SE/pages/511574174/Instruqt+and+Remark+Contributor+Guide#InstruqtandRemarkContributorGuide-ConfiguringInstruqtPools) for instructions.
 
@@ -128,7 +169,7 @@ echo $AWS_SECRET_ACCESS_KEY
 
 **Before I build anything I might want to configure some variables to adjust my infrastructure settings. Here you can see some terraform variables, prefix and region. These will determine the names of my resources and the region they will be deployed in.**
 
-**Down bottom you see the Environment Variables. These are system shell variables that are injected into the terraform cloud container at runtime. You can optionally encrypt sensitive environment variables such as these AWS keys. Note that these are write-only. Once you encrypt a variable by marking it sensitive, you won't see it here in plaintext again. These are dynamic AWS credentials that are good for only a few hours. You can paste them in manually or use the API to auto-populate them from HashiCorp Vault.**
+**Down bottom you see the Environment Variables. These are system shell variables that are injected into the Terraform Cloud container at runtime. You can optionally encrypt sensitive environment variables such as these AWS keys. Note that these are write-only. Once you encrypt a variable by marking it sensitive, you won't see it here in plaintext again. These are dynamic AWS credentials that are good for only a few hours. You can paste them in manually or use the API to auto-populate them from HashiCorp Vault.**
 
 **New and advanced users can utilize the GUI to trigger infrastructure builds. Let's do that now by clicking on this Queue Plan button. I'm going to put "new dev environment" down as the reason for the build. Now notice that a new terraform plan has kicked off. This is the dry run. terraform is figuring out if any of the infrastructure already exists from a previous run, and then it will build or change everything to match what's in the code. That is, unless we fail a sentinel policy...**
 
