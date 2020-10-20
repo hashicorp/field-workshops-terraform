@@ -123,10 +123,14 @@ So, if you would like to skip challenges while running one of these tracks, you 
 To actually skip one or more challenges while running one of the TFC tracks, return to the track's home page and click the "Skip to" button of the challenge you wish to skip to.
 
 Please note the following restrictions on skipping:
+* Do not skip the first challenge since that will cause the track to clone a slightly different version of the hashicat application intended for use with CircleCI tests.
 * You must have already forked the `hashicat-aws`, `hashicat-azure`, or `hashicat-gcp` repository from the hashicorp GitHub organization into your own personal GitHub organization before trying to skip past the "Version Controlled Infrastructure" (versioned-infrastructure) challenge.
 * You must have already set up a VCS Connection in your TFC organization before trying to skip past the "Version Controlled Infrastructure" (versioned-infrastructure) challenge.
 * You must have already forked the `tfc-workshops-sentinel` repository with Sentinel policies from the HashiCorp GitHub organization into your own personal GitHub organization with before trying to skip past the "Terraform Compliance with Sentinel" (a-sentinel-stands-guard) challenge.
-* Do not skip the first challenge since that will cause the track to clone a slightly different version of the hashicat application intended for use with CircleCI tests.
+* You must have already forked and published the following Terraform modules into your TFC organization's Private Module Registry before trying to skip past the "Private Module Registry" (private-module-registry) challenge:
+    * https://registry.terraform.io/modules/terraform-aws-modules/s3-bucket/aws for AWS
+    * https://registry.terraform.io/modules/Azure/network/azurerm for Azure
+    * https://registry.terraform.io/modules/terraform-google-modules/network/google for GCP
 
 Note that in the rest of this section, "*" is a placeholder for "aws", "azure", or "gcp", depending on which of the TFC tracks you are running.
 
