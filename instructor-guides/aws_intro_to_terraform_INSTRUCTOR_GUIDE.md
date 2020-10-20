@@ -72,6 +72,12 @@ Once you've gotten an invite to the HashiCorp organization you can create tempor
 6. Make the track available to your user for at least a week.
 7. Turn on the **Allow Anonymous** switch so you can hand the URL out on the day of training.
 
+### Preparation Steps
+We recommend you perform the following steps before TA-ing or teaching this workshop if you have previously done so:
+
+1. Delete your fork of the "hashicat-aws" repository and then re-fork it from https://github.com/hashicorp/hashicat-aws. This will ensure that you have the latest version without changes that you pushed while running through the workshop in the past.
+2. Delete your "hashicat-aws" workspace from your TFC organization.
+
 ### Configuring the Instruqt Pools
 We recommend that you configure Instruqt pools for each Instruqt track used in this workshop 1-2 hours before your workshop begins. Please see this Confluence [doc](https://hashicorp.atlassian.net/wiki/spaces/SE/pages/511574174/Instruqt+and+Remark+Contributor+Guide#InstruqtandRemarkContributorGuide-ConfiguringInstruqtPools) for instructions.
 
