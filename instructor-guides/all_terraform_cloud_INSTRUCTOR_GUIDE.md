@@ -110,7 +110,7 @@ We recommend you perform the following steps before TA-ing or teaching any of th
 ### Skipping in the Terraform Cloud tracks
 HashiCorp employees (if members of the Instruqt HashiCorp organization) can now skip ahead in the TFC tracks. This has actually been the case for some time, but had never previously been documented. In actuality, the skipping would not have worked very well since the solve script needed to support skipping were not fully implemented.
 
-We have not yet enabled skipping for end-users even though Instruqt now supports that. It is debatable whether allowing end-users to skip challenges is really desireable.
+We have not yet enabled skipping for end-users even though Instruqt now supports that. It is debatable whether allowing end-users to skip challenges is really desireable. They'll learn more if they don't skip.
 
 Skipping for HashiCorp users is enabled through the combination of a `fastforward` script written by the first challenge's solve script and the remaining solve scripts which looks for a file, "/root/skipconfig.json", created by that script if a user runs it.
 
