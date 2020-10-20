@@ -6,7 +6,44 @@ set -o history
 
 cd /root/hashicat-gcp
 
-# In theory, we should trigger an apply with the API, but if the first
-# apply worked then we know the new one would too.
+# Write out vpc.tf
+cat <<-EOF > vpc.tf
+module "network" {
+  source  = "app.terraform.io/instruqt-circleci/network/google"
+  version = "2.5.0"
+  network_name = "gaurav-network"
+  project_id = var.project
+  subnets = [
+    {
+      subnet_name   = "gaurav-subnet"
+      subnet_ip     = "10.100.10.0/24"
+      subnet_region = var.region
+    }
+  ]
+}
+EOF
+
+# Students should run the 'fastforward' command to create this file.
+# Otherwise it is assumed that this is a CI/CD run.
+# The /root/skipconfig.json file is required for skipping challenges.
+if [[ -f /root/skipconfig.json ]]; then
+  ORG=$(jq -r .org < /root/skipconfig.json)
+  GITUSERID=$(jq -r .gituserid < /root/skipconfig.json)
+  GITPWD=$(jq -r .gitpwd < /root/skipconfig.json)
+  # Set ORG in vpc.tf
+  sed -i "s/instruqt-circleci/$ORG/g" vpc.tf
+  git add .
+  git commit -m "Added vpc module"
+  cat <<-EOF > /root/.netrc
+  machine github.com
+  login $GITUSERID
+  password $GITPWD
+EOF
+  git push origin master
+fi
+
+# The above will trigger a run for students who are skipping
+# In theory, we should trigger an apply with the API for CircleCI tests,
+# but if the first apply worked then we know the new one would too.
 
 exit 0
