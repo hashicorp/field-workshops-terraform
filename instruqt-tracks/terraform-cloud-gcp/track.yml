@@ -115,6 +115,8 @@ challenges:
 
     Go into the workspace's **Settings >> General** settings page and change the **Execution Mode** to **Local**.
 
+    Run `terraform version` on the "Shell" tab and then set the **Terraform Version** to match. This will avoid possible errors later in this track.
+
     Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables.
 
     Enable a free trial of Terraform Cloud paid features by navigating to the top menu bar's **Settings** > **Plan & Billing**, select **Trial Plan**, and click the button for **Start your free trial**.
