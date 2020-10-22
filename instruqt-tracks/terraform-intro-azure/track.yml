@@ -1011,11 +1011,13 @@ challenges:
 
     Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "CLI-driven workflow" panel. Name your workspace **hashicat-azure**.
 
-    Now go into the workspace's **Settings >> General** settings page and change the Execution Mode to **Local**.
+    **Note:** If you already have a **hashicat-azure** workspace, please delete the workspace by selecting the **Settings >> Destruction and Deletion** menu, clicking the "Delete from Terraform Cloud" button, typing "hashicat-azure" to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you played the [Terraform Cloud with Azure](https://play.instruqt.com/hashicorp/tracks/terraform-cloud-azure) track and then played this track.
 
-    Run `terraform version` on the "Shell" tab and then set the **Terraform Version** to match. This will avoid possible errors later in this track.
+    Now select the workspace's **Settings >> General** menu and change the Execution Mode to **Local**.
 
-    Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables, which we'll do in the next challenge.
+    Run `terraform version` on the "Shell" tab and then set the **Terraform Version** to match.
+
+    Be sure to save your settings by clicking the "Save settings" button at the bottom of the page! This will allow us to run Terraform commands from our workstation with local variables, which we'll do in the next challenge.
   notes:
   - type: text
     contents: Terraform Cloud remote state storage is free for all users.

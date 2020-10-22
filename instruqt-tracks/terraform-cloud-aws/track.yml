@@ -109,13 +109,15 @@ challenges:
 
     No really...you *must* name your workspace **hashicat-aws**. If you don't the exercises will break. Do not attempt to name it something else.
 
+    **Note:** If you already have a **hashicat-aws** workspace, please delete the workspace by selecting the **Settings >> Destruction and Deletion** menu, clicking the "Delete from Terraform Cloud" button, typing "hashicat-aws" to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you already played this track in the past.
+
     DO NOT SKIP THIS NEXT STEP:
 
     Go into the workspace's **Settings >> General** settings page and change the **Execution Mode** to **Local**.
 
-    Run `terraform version` on the "Shell" tab and then set the **Terraform Version** to match. This will avoid possible errors later in this track.
+    Run `terraform version` on the "Shell" tab and then set the **Terraform Version** to match.
 
-    Be sure to save your settings! This will allow us to run Terraform commands from our workstation with local variables.
+    Be sure to save your settings by clicking the "Save settings" button at the bottom of the page! This will allow us to run Terraform commands from our workstation with local variables.
 
     Enable a free trial of Terraform Cloud paid features by navigating to: **Settings** > **Plan & Billing**, select **Trial Plan**, and click the button for **Start your free trial**.
 
@@ -430,6 +432,8 @@ challenges:
 
     https://github.com/hashicorp/hashicat-aws
 
+    **Note:** If you ran this track in the past and already forked the repository, please delete your fork and re-fork it to make sure you are using the latest version and that it does not have changes which you will push to it later in this track. You can delete a repository by clicking on the "Settings" menu of it, scrolling all the way to the bottom of the page, clicking the "Delete this repository" button in the "Danger Zone" section, typing the full repository name, and then clicking the "I understand the consequences, delete this repository" button. Then re-fork the repository as above.
+
     Run the following commands to update your git configuration for your own repository. Don't forget to replace YOURGITUSER with your own git username in the second command.
 
     ```
@@ -524,7 +528,7 @@ challenges:
   assignment: |-
     In this challenge you'll make a small change to the code that deploys the hashicat-aws application, and then create a "Pull Request", which is simply a way of proposing a change and optionally allowing others to review your changes.
 
-    Find a partner, or if you're alone you can do this exercise solo. Exchange github usernames and browse to the other person's **fork** of the hashicat-aws repository. For example:
+    Find a partner, or if you're alone you can do this exercise solo. Exchange github usernames and browse to the other person's fork of the hashicat-aws repository. For example:
 
     https://github.com/YOURNAME/hashicat-aws
 
@@ -589,6 +593,8 @@ challenges:
     1. Create a fork of the following GitHub repo, which contains several Sentinel Policy Sets that you can use in your own organization. As you did with the hashicat-aws repo, use the **Fork** button in the upper right corner of the screen to create your own copy.
 
     https://github.com/hashicorp/tfc-workshops-sentinel
+
+    **Note:**: If you previously forked this repository before 9/20/2020, please delete your fork and re-fork it to ensure that you are using newer versions of the policies that use the Sentinel v2 imports.
 
     Before moving on, please look at the [enforce-mandatory-tags](https://github.com/hashicorp/tfc-workshops-sentinel/blob/master/aws/enforce-mandatory-tags.sentinel) policy. This policy requires all EC2 instances to have `Department` and `Billable` tags. It uses some functions from a Sentinel module in a different repository called [terraform-guides](https://github.com/hashicorp/terraform-guides). You'll find many useful Sentinel policies and functions in its [governance/third-generation](https://github.com/hashicorp/terraform-guides/tree/master/governance/third-generation) directory.
 
