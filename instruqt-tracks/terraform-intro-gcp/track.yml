@@ -31,7 +31,7 @@ challenges:
 
     If you do use the VS Code Editor, please perform the following steps:
 
-    Notice the menu bar with File, Edit, and other menus at the top of the VS Cod Editor. You can find all the menus on this menu bar.
+    Notice the menu bar with File, Edit, and other menus at the top of the VS Code Editor. You can find all the menus on this menu bar.
 
     You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application. Open file called "main.tf.
 
