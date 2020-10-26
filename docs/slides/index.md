@@ -26,7 +26,7 @@ You make a slide a title slide by including `class: title`.
 ---
 name: terraform-workshops-slides
 # Terraform Workshops Slides
-### This directory contains slides for Terraform workshops.
+### ㅇ
 * They are organized by cloud.
 * Workshops for each cloud are organized by type:
   1. Terraform OSS
@@ -48,7 +48,7 @@ You can also indent one kind of list under another as done in this slide.  To ma
 ---
 name:workshop-slides
 # Viewing Workshop Slides
-#### You can view workshop slides with URLs like these:
+#### ㄷ:
 * https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/index.html
 * https://hashicorp.github.io/field-workshops-terraform/slides/azure/terraform-oss/index.html
 * https://hashicorp.github.io/field-workshops-terraform/slides/gcp/terraform-oss/index.html
