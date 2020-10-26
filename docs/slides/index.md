@@ -1,4 +1,4 @@
-name: terraform-field-workshops-slides
+name: terraform-field-workshops-index
 class: title, shelf, no-footer, fullbleed
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
@@ -24,9 +24,9 @@ You can change the background to whatever you like but the corporate template is
 You make a slide a title slide by including `class: title`.
 
 ---
-name: terraform-workshops-slides
-# Terraform Workshops Slides
-### ㅇ
+name: terraform-workshops
+# Terraform Workshops
+### This repository contains Terraform workshops.
 * They are organized by cloud.
 * Workshops for each cloud are organized by type:
   1. Terraform OSS
@@ -48,7 +48,7 @@ You can also indent one kind of list under another as done in this slide.  To ma
 ---
 name:workshop-slides
 # Viewing Workshop Slides
-#### ㄷ:
+#### You can view workshop slides with URLs like these:
 * https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/index.html
 * https://hashicorp.github.io/field-workshops-terraform/slides/azure/terraform-oss/index.html
 * https://hashicorp.github.io/field-workshops-terraform/slides/gcp/terraform-oss/index.html
