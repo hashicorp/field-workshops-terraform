@@ -2,7 +2,7 @@ version: 2
 jobs:
   instruqt-validate:
     docker:
-      - image: ubuntu:latest
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
       - checkout
       - run:
@@ -30,7 +30,7 @@ jobs:
             done
   instruqt-test-oss-aws:
     docker:
-      - image: ubuntu:latest
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
       - checkout
       - run:
@@ -69,7 +69,7 @@ jobs:
             fi
   instruqt-test-oss-gcp:
     docker:
-      - image: ubuntu:latest
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
       - checkout
       - run:
@@ -108,7 +108,7 @@ jobs:
             fi
   instruqt-test-oss-azure:
     docker:
-      - image: ubuntu:latest
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
       - checkout
       - run:
@@ -147,7 +147,7 @@ jobs:
             fi
   instruqt-test-cloud-aws:
     docker:
-      - image: ubuntu:latest
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
       - checkout
       - run:
@@ -186,7 +186,7 @@ jobs:
             fi
   instruqt-test-cloud-azure:
     docker:
-      - image: ubuntu:latest
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
       - checkout
       - run:
@@ -225,7 +225,7 @@ jobs:
             fi
   instruqt-test-cloud-gcp:
     docker:
-      - image: ubuntu:latest
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
       - checkout
       - run:
@@ -264,7 +264,7 @@ jobs:
             fi
   instruqt-test-sentinel-cli-basics:
     docker:
-      - image: ubuntu:latest
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
       - checkout
       - run:
@@ -303,7 +303,7 @@ jobs:
             fi
   instruqt-test-sentinel-v3:
     docker:
-      - image: ubuntu:latest
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
       - checkout
       - run:
