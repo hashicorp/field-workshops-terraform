@@ -1,4 +1,4 @@
-name: terraform-field-workshops-index
+name: terraform-field-workshops-slides
 class: title, shelf, no-footer, fullbleed
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
@@ -24,9 +24,9 @@ You can change the background to whatever you like but the corporate template is
 You make a slide a title slide by including `class: title`.
 
 ---
-name: terraform-workshops
-# Terraform Workshops
-### This repository contains Terraform workshops.
+name: terraform-workshops-slides
+# Terraform Workshops Slides
+### This directory contains slides for Terraform workshops.
 * They are organized by cloud.
 * Workshops for each cloud are organized by type:
   1. Terraform OSS
