@@ -35,6 +35,7 @@ Here are the steps you'll need to follow to ensure that your remote workshop is 
 ☐ Practice the slide deck and talk track before your workshop.<br>
 ☐ Send multiple email communications to the prospect/customer to remind them about the event.<br>
 ☐ In your emails, introduce yourself and remind students about the prerequisites for training.<br>
+☐ Make sure you add your workshop to the instruqt-workshops calendar, including the names of the host and presenters and the URLs of all tracks used by it.<br>
 
 ### Workshops With On Site Training Rooms
 ☐ Check the training room and audio-visual setup well in advance of the workshop.<br>
