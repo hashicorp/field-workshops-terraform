@@ -156,7 +156,7 @@ name: multi-platform-compliance
 Terraform also integrates with on premise VMs or platform services.
 
 ???
-**Terraform wether hosted in the cloud, or  on prem, can be used to build VMs in your data center, or AWS instances in the cloud, or both. You won't have to maintain two sets of tools to build on your hybrid cloud platforms.**
+**Terraform whether hosted in the cloud, or  on prem, can be used to build VMs in your data center, or AWS instances in the cloud, or both. You won't have to maintain two sets of tools to build on your hybrid cloud platforms.**
 
 ---
 name: self-service-infra
@@ -182,9 +182,9 @@ name: terraform-cloud-what-is-it
 ???
 **This slide shows the end state of our workshop. Over on the left our infrastructure folks have created some reusable modules that the rest of our users can implement in their own terraform code. These modules ensure that infrastructure components like networks and VMs get built correctly every time, and they also make it easy for the user to build the "right stuff" on their own.**
 
-**In the next stage our user is writing terraform code and checking it into a Version Control System. This ensures that each and every change meant for production is recorded and reviewed. This is so important. It requires discipline and cooperation from all of your devops and infrastructure admins. When new code is committed to the master branch it triggers a plan in Terraform.**
+**In the next stage our user is writing terraform code and checking it into a Version Control System. This ensures that each and every change meant for production is recorded and reviewed. This is so important. It requires discipline and cooperation from all of your devops and infrastructure admins. When new code is committed to the master branch it triggers a plan in Terraform Cloud/Enterprise.**
 
-**With a centralized Terraform service, either hosted or on prem, we have remote execution and state management.  Now you're not running terraform on your laptop like it's the wild west of cloud provisioning; instead all terraform runs happen in secure docker containers that run on our SaaS platform, or in your own data center. This allows you to encrypt and secure all your API keys, variables, and terraform state files. Access is granted only to authorized users.**
+**With a centralized Terraform service, either Terraform Cloud, or Terraform Enterprise, we have remote execution and state management.  Now you're not running terraform on your laptop like it's the wild west of cloud provisioning; instead all terraform runs happen in secure docker containers that run on our SaaS platform, or in your own data center. This allows you to encrypt and secure all your API keys, variables, and terraform state files. Access is granted only to authorized users.**
 
 **All your terraform state files are safely stored and encrypted on the server side. Any time you need to make a change to any of your infrastructure, Terraform knows the last state it was in and can build incrementally based on what has changed. Need to add more instances to a cluster? No problem, terraform can do that for you without a complete tear-down and rebuild.**
 
@@ -278,7 +278,7 @@ Terraform Cloud/Enterprise is an application that provides the following feature
 * Sentinel policy enforcement
 
 ???
-**Terraform also comes with a policy enforcement engine that can ensure that your users don't build things they shouldn't build, or configure them in the wrong way. For example, you might wish to prevent users from opening network ports to the internet, or from building too many virtual machines. All of these types of rules can be expressed using our Sentinel policy enforcement engine. Sentinel policies prevent users from doing bad things, *before* they provision to the cloud.**
+**Terraform Cloud/Enterprise also comes with a policy enforcement engine that can ensure that your users don't build things they shouldn't build, or configure them in the wrong way. For example, you might wish to prevent users from opening network ports to the internet, or from building too many virtual machines. All of these types of rules can be expressed using our Sentinel policy enforcement engine. Sentinel policies prevent users from doing bad things, *before* they provision to the cloud.**
 
 ---
 name: why-tfc-7
@@ -317,7 +317,7 @@ Terraform Cloud/Enterprise is an application that provides the following feature
 * Secure API credentials
 
 ???
-**Terraform can store and encrypt your cloud credentials, passwords or any other sensitive data. These credentials are stored safely inside of a Vault instance that runs inside of Terraform.**
+**Terraform Cloud/Enterprise can store and encrypt your cloud credentials, passwords or any other sensitive data. These credentials are stored safely inside of a Vault instance that runs inside of Terraform.**
 
 ---
 name: terraform-cloud-enterprise
@@ -333,7 +333,7 @@ The feature list for these two offerings is nearly identical. We will be using T
 ???
 **Just like the adoption story from OSS to Enterprise, Terraform offers the ability to build upon the ingelligence that grows within the team.  Terraform Cloud itself is really good for individuals, or small business that need to put some level of automation behind their infrastructure.  They usually move to the Business Tier when the number of users gets unwieldy, or when they need to deploy on prem.  Enterprise is really the move if you want full control over your destiny, or if you have some sever security requirements (governments, government contractors, etc.).  The way I usually look at this, if you are using an on prem VCS, chances are you'll need Enterprise.  If your pipeline or VCS is hosted, you're probably good with cloud for Business.**
 
-Be well versed on the feature list and differences between cloud and enterprise. In particular, remember that if you are running more concurrent builds, or if you need SSO, or on prem, you are in the Cloud for Business or Enterprise tier automatically.
+Be well versed on the feature list and differences between Terraform Cloud levels (including Business Tier) and Terraform Enterprise. In particular, remember that if you are running more concurrent builds, or if you need SSO, or on prem, you are in the Cloud for Business or Enterprise tier automatically.
 
 ---
 name: live-demo
@@ -507,7 +507,7 @@ Terraform stores information about the resources it has built in a **state file*
 By default, the state file is stored in your local workspace.
 
 ???
-**Can anyone tell me why the state file is so important? Have you ever lost your state file? What was that like? I can tell you from experience it's not fun. You have to go and clean up or delete everything you built by hand instead of simply running `terraform destroy`. Recovering from a lost or corrupted state file is possible but painful and time consuming. It has become much easier with Terraform Import, but it is still far from a simple automated process.**
+**Can anyone tell me why the state file is so important? Have you ever lost your state file? What was that like? I can tell you from experience it's not fun. You have to go and clean up or delete everything you built by hand instead of simply running `terraform destroy`. Recovering from a lost or corrupted state file is possible but painful and time consuming. It has become much easier with `terraform import`, but it is still far from a simple automated process.**
 
 **Also, sometimes sensitive data can leak to the state file. We do our best to prevent this but the safest solution is to encrypt and store the entire state file in a safe place.**
 
