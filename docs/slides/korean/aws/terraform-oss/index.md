@@ -437,7 +437,7 @@ class: title
 name: what-is-terraform-oss
 class: img-left
 # Terraform이란
-![Terraform](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images\Terraform_VerticalLogo_FullColor.png)
+![Terraform](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/Terraform_VerticalLogo_FullColor.png)
 
 Terraform은 오픈 소스 프로비저닝 도구입니다.
 
