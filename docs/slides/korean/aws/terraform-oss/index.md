@@ -1,8 +1,10 @@
 name: AWS-Terraform-Workshop
 class: center
 count: false
-![:scale 60%](images/tf_aws.png)
+![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/tf_aws.png)
+
 <br><br>
+
 # AWS Terraform Workshop
 ## Infrastructure as Code를 사용하여 AWS 리소스 구성
 ???
@@ -109,7 +111,7 @@ name: How-to-Provision-an-AWS-Instance
 ---
 name: AWS-Console-Provision
 # Method 1: AWS Console (GUI)
-![:scale 70%](images/aws_provision.png)
+![:scale 70%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/aws_provision.png)
 
 ???
 **AWS를 사용해 본 적이 있다면 익숙해 보일 것입니다. EC2 패널에서 인스턴스> 인스턴스 시작을 클릭하면 인스턴스를 프로비저닝하는 데 사용할 수있는 다양한 AWS 머신 이미지 (AMI) 목록이 표시됩니다. 이들 중 일부는 AWS에서 제공하고 다른 일부는 마켓 플레이스의 타사에서 제공합니다. 필요한 것을 검색하거나 찾아보고 클릭하세요.**
@@ -117,7 +119,7 @@ name: AWS-Console-Provision
 ---
 name: AWS-Console-Provision-2
 # Method 1: AWS Portal (GUI)
-![:scale 60%](images/aws_provision_2.png)
+![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/aws_provision_2.png)
 
 ???
 **AMI를 선택한 후에는 인스턴스 유형, 시작하려는 VPC, 할당하려는 관련 IAM 역할, 외부 스토리지, 태그, 보안 그룹 등 몇 가지 세부 정보를 입력합니다. 긴 옵션 목록! AWS 콘솔은 개별 VM 및 개발 또는 테스트 환경을 가동하는 데 유용 할 수 있습니다. 좋은 소식은 이러한 방식으로 인프라를 가동하는 것이 정말 쉽다는 것입니다. 나쁜 소식은 확장되지 않는다는 것입니다. 그리고 아무도 빌드 된 것을 추적하지 않을 가능성이 있습니다.**
@@ -308,7 +310,7 @@ name: IaC2
 ---
 name: IaC-Tools
 # 다른 Infrastructure as Code 도구들
-.center[![:scale 40%](images/infra_tools.png)]
+.center[![:scale 40%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/infra_tools.png)]
 
 이러한 도구는 OS나 애플리케이션 구성에 적합합니다.
 
@@ -322,7 +324,7 @@ Chef, Puppet 및 Ansible은 모두 운영 체제 및 애플리케이션의 맥�
 ---
 name: Native-Tools
 # Native-Cloud 프로비저닝 도구들
-.center[![:scale 90%](images/clouds.png)]
+.center[![:scale 90%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/clouds.png)]
 
 각 클라우드에는 자체 YAML 또는 JSON 기반 프로비저닝 도구가 있습니다.
 
@@ -333,7 +335,7 @@ Terraform은 모든 주요 클라우드 제공 업체 및 VM 하이퍼 바이저
 
 ---
 name: Config-Hell
-.center[![:scale 60%](images/Config_Hell.jpg)]
+.center[![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/Config_Hell.jpg)]
 ???
 **이것은 재미있는 웹 만화입니다. 중첩 된 JSON 템플릿을 살펴보면서 중괄호의 어떤 레이어에 있는지 알아 내려고 노력한 사람들은 이것을 이해할 것입니다.**
 
@@ -355,7 +357,7 @@ Terraform 코드 (HCL)는 배우기 쉽고 읽기 쉽습니다. 또한 동등한
 ---
 Name: Why-Terraform-1
 # 그래서, 왜 Terraform 일까요?
-.center[![:scale 60%](images/1password_terraform.png)]
+.center[![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/1password_terraform.png)]
 
 .center[### <https://blog.1password.com/terraforming-1password/>]
 
@@ -435,7 +437,7 @@ class: title
 name: what-is-terraform-oss
 class: img-left
 # Terraform이란
-![Terraform](images\Terraform_VerticalLogo_FullColor.png)
+![Terraform](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/Terraform_VerticalLogo_FullColor.png)
 
 Terraform은 오픈 소스 프로비저닝 도구입니다.
 
@@ -885,7 +887,7 @@ output "private_key" {
 name: tf-dependency-graph
 class: img-right
 # Terraform Dependency Graph
-.center[![:scale 100%](images/blast_radius_graph_1.png)]
+.center[![:scale 100%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/blast_radius_graph_1.png)]
 
 terraform 리소스 그래프는 리소스 간의 종속성을 시각적으로 보여줍니다.
 
@@ -988,7 +990,7 @@ provisioner "remote-exec" {
 name: puppet-chef-ansible
 class: compact
 # Terraform & Config Management Tools
-.center[![:scale 50%](images/cpa.jpg)]
+.center[![:scale 50%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/cpa.jpg)]
 
 Terraform은 Chef, Puppet 또는 Ansible과 같은 일반적인 구성 관리 도구와 잘 작동합니다.
 
