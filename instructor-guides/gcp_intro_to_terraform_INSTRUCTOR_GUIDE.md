@@ -69,7 +69,7 @@ https://github.com/hashicorp/field-workshops-terraform/issues
 ### Hands-on Labs
 At certain points in the slide deck there are links to the lab exercises. [Instruqt](https://instruqt.com/hashicorp) is our lab platform. Lab exercises can be completed anonymously, but if users want to keep track of their progress they should create accounts on the Instruqt website. There is one long instruqt track that is broken into sections for the labs:
 
-https://instruqt.com/hashicorp/tracks/terraform-build-gcp
+https://play.instruqt.com/hashicorp/tracks/terraform-intro-gcp
 
 Go through this track start to finish and make sure you understand all the challenges. Students may have questions during the labs. When presenting a workshop be sure to give enough time for all your participants to go through the labs. Remember that this is probably their first time working a tool like Terraform.
 
@@ -104,7 +104,7 @@ We recommend that you configure Instruqt pools for each Instruqt track used in t
 After chapter 1 there is a slide that says *Live Demo*. You can use an instruqt track to do a brief Terraform demo for your participants, or insert your own demo here. Follow these steps to do the demo in instruqt:
 
 #### Setup
-1. Right before you start the training, visit https://instruqt.com/hashicorp/tracks/terraform-build-gcp and start the track. You do not have to complete the track, we're just using Instruqt to stand up a demo environment. Open the `/root/hashicat-gcp` folder with VSC. Copy the *.completed files from the exercises directory and overwrite main.tf and outputs.tf. On the "Shell" tab run `terraform init; terraform apply -auto-approve`. Open the Meow World application in another browser tab. Open the GCP console and navigate to your infrastructure in the UI. If the app doesn't load the first time run `terraform apply` again.
+1. Right before you start the training, visit https://play.instruqt.com/hashicorp/tracks/terraform-intro-gcp and start the track. You do not have to complete the track, we're just using Instruqt to stand up a demo environment. Open the `/root/hashicat-gcp` folder with VSC. Copy the *.completed files from the exercises directory and overwrite main.tf and outputs.tf. On the "Shell" tab run `terraform init; terraform apply -auto-approve`. Open the Meow World application in another browser tab. Open the GCP console and navigate to your infrastructure in the UI. If the app doesn't load the first time run `terraform apply` again.
 
 NOTE: You can find the GCP username, password, and project ID in your environment variables. Use these to log onto the GCP Console.
 
