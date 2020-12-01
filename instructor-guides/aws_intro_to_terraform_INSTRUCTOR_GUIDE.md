@@ -104,7 +104,7 @@ We recommend that you configure Instruqt pools for each Instruqt track used in t
 After chapter 1 there is a slide that says *Live Demo*. You can use an instruqt track to do a brief Terraform demo for your participants, or insert your own demo here. Follow these steps to do the demo in instruqt:
 
 #### Setup
-1. Right before you start the training, visit https://instruqt.com/hashicorp/tracks/terraform-build-aws and start the track. You do not have to complete the track, we're just using Instruqt to stand up a demo environment. Open the `/root/hashicat-aws` folder with VSC. Copy the *.completed files from the exercises directory and overwrite main.tf and outputs.tf. On the "Shell" tab, run `terraform init; terraform apply -auto-approve`. Open the Meow World application in another browser tab. Open the AWS console and navigate to your infrastructure in the UI. If the app doesn't load the first time run `terraform apply` again.
+1. Right before you start the training, visit https://instruqt.com/hashicorp/tracks/terraform-intro-aws and start the track. You do not have to complete the track, we're just using Instruqt to stand up a demo environment. Open the `/root/hashicat-aws` folder with VSC. Copy the *.completed files from the exercises directory and overwrite main.tf and outputs.tf. On the "Shell" tab, run `terraform init; terraform apply -auto-approve`. Open the Meow World application in another browser tab. Open the AWS console and navigate to your infrastructure in the UI. If the app doesn't load the first time run `terraform apply` again.
 
 NOTE: You can find the AWS account ID, username and password in your environment variables. Use these to log onto the AWS Console.
 
