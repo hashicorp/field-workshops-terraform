@@ -33,14 +33,11 @@ Here is some boilerplate text you can use or customize when inviting or announci
 
 ```
 Terraform Foundations
-A hands-on technical workshop
+A hands-on technical workshop to learn the basics of Terraform.
 
 
 Prerequisites:
-* Complete one of the Intro to Terraform workshops
 * Have a Terraform Cloud account
-* Organization in Terraform Cloud with trial features enabled
-* A github.com account
 
 ```
 
