@@ -423,7 +423,7 @@ terraform output  # View Terraform outputs
 terraform graph   # Create a DOT-formatted graph
 ```
 
-Need a refresher? Try the [Intro to Terraform on Azure](https://instruqt.com/hashicorp/tracks/terraform-build-azure) lab exercises.
+Need a refresher? Try the [Intro to Terraform on Azure](https://instruqt.com/hashicorp/tracks/terraform-intro-azure) lab exercises.
 
 ???
 Depending on the maturity of your audience you might take a detour back to the Intro to Terraform track. Ideally everyone in the workshop has already completed this or has equivalent experience with Terraform OSS.

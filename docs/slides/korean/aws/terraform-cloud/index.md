@@ -420,7 +420,7 @@ terraform 출력     # Terraform 출력보기
 terraform graph   # DOT 형식의 그래프 생성
 ```
 
-재교육이 필요하다면? [AWS의 Terraform 소개] (https://instruqt.com/hashicorp/tracks/terraform-build-aws) 실습을 시도해보세요.
+재교육이 필요하다면? [AWS의 Terraform 소개] (https://instruqt.com/hashicorp/tracks/terraform-intro-aws) 실습을 시도해보세요.
 
 ???
 청중의 성숙도에 따라 Intro to Terraform 트랙으로 돌아갈 수 있습니다. 이상적으로는 워크숍의 모든 사람이 이미 이 작업을 완료했거나 Terraform OSS에 대해 동등한 경험을 가지고 있습니다.
