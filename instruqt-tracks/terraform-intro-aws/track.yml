@@ -1016,9 +1016,9 @@ challenges:
 
     **Note:** If you already have a **hashicat-aws** workspace, please delete the workspace by selecting the **Settings >> Destruction and Deletion** menu, clicking the "Delete from Terraform Cloud" button, typing "hashicat-aws" to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you played the [Terraform Cloud with AWS](https://play.instruqt.com/hashicorp/tracks/terraform-cloud-aws) track and then played this track.
 
-    Now select the workspace's **Settings >> General** menu and change the Execution Mode to **Local**.
+    Run `terraform version` on the "Shell" tab and then set the **Terraform Version** to match on the workspace's **Settings >> General** settings page.
 
-    Run `terraform version` on the "Shell" tab and then set the **Terraform Version** to match.
+    Also, change the **Execution Mode** to **Local**.
 
     Be sure to save your settings by clicking the "Save settings" button at the bottom of the page! This will allow us to run Terraform commands from our workstation with local variables, which we'll do in the next challenge.
   notes:
