@@ -38,7 +38,7 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# TFE Foundations
+# Terraform Foundations
 ## How Terraform Works
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
@@ -60,7 +60,7 @@ name: terraform-arch
 class: compact
 # Terraform Architecture
 
-Terraform is built on a plugin-based architecture. All providers and provisioners are plugins and users are able to write new plugins in order to support new functionality in Teraform.
+Terraform is built on a plugin-based architecture. All providers and provisioners are plugins. Users are able to write new plugins in order to support new functionality in Teraform.
 
 ![:scale 90%](../images/tf-internals.png)
 
@@ -209,11 +209,11 @@ This state is used by Terraform to map real world resources to your configuratio
 ---
 name: what-is-state-cont
 class: compact
-# What is State cont....
+# What is State continued...
 
 - This state is stored by default in a local file named "terraform.tfstate", but it can also be stored remotely, which works better in a team environment.
 
-- Terraform uses this local state to create plans and make changes to your infrastructure. Prior to any operation, Terraform does a refresh to update the state with the real infrastructure.
+- Terraform uses this local state to create plans and make changes to your infrastructure.
 
 ```JSON
   "version": 4,
@@ -307,7 +307,7 @@ name: what-is-remote-storage-2
 
 - With remote state, Terraform writes the state data to a remote data store, which can then be shared between all members of a team
 
-- Terraform supports storing state in Terraform Enterprise and many other storage solutions
+- Terraform natively supports storing state in Terraform Cloud.
 
 .center[
 ![:scale 60%](../images/remote-state.png)
@@ -315,7 +315,7 @@ name: what-is-remote-storage-2
 
 ---
 name: why-use-remote-storage
-# Why Do I Need Remote?
+# Why Do I Need Remote State?
 
 - Remote state gives you more than just easier version control and safer storage. It also allows you to delegate the outputs to other teams. This allows your infrastructure to be more easily broken down into components that multiple teams can access.
 - Put another way, remote state also allows teams to share infrastructure resources in a read-only way without relying on any additional configuration store.
@@ -352,7 +352,7 @@ name: lab-one-overview
 
 # Lab 1 - Tips
 
-For the first lab we will have multiple tabs in the Instuqt window:
+For the first lab we will have multiple tabs in the Instruqt window:
 
 - Code Editor tab - for this lab we will be using Visual Studio Code (VSCode).
 - Terminal Tab - this tab will be used to run our Terraform commands
@@ -373,6 +373,12 @@ In this lab we will write and deploy our resouces with Terraform. We have provid
 - Main.tf contains comments, one provider block (AWS), and one resource block (aws_vpc)
 - Review the AWS provider documentation to fill in the missing required attribute - **region**
 - Review the AWS VPC resource documentation to fill in the required attribute - **cidr_block**
+
+---
+name: lab-one-instructions-2
+
+# Lab 1 - Instructions
+
 - Run ```terraform init``` from the termnal tab to initialize your directory
 - Run ```terraform plan``` to review what Terraform plans to add, remove, or change
 - Run ```terraform apply``` to build the resources in AWS

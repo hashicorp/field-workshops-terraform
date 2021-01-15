@@ -3,7 +3,7 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# TFE Technical Enablement
+# Teraform Cloud Technical Enablement
 ## Terraform Foundations
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
@@ -41,11 +41,11 @@ name: agenda
 # Table of Contents
 
 <div>
-1. **Course Agenda**
+1. **Workshop Agenda**
 2. **Introduction to Terraform**
 3. **How Terraform Works**
 4. **Terraform Basics**
-5. **Terraform Intermediate**
+5. **Intermediate Terraform**
 6. **Version Control**
 <div>
 
@@ -55,7 +55,7 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# TFE Technical Enablement
+# Terraform Cloud Technical Enablement
 ## Course Agenda
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
@@ -75,7 +75,7 @@ class: compact
 - **M2** How Terraform Works
   * OSS + Plugin Model
   * Providers
-  * State / Remote backends
+  * State & Remote backends
   * Terraform Workflow
 
 ---
@@ -84,7 +84,7 @@ class: compact
 # Agenda
 - **M3** Terraform Basics
   * HashiCorp Configuration Language (HCL)
-  * Data vs. Resources
+  * Data Sources vs. Resources
   * Variables
   * Outputs
   * Interpolations
@@ -97,13 +97,13 @@ class: compact
 name: course-agenda-3
 class: compact
 # Agenda
-- **M5** Terraform Intermediate
+- **M5** Intermediate Terraform
   * Modules
   * Functions
   * Locals
   * Lab
 - **M6** Version Control
-  * What is version Control?
+  * What is Version Control?
   * Terraform Cloud VCS Workflow
   * Collaborating with VCS
   * Lab
@@ -115,7 +115,7 @@ background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/
 count: false
 
 # Why Change?
-## A history of infrastructure
+## A History of Infrastructure
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
 
@@ -177,7 +177,7 @@ class: compact
 ]
 
 ???
-Seeing the value in infrastructure as a service, cloud providers began to form, standards emerged, and compute is at our fingertips
+Seeing the value in infrastructure as a service, cloud providers began to form, standards emerged, and compute is at our fingertips. Providers offer various types of
 
 ---
 name: datacenter-as-comp
@@ -266,7 +266,7 @@ Infrastructure as Code (IaC) is the process of managing and provisioning  infras
 ---
 name: iac-allows-us-to
 class: compact
-# Infrastructure as Code Allows Us To ..
+# Infrastructure as Code Allows Us To...
 
 * Provide a codified workflow to create infrastructure
 * Change and update existing infrastructure
@@ -295,7 +295,7 @@ name: terraform-is-iac
 ---
 name: terraform-is-iac-2
 class: compact
-# Its a Codified Way to Define Your Infrastructure
+# It's a Codified Way to Define Your Infrastructure
 
 ```JSON
 # Configure the AWS Provider
@@ -340,16 +340,16 @@ class: compact
 name: terraform-cloud
 class: compact
 # Terraform Cloud
-Terraform Cloud is an application that helps teams use Terraform together
+Terraform Cloud is an application that helps teams use Terraform together. Terraform Cloud:
 
-- It manages Terraform runs in a consistent and reliable environment
+- Manages Terraform runs in a consistent and reliable environment
 - Includes easy access to shared state and secret data
 - Has a robust Role Based Access system
   * Plan
   * Approve
   * Write
-- A private registry for sharing Terraform modules
-- Integrated Sentinel Workflows for policy and control
+- Includes a private registry for sharing Terraform modules
+- Includes Integrated Sentinel Workflows for policy and control
 
 ---
 name: terraform-ent
@@ -376,7 +376,7 @@ class: img-right
 
 Version control systems are applications that allow users to store, track, test, and collaborate on changes to their infrastructure and applications.
 
-Terraform Cloud integrates with most common Version Control Systems.
+Terraform Cloud integrates with many common Version Control Systems.
 
 ???
 
@@ -387,7 +387,7 @@ class: img-left
 
 ![:scale 70%](../images/git_noobs.png)
 
-Terraform Cloud can directly integrate with source code repos in GitHub Enterprise, Gitlab, and Bitbucket. This allows you to build simple DevOps workflows with code reviews, testing and approvals.
+Terraform Cloud can directly integrate with source code repos in GitHub, Gitlab, Azure DevOps, and Bitbucket. This allows you to build simple DevOps workflows with code reviews, testing and approvals.
 
 https://xkcd.com/1597/
 

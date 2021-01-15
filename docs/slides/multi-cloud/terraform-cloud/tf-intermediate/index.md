@@ -38,7 +38,7 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# TFE Foundations
+# Terraform Foundations
 ## Terrraform Intermediate
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
@@ -71,7 +71,7 @@ name: module-benefits
 Modules provide many benefits and solve problems for complex Terraform configurations.
 
 - Organization - easier to naviagate, understand, and update by grouping Terraform configuration into logical components
-- Re-useability - easier to re-use configuration written by either yourself, your teammates, or the Terraform community
+- Re-useability - easier to re-use configuration written by yourself, your teammates, or the Terraform community
 - Consistency and best practices - ensure best practices are applied across configurations
 
 ???
@@ -222,7 +222,7 @@ count: false
 name: lab-four-instructions
 # Lab 4 - Instructions
 
-In lab 4 we are going to look at some more advanced features of Terraform including modules. We have staged a new project in your instuqt workspace that puts the networking components we built earlier into a module.
+In lab 4 we are going to look at some more advanced features of Terraform including modules. We have staged a new project in your instruqt workspace that puts the networking components we built earlier into a module.
 
 - Review the networking components in main.tf in the **hashicat-aws** project
 - Review main.tf in the **hashicat-modular-aws** project

@@ -3,7 +3,7 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# TFE Technical Enablement
+# Terraform Cloud Technical Enablement
 ## Terraform Foundations - 5
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
@@ -39,7 +39,7 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# TFE Foundations
+# Terraform Foundations
 ## Version Control and Terraform
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
@@ -59,10 +59,10 @@ name: agenda
 name: what-is-a-vcs
 # What is a VCS
 
-`A component of software configuration management, version control, also known as revision control or
-source control, is the management of changes to documents, computer programs, large web sites, and other collections of information.`
+A component of software configuration management, version control, also known as revision control or
+source control, is the management of changes to documents, computer programs, large web sites, and other collections of information.
 
-`Changes are usually identified by a number or letter code, termed the "revision number", "revision level", or simply "revision". For example, an initial set of files is "revision 1". When the first change is made, the resulting set is "revision 2", and so on. Each revision is associated with a timestamp and the person making the change. Revisions can be compared, restored, and with some types of files, merged.`
+Changes are usually identified by a number or letter code, termed the "revision number", "revision level", or simply "revision". For example, an initial set of files is "revision 1". When the first change is made, the resulting set is "revision 2", and so on. Each revision is associated with a timestamp and the person making the change. Revisions can be compared, restored, and with some types of files, merged.
 
 ---
 name: what-is-a-vcs
@@ -76,7 +76,7 @@ Simply put a version control solution assists in the management, versioning and 
 
 ---
 name:
-# Why Does TFE use a VCS
+# Why Does TFC/E use a VCS
 
 Terraform Cloud is more powerful when you integrate it with your version control system (VCS) provider. Although you can use many of Terraform Cloud's features without one, a VCS connection provides additional features and improved workflows.
 
@@ -94,7 +94,7 @@ name:
 
 ---
 name: vsc-access-1
-# How TFE uses VCS Access
+# How TFC/E uses VCS Access
 
 Most workspaces in Terraform Cloud are associated with a VCS repository, which provides Terraform configurations for that workspace.
 
@@ -103,7 +103,7 @@ To find out which repos are available, access their contents, and create webhook
 ---
 name: vsc-access-2
 class: compact
-# How TFE uses VCS Access Cont...
+# How TFC/E uses VCS Access Continued...
 
 Although Terraform Cloud's API lets you create workspaces and push configurations to them without a VCS connection, the primary workflow expects every workspace to be backed by a repository.
 
@@ -116,7 +116,7 @@ To use configurations from VCS, Terraform Cloud needs to do several things:
 ---
 name: tfe-webhooks
 class: compact
-# TFE Webhooks on VCS
+# TFC/E Webhooks on VCS
 
 Terraform Cloud uses webhooks to monitor new commits and pull requests.
 
@@ -126,13 +126,13 @@ Terraform Cloud uses webhooks to monitor new commits and pull requests.
 
 - When someone submits a pull request/merge request to a branch from another branch in the same repository, Terraform Cloud performs a speculative plan with the contents of the request and links to the results on the PR's page.
 
-  * This helps you avoid merging PRs that cause plan failures.
+  * This helps you avoid merging PR's that cause apply failures.
 
 
 ---
 name: solo-collaboration-with-tfe
 # Enabling the Collaboration Workflow
-## VCS and TFE
+## Individuals
 
 When Users start with Terraform Open Source they follow a local development cycle that includes the following steps;
 
@@ -144,7 +144,6 @@ When Users start with Terraform Open Source they follow a local development cycl
 ---
 name: solo-collaboration-with-tfe-diagram
 # Enabling the Collaboration Workflow
-## VCS and TFE
 
 .center[
 ![:scale 60%](../images/local-workflow-tf.png)
@@ -152,8 +151,7 @@ name: solo-collaboration-with-tfe-diagram
 
 ---
 name: team-collaboration-with-tfe
-# Enabling the  Team Collaboration Workflow
-## VCS and TFE
+# Enabling the Team Collaboration Workflow
 
 When Teams of Terraform Users want to collaborate and cooperate on code, they need to be aware of several key factors;
 
@@ -166,7 +164,6 @@ When Teams of Terraform Users want to collaborate and cooperate on code, they ne
 ---
 name: team-collaboration-with-tfe-diagram
 # Enabling the Team Collaboration Workflow
-## VCS and TFE
 
 .center[
 ![:scale 50%](../images/team-workflow-tf.png)
@@ -175,9 +172,8 @@ name: team-collaboration-with-tfe-diagram
 ---
 name: enterprise-collaboration-with-tfe
 # Enabling the Enterprise Collaboration Workflow
-## VCS and TFE
 
-Large scale Enterprises have unique needs and requirements when it comes to managing Infrastructure changes and this is where Terraform Enterprise excels.
+Large scale Enterprises have unique needs and requirements when it comes to managing Infrastructure changes and this is where Terraform Cloud excels.
 
 
 ---
@@ -201,7 +197,6 @@ Several of the key issues here are;
 - audit, etc
 - enterprise feature set**
 
-
 ---
 name: lab
 class: title, smokescreen, shelf
@@ -221,7 +216,7 @@ Lab 5 introduces a Terraform workflow that is based around Version Control. For 
 - In the terminal tab, click on the url to log into the local GitLab server
 - Review the projects that are staged in the VCS
 - Follow the lab instructions to get familar with the GitLab interface
-- Go to Terraform Cloud and click on the new organization has been created - Terraform-Foundations-<RandomString>
+- Go to Terraform Cloud and click on the new organization that has been created - Terraform-Foundations-<RandomString>
 - Review the workspaces in the organization
 - Return to GitLab and select the HashiCat AWS project development branch
 
@@ -231,7 +226,7 @@ name: lab-three-instructions-cont
 
 - Modify the welcome message in the deploy_app.sh script
 - Commit the changes into version control
-- Review the Development workspace in Terraform Cloud\
+- Review the Development workspace in Terraform Cloud
 - Review application welcome message changes
 - Create merge request to promote changes to staging branch
 

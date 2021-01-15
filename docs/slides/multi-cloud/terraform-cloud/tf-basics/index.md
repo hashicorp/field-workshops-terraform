@@ -3,7 +3,7 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# TFE Technical Enablement
+# Terraform Cloud Technical Enablement
 ## Terraform Foundations - 3
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
@@ -38,7 +38,7 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# TFE Foundations
+# Terraform Foundations
 ## Teraform Basics
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
@@ -203,7 +203,7 @@ Every terraform resource is structured exactly the same way.
 resource type "name" {
   parameter = "foo"
   parameter2 = "bar"
-  list = ["one", "two", "three"]
+  a_list = ["one", "two", "three"]
 }
 ```
 
@@ -225,14 +225,14 @@ data "google_compute_image" "my_image" {
   project = "debian-cloud"
 }
 ```
-Data sources are a way of querying a provider to return an existing resource, so that we can access its parameters for our own use.
+Data sources are a way of querying a provider to return an existing resource that was not declared by Terraform, so that we can access its parameters for our own use.
 
 ---
 
 name: dependency-mapping
 class: compact
 # Terraform Dependency Mapping
-Terraform can automatically keep track of dependencies for you. Look at the two resources below. Note the highlighted lines in the google_compute_instance resource. This is how we tell one resource to refer to another in terraform.
+Terraform can automatically keep track of dependencies for you. Look at the two resources below. Note the highlighted line in the google_compute_instance resource. This is how we tell one resource to refer to another in terraform.
 
 ```terraform
 data "google_compute_image" "my_image" {
@@ -265,7 +265,7 @@ Variables make configuration easier to understand and re-use. They also help kee
 ---
 name: defining-variables
 # Where are Variables Defined?
-Terraform variables are placed in a file called *variables.tf*. Variables can have default settings. If you omit the default, the user will be prompted to enter a value. Here we are *declaring* the variables that we intend to use.
+Terraform variables are typically declared in a file called *variables.tf*. Variables can have default settings. If you omit the default, the user will be prompted to enter a value. Here we are *declaring* the variables that we intend to use.
 
 ```tex
 variable "prefix" {
@@ -332,7 +332,7 @@ resource aws_subnet "main" {
 name: terraform-outputs
 class: compact
 # Outputs
-Outputs allow us to configure any messages or data you want to show at the end of a terraform apply.
+Outputs allow us to configure any messages or data you want to show at the end of a terraform apply. Outputs are also used to pass data back from Terraform modules.
 
 ```terraform
 output "catapp_url" {
@@ -365,14 +365,14 @@ In the second lab we are going to continue our exploration of Terraform by modif
 - Run ```terraform plan``` and ```terraform apply``` to modify our VPC resource to add the tags
 - Use the AWS CLI to review the tags
 - Review the **interpolation** documentation and the AWS subnet documentation
-- Use ```terraform console``` to query available parameters of our resources
-- Run ```terraform plan``` and ```terraform apply``` to create the subnet at attach it to the existing VPC
+
 
 ---
 name: lab-two-instructions-continued
 
 # Lab 2 - Instructions Continued
-
+- Use ```terraform console``` to query available parameters of our resources
+- Run ```terraform plan``` and ```terraform apply``` to create the subnet at attach it to the existing VPC
 - Make our code reusable by modifying it to include Terraform variables
 - Run ```terraform plan``` and ```terraform apply``` to rebuild our VPC and subnet
 
