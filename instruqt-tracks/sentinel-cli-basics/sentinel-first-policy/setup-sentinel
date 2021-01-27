@@ -24,7 +24,8 @@ mkdir -p /root/sentinel/test/require-even-number
 
 cat <<-'EOF' > /root/sentinel/test/require-even-number/fail.hcl
 param "the_number" {
-     value = "<an_odd_number>"
+     value = <an_odd_number>
+}
 
 test {
   rules = {
@@ -35,7 +36,8 @@ EOF
 
 cat <<-'EOF' > /root/sentinel/test/require-even-number/pass.hcl
 param "the_number" {
-     value = "<an_even_number>"
+     value = <an_even_number>
+}
 
 test {
   rules = {
