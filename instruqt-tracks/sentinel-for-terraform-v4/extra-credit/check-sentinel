@@ -1,0 +1,31 @@
+#!/bin/bash -l
+
+set -e
+
+cd /root/sentinel
+
+grep -qL "<condition_1>" prevent-auto-apply-in-production.sentinel && fail-message "You have not replaced '<condition_1>' with a condition yet."
+
+grep -qL "<condition_2>" prevent-auto-apply-in-production.sentinel && fail-message "You have not replaced '<condition_2>' with a condition yet."
+
+grep -q "tfrun.workspace.name matches \"^prod-(.*)\"" prevent-auto-apply-in-production.sentinel  || grep -q "strings.has_prefix(tfrun.workspace.name, \"prod-\")" prevent-auto-apply-in-production.sentinel || fail-message "You have not added 'tfrun.workspace.name matches \"^prod-(.*)\"' or 'strings.has_prefix(tfrun.workspace.name, \"prod-\")' to your conditions yet."
+
+grep -q "tfrun.workspace.name matches \"(.*)-prod$\"" prevent-auto-apply-in-production.sentinel || grep -q "strings.has_suffix(tfrun.workspace.name, \"-prod\")" prevent-auto-apply-in-production.sentinel || fail-message "You have not added 'tfrun.workspace.name matches \"(.*)-prod$\"' or 'strings.has_suffix(tfrun.workspace.name, \"-prod\")' to your conditions yet."
+
+grep -qL "<condition_3>" prevent-auto-apply-in-production.sentinel && fail-message "You have not replaced '<condition_3>' with a condition yet."
+
+grep -q "tfrun.workspace.auto_apply" prevent-auto-apply-in-production.sentinel || grep -q "tfrun.workspace.auto_apply is true" || grep -q "tfrun.workspace.auto_apply == true" || fail-message "You have not replaced '<condition_3>' with 'tfrun.workspace.auto_apply is true' (or the equivalent) yet."
+
+grep -qL "<expression_1>" prevent-auto-apply-in-production.sentinel && fail-message "You have not replaced '<expression_1>' yet."
+
+grep -q "tfrun.workspace.name" prevent-auto-apply-in-production.sentinel || fail-message "You have not replaced '<expression_1>' with 'tfrun.workspace.name' yet."
+
+grep -q "sentinel test -run=auto -verbose" /root/.bash_history || grep -q "sentinel test -run=auto" /root/.bash_history || fail-message "You haven't tested the prevent-auto-apply-in-production.sentinel policy against the test cases yet. Please run 'sentinel test -run=auto -verbose'"
+
+sentinel test -run=auto
+rc=$?
+if [ $rc -ne 0 ]; then
+    fail-message "Your policy prevent-auto-apply-in-production.sentinel did not pass all 4 test cases. Please revise and test it again."
+fi
+
+exit 0

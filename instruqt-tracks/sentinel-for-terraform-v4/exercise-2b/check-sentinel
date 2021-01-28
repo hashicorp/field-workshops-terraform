@@ -1,0 +1,31 @@
+#!/bin/bash -l
+
+set -e
+
+# Run 'touch /tmp/skip-check' to disable this check
+if [ -f /tmp/skip-check ]; then
+  rm /tmp/skip-check
+  exit 0
+fi
+
+cd /root/sentinel
+
+grep -qL "<expression>" require-access-keys-use-pgp-b.sentinel && fail-message "You have not replaced '<expression>' in require-access-keys-use-pgp-b.sentinel yet."
+
+grep -q "key.change.after.pgp_key else null" require-access-keys-use-pgp-b.sentinel || fail-message "You have not replaced '<expression>' with 'else null' in require-access-keys-use-pgp-b.sentinel yet."
+
+grep -qL "<condition_1>" require-access-keys-use-pgp-a.sentinel && fail-message "You have not replaced '<condition_1>' in require-access-keys-use-pgp-b.sentinel yet."
+
+grep -q "pgp_key is null" require-access-keys-use-pgp-b.sentinel || grep -q "pgp_key == null" require-access-keys-use-pgp-b.sentinel || fail-message "You have not replaced '<condition_1>' with 'pgp_key is null' or 'pgp_key == null' in require-access-keys-use-pgp-b.sentinel yet."
+
+grep -qL "<condition_2>" require-access-keys-use-pgp-a.sentinel && fail-message "You have not replaced '<condition_2>' in require-access-keys-use-pgp-b.sentinel yet."
+
+grep -q 'not strings.has_prefix(.*pgp_key.*,.*"keybase:")' require-access-keys-use-pgp-b.sentinel || fail-message "You have not replaced '<condition_2>' with 'not strings.has_prefix(pgp_key, \"keybase:\")' in require-access-keys-use-pgp-b.sentinel yet."
+
+sentinel test -run=pgp-b.sentinel
+rc=$?
+if [ $rc -ne 0 ]; then
+    fail-message "Your policy require-access-keys-use-pgp-b.sentinel did not pass all 4 test cases. Please revise and test it again."
+fi
+
+exit 0

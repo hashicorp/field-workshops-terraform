@@ -69,6 +69,8 @@ challenges:
     contents: |-
       We've launched the Sentinel CLI 0.17.3 on a Ubuntu VM running in GCP so that you don't need to download or install it.
 
+      If you would like to see syntax highlighting in the editor for Sentinel policies, we suggest selecting "ruby" in the language drop-down at the bottom of the editor.
+
       After learning how to use the Sentinel CLI in the first challenge, you will run a very simple policy in the second challenge.
   tabs:
   - title: Sentinel CLI
@@ -146,4 +148,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 2400
-checksum: "13952551940758044428"
+checksum: "510909489441964392"
