@@ -1,0 +1,40 @@
+#!/bin/bash -l
+
+set -e
+
+# Run 'touch /tmp/skip-check' to disable this check
+if [ -f /tmp/skip-check ]; then
+  rm /tmp/skip-check
+  exit 0
+fi
+
+cd /root/sentinel
+
+grep -qL "<expression_1>" restrict-gcp-instance-image-b.sentinel && fail-message "You have not replaced '<expression_1>' in restrict-gcp-instance-image-b.sentinel yet."
+
+fgrep -q "instance.change.after.boot_disk" restrict-gcp-instance-image-b.sentinel || fail-message "You have not replaced '<expression_1>' with 'instance.change.after.boot_disk' in restrict-gcp-instance-image-b.sentinel yet."
+
+grep -qL "<expression_2>" restrict-gcp-instance-image-b.sentinel && fail-message "You have not replaced '<expression_2>' in restrict-gcp-instance-image-b.sentinel yet."
+
+fgrep -q "boot_disk[0].initialize_params" restrict-gcp-instance-image-b.sentinel || fail-message "You have not replaced '<expression_2>' with 'boot_disk[0].initialize_params' in restrict-gcp-instance-image-b.sentinel yet."
+
+grep -qL "<expression_3>" restrict-gcp-instance-image-b.sentinel && fail-message "You have not replaced '<expression_3>' in restrict-gcp-instance-image-b.sentinel yet."
+
+matches=$(fgrep "boot_disk[0].initialize_params[0].image" restrict-gcp-instance-image-b.sentinel | wc -l)
+if [ $matches -ne 2 ]; then
+    fail-message "You have not replaced both occurences of '<expression_3>' with 'boot_disk[0].initialize_params[0].image' in restrict-gcp-instance-image-b.sentinel yet."
+fi
+
+grep -qL "<add_main_rule>" restrict-gcp-instance-image-b.sentinel && fail-message "You have not replaced '<add_main_rule>' in restrict-gcp-instance-image-b.sentinel yet."
+
+grep -q "main = rule {" restrict-gcp-instance-image-b.sentinel || fail-message "You have not added 'main = rule {' in restrict-gcp-instance-image-b.sentinel yet."
+
+grep -q "violations is 0" restrict-gcp-instance-image-b.sentinel || grep -q "violations == 0" restrict-gcp-instance-image-b.sentinel || fail-message "You have not added 'violations is 0' or 'violations == 0' to your main rule in restrict-gcp-instance-image-b.sentinel yet."
+
+sentinel test -run=image-b.sentinel
+rc=$?
+if [ $rc -ne 0 ]; then
+    fail-message "Your policy restrict-gcp-instance-image-b.sentinel did not pass both test cases. Please revise and test it again."
+fi
+
+exit 0

@@ -1,0 +1,18 @@
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/sentinel
+
+# Edit the second version of the policy
+sed -i 's/<expression_1>/instance.change.after.boot_disk/g' restrict-gcp-instance-image-b.sentinel
+sed -i 's/<expression_2>/boot_disk[0].initialize_params/g' restrict-gcp-instance-image-b.sentinel
+sed -i 's/<expression_3>/boot_disk[0].initialize_params[0].image/g' restrict-gcp-instance-image-b.sentinel
+sed -i 's/<add_main_rule>/main = rule { violations is 0 }/g' restrict-gcp-instance-image-b.sentinel
+
+# Test the second version of the policy
+sentinel test -run=image-b.sentinel -verbose
+
+exit 0

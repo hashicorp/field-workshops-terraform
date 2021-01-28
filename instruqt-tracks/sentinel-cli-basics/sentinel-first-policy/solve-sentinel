@@ -13,8 +13,8 @@ sentinel apply require-even-number.sentinel
 sentinel apply -param the_number=2 require-even-number.sentinel
 
 # Edit the require-even-number test cases
-sed -i 's/<an_odd_number>/5/g' /root/sentinel/test/require-even-number/fail.json
-sed -i 's/<an_even_number>/4/g' /root/sentinel/test/require-even-number/pass.json
+sed -i 's/<an_odd_number>/5/g' /root/sentinel/test/require-even-number/fail.hcl
+sed -i 's/<an_even_number>/4/g' /root/sentinel/test/require-even-number/pass.hcl
 
 # Test the require-even-number.sentinel policy
 sentinel test -run=number

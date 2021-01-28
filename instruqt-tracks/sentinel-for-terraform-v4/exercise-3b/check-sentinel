@@ -1,0 +1,31 @@
+#!/bin/bash -l
+
+set -e
+
+# Run 'touch /tmp/skip-check' to disable this check
+if [ -f /tmp/skip-check ]; then
+  rm /tmp/skip-check
+  exit 0
+fi
+
+cd /root/sentinel
+
+grep -qL "<expression>" restrict-acm-certificate-domains-b.sentinel && fail-message "You have not replaced '<expression>' in restrict-acm-certificate-domains-b.sentinel yet."
+
+grep -q "cert.values.domain" restrict-acm-certificate-domains-b.sentinel || fail-message "You have not replaced '<expression>' with 'cert.values.domain' in restrict-acm-certificate-domains-b.sentinel yet."
+
+grep -qL "<condition>" restrict-acm-certificate-domains-b.sentinel && fail-message "You have not replaced '<condition>' in restrict-acm-certificate-domains-b.sentinel yet."
+
+grep -q "domain matches parent_domain" restrict-acm-certificate-domains-b.sentinel || fail-message "You have not replaced '<condition>' with 'domain matches parent_domain' in restrict-acm-certificate-domains-b.sentinel yet."
+
+grep -qL "<regex>" restrict-acm-certificate-domains-b.sentinel && fail-message "You have not replaced '<regex>' in restrict-acm-certificate-domains-b.sentinel yet."
+
+fgrep -q '(.+)\\.hashidemos\\.io$' restrict-acm-certificate-domains-b.sentinel || fail-message "You have not replaced '<regex>' with '(.+)\\\\\.hashidemos\\\\\.io$' in restrict-acm-certificate-domains-b.sentinel yet."
+
+sentinel test -run=domains-b.sentinel
+rc=$?
+if [ $rc -ne 0 ]; then
+    fail-message "Your policy restrict-acm-certificate-domains-b.sentinel did not pass both test cases. Please revise and test it again."
+fi
+
+exit 0

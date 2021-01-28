@@ -1,0 +1,49 @@
+#!/bin/bash -l
+
+set -e
+
+cd /root/sentinel
+
+fgrep -qL "<expression_1>" require-modules-from-pmr-a.sentinel && fail-message "You have not replaced '<expression_1>' in require-modules-from-pmr-a.sentinel with an expression that gives a list of all module calls yet."
+
+fgrep -q "tfconfig.module_calls" require-modules-from-pmr-a.sentinel || fail-message "You have not replaced '<expression_1>' in require-modules-from-pmr-a.sentinel with 'tfconfig.module_calls' yet."
+
+fgrep -qL "<condition_1>" require-modules-from-pmr-a.sentinel && fail-message "You have not replaced '<condition_1>' in require-modules-from-pmr-a.sentinel with a condition that requires the current module call to have an index that does not contain a colon yet."
+
+fgrep -q 'index not matches "(.+):(.+)"' require-modules-from-pmr-a.sentinel || fgrep -q 'index not matches ".+:.+"' require-modules-from-pmr-a.sentinel || fgrep -q 'index matches "^[^:]*$"' require-modules-from-pmr-a.sentinel || fail-message "You have not replaced '<condition_1>' with 'index not matches \"(.+):(.+)\"' or 'index matches \"^[^:]*$\"' yet."
+
+fgrep -qL "<condition_2>" require-modules-from-pmr-a.sentinel && fail-message "You have not replaced '<condition_2>' in require-modules-from-pmr-a.sentinel with a condition that tests if the module call has a source from the desired private module registry yet."
+
+fgrep -q 'strings.has_prefix(mc.source, tf_address + "/" + tf_org)' require-modules-from-pmr-a.sentinel || fail-message "You have not replaced '<condition_2>' with 'strings.has_prefix(mc.source, tf_address + \"/\" + tf_org)' yet."
+
+fgrep -qL "<expression_2>" require-modules-from-pmr-a.sentinel && fail-message "You have not replaced '<expression_2>' in require-modules-from-pmr-a.sentinel with an expression that gives the source of the module yet."
+
+fgrep -q "mc.source" require-modules-from-pmr-a.sentinel || fail-message "You have not replace '<expression_2>' in require-modules-from-pmr-a.sentinel with 'mc.source' yet."
+
+matches=$(fgrep "mc.source" require-modules-from-pmr-a.sentinel | wc -l)
+if [ $matches -ne 2 ]; then
+    fail-message "You need to replace '<expression_2>' in require-modules-from-pmr-a.sentinel with 'mc.source'."
+fi
+
+fgrep -qL "<function>" require-modules-from-pmr-a.sentinel && fail-message "You have not replaced '<function>' in require-modules-from-pmr-a.sentinel with the function that should be called yet."
+
+matches=$(fgrep "require_modules_from_pmr" require-modules-from-pmr-a.sentinel | wc -l)
+if [ $matches -ne 2 ]; then
+    fail-message "You need to replace '<function>' in require-modules-from-pmr-a.sentinel with 'require_modules_from_pmr'."
+fi
+
+fgrep -qL "<arg1>" require-modules-from-pmr-a.sentinel && fail-message "You have not replaced '<arg1>' in require-modules-from-pmr-a.sentinel yet."
+
+fgrep -qL "<arg2>" require-modules-from-pmr-a.sentinel && fail-message "You have not replaced '<arg2>' in require-modules-from-pmr-a.sentinel yet."
+
+fgrep -q "require_modules_from_pmr(address, organization)" require-modules-from-pmr-a.sentinel || fail-message "You have not replaced '<function>(<arg1>, <arg2>)' with 'require_modules_from_pmr(address, organization)' in require-modules-from-pmr-a.sentinel yet."
+
+fgrep -q "sentinel test -run=pmr-a.sentinel -verbose" /root/.bash_history || fgrep -q "sentinel test -run=pmr-a.sentinel" /root/.bash_history || fail-message "You haven't tested the require-modules-from-pmr-a.sentinel policy against the test cases yet. Please run 'sentinel test -run=pmr-a.sentinel -verbose'"
+
+sentinel test -run=pmr-a.sentinel
+rc=$?
+if [ $rc -ne 0 ]; then
+    fail-message "Your policy require-modules-from-pmr-a.sentinel did not pass both test cases. Please revise and test it again."
+fi
+
+exit 0

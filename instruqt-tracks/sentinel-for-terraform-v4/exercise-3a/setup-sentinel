@@ -1,0 +1,169 @@
+#!/bin/bash -l
+
+set -e
+
+cat <<-'EOF' > /root/sentinel/restrict-acm-certificate-domains-a.sentinel
+# restrict-acm-certificate-domains-a.sentinel
+# This policy uses the tfstate import to restrict ACM certificates
+# to have domains that are sub-domains of hashidemos.io
+
+# Import common-functions/tfstate-functions/tfstate-functions.sentinel
+# with alias "state"
+import "tfstate-functions" as state
+
+# Get all AWS ACM certs
+allACMCerts = state.find_datasources("<data_source_type>")
+
+# Filter to ACM certs that are not sub-domains of hashidemos.io
+violatingACMCerts = filter allACMCerts as address, cert {
+  cert.values.<attribute> else "" not matches "(.+)\\.hashidemos\\.io$" and
+  print(address, "has domain", <expression>,
+        "that is not a sub-domain of hashidemos.io")
+}
+
+# Count violations
+violations = length(violatingACMCerts)
+
+# Main rule that evaluates the result of the validation function
+main = rule {
+  violations is 0
+}
+EOF
+
+mkdir -p /root/sentinel/test/restrict-acm-certificate-domains-a
+
+cat <<-'EOF' > /root/sentinel/test/restrict-acm-certificate-domains-a/fail.hcl
+module "tfstate-functions" {
+  source = "../../common-functions/tfstate-functions/tfstate-functions.sentinel"
+}
+
+mock "tfstate/v2" {
+  module {
+    source = "mock-tfstate-fail.sentinel"
+  }
+}
+
+test {
+  rules = {
+    main = false
+  }
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/restrict-acm-certificate-domains-a/pass.hcl
+module "tfstate-functions" {
+  source = "../../common-functions/tfstate-functions/tfstate-functions.sentinel"
+}
+
+mock "tfstate/v2" {
+  module {
+    source = "mock-tfstate-pass.sentinel"
+  }
+}
+
+test {
+  rules = {
+    main =  true
+  }
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/restrict-acm-certificate-domains-a/mock-tfstate-fail.sentinel
+terraform_version = "0.12.3"
+outputs = {}
+resources = {
+  "aws_acm_certificate.cert_1": {
+    "address":        "aws_acm_certificate.cert_1",
+    "depends_on":     [],
+    "deposed_key":    "",
+    "index":          null,
+    "mode":           "data",
+    "module_address": "",
+    "name":           "cert_1",
+    "provider_name":  "aws",
+    "tainted":        false,
+    "type":           "aws_acm_certificate",
+    "values": {
+      "arn":         "arn:aws:acm:us-east-1:753646501470:certificate/1f485f70-2bc1-4ae3-a30f-a533605e99b9",
+      "domain":      "cam-vault.hashydemos.io",
+      "id":          "2020-03-25 16:37:53.939547607 +0000 UTC",
+      "key_types":   null,
+      "most_recent": false,
+      "statuses":    null,
+      "types":       null,
+    },
+  },
+  "aws_acm_certificate.cert_2": {
+    "address":        "aws_acm_certificate.cert_2",
+    "depends_on":     [],
+    "deposed_key":    "",
+    "index":          null,
+    "mode":           "data",
+    "module_address": "",
+    "name":           "cert_2",
+    "provider_name":  "aws",
+    "tainted":        false,
+    "type":           "aws_acm_certificate",
+    "values": {
+      "arn":         "arn:aws:acm:us-east-1:753646501470:certificate/5c9b4d26-b955-4c55-a895-ee7c87020526",
+      "domain":      "roger-ptfe.hashydemos.io",
+      "id":          "2020-03-25 16:37:53.938086355 +0000 UTC",
+      "key_types":   null,
+      "most_recent": false,
+      "statuses":    null,
+      "types":       null,
+    },
+  },
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/restrict-acm-certificate-domains-a/mock-tfstate-pass.sentinel
+terraform_version = "0.12.3"
+outputs = {}
+resources = {
+  "aws_acm_certificate.cert_1": {
+    "address":        "aws_acm_certificate.cert_1",
+    "depends_on":     [],
+    "deposed_key":    "",
+    "index":          null,
+    "mode":           "data",
+    "module_address": "",
+    "name":           "cert_1",
+    "provider_name":  "aws",
+    "tainted":        false,
+    "type":           "aws_acm_certificate",
+    "values": {
+      "arn":         "arn:aws:acm:us-east-1:753646501470:certificate/1f485f70-2bc1-4ae3-a30f-a533605e99b9",
+      "domain":      "cam-vault.hashidemos.io",
+      "id":          "2020-03-25 16:37:53.939547607 +0000 UTC",
+      "key_types":   null,
+      "most_recent": false,
+      "statuses":    null,
+      "types":       null,
+    },
+  },
+  "aws_acm_certificate.cert_2": {
+    "address":        "aws_acm_certificate.cert_2",
+    "depends_on":     [],
+    "deposed_key":    "",
+    "index":          null,
+    "mode":           "data",
+    "module_address": "",
+    "name":           "cert_2",
+    "provider_name":  "aws",
+    "tainted":        false,
+    "type":           "aws_acm_certificate",
+    "values": {
+      "arn":         "arn:aws:acm:us-east-1:753646501470:certificate/5c9b4d26-b955-4c55-a895-ee7c87020526",
+      "domain":      "roger-ptfe.hashidemos.io",
+      "id":          "2020-03-25 16:37:53.938086355 +0000 UTC",
+      "key_types":   null,
+      "most_recent": false,
+      "statuses":    null,
+      "types":       null,
+    },
+  },
+}
+EOF
+
+exit 0

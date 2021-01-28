@@ -1,0 +1,17 @@
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/sentinel
+
+# Edit the second version of the policy
+sed -i 's/<expression>/cert.values.domain/g' restrict-acm-certificate-domains-b.sentinel
+sed -i 's/<condition>/domain matches parent_domain/g' restrict-acm-certificate-domains-b.sentinel
+sed -i 's/<regex>/(.+)\\\\.hashidemos\\\\.io$/g' restrict-acm-certificate-domains-b.sentinel
+
+# Test the second version of the policy
+sentinel test -run=domains-b.sentinel -verbose
+
+exit 0

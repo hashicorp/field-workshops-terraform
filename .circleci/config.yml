@@ -301,7 +301,7 @@ jobs:
               echo "Instruqt track test failed three times."
               exit 1
             fi
-  instruqt-test-sentinel-v3:
+  instruqt-test-sentinel-v4:
     docker:
       - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
@@ -325,7 +325,7 @@ jobs:
             else
               echo "Instruqt is installed and updated to most recent version."
             fi
-            cd /root/project/instruqt-tracks/sentinel-for-terraform-v3
+            cd /root/project/instruqt-tracks/sentinel-for-terraform-v4
             echo "Running instruqt track push..."
             instruqt track push --force
             echo "Running instruqt track test..."
@@ -398,7 +398,7 @@ workflows:
             branches:
               only:
                 - master
-      - instruqt-test-sentinel-v3:
+      - instruqt-test-sentinel-v4:
           requires:
             - instruqt-validate
           filters:
@@ -436,6 +436,6 @@ workflows:
       - instruqt-test-sentinel-cli-basics:
           requires:
             - instruqt-validate
-      - instruqt-test-sentinel-v3:
+      - instruqt-test-sentinel-v4:
           requires:
             - instruqt-validate
