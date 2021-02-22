@@ -6,6 +6,8 @@ set -e
 # Allow instruqt time to do its thing
 sleep 10
 
+set-workdir /root
+
 # Create VSC startup script
 cat <<-EOF > /etc/systemd/system/code-server.service
 [Unit]
@@ -18,7 +20,7 @@ Type=simple
 Restart=always
 RestartSec=1
 User=root
-ExecStart=/usr/bin/code-server --host 0.0.0.0 --port 8443 --cert --auth none \$(pwd)
+ExecStart=/usr/bin/code-server --host 0.0.0.0 --port 8443 --cert --auth none /root
 
 [Install]
 WantedBy=multi-user.target
