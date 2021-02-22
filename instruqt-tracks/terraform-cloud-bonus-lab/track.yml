@@ -4,8 +4,10 @@ type: track
 title: Bonus Lab - Terraform Cloud
 teaser: |
   Ready for more? Test your Terraform Cloud skills with this intermediate level lab challenge.
-description: |-
-  If you've completed one of the Terraform Cloud tracks and would like an extra challenge, try this bonus lab. In this track you'll build an approval pipeline and development branch for your Terraform code, then ensure that all tests pass in a dev environment before approving the change to production.
+description: If you've completed one of the Terraform Cloud tracks and would like
+  an extra challenge, try this bonus lab. In this track you'll build an approval pipeline
+  and development branch for your Terraform code, then ensure that all tests pass
+  in a dev environment before approving the change to production.
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
 - terraform
@@ -111,4 +113,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 7200
-checksum: "2983228259820797752"
+checksum: "10461104640924123561"
