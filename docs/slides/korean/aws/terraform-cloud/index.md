@@ -12,7 +12,7 @@ Terraform Cloud on AWS 워크숍에 오신 것을 환영합니다. 이 워크샵
 
 Terraform Cloud와 Terraform Enterprise는 거의 동일한 기능 세트를 가지고 있으므로 교육 환경으로 Terraform Cloud를 사용합니다.
 
-강사 가이드 링크: https://github.com/hashicorp/field-workshops-terraform/blob/master/instructor-guides/all_terraform_cloud_INSTRUCTOR_GUIDE.md
+강사 가이드 링크: https://github.com/hashicorp/field-workshops-terraform/blob/main/instructor-guides/all_terraform_cloud_INSTRUCTOR_GUIDE.md
 
 소개 노트: Terraform Cloud on AWS에 오신 것을 환영합니다. 이 슬라이드 데크는 전적으로 Markdown 언어로 작성되었으므로 편집하거나 추가 한 다음 풀 요청을 제출하여 변경 사항을 메인 브랜치에 추가 할 수 있습니다. 슬라이드 데크를 편집하려면이 저장소를 포크하고 Markdown 파일을 편집 한 다음 변경 사항과 함께 풀 요청을 제출하면됩니다. 이 파이썬 한 줄로 슬라이드 데크의 로컬 복사본을 쉽게 테스트 할 수 있습니다.:
 
@@ -475,7 +475,7 @@ name: our-application
 .center[![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/meow_world.png)]
 
 ???
-이것은 오늘 교육을위한 우리의 애플리케이션입니다. 우리는 이미 모든 Terraform 코드를 작성했습니다. 이 앱은 다양한 기능의 작동 방식을 배우는 데 도움이됩니다. 이미 Intro to Terraform on AWS를 살펴본 적이 있다면 Hashicat에 익숙 할 것입니다. 이전 데모에서 사용한 것과 동일한 앱입니다. 
+이것은 오늘 교육을위한 우리의 애플리케이션입니다. 우리는 이미 모든 Terraform 코드를 작성했습니다. 이 앱은 다양한 기능의 작동 방식을 배우는 데 도움이됩니다. 이미 Intro to Terraform on AWS를 살펴본 적이 있다면 Hashicat에 익숙 할 것입니다. 이전 데모에서 사용한 것과 동일한 앱입니다.
 
 ---
 name: terraform-state

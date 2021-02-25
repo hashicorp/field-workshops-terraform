@@ -6,7 +6,7 @@ count: false
 ## Azure Terraform Workshop
 ### Build Azure Resources With Infrastructure as Code
 ???
-INSTRUCTOR GUIDE LINK: https://github.com/hashicorp/field-workshops-terraform/blob/master/instructor-guides/azure_intro_to_terraform_INSTRUCTOR_GUIDE.md
+INSTRUCTOR GUIDE LINK: https://github.com/hashicorp/field-workshops-terraform/blob/main/instructor-guides/azure_intro_to_terraform_INSTRUCTOR_GUIDE.md
 
 This slide presentation is stored as Markdown code, specifically using the RemarkJS engine to render it. All standard markdown tags are supported, and you can also use some HTML within this document.
 
