@@ -8,7 +8,7 @@ count: false
 # AWS Terraform Workshop
 ## Infrastructure as Code를 사용하여 AWS 리소스 구성
 ???
-강사 가이드 링크 : https://github.com/hashicorp/field-workshops-terraform/blob/master/instructor-guides/aws_intro_to_terraform_INSTRUCTOR_GUIDE.md
+강사 가이드 링크 : https://github.com/hashicorp/field-workshops-terraform/blob/main/instructor-guides/aws_intro_to_terraform_INSTRUCTOR_GUIDE.md
 
 이 슬라이드 프레젠테이션은 특히 RemarkJS 엔진을 사용하여 렌더링하는 Markdown 코드로 저장됩니다. 모든 표준 마크 다운 태그가 지원되며이 문서 내에서 일부 HTML을 사용할 수도 있습니다.
 
@@ -164,7 +164,7 @@ name: Provision-with-Terraform-2
 resource aws_instance "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
-  
+
   // Name of an existing EC2 KeyPair to enable SSH access to the instance
   tags = {
     Name = "HelloWorld"
@@ -317,7 +317,7 @@ name: IaC-Tools
 클라우드 인프라 및 플랫폼 서비스를 프로비저닝하기 위해 특별히 제작 된 것은 아닙니다.
 
 ???
-다른 도구는 어떻습니까? 이미 Ansible을 가지고 있는데 왜 사용하면 안되나요? 아니면 내 사람들은 Powershell 만 수행합니다. 이것들은 모두 훌륭한 도구입니다. 그러나 이들 중 어느 것도 프로비저닝 작업을 위해 특별히 설계된 것은 아닙니다. 
+다른 도구는 어떻습니까? 이미 Ansible을 가지고 있는데 왜 사용하면 안되나요? 아니면 내 사람들은 Powershell 만 수행합니다. 이것들은 모두 훌륭한 도구입니다. 그러나 이들 중 어느 것도 프로비저닝 작업을 위해 특별히 설계된 것은 아닙니다.
 
 Chef, Puppet 및 Ansible은 모두 운영 체제 및 애플리케이션의 맥락에서 훌륭하게 작동합니다. 이러한 각 도구를 사용하여 일부 클라우드 프로비저닝을 수행 할 수 있지만 실제로 Terraform만큼 잘 작동하는 것은 없습니다. 반대로 HashiCorp에는 구성 관리 도구가 없습니다. Terraform은 이러한 모든 도구와 잘 작동합니다.
 
@@ -385,7 +385,7 @@ Name: Why-Terraform-on-AWS
 * 다른 클라우드 제공 업체로부터 **마이그레이션**
 
 ???
-Terraform은 클라우드 제공 업체 간 마이그레이션에도 유용합니다. AWS에서 AWS로 일부 워크로드를 이동하려한다고 가정 해 보겠습니다. Terraform의 코드 변경은 CloudFormation 템플릿을 사용하는 것보다 구현하기가 훨씬 쉽습니다. 학습 곡선이 거의 없었기 때문에 간단한 데모 애플리케이션을 한 클라우드에서 다른 클라우드로 몇 시간 만에 마이그레이션 할 수있었습니다. Terraform 코드는 어디서 실행하든 동일하게 보입니다. 
+Terraform은 클라우드 제공 업체 간 마이그레이션에도 유용합니다. AWS에서 AWS로 일부 워크로드를 이동하려한다고 가정 해 보겠습니다. Terraform의 코드 변경은 CloudFormation 템플릿을 사용하는 것보다 구현하기가 훨씬 쉽습니다. 학습 곡선이 거의 없었기 때문에 간단한 데모 애플리케이션을 한 클라우드에서 다른 클라우드로 몇 시간 만에 마이그레이션 할 수있었습니다. Terraform 코드는 어디서 실행하든 동일하게 보입니다.
 
 ---
 Name: Why-Terraform-on-AWS

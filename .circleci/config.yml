@@ -348,63 +348,63 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
       - instruqt-test-oss-aws:
           requires:
             - instruqt-validate
           filters:
             branches:
               only:
-                - master
+                - main
       - instruqt-test-oss-gcp:
           requires:
             - instruqt-validate
           filters:
             branches:
               only:
-                - master
+                - main
       - instruqt-test-oss-azure:
           requires:
             - instruqt-validate
           filters:
             branches:
               only:
-                - master
+                - main
       - instruqt-test-cloud-aws:
           requires:
             - instruqt-validate
           filters:
             branches:
               only:
-                - master
+                - main
       - instruqt-test-cloud-azure:
           requires:
             - instruqt-validate
           filters:
             branches:
               only:
-                - master
+                - main
       - instruqt-test-cloud-gcp:
           requires:
             - instruqt-validate
           filters:
             branches:
               only:
-                - master
+                - main
       - instruqt-test-sentinel-cli-basics:
           requires:
             - instruqt-validate
           filters:
             branches:
               only:
-                - master
+                - main
       - instruqt-test-sentinel-v4:
           requires:
             - instruqt-validate
           filters:
             branches:
               only:
-                - master
+                - main
   nightly-build:
     triggers:
       - schedule:
@@ -412,7 +412,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
     jobs:
       - instruqt-validate
       - instruqt-test-oss-aws:
