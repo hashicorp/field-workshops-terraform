@@ -315,7 +315,7 @@ Terraform Cloud/Enterprise is an application that provides the following feature
 * Secure API credentials
 
 ???
-**Terraform enterprise can store and encrypt your cloud credentials, passwords or any other sensitive data. These credentials are stored safely inside of a Vault instance that runs inside of TFE.**
+**Terraform Enterprise can store and encrypt your cloud credentials, passwords or any other sensitive data. These credentials are stored safely inside of a Vault instance that runs inside of TFE.**
 
 ---
 name: terraform-cloud-enterprise
@@ -330,7 +330,7 @@ class: compact
 The feature list for these offerings is nearly identical. We will be using Terraform Cloud accounts for our lab exercises today.
 
 ???
-Just like the adoption story from OSS to Enterprise, Terraform offers the ability to build upon the ingelligence that grows within the team.  Terraform Cloud itself is really good for individuals, or small business that need to put some level of automation behind their infrastructure.  They usually move to the Business Tier when the number of users gets unwieldy, or when they need to deploy on-prem.  Enterprise is really the move if you want full control over your destiny, or if you have some severe security requirements (governments, government contractors, etc.).  The way I usually look at this, if you are using an on-prem VCS, chances are you'll need Enterprise.  If your pipeline or VCS is hosted, you're probably good with Terraform Cloud for Business.
+**Just like the adoption story from OSS to Enterprise, Terraform offers the ability to build upon the ingelligence that grows within the team.  Terraform Cloud itself is really good for individuals, or small business that need to put some level of automation behind their infrastructure.  They usually move to the Business Tier when the number of users gets unwieldy, or when they need to deploy on-prem.  Enterprise is really the move if you want full control over your destiny, or if you have some severe security requirements (governments, government contractors, etc.).  The way I usually look at this, if you are using an on-prem VCS, chances are you'll need Enterprise.  If your pipeline or VCS is hosted, you're probably good with Terraform Cloud for Business.**
 
 Be well versed on the feature list and differences between Terraform Cloud levels (including the Business Tier) and Terraform Enterprise. In particular, remember that if you are running more concurrent builds, or if you need SSO, or on-prem, you are in the Cloud for Business or Enterprise tier automatically.
 
