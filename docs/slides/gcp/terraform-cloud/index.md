@@ -311,7 +311,7 @@ Terraform Cloud/Enterprise is an application that provides the following feature
 * Central state management
 * Private Module Registry
 * Sentinel policy enforcement
-* Single Sign-On (on-prem Terraform Enterprise only)
+* Single Sign-On
 * Secure API credentials
 
 ???
