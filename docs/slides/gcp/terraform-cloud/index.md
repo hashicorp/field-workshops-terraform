@@ -293,10 +293,10 @@ Terraform Cloud/Enterprise is an application that provides the following feature
 * Central state management
 * Private Module Registry
 * Sentinel policy enforcement
-* Single Sign-On (on-prem Terraform Enterprise only)
+* Single Sign-On
 
 ???
-**Terraform Enterprise also supports single sign-on using your own SAML provider. This allows you to quickly map users into your organization's teams and workspaces so they can become productive right away. This feature is only available for private Terraform Enterprise installations. We won't be covering SAML or single sign-on in today's workshop.**
+**Terraform Cloud and Enterprise also support single sign-on using your own SAML provider. This allows you to quickly map users into your organization's teams and workspaces so they can become productive right away. We won't be covering SAML or single sign-on in today's workshop.**
 
 ---
 name: why-tfc-8
