@@ -319,19 +319,20 @@ Terraform Cloud/Enterprise is an application that provides the following feature
 
 ---
 name: terraform-cloud-enterprise
+class: compact
 # Terraform Cloud or Terraform Enterprise?
-**[Terraform Cloud](https://app.terraform.io/signup)** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud based SaaS solution because they don't want to maintain the infrastructure to run it.
+**[Terraform Cloud](https://app.terraform.io/signup)** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud-based SaaS solution because they don't want to maintain the infrastructure to run it.
 
-**[Terraform Cloud for Business](https://www.hashicorp.com/contact-sales/terraform)** utilizes the same hosted environment as Terraform Cloud, but you get the features more applicable to larger teams.  Single Sign-on, Audit Logging, and the ability to Terraform on prem resources from the cloud.
+**[Terraform Cloud for Business](https://www.hashicorp.com/contact-sales/terraform)** utilizes the same hosted environment as Terraform Cloud, but you get the features more applicable to larger teams.  Single Sign-on, Audit Logging, and the ability to Terraform on-prem resources from the cloud.
 
 **[Terraform Enterprise](https://www.hashicorp.com/go/terraform-enterprise)** is the same application, but it runs in your own cloud environment or data center. Some users require more control over the Terraform Cloud application, or wish to run it in restricted networks behind corporate firewalls.
 
-The feature list for these two offerings is nearly identical. We will be using Terraform Cloud accounts for our lab exercises today.
+The feature list for these offerings is nearly identical. We will be using Terraform Cloud accounts for our lab exercises today.
 
 ???
-**Just like the adoption story from OSS to Enterprise, Terraform offers the ability to build upon the ingelligence that grows within the team.  Terraform Cloud itself is really good for individuals, or small business that need to put some level of automation behind their infrastructure.  They usually move to the Business Tier when the number of users gets unwieldy, or when they need to deploy on prem.  Enterprise is really the move if you want full control over your destiny, or if you have some sever security requirements (governments, government contractors, etc.).  The way I usually look at this, if you are using an on prem VCS, chances are you'll need Enterprise.  If your pipeline or VCS is hosted, you're probably good with cloud for Business.**
+Just like the adoption story from OSS to Enterprise, Terraform offers the ability to build upon the ingelligence that grows within the team.  Terraform Cloud itself is really good for individuals, or small business that need to put some level of automation behind their infrastructure.  They usually move to the Business Tier when the number of users gets unwieldy, or when they need to deploy on-prem.  Enterprise is really the move if you want full control over your destiny, or if you have some severe security requirements (governments, government contractors, etc.).  The way I usually look at this, if you are using an on-prem VCS, chances are you'll need Enterprise.  If your pipeline or VCS is hosted, you're probably good with Terraform Cloud for Business.
 
-Be well versed on the feature list and differences between Terraform Cloud levels (including Business Tier) and Terraform Enterprise. In particular, remember that if you are running more concurrent builds, or if you need SSO, or on prem, you are in the Cloud for Business or Enterprise tier automatically.
+Be well versed on the feature list and differences between Terraform Cloud levels (including the Business Tier) and Terraform Enterprise. In particular, remember that if you are running more concurrent builds, or if you need SSO, or on-prem, you are in the Cloud for Business or Enterprise tier automatically.
 
 ---
 name: live-demo
