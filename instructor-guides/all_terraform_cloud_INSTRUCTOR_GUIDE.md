@@ -18,9 +18,21 @@ Prerequisites for these workshops are as follows:
 * A trial-enabled organization in Terraform Cloud
 * A Github.com account
 
-We strongly recommend having your participants sign up for Terraform Cloud *before* the training so you can upgrade their organizations, and also know how many people are committed to attending the workshop. If this is not possible you'll need to make sure you have an admin handy who can upgrade organizations on the day of training.
+We strongly recommend having your participants sign up for Terraform Cloud *before* the training.  Users who create new organizations and have not already used a free 30 day trial can enable a free trial on their new organizations themselves.
 
 **Work with your local SME or Terraform Cloud admin to get your organizations upgraded to trials.**
+
+### Scheduling your workshop
+Please add all workshops, both public and private, to the shared instruqt-workshops Google calendar as follows:
+
+1. Create a new event on the instruqt-workshops calendar and set the name to the name of your workshop which could match a name being used by Field Marketing if it is public or the name of a specific customer and a product if it is private.
+2. Set the begin and end times of the event to the begin and end times of your workshop.
+3. Include the following information in the description:
+    1. The name of the host (probably yourself) after "Host:"
+    2. The names of presenters after "Presenters:"
+    3. A list of tracks that your workshop will use after "Tracks:", listing the URL of each track on its own line.
+
+Before saving the event, be sure to set the calendar as "instruqt-workshops" instead of your own personal calendar.
 
 ### Email invitation
 Here is some boilerplate text you can use or customize when inviting or announcing your workshop:
@@ -146,7 +158,7 @@ The solve scripts will do the following for you when skipping:
 Finally, we want to emphasize again that skipping is currently only enabled for members of the Instruqt HashiCorp organization.
 
 ### Configuring the Instruqt Pools
-We recommend that you configure Instruqt pools for each Instruqt track used in this workshop 1-2 hours before your workshop begins. Please see this Confluence [doc](https://hashicorp.atlassian.net/wiki/spaces/SE/pages/511574174/Instruqt+and+Remark+Contributor+Guide#InstruqtandRemarkContributorGuide-ConfiguringInstruqtPools) for instructions.
+We recommend that you configure Instruqt pools for each Instruqt track used in this workshop 1 hour before you plan to use the track. Please see this Confluence [doc](https://hashicorp.atlassian.net/wiki/spaces/SE/pages/511574174/Instruqt+and+Remark+Contributor+Guide#InstruqtandRemarkContributorGuide-ConfiguringInstruqtPools) for instructions.
 
 ### The Live Demo
 After chapter 1 there is a slide that says *Live Demo*. You can use an instruqt track to do a brief Terraform demo for your participants.

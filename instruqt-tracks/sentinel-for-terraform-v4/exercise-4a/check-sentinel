@@ -1,0 +1,33 @@
+#!/bin/bash -l
+
+set -e
+
+# Run 'touch /tmp/skip-check' to disable this check
+if [ -f /tmp/skip-check ]; then
+  rm /tmp/skip-check
+  exit 0
+fi
+
+cd /root/sentinel
+
+grep -qL "<resource_type>" restrict-gcp-instance-image-a.sentinel && fail-message "You have not replaced '<resource_type>' in restrict-gcp-instance-image-a.sentinel yet."
+
+grep -q "google_compute_instance" restrict-gcp-instance-image-a.sentinel || fail-message "You have not replaced '<resource_type>' with 'google_compute_instance' in restrict-gcp-instance-image-a.sentinel yet."
+
+grep -qL "<expression_1>" restrict-gcp-instance-image-a.sentinel && fail-message "You have not replaced '<expression_1>' in restrict-gcp-instance-image-a.sentinel yet."
+
+fgrep -q "boot_disk.0.initialize_params.0.image" restrict-gcp-instance-image-a.sentinel || fail-message "You have not replaced '<expression_1>' with 'boot_disk.0.initialize_params.0.image' in restrict-gcp-instance-image-a.sentinel yet."
+
+grep -qL "<expression_2>" restrict-gcp-instance-image-a.sentinel && fail-message "You have not replaced '<expression_2>' in restrict-gcp-instance-image-a.sentinel yet."
+
+fgrep -q 'length(violatingGCPComputeInstances["messages"])' restrict-gcp-instance-image-a.sentinel || fail-message "You have not replaced '<expression_2>' with 'length(violatingGCPComputeInstances[\"messages\"]' in restrict-gcp-instance-image-a.sentinel yet."
+
+grep -q "sentinel test -run=image-a.sentinel -verbose" /root/.bash_history || grep -q "sentinel test -run=image-a.sentinel" /root/.bash_history || fail-message "You haven't tested the restrict-gcp-instance-image-a.sentinel policy against the test cases yet. Please run 'sentinel test -run=image-a.sentinel -verbose'"
+
+sentinel test -run=image-a.sentinel
+rc=$?
+if [ $rc -ne 0 ]; then
+    fail-message "Your policy restrict-gcp-instance-image-a.sentinel did not pass both test cases. Please revise and test it again."
+fi
+
+exit 0

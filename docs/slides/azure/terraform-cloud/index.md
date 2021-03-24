@@ -11,7 +11,7 @@ count: false
 
 **Terraform Cloud and Terraform Enterprise have almost identical feature sets so we'll be using Terraform Cloud as our training environment today.**
 
-INSTRUCTOR GUIDE LINK: https://github.com/hashicorp/field-workshops-terraform/blob/master/instructor-guides/all_terraform_cloud_INSTRUCTOR_GUIDE.md
+INSTRUCTOR GUIDE LINK: https://github.com/hashicorp/field-workshops-terraform/blob/main/instructor-guides/all_terraform_cloud_INSTRUCTOR_GUIDE.md
 
 INSTRUCTOR NOTE: Welcome to Terraform Cloud on Azure. This slide deck is written entirely in Markdown language, which means you can make edits or additions then submit a pull request to add your changes to the main branch. To make edits to the slide deck simply fork this repository, edit the Markdown file(s), and submit a pull request with your changes. You can easily test a local copy of the slide deck with this python one-liner:
 
@@ -36,7 +36,7 @@ https://hashicorp.atlassian.net/wiki/spaces/SE/pages/511574174/Instruqt+and+Rema
 layout: true
 
 .footer[
-- Copyright © 2020 HashiCorp
+- Copyright © 2021 HashiCorp
 - ![:scale 100%](https://hashicorp.github.io/field-workshops-assets/assets/logos/HashiCorp_Icon_Black.svg)
 ]
 
@@ -293,10 +293,10 @@ Terraform Cloud/Enterprise is an application that provides the following feature
 * Central state management
 * Private Module Registry
 * Sentinel policy enforcement
-* Single Sign-On (on-prem Terraform Enterprise only)
+* Single Sign-On
 
 ???
-**Terraform Enterprise also supports single sign-on using your own SAML provider. This allows you to quickly map users into your organization's teams and workspaces so they can become productive right away. This feature is only available for private Terraform Enterprise installations. We won't be covering SAML or single sign-on in today's workshop.**
+**Terraform Cloud for Business, as well as Terraform Enterprise, also supports single sign-on using your own SAML provider. This allows you to quickly map users into your organization's teams and workspaces so they can become productive right away. We won't be covering SAML or single sign-on in today's workshop.**
 
 ---
 name: why-tfc-8
@@ -315,21 +315,24 @@ Terraform Cloud/Enterprise is an application that provides the following feature
 * Secure API credentials
 
 ???
-**Terraform enterprise can store and encrypt your cloud credentials, passwords or any other sensitive data. These credentials are stored safely inside of a Vault instance that runs inside of TFE.**
+**Terraform Enterprise can store and encrypt your cloud credentials, passwords or any other sensitive data. These credentials are stored safely inside of a Vault instance that runs inside of TFE.**
 
 ---
 name: terraform-cloud-enterprise
+class: compact
 # Terraform Cloud or Terraform Enterprise?
-**[Terraform Cloud](https://app.terraform.io/signup)** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud based SaaS solution because they don't want to maintain the infrastructure to run it.
+**[Terraform Cloud](https://app.terraform.io/signup)** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud-based SaaS solution because they don't want to maintain the infrastructure to run it.
 
-**[Terraform Enterprise](https://www.hashicorp.com/go/terraform-enterprise)** is the same application, but it runs in your cloud environment or data center. Some users require more control over the Terraform Cloud application, or wish to run it in restricted networks behind corporate firewalls.
+**[Terraform Cloud for Business](https://www.hashicorp.com/contact-sales/terraform)** utilizes the same hosted environment as Terraform Cloud, but you get the features more applicable to larger teams.  Single Sign-on, Audit Logging, and the ability to Terraform on-prem resources from the cloud.
 
-The feature list for these two offerings is nearly identical. We will be using Terraform Cloud accounts for our lab exercises today.
+**[Terraform Enterprise](https://www.hashicorp.com/go/terraform-enterprise)** is the same application, but it runs in your own cloud environment or data center. Some users require more control over the Terraform Cloud application, or wish to run it in restricted networks behind corporate firewalls.
+
+The feature list for these offerings is nearly identical. We will be using Terraform Cloud accounts for our lab exercises today.
 
 ???
-**If you're curious which one of these your company should adopt, the answer is Terraform Enterprise. Terraform Cloud, while convenient, is not suitable to high-volume environments or private data center infrastructure. We're using it for training because the feature set is nearly identical. In other words, everything you learn today will apply in your own Terraform Enterprise environment.**
+**Just like the adoption story from OSS to Enterprise, Terraform offers the ability to build upon the ingelligence that grows within the team.  Terraform Cloud itself is really good for individuals, or small business that need to put some level of automation behind their infrastructure.  They usually move to the Business Tier when the number of users gets unwieldy, or when they need to deploy on-prem.  Enterprise is really the move if you want full control over your destiny, or if you have some severe security requirements (governments, government contractors, etc.).  The way I usually look at this, if you are using an on-prem VCS, chances are you'll need Enterprise.  If your pipeline or VCS is hosted, you're probably good with Terraform Cloud for Business.**
 
-Be well versed on the feature list and differences between cloud and enterprise. In particular, remember that TF Cloud limits you to one single concurrent terraform run, and it also can't reach into your private data center or cloud account.
+Be well versed on the feature list and differences between Terraform Cloud levels (including the Business Tier) and Terraform Enterprise. In particular, remember that if you are running more concurrent builds, or if you need SSO, or on-prem, you are in the Cloud for Business or Enterprise tier automatically.
 
 ---
 name: live-demo
@@ -423,7 +426,7 @@ terraform output  # View Terraform outputs
 terraform graph   # Create a DOT-formatted graph
 ```
 
-Need a refresher? Try the [Intro to Terraform on Azure](https://instruqt.com/hashicorp/tracks/terraform-build-azure) lab exercises.
+Need a refresher? Try the [Intro to Terraform on Azure](https://instruqt.com/hashicorp/tracks/terraform-intro-azure) lab exercises.
 
 ???
 Depending on the maturity of your audience you might take a detour back to the Intro to Terraform track. Ideally everyone in the workshop has already completed this or has equivalent experience with Terraform OSS.

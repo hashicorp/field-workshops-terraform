@@ -1,0 +1,188 @@
+#!/bin/bash -l
+
+set -e
+
+cat <<-'EOF' > /root/sentinel/restrict-acm-certificate-domains-b.sentinel
+# restrict-acm-certificate-domains-b.sentinel
+# This policy uses the tfstate import to restrict ACM certificates
+# to have domains that are sub-domains of hashidemos.io
+
+# Import common-functions/tfstate-functions/tfstate-functions.sentinel
+# with alias "state"
+import "tfstate-functions" as state
+
+# Get all AWS ACM certs
+allACMCerts = state.find_datasources("aws_acm_certificate")
+
+# Function that validates ACM certs
+validate_certs = func(certs, parent_domain) {
+
+  validated = true
+
+  # Loop through the data source instances
+  for certs as address, cert {
+    # Validate that the domain is sub-domain of parent_domain
+    # Use the matches operator
+    domain = <expression>
+    # Check if domain is sub-domain of parent domain, using the matches operator
+    if <condition> {
+      print(address, "has domain", domain,
+            "that matches the regex", parent_domain)
+    } else {
+      print(address, "has domain", domain,
+            "that does not match the regex", parent_domain, "or is missing")
+      validated = false
+    }
+  }
+
+  return validated
+
+}
+
+# Call the validation function
+# Pass it a list of ACM certs and a regex to match
+certs_validated = validate_certs(allACMCerts, "<regex>")
+
+# Main rule that evaluates the result of the validation function
+main = rule {
+  certs_validated
+}
+EOF
+
+mkdir -p /root/sentinel/test/restrict-acm-certificate-domains-b
+
+cat <<-'EOF' > /root/sentinel/test/restrict-acm-certificate-domains-b/fail.hcl
+module "tfstate-functions" {
+  source = "../../common-functions/tfstate-functions/tfstate-functions.sentinel"
+}
+
+mock "tfstate/v2" {
+  module {
+    source = "mock-tfstate-fail.sentinel"
+  }
+}
+
+test {
+  rules = {
+    main = false
+  }
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/restrict-acm-certificate-domains-b/pass.hcl
+module "tfstate-functions" {
+  source = "../../common-functions/tfstate-functions/tfstate-functions.sentinel"
+}
+
+mock "tfstate/v2" {
+  module {
+    source = "mock-tfstate-pass.sentinel"
+  }
+}
+
+test {
+  rules = {
+    main =  true
+  }
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/restrict-acm-certificate-domains-b/mock-tfstate-fail.sentinel
+terraform_version = "0.12.3"
+outputs = {}
+resources = {
+  "aws_acm_certificate.cert_1": {
+    "address":        "aws_acm_certificate.cert_1",
+    "depends_on":     [],
+    "deposed_key":    "",
+    "index":          null,
+    "mode":           "data",
+    "module_address": "",
+    "name":           "cert_1",
+    "provider_name":  "aws",
+    "tainted":        false,
+    "type":           "aws_acm_certificate",
+    "values": {
+      "arn":         "arn:aws:acm:us-east-1:753646501470:certificate/1f485f70-2bc1-4ae3-a30f-a533605e99b9",
+      "domain":      "cam-vault.hashydemos.io",
+      "id":          "2020-03-25 16:37:53.939547607 +0000 UTC",
+      "key_types":   null,
+      "most_recent": false,
+      "statuses":    null,
+      "types":       null,
+    },
+  },
+  "aws_acm_certificate.cert_2": {
+    "address":        "aws_acm_certificate.cert_2",
+    "depends_on":     [],
+    "deposed_key":    "",
+    "index":          null,
+    "mode":           "data",
+    "module_address": "",
+    "name":           "cert_2",
+    "provider_name":  "aws",
+    "tainted":        false,
+    "type":           "aws_acm_certificate",
+    "values": {
+      "arn":         "arn:aws:acm:us-east-1:753646501470:certificate/5c9b4d26-b955-4c55-a895-ee7c87020526",
+      "domain":      "roger-ptfe.hashydemos.io",
+      "id":          "2020-03-25 16:37:53.938086355 +0000 UTC",
+      "key_types":   null,
+      "most_recent": false,
+      "statuses":    null,
+      "types":       null,
+    },
+  },
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/restrict-acm-certificate-domains-b/mock-tfstate-pass.sentinel
+terraform_version = "0.12.3"
+outputs = {}
+resources = {
+  "aws_acm_certificate.cert_1": {
+    "address":        "aws_acm_certificate.cert_1",
+    "depends_on":     [],
+    "deposed_key":    "",
+    "index":          null,
+    "mode":           "data",
+    "module_address": "",
+    "name":           "cert_1",
+    "provider_name":  "aws",
+    "tainted":        false,
+    "type":           "aws_acm_certificate",
+    "values": {
+      "arn":         "arn:aws:acm:us-east-1:753646501470:certificate/1f485f70-2bc1-4ae3-a30f-a533605e99b9",
+      "domain":      "cam-vault.hashidemos.io",
+      "id":          "2020-03-25 16:37:53.939547607 +0000 UTC",
+      "key_types":   null,
+      "most_recent": false,
+      "statuses":    null,
+      "types":       null,
+    },
+  },
+  "aws_acm_certificate.cert_2": {
+    "address":        "aws_acm_certificate.cert_2",
+    "depends_on":     [],
+    "deposed_key":    "",
+    "index":          null,
+    "mode":           "data",
+    "module_address": "",
+    "name":           "cert_2",
+    "provider_name":  "aws",
+    "tainted":        false,
+    "type":           "aws_acm_certificate",
+    "values": {
+      "arn":         "arn:aws:acm:us-east-1:753646501470:certificate/5c9b4d26-b955-4c55-a895-ee7c87020526",
+      "domain":      "roger-ptfe.hashidemos.io",
+      "id":          "2020-03-25 16:37:53.938086355 +0000 UTC",
+      "key_types":   null,
+      "most_recent": false,
+      "statuses":    null,
+      "types":       null,
+    },
+  },
+}
+EOF
+
+exit 0

@@ -30,7 +30,7 @@ challenges:
 
     If you do use the VS Code Editor, please perform the following steps:
 
-    Notice the menu bar with File, Edit, and other menus at the top of the VS Cod Editor. You can find all the menus on this menu bar.
+    Notice the menu bar with File, Edit, and other menus at the top of the VS Code Editor. You can find all the menus on this menu bar.
 
     You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application. Open file called "main.tf.
 
@@ -1013,9 +1013,9 @@ challenges:
 
     **Note:** If you already have a **hashicat-azure** workspace, please delete the workspace by selecting the **Settings >> Destruction and Deletion** menu, clicking the "Delete from Terraform Cloud" button, typing "hashicat-azure" to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you played the [Terraform Cloud with Azure](https://play.instruqt.com/hashicorp/tracks/terraform-cloud-azure) track and then played this track.
 
-    Now select the workspace's **Settings >> General** menu and change the Execution Mode to **Local**.
+    Run `terraform version` on the "Shell" tab and then set the **Terraform Version** to match on the workspace's **Settings >> General** settings page.
 
-    Run `terraform version` on the "Shell" tab and then set the **Terraform Version** to match.
+    Also, change the **Execution Mode** to **Local**.
 
     Be sure to save your settings by clicking the "Save settings" button at the bottom of the page! This will allow us to run Terraform commands from our workstation with local variables, which we'll do in the next challenge.
   notes:

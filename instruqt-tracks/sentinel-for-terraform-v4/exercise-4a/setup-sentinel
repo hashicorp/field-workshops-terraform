@@ -1,0 +1,523 @@
+#!/bin/bash -l
+
+set -e
+
+cat <<-'EOF' > /root/sentinel/restrict-gcp-instance-image-a.sentinel
+# restrict-gcp-instance-image-a.sentinel
+# This policy restricts the public images that GCP compute instances use
+
+# Import common-functions/tfplan-functions/tfplan-functions.sentinel
+# with alias "plan"
+import "tfplan-functions" as plan
+
+# Get all GCP compute instances
+allGCPComputeInstances = plan.find_resources("<resource_type>")
+
+# Filter to GCP compute instances with violations
+# Prints warnings for all violations
+violatingGCPComputeInstances =
+  plan.filter_attribute_is_not_value(allGCPComputeInstances,
+  "<expression_1>", "debian-cloud/debian-9", true)
+
+# Count violations
+violations = <expression_2>
+
+# Main rule
+main = rule {
+  violations is 0
+}
+EOF
+
+mkdir -p /root/sentinel/test/restrict-gcp-instance-image-a
+
+cat <<-'EOF' > /root/sentinel/test/restrict-gcp-instance-image-a/fail-no-initialize-params.hcl
+module "tfplan-functions" {
+  source = "../../common-functions/tfplan-functions/tfplan-functions.sentinel"
+}
+
+mock "tfplan/v2" {
+  module {
+    source = "mock-tfplan-fail-no-initialize-params.sentinel"
+  }
+}
+
+test {
+  rules = {
+    main = false
+  }
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/restrict-gcp-instance-image-a/fail-invalid-image.hcl
+module "tfplan-functions" {
+  source = "../../common-functions/tfplan-functions/tfplan-functions.sentinel"
+}
+
+mock "tfplan/v2" {
+  module {
+    source = "mock-tfplan-fail-invalid-image.sentinel"
+  }
+}
+
+test {
+  rules = {
+    main = false
+  }
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/restrict-gcp-instance-image-a/mock-tfplan-fail-no-initialize-params.sentinel
+terraform_version = "0.12.24"
+resource_changes = {
+  "google_compute_disk.default": {
+    "address": "google_compute_disk.default",
+    "change": {
+      "actions": [
+        "create",
+      ],
+      "after": {
+        "description":         null,
+        "disk_encryption_key": [],
+        "image":               "debian-cloud/debian-9",
+        "labels": {
+          "environment": "dev",
+        },
+        "name": "test-disk",
+        "physical_block_size_bytes":      4096,
+        "snapshot":                       null,
+        "source_image_encryption_key":    [],
+        "source_snapshot_encryption_key": [],
+        "timeouts":                       null,
+        "type":                           "pd-ssd",
+        "zone":                           "us-east1-b",
+      },
+      "after_unknown": {
+        "creation_timestamp":  true,
+        "disk_encryption_key": [],
+        "id":                    true,
+        "label_fingerprint":     true,
+        "labels":                {},
+        "last_attach_timestamp": true,
+        "last_detach_timestamp": true,
+        "project":               true,
+        "self_link":             true,
+        "size":                  true,
+        "source_image_encryption_key":    [],
+        "source_image_id":                true,
+        "source_snapshot_encryption_key": [],
+        "source_snapshot_id":             true,
+        "users":                          true,
+      },
+      "before": null,
+    },
+    "deposed":        "",
+    "index":          null,
+    "mode":           "managed",
+    "module_address": "",
+    "name":           "default",
+    "provider_name":  "google",
+    "type":           "google_compute_disk",
+  },
+  "google_compute_instance.demo_1": {
+    "address": "google_compute_instance.demo_1",
+    "change": {
+      "actions": [
+        "create",
+      ],
+      "after": {
+        "allow_stopping_for_update": true,
+        "attached_disk":             [],
+        "boot_disk": [
+          {
+            "auto_delete":             true,
+            "disk_encryption_key_raw": null,
+            "mode": "READ_WRITE",
+          },
+        ],
+        "can_ip_forward":          false,
+        "deletion_protection":     false,
+        "description":             null,
+        "desired_status":          null,
+        "enable_display":          null,
+        "hostname":                null,
+        "labels":                  null,
+        "machine_type":            "n1-standard-1",
+        "metadata":                null,
+        "metadata_startup_script": null,
+        "name": "demo-1",
+        "network_interface": [
+          {
+            "access_config": [
+              {
+                "public_ptr_domain_name": null,
+              },
+            ],
+            "alias_ip_range": [],
+            "network":        "default",
+          },
+        ],
+        "scratch_disk": [],
+        "service_account": [
+          {
+            "scopes": [
+              "https://www.googleapis.com/auth/compute.readonly",
+              "https://www.googleapis.com/auth/monitoring",
+              "https://www.googleapis.com/auth/servicecontrol",
+            ],
+          },
+        ],
+        "shielded_instance_config": [],
+        "tags":     null,
+        "timeouts": null,
+        "zone":     "us-east1-b",
+      },
+      "after_unknown": {
+        "attached_disk": [],
+        "boot_disk": [
+          {
+            "device_name":                true,
+            "disk_encryption_key_sha256": true,
+            "initialize_params":          true,
+            "kms_key_self_link":          true,
+            "source":                     true,
+          },
+        ],
+        "cpu_platform":         true,
+        "current_status":       true,
+        "guest_accelerator":    true,
+        "id":                   true,
+        "instance_id":          true,
+        "label_fingerprint":    true,
+        "metadata_fingerprint": true,
+        "min_cpu_platform":     true,
+        "network_interface": [
+          {
+            "access_config": [
+              {
+                "nat_ip":       true,
+                "network_tier": true,
+              },
+            ],
+            "alias_ip_range":     [],
+            "name":               true,
+            "network_ip":         true,
+            "subnetwork":         true,
+            "subnetwork_project": true,
+          },
+        ],
+        "project":      true,
+        "scheduling":   true,
+        "scratch_disk": [],
+        "self_link":    true,
+        "service_account": [
+          {
+            "email": true,
+            "scopes": [
+              false,
+              false,
+              false,
+            ],
+          },
+        ],
+        "shielded_instance_config": [],
+        "tags_fingerprint":         true,
+      },
+      "before": null,
+    },
+    "deposed":        "",
+    "index":          null,
+    "mode":           "managed",
+    "module_address": "",
+    "name":           "demo_1",
+    "provider_name":  "google",
+    "type":           "google_compute_instance",
+  },
+}
+output_changes = {
+  "external_ip_1": {
+    "change": {
+      "actions": [
+        "create",
+      ],
+      "after":         undefined,
+      "after_unknown": true,
+      "before":        null,
+    },
+    "name": "external_ip_1",
+  },
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/restrict-gcp-instance-image-a/mock-tfplan-fail-invalid-image.sentinel
+terraform_version = "0.12.24"
+resource_changes = {
+  "google_compute_instance.demo": {
+    "address": "google_compute_instance.demo",
+    "change": {
+      "actions": [
+        "create",
+      ],
+      "after": {
+        "allow_stopping_for_update": null,
+        "attached_disk":             [],
+        "boot_disk": [
+          {
+            "auto_delete":             true,
+            "disk_encryption_key_raw": null,
+            "initialize_params": [
+              {
+                "image": "centos-cloud/centos-7",
+              },
+            ],
+            "mode": "READ_WRITE",
+          },
+        ],
+        "can_ip_forward":          false,
+        "deletion_protection":     false,
+        "description":             null,
+        "desired_status":          null,
+        "enable_display":          null,
+        "hostname":                null,
+        "labels":                  null,
+        "machine_type":            "n1-standard-1",
+        "metadata":                null,
+        "metadata_startup_script": null,
+        "name": "demo",
+        "network_interface": [
+          {
+            "access_config": [
+              {
+                "public_ptr_domain_name": null,
+              },
+            ],
+            "alias_ip_range": [],
+            "network":        "default",
+          },
+        ],
+        "scratch_disk":             [],
+        "service_account":          [],
+        "shielded_instance_config": [],
+        "tags":     null,
+        "timeouts": null,
+        "zone":     "us-east1-b",
+      },
+      "after_unknown": {
+        "attached_disk": [],
+        "boot_disk": [
+          {
+            "device_name":                true,
+            "disk_encryption_key_sha256": true,
+            "initialize_params": [
+              {
+                "labels": true,
+                "size":   true,
+                "type":   true,
+              },
+            ],
+            "kms_key_self_link": true,
+            "source":            true,
+          },
+        ],
+        "cpu_platform":         true,
+        "current_status":       true,
+        "guest_accelerator":    true,
+        "id":                   true,
+        "instance_id":          true,
+        "label_fingerprint":    true,
+        "metadata_fingerprint": true,
+        "min_cpu_platform":     true,
+        "network_interface": [
+          {
+            "access_config": [
+              {
+                "nat_ip":       true,
+                "network_tier": true,
+              },
+            ],
+            "alias_ip_range":     [],
+            "name":               true,
+            "network_ip":         true,
+            "subnetwork":         true,
+            "subnetwork_project": true,
+          },
+        ],
+        "project":                  true,
+        "scheduling":               true,
+        "scratch_disk":             [],
+        "self_link":                true,
+        "service_account":          [],
+        "shielded_instance_config": [],
+        "tags_fingerprint":         true,
+      },
+      "before": null,
+    },
+    "deposed":        "",
+    "index":          null,
+    "mode":           "managed",
+    "module_address": "",
+    "name":           "demo",
+    "provider_name":  "google",
+    "type":           "google_compute_instance",
+  },
+}
+output_changes = {
+  "external_ip": {
+    "change": {
+      "actions": [
+        "create",
+      ],
+      "after":         undefined,
+      "after_unknown": true,
+      "before":        null,
+    },
+    "name": "external_ip",
+  },
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/restrict-gcp-instance-image-a/mock-tfplan-pass.sentinel
+terraform_version = "0.12.24"
+resource_changes = {
+  "google_compute_instance.demo": {
+    "address": "google_compute_instance.demo",
+    "change": {
+      "actions": [
+        "create",
+      ],
+      "after": {
+        "allow_stopping_for_update": null,
+        "attached_disk":             [],
+        "boot_disk": [
+          {
+            "auto_delete":             true,
+            "disk_encryption_key_raw": null,
+            "initialize_params": [
+              {
+                "image": "debian-cloud/debian-9",
+              },
+            ],
+            "mode": "READ_WRITE",
+          },
+        ],
+        "can_ip_forward":          false,
+        "deletion_protection":     false,
+        "description":             null,
+        "desired_status":          null,
+        "enable_display":          null,
+        "hostname":                null,
+        "labels":                  null,
+        "machine_type":            "n1-standard-1",
+        "metadata":                null,
+        "metadata_startup_script": null,
+        "name": "demo",
+        "network_interface": [
+          {
+            "access_config": [
+              {
+                "public_ptr_domain_name": null,
+              },
+            ],
+            "alias_ip_range": [],
+            "network":        "default",
+          },
+        ],
+        "scratch_disk":             [],
+        "service_account":          [],
+        "shielded_instance_config": [],
+        "tags":     null,
+        "timeouts": null,
+        "zone":     "us-east1-b",
+      },
+      "after_unknown": {
+        "attached_disk": [],
+        "boot_disk": [
+          {
+            "device_name":                true,
+            "disk_encryption_key_sha256": true,
+            "initialize_params": [
+              {
+                "labels": true,
+                "size":   true,
+                "type":   true,
+              },
+            ],
+            "kms_key_self_link": true,
+            "source":            true,
+          },
+        ],
+        "cpu_platform":         true,
+        "current_status":       true,
+        "guest_accelerator":    true,
+        "id":                   true,
+        "instance_id":          true,
+        "label_fingerprint":    true,
+        "metadata_fingerprint": true,
+        "min_cpu_platform":     true,
+        "network_interface": [
+          {
+            "access_config": [
+              {
+                "nat_ip":       true,
+                "network_tier": true,
+              },
+            ],
+            "alias_ip_range":     [],
+            "name":               true,
+            "network_ip":         true,
+            "subnetwork":         true,
+            "subnetwork_project": true,
+          },
+        ],
+        "project":                  true,
+        "scheduling":               true,
+        "scratch_disk":             [],
+        "self_link":                true,
+        "service_account":          [],
+        "shielded_instance_config": [],
+        "tags_fingerprint":         true,
+      },
+      "before": null,
+    },
+    "deposed":        "",
+    "index":          null,
+    "mode":           "managed",
+    "module_address": "",
+    "name":           "demo",
+    "provider_name":  "google",
+    "type":           "google_compute_instance",
+  },
+}
+output_changes = {
+  "external_ip": {
+    "change": {
+      "actions": [
+        "create",
+      ],
+      "after":         undefined,
+      "after_unknown": true,
+      "before":        null,
+    },
+    "name": "external_ip",
+  },
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/restrict-gcp-instance-image-a/pass.hcl
+module "tfplan-functions" {
+  source = "../../common-functions/tfplan-functions/tfplan-functions.sentinel"
+}
+
+mock "tfplan/v2" {
+  module {
+    source = "mock-tfplan-pass.sentinel"
+  }
+}
+
+test {
+  rules = {
+    main = true
+  }
+}
+EOF
+
+exit 0

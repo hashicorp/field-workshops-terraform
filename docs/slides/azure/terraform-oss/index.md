@@ -6,7 +6,7 @@ count: false
 ## Azure Terraform Workshop
 ### Build Azure Resources With Infrastructure as Code
 ???
-INSTRUCTOR GUIDE LINK: https://github.com/hashicorp/field-workshops-terraform/blob/master/instructor-guides/azure_intro_to_terraform_INSTRUCTOR_GUIDE.md
+INSTRUCTOR GUIDE LINK: https://github.com/hashicorp/field-workshops-terraform/blob/main/instructor-guides/azure_intro_to_terraform_INSTRUCTOR_GUIDE.md
 
 This slide presentation is stored as Markdown code, specifically using the RemarkJS engine to render it. All standard markdown tags are supported, and you can also use some HTML within this document.
 
@@ -31,7 +31,7 @@ Instructor notes are included in plain text, narrative parts are in **bold**. Yo
 layout: true
 
 .footer[
-- Copyright © 2020 HashiCorp
+- Copyright © 2021 HashiCorp
 - ![:scale 100%](https://hashicorp.github.io/field-workshops-assets/assets/logos/HashiCorp_Icon_Black.svg)
 ]
 
@@ -132,8 +132,6 @@ class: compact
 # Method 2: ARM Template
 ```json
 {
-...
-"apiVersion": "2017-03-30",
 "type": "Microsoft.Compute/virtualMachines",
 "name": "[variables('vmName')]",
 "location": "[parameters('location')]",
@@ -144,6 +142,8 @@ class: compact
   "hardwareProfile": {
     "vmSize": "[parameters('virtualMachineSize')]"
   },
+}
+}
 ```
 
 ARM templates provide a consistent and reliable way to provision Azure resources. JSON is easy for computers to read, but can be challenging for humans to edit and troubleshoot.
@@ -1030,23 +1030,22 @@ class: title
 
 ---
 name: terraform-state
-class: compact
+class: compact, smaller
 # Terraform State
-Terraform is a _stateful_ application. This means that it keeps track of everything you build inside of a **state file**. You may have noticed the terraform.tfstate and terraform.tfstate.backup files that appeared inside your working directory.
-
-The state file is Terraform's source of record for everything it knows about.
+Terraform is a _stateful_ application. This means that it keeps track of everything you build inside of a **state file**. You may have noticed the terraform.tfstate and terraform.tfstate.backup files that appeared inside your working directory. The state file is Terraform's source of record for everything it knows about.
 
 ```json
 {
-  "version": 3,
   "terraform_version": "0.11.13",
-  "serial": 6,
   "lineage": "983e6899-96f4-ce60-744e-7123bb1fc315",
   "modules": [
-      {
-          "path": [
-              "root"
-          ],
+    {
+      "path": [
+          "root"
+      ],
+    },
+  ],
+}
 ```
 
 ---
@@ -1135,12 +1134,15 @@ class: img-right
 
 ---
 name: tfcloud-vs-tfe
-# Terraform Cloud or Terraform Enterprise
-**Terraform Cloud** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud based SaaS solution because they don't want to maintain the infrastructure to run it.
+class: compact
+# Terraform Cloud or Terraform Enterprise?
+**[Terraform Cloud](https://app.terraform.io/signup)** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud-based SaaS solution because they don't want to maintain the infrastructure to run it.
 
-**Terraform Enterprise** is the same application, but it runs in your cloud environment or data center. Some users require more control over the Terraform Enterprise application, or wish to run it in restricted networks behind corporate firewalls.
+**[Terraform Cloud for Business](https://www.hashicorp.com/contact-sales/terraform)** utilizes the same hosted environment as Terraform Cloud, but you get the features more applicable to larger teams.  Single Sign-on, Audit Logging, and the ability to Terraform on-prem resources from the cloud.
 
-The feature list for these two offerings is nearly identical. We will be using Terraform Cloud accounts for the next lab exercise.
+**[Terraform Enterprise](https://www.hashicorp.com/go/terraform-enterprise)** is the same application, but it runs in your own cloud environment or data center. Some users require more control over the Terraform Cloud application, or wish to run it in restricted networks behind corporate firewalls.
+
+The feature list for these offerings is nearly identical. We will be using Terraform Cloud accounts for our lab exercises today.
 
 ---
 name: terraform-cloud-remote-state

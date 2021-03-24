@@ -12,7 +12,7 @@ Terraform Cloud on AWS 워크숍에 오신 것을 환영합니다. 이 워크샵
 
 Terraform Cloud와 Terraform Enterprise는 거의 동일한 기능 세트를 가지고 있으므로 교육 환경으로 Terraform Cloud를 사용합니다.
 
-강사 가이드 링크: https://github.com/hashicorp/field-workshops-terraform/blob/master/instructor-guides/all_terraform_cloud_INSTRUCTOR_GUIDE.md
+강사 가이드 링크: https://github.com/hashicorp/field-workshops-terraform/blob/main/instructor-guides/all_terraform_cloud_INSTRUCTOR_GUIDE.md
 
 소개 노트: Terraform Cloud on AWS에 오신 것을 환영합니다. 이 슬라이드 데크는 전적으로 Markdown 언어로 작성되었으므로 편집하거나 추가 한 다음 풀 요청을 제출하여 변경 사항을 메인 브랜치에 추가 할 수 있습니다. 슬라이드 데크를 편집하려면이 저장소를 포크하고 Markdown 파일을 편집 한 다음 변경 사항과 함께 풀 요청을 제출하면됩니다. 이 파이썬 한 줄로 슬라이드 데크의 로컬 복사본을 쉽게 테스트 할 수 있습니다.:
 
@@ -37,7 +37,7 @@ https://hashicorp.atlassian.net/wiki/spaces/SE/pages/511574174/Instruqt+and+Rema
 layout: true
 
 .footer[
-- Copyright © 2020 HashiCorp
+- Copyright © 2021 HashiCorp
 - ![:scale 100%](https://hashicorp.github.io/field-workshops-assets/assets/logos/HashiCorp_Icon_Black.svg)
 ]
 
@@ -421,7 +421,7 @@ terraform output  # Terraform 출력보기
 terraform graph   # DOT 형식의 그래프 생성
 ```
 
-다시 확인이 필요하다면? [Intro to Terraform on AWS] (https://instruqt.com/hashicorp/tracks/terraform-build-aws) 실습을 확인해보세요.
+재교육이 필요하다면? [AWS의 Terraform 소개] (https://instruqt.com/hashicorp/tracks/terraform-intro-aws) 실습을 시도해보세요.
 
 ???
 청중의 성숙도에 따라 Intro to Terraform 트랙으로 돌아갈 수 있습니다. 이상적으로는 워크숍의 모든 사람이 이미 이 작업을 완료했거나 Terraform OSS에 대해 동등한 경험을 가지고 있습니다.
@@ -478,7 +478,7 @@ name: our-application
 이것은 우리의 실습 결과물로 보여지는 화면의 예 입니다.
 
 ???
-이것은 오늘 교육을위한 우리의 애플리케이션입니다. 우리는 이미 모든 Terraform 코드를 작성했습니다. 이 앱은 다양한 기능의 작동 방식을 배우는 데 도움이됩니다. 이미 Intro to Terraform on AWS를 살펴본 적이 있다면 Hashicat에 익숙 할 것입니다. 이전 데모에서 사용한 것과 동일한 앱입니다. 
+이것은 오늘 교육을위한 우리의 애플리케이션입니다. 우리는 이미 모든 Terraform 코드를 작성했습니다. 이 앱은 다양한 기능의 작동 방식을 배우는 데 도움이됩니다. 이미 Intro to Terraform on AWS를 살펴본 적이 있다면 Hashicat에 익숙 할 것입니다. 이전 데모에서 사용한 것과 동일한 앱입니다.
 
 ---
 name: terraform-state

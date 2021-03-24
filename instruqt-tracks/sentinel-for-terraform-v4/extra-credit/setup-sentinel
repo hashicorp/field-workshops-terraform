@@ -1,0 +1,142 @@
+#!/bin/bash -l
+
+set -e
+
+cat <<-'EOF' > /root/sentinel/prevent-auto-apply-in-production.sentinel
+# prevent-auto-apply-in-production.sentinel
+# This policy uses the Sentinel tfrun import to prevent the use of auto-apply
+# in workspaces with names matching "^prod-(.*)" or "(.*)-prod$"
+
+##### Imports #####
+
+import "tfrun"
+import "strings"
+
+##### Functions #####
+
+# Validate that auto-apply not set for production workspaces
+validate_auto_apply = func() {
+
+  validated = true
+
+  if <condition_1> or
+     <condition_2> {
+    if <condition_3> {
+      print("The workspace", <expression_1>, "has auto_apply set to true")
+      validated = false
+    }
+  }
+
+  return validated
+}
+
+##### Rules #####
+
+# Call the validation function
+auto_apply_validated = validate_auto_apply()
+
+# Main rule
+main = rule {
+  auto_apply_validated
+}
+EOF
+
+mkdir -p /root/sentinel/test/prevent-auto-apply-in-production
+
+cat <<-'EOF' > /root/sentinel/test/prevent-auto-apply-in-production/fail-prefix.hcl
+mock "tfrun" {
+  module {
+    source = "mock-tfrun-fail-prefix.sentinel"
+  }
+}
+
+test {
+  rules = {
+    main = false
+  }
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/prevent-auto-apply-in-production/fail-suffix.hcl
+mock "tfrun" {
+  module {
+    source = "mock-tfrun-fail-suffix.sentinel"
+  }
+}
+
+test {
+  rules = {
+    main = false
+  }
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/prevent-auto-apply-in-production/mock-tfrun-fail-prefix.sentinel
+workspace = {
+  "auto_apply":  true,
+  "description": null,
+  "name":        "prod-compute",
+  "vcs_repo": {},
+  "working_directory": "",
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/prevent-auto-apply-in-production/mock-tfrun-fail-suffix.sentinel
+workspace = {
+  "auto_apply":  true,
+  "description": null,
+  "name":        "compute-prod",
+  "vcs_repo": {},
+  "working_directory": "",
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/prevent-auto-apply-in-production/mock-tfrun-pass-prefix.sentinel
+workspace = {
+  "auto_apply":  false,
+  "description": null,
+  "name":        "prod-network",
+  "vcs_repo": {},
+  "working_directory": "",
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/prevent-auto-apply-in-production/mock-tfrun-pass-suffix.sentinel
+workspace = {
+  "auto_apply":  false,
+  "description": null,
+  "name":        "network-prod",
+  "vcs_repo": {},
+  "working_directory": "",
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/prevent-auto-apply-in-production/pass-prefix.hcl
+mock "tfrun" {
+  module {
+    source = "mock-tfrun-pass-prefix.sentinel"
+  }
+}
+
+test {
+  rules = {
+    main = true
+  }
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/prevent-auto-apply-in-production/pass-suffix.hcl
+mock "tfrun" {
+  module {
+    source = "mock-tfrun-pass-suffix.sentinel"
+  }
+}
+
+test {
+  rules = {
+    main = true
+  }
+}
+EOF
+
+exit 0

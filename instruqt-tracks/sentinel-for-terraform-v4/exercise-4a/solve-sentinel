@@ -1,0 +1,17 @@
+#!/bin/bash -l
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/sentinel
+
+# Edit the first version of the policy
+sed -i 's/<resource_type>/google_compute_instance/g' restrict-gcp-instance-image-a.sentinel
+sed -i 's/<expression_1>/boot_disk.0.initialize_params.0.image/g' restrict-gcp-instance-image-a.sentinel
+sed -i 's/<expression_2>/length(violatingGCPComputeInstances["messages"])/g' restrict-gcp-instance-image-a.sentinel
+
+# Test the second version of the policy
+sentinel test -run=image-a.sentinel -verbose
+
+exit 0

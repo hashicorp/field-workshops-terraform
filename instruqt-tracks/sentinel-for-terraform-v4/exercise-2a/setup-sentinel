@@ -1,0 +1,249 @@
+#!/bin/bash -l
+
+set -e
+
+cat <<-'EOF' > /root/sentinel/require-access-keys-use-pgp-a.sentinel
+# require-access-keys-use-pgp-a.sentinel
+# This policy requires AWS IAM access keys to use PGP keys
+
+# Import common-functions/tfplan-functions/tfplan-functions.sentinel
+# with alias "plan"
+import "tfplan-functions" as plan
+
+# Get all AWS IAM access keys
+allIAMAccessKeys = plan.find_resources("<resource_type>")
+
+# Filter to AWS IAM access keys with violations
+# The called function prints warnings for all violations
+violatingIAMAccessKeys = plan.filter_attribute_does_not_have_prefix(
+                         allIAMAccessKeys, "<attribute>", "keybase:", true)
+
+# Count violations
+violations = length(violatingIAMAccessKeys["messages"])
+
+# Main rule
+main = rule {
+  <condition>
+}
+EOF
+
+mkdir -p /root/sentinel/test/require-access-keys-use-pgp-a
+
+cat <<-'EOF' > /root/sentinel/test/require-access-keys-use-pgp-a/fail-invalid-value.hcl
+module "tfplan-functions" {
+  source = "../../common-functions/tfplan-functions/tfplan-functions.sentinel"
+}
+
+mock "tfplan/v2" {
+  module {
+    source = "mock-tfplan-fail-invalid-value.sentinel"
+  }
+}
+
+test {
+  rules = {
+    main = false
+  }
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/require-access-keys-use-pgp-a/fail-missing-value.hcl
+module "tfplan-functions" {
+  source = "../../common-functions/tfplan-functions/tfplan-functions.sentinel"
+}
+
+mock "tfplan/v2" {
+  module {
+    source = "mock-tfplan-fail-missing-value.sentinel"
+  }
+}
+
+test {
+  rules = {
+    main = false
+  }
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/require-access-keys-use-pgp-a/fail-with-null.hcl
+module "tfplan-functions" {
+  source = "../../common-functions/tfplan-functions/tfplan-functions.sentinel"
+}
+
+mock "tfplan/v2" {
+  module {
+    source = "mock-tfplan-fail-with-null.sentinel"
+  }
+}
+
+test {
+  rules = {
+    main = false
+  }
+}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/require-access-keys-use-pgp-a/mock-tfplan-fail-invalid-value.sentinel
+terraform_version = "0.12.24"
+resource_changes = {
+  "aws_iam_access_key.roger": {
+    "address": "aws_iam_access_key.roger",
+    "change": {
+      "actions": [
+        "create",
+      ],
+      "after": {
+        "pgp_key": "roger",
+        "user":    "roger",
+      },
+      "after_unknown": {
+        "encrypted_secret":     true,
+        "id":                   true,
+        "key_fingerprint":      true,
+        "secret":               true,
+        "ses_smtp_password":    true,
+        "ses_smtp_password_v4": true,
+        "status":               true,
+      },
+      "before": null,
+    },
+    "deposed":        "",
+    "index":          null,
+    "mode":           "managed",
+    "module_address": "",
+    "name":           "roger",
+    "provider_name":  "aws",
+    "type":           "aws_iam_access_key",
+  },
+}
+output_changes = {}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/require-access-keys-use-pgp-a/mock-tfplan-fail-missing-value.sentinel
+terraform_version = "0.12.3"
+resource_changes = {
+  "aws_iam_access_key.roger": {
+    "address": "aws_iam_access_key.roger",
+    "change": {
+      "actions": [
+        "create",
+      ],
+      "after": {
+        "user":    "roger",
+      },
+      "after_unknown": {
+        "encrypted_secret":     true,
+        "id":                   true,
+        "key_fingerprint":      true,
+        "pgp_key":              true,
+        "secret":               true,
+        "ses_smtp_password":    true,
+        "ses_smtp_password_v4": true,
+        "status":               true,
+      },
+      "before": null,
+    },
+    "deposed":        "",
+    "index":          null,
+    "mode":           "managed",
+    "module_address": "",
+    "name":           "roger",
+    "provider_name":  "aws",
+    "type":           "aws_iam_access_key",
+  },
+}
+output_changes = {}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/require-access-keys-use-pgp-a/mock-tfplan-fail-with-null.sentinel
+terraform_version = "0.12.3"
+resource_changes = {
+  "aws_iam_access_key.roger": {
+    "address": "aws_iam_access_key.roger",
+    "change": {
+      "actions": [
+        "create",
+      ],
+      "after": {
+        "pgp_key": null,
+        "user":    "roger",
+      },
+      "after_unknown": {
+        "encrypted_secret":     true,
+        "id":                   true,
+        "key_fingerprint":      true,
+        "secret":               true,
+        "ses_smtp_password":    true,
+        "ses_smtp_password_v4": true,
+        "status":               true,
+      },
+      "before": null,
+    },
+    "deposed":        "",
+    "index":          null,
+    "mode":           "managed",
+    "module_address": "",
+    "name":           "roger",
+    "provider_name":  "aws",
+    "type":           "aws_iam_access_key",
+  },
+}
+output_changes = {}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/require-access-keys-use-pgp-a/mock-tfplan-pass.sentinel
+terraform_version = "0.12.24"
+resource_changes = {
+  "aws_iam_access_key.roger": {
+    "address": "aws_iam_access_key.roger",
+    "change": {
+      "actions": [
+        "create",
+      ],
+      "after": {
+        "pgp_key": "keybase:roger",
+        "user":    "roger",
+      },
+      "after_unknown": {
+        "encrypted_secret":     true,
+        "id":                   true,
+        "key_fingerprint":      true,
+        "secret":               true,
+        "ses_smtp_password":    true,
+        "ses_smtp_password_v4": true,
+        "status":               true,
+      },
+      "before": null,
+    },
+    "deposed":        "",
+    "index":          null,
+    "mode":           "managed",
+    "module_address": "",
+    "name":           "roger",
+    "provider_name":  "aws",
+    "type":           "aws_iam_access_key",
+  },
+}
+
+output_changes = {}
+EOF
+
+cat <<-'EOF' > /root/sentinel/test/require-access-keys-use-pgp-a/pass.hcl
+module "tfplan-functions" {
+  source = "../../common-functions/tfplan-functions/tfplan-functions.sentinel"
+}
+
+mock "tfplan/v2" {
+  module {
+    source = "mock-tfplan-pass.sentinel"
+  }
+}
+
+test {
+  rules = {
+    main = true
+  }
+}
+EOF
+
+exit 0

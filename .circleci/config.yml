@@ -2,7 +2,7 @@ version: 2
 jobs:
   instruqt-validate:
     docker:
-      - image: ubuntu:latest
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
       - checkout
       - run:
@@ -30,7 +30,7 @@ jobs:
             done
   instruqt-test-oss-aws:
     docker:
-      - image: ubuntu:latest
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
       - checkout
       - run:
@@ -69,7 +69,7 @@ jobs:
             fi
   instruqt-test-oss-gcp:
     docker:
-      - image: ubuntu:latest
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
       - checkout
       - run:
@@ -108,7 +108,7 @@ jobs:
             fi
   instruqt-test-oss-azure:
     docker:
-      - image: ubuntu:latest
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
       - checkout
       - run:
@@ -147,7 +147,7 @@ jobs:
             fi
   instruqt-test-cloud-aws:
     docker:
-      - image: ubuntu:latest
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
       - checkout
       - run:
@@ -186,7 +186,7 @@ jobs:
             fi
   instruqt-test-cloud-azure:
     docker:
-      - image: ubuntu:latest
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
       - checkout
       - run:
@@ -225,7 +225,7 @@ jobs:
             fi
   instruqt-test-cloud-gcp:
     docker:
-      - image: ubuntu:latest
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
       - checkout
       - run:
@@ -264,7 +264,7 @@ jobs:
             fi
   instruqt-test-sentinel-cli-basics:
     docker:
-      - image: ubuntu:latest
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
       - checkout
       - run:
@@ -301,9 +301,9 @@ jobs:
               echo "Instruqt track test failed three times."
               exit 1
             fi
-  instruqt-test-sentinel-v3:
+  instruqt-test-sentinel-v4:
     docker:
-      - image: ubuntu:latest
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
     steps:
       - checkout
       - run:
@@ -325,7 +325,7 @@ jobs:
             else
               echo "Instruqt is installed and updated to most recent version."
             fi
-            cd /root/project/instruqt-tracks/sentinel-for-terraform-v3
+            cd /root/project/instruqt-tracks/sentinel-for-terraform-v4
             echo "Running instruqt track push..."
             instruqt track push --force
             echo "Running instruqt track test..."
@@ -348,63 +348,63 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
       - instruqt-test-oss-aws:
           requires:
             - instruqt-validate
           filters:
             branches:
               only:
-                - master
+                - main
       - instruqt-test-oss-gcp:
           requires:
             - instruqt-validate
           filters:
             branches:
               only:
-                - master
+                - main
       - instruqt-test-oss-azure:
           requires:
             - instruqt-validate
           filters:
             branches:
               only:
-                - master
+                - main
       - instruqt-test-cloud-aws:
           requires:
             - instruqt-validate
           filters:
             branches:
               only:
-                - master
+                - main
       - instruqt-test-cloud-azure:
           requires:
             - instruqt-validate
           filters:
             branches:
               only:
-                - master
+                - main
       - instruqt-test-cloud-gcp:
           requires:
             - instruqt-validate
           filters:
             branches:
               only:
-                - master
+                - main
       - instruqt-test-sentinel-cli-basics:
           requires:
             - instruqt-validate
           filters:
             branches:
               only:
-                - master
-      - instruqt-test-sentinel-v3:
+                - main
+      - instruqt-test-sentinel-v4:
           requires:
             - instruqt-validate
           filters:
             branches:
               only:
-                - master
+                - main
   nightly-build:
     triggers:
       - schedule:
@@ -412,7 +412,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
     jobs:
       - instruqt-validate
       - instruqt-test-oss-aws:
@@ -436,6 +436,6 @@ workflows:
       - instruqt-test-sentinel-cli-basics:
           requires:
             - instruqt-validate
-      - instruqt-test-sentinel-v3:
+      - instruqt-test-sentinel-v4:
           requires:
             - instruqt-validate

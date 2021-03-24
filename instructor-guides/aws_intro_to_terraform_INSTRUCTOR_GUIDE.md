@@ -13,6 +13,18 @@ The Instruqt lab environment includes an embedded version of Visual Studio Code.
 
 Commands can be run on the "Shell" tab or in a terminal within the VS Code Editor.
 
+### Scheduling your workshop
+Please add all workshops, both public and private, to the shared instruqt-workshops Google calendar as follows:
+
+1. Create a new event on the instruqt-workshops calendar and set the name to the name of your workshop which could match a name being used by Field Marketing if it is public or the name of a specific customer and a product if it is private.
+2. Set the begin and end times of the event to the begin and end times of your workshop.
+3. Include the following information in the description:
+    1. The name of the host (probably yourself) after "Host:"
+    2. The names of presenters after "Presenters:"
+    3. A list of tracks that your workshop will use after "Tracks:", listing the URL of each track on its own line.
+
+Before saving the event, be sure to set the calendar as "instruqt-workshops" instead of your own personal calendar.
+
 ### Email invitation
 Here is some boilerplate text you can use or customize when inviting or announcing your workshop:
 
@@ -57,7 +69,7 @@ https://github.com/hashicorp/field-workshops-terraform/issues
 ### Hands-on Labs
 At certain points in the slide deck there are links to the lab exercises. [Instruqt](https://instruqt.com/hashicorp) is our lab platform. Lab exercises can be completed anonymously, but if users want to keep track of their progress they should create accounts on the Instruqt website. There is one long instruqt track that is broken into sections for the labs:
 
-https://instruqt.com/hashicorp/tracks/terraform-build-aws
+https://play.instruqt.com/hashicorp/tracks/terraform-intro-aws
 
 Go through this track start to finish and make sure you understand all the challenges. Students may have questions during the labs. When presenting a workshop be sure to give enough time for all your participants to go through the labs. Remember that this is probably their first time working a tool like Terraform.
 
@@ -86,13 +98,13 @@ To actually skip one or more challenges while running one of this track, return 
 We have not yet enabled skipping for end-users even though Instruqt now supports that. It is debatable whether allowing end-users to skip challenges is really desireable. They'll learn more if they don't skip.
 
 ### Configuring the Instruqt Pools
-We recommend that you configure Instruqt pools for each Instruqt track used in this workshop 1-2 hours before your workshop begins. Please see this Confluence [doc](https://hashicorp.atlassian.net/wiki/spaces/SE/pages/511574174/Instruqt+and+Remark+Contributor+Guide#InstruqtandRemarkContributorGuide-ConfiguringInstruqtPools) for instructions.
+We recommend that you configure Instruqt pools for each Instruqt track used in this workshop 1 hour before you plan to use the track. Please see this Confluence [doc](https://hashicorp.atlassian.net/wiki/spaces/SE/pages/511574174/Instruqt+and+Remark+Contributor+Guide#InstruqtandRemarkContributorGuide-ConfiguringInstruqtPools) for instructions.
 
 ### The Live Demo
 After chapter 1 there is a slide that says *Live Demo*. You can use an instruqt track to do a brief Terraform demo for your participants, or insert your own demo here. Follow these steps to do the demo in instruqt:
 
 #### Setup
-1. Right before you start the training, visit https://instruqt.com/hashicorp/tracks/terraform-build-aws and start the track. You do not have to complete the track, we're just using Instruqt to stand up a demo environment. Open the `/root/hashicat-aws` folder with VSC. Copy the *.completed files from the exercises directory and overwrite main.tf and outputs.tf. On the "Shell" tab, run `terraform init; terraform apply -auto-approve`. Open the Meow World application in another browser tab. Open the AWS console and navigate to your infrastructure in the UI. If the app doesn't load the first time run `terraform apply` again.
+1. Right before you start the training, visit https://instruqt.com/hashicorp/tracks/terraform-intro-aws and start the track. You do not have to complete the track, we're just using Instruqt to stand up a demo environment. Open the `/root/hashicat-aws` folder with VSC. Copy the *.completed files from the exercises directory and overwrite main.tf and outputs.tf. On the "Shell" tab, run `terraform init; terraform apply -auto-approve`. Open the Meow World application in another browser tab. Open the AWS console and navigate to your infrastructure in the UI. If the app doesn't load the first time run `terraform apply` again.
 
 NOTE: You can find the AWS account ID, username and password in your environment variables. Use these to log onto the AWS Console.
 

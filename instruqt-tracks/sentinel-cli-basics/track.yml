@@ -10,7 +10,7 @@ description: |-
 
   In this track, you will learn how to use the Sentinel CLI.
 
-  After doing this track, you can learn how to write and test Sentinel policies for Terraform in the [Sentinel for Terraform (v2)](https://play.instruqt.com/hashicorp/tracks/sentinel-for-terraform-v2) track.
+  After doing this track, you can learn how to write and test Sentinel policies for Terraform in the [Sentinel for Terraform (v4)](https://play.instruqt.com/hashicorp/tracks/sentinel-for-terraform-v4) track.
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/HashiCorp_Icon_Black.png
 tags:
 - sentinel
@@ -67,7 +67,9 @@ challenges:
       To learn more, see https://docs.hashicorp.com/sentinel.
   - type: text
     contents: |-
-      We've launched the Sentinel CLI 0.15.6 on a Ubuntu VM running in GCP so that you don't need to download or install it.
+      We've launched the Sentinel CLI 0.17.3 on a Ubuntu VM running in GCP so that you don't need to download or install it.
+
+      If you would like to see syntax highlighting in the editor for Sentinel policies, we suggest selecting "ruby" in the language drop-down at the bottom of the editor.
 
       After learning how to use the Sentinel CLI in the first challenge, you will run a very simple policy in the second challenge.
   tabs:
@@ -108,9 +110,9 @@ challenges:
     ## Test the Policy
     Now, we will test the policy with the "sentinel test" command using test cases. For any policy, the test cases must be placed under the directory test/<policy\> under the directory containing the policy where <policy\> is the name of the policy without the ".sentinel" extension.
 
-    Edit the "fail.json" test case for the "require-even-number.sentinel" policy on the "Test Cases" tab, replacing `<an_odd_number>` with any odd number.  Save the "fail.json" file by clicking the disk icon above the file.
+    Edit the "fail.hcl" test case for the "require-even-number.sentinel" policy on the "Test Cases" tab, replacing `<an_odd_number>` with any odd number.  Save the "fail.hcl" file by clicking the disk icon above the file.
 
-    Edit the "pass.json" test case for the "require-even-number.sentinel" policy on the "Test Cases" tab, replacing `<an_even_number>` with any even number. Save the "pass.json" file by clicking the disk icon above the file.
+    Edit the "pass.hcl" test case for the "require-even-number.sentinel" policy on the "Test Cases" tab, replacing `<an_even_number>` with any even number. Save the "pass.hcl" file by clicking the disk icon above the file.
 
     Test the "require-even-number.sentinel" policy against both test cases on the "Sentinel CLI" tab:
     ```
@@ -120,7 +122,7 @@ challenges:
 
     Note that when specifying a policy with the "-run" argument, you can match any portion of the policy name. Often, you will want to use something that only matches a single policy in the current directory.
 
-    Congratulations on completing the track. That way easy!
+    Congratulations on completing the track. That was easy!
   notes:
   - type: text
     contents: |-
@@ -146,4 +148,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 2400
-checksum: "540363501604633372"
+checksum: "510909489441964392"
