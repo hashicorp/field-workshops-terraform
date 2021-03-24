@@ -118,7 +118,8 @@ class: title
 name: terraform-user-journey
 # Terraform 사용자의 여정
 .center[
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FWpCQar9dYg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BlFKzTyjaTI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ]
 
 https://www.hashicorp.com/resources/terraform-adoption-journey
@@ -134,8 +135,8 @@ class: col-2
 # Infrastructure as Code
 
 * Terraform 코드는 HCL로 작성되었습니다.
-* 수동으로 리소스를 생성하는 작업을 그만두세요.
-* 모든 것을 반복 가능한 Terraform 구성에 넣으십시오.
+* 수동으로 리소스를 생성하는 작업은 이제 그만하세요.
+* 모든 것을 반복 작업이 가능한 Terraform 구성으로 넣으십시오.
 * 모든 빌드 단계는 이제 코드로 표현됩니다.
 * 무언가를 다시 만들어야한다면 훨씬 쉽습니다!
 
@@ -274,7 +275,7 @@ Terraform Cloud/Enterprise는 다음의 환경을 제공합니다.:
 * API 기반의 워크플로우
 * STATE의 중앙 관리
 * Private Module Registry
-* Sentinel policy enforcement (정책 코드화 실행)
+* Sentinel policy enforcement (취약점 점검 및 정책 코드화 실행)
 
 ???
 TFC/TFE는 사용자가 구축해서는 안되는 것을 구축하거나 잘못된 방식으로 구성하지 않도록 보장 할 수있는 정책 시행 엔진과 함께 제공됩니다. 예를 들어 사용자가 인터넷에 대한 네트워크 포트를 열거 나 너무 많은 가상 머신을 구축하지 못하도록 할 수 있습니다. 이러한 모든 유형의 규칙은 Sentinel Policy Enforcement (정책 코드화 실행) 엔진을 사용하여 표현할 수 있습니다. Sentinel 정책은 사용자가 클라우드에 프로비저닝하기 **전에** 잘못된 작업을 하는 것을 방지합니다.
@@ -291,7 +292,7 @@ Terraform Cloud/Enterprise는 다음의 환경을 제공합니다.:
 * API 기반의 워크플로우
 * STATE의 중앙 관리
 * Private Module Registry
-* Sentinel policy enforcement (정책 코드화 실행)
+* Sentinel policy enforcement (취약점 점검 및 정책 코드화 실행)
 * Single Sign-On
 
 ???
@@ -412,11 +413,11 @@ name: review-basic-terraform-commands
 
 ```bash
 terraform init    # 현재 디렉토리 초기화
-terraform 계획     # Terraform이 무엇을할지보기위한 드라 이런
+terraform plan    # Terraform이 무엇을할지보기위한 드라 이런
 terraform apply   # Terraform 코드 적용 및 빌드
 terraform destroy # Terraform이 만든 것을 파괴
 terraform refresh # 상태 파일 새로 고침
-terraform 출력     # Terraform 출력보기
+terraform output  # Terraform 출력보기
 terraform graph   # DOT 형식의 그래프 생성
 ```
 
@@ -474,6 +475,8 @@ name: our-application
 
 .center[![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/meow_world.png)]
 
+이것은 우리의 실습 결과물로 보여지는 화면의 예 입니다.
+
 ???
 이것은 오늘 교육을위한 우리의 애플리케이션입니다. 우리는 이미 모든 Terraform 코드를 작성했습니다. 이 앱은 다양한 기능의 작동 방식을 배우는 데 도움이됩니다. 이미 Intro to Terraform on AWS를 살펴본 적이 있다면 Hashicat에 익숙 할 것입니다. 이전 데모에서 사용한 것과 동일한 앱입니다.
 
@@ -510,12 +513,12 @@ class: img-left-full
 
 ![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/dog_homework.jpg)
 
-로컬 상태 파일에는 몇 가지 단점이 있습니다.
+로컬에서 관리하는 state 파일에는 몇 가지 단점이 있습니다.
 
-* 때때로 비밀 또는 민감한 데이터가 포함됨
-* 파일이 다른 사람의 노트북에 있기 때문에 공동 작업 할 수 없습니다.
-* 상태 파일의 손실 또는 삭제 위험이 있습니다.
-* 중앙 집중식 기록 보관이 없습니다.
+* 간혹, 비밀 또는 민감한 데이터가 포함됨
+* 파일이 다른 사람의 노트북에 있기 때문에 공동 작업이 불가능
+* 상태 파일의 손실 또는 삭제 위험
+* 중앙 집중식 기록 보관이 없음
 
 ???
  Terraform Cloud 계정에 쉽게 무료로 저장할 수 있기 때문에 상태 파일을 잃어 버릴 이유가 없습니다.
@@ -734,14 +737,12 @@ https://xkcd.com/1597/
 name: multi-user-collaboration
 class: img-right-full
 # 사용자 협업
-![](https://raw.githubusercontent.com/Great-Stone/images/master/uPic/DevOps-2-20201124102930637.png)
+.center[![](https://raw.githubusercontent.com/Great-Stone/images/master/uPic/DevOps-2-20201124102930637.png)]
 서로 다른 팀 또는 부서의 사용자는 모두 중앙 집중식 코드 형 인프라의 이점을 누릴 수 있습니다.
 
 인프라 변경은 더 이상 격리 된 사일로에서 생성되지 않습니다.
 
 각 팀은 필요에 따라 Terraform 코드를 제공하거나 사용할 수 있습니다.
-
-.small[https://www.udig.com/high-functioning-devops-team/]
 
 ???
 모든 테라 폼 코드를 git repos에 저장하면 사용자 협업과 같은 추가 기능을 활성화 합니다. 이것은 CommitStrip이라는 재미있는 만화입니다. 개발자와 운영팀이 함께 일하는 법을 배우려고합니다. Terraform Cloud는 이러한 팀을보다 생산적인 방식으로 더 가깝게 만드는 데 도움이됩니다.
