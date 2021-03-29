@@ -52,7 +52,7 @@ challenges:
 
     Search for **HashiCorp** and select the "HashiCorp Terraform 2.x.y" extension. Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it. Then click the icon with two pages under the File menu so you can see your Terraform files again.
 
-    If you see a popup saying that Terraform 0.8 is installed, just close it. We have updated Terraform for you. You can check the version by running `terraform version`.
+    You will see a popup saying that some version of terraform-ls has been installed. This is referring to the "Terraform Language Server" which is used by the HashiCorp Terraform extension. Just click the "x" in the popup to close it.
 
     We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
 
