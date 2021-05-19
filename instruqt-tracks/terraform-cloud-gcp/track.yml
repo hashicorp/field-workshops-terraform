@@ -708,7 +708,7 @@ challenges:
 
     Note the "Source Code" link that points at the GitHub repository for this module. Click on the Source URL. As you did in previous challenges, create your own fork of this repository with the "Fork" button.
 
-    Back in the Terraform Cloud UI, click on the "Modules" tab at the top of the page. Click on the "+Add Module" button. Click on the "GitHub" button and select the terraform-google-network repository that you just forked.
+    Back in the Terraform Cloud UI, click on the "Registry" tab at the top of the page. Click on the "Publish Private Module +" button. Click on the "GitHub" button and select the terraform-google-network repository that you just forked.
 
     Click on the "Publish module" button.
 
@@ -793,6 +793,10 @@ challenges:
     Copy or save this workspace ID somewhere as you will need it during the challenge.
     ### The Challenge:
     Use the four *.json files located in the json directory to update your variables and trigger a Terraform plan/apply. Use the Terraform API docs (which are in one of this challenge's notes) to determine which commands to run. You can edit the files in your text editor to customize them for your workspace. Be sure to include `@` before the JSON file names.
+
+    You can find the relevant curl request instructions here:
+    - [For workspace variables](https://www.terraform.io/docs/cloud/api/workspace-variables.html#sample-request)
+    - [To apply runs](https://www.terraform.io/docs/cloud/api/run.html#sample-request)
 
     HINT: The global find-and-replace (magnifying glass icon) allows you to replace text across all the files in your workspace at once.
 
