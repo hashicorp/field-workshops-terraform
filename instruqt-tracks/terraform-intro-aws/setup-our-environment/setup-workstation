@@ -2,7 +2,7 @@
 set -e
 
 # Allow instruqt time to do its thing
-sleep 10
+sleep 15
 
 # Clone the hashicat-aws repo
 git clone https://github.com/hashicorp/hashicat-aws

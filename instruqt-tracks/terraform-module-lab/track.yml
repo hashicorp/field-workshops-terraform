@@ -24,28 +24,6 @@ challenges:
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: |
     Configure your code editor with the Terraform extension and open a workspace.
-  assignment: |-
-    Open the Code Editor tab on the left. First get familiar with the menus. This is running the Visual Studio Code editor. You can also use the simpler "Text Editor" tab if you prefer.
-
-    If you do use the VS Code Editor, please perform the following steps:
-
-    Notice the menu bar with File, Edit, and other menus at the top of the VS Code Editor. You can find all the menus on this menu bar.
-
-    You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application. Open file called "main.tf.
-
-    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes with one slightly out of position.
-
-    Search for **Terraform** and be sure to select the "HashiCorp Terraform 2.x.y" extension. **Do not select the "Terraform 1.4.0" extension from mauve.** Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it. Then click the icon with two pages under the File menu so you can see your Terraform files again.
-
-    We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
-
-    We recommend executing all commands on the "Shell" tab. But you can also open and use a terminal window at the bottom of the Visual Code Editor by using the Terminal > New Terminal menu or the **<ctrl>-`** shortcut.
-
-    If you do use the VS Code terminal, you can toggle its size up and down with the `^` and inverted `^` buttons above it. You can get rid of it with the garbage can and `x` icons.
-
-    Congratulations, you are ready to start working with Terraform.
-
-    Click the **Check** button to continue.
   notes:
   - type: text
     contents: |
@@ -58,6 +36,28 @@ challenges:
     contents: The terraform language is designed to be both human and machine-readable.
   - type: text
     contents: Most modern text editors support Terraform syntax highlighting.
+  assignment: |-
+    Open the Code Editor tab on the left. First get familiar with the menus. This is running the Visual Studio Code editor. You can also use the simpler "Text Editor" tab if you prefer.
+
+    If you do use the VS Code Editor, please perform the following steps:
+
+    Notice the menu bar with File, Edit, and other menus at the top of the VS Code Editor. You can find all the menus on this menu bar.
+
+    You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application. Open file called "main.tf.
+
+    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes with one slightly out of position.
+
+    Search for **HashiCorp** and select the "HashiCorp Terraform 2.x.y" extension. Click the blue **Install** or blue **Install in Remote** button to install the extension. Then click the icon with two pages under the File menu so you can see your Terraform files again.
+
+    We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
+
+    We recommend executing all commands on the "Shell" tab. But you can also open and use a terminal window at the bottom of the Visual Code Editor by using the Terminal > New Terminal menu or the **<ctrl>-`** shortcut.
+
+    If you do use the VS Code terminal, you can toggle its size up and down with the `^` and inverted `^` buttons above it. You can get rid of it with the garbage can and `x` icons.
+
+    Congratulations, you are ready to start working with Terraform.
+
+    Click the **Check** button to continue.
   tabs:
   - title: Code Editor
     type: service
@@ -78,6 +78,10 @@ challenges:
   title: ☁️ Terraform Cloud Setup
   teaser: |
     Terraform Cloud offers almost all the same features as on-premise Terraform Enterprise.
+  notes:
+  - type: text
+    contents: Terraform Cloud offers features like remote state and a private module
+      registry.
   assignment: |-
     During this challenge you'll sign up for a free Terraform Cloud account. Click on the URL below and sign up for an account if you don't have one already:
 
@@ -106,10 +110,6 @@ challenges:
     We'll be using this token for some of the lab exercises later in the track.
 
     Also edit the remote_backend.tf file in your workspace directory, replacing `YOURORGANIZATION` with the name of your Terraform Cloud organization and `YOURWORKSPACE` with `tfc-module-lab`.
-  notes:
-  - type: text
-    contents: Terraform Cloud offers features like remote state and a private module
-      registry.
   tabs:
   - title: Code Editor
     type: service
@@ -134,6 +134,10 @@ challenges:
   title: "\U0001F4BB Version Controlled Infrastructure"
   teaser: |
     Terraform modules can be stored in your Version Control System.
+  notes:
+  - type: text
+    contents: Terraform modules can be stored in your Version Control System (VCS),
+      and automatically imported into the Private Module Registry
   assignment: |-
     In order for different teams and individuals to be able to work on the same Terraform code, you need to use a Version Control System (VCS). Terraform Cloud can integrate with the most popular VCS systems including GitHub, GitLab and Bitbucket.
 
@@ -144,10 +148,6 @@ challenges:
     https://www.terraform.io/docs/cloud/vcs/github.html
 
     Once you've configured GitHub access, you can import modules into your private module registry.
-  notes:
-  - type: text
-    contents: Terraform modules can be stored in your Version Control System (VCS),
-      and automatically imported into the Private Module Registry
   tabs:
   - title: Code Editor
     type: service
@@ -174,6 +174,10 @@ challenges:
   title: "\U0001F4DA Private Module Registry"
   teaser: |
     Some of your users want a simple way to deploy databases and network configurations. Enter the Private Module Registry, where you can store standard, re-usable Terraform configurations that others can use in their own workspaces.
+  notes:
+  - type: text
+    contents: Storing your modules in a git repo allows you to do code reviews and
+      tag different versions.
   assignment: |-
     In this challenge you'll learn to use the Private Module Registry, which allows you to store and version re-usable snippets of Terraform code. Think of modules like custom resources for your own environment.
 
@@ -223,10 +227,6 @@ challenges:
     Type "yes" when asked to confirm the destroy plan.
 
     Congratulations on completing the Terraform Module Lab!
-  notes:
-  - type: text
-    contents: Storing your modules in a git repo allows you to do code reviews and
-      tag different versions.
   tabs:
   - title: Code Editor
     type: service
@@ -244,4 +244,4 @@ challenges:
     url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
-checksum: "4779407149856916630"
+checksum: "6882118119378675165"
