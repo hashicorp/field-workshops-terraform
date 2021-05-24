@@ -73,6 +73,28 @@ EOF
   curl -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/vnd.api+json" --request POST --data @/tmp/attach_workspace.json https://app.terraform.io/api/v2/policy-sets/$POLICY_SET_ID/relationships/workspaces
 fi
 
+# Create payload for triggering a run
+echo "Creating a run JSON payload..."
+cat <<-EOF > /tmp/trigger_run.json
+{
+  "data": {
+    "attributes": {
+      "is-destroy": false,
+      "message": "Run subject to Sentinel policies"
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "type": "workspaces",
+          "id": "$WORKSPACE_ID"
+        }
+      }
+    },
+    "type": "runs"
+  }
+}
+EOF
+
 ## Do git operations to add labels (but not for workshops-testbot)
 if [[ -f /root/skipconfig.json ]]; then
   GITUSERID=$(jq -r .gituserid < /root/skipconfig.json)
@@ -93,6 +115,9 @@ EOF
   git add .
   git commit -m "Added the second label"
   git push origin master
+else
+  # Trigger a run
+  curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/trigger_run.json https://app.terraform.io/api/v2/runs
 fi
 
 exit 0
