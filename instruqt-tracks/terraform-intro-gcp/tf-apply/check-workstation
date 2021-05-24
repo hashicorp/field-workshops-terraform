@@ -1,0 +1,21 @@
+#!/bin/bash -l
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+cd /root/hashicat-gcp
+if [ ! -f terraform.tfstate ]; then
+  fail-message "Oops, it looks like you haven't run terraform apply yet."
+fi
+
+MYNET=$(cat terraform.tfstate | jq -r '.resources | .[].type')
+
+if [ $MYNET != "google_compute_network" ]; then
+  fail-message "It looks like your network has not been built yet. Please try again."
+fi
+
+exit 0
