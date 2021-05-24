@@ -25,30 +25,6 @@ challenges:
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: |
     Configure your code editor with the Terraform extension.
-  assignment: |-
-    Open the Code Editor tab on the left. First get familiar with the menus. This is running the Visual Studio Code editor. You can also use the simpler "Text Editor" tab if you prefer.
-
-    If you do use the VS Code Editor, please perform the following steps:
-
-    Notice the menu bar with File, Edit, and other menus at the top of the VS Code Editor. You can find all the menus on this menu bar.
-
-    You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application. Open file called "main.tf.
-
-    Next you should install the HashiCorp Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes with one slightly out of position.
-
-    Search for **HashiCorp** and select the "HashiCorp Terraform 2.x.y" extension. Click the green **Install** button to install the extension. Then click the **Reload Required** button to activate it. Then click the icon with two pages under the File menu so you can see your Terraform files again.
-
-    You will see a popup saying that some version of terraform-ls has been installed. This is referring to the "Terraform Language Server" which is used by the HashiCorp Terraform extension. Just click the "x" in the popup to close it.
-
-    We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
-
-    We recommend executing all commands on the "Shell" tab. But you can also open and use a terminal window at the bottom of the Visual Code Editor by using the Terminal > New Terminal menu or the **<ctrl>-`** shortcut.
-
-    If you do use the VS Code terminal, you can toggle its size up and down with the `^` and inverted `^` buttons above it. You can get rid of it with the garbage can and `x` icons.
-
-    Congratulations, you are ready to start working with Terraform on Azure. We'll use the hashicat-azure example app in the rest of the challenges as you learn new Terraform skills.
-
-    Click the **Check** button to continue.
   notes:
   - type: text
     contents: |
@@ -61,6 +37,28 @@ challenges:
     contents: The Terraform language is designed to be both human and machine-readable.
   - type: text
     contents: Most modern text editors support Terraform syntax highlighting.
+  assignment: |-
+    Open the Code Editor tab on the left. First get familiar with the menus. This is running the Visual Studio Code editor. You can also use the simpler "Text Editor" tab if you prefer.
+
+    If you do use the VS Code Editor, please perform the following steps:
+
+    Notice the menu bar with File, Edit, and other menus at the top of the VS Code Editor. You can find all the menus on this menu bar.
+
+    You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application. Open file called "main.tf.
+
+    Next you should install the HashiCorp Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes with one slightly out of position.
+
+    Search for **HashiCorp** and select the "HashiCorp Terraform 2.x.y" extension. Click the blue **Install** or blue **Install in Remote** button to install the extension. Then click the icon with two pages under the File menu so you can see your Terraform files again.
+
+    We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
+
+    We recommend executing all commands on the "Shell" tab. But you can also open and use a terminal window at the bottom of the Visual Code Editor by using the Terminal > New Terminal menu or the **<ctrl>-`** shortcut.
+
+    If you do use the VS Code terminal, you can toggle its size up and down with the `^` and inverted `^` buttons above it. You can get rid of it with the garbage can and `x` icons.
+
+    Congratulations, you are ready to start working with Terraform on Azure. We'll use the hashicat-azure example app in the rest of the challenges as you learn new Terraform skills.
+
+    Click the **Check** button to continue.
   tabs:
   - title: Code Editor
     type: service
@@ -81,6 +79,21 @@ challenges:
   title: "\U0001F44B Getting to Know Terraform"
   teaser: |
     Learn Terraform basics and command line syntax.
+  notes:
+  - type: text
+    contents: |-
+      Terraform open source is a command line application that you can download and run from your laptop or virtual workstation.
+
+      It is written in Go and runs on macOS, Linux or Windows. You can always download the latest version of Terraform from https://www.terraform.io/downloads.html
+  - type: text
+    contents: |-
+      Installing Terraform on your laptop or workstation is easy. You simply download the zip file, unpack it, and place it somewhere in your PATH.
+
+      Check out this tutorial for step-by-step instructions:
+
+      https://learn.hashicorp.com/terraform/getting-started/install.html
+
+      We've pre-installed Terraform in your Instruqt lab environment for you.
   assignment: |-
     Let's start with some basic Terraform commands.
     Run the following commands in the "Shell" tab or in a terminal in the VS Code editor.
@@ -100,21 +113,6 @@ challenges:
     Terraform runs on Windows, OSX, or Linux. You can install it on your laptop or on a cloud based workstation. Terraform is also pre-installed in Azure Cloud Shell.
 
     Today we'll be using the preconfigured Terraform workstation on the left for all our lab exercises.
-  notes:
-  - type: text
-    contents: |-
-      Terraform open source is a command line application that you can download and run from your laptop or virtual workstation.
-
-      It is written in Go and runs on macOS, Linux or Windows. You can always download the latest version of Terraform from https://www.terraform.io/downloads.html
-  - type: text
-    contents: |-
-      Installing Terraform on your laptop or workstation is easy. You simply download the zip file, unpack it, and place it somewhere in your PATH.
-
-      Check out this tutorial for step-by-step instructions:
-
-      https://learn.hashicorp.com/terraform/getting-started/install.html
-
-      We've pre-installed Terraform in your Instruqt lab environment for you.
   tabs:
   - title: Code Editor
     type: service
@@ -135,6 +133,15 @@ challenges:
   title: "\U0001F510 Connecting Terraform to Azure Cloud"
   teaser: |
     Safely connect to the Azure APIs using a service principal.
+  notes:
+  - type: text
+    contents: |-
+      Microsoft has a great tutorial for setting up Azure credentials on your laptop or virtual workstation:
+      https://docs.microsoft.com/en-us/azure/virtual-machines/linux/terraform-install-configure
+  - type: text
+    contents: |-
+      Azure Cloud Shell is another easy way to get started with Terraform. With Azure Cloud Shell, Terraform is pre-installed and ready to go.
+      https://docs.microsoft.com/en-us/azure/virtual-machines/linux/terraform-install-configure#use-azure-cloud-shell
   assignment: |-
     Terraform needs credentials to be able to connect to Azure and build resources.
 
@@ -148,15 +155,6 @@ challenges:
     ```
 
     *Do not ever store your credentials in source code files*, as they can be accidentally exposed or copied to a public repository.
-  notes:
-  - type: text
-    contents: |-
-      Microsoft has a great tutorial for setting up Azure credentials on your laptop or virtual workstation:
-      https://docs.microsoft.com/en-us/azure/virtual-machines/linux/terraform-install-configure
-  - type: text
-    contents: |-
-      Azure Cloud Shell is another easy way to get started with Terraform. With Azure Cloud Shell, Terraform is pre-installed and ready to go.
-      https://docs.microsoft.com/en-us/azure/virtual-machines/linux/terraform-install-configure#use-azure-cloud-shell
   tabs:
   - title: Code Editor
     type: service
@@ -177,6 +175,14 @@ challenges:
   title: "\U0001F468‍\U0001F4BB What does Terraform code look like?"
   teaser: |
     The Terraform DSL (Domain Specific Language) is a declarative language that lets you build almost any type of infrastructure.
+  notes:
+  - type: text
+    contents: |-
+      Terraform will read anything in the current directory that ends in `*.tf` or `*.tfvars`.
+
+      By convention most Terraform workspaces will contain `main.tf`, `variables.tf`, and `outputs.tf` files.
+
+      You can also group your Terraform code into files by purpose. For example, you might place all your load balancer configuration code into a file called `load_balancer.tf`.
   assignment: |-
     We've downloaded some Terraform code onto your workstation. Run the following command to see the Terraform code files:
     ```
@@ -191,14 +197,6 @@ challenges:
     **outputs.tf** - This file contains outputs that will be shown at the end of a successful Terraform run.
 
     Files that end in anything other than `*.tf` or `*.tfvars` are ignored by Terraform.
-  notes:
-  - type: text
-    contents: |-
-      Terraform will read anything in the current directory that ends in `*.tf` or `*.tfvars`.
-
-      By convention most Terraform workspaces will contain `main.tf`, `variables.tf`, and `outputs.tf` files.
-
-      You can also group your Terraform code into files by purpose. For example, you might place all your load balancer configuration code into a file called `load_balancer.tf`.
   tabs:
   - title: Code Editor
     type: service
@@ -219,6 +217,14 @@ challenges:
   title: ☁️ Terraform Init - Install the Azure Provider
   teaser: |
     Terraform needs a provider to talk to cloud APIs. The provider is the bridge that connects Terraform core to your infrastructure providers.
+  notes:
+  - type: text
+    contents: |-
+      The Terraform core program isn't very useful by itself. Terraform needs the help of a **provider** to be able to talk to cloud APIs. Terraform has hundreds of different providers. You can browse the provider list here:
+
+      https://registry.terraform.io/browse/providers
+
+      Today we'll be using the **azurerm** provider. AzureRM stands for Azure Resource Manager.
   assignment: |-
     We have downloaded some Terraform code for the HashiCat application. We'll be using this source code for the rest of the track.
 
@@ -228,19 +234,11 @@ challenges:
     ```
     The `terraform init` command scans your Terraform code, identifies any providers that are needed, and downloads them.
 
-    Run the following command to take a peek inside the `.terraform` directory:
+    Run the following command to verify that the azurerm provider was installed under the ".terraform" directory::
     ```
-    ls .terraform/plugins
+    ls .terraform/providers/registry.terraform.io/hashicorp
     ```
     This hidden directory is where all modules and plugins are stored.
-  notes:
-  - type: text
-    contents: |-
-      The Terraform core program isn't very useful by itself. Terraform needs the help of a **provider** to be able to talk to cloud APIs. Terraform has hundreds of different providers. You can browse the provider list here:
-
-      https://www.terraform.io/docs/providers/index.html
-
-      Today we'll be using the **azurerm** provider. AzureRM stands for Azure Resource Manager.
   tabs:
   - title: Code Editor
     type: service
@@ -261,12 +259,12 @@ challenges:
   title: "\U0001F4DD Quiz 1 - Providers and Modules"
   teaser: |
     A quiz about Terraform init
-  assignment: |
-    Where does Terraform store its modules and providers?
   notes:
   - type: text
     contents: |
       It's quiz time!
+  assignment: |
+    Where does Terraform store its modules and providers?
   answers:
   - In the /tmp directory
   - In the user's home directory
@@ -282,12 +280,16 @@ challenges:
   title: "\U0001F469‍⚖️ Terraform Validate - Test Your Code"
   teaser: |
     Terraform has a built in validation tester. This is useful to see whether your Terraform code is valid and parses correctly.
+  notes:
+  - type: text
+    contents: Terraform has a built-in syntax checker. You can run it with the `terraform
+      validate` command.
   assignment: |-
     Terraform comes with a built-in subcommand called **validate**. This is useful when you want to do a quick syntax check of your code to make sure it parses correctly.
 
     Click on the File Explorer icon on the left. It looks like a stack of papers.
 
-    Edit the main.tf file and remove the double quotes between `azurerm_resource_group` and `myresourcegroup` on line 5 of the file, keeping the space that was between them.
+    Edit the main.tf file and remove the double quotes between `azurerm_resource_group` and `myresourcegroup` on line 14 of the file, keeping the space that was between them.
 
     Validate your code:
 
@@ -295,13 +297,9 @@ challenges:
     terraform validate
     ```
 
-    Now put the double quotes back in line 5 and run the validate command again. This time you should pass the validation test.
+    Now put the double quotes back in line 14 and run the validate command again. This time you should pass the validation test.
 
     **terraform validate** is most often used in automated CI/CD test pipelines. It allows you to quickly catch errors in your code before any other steps are taken.
-  notes:
-  - type: text
-    contents: Terraform has a built-in syntax checker. You can run it with the `terraform
-      validate` command.
   tabs:
   - title: Code Editor
     type: service
@@ -322,6 +320,12 @@ challenges:
   title: "\U0001F914 Terraform Plan - Dry Run Mode"
   teaser: |
     Terraform has a dry run mode where you can preview what will be built without actually creating any resources. In this challenge we'll run Terraform plan and view the output.
+  notes:
+  - type: text
+    contents: |-
+      `terraform plan` allows you to preview any changes to your environment in a safe way.
+
+      This can help you identify any unexpected changes before you deploy them, not after they are already built.
   assignment: |-
     Run the **terraform plan** command:
     ```
@@ -334,12 +338,6 @@ challenges:
     **Keep your prefix string all lower case, and between 5-12 characters long. Do not use an underscore in your prefix.**
 
     The prefix will become part of your application hostname, and therefore must be DNS-compliant. Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, and the hyphen (-).  A hostname may not start with a hyphen.
-  notes:
-  - type: text
-    contents: |-
-      `terraform plan` allows you to preview any changes to your environment in a safe way.
-
-      This can help you identify any unexpected changes before you deploy them, not after they are already built.
   tabs:
   - title: Code Editor
     type: service
@@ -360,16 +358,16 @@ challenges:
   title: "\U0001F39B️ Working with Terraform Variables"
   teaser: |
     Terraform variables allow you to customize your infrastructure without editing any code. You can use the same Terraform code to deploy dev, staging and production but with different variables.
+  notes:
+  - type: text
+    contents: The **terraform.tfvars** file is a convenient place for users to configure
+      their variables.
   assignment: |-
     In Terraform all variables must be declared (with or without an optional default value) before you can use them. Variables are usually declared in the "variables.tf" file although they can also be declared in other "*.tf" files. Their values can be set in the "terraform.tfvars" file and in other ways which we'll explore later.
 
     Open the "terraform.tfvars" file and set your `prefix` variable by deleting the `# ` at the beginning of the line and replacing "yourname" with your own name (first and last with or without a hyphen between them and all lower case).
 
     Now run `terraform plan` again. This time you won't have to enter your prefix manually.
-  notes:
-  - type: text
-    contents: The **terraform.tfvars** file is a convenient place for users to configure
-      their variables.
   tabs:
   - title: Code Editor
     type: service
@@ -390,6 +388,12 @@ challenges:
   title: "\U0001F5FC Change Your Location"
   teaser: |
     Terraform is flexible enough to deploy infrastructure anywhere in the world. You can easily provision your applications in different geographical regions by simply changing a single variable.
+  notes:
+  - type: text
+    contents: |-
+      You can override any variable defined in the "variables.tf" file by setting it in your personal `terraform.tfvars` file.
+
+      In this challenge, you will pick the location where your Azure resources should be deployed.
   assignment: |-
     In the previous challenge we set our `prefix` variable in the "terraform.tfvars" file. Let's set another variable that will determine the location where your Azure infrastructure will be deployed.
 
@@ -408,12 +412,6 @@ challenges:
     Once you've set your location variable try running `terraform plan` again. What's different this time?
 
     Remember that you can set values for any variable declared in your "variables.tf" file in the "terraform.tfvars" file.
-  notes:
-  - type: text
-    contents: |-
-      You can override any variable defined in the "variables.tf" file by setting it in your personal `terraform.tfvars` file.
-
-      In this challenge, you will pick the location where your Azure resources should be deployed.
   tabs:
   - title: Code Editor
     type: service
@@ -434,12 +432,12 @@ challenges:
   title: "\U0001F4DD Quiz 2 - Variables"
   teaser: |
     A quiz about Terraform variables
-  assignment: |
-    Where are terraform variables *declared*?
   notes:
   - type: text
     contents: |
       Another quiz, get ready!
+  assignment: |
+    Where are terraform variables *declared*?
   answers:
   - On the command line
   - As environment variables
@@ -455,6 +453,11 @@ challenges:
   title: "\U0001F4C8 Terraform Graph"
   teaser: |
     Terraform creates a graph of all the infrastructure defined in your code.
+  notes:
+  - type: text
+    contents: Terraform Graph can provide a visual representation of all your infrastructure.
+      This is handy for finding dependency issues or resources that will be affected
+      by a change.
   assignment: |-
     Try running the `terraform graph` command:
 
@@ -479,11 +482,6 @@ challenges:
     **NOTE:** Due to a known bug you may not be able to drag and zoom the graph. The main point of this exercise is to see how terraform maps out complex infrastructure. So don't worry if your graph doesn't show color.
 
     Terraform uses this graph to determine which resources can be built in parallel for maximum efficiency.
-  notes:
-  - type: text
-    contents: Terraform Graph can provide a visual representation of all your infrastructure.
-      This is handy for finding dependency issues or resources that will be affected
-      by a change.
   tabs:
   - title: Command Line
     type: terminal
@@ -500,6 +498,12 @@ challenges:
   title: "\U0001F468‍\U0001F4BB Terraform Plan and Terraform Apply"
   teaser: |
     The terraform plan command can be run anytime to get a preview of changes that Terraform might make. When you run terraform apply these changes are implemented, and Terraform builds, updates, or destroys resources.
+  notes:
+  - type: text
+    contents: |-
+      By default, the `terraform apply` command runs a Terraform plan to show you what changes it wants to make.
+
+      Terraform maps out all the changes it needs to make before applying them.
   assignment: |-
     Now that we've configured our required variables we can apply our changes.
 
@@ -519,12 +523,6 @@ challenges:
     You'll need to enter *yes* when Terraform prompts you with the "Do you want to perform these actions?" question.
 
     Right now our code only defines a single Azure resource group. We'll be building upon this starting point in the next challenge.
-  notes:
-  - type: text
-    contents: |-
-      By default, the `terraform apply` command runs a Terraform plan to show you what changes it wants to make.
-
-      Terraform maps out all the changes it needs to make before applying them.
   tabs:
   - title: Code Editor
     type: service
@@ -545,6 +543,14 @@ challenges:
   title: "\U0001F469‍\U0001F4BB Test and Repair"
   teaser: |
     Terraform is idempotent. Each resource in your code will be examined, and if it already exists Terraform will leave it alone.
+  notes:
+  - type: text
+    contents: |-
+      Terraform is an *idempotent* application.
+
+      Idempotence is the property of certain operations in mathematics and computer science whereby they can be applied multiple times without changing the result beyond the initial application.
+
+      https://en.wikipedia.org/wiki/Idempotence
   assignment: |-
     Try running `terraform plan` again and see what happens:
 
@@ -563,14 +569,6 @@ challenges:
     ```
 
     Terraform checks each resource to ensure it is in the proper state. It will not re-create your resource group if it is already provisioned correctly.
-  notes:
-  - type: text
-    contents: |-
-      Terraform is an *idempotent* application.
-
-      Idempotence is the property of certain operations in mathematics and computer science whereby they can be applied multiple times without changing the result beyond the initial application.
-
-      https://en.wikipedia.org/wiki/Idempotence
   tabs:
   - title: Code Editor
     type: service
@@ -591,6 +589,12 @@ challenges:
   title: "\U0001F6EB Change Your Prefix"
   teaser: |
     When your Terraform code changes, your infrastructure will be modified to match the updated code. Terraform is a declarative language.
+  notes:
+  - type: text
+    contents: |-
+      Terraform can create, destroy, update in place, or destroy and re-create your infrastructure. Some types of resources can be updated without deleting them. Major changes usually require a teardown and rebuild.
+
+      Terraform always tries to match the current infrastructure to what has been defined in your code.
   assignment: |-
     Edit the **terraform.tfvars** file to change your prefix.
 
@@ -603,12 +607,6 @@ challenges:
     Type "yes" when prompted.
 
     Observe the output. What happened?
-  notes:
-  - type: text
-    contents: |-
-      Terraform can create, destroy, update in place, or destroy and re-create your infrastructure. Some types of resources can be updated without deleting them. Major changes usually require a teardown and rebuild.
-
-      Terraform always tries to match the current infrastructure to what has been defined in your code.
   tabs:
   - title: Code Editor
     type: service
@@ -629,6 +627,10 @@ challenges:
   title: "\U0001F3F7️ Add a Tag to Your Resource Group"
   teaser: |
     Terraform can change some resources in in place without deleting them. Adding tags is a non-destructive action.
+  notes:
+  - type: text
+    contents: Adding, changing, or removing tags is a non-destructive action. Terraform
+      can tag your resources without re-creating them.
   assignment: |-
     Read the Terraform documentation for the azurerm_resource_group resource:
 
@@ -641,10 +643,6 @@ challenges:
     Re-run `terraform apply`.
 
     What happens?
-  notes:
-  - type: text
-    contents: Adding, changing, or removing tags is a non-destructive action. Terraform
-      can tag your resources without re-creating them.
   tabs:
   - title: Code Editor
     type: service
@@ -665,6 +663,10 @@ challenges:
   title: "\U0001F5A7 Add a Virtual Network"
   teaser: |
     Terraform resources are like building blocks. You can continue adding more blocks until your infrastructure reaches the desired state.
+  notes:
+  - type: text
+    contents: Terraform code can be built incrementally, one or two resources at a
+      time.
   assignment: |-
     Open the **main.tf** file again and uncomment the next resource block in the file. The type of resource is **azurerm_virtual_network** and it is named **vnet**.
 
@@ -675,10 +677,6 @@ challenges:
     Look at the **location** and **resource_group_name** parameters inside the vnet resource. See how they point back at the first resource in the file? The virtual network resource inherits settings from the resource group.
 
     Terraform can map out the complex web of dependencies between hundreds of interconnected resources.
-  notes:
-  - type: text
-    contents: Terraform code can be built incrementally, one or two resources at a
-      time.
   tabs:
   - title: Code Editor
     type: service
@@ -699,6 +697,10 @@ challenges:
   title: "\U0001F3D7️ Complete the Build"
   teaser: |
     Terraform code can stand up everything from resource groups, to virtual networks, to VMs and containers.
+  notes:
+  - type: text
+    contents: The `-auto-approve` flag can be used to override the "Are you sure?"
+      questions that appear before an apply or destroy. Use with caution!
   assignment: |-
     We've uncommented all the rest of the Terraform code in the **main.tf** file for you. Run a `terraform plan` to see what will be built:
 
@@ -712,13 +714,9 @@ challenges:
     terraform apply -auto-approve
     ```
 
-    It can take up to five minutes for the application to finish deploying. You will know it is complete when you see the Terraform output with your application URL at the end of the run.
+    It can take up to ten minutes for the application to finish deploying. You will know it is complete when you see the Terraform output with your application URL at the end of the run.
 
     Open your web application in a new browser tab. You'll need to copy and paste the URL into your address bar.
-  notes:
-  - type: text
-    contents: The `-auto-approve` flag can be used to override the "Are you sure?"
-      questions that appear before an apply or destroy. Use with caution!
   tabs:
   - title: Code Editor
     type: service
@@ -739,6 +737,9 @@ challenges:
   title: "\U0001F4C8 Terraform Graph"
   teaser: |
     Revisit graph to see what has changed.
+  notes:
+  - type: text
+    contents: Let's revisit our graph to see what has changed.
   assignment: |-
     Start up a Blast Radius server with the following command:
 
@@ -753,9 +754,6 @@ challenges:
     **NOTE:** Due to a known bug you may not be able to drag and zoom the graph. The main point of this exercise is to see how terraform maps out complex infrastructure. So don't worry if your graph doesn't show color.
 
     Terraform uses this graph to determine which resources can be built in parallel for maximum efficiency.
-  notes:
-  - type: text
-    contents: Let's revisit our graph to see what has changed.
   tabs:
   - title: Command Line
     type: terminal
@@ -772,12 +770,12 @@ challenges:
   title: "\U0001F4DD Quiz 3 - Terraform Apply"
   teaser: |
     What happens when you run `terraform apply` without a plan file?
-  assignment: |
-    What happens when you run `terraform apply` without specifying a plan file?
   notes:
   - type: text
     contents: |
       It's quiz time!
+  assignment: |
+    What happens when you run `terraform apply` without specifying a plan file?
   answers:
   - Terraform runs without any plan
   - Terraform reads the previous plan and then applies it
@@ -793,26 +791,6 @@ challenges:
   title: "\U0001F6E0️ Use a Provisioner"
   teaser: |
     Terraform works great with many different provisioning tools including Chef, Puppet, Ansible, Bash, and Powershell.
-  assignment: |-
-    Open the `main.tf` file in the Code Editor. Scroll down until you find the `remote-exec` provisioner block, or search the file and find it with CTRL-F.
-
-    Add the following two lines at the end of the inline list of commands:
-
-    ```
-    "sudo apt -y install cowsay",
-    "cowsay Mooooooooooo!",
-    ```
-    After copying them into your buffer, it will be easier to paste them if you hide the assignment by clicking the icon that looks like a picture frame next to the circular refresh icon. Click it again to redisplay the assignment.
-
-    This might be a good time to use the `terraform fmt` command to line up the commands nicely.
-
-    Now run another `terraform apply -auto-approve` to apply your changes:
-
-    ```
-    terraform apply -auto-approve
-    ```
-
-    Scroll back through the log output. You should see an ASCII art cow saying "Moooooooo!"
   notes:
   - type: text
     contents: Terraform provisioners run once at creation time. They do not run on
@@ -835,6 +813,26 @@ challenges:
                        ||     ||
       =============================
       ```
+  assignment: |-
+    Open the `main.tf` file in the Code Editor. Scroll down until you find the `remote-exec` provisioner block, or search the file and find it with CTRL-F.
+
+    Add the following two lines at the end of the inline list of commands:
+
+    ```
+    "sudo apt -y install cowsay",
+    "cowsay Mooooooooooo!",
+    ```
+    After copying them into your buffer, it will be easier to paste them if you hide the assignment by clicking the icon that looks like a picture frame next to the circular refresh icon. Click it again to redisplay the assignment.
+
+    This might be a good time to use the `terraform fmt` command to line up the commands nicely.
+
+    Now run another `terraform apply -auto-approve` to apply your changes:
+
+    ```
+    terraform apply -auto-approve
+    ```
+
+    Scroll back through the log output. You should see an ASCII art cow saying "Moooooooo!"
   tabs:
   - title: Code Editor
     type: service
@@ -855,6 +853,17 @@ challenges:
   title: "\U0001F5A8️ Add an Output"
   teaser: |
     Outputs are used to convey useful information such as IP addresses, application URLs or other useful data.
+  notes:
+  - type: text
+    contents: You can mix plain text along with Terraform data in your outputs. Outputs
+      can be used to convey useful information to your users at the end of a run.
+  - type: text
+    contents: The `terraform refresh` command will sync your state file with what
+      exists in your infrastructure. A refresh command will not change your infrastructure.
+  - type: text
+    contents: The `terraform output` command can be run any time you want to see your
+      Terraform outputs again. Run `terraform output <output_name>` to view a single
+      output.
   assignment: |-
     Open the **outputs.tf** file in the Code Editor.
 
@@ -878,17 +887,6 @@ challenges:
     ```
     terraform output
     ```
-  notes:
-  - type: text
-    contents: You can mix plain text along with Terraform data in your outputs. Outputs
-      can be used to convey useful information to your users at the end of a run.
-  - type: text
-    contents: The `terraform refresh` command will sync your state file with what
-      exists in your infrastructure. A refresh command will not change your infrastructure.
-  - type: text
-    contents: The `terraform output` command can be run any time you want to see your
-      Terraform outputs again. Run `terraform output <output_name>` to view a single
-      output.
   tabs:
   - title: Code Editor
     type: service
@@ -909,6 +907,28 @@ challenges:
   title: "\U0001F436 Fun With Variables"
   teaser: |
     Variables give the consumers of your Terraform code an easy way to customize their infrastructure.
+  notes:
+  - type: text
+    contents: |-
+      Terraform variables have five levels of precedence. 1=highest 5=lowest:
+
+      1. Command line flag - run as a command line switch
+      1. Configuration file - set in your terraform.tfvars file
+      1. Environment variable - part of your shell environment
+      1. Default Config - default value in variables.tf
+      1. User manual entry - if not specified, prompt the user for entry
+  - type: text
+    contents: |-
+      Here are some other fun placeholder sites you can try with the **placeholder** variable:
+
+      placedog.net<br>
+      placebear.com<br>
+      www.fillmurray.com<br>
+      www.placecage.com<br>
+      placebeard.it<br>
+      loremflickr.com<br>
+      baconmockup.com<br>
+      placeimg.com<br>
   assignment: |-
     There are several ways to configure Terraform variables. So far we've been using the **terraform.tfvars** file to set our variables. Try re-deploying your application with different **height** and **width** variables on the command line. Reload the webapp after each apply to observe any changes.
 
@@ -937,28 +957,6 @@ challenges:
     Which variable took precedence? Why?
 
     See this [doc](https://www.terraform.io/docs/configuration/variables.html#variable-definition-precedence) if you're unsure.
-  notes:
-  - type: text
-    contents: |-
-      Terraform variables have five levels of precedence. 1=highest 5=lowest:
-
-      1. Command line flag - run as a command line switch
-      1. Configuration file - set in your terraform.tfvars file
-      1. Environment variable - part of your shell environment
-      1. Default Config - default value in variables.tf
-      1. User manual entry - if not specified, prompt the user for entry
-  - type: text
-    contents: |-
-      Here are some other fun placeholder sites you can try with the **placeholder** variable:
-
-      placedog.net<br>
-      placebear.com<br>
-      www.fillmurray.com<br>
-      www.placecage.com<br>
-      placebeard.it<br>
-      loremflickr.com<br>
-      baconmockup.com<br>
-      placeimg.com<br>
   tabs:
   - title: Code Editor
     type: service
@@ -979,12 +977,12 @@ challenges:
   title: "\U0001F4DD Quiz 4 - Terraform Variables"
   teaser: |
     How do Terraform variables get set or overridden?
-  assignment: |
-    You have the same variable set in a *.tfvars file and as an environment variable. Which one takes precedence?
   notes:
   - type: text
     contents: |
       Get ready for another quiz...
+  assignment: |
+    You have the same variable set in a *.tfvars file and as an environment variable. Which one takes precedence?
   answers:
   - The environment variable
   - The tfvars config file
@@ -1000,6 +998,9 @@ challenges:
   title: ☁️ Terraform Cloud Setup
   teaser: |
     Terraform Cloud offers unlimited free Terraform state storage for users. Safeguard your state files by storing them remotely in Terraform Cloud.
+  notes:
+  - type: text
+    contents: Terraform Cloud remote state storage is free for all users.
   assignment: |-
     During this challenge and the next one, you'll use the remote state feature of Terraform Cloud to store your state file in the cloud. In order to do this you'll need a Terraform Cloud account. Click on the URL below and sign up for a free account if you don't have one already:
 
@@ -1018,9 +1019,6 @@ challenges:
     Also, change the **Execution Mode** to **Local**.
 
     Be sure to save your settings by clicking the "Save settings" button at the bottom of the page! This will allow us to run Terraform commands from our workstation with local variables, which we'll do in the next challenge.
-  notes:
-  - type: text
-    contents: Terraform Cloud remote state storage is free for all users.
   tabs:
   - title: Code Editor
     type: service
@@ -1041,6 +1039,14 @@ challenges:
   title: "\U0001F39B️ Configure Remote State"
   teaser: |
     The Terraform command line tool can store its state in Terraform Cloud. All that is required is a user token.
+  notes:
+  - type: text
+    contents: |-
+      With *local* execution mode the Terraform commands and variables all remain
+      on your workstation.
+
+      With *remote* execution mode Terraform runs in a Terraform Cloud
+      container environment. All variables must be configured in the cloud environment with this method.
   assignment: |-
     During this challenge we'll configure Terraform Cloud as a remote state backend, and then migrate our existing state file to Terraform Cloud.
 
@@ -1073,14 +1079,6 @@ challenges:
     Your state is now safely stored in Terraform Cloud. You can check this on the States tab of your workspace.
 
     Run a `terraform apply -auto-approve` and watch your state file evolve with each change. You can browse through previous state files with the Terraform Cloud UI.
-  notes:
-  - type: text
-    contents: |-
-      With *local* execution mode the Terraform commands and variables all remain
-      on your workstation.
-
-      With *remote* execution mode Terraform runs in a Terraform Cloud
-      container environment. All variables must be configured in the cloud environment with this method.
   tabs:
   - title: Code Editor
     type: service
@@ -1105,6 +1103,12 @@ challenges:
   title: "\U0001F525 Terraform Destroy"
   teaser: |
     Terraform can build infrastructure and also destroy it when you are done using it. This helps control costs and reduce infrastructure sprawl.
+  notes:
+  - type: text
+    contents: |-
+      Terraform can destroy infrastructure as easily as it can build it.
+
+      Use `terraform destroy` with caution.
   assignment: |-
     Run the following command to destroy your infrastructure:
 
@@ -1115,12 +1119,8 @@ challenges:
     You'll need to type "yes" when prompted to destroy your infrastructure. This is a safety feature to help prevent accidental deletion of important resources.
 
     Wait until the destroy action has completely finished before clicking on the *Check* button.
-  notes:
-  - type: text
-    contents: |-
-      Terraform can destroy infrastructure as easily as it can build it.
 
-      Use `terraform destroy` with caution.
+    Depending on the version of Terraform you are using, it is possible that the destroy action will fail. That will be resolved in a future version of Terraform.
   tabs:
   - title: Code Editor
     type: service
@@ -1135,4 +1135,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1067
-checksum: "526770914849282766"
+checksum: "17496202535726807543"

@@ -1,7 +1,7 @@
 version: "2"
 virtualmachines:
 - name: workstation
-  image: instruqt-hashicorp/terraform-workstation-3-5-0
+  image: instruqt-hashicorp/terraform-workstation-0-14-9
   shell: /bin/bash -l
   machine_type: n1-standard-1
 gcp_projects:
