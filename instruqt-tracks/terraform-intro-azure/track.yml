@@ -18,6 +18,7 @@ developers:
 - roger@hashicorp.com
 private: true
 published: true
+show_timer: true
 challenges:
 - slug: setup-our-environment
   id: yaudkqu8ak9b
