@@ -30,6 +30,7 @@ developers:
 - lance@hashicorp.com
 private: true
 published: true
+show_timer: true
 challenges:
 - slug: setup-our-environment
   id: jsjmhzzadzhr
