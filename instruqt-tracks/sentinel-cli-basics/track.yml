@@ -27,6 +27,21 @@ challenges:
   type: challenge
   title: The Sentinel CLI
   teaser: Learn about the Sentinel CLI commands.
+  notes:
+  - type: text
+    contents: |-
+      [Sentinel](https://docs.hashicorp.com/sentinel) allows customers to implement policy-as-code in the same way that Terraform implements infrastructure-as-code.
+
+      The Sentinel Command Line Interface (CLI) allows you to apply and test Sentinel policies including those that use mocks generated from Terraform Cloud and Terraform Enterprise plans.
+
+      To learn more, see https://docs.hashicorp.com/sentinel.
+  - type: text
+    contents: |-
+      We've launched the Sentinel CLI 0.18.3 on a Ubuntu VM running in GCP so that you don't need to download or install it.
+
+      If you would like to see syntax highlighting in the editor for Sentinel policies, we suggest selecting "ruby" in the language drop-down at the bottom of the editor.
+
+      After learning how to use the Sentinel CLI in the first challenge, you will run a very simple policy in the second challenge.
   assignment: |-
     The Sentinel Command Line Interface (CLI) allows you to apply and test Sentinel policies including those that use mocks generated from Terraform Cloud plans.
 
@@ -57,21 +72,6 @@ challenges:
     Please read the output to learn about the "test" command.
 
     The "sentinel apply" and "sentinel test" commands both evaluate a Sentinel policy, but the latter tests it against multiple test case files.
-  notes:
-  - type: text
-    contents: |-
-      [Sentinel](https://docs.hashicorp.com/sentinel) allows customers to implement policy-as-code in the same way that Terraform implements infrastructure-as-code.
-
-      The Sentinel Command Line Interface (CLI) allows you to apply and test Sentinel policies including those that use mocks generated from Terraform Cloud and Terraform Enterprise plans.
-
-      To learn more, see https://docs.hashicorp.com/sentinel.
-  - type: text
-    contents: |-
-      We've launched the Sentinel CLI 0.17.3 on a Ubuntu VM running in GCP so that you don't need to download or install it.
-
-      If you would like to see syntax highlighting in the editor for Sentinel policies, we suggest selecting "ruby" in the language drop-down at the bottom of the editor.
-
-      After learning how to use the Sentinel CLI in the first challenge, you will run a very simple policy in the second challenge.
   tabs:
   - title: Sentinel CLI
     type: terminal
@@ -83,6 +83,17 @@ challenges:
   type: challenge
   title: Run Your First Sentinel Policy
   teaser: Apply and test your first Sentinel policy.
+  notes:
+  - type: text
+    contents: |-
+      The Sentinel "apply" command lets you evaluate Sentinel policies:
+      https://docs.hashicorp.com/sentinel/commands/apply
+
+      The Sentinel "test" command lets you test a Sentinel policy against multiple test cases:
+      https://docs.hashicorp.com/sentinel/commands/test
+
+      Both commands use Sentinel CLI configuration files:
+      https://docs.hashicorp.com/sentinel/commands/config
   assignment: |-
     ## Apply the Policy
     Now that you are familiar with the Sentinel CLI commands, let's apply and test your first Sentinel policy.
@@ -123,17 +134,6 @@ challenges:
     Note that when specifying a policy with the "-run" argument, you can match any portion of the policy name. Often, you will want to use something that only matches a single policy in the current directory.
 
     Congratulations on completing the track. That was easy!
-  notes:
-  - type: text
-    contents: |-
-      The Sentinel "apply" command lets you evaluate Sentinel policies:
-      https://docs.hashicorp.com/sentinel/commands/apply
-
-      The Sentinel "test" command lets you test a Sentinel policy against multiple test cases:
-      https://docs.hashicorp.com/sentinel/commands/test
-
-      Both commands use Sentinel CLI configuration files:
-      https://docs.hashicorp.com/sentinel/commands/config
   tabs:
   - title: First Policy
     type: code
@@ -148,4 +148,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 2400
-checksum: "510909489441964392"
+checksum: "2535886219396590885"
