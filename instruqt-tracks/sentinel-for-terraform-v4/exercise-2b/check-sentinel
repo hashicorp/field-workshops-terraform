@@ -20,7 +20,7 @@ grep -q "pgp_key is null" require-access-keys-use-pgp-b.sentinel || grep -q "pgp
 
 grep -qL "<condition_2>" require-access-keys-use-pgp-a.sentinel && fail-message "You have not replaced '<condition_2>' in require-access-keys-use-pgp-b.sentinel yet."
 
-grep -q 'not strings.has_prefix(.*pgp_key.*,.*"keybase:")' require-access-keys-use-pgp-b.sentinel || fail-message "You have not replaced '<condition_2>' with 'not strings.has_prefix(pgp_key, \"keybase:\")' in require-access-keys-use-pgp-b.sentinel yet."
+grep -q 'not strings.has_prefix(.*pgp_key.*,.*"keybase:")' require-access-keys-use-pgp-b.sentinel || grep -q '!.*strings.has_prefix(.*pgp_key.*,.*"keybase:")' require-access-keys-use-pgp-b.sentinel || grep -q 'strings.has_prefix(pgp_key, "keybase:") == false' || grep -q 'strings.has_prefix(pgp_key, "keybase:") is false' || grep -q 'strings.has_prefix(pgp_key, "keybase:") != true' || grep -q 'strings.has_prefix(pgp_key, "keybase:") is not true' || fail-message "You have not replaced '<condition_2>' with 'not strings.has_prefix(pgp_key, \"keybase:\")', 'strings.has_prefix(pgp_key, "keybase:") == false', or 'strings.has_prefix(pgp_key, "keybase:") is false' in require-access-keys-use-pgp-b.sentinel yet."
 
 sentinel test -run=pgp-b.sentinel
 rc=$?
