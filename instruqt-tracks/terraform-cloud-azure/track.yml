@@ -500,7 +500,7 @@ challenges:
 
     https://www.terraform.io/docs/cloud/vcs/github.html
 
-    Once you've configured GitHub access for your workspace, you can update your workspace to use your hashicat-azure repository as the source for all Terraform runs. Go into the **Settings > Version Control** settings page for your workspace. Connect your workspace to the fork of your hashicat-azure repository on GitHub. You can leave all the VCS settings at their defaults.
+    Make sure you configure an **OAuth** connection for your organization and not the GitHub App for a single workspace! Once you've configured GitHub access for your organization, you can update your workspace to use your hashicat-aws repository as the source for all Terraform runs. Go into the **Settings > Version Control** settings page for your workspace. Connect your workspace to the fork of your hashicat-aws repository on GitHub. You can leave all the VCS settings at their defaults.
 
     The first VCS-backed apply should trigger immediately. Click on the Runs tab to view the run in action.
 
@@ -720,7 +720,7 @@ challenges:
 
     Click on the "Publish module" button.
 
-    After the module is completely published, please select version `3.0.1` of the module in the "Versions" drop-down box in the upper right corner. **Newer versions will not work with the version of the Azure provider pinned in the `providers` block of main.tf; so please do not use them.**
+    After the module is completely published, please select version `3.0.1` of the module by clicking `Change` under **Version** in the upper left section of your screen. If `3.0.1` is not visible, refresh the page once as versions may take a moment to publish. **Newer versions will not work with the version of the Azure provider pinned in the `providers` block of main.tf; so please do not use them.**
 
     Click on the "Inputs" tab of the module. This indicates that you have to specify the `resource_group_name` module variable when creating an instance of the module. For inputs that reference resources already created in your main.tf file, we recommend that you use references that refer to the appropriate attributes of those resources. But you can also use hard-coded values if you prefer.
 
@@ -805,7 +805,7 @@ challenges:
     ```
     Copy or save this workspace ID somewhere as you will need it during the challenge.
     ### The Challenge:
-    Use the four *.json files located in the json directory to update your variables and trigger a Terraform plan/apply. Use the Terraform API docs (which are in one of this challenge's notes) to determine which commands to run. You can edit the files in your text editor to customize them for your workspace. Be sure to include `@` before the JSON file names.
+    Use the four *.json files located in the json directory to create your variables and trigger a Terraform plan/apply. Use the Terraform API docs (which are in one of this challenge's notes) to determine which commands to run. You can edit the files in your text editor to customize them for your workspace. Be sure to include `@` before the JSON file names.
 
     You can find the relevant curl request instructions here:
     - [For workspace variables](https://www.terraform.io/docs/cloud/api/workspace-variables.html#sample-request)
