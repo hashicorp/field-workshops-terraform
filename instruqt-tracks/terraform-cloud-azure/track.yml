@@ -38,15 +38,7 @@ challenges:
     Configure your code editor for Terraform.
   notes:
   - type: text
-    contents: "Welcome to your first day on the job at ACME Inc. These are some of
-      your coworkers in the local ACME office:\n<center><table cellpadding=20>\n  <tr>\n
-      \   <td>\n    \U0001F468\U0001F3FB‍\U0001F4BC Hiro - Product Manager<br>\n    \U0001F9D5\U0001F3FD
-      Aisha - Database Admin<br>\n    \U0001F46E\U0001F3FF‍♂️ William - InfoSec Lead<br>\n
-      \   \U0001F468\U0001F3FB‍\U0001F9B2 Lars - Lead Developer<br>\n    </td>\n    <td>\n
-      \   \U0001F9D3\U0001F3FB Robin - Operations Admin<br>\n    \U0001F469‍\U0001F3A4
-      Jane - Quality Assurance<br>\n    \U0001F473\U0001F3FE‍♂️ Gaurav - Network Admin<br>\n
-      \   \U0001F469\U0001F3FC‍\U0001F4BC Karen - Finance    </td>\n  </tr>\n</table></center>\n\n<center>\U0001F913
-      You - Brand New Intern\n</center>"
+    contents: "Welcome to your first day on the job at ACME Inc. These are some of your coworkers in the local ACME office:\n<center><table cellpadding=20>\n  <tr>\n    <td>\n    \U0001F468\U0001F3FB‍\U0001F4BC Hiro - Product Manager<br>\n    \U0001F9D5\U0001F3FD Aisha - Database Admin<br>\n    \U0001F46E\U0001F3FF‍♂️ William - InfoSec Lead<br>\n    \U0001F468\U0001F3FB‍\U0001F9B2 Lars - Lead Developer<br>\n    </td>\n    <td>\n    \U0001F9D3\U0001F3FB Robin - Operations Admin<br>\n    \U0001F469‍\U0001F3A4 Jane - Quality Assurance<br>\n    \U0001F473\U0001F3FE‍♂️ Gaurav - Network Admin<br>\n    \U0001F469\U0001F3FC‍\U0001F4BC Karen - Finance    </td>\n  </tr>\n</table></center>\n\n<center>\U0001F913 You - Brand New Intern\n</center>"
   - type: text
     contents: Most modern text editors support Terraform syntax highlighting.
   assignment: |-
@@ -148,14 +140,7 @@ challenges:
     An unexpected outage has taken down one of the production websites. It took longer than expected to recover because the Terraform state file was stored on someone's laptop. Terraform Cloud's remote state feature is here to help.
   notes:
   - type: text
-    contents: "It's Monday morning and you're the first one into the office. Most
-      of your teammates were up late fixing last night's outage. Eventually senior
-      operations admin Robin shows up at your desk.\n\n>\U0001F9D3 Hey kiddo, how
-      are you doing? Listen, I want your help with something. Last night we had trouble
-      rebuilding the website because the Terraform state file was stored on Lars'
-      laptop. And guess what, Lars is on vacation for the next two weeks. Why don't
-      you help me configure remote state on this application so this doesn't happen
-      again?"
+    contents: "It's Monday morning and you're the first one into the office. Most of your teammates were up late fixing last night's outage. Eventually senior operations admin Robin shows up at your desk.\n\n>\U0001F9D3 Hey kiddo, how are you doing? Listen, I want your help with something. Last night we had trouble rebuilding the website because the Terraform state file was stored on Lars' laptop. And guess what, Lars is on vacation for the next two weeks. Why don't you help me configure remote state on this application so this doesn't happen again?"
   assignment: |-
     Your task is to configure remote state using your Terraform Cloud account. In order to complete this challenge you'll need the following:
 
@@ -269,26 +254,11 @@ challenges:
     Your team has started building cloud infrastructure on Azure, but the security team is concerned about protecting access to everyone's cloud credentials.
   notes:
   - type: text
-    contents: "After a few weeks on the job you're starting to get into the rhythm
-      of things. Write some code, run some tests, deploy the website. Everything's
-      going great until someone's Azure keys are accidentally pushed to a public code
-      repository. You get this email from William, the lead infosec admin at ACME:\n\n>\U0001F46E\U0001F3FF‍♂️
-      Hello junior admin, we ran a remote scan on your laptop last night and found
-      some unsecured Azure credentials. We need you to move those off your laptop
-      and store them in Terraform Cloud by the end of the day."
+    contents: "After a few weeks on the job you're starting to get into the rhythm of things. Write some code, run some tests, deploy the website. Everything's going great until someone's Azure keys are accidentally pushed to a public code repository. You get this email from William, the lead infosec admin at ACME:\n\n>\U0001F46E\U0001F3FF‍♂️ Hello junior admin, we ran a remote scan on your laptop last night and found some unsecured Azure credentials. We need you to move those off your laptop and store them in Terraform Cloud by the end of the day."
   - type: text
-    contents: "\U0001F914 Did you know?\n\nThousands of API and cryptographic keys
-      are leaking on GitHub every day!\n\nhttps://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/\n\nWhen
-      you store your API keys as sensitive variables they are encrypted and stored
-      in an instance of HashiCorp Vault. These keys are only decrypted in a trusted,
-      secure container that runs the Terraform command."
+    contents: "\U0001F914 Did you know?\n\nThousands of API and cryptographic keys are leaking on GitHub every day!\n\nhttps://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/\n\nWhen you store your API keys as sensitive variables they are encrypted and stored in an instance of HashiCorp Vault. These keys are only decrypted in a trusted, secure container that runs the Terraform command."
   - type: text
-    contents: "\U0001F469\U0001F3FC‍\U0001F4BB Remote Execution, Local Code\n\nRemote
-      Execution allows you to use the same Terraform commands that you're familiar
-      with, but the run and all your variables are safely stored in your Terraform
-      Cloud workspace. This can be helpful when you're upgrading tools that were originally
-      written for Terraform Open Source.\n\nWith Remote Execution your Terraform code
-      is still stored on your local machine and sent to the server each time you run."
+    contents: "\U0001F469\U0001F3FC‍\U0001F4BB Remote Execution, Local Code\n\nRemote Execution allows you to use the same Terraform commands that you're familiar with, but the run and all your variables are safely stored in your Terraform Cloud workspace. This can be helpful when you're upgrading tools that were originally written for Terraform Open Source.\n\nWith Remote Execution your Terraform code is still stored on your local machine and sent to the server each time you run."
   assignment: |-
     After the Azure credentials issue, the security team is tightening down access to your Azure account. API keys must now be secured as stored variables in Terraform Cloud. Your task is to find your Azure credentials, and move them into your workspace as secure environment variables.
 
@@ -342,18 +312,9 @@ challenges:
     As your Terraform usage increases more team members want to collaborate. Let's add some teams and access rules for our organization.
   notes:
   - type: text
-    contents: "A few months go by and you continue building more infrastructure with
-      Terraform Cloud. The devops team are all familiar with Terraform, but some members
-      are unable to access the Terraform Cloud organization. Your manager Hiro steps
-      into your cubicle with a clipboard in hand:\n\n>\U0001F468\U0001F3FB‍\U0001F4BC
-      Thank you for all your hard work on this Terraform project. I'd like to have
-      read access to your workspace, and we also need to get Lars and Aisha set up.
-      Can you please create some teams in our organization and add your co-workers
-      to them?"
+    contents: "A few months go by and you continue building more infrastructure with Terraform Cloud. The devops team are all familiar with Terraform, but some members are unable to access the Terraform Cloud organization. Your manager Hiro steps into your cubicle with a clipboard in hand:\n\n>\U0001F468\U0001F3FB‍\U0001F4BC Thank you for all your hard work on this Terraform project. I'd like to have read access to your workspace, and we also need to get Lars and Aisha set up. Can you please create some teams in our organization and add your co-workers to them?"
   - type: text
-    contents: Teams and role-based access controls are a paid feature of Terraform
-      Cloud. Your instructor will need to upgrade your organization to a free trial
-      in order to complete this challenge.
+    contents: Teams and role-based access controls are a paid feature of Terraform Cloud. Your instructor will need to upgrade your organization to a free trial in order to complete this challenge.
   assignment: |-
     Teams and role-based access controls are a paid feature of Terraform Cloud. You will need to ensure your free trial has been activated from the earlier steps in order to complete this challenge.
 
@@ -430,13 +391,7 @@ challenges:
     The team has grown and you need to implement code reviews. Terraform Cloud can connect to popular Version Control Systems to enable collaboration and testing.
   notes:
   - type: text
-    contents: "As Terraform usage continues to increase across the organization, your
-      team needs a better way to store and organize everyone's Terraform code. Until
-      now you haven't had much testing or code review for infrastructure changes.
-      Jane, the QA lead, introduces herself:\n\n>\U0001F469‍\U0001F3A4 Hi sysadmin,
-      we're trying to implement better quality assurance around our infrastructure
-      deployment process. Can you help me add the hashicat-azure GitHub repository
-      to the workspace so we can implement code reviews?"
+    contents: "As Terraform usage continues to increase across the organization, your team needs a better way to store and organize everyone's Terraform code. Until now you haven't had much testing or code review for infrastructure changes. Jane, the QA lead, introduces herself:\n\n>\U0001F469‍\U0001F3A4 Hi sysadmin, we're trying to implement better quality assurance around our infrastructure deployment process. Can you help me add the hashicat-azure GitHub repository to the workspace so we can implement code reviews?"
   - type: text
     contents: |-
       Once you connect a VCS repository to your Terraform Cloud workspace, **all** changes to the code must be stored in the VCS before Terraform will execute them. This ensures that you have no unauthorized changes to your infrastructure as code.
@@ -500,7 +455,9 @@ challenges:
 
     https://www.terraform.io/docs/cloud/vcs/github.html
 
-    Make sure you configure an **OAuth** connection for your organization and not the GitHub App for a single workspace! Once you've configured GitHub access for your organization, you can update your workspace to use your hashicat-aws repository as the source for all Terraform runs. Go into the **Settings > Version Control** settings page for your workspace. Connect your workspace to the fork of your hashicat-aws repository on GitHub. You can leave all the VCS settings at their defaults.
+    Make sure you configure an **OAuth** connection for your organization and not the GitHub App for a single workspace! Once you've configured GitHub access for your organization, you can update your workspace to use your hashicat-aws repository as the source for all Terraform runs. Go into the **Settings > Version Control** settings page for your workspace. Connect your workspace to the fork of your hashicat-aws repository on GitHub.
+
+    Be sure to expand the "Advanced options" section of the "Create a new Workspace" page and enable the "Automatic speculative plans" feature before clicking the "Create workspace" button.
 
     The first VCS-backed apply should trigger immediately. Click on the Runs tab to view the run in action.
 
@@ -532,15 +489,9 @@ challenges:
     Now that you've got your version control system configured with Terraform Cloud, you can collaborate on changes to your Terraform built infrastructure.
   notes:
   - type: text
-    contents: "The marketing team at ACME is running a special promotion next week
-      and they need you to push a change to the hashicat website. If you're doing
-      an instructor led class you can pair up with a fellow student for this exercise.
-      Alternatively you can do the exercise on your own.\n\n>\U0001F468\U0001F3FB‍\U0001F9B2
-      Hey sysadmin friend, we need to push a change to the hashicat website. Can you
-      please update the placeholder text with some snappy marketing slogans?"
+    contents: "The marketing team at ACME is running a special promotion next week and they need you to push a change to the hashicat website. If you're doing an instructor led class you can pair up with a fellow student for this exercise. Alternatively you can do the exercise on your own.\n\n>\U0001F468\U0001F3FB‍\U0001F9B2 Hey sysadmin friend, we need to push a change to the hashicat website. Can you please update the placeholder text with some snappy marketing slogans?"
   - type: text
-    contents: VCS-backed workspaces enable features like code reviews and automated
-      tests that must pass before any changes can be approved for production.
+    contents: VCS-backed workspaces enable features like code reviews and automated tests that must pass before any changes can be approved for production.
   assignment: |-
     In this challenge you'll make a small change to the code that deploys the hashicat-azure application, and then create a "Pull Request", which is simply a way of proposing a change and optionally allowing others to review your changes.
 
@@ -592,14 +543,7 @@ challenges:
     Developers in your organization are building cloud resources without tagging them properly. You need a way to enforce tagging on all your Azure instances that are built with Terraform. Meet Sentinel, the governance engine for Terraform.
   notes:
   - type: text
-    contents: "Developers love working in the cloud but sometimes they forget to tag
-      their instances with the right billing and department codes. Karen from finance
-      pays you a visit to see if you can help:\n\n>\U0001F469\U0001F3FC‍\U0001F4BC\U0001F4C8
-      Hello sysadmin, we got a really big Azure bill last month and we have no idea
-      how much we can bill back to the department who requested this stuff. I have
-      a report that is supposed to show this stuff but it only works if everybody
-      tags their resources properly. Can you make sure all your folks are properly
-      tagging their cloud resources?"
+    contents: "Developers love working in the cloud but sometimes they forget to tag their instances with the right billing and department codes. Karen from finance pays you a visit to see if you can help:\n\n>\U0001F469\U0001F3FC‍\U0001F4BC\U0001F4C8 Hello sysadmin, we got a really big Azure bill last month and we have no idea how much we can bill back to the department who requested this stuff. I have a report that is supposed to show this stuff but it only works if everybody tags their resources properly. Can you make sure all your folks are properly tagging their cloud resources?"
   assignment: |-
     In this challenge you'll use Sentinel to enforce a rule that requires any Azure Virtual Machine created in your account to have the correct billable and department tags.
 
@@ -680,8 +624,7 @@ challenges:
     A quiz about version control
   notes:
   - type: text
-    contents: "\U0001F431‍\U0001F464 Congratulations! You've been promoted to Senior
-      Sysadmin.\n"
+    contents: "\U0001F431‍\U0001F464 Congratulations! You've been promoted to Senior Sysadmin.\n"
   assignment: |
     VCS-backed workspaces enable the following features (choose two)
   answers:
@@ -702,13 +645,7 @@ challenges:
     Some of your users want a simple way to deploy databases and network configurations. Enter the Private Module Registry, in which you can store standard, re-usable Terraform code that others can use in their own workspaces.
   notes:
   - type: text
-    contents: "Most of the devops team is using Terraform to build and configure their
-      infrastructure. Recently users from outside the team have been requesting help
-      building their own workspaces. Gaurav, the database admin, sees you at lunch
-      and asks for your help:\n>\U0001F473\U0001F3FE‍♂️ Hi senior sysadmin, I need
-      to configure a lot of Azure Virtual Networks and I heard you have a Terraform
-      module for this. Can you help me set up a new network in the hashicat-azure
-      workspace?"
+    contents: "Most of the devops team is using Terraform to build and configure their infrastructure. Recently users from outside the team have been requesting help building their own workspaces. Gaurav, the database admin, sees you at lunch and asks for your help:\n>\U0001F473\U0001F3FE‍♂️ Hi senior sysadmin, I need to configure a lot of Azure Virtual Networks and I heard you have a Terraform module for this. Can you help me set up a new network in the hashicat-azure workspace?"
   assignment: |-
     In this challenge you'll learn to use the Private Module Registry, which allows you to store and version re-usable modules of Terraform code.
 
@@ -759,13 +696,7 @@ challenges:
     Terraform Cloud has a fully featured RESTful API that you can use to integrate with external systems. Where we're going, we don't need a GUI!
   notes:
   - type: text
-    contents: "You've mostly been using the Terraform Cloud Web UI and command line
-      interface (CLI) to build infrastructure. The devops team needs to integrate
-      with their CI/CD tool via the API. Lars sends you a chat message:\n\n>\U0001F468\U0001F3FB‍\U0001F9B2
-      Hey senior sysadmin, we have this new continuous integration tool that the developers
-      are using to test their application code. I'd like you to test some API calls
-      to our Terraform Cloud organization and workspaces. Can you please take a look
-      at this and learn how the API works?"
+    contents: "You've mostly been using the Terraform Cloud Web UI and command line interface (CLI) to build infrastructure. The devops team needs to integrate with their CI/CD tool via the API. Lars sends you a chat message:\n\n>\U0001F468\U0001F3FB‍\U0001F9B2 Hey senior sysadmin, we have this new continuous integration tool that the developers are using to test their application code. I'd like you to test some API calls to our Terraform Cloud organization and workspaces. Can you please take a look at this and learn how the API works?"
   - type: text
     contents: |-
       Feeling stuck? Remember that the Terraform Cloud docs contain examples for all API endpoints:
@@ -839,8 +770,7 @@ challenges:
     A quiz about the private module registry
   notes:
   - type: text
-    contents: "\U0001F431‍\U0001F4BB Congratulations! You've been promoted to Terraform
-      Cloud Ninja."
+    contents: "\U0001F431‍\U0001F4BB Congratulations! You've been promoted to Terraform Cloud Ninja."
   assignment: |
     The Terraform private module registry automatically syncs modules from the public registry.
   answers:
@@ -877,4 +807,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "12812606719812387221"
+checksum: "4122879090301812200"
