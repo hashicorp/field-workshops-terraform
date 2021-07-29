@@ -26,6 +26,7 @@ cat <<-EOF > /tmp/update_workspace.json
       "name": "hashicat-azure",
       "auto-apply": true,
       "execution-mode": "remote",
+      "speculative-enabled": true,
       "terraform-version": "0.14.9"
     },
     "type": "workspaces"
