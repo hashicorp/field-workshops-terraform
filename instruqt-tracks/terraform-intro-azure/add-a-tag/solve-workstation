@@ -6,6 +6,6 @@ set -o history
 
 cd /root/hashicat-azure
 
-sed -i 's/location = var\.location/location = var.location\n\n  tags = {\n   environment = "Production"\n  }/' main.tf
+sed -i 's/^  tags = {}/  tags = {\n   environment = "Production"\n  }/' main.tf
 
 exit 0
