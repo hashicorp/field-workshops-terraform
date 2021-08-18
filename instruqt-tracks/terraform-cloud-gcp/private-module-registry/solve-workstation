@@ -8,7 +8,7 @@ cd /root/hashicat-gcp
 
 # Write out vpc.tf
 cat <<-EOF > vpc.tf
-module "network" {
+module "vpc" {
   source  = "app.terraform.io/instruqt-circleci/network/google"
   version = "3.2.2"
   network_name = "gaurav-network"
