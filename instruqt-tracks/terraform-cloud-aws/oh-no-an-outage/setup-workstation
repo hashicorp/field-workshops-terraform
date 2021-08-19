@@ -4,7 +4,7 @@ set -e
 set-workdir /root/hashicat-aws
 
 # Give the student a head start.
-cp /root/hashicat-aws/exercises/remote_backend.tf /root/hashicat-aws/remote_backend.tf
+cp /root/hashicat-aws/do_not_use/remote_backend.tf /root/hashicat-aws/remote_backend.tf
 
 mkdir -p /root/.terraform.d
 cat <<-EOF > /root/.terraform.d/credentials.tfrc.json

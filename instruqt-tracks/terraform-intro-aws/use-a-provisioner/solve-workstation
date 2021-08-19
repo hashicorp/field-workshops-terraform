@@ -6,7 +6,7 @@ set -o history
 
 cd /root/hashicat-aws
 
-cp exercises/main.tf.cowsay main.tf
+cp do_not_use/main.tf.cowsay main.tf
 
 terraform apply -auto-approve
 

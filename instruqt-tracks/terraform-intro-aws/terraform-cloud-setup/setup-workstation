@@ -6,7 +6,7 @@ set-workdir /root/hashicat-aws
 
 cd /root/hashicat-aws
 
-cp exercises/remote_backend.tf remote_backend.tf
+cp do_not_use/remote_backend.tf remote_backend.tf
 
 cat <<-EOF > /root/.terraform.d/credentials.tfrc.json
 {

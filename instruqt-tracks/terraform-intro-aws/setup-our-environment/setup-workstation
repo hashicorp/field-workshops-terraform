@@ -11,8 +11,8 @@ set-workdir /root/hashicat-aws
 
 # Rewind everything back to a single resource group.
 cd ${GITDIR}
-cp ${GITDIR}/exercises/main.tf.start ${GITDIR}/main.tf
-cp ${GITDIR}/exercises/outputs.tf.start ${GITDIR}/outputs.tf
+cp ${GITDIR}/do_not_use/main.tf.start ${GITDIR}/main.tf
+cp ${GITDIR}/do_not_use/outputs.tf.start ${GITDIR}/outputs.tf
 mv ${GITDIR}/terraform.tfvars.example ${GITDIR}/terraform.tfvars
 
 # Start up Visual Studio Code server

@@ -5,7 +5,7 @@ set-workdir /root/hashicat-gcp
 cd /root/hashicat-gcp
 
 # Copy the completed terraform to main.tf
-cp exercises/main.tf.completed main.tf
+cp do_not_use/main.tf.completed main.tf
 
 # Just the public IP
 cat <<EOF > outputs.tf
