@@ -909,11 +909,7 @@ This is a good spot to talk a bit about how the dependency graph gets formed.
 ---
 name: lab-exercise-2a
 # 👩‍💻 Lab Exercise: Terraform in Action
-Let's use Terraform to build, manage, and destroy AWS resources. This is a three part lab. In part one you'll build the HashiCat application stack.
-
-Your instructor will provide the URL for the second lab environment. Bookmark it for easy reference.
-
-You will need to set up your workstation again in the first challenge. This is expected as we create a new instance for each lab.
+Let's use Terraform to build, manage, and destroy AWS resources. In this lab exercise you'll build the HashiCat application stack by running the `terraform apply` command.
 
 🛑 **STOP** after you complete the third quiz.
 
