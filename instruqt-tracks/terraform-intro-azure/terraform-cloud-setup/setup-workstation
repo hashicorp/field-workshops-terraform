@@ -6,9 +6,7 @@ set-workdir /root/hashicat-azure
 
 cd /root/hashicat-azure
 
-#cp exercises/remote_backend.tf remote_backend.tf
 cat <<-EOF > /root/hashicat-aws/remote_backend.tf
-
 terraform {
   backend "remote" {
     hostname = "app.terraform.io"

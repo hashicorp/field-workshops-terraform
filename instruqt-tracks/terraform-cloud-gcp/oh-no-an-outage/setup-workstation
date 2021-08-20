@@ -4,10 +4,7 @@ set -e
 set-workdir /root/hashicat-gcp
 cd /root/hashicat-gcp
 
-# Give the student a head start.
-#cp exercises/remote_backend.tf remote_backend.tf
 cat <<-EOF > /root/hashicat-gcp/remote_backend.tf
-
 terraform {
   backend "remote" {
     hostname = "app.terraform.io"

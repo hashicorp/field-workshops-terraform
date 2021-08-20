@@ -5,10 +5,7 @@ set-workdir /root/hashicat-azure
 
 cd /root/hashicat-azure
 
-# Give the student a head start.
-#cp exercises/remote_backend.tf remote_backend.tf
 cat <<-EOF > /root/hashicat-azure/remote_backend.tf
-
 terraform {
   backend "remote" {
     hostname = "app.terraform.io"
