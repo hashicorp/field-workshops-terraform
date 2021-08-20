@@ -971,8 +971,6 @@ challenges:
   answers:
   - The environment variable
   - The tfvars config file
-  - The default value in variables.tf
-  - None of the above
   solution:
   - 1
   difficulty: basic

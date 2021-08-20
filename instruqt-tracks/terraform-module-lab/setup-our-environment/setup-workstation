@@ -91,7 +91,6 @@ EOF
 
 chmod +x /usr/bin/fastforward
 
-
 # Create a remote_backend.tf file
 cat <<-EOF > /root/workspace/remote_backend.tf
 terraform {

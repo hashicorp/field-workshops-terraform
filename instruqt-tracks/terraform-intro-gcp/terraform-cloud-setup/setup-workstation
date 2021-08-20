@@ -6,7 +6,17 @@ set-workdir /root/hashicat-gcp
 
 cd /root/hashicat-gcp
 
-cp exercises/remote_backend.tf remote_backend.tf
+cat <<-EOF > /root/hashicat-aws/remote_backend.tf
+terraform {
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "YOURORGANIZATION"
+    workspaces {
+      name = "hashicat-gcp"
+    }
+  }
+}
+EOF
 
 cat <<-EOF > /root/.terraform.d/credentials.tfrc.json
 {
