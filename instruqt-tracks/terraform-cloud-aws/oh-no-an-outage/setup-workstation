@@ -6,9 +6,6 @@ set-workdir /root/hashicat-aws
 # Give the student a head start.
 # cp /root/hashicat-aws/exercises/remote_backend.tf /root/hashicat-aws/remote_backend.tf
 cat <<-EOF > /root/hashicat-aws/remote_backend.tf
-# If you are in a workshop...
-# Do not delete this file!
-# It's required to complete the Instruqt labs.
 
 terraform {
   backend "remote" {
