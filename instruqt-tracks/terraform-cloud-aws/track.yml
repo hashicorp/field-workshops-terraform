@@ -166,7 +166,7 @@ challenges:
 
     Your token is now safely stored in the "credentials.tfrc.json" file.
 
-    Return to your Code Editor tab and edit the "remote_backend.tf" file, replacing the `YOURORGANIZATION` and `YOURWORKSPACE` placeholders with your organization name and workspace name.
+    Return to your Code Editor tab and edit the "remote_backend.tf" file, replacing the `YOURORGANIZATION` placeholder with your organization name.
 
     Also, please edit the "terraform.tfvars" file, setting `prefix` to your name (first and last with or without a hyphen between them and all lower case) and setting `region` to a valid AWS region such as "us-east-1", "us-west-1", "eu-west-2", or "ap-southeast-1".
 

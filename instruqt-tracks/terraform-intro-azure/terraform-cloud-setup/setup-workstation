@@ -6,7 +6,22 @@ set-workdir /root/hashicat-azure
 
 cd /root/hashicat-azure
 
-cp exercises/remote_backend.tf remote_backend.tf
+#cp exercises/remote_backend.tf remote_backend.tf
+cat <<-EOF > /root/hashicat-aws/remote_backend.tf
+# If you are in a workshop...
+# Do not delete this file!
+# It's required to complete the Instruqt labs.
+
+terraform {
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "YOURORGANIZATION"
+    workspaces {
+      name = "hashicat-azure"
+    }
+  }
+}
+EOF
 
 cat <<-EOF > /root/.terraform.d/credentials.tfrc.json
 {
