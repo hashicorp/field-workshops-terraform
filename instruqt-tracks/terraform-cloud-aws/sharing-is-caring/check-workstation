@@ -13,7 +13,7 @@ cd /root/hashicat-aws
 TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
 
 # Get our team IDs. In the test environment these teams are pre-created.
-ADMINS_TEAM_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/teams | jq -r '.data | .[] | select(.attributes.name|test("admins")) | .id')
+ADMINS_TEAM_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/teams | jq -r '.data | .[] | select(.attributes.name|test("[Aa]dmin*")) | .id')
 
 DEVS_TEAM_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/teams | jq -r '.data | .[] | select(.attributes.name|test("developers")) | .id')
 
