@@ -21,14 +21,14 @@ As an instructor you should be very familiar with the slide deck and Instruqt tr
 When possible you should attend a live training session to observe and learn from another instructor or watch a [recording](https://hashicorp.zoom.us/rec/share/Z9TfeR3Pf3dP7Mouog2geQ2315TW4rB16ufA_yh_6MCxFWDHqhEOwJL7kjfIHD0.DF1nsi-bQ1yLGKU1) of the workshop's author, Roger Berlind, delivering it. (The password is "Sentinel1!".)
 
 ## Delivering in Two Sessions
-We recommend you deliver this workshop in two 3-hour sessions. In the first session, the instructor will deliver most of the slides as indicated in the "Two Session Workshop Agenda" slide and students will complete the first of the two Instruqt tracks. In the second session, the instructor and possibly TAs will guide students through the second track. In reality, 3 hours in the second session is often only enough to complete the first 5 challenges of the second Instruqt track. If you really do want to complete the entire track, you should allocate 5 hours for the second session.
+We recommend you deliver this workshop in two 3-hour sessions. In the first session, the instructor will deliver most of the slides as indicated in the "Two Session Workshop Agenda" slide and students will complete the first of the two Instruqt tracks. In the second session, the instructor and possibly TAs will guide students through the second track. In reality, 3 hours in the second session is often only enough to complete the first 5 challenges of the second Instruqt track. If you really do want to complete the entire track, you should allocate 5 hours for the second session. Of course, students can complete any remaining challenges on their own.
 
 The first session is unfortunately dominated by slides. This is done so that students can complete as much of the second Instruqt track as possible in a single session and avoid having to save their completed policies from session 1 for use in session 2. In the future, we might break up the second Instruqt track into multiple tracks and then change the agenda to give more alternation between slides and labs.
 
-# Delivering in One Session
+## Delivering in One Session
 If you or your customer really wants to do this workshop in a single session, then allocate 6-8 hours and follow the agenda on the "Single Session Workshop Agenda" slide. This agenda delays some of the slides until after parts of the second track to avoid too many slides at the beginning of the day.
 
-### Prerequisites
+## Prerequisites
 Prerequisites are minimal. All that is required to participate in the workshop is a web browser and Internet access. No software needs to be downloaded or installed. Self-contained lab environments run on the Instruqt platform. The [slides](https://storage.googleapis.com/instruqt-hashicorp-tracks/sentinel-shared/Sentinel-for-Terraform-v4.pptx) are in PowerPoint and can be downloaded from a Google Cloud storage bucket.
 
 Students do not need any previous exposure to Sentinel, but they should have familarity with Terraform and preferably also with Terraform Cloud. We recommend that all students first complete one of the Intro to Terraform workshops listed under https://hashicorp.github.io/workshops/.
@@ -37,7 +37,7 @@ The Instruqt lab environment includes a very recent version of the Sentinel CLI 
 
 Commands suchs as `sentinel test` should be run on the "Sentinel CLI" tab. Policies should be edited on the "Policies" tab. Test cases and mocks can be viewed on the "Test Cases" tab.
 
-### Scheduling your workshop
+## Scheduling your workshop
 Please add all workshops, both public and private, to the shared instruqt-workshops Google calendar as follows:
 
 1. Create a new event on the instruqt-workshops calendar and set the name to the name of your workshop which could match a name being used by Field Marketing if it is public or the name of a specific customer and a product if it is private.
@@ -49,7 +49,7 @@ Please add all workshops, both public and private, to the shared instruqt-worksh
 
 Before saving the event, be sure to set the calendar as "instruqt-workshops" instead of your own personal calendar.
 
-### Email invitation
+## Email invitation
 Here is some boilerplate text you can use or customize when inviting or announcing your workshop:
 
 ```
@@ -78,12 +78,12 @@ The first session is mandatory for all students. The second session is only requ
 The only prerequisites for this workshop are a web browser and willingness to learn.
 ```
 
-### PowerPoint Slide Deck
+## PowerPoint Slide Deck
 The slide deck for this training is published here:
 
-#### https://storage.googleapis.com/instruqt-hashicorp-tracks/sentinel-shared/Sentinel-for-Terraform-v4.pptx
+### https://storage.googleapis.com/instruqt-hashicorp-tracks/sentinel-shared/Sentinel-for-Terraform-v4.pptx
 
-### Hands-on Labs
+## Hands-on Labs
 At certain points in the slide deck there are links to the lab exercises. [Instruqt](https://instruqt.com/hashicorp) is our lab platform. Lab exercises can be completed anonymously, but if users want to keep track of their progress they should create accounts on the Instruqt website. There are two Instruqt tracks in this workshop.
 
 The first Instruqt track, [Sentinel CLI Basics](https://play.instruqt.com/hashicorp/tracks/sentinel-cli-basics), introduces the Sentinel CLI and teaches students how to use the `sentinel apply` and `sentinel test` commands with a very simple policy.
@@ -94,7 +94,7 @@ Go through these tracks from start to finish and make sure you understand all th
 
 If you only allocate 3 hours for the second session or only 6 hours to a single session workshop, then most students will probably not get past challenge 5 of the second Instruqt track. That is OK.  It is better to leave enough time for all students to successfully complete those challenges rather than rushing ahead to the other challenges.  The people who are most likely to write Sentinel policies will either move faster and complete more challenges during the allocated 3 hours or will complete them on their own time.
 
-#### Creating Instruqt Invites
+## Creating Instruqt Invites
 Once you've gotten an invite to the HashiCorp organization you can create temporary invite links for your students:
 
 1. Click on the **Invites** link at the top of the page.
@@ -105,14 +105,14 @@ Once you've gotten an invite to the HashiCorp organization you can create tempor
 6. Make the track available to your user for at least a week.
 7. Turn on the **Allow Anonymous** switch so you can hand the URL out on the day of training.
 
-### Preparation Steps
+## Preparation Steps
 We recommend you perform the following steps before TA-ing or teaching this workshop if you have previously done so:
 
 1. Review the slides.
 2. Complete the [Sentinel CLI Basics](https://play.instruqt.com/hashicorp/tracks/sentinel-cli-basics) track. This is quite easy.
 3. Complete the [Sentinel for Terraform (v4_)](https://play.instruqt.com/hashicorp/tracks/sentinel-for-terraform-v4). As indicated above, this is more challenging. Try to complete the policies yourself as much as possible. But if you struggle, try to leverage the track's built-in hints just as a student would. If even that doesn't help, then look at the [solutions](https://github.com/rberlind/sentinel-training-solution/tree/v4/sentinel-policies).
 
-### Skipping
+## Skipping
 HashiCorp employees (if members of the Instruqt HashiCorp organization) can skip ahead in the Sentinel tracks.
 
 To actually skip one or more challenges while running one of this track, return to the track's home page and click the "Skip to" button of the challenge you wish to skip to.
@@ -127,10 +127,10 @@ This will cause the current challenge's check script to pass. The file will then
 
 Students should not skip challenges simply because they don't think they are relevant because their company does not have Vault, AWS, Azure, or GCP. Each challenge has its own pedagogic value regardless of the types of resources being restricted or the technologies or clouds they are associated with.
 
-### Configuring the Instruqt Pools
+## Configuring the Instruqt Pools
 We recommend that you configure Instruqt pools for each Instruqt track used in this workshop 1 hour before you plan to use the track. Please see this Confluence [doc](https://hashicorp.atlassian.net/wiki/spaces/SE/pages/511574174/Instruqt+and+Remark+Contributor+Guide#InstruqtandRemarkContributorGuide-ConfiguringInstruqtPools) for instructions.
 
-### Live Demos
+## Live Demos
 When you reach the slide "Some Prototypical Third-Generation Policies" in the section, "The Evolution of Terraform Sentinel Policies", we recommend that you show all four of the policies listed there in GitHub.
 * [restrict-ec2-instance-type.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/aws/restrict-ec2-instance-type.sentinel) (AWS)
 * [restrict-vm-cpu-and-memory.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/vmware/restrict-vm-cpu-and-memory.sentinel) (VMware)
@@ -151,14 +151,14 @@ Point out that the first of these two VMware Sentinel policies has three failure
 
 While presenting the "Writing and Testing Sentinel Policies for Terraform" slides, we recommend you show the Terraform Cloud UI opened to a workspace that points at Terraform code that creates an EC2 instance. You could use this [code](https://github.com/hashicorp/terraform-guides/tree/master/infrastructure-as-code/aws-ec2-instance), although you will probably want to update it to be more modern and use a newer version of Terraform instead of Terraform 0.11. You can then do a plan and show how mocks can be downloaded from the plan.  You can also show the restrict-ec2-instance-type.sentinel policy failing if you have registered this [policy set](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/aws/sentinel.hcl) with your TFC organization.
 
-### Timing for Two Session Workshop
+## Timing for Two Session Workshop
 The following schedule is for the two session version of the workshop. It includes extra time in the second session to allow the completion of the second Instruqt track; but most customers will be happy to stop after 3 hours and complete the track on their own.
 
 Be sure to show the slides about each exercise of the second track before telling students to start that exercise.
 
 Please ask students to complete the [feedback survey](https://bit.ly/hashiworkshopfeedback) at the end of the second session.
 
-#### Session 1
+### Session 1
 0:00 - 0:05 - Wait for attendees to arrive and Introductions<br>
 0:05 - 0:25 - Sentinel in Terraform Cloud and Terraform Enterprise<br>
 0:25 - 0:50 - The Sentinel Language<br>
@@ -173,7 +173,7 @@ Please ask students to complete the [feedback survey](https://bit.ly/hashiworksh
 2:25 - 2:45 - Using Sentinel in Terraform Cloud<br>
 2:45 - 3:00 - Q&A<br>
 
-#### Session 2
+### Session 2
 0:00 - 0:05 - Wait for attendees to arrive<br>
 0:05 - 0:15 - Advanced Techniques<br>
 0:15 - 0:30 - About the Workshop Exercises<br>
