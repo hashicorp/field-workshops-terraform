@@ -188,7 +188,7 @@ Please ask students to complete the [feedback survey](https://bit.ly/hashiworksh
 2:55 - 3:00 - Break or Closing (including the Feedback Survey)<br>
 3:00 - 3:45 - (Optional) Exercise 4 (parts a and b)<br>
 3:45 - 3:55 - (Optional) Review of Exercise 4<br>
-3:55 - 4:00 - Break
+3:55 - 4:00 - Break<br>
 4:00 - 4:45 - (Optional) Exercise 5 (parts a and b)<br>
 4:45 - 4:55 - (Optional) Review of Exercise 5<br>
 4:55 - 5:00 - Closing (including the Feedback Survey)<br>
