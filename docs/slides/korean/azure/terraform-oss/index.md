@@ -70,7 +70,7 @@ name: Table-of-Contents
 1. 테라폼 인 액션 : plan, apply, destroy<br>
 1. 테라폼 코드 관리하기 <br>
 🧪 **Lab - Terraform in Action**<br>
-1. Azure VM 배포 및 구성<br>
+1. Azure에 VM 배포 및 구성<br>
 🔬 **Lab - Provisioning with Terraform**<br>
 1. 인프라 상태 관리 및 변경<br>
 1. Terraform Cloud<br>
@@ -913,12 +913,12 @@ name: chapter-3-review
 name: Chapter-4
 class: title
 # Chapter 4
-## Azure VM 배포 및 구성
+## Azure에 VM 배포 및 구성
 
 ---
 name: intro-to-provisioners
 # Terraform 프로비저너(Provisioner) 사용하기
-Once you've used Terraform to stand up a virtual machine or container, you may wish to configure your operating system and applications. This is where provisioners come in. Terraform supports several different types of provisioners including: Bash, Powershell, Chef, Puppet, Ansible, and more.
+테라폼을 사용하여 VM 또는 Container를 배포한 후, OS 또는 애플리케이션에 대한 변경이 필요한 경우. 테라폼에서 지원하는 프로비저너(provisioner)를 사용. 다음과 같은 프로비저너를 지원:  Bash, Powershell, Chef, Puppet, Habitat 등
 
 .center[https://www.terraform.io/docs/provisioners/index.html]
 
@@ -928,8 +928,8 @@ Once you've used Terraform to stand up a virtual machine or container, you may w
 ---
 name: file-provisioner
 class: compact
-# The File Provisioner
-The Terraform file provisioner copies files onto the remote machine.
+# 파일 프로비너저 : 파일 복사
+테라폼 파일 프로비저너는 원격 머신에 파일을 복사.
 
 ```terraform
 provisioner "file" {
@@ -945,7 +945,7 @@ provisioner "file" {
 }
 ```
 
-Note the *connection* block of code inside the provisioner block. The file provisioner supports both SSH and WinRM connections.
+Note 프로비저너 블록 내부에 *connection* 블럭 필요. 파일 프로비저너는 SSH와 WinROm 연결 모두 지원.
 
 ???
 SSH for linux, WinRM for your windows machines.
@@ -953,8 +953,8 @@ SSH for linux, WinRM for your windows machines.
 ---
 name: remote-exec-provisioner
 class: compact
-# The Remote Exec Provisioner
-The remote exec provisioner allows you to execute scripts or other programs on the target host. If it's something you can run unattended (for example, a software installer), then you can run it with remote exec.
+# 원격 실행 프로비저너 (remote-exec)
+원격 실행 (remote-exec) 프로비너저는 대상 시스템에서 스크립트 또는 프로그램 실행 시 필요할 때 사용. 사용자 개입없이 수행할 수 있는 경우(예, 소프트웨어 인스톨러), 원격 실행 프로비저너로 수행 가능.
 
 ```terraform
 provisioner "remote-exec" {
@@ -967,7 +967,7 @@ provisioner "remote-exec" {
 }
 ```
 
-In this example we're running a few commands to change some permissions and ownership, and to run a script with some enviroment variables.
+예제 코드에서는 CLI 명령어(파일 권한 및 소유권 변경) 와 스크립트(환경 변수 설정)를 수행.
 
 ???
 Local exec and remote exec can be used to trigger Puppet or Ansible runs. We do have a dedicated chef provisioner as well.
@@ -975,10 +975,10 @@ Local exec and remote exec can be used to trigger Puppet or Ansible runs. We do 
 ---
 name: puppet-chef-ansible
 class: compact
-# Terraform & Config Management Tools
+# 테라폼과 구성 관리 도구들
 .center[![:scale 50%](images/cpa.jpg)]
 
-Terraform works well with common config management tools like Chef, Puppet or Ansible. Below are some links with more information on each:
+테라폼은 잘 알려진 구성 관리 도구(예: Chef, Puppet or Ansible)와 잘 연동 됨. 다음 링크에서 상세 정보 확인 가능:
 
 Official Chef Terraform provisioner:<br>
 https://www.terraform.io/docs/provisioners/chef.html
@@ -991,43 +991,42 @@ https://github.com/scarolan/ansible-terraform
 
 ---
 name: provisioner-tips
-# Terraform Provisioner Tips
-Terraform provisioners like remote-exec are great when you need to run a few simple commands or scripts. For more complex configuration management you'll want a tool like Chef or Ansible.
+# 테라폼 프로비저너 사용 팁!
+원격 실행 프로비저너 처럼 단순 명령어나 스크립트를 수행하는 테라폼 프로비저너는 좋은 도구. 하지만 복잡한 구성 변경이 필요한 경우 구성 관리 도구를 사용하는 것이 나음.
 
-Provisioners only run the first time a Terraform run is executed. In this sense, they are not idempotent. If you need ongoing state management of VMs or servers that are long-lived, we recommend using a config management tool.
+특히, 프로비저너는 인프라가 생성될 때 최초 1회만 구동. 즉, 멱등성(idempotent)이 지원되지 않음. 오랜 시간 기동되어 서비스하는 VM 또는 서버의 경우(), 구성 관리 도구를 통한 관리를 권고.
 
-On the other hand, if you want immutable infrastructure you should consider using our [Packer](https://packer.io) tool.
+반면, 불변 인프라(immutable infrastructure)를 원하는 경우라면, [HashiCorp Packer](https://packer.io) 사용을 권고.
 
 ---
 name: lab-exercise-2b
-# 👩‍💻 Lab Exercise: Provisioners, Variables and Outputs
-In part two of the lab we'll use a provisioner to install a new software package. We will also explore variables and outputs.
+# 👩‍💻 Lab Exercise: 프로비저너, 변수와 결과 값 출력
+이번 실습에서는 프로비저너를 사용하여 신규 소프트웨어 패키지 설치하고 변수와 작업 결과 출력에 대하여 알아 봄.
 
-Return to the training lab and continue where you left off.
 
-🛑 **STOP** after you complete the fourth quiz.
+🛑 **STOP**  `네 번째 퀴즈`까지만 수행
 
 ---
 name: chapter-4-review
-# 📝 Chapter 4 Review
+# 📝 Chapter 4 복기
 .contents[
 이번 장에서 다룬 내용:
-* Learned about Terraform Provisioners
-* Explored the **file** and **remote-exec** provisioners
-* Rebuilt our web server with a new provisioning step
+* 테라폼 프로비저너
+* 파일(**file**) 과 원격 실행(**remote-exec**) 프로비저너
+* 실습: 새로운 프로비저닝 스텝으로 웹 서버 재구축
 ]
 
 ---
 name: Chapter-5
 class: title
 # Chapter 5
-## Terraform State
+## Terraform 상태(state) 관리
 
 ---
 name: terraform-state
 class: compact, smaller
-# Terraform State
-Terraform is a _stateful_ application. This means that it keeps track of everything you build inside of a **state file**. You may have noticed the terraform.tfstate and terraform.tfstate.backup files that appeared inside your working directory. The state file is Terraform's source of record for everything it knows about.
+# Terraform 상태(state)
+테라폼은 _stateful_한 애플리케이션.즉, **state file**을 이용하여 인프라 배포 관련 모든 기록을 저장. 작업 디렉토리 상에 `terraform.tfstate` 와 `terraform.tfstate.backup` 파일이 존재. 이 파일들은 인프라의 변경 사항을 모두 기록하고 저장. 
 
 ```json
 {
@@ -1045,42 +1044,45 @@ Terraform is a _stateful_ application. This means that it keeps track of everyth
 
 ---
 name: terraform-refresh
-# Terraform Refresh
-Sometimes infrastructure may be changed outside of Terraform's control.
-
-The state file represents the *last known* state of the infrastructure. If you'd like to check and see if the state file still matches what you built, you can use the **terraform refresh** command.
-
-Note that this does *not* update your infrastructure, it simply updates the state file.
+# terraform refresh : 형상과 상태 동기화
+테라폼이 아닌 방법으로 인프라 형상에 대한 변경이 발생하였을 때.
+state 파일은 *마지막으로 알고 있는* 인프라의 상태를 저장하고 있으므로, 현재 형상과 저장된 상태를 동기화(일치)하고자 할 때 **terraform refresh** 명령어 사용. 배포된 인프라 아닌 *state 파일*만 변경(업데이트)함. 
 
 ```bash
 terraform refresh
 ```
 
+Note 테라폼 0.15.4부터 `-refresh-only` 옵션을 apply, plan 시 다음과 같이 사용
+```bash
+terraform apply -refresh-only
+```
+
+
 ---
 name: change-existing-infra
 class: compact
-# Changing Existing Infrastructure
+# 기존 인프라 변경
 
-Whenever you run a plan or apply, Terraform reconciles three different data sources:
+plan 또는 apply 수행 시, 테라폼은 다음과 같은 서로 다른 데이터 소스의 정보를 일치시키려 함:
 
-1.  What you wrote in your code
-2.  The state file
-3.  What actually exists
+1.  코드 상에 작성된 내용
+2.  state 파일
+3.  실제 인프라 형상
 
-Terraform does its best to add, delete, change, or replace existing resources based on what is in your *.tf files. Here are the four different things that can happen to each resource during a plan/apply:
+테라폼은 작성된 코드 상에 있는 내용을 기반으로 인프라 생성, 삭제, 변경 또는 교체를 수행. plan/apply 실행 시 개별 리소스에 대음과 같은 4가지 중 하나가 적용:
 
 ```tex
-+   create
--   destroy
--/+ replace
-~   update in-place
++   create (신규 생성)
+-   destroy (삭제)
+-/+ replace (교체)
+~   update in-place (변경)
 ```
 
 ---
 name: state-quiz
 class: compact
-# Terraform State Quiz
-| Configuration           | State                   | Reality                 | Operation |
+# Terraform 상태 관련 퀴즈
+| Configuration (코드)     | State 파일               | 실제 인프라                | 예상 동작   |
 | ----------------------- | ----------------------- | ----------------------- |:---------:|
 | azurerm_virtual_machine |                         |                         |    ???    |
 | azurerm_virtual_machine | azurerm_virtual_machine |                         |    ???    |
@@ -1089,13 +1091,13 @@ class: compact
 |                         |                         | azurerm_virtual_machine |    ???    |
 |                         | azurerm_virtual_machine |                         |    ???    |
 
-What happens in each scenario? Discuss.
+각 시나리오에서 어떻게 동작할까요?
 
 ---
 name: state-quiz-answers
 class: compact
-# Terraform State Quiz
-| Configuration           | State                   | Reality                 | Operation    |
+# Terraform 상태 관련 퀴즈 (정답)
+| Configuration (코드)     | State 파일               | 실제 인프라                | 예상 동작   |
 | ----------------------- | ----------------------- | ----------------------- |:------------:|
 | azurerm_virtual_machine |                         |                         | create       |
 | azurerm_virtual_machine | azurerm_virtual_machine |                         | create       |
@@ -1104,76 +1106,75 @@ class: compact
 |                         |                         | azurerm_virtual_machine | no-op        |
 |                         | azurerm_virtual_machine |                         | update state |
 
-What happens in each scenario? Discuss.
+각 시나리오에서 어떻게 동작할까요? 이해가 되시나요?
 
 ---
 name: Chapter-6
 class: title
 # Chapter 6
-## Terraform Cloud
+## Terraform 클라우드
 
 ---
 name: terraform-cloud
 class: img-right
-# Terraform Cloud
-##### Terraform Cloud is a free to use SaaS application that provides the best workflow for writing and building infrastructure as code with Terraform.
+# Terraform 클라우드
+##### Terraform 클라우드는 무료로 제공되는 SaaS 애플리케이션. 테라폼을 활용한 코드형 인프라(IaC)를 위한 최상의 Workflow를 제공.
 ![Terraform Cloud](https://www.terraform.io/assets/images/terraform-overview/automate-the-provisioning-lifecycle@4x-5cc6a17f.png)
 
-* State storage and management
-* Web UI for viewing and approving Terraform runs
-* Private module registry
-* Version Control System (VCS) integration
-* CLI, API or GUI driven actions
-* Notifications for run events
-* Full HTTP API for automation
+* 원격 스테이트 파일 저장 및 관리 (모든 작업 결과 저장)
+* Terraform runs(plan + apply) 조회 및 실행/승인 등을 위한 Web UI 제공
+* 프라이빗 모듈 저장소 제공
+* 버전 관리 시스템 (VCS) 연동 : 소스 코드 변경 시 자동/반자동 인프라 배포
+* 다양한 인프라 배포 방법 지원 : CLI, API 또는 GUI 기반
+* 인프라 변경 작업에 대한 통보(알림) 기능 (webhoo, email, slack)
+* 자동화를 위한 완벽환 HTTP API 제공
 
 ---
 name: tfcloud-vs-tfe
 class: compact
-# Terraform Cloud or Terraform Enterprise?
-**[Terraform Cloud](https://app.terraform.io/signup)** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud-based SaaS solution because they don't want to maintain the infrastructure to run it.
+# Terraform 클라우드 ? Terraform 엔터프라이즈 ?
+**[Terraform Cloud](https://app.terraform.io/signup)** : 원격 상태 관리, API 기반 배포, 정책 관리 등을 제공하는 SaaS 애플리케이션. 인프라 유지/보수 및 운영에 대한 부담없이 Terraform을 사용하고자 하는 경우 선호. 무료.
 
-**[Terraform Cloud for Business](https://www.hashicorp.com/contact-sales/terraform)** utilizes the same hosted environment as Terraform Cloud, but you get the features more applicable to larger teams.  Single Sign-on, Audit Logging, and the ability to Terraform on-prem resources from the cloud.
+**[Terraform Cloud for Business](https://www.hashicorp.com/contact-sales/terraform)** Terraform Cloud와 동일한 환경을 사용하지만 보다 다음과 같은 기능이 필요한 경우 사용 (유상): SSO, Audit 로그 및 Terraform Enterprise에서 제공되는 다양한 상용 기능
 
-**[Terraform Enterprise](https://www.hashicorp.com/go/terraform-enterprise)** is the same application, but it runs in your own cloud environment or data center. Some users require more control over the Terraform Cloud application, or wish to run it in restricted networks behind corporate firewalls.
+**[Terraform Enterprise](https://www.hashicorp.com/go/terraform-enterprise)** 사용자가 원하는 환경에서 설치하여 사용. 동일한 애플리케이션. 단 인프라에 대한 관리 필요. 인프라를 직접 관리하고, 제한된 네트워크 환경에서 사용해야 하는 경우 적합. (유상)
 
-The feature list for these offerings is nearly identical. We will be using Terraform Cloud accounts for our lab exercises today.
+대부분의 기능이 유사하고, 구독에 따라 기능이 추가. 실습의 경우, 무료 버전의 Terraform Cloud 사용.
 
 ---
 name: terraform-cloud-remote-state
-# Terraform Remote State
-By default Terraform stores its state file in the workspace directory on your laptop or workstation. This is ok for development and experimentation, but in a production environment you need to protect and store the state file safely.
+# Terraform 원격 상태 관리
+기본적으로 테라폼은 작업자의 노트복 또는 콘솔 상의 작업 디렉토리에 상태 파일을 저장. 개발 또는 테스트 환경에서는 사용 가능하지만, 운영/가동계 환경에서 스테이트 파일을 보호하고 안전하게 관리하기에는 어려움이 존재.
 
-Terraform has an option to store and secure your state files remotely. Terraform Cloud accounts now offer unlimited state file storage even for open source users.
+테라폼은 스테이트 파일을 원격에 저장하는 다양한 옵션을 제공. 그 중 무료 버전의 Terraform Cloud 계정을 사용해도 스테이트 파일을 무제한 저장하고 관리 가능.
 
-All state files are encrypted (using HashiCorp Vault) and stored securely in your Terraform Cloud account. You'll never have to worry about losing or deleting your state file again.
+내장된 [HashiCorp Vault](https://vaultproject.io)를 사용하여 모든 스테이트 파일은 **암호화**하여 저장. 스테이트 파일 분실이나 삭제에 대한 이슈가 사라짐. 
 
 ---
 name: execution-mode
-# Terraform Cloud Execution Modes
+# Terraform 클라우드 실행 모드
 
-**Local Execution** - Terraform commands run on your laptop or workstation and all variables are configured locally. Only the terraform state is stored remotely.
+**Local Execution** - 테라폼 명령어가 내 작업 환경(노트북 또는 콘솔)에서 실행됨.모든 변수와 코드가 로컬에 존재. 스테이트 파일만 원격에 저장.
 
-**Remote Execution** - Terraform commands are run in a Terraform Cloud container environment. All variables are stored in the remote workspace. Code can be stored in a Version Control System repository. Limited to 1 concurrent run for free tier users.
+**Remote Execution** - 테라폼 명령어가 테라폼 클라우드 상에서 수행. 모든 변수가 원격 워크 스페이스에 저장. 코드는 VCS 또는 로컬 작업 환경에 저장 가능. 무료 버전의 경우, 동시 실행은 사용자 한 명으로 제한됨.
 
 ---
 name: lab-exercise-2c
 # 👩‍💻 Lab Exercise: Terraform Cloud
-In the final part of the second lab we'll create a free Terraform Cloud account and enable remote storage of our state file.
+마지막 실습으로 Terraform 클라우드 상에 계정을 생성하고, 스테이트 파일을 마이그레이션.
 
-Return to the training lab and continue where you left off.
 
 ---
 name: the-end
 class: img-caption
 
-# Congratulations, you completed the workshop!
+# 축하합니다. Terraform on Azure Workshop을 완료하였습니다!
 ![HashiCorp Employees - 2019](https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-shared/hashicorp_employees.jpg)
 
 ---
 name: additional-resources
 class: compact
-# Additional Resources
+# 추가 리소스
 HashiCorp Learning Portal<br>
 https://learn.hashicorp.com/terraform/
 
@@ -1194,9 +1195,9 @@ name: Feedback-Survey
 # Workshop Feedback Survey
 <br><br>
 .center[
-Your feedback is important to us!
+여러분의 피드백은 저희에게 중요합니다!
 
-The survey is short, we promise:
+설문조사는 짧습니다. 약속드립니다.
 
-## https://bit.ly/hashiworkshopfeedback
+## https://forms.gle/jc3KPYEoKo7LS5Be8
 ]
