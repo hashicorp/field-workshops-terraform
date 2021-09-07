@@ -806,7 +806,6 @@ resource "azurerm_virtual_network" "vnet" {
 
 ---
 name: organizing-your-terraform
-
 # Terraform 코드 관리하기
 
 테라폼은 `*.tf' 확장자로 끝나는 파일들이 포함된 워크 스페이스 상의 모든 파일을 읽음. 통상main.tf, variables.tf, 그리고 outputs.tf로 구성. 필요한 경우 파일 추가 가능.
@@ -823,8 +822,9 @@ outputs.tf
 
 ---
 name: terraform-main
-class: compact
-# 매인 파일(main.tf) - 자원 생성
+class:compact
+
+# 메인 파일(main.tf) - 자원 생성
 
 첫 번째 파일 main.tf. 자원 생성을 위한 테라폼 코드를 저장. 크고 복잡한 인프라의 경우 여러 개의 파일로 분리 가능.
 
@@ -841,7 +841,7 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = ["${var.address_space}"]
   resource_group_name = "${azurerm_resource_group.hashitraining.name}"
 }
-...
+
 ```
 
 ???
