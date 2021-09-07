@@ -728,7 +728,7 @@ resource "azurerm_resource_group" "hashitraining" {
 name: terraform-apply
 class: compact
 # terraform apply : 인프라 배포
-```tex
+```bash
 *$ terraform apply
 An execution plan has been generated and is shown below.
 
@@ -749,7 +749,7 @@ Plan: 1 to add, 0 to change, 0 to destroy.
 name: terraform-destroy
 class: compact
 # terraform destroy : 인프라 삭제
-```tex
+```bash
 *$ terraform destroy
 An execution plan has been generated and is shown below.
 
@@ -774,7 +774,7 @@ name: terraform-fmt
 # terraform fmt : 코드 포맷팅
 Terraform 내장된 코드 포매터/클리너 제공. [Terraform Language Style Conventions](https://www.terraform.io/docs/language/syntax/style.html)에 따라 코드 상의 공백, 들여쓰기 등 형식에 맞는 포맷과 스타일로 테라폼 코드 수정. <br> [HashiCorp Principles](https://www.hashicorp.com/our-principles#beauty-works-better) 중 '보기 좋은 것이 더 낫다!'의 구현.
 
-```tex
+```bash
 terraform fmt
 ```
 
