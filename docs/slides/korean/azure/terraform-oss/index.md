@@ -806,6 +806,7 @@ resource "azurerm_virtual_network" "vnet" {
 
 ---
 name: organizing-your-terraform
+class: compact
 # Terraform 코드 관리하기
 테라폼은 `*.tf' 확장자로 끝나는 파일들이 포함된 워크 스페이스 상의 모든 파일을 읽음. 통상main.tf, variables.tf, 그리고 outputs.tf로 구성. 필요한 경우 파일 추가 가능.
 
