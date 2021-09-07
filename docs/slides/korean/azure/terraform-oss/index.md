@@ -183,6 +183,7 @@ Advance back to the previous slide to illustrate the difference between JSON and
 
 ---
 name: What-is-Terraform
+class: compact
 # Terraform은 ?
 ```terraform
 resource "azurerm_virtual_machine" "catapp" {
