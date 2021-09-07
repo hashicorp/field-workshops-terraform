@@ -41,7 +41,7 @@ name: Introductions
 * 이름
 * 담당 업무
 * 자동화 경험
-* 주로 사용하는 문서 편집 도구
+* 주로 사용하는 편집기(editor)
 
 ???
 Use this slide to introduce yourself, give a little bit of your background story, then go around the room and have all your participants introduce themselves.
@@ -58,7 +58,7 @@ name: Link-to-Slide-Deck
 <br><br><br>
 슬라이드는 아래 링크에서 확인할 수 있습니다 :
 
-# https://git.io/JeuCI
+# https://git.io/JucLg
 
 ---
 name: Table-of-Contents
@@ -95,7 +95,7 @@ We use the word chapter here, because the training should feel like a story unfo
 name: How-to-Provision-a-VM
 # Azure VM 배포하는 방법
 
-새로운 Azure VM을 배포하는 몇 가지 방법을 살펴보겠습니다. 먼저 다음과 같은 기본 정보가 필요:
+새로운 Azure VM을 배포하는 몇 가지 방법을 살펴보겠습니다. 다음과 같은 기본 정보 필요:
 
 * 가상 머신 이름(Virtual Machine Name)
 * 운영 체제(O/S) (Image)
@@ -146,7 +146,7 @@ class: compact
 }
 ```
 
-ARM template을 Azure 자원 배포를 위한 안정적이고 신뢰할 수 있는 방법을 제공. JSON은 기계(Compute)가 이해하기는 쉬우나 사람이 편집하거나 문제 해결 시 어려움이 존재.
+ARM template을 Azure 자원 배포를 위한 안정적이고 신뢰할 수 있는 방법을 제공. JSON은 기계(Compute)가 이해하기는 쉬우나 사람이 편집하거나 문제 해결 시 어려움.
 
 ???
 **Which brings us to method #2, Azure Resource Manager templates, also known as ARM templates. Have any of you used ARM templates? What's that experience like?**
@@ -208,7 +208,7 @@ resource "azurerm_virtual_machine" "catapp" {
 ---
 name: IaC
 # 코드형 인프라 (Infrastructure as Code, IaC)
-<br><br><br>
+<br><br>
 .biglist[코드형 인프라(IaC)는 기계와 사람이 읽을 수 있도록 정의된 파일을 사용하여 클라우드 상의 인프라를 배포, 관리하는 절차.
 
 ** IaC 코드 = 실행 가능한 문서 **
@@ -312,7 +312,7 @@ name: IaC-Tools
 .center[![:scale 40%](images/infra_tools.png)]
 
 이런 도구들은 운영 체제(OS)와 애플리케이션 구성을 위한 도구로 알려짐.
-클라우드 인프라와 플랫폼 서비스를 배포하기 위한 목적으로 만들어진 도구가 아님.
+클라우드 인프라와 플랫폼 서비스를 배포하기 위해 만들어진 도구가 아님.
 
 ???
 **Some of you might be thinking, that sounds great but what about this other tool that I use? Why shouldn't I just use Ansible since we already have that? Or my people only do Powershell. These are all great tools. But none of them are specifically designed for provisioning tasks.**
@@ -326,7 +326,7 @@ name: Native-Tools
 
 각 클라우드 서비스별로 YAML 또는 JSON 기반의 프로비저닝 도구를 제공.
 
-Terraform은 *모든* 주요 클라우드 서비스 제공업체와 VM 하이퍼바이저를 지원.
+Terraform은 **모든** 주요 클라우드 서비스 제공업체와 VM 하이퍼바이저를 지원.
 
 ???
 **Every major cloud provider has their own JSON or YAML based provisioning tool. But all of them are written in YAML or JSON. And if you learn one of these systems, guess what, the others are completely different. Now if you want to have a multi-cloud strategy you have to learn three separate provisioning systems. With Terraform you are using the same language, the same simple syntax on all three of these cloud providers.**
@@ -350,7 +350,7 @@ Terraform:
 name = "${var.PilotServerName}-vm"
 ```
 
-Terraform 코드 (HashiCorp Configuration Language, 이하 HCL) 는 배우고 읽기 쉬움. JSON 구성과 동일한 구성 적용 시 50~70% 정도 간소화된 코드로 구성 가능.
+Terraform 코드 (HCL) 는 배우고 읽기 쉬움. JSON 구성과 동일한 구성 적용 시 50~70% 정도 간소화된 코드로 구성 가능.
 
 ???
 1Password did a great blog post illustrating the difference between JSON configuration files and Terraform.
@@ -371,7 +371,7 @@ Name: Why-Terraform
 Name: Why-Terraform-on-Azure
 # Azure 서비스 배포 시 왜 Terraform일까?
 
-* 멀티 클라우드 와 하이브리드 인프라 지원 멀티 클라우드 와 하이브리드 인프라 지원
+* 멀티 클라우드 와 하이브리드 인프라 지원
 
 ???
 **Why specifcially should you use Terraform on Azure? The first reason is that Terraform supports your hybrid or multi-cloud strategy. If you need to build some infrastructure on-prem, and some in Azure, Terraform is a natural fit. Your technical staff only has to learn a single language to be able to provision in either environment.**
@@ -467,9 +467,9 @@ Terraform OSS는 CLI 기반 도구.
 
 Terraform 명령어는 직접 입력하거나 스크립트와 같은 도구를 이용한 자동화된 입력 시 사용 가능.
 
-OS에 무관하게 동일한 명령어를 사용.
+OS와 무관하게 동일한 명령어를 사용.
 
-Terraform을 서로 다른 동작을 수행하는 하위 명령어(subcommand)가 존재.
+Terraform에는 서로 다른 동작을 수행하는 하위 명령어(subcommand)가 존재.
 
 ```terraform
 # 기본 Terraform 명령어
@@ -496,7 +496,7 @@ Common commands:
     fmt                Rewrites config files to canonical format
     graph              Create a visual graph of Terraform resources
 ```
-`terraform subcommand help` 는 특정 하위 명령어(subcommand) 조회을 위해 사용
+`terraform subcommand help` 는 특정 하위 명령어(subcommand) 조회 시 사용
 ???
 **This is a good command to know. Terraform help will reveal all the available subcommands.**
 
@@ -558,7 +558,7 @@ provider.azurerm: version = "~> 1.35"
 
 Terraform has been successfully initialized!
 ```
-Terraform은 필요한 프로바이더와 모듈을 가져오고,  워크 스페이스 내 .terraform 디렉토리에 저장.사용하는 모듈 또는 프로바이더가 추가/변경/수정되면, 반드시 `terraform init` 재 실행할 것.
+Terraform은 필요한 프로바이더와 모듈을 가져오고, .terraform 디렉토리에 저장. 사용하는 모듈 또는 프로바이더가 추가/변경/수정되면, 반드시 `terraform init` 재 실행할 것.
 
 ???
 **Terraform has an extendible architecture. You download the core program, terraform, then it fetches plugins and modules that are required for your code.**
@@ -579,7 +579,7 @@ Terraform will perform the following actions:
     }
 Plan: 1 to add, 0 to change, 0 to destroy.
 ```
-`terraform plan` 명령어를 사용하여 적용하기 전 변경 사항을 사전에 확인
+`terraform plan` 명령어를 사용, 적용 전 변경 사항을 미리 확인
 
 ???
 **`terraform plan` is a dry run command. We're not actually building anything yet, Terraform is just telling is what it would do if we ran it for real.**
@@ -587,8 +587,7 @@ Plan: 1 to add, 0 to change, 0 to destroy.
 ---
 name: defining-variables
 # 변수(variable) 선언하기
-Terraform 변수는 *variables.tf* 파일에 선언. 변수는 기본 값 지정 가능.
-기본 값을 설정하지 않는 경우, 명령어 실행 시 Prompt 창을 통해 변수값 입력. 변수 사용 시 다음과 같이 *정의* 후 사용하게 됨.
+Terraform 변수는 *variables.tf* 파일에 선언. 기본 값 지정 가능. 기본 값을 설정하지 않는 경우, 명령어 실행 시 Prompt 창을 통해 변수값 입력. 변수 사용 시 다음과 같이 *정의* 후 사용하게 됨.
 
 ```tex
 variable "prefix" {
@@ -616,6 +615,7 @@ class: col-2
 다음 리스트는 우선 순위가 높은 방법(1)부터 낮은 방법(5) 순으로 나열.
 
 <br>
+
 1. CLI 플래그(flag) - 명령어 실행 시 `-var` 옵셤으로 지정
 1. 구성 파일 - terraform.tfvars 파일에 설정
 1. 환경 변수  - 작업 중인 Shell의 환경 변수로 설정
@@ -672,7 +672,7 @@ resource "type" "name" {
 }
 ```
 **resource** = 최 상위 수준 키워드<br>
-**type** = 리소스 타입 지정. 예: `azurerm_virtual_machine`.<br>
+**type** = 리소스 타입 지정. (예: `azurerm_virtual_machine`)<br>
 **name** = 이 자원을 위한 가상의 이름. 테라폼 내부에서 사용. 해당 필드는 변수 지정 *불가* 
 
 ???
@@ -681,16 +681,23 @@ Everything else you want to configure within the resource is going to be sandwic
 ---
 name: provider-block
 # Terraform 프로바이더 구성
-테라폼(Terraform) 코어 프로그램은 인프라 생성을 위해 최소 하나 이상의 프로바이더 필요.
-
-사용할 프로바이더 버전 지정 가능. 지정하지 않는 경우, 해당 프로바이더에서 사용 가능한 버전 중 최선 버전을 사용.
+테라폼(Terraform) 코어 프로그램은 인프라 생성을 위해 최소 하나 이상의 프로바이더 필요. 사용할 프로바이더 버전 지정 가능. 지정하지 않는 경우, 해당 프로바이더에서 사용 가능한 버전 중 최선 버전을 사용.
 
 ```hcl
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=2.46.0"
+    }
+  }
+}
+
+# Configure the Microsoft Azure Provider
 provider "azurerm" {
-  version = "=1.35.0"
+  features {}
 }
 ```
-
 ---
 name: resources-building-blocks
 # 리소스(resource) - 테라폼 기본 빌딩 블럭
@@ -733,7 +740,7 @@ Terraform will perform the following actions:
 
 Plan: 1 to add, 0 to change, 0 to destroy.
 ```
-`terraform apply` 명령어를 수행하고, 승인하는 경우 plan 단계어서 확인한 변경 사항이 적용됨. 
+`terraform apply` 명령어를 수행하고, 승인하는 경우 변경 사항이 적용됨. 
 
 ---
 name: terraform-destroy
@@ -755,25 +762,27 @@ Terraform will perform the following actions:
 
 Plan: 0 to add, 0 to change, 1 to destroy.
 ```
-`terraform destroy`는 `terraform apply`와 정반대 동작 수행. 승인 시 *테라폼으로 생성한 인프라*를 삭제.
+`terraform destroy`는 `terraform apply`와 정반대 동작. 승인 시 *테라폼으로 생성한 인프라*를 삭제.
 ???
 **Terraform can just as easily destroy infrastructure as create it. With great power comes great responsibility!**
 
 ---
 name: terraform-fmt
 # terraform fmt : 코드 포맷팅
-Terraform 내장된 코드 포매터/클리너 제공. [Terraform Language Style Conventions](https://www.terraform.io/docs/language/syntax/style.html)에 따라 코드 상의 공백, 들여쓰기 등 형식에 맞는 포맷과 스타일로 테라폼 코드 수정. [HashiCorp Principles](https://www.hashicorp.com/our-principles#beauty-works-better) 중 '보기 좋은 것이 더 낫다!'의 구현.
+Terraform 내장된 코드 포매터/클리너 제공. [Terraform Language Style Conventions](https://www.terraform.io/docs/language/syntax/style.html)에 따라 코드 상의 공백, 들여쓰기 등 형식에 맞는 포맷과 스타일로 테라폼 코드 수정. <br> [HashiCorp Principles](https://www.hashicorp.com/our-principles#beauty-works-better) 중 '보기 좋은 것이 더 낫다!'의 구현.
 
 ```tex
 terraform fmt
 ```
 
-작성한 코드가 저장된 폴더 또는 디렉토리에서 명령어를 수행하면, 작성된 코드에 대한 정리를 수행.
+작성한 코드(*.tf)가 저장된 폴더 또는 디렉토리에서 명령어를 수행하면, 작성된 코드에 대한 정리를 수행.
 
 ---
 name: dependency-mapping
 class: compact
+
 # 자원 생성 시 의존성
+
 Terraform은 자동은 자원 생성 시 자원간 의존성을 점검. 아래 두 개의 리소스를 보자. `azurerm_virtual_network` 리소스가 강조되어 표기. 아래와 같이 하나의 리소스를 다른 리소스에서 참조하게 설정. 
 
 ```terraform
@@ -792,7 +801,9 @@ resource "azurerm_virtual_network" "vnet" {
 
 ---
 name: organizing-your-terraform
+
 # Terraform 코드 관리하기
+
 테라폼은 `*.tf' 확장자로 끝나는 파일들이 포함된 워크 스페이스 상의 모든 파일을 읽음. 통상main.tf, variables.tf, 그리고 outputs.tf로 구성. 필요한 경우 파일 추가 가능.
 
 ```bash
@@ -827,7 +838,6 @@ resource "azurerm_virtual_network" "vnet" {
 ```
 
 ???
-**We've removed all the comments from this code so it will fit on the slide.**
 
 ---
 name: terraform-variables
@@ -855,6 +865,7 @@ variable "address_space" {
 ---
 name: terraform-outputs
 class: compact
+
 # 작업 결과 출력(outputs.tf) - 작업 결과 확인
  outputs.tf 파일은 `terraform apply`결과, 원하는 메시지 또는 데이터를 화면에 보여줌.
 
@@ -1168,7 +1179,7 @@ name: lab-exercise-2c
 name: the-end
 class: img-caption
 
-# 축하합니다. Terraform on Azure Workshop을 완료하였습니다!
+# 수고하였습니다!
 ![HashiCorp Employees - 2019](https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-shared/hashicorp_employees.jpg)
 
 ---
@@ -1188,7 +1199,7 @@ Terraform Azurerm Provider Documentation<br>
 https://www.terraform.io/docs/providers/azurerm/
 
 Link to this Slide Deck<br>
-https://git.io/JeuCI
+https://git.io/JucLg
 
 ---
 name: Feedback-Survey
