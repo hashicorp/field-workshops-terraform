@@ -558,7 +558,7 @@ provider.azurerm: version = "~> 1.35"
 
 Terraform has been successfully initialized!
 ```
-Terraform은 필요한 프로바이더와 모듈을 가져오고, .terraform 디렉토리에 저장. 사용하는 모듈 또는 프로바이더가 추가/변경/수정되면, 반드시 `terraform init` 재 실행할 것.
+Terraform은 필요한 프로바이더와 모듈을 가져오고, .terraform 디렉토리에 저장. 사용하는 모듈 또는 프로바이더가 추가/변경되면, 반드시 `terraform init` 재 실행할 것.
 
 ???
 **Terraform has an extendible architecture. You download the core program, terraform, then it fetches plugins and modules that are required for your code.**
@@ -699,6 +699,8 @@ provider "azurerm" {
 }
 ```
 
+???
+
 ---
 name: resources-building-blocks
 # 리소스(resource) - 테라폼 기본 빌딩 블럭
@@ -800,6 +802,8 @@ resource "azurerm_virtual_network" "vnet" {
 }
 ```
 
+???
+
 ---
 name: organizing-your-terraform
 
@@ -814,6 +818,8 @@ outputs.tf
 ```
 
 각각의 파일들을 자세히 살펴 보겠습니다.
+
+???
 
 ---
 name: terraform-main
