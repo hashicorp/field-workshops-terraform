@@ -1088,7 +1088,7 @@ plan 또는 apply 수행 시, 테라폼은 다음과 같은 서로 다른 데이
 
 테라폼은 작성된 코드 상에 있는 내용을 기반으로 인프라 생성, 삭제, 변경 또는 교체를 수행. plan/apply 실행 시 개별 리소스에 대음과 같은 4가지 중 하나가 적용:
 
-```hcl
+```terraform
 +   create (신규 생성)
 -   destroy (삭제)
 -/+ replace (교체)
@@ -1214,7 +1214,7 @@ name: Feedback-Survey
 .center[
 여러분의 피드백은 저희에게 중요합니다!
 
-설문조사는 짧습니다. 약속드립니다.
+설문조사는 간단합니다. 약속드립니다.
 
 ## https://forms.gle/jc3KPYEoKo7LS5Be8
 ]
