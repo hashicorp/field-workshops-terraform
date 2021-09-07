@@ -1144,7 +1144,7 @@ class: img-right
 * 버전 관리 시스템 (VCS) 연동 
 * 다양한 인프라 배포 방법 지원
 * 인프라 변경 작업에 대한 통보(알림)
-* 자동화를 위한 완벽환 HTTP API
+* 자동화를 위한 완벽한 HTTP API
 
 ---
 name: tfcloud-vs-tfe
