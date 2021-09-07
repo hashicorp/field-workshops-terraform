@@ -484,7 +484,7 @@ terraform destroy
 ---
 name: terraform-help
 # terraform help
-```tex
+```bash
 *$ terraform help
 Usage: terraform [-version] [-help] <command> [args]
 ...
@@ -518,12 +518,12 @@ Terraform 코드는 [HCL2 toolkit](https://github.com/hashicorp/hcl2)기반. HCL
 name: main.tf
 # Terraform 코드에서 주석(Comment) 사용
 한 줄 주석은 pound symbol(#) 또는 (//) 로 시작. 기본값은 #
-```hcl
+```terraform
 # 한 줄 주석.
 ```
 
 여러 줄 주석(또는 블럭 주석)은 /\* 와 \*/를 시작과 마침 식별자로 사용.
-```tex
+```terraform
 /* 여러 줄 주석.
 블럭 주석은 여러 줄에 걸쳐 주석 지정 시 사용.
 다음 기호를 사용하여 마침.: */
@@ -610,18 +610,19 @@ A. In the terraform.tfvars file, or optionally on the command line or via enviro
 name: setting-variables
 class: col-2
 # 변수값 지정하기
-변수 선언 이후, 다양한 방법으로 변수값 설정 가능하거나 오버라이드(override)가능. 방법별 우선 순위는 다음과 같다.
+변수 선언 이후, 다양한 방법으로 변수값 설정 가능하거나 오버라이드(override)가능. 
 
-다음 리스트는 우선 순위가 높은 방법(1)부터 낮은 방법(5) 순으로 나열.
+방법별 우선 순위는 다음과 같다.
 
 <br>
-```tex
+다음 리스트는 우선 순위가 높은 방법(1)부터 낮은 방법(5) 순으로 나열.
+
 1. CLI 플래그(flag) - 명령어 실행 시 `-var` 옵셤으로 지정
 1. 구성 파일 - terraform.tfvars 파일에 설정
 1. 환경 변수  - 작업 중인 Shell의 환경 변수로 설정
 1. 기본 설정 - variables.tf 파알 상의 기본값 (default)
 1. 사용자 직접 입력 - 변수값이 지정되지 않아 Prompt창에 입력하는 경우
-```
+
 ---
 name: lab-exercise-0
 # 👩‍💻 Instruqt 기반 실습 환경 사용
@@ -638,7 +639,7 @@ name: lab-exercise-1
 
 제공해드린 링크를 통해 실습 환경에 접속하시기 바랍니다.
 
-🛑 **STOP** `두 번째` 퀴즈까지만 수행!!!
+🛑 **STOP** `**두 번째**` 퀴즈까지만 수행!!!
 
 ---
 name: chapter-2-review
@@ -870,7 +871,7 @@ name: terraform-outputs
 class: compact
 
 # 작업 결과 출력(outputs.tf) - 작업 결과 확인
- outputs.tf 파일은 `terraform apply`결과, 원하는 메시지 또는 데이터를 화면에 보여줌.
+ outputs.tf 파일은 `terraform apply`결과를 원하는 메시지 또는 데이터로 화면에 보여줌.
 
 ```terraform
 output "Vault_Server_URL" {
@@ -907,7 +908,7 @@ name: lab-exercise-2a
 # 👩‍💻 Lab Exercise: 테라폼 인 액션
 테라폼을 사용하여 Azure 상에서 자원의 생성, 관리 및 삭제를 실습. 이번 실습은  `terraform apply` 명령어를 사용하여 HashiCat 애플리케이션 스택을 배포.
 
-🛑 **STOP** `세 번째` 퀴즈까지만 수행!!!
+🛑 **STOP** `**세 번째**` 퀴즈까지만 수행!!!
 
 ???
 **We will explore the Terraform Graph together once everyone has completed the lab. Once you have the graph running in your instruqt lab stop there.**
@@ -932,7 +933,9 @@ class: title
 ---
 name: intro-to-provisioners
 # Terraform 프로비저너(Provisioner) 사용하기
-테라폼을 사용하여 VM 또는 Container를 배포한 후, OS 또는 애플리케이션에 대한 변경이 필요한 경우. 테라폼에서 지원하는 프로비저너(provisioner)를 사용. 다음과 같은 프로비저너를 지원:  Bash, Powershell, Chef, Puppet, Habitat 등
+테라폼을 사용하여 VM 또는 Container를 배포한 후, OS 또는 애플리케이션에 대한 변경이 필요한 경우. 테라폼에서 지원하는 프로비저너(provisioner)를 사용. 
+
+다음과 같은 프로비저너를 지원:  Bash, Powershell, Chef, Puppet, Habitat 등
 
 .center[https://www.terraform.io/docs/provisioners/index.html]
 
@@ -959,7 +962,7 @@ provisioner "file" {
 }
 ```
 
-Note 프로비저너 블록 내부에 *connection* 블럭 필요. 파일 프로비저너는 SSH와 WinROm 연결 모두 지원.
+Note 프로비저너 블록 내부에 *connection* 블럭 필요. 파일 프로비저너는 SSH와 WinRM 연결 모두 지원.
 
 ???
 SSH for linux, WinRM for your windows machines.
@@ -992,7 +995,7 @@ class: compact
 # 테라폼과 구성 관리 도구들
 .center[![:scale 50%](images/cpa.jpg)]
 
-테라폼은 잘 알려진 구성 관리 도구(예: Chef, Puppet or Ansible)와 잘 연동 됨. 다음 링크에서 상세 정보 확인 가능:
+테라폼은 잘 알려진 구성 관리 도구(예: Chef, Puppet or Ansible)와 잘 연동. 아래 링크에서 상세 정보 확인 가능:
 
 Official Chef Terraform provisioner:<br>
 https://www.terraform.io/docs/provisioners/chef.html
@@ -1010,7 +1013,7 @@ name: provisioner-tips
 
 특히, 프로비저너는 인프라가 생성될 때 최초 1회만 구동. 즉, 멱등성(idempotent)이 지원되지 않음. 오랜 시간 기동되어 서비스하는 VM 또는 서버의 경우(), 구성 관리 도구를 통한 관리를 권고.
 
-반면, 불변 인프라(immutable infrastructure)를 원하는 경우라면, [HashiCorp Packer](https://packer.io) 사용을 권고.
+반면, 불변 인프라(immutable infrastructure)를 원하는 경우라면, <br>[HashiCorp Packer](https://packer.io) 사용을 권고.
 
 ---
 name: lab-exercise-2b
@@ -1018,7 +1021,7 @@ name: lab-exercise-2b
 이번 실습에서는 프로비저너를 사용하여 신규 소프트웨어 패키지 설치하고 변수와 작업 결과 출력에 대하여 알아 봄.
 
 
-🛑 **STOP**  `네 번째 퀴즈`까지만 수행
+🛑 **STOP**  `**네 번째 퀴즈**`까지만 수행
 
 ---
 name: chapter-4-review
@@ -1066,7 +1069,9 @@ state 파일은 *마지막으로 알고 있는* 인프라의 상태를 저장하
 terraform refresh
 ```
 
-Note 테라폼 0.15.4부터 `-refresh-only` 옵션을 apply, plan 시 다음과 같이 사용
+Note 
+
+테라폼 0.15.4부터 `-refresh-only` 옵션을 apply, plan 시 다음과 같이 사용
 ```bash
 terraform apply -refresh-only
 ```
@@ -1085,8 +1090,8 @@ plan 또는 apply 수행 시, 테라폼은 다음과 같은 서로 다른 데이
 
 테라폼은 작성된 코드 상에 있는 내용을 기반으로 인프라 생성, 삭제, 변경 또는 교체를 수행. plan/apply 실행 시 개별 리소스에 대음과 같은 4가지 중 하나가 적용:
 
-```tex
-+   create (신규 생성)
+```bash
+.green[+]   create (신규 생성)
 -   destroy (삭제)
 -/+ replace (교체)
 ~   update in-place (변경)
