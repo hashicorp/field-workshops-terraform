@@ -351,7 +351,9 @@ Terraform:
 name = "${var.PilotServerName}-vm"
 ```
 
-Terraform 코드 (HCL) 는 배우고 읽기 쉬움. JSON 구성과 동일한 구성 적용 시 50~70% 정도 간소화된 코드로 구성 가능.
+Terraform 코드 (HCL) 는 배우고 읽기 쉬움. 
+
+JSON 구성과 동일한 구성 적용 시 50~70% 정도 간소화된 코드로 구성 가능.
 
 ???
 1Password did a great blog post illustrating the difference between JSON configuration files and Terraform.
@@ -1070,7 +1072,7 @@ state 파일은 *마지막으로 알고 있는* 인프라의 상태를 저장하
 terraform refresh
 ```
 
-Note : 테라폼 0.15.4부터 `-refresh-only` 옵션을 apply, plan 시 다음과 같이 사용
+Note : 0.15.4 버전부터 `-refresh-only` 옵션을 apply, plan 시 다음과 같이 사용
 ```bash
 terraform apply -refresh-only
 ```
@@ -1196,14 +1198,14 @@ class: compact
 HashiCorp Learning Portal<br>
 https://learn.hashicorp.com/terraform/
 
-Microsoft Terraform Quickstarts<br>
-https://docs.microsoft.com/en-us/azure/terraform/
+Azure의 Terraform 설명서<br>
+https://docs.microsoft.com/ko-kr/azure/developer/terraform/
 
-Terraform with Azure Cloudshell<br>
-https://docs.microsoft.com/en-us/azure/terraform/terraform-cloud-shell
+Bash를 사용하여 Azure Cloud Shell에서 Terraform 구성<br>
+https://docs.microsoft.com/ko-kr/azure/developer/terraform/get-started-cloud-shell-bash?tabs=bash
 
 Terraform Azurerm Provider Documentation<br>
-https://www.terraform.io/docs/providers/azurerm/
+https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs
 
 Link to this Slide Deck<br>
 https://git.io/JucLg
