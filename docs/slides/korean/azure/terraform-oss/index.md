@@ -1069,8 +1069,7 @@ state 파일은 *마지막으로 알고 있는* 인프라의 상태를 저장하
 terraform refresh
 ```
 
-Note <br>
-테라폼 0.15.4부터 `-refresh-only` 옵션을 apply, plan 시 다음과 같이 사용
+Note : 테라폼 0.15.4부터 `-refresh-only` 옵션을 apply, plan 시 다음과 같이 사용
 ```bash
 terraform apply -refresh-only
 ```
@@ -1138,7 +1137,7 @@ class: img-right
 # Terraform 클라우드
 ##### Terraform 클라우드는 무료로 제공되는 SaaS 애플리케이션. 테라폼을 활용한 코드형 인프라(IaC)를 위한 최상의 Workflow를 제공.
 ![Terraform Cloud](https://www.terraform.io/assets/images/terraform-overview/automate-the-provisioning-lifecycle@4x-5cc6a17f.png)
-
+```tex
 * 원격 스테이트 파일 저장 및 관리 (모든 작업 결과 저장)
 * Terraform runs(plan + apply) 조회 및 실행/승인 등을 위한 Web UI 제공
 * 프라이빗 모듈 저장소 제공
@@ -1146,7 +1145,7 @@ class: img-right
 * 다양한 인프라 배포 방법 지원 : CLI, API 또는 GUI 기반
 * 인프라 변경 작업에 대한 통보(알림) 기능 (webhoo, email, slack)
 * 자동화를 위한 완벽환 HTTP API 제공
-
+```
 ---
 name: tfcloud-vs-tfe
 class: compact
