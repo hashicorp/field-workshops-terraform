@@ -698,6 +698,7 @@ provider "azurerm" {
   features {}
 }
 ```
+
 ---
 name: resources-building-blocks
 # 리소스(resource) - 테라폼 기본 빌딩 블럭
