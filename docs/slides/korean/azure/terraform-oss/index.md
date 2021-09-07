@@ -821,8 +821,7 @@ outputs.tf
 ---
 name: terraform-main
 class: compact
-
-# main 파일(main.tf) - 자원 생성
+# 메인 파일(main.tf) - 자원 생성
 
 첫 번째 파일 main.tf. 자원 생성을 위한 테라폼 코드를 저장. 크고 복잡한 인프라의 경우 여러 개의 파일로 분리 가능.
 
@@ -839,10 +838,9 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = ["${var.address_space}"]
   resource_group_name = "${azurerm_resource_group.hashitraining.name}"
 }
-...
 ```
 
-???
+
 
 ---
 name: terraform-variables
