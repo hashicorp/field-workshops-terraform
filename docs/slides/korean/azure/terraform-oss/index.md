@@ -820,11 +820,11 @@ outputs.tf
 ---
 name: terraform-main
 class: compact
-# 메인 파일 (main.tf): 자원 생성
+# 메인 파일 (main.tf) - 자원 생성
 
 첫 번째 파일 main.tf. 자원 생성을 위한 테라폼 코드를 저장. 크고 복잡한 인프라의 경우 여러 개의 파일로 분리 가능.
 
-```bash
+```terraform
 # 이 파일은 main.tf 입니다.
 resource "azurerm_resource_group" "hashitraining" {
   name     = "${var.prefix}-vault-workshop"
@@ -849,7 +849,7 @@ class: compact
 
 두 번째 파일 variables.tf. 변수를 선언하기 위한 용도. 경우에 따란 변수의 기본값 설정 가능.
 
-```bash
+```terraform
 variable "prefix" {
   description = "자원 생성 시 접두어로 사용할 값 지정"
 }
