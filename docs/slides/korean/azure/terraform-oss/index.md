@@ -684,7 +684,7 @@ class:compact
 # Terraform 프로바이더 구성
 테라폼(Terraform) 코어 프로그램은 인프라 생성을 위해 최소 하나 이상의 프로바이더 필요. 사용할 프로바이더 버전 지정 가능. 지정하지 않는 경우, 해당 프로바이더에서 사용 가능한 버전 중 최선 버전을 사용.
 
-```tex
+```hcl
 terraform {
   required_providers {
     azurerm = {
@@ -692,10 +692,6 @@ terraform {
       version = "=2.46.0"
     }
   }
-}
-
-provider "azurerm" {
-  features {}
 }
 ```
 
