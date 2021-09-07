@@ -806,17 +806,19 @@ resource "azurerm_virtual_network" "vnet" {
 
 ---
 name: organizing-your-terraform
+lass: compact
 # Terraform 코드 관리하기
 
 테라폼은 `*.tf' 확장자로 끝나는 파일들이 포함된 워크 스페이스 상의 모든 파일을 읽음. 통상main.tf, variables.tf, 그리고 outputs.tf로 구성. 필요한 경우 파일 추가 가능.
 
-```hcl
+```bash
 main.tf
 variables.tf
 outputs.tf
+...
 ```
 
-각각의 파일들을 자세히 살펴 보겠습니다.
+각각의 파일들을 자세히 살펴 보겠습니다. <br>
 
 
 ???
@@ -840,7 +842,7 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = ["${var.address_space}"]
   resource_group_name = "${azurerm_resource_group.hashitraining.name}"
 }
-
+...
 ```
 
 ???
@@ -866,6 +868,7 @@ variable "address_space" {
   description = "virtual network에서 사용할 주소공간 지정. 하나 이상의 주소 공간 지정 가능. 이 값을 변경하는 경우, 신규로 Virtual Network이 생성됨"
   default     = "10.0.0.0/16"
 }
+...
 ```
 
 ---
