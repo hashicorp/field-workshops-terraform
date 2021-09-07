@@ -547,7 +547,7 @@ Terraform 코드 파일은 항상 `*.tf` 또는 `*.tfvars` 확장자를 사용�
 ---
 name: terraform-init
 # terraform init : 초기화
-```tex
+```bash
 *$ terraform init
 Initializing the backend...
 Initializing provider plugins...
@@ -566,7 +566,7 @@ Terraform은 필요한 프로바이더와 모듈을 가져오고, .terraform 디
 ---
 name: terraform-plan
 # terraform plan : 드라이 런(Dry Run)
-```tex
+```bash
 *$ terraform plan
 An execution plan has been generated and is shown below.
 Terraform will perform the following actions:
@@ -820,7 +820,7 @@ outputs.tf
 ---
 name: terraform-main
 class: compact
-# 메인 파일 : 자원 생성
+# 메인 파일 (main.tf): 자원 생성
 
 첫 번째 파일 main.tf. 자원 생성을 위한 테라폼 코드를 저장. 크고 복잡한 인프라의 경우 여러 개의 파일로 분리 가능.
 
