@@ -41,7 +41,7 @@ name: Introductions
 * 이름
 * 담당 업무
 * 자동화 경험
-* 주로 사용하는 문서 편집 도구
+* 주로 사용하는 편집기(editor)
 
 ???
 Use this slide to introduce yourself, give a little bit of your background story, then go around the room and have all your participants introduce themselves.
@@ -58,7 +58,7 @@ name: Link-to-Slide-Deck
 <br><br><br>
 슬라이드는 아래 링크에서 확인할 수 있습니다 :
 
-# https://git.io/JeuCI
+# https://git.io/JucLg
 
 ---
 name: Table-of-Contents
@@ -95,7 +95,7 @@ We use the word chapter here, because the training should feel like a story unfo
 name: How-to-Provision-a-VM
 # Azure VM 배포하는 방법
 
-새로운 Azure VM을 배포하는 몇 가지 방법을 살펴보겠습니다. 먼저 다음과 같은 기본 정보가 필요:
+새로운 Azure VM을 배포하는 몇 가지 방법을 살펴보겠습니다. 다음과 같은 기본 정보 필요:
 
 * 가상 머신 이름(Virtual Machine Name)
 * 운영 체제(O/S) (Image)
@@ -146,7 +146,7 @@ class: compact
 }
 ```
 
-ARM template을 Azure 자원 배포를 위한 안정적이고 신뢰할 수 있는 방법을 제공. JSON은 기계(Compute)가 이해하기는 쉬우나 사람이 편집하거나 문제 해결 시 어려움이 존재.
+ARM template을 Azure 자원 배포를 위한 안정적이고 신뢰할 수 있는 방법을 제공. JSON은 기계(Compute)가 이해하기는 쉬우나 사람이 편집하거나 문제 해결 시 어려움.
 
 ???
 **Which brings us to method #2, Azure Resource Manager templates, also known as ARM templates. Have any of you used ARM templates? What's that experience like?**
@@ -183,6 +183,7 @@ Advance back to the previous slide to illustrate the difference between JSON and
 
 ---
 name: What-is-Terraform
+class: compact
 # Terraform은 ?
 ```terraform
 resource "azurerm_virtual_machine" "catapp" {
@@ -208,7 +209,7 @@ resource "azurerm_virtual_machine" "catapp" {
 ---
 name: IaC
 # 코드형 인프라 (Infrastructure as Code, IaC)
-<br><br><br>
+<br><br>
 .biglist[코드형 인프라(IaC)는 기계와 사람이 읽을 수 있도록 정의된 파일을 사용하여 클라우드 상의 인프라를 배포, 관리하는 절차.
 
 ** IaC 코드 = 실행 가능한 문서 **
@@ -311,8 +312,8 @@ name: IaC-Tools
 # 또 다른 코드형 인프라(IaC) 도구들
 .center[![:scale 40%](images/infra_tools.png)]
 
-이런 도구들은 운영 체제(OS)와 애플리케이션 구성을 위한 도구로 알려짐.
-클라우드 인프라와 플랫폼 서비스를 배포하기 위한 목적으로 만들어진 도구가 아님.
+이런 도구들은 운영 체제(OS)와 애플리케이션 구성을 위한 도구.<br>
+클라우드 인프라와 플랫폼 서비스를 배포하기 위해 만들어진 도구가 아님.
 
 ???
 **Some of you might be thinking, that sounds great but what about this other tool that I use? Why shouldn't I just use Ansible since we already have that? Or my people only do Powershell. These are all great tools. But none of them are specifically designed for provisioning tasks.**
@@ -326,7 +327,7 @@ name: Native-Tools
 
 각 클라우드 서비스별로 YAML 또는 JSON 기반의 프로비저닝 도구를 제공.
 
-Terraform은 *모든* 주요 클라우드 서비스 제공업체와 VM 하이퍼바이저를 지원.
+Terraform은 **모든** 주요 클라우드 서비스 제공업체와 VM 하이퍼바이저를 지원.
 
 ???
 **Every major cloud provider has their own JSON or YAML based provisioning tool. But all of them are written in YAML or JSON. And if you learn one of these systems, guess what, the others are completely different. Now if you want to have a multi-cloud strategy you have to learn three separate provisioning systems. With Terraform you are using the same language, the same simple syntax on all three of these cloud providers.**
@@ -350,7 +351,9 @@ Terraform:
 name = "${var.PilotServerName}-vm"
 ```
 
-Terraform 코드 (HashiCorp Configuration Language, 이하 HCL) 는 배우고 읽기 쉬움. JSON 구성과 동일한 구성 적용 시 50~70% 정도 간소화된 코드로 구성 가능.
+Terraform 코드 (HCL) 는 배우고 읽기 쉬움. 
+
+JSON 구성과 동일한 구성 적용 시 50~70% 정도 간소화된 코드로 구성 가능.
 
 ???
 1Password did a great blog post illustrating the difference between JSON configuration files and Terraform.
@@ -371,7 +374,7 @@ Name: Why-Terraform
 Name: Why-Terraform-on-Azure
 # Azure 서비스 배포 시 왜 Terraform일까?
 
-* 멀티 클라우드 와 하이브리드 인프라 지원 멀티 클라우드 와 하이브리드 인프라 지원
+* 멀티 클라우드 와 하이브리드 인프라 지원
 
 ???
 **Why specifcially should you use Terraform on Azure? The first reason is that Terraform supports your hybrid or multi-cloud strategy. If you need to build some infrastructure on-prem, and some in Azure, Terraform is a natural fit. Your technical staff only has to learn a single language to be able to provision in either environment.**
@@ -467,9 +470,9 @@ Terraform OSS는 CLI 기반 도구.
 
 Terraform 명령어는 직접 입력하거나 스크립트와 같은 도구를 이용한 자동화된 입력 시 사용 가능.
 
-OS에 무관하게 동일한 명령어를 사용.
+OS와 무관하게 동일한 명령어를 사용.
 
-Terraform을 서로 다른 동작을 수행하는 하위 명령어(subcommand)가 존재.
+Terraform에는 서로 다른 동작을 수행하는 하위 명령어(subcommand)가 존재.
 
 ```terraform
 # 기본 Terraform 명령어
@@ -484,7 +487,7 @@ terraform destroy
 ---
 name: terraform-help
 # terraform help
-```tex
+```bash
 *$ terraform help
 Usage: terraform [-version] [-help] <command> [args]
 ...
@@ -496,7 +499,7 @@ Common commands:
     fmt                Rewrites config files to canonical format
     graph              Create a visual graph of Terraform resources
 ```
-`terraform subcommand help` 는 특정 하위 명령어(subcommand) 조회을 위해 사용
+`terraform subcommand help` 는 특정 하위 명령어(subcommand) 조회 시 사용
 ???
 **This is a good command to know. Terraform help will reveal all the available subcommands.**
 
@@ -518,12 +521,12 @@ Terraform 코드는 [HCL2 toolkit](https://github.com/hashicorp/hcl2)기반. HCL
 name: main.tf
 # Terraform 코드에서 주석(Comment) 사용
 한 줄 주석은 pound symbol(#) 또는 (//) 로 시작. 기본값은 #
-```hcl
+```terraform
 # 한 줄 주석.
 ```
 
 여러 줄 주석(또는 블럭 주석)은 /\* 와 \*/를 시작과 마침 식별자로 사용.
-```tex
+```terraform
 /* 여러 줄 주석.
 블럭 주석은 여러 줄에 걸쳐 주석 지정 시 사용.
 다음 기호를 사용하여 마침.: */
@@ -547,7 +550,7 @@ Terraform 코드 파일은 항상 `*.tf` 또는 `*.tfvars` 확장자를 사용�
 ---
 name: terraform-init
 # terraform init : 초기화
-```tex
+```bash
 *$ terraform init
 Initializing the backend...
 Initializing provider plugins...
@@ -558,7 +561,7 @@ provider.azurerm: version = "~> 1.35"
 
 Terraform has been successfully initialized!
 ```
-Terraform은 필요한 프로바이더와 모듈을 가져오고,  워크 스페이스 내 .terraform 디렉토리에 저장.사용하는 모듈 또는 프로바이더가 추가/변경/수정되면, 반드시 `terraform init` 재 실행할 것.
+Terraform은 필요한 프로바이더와 모듈을 가져오고, .terraform 디렉토리에 저장. 사용하는 모듈 또는 프로바이더가 추가/변경되면, 반드시 `terraform init` 재 실행할 것.
 
 ???
 **Terraform has an extendible architecture. You download the core program, terraform, then it fetches plugins and modules that are required for your code.**
@@ -566,7 +569,7 @@ Terraform은 필요한 프로바이더와 모듈을 가져오고,  워크 스페
 ---
 name: terraform-plan
 # terraform plan : 드라이 런(Dry Run)
-```tex
+```bash
 *$ terraform plan
 An execution plan has been generated and is shown below.
 Terraform will perform the following actions:
@@ -579,7 +582,7 @@ Terraform will perform the following actions:
     }
 Plan: 1 to add, 0 to change, 0 to destroy.
 ```
-`terraform plan` 명령어를 사용하여 적용하기 전 변경 사항을 사전에 확인
+`terraform plan` 명령어를 사용, 적용 전 변경 사항을 미리 확인
 
 ???
 **`terraform plan` is a dry run command. We're not actually building anything yet, Terraform is just telling is what it would do if we ran it for real.**
@@ -587,10 +590,9 @@ Plan: 1 to add, 0 to change, 0 to destroy.
 ---
 name: defining-variables
 # 변수(variable) 선언하기
-Terraform 변수는 *variables.tf* 파일에 선언. 변수는 기본 값 지정 가능.
-기본 값을 설정하지 않는 경우, 명령어 실행 시 Prompt 창을 통해 변수값 입력. 변수 사용 시 다음과 같이 *정의* 후 사용하게 됨.
+Terraform 변수는 *variables.tf* 파일에 선언. 기본 값 지정 가능. 기본 값을 설정하지 않는 경우, 명령어 실행 시 Prompt 창을 통해 변수값 입력. 변수 사용 시 다음과 같이 *정의* 후 사용하게 됨.
 
-```tex
+```terraform
 variable "prefix" {
   description = "자원 생성 시 접두어로 사용할 값 지정"
 }
@@ -611,11 +613,13 @@ A. In the terraform.tfvars file, or optionally on the command line or via enviro
 name: setting-variables
 class: col-2
 # 변수값 지정하기
-변수 선언 이후, 다양한 방법으로 변수값 설정 가능하거나 오버라이드(override)가능. 방법별 우선 순위는 다음과 같다.
+변수 선언 이후, 다양한 방법으로 변수값 설정 가능하거나 오버라이드(override)가능. 
 
-다음 리스트는 우선 순위가 높은 방법(1)부터 낮은 방법(5) 순으로 나열.
+방법별 우선 순위는 다음과 같다.
 
 <br>
+다음 리스트는 우선 순위가 높은 방법(1)부터 낮은 방법(5) 순으로 나열.
+
 1. CLI 플래그(flag) - 명령어 실행 시 `-var` 옵셤으로 지정
 1. 구성 파일 - terraform.tfvars 파일에 설정
 1. 환경 변수  - 작업 중인 Shell의 환경 변수로 설정
@@ -638,7 +642,7 @@ name: lab-exercise-1
 
 제공해드린 링크를 통해 실습 환경에 접속하시기 바랍니다.
 
-🛑 **STOP** `두 번째` 퀴즈까지만 수행!!!
+🛑 **STOP** **두 번째** 퀴즈까지만 수행!!!
 
 ---
 name: chapter-2-review
@@ -672,7 +676,7 @@ resource "type" "name" {
 }
 ```
 **resource** = 최 상위 수준 키워드<br>
-**type** = 리소스 타입 지정. 예: `azurerm_virtual_machine`.<br>
+**type** = 리소스 타입 지정. (예: `azurerm_virtual_machine`)<br>
 **name** = 이 자원을 위한 가상의 이름. 테라폼 내부에서 사용. 해당 필드는 변수 지정 *불가* 
 
 ???
@@ -680,16 +684,26 @@ Everything else you want to configure within the resource is going to be sandwic
 
 ---
 name: provider-block
+class:compact
 # Terraform 프로바이더 구성
-테라폼(Terraform) 코어 프로그램은 인프라 생성을 위해 최소 하나 이상의 프로바이더 필요.
+테라폼(Terraform) 코어 프로그램은 인프라 생성을 위해 최소 하나 이상의 프로바이더 필요. 사용할 프로바이더 버전 지정 가능. 지정하지 않는 경우, 해당 프로바이더에서 사용 가능한 버전 중 최선 버전을 사용.
 
-사용할 프로바이더 버전 지정 가능. 지정하지 않는 경우, 해당 프로바이더에서 사용 가능한 버전 중 최선 버전을 사용.
+```terraform
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=2.46.0"
+    }
+  }
+}
 
-```hcl
 provider "azurerm" {
-  version = "=1.35.0"
+  features {}
 }
 ```
+
+???
 
 ---
 name: resources-building-blocks
@@ -718,7 +732,7 @@ resource "azurerm_resource_group" "hashitraining" {
 name: terraform-apply
 class: compact
 # terraform apply : 인프라 배포
-```tex
+```bash
 *$ terraform apply
 An execution plan has been generated and is shown below.
 
@@ -733,13 +747,13 @@ Terraform will perform the following actions:
 
 Plan: 1 to add, 0 to change, 0 to destroy.
 ```
-`terraform apply` 명령어를 수행하고, 승인하는 경우 plan 단계어서 확인한 변경 사항이 적용됨. 
+`terraform apply` 명령어를 수행하고, 승인하는 경우 변경 사항이 적용됨. 
 
 ---
 name: terraform-destroy
 class: compact
 # terraform destroy : 인프라 삭제
-```tex
+```bash
 *$ terraform destroy
 An execution plan has been generated and is shown below.
 
@@ -755,25 +769,27 @@ Terraform will perform the following actions:
 
 Plan: 0 to add, 0 to change, 1 to destroy.
 ```
-`terraform destroy`는 `terraform apply`와 정반대 동작 수행. 승인 시 *테라폼으로 생성한 인프라*를 삭제.
+`terraform destroy`는 `terraform apply`와 정반대 동작. 승인 시 *테라폼으로 생성한 인프라*를 삭제.
 ???
 **Terraform can just as easily destroy infrastructure as create it. With great power comes great responsibility!**
 
 ---
 name: terraform-fmt
 # terraform fmt : 코드 포맷팅
-Terraform 내장된 코드 포매터/클리너 제공. [Terraform Language Style Conventions](https://www.terraform.io/docs/language/syntax/style.html)에 따라 코드 상의 공백, 들여쓰기 등 형식에 맞는 포맷과 스타일로 테라폼 코드 수정. [HashiCorp Principles](https://www.hashicorp.com/our-principles#beauty-works-better) 중 '보기 좋은 것이 더 낫다!'의 구현.
+Terraform 내장된 코드 포매터/클리너 제공. [Terraform Language Style Conventions](https://www.terraform.io/docs/language/syntax/style.html)에 따라 코드 상의 공백, 들여쓰기 등 형식에 맞는 포맷과 스타일로 테라폼 코드 수정. <br> [HashiCorp Principles](https://www.hashicorp.com/our-principles#beauty-works-better) 중 '보기 좋은 것이 더 낫다!'의 구현.
 
-```tex
+```bash
 terraform fmt
 ```
 
-작성한 코드가 저장된 폴더 또는 디렉토리에서 명령어를 수행하면, 작성된 코드에 대한 정리를 수행.
+작성한 코드(*.tf)가 저장된 폴더 또는 디렉토리에서 명령어를 수행하면, 작성된 코드에 대한 정리를 수행.
 
 ---
 name: dependency-mapping
 class: compact
+
 # 자원 생성 시 의존성
+
 Terraform은 자동은 자원 생성 시 자원간 의존성을 점검. 아래 두 개의 리소스를 보자. `azurerm_virtual_network` 리소스가 강조되어 표기. 아래와 같이 하나의 리소스를 다른 리소스에서 참조하게 설정. 
 
 ```terraform
@@ -790,10 +806,12 @@ resource "azurerm_virtual_network" "vnet" {
 }
 ```
 
+???
+
 ---
 name: organizing-your-terraform
 # Terraform 코드 관리하기
-테라폼은 `*.tf' 확장자로 끝나는 파일들이 포함된 워크 스페이스 상의 모든 파일을 읽음. 통상main.tf, variables.tf, 그리고 outputs.tf로 구성. 필요한 경우 파일 추가 가능.
+테라폼은 `.tf` 확장자로 끝나는 파일들이 포함된 워크 스페이스 상의 모든 파일을 읽음. 통상main.tf, variables.tf, 그리고 outputs.tf로 구성. 필요한 경우 파일 추가 가능.
 
 ```bash
 main.tf
@@ -806,11 +824,11 @@ outputs.tf
 ---
 name: terraform-main
 class: compact
-# 매인 파일(main.tf) - 자원 생성
+# 메인 파일 (main.tf) - 자원 생성
 
 첫 번째 파일 main.tf. 자원 생성을 위한 테라폼 코드를 저장. 크고 복잡한 인프라의 경우 여러 개의 파일로 분리 가능.
 
-```bash
+```terraform
 # 이 파일은 main.tf 입니다.
 resource "azurerm_resource_group" "hashitraining" {
   name     = "${var.prefix}-vault-workshop"
@@ -826,8 +844,7 @@ resource "azurerm_virtual_network" "vnet" {
 ...
 ```
 
-???
-**We've removed all the comments from this code so it will fit on the slide.**
+
 
 ---
 name: terraform-variables
@@ -836,7 +853,7 @@ class: compact
 
 두 번째 파일 variables.tf. 변수를 선언하기 위한 용도. 경우에 따란 변수의 기본값 설정 가능.
 
-```bash
+```terraform
 variable "prefix" {
   description = "자원 생성 시 접두어로 사용할 값 지정"
 }
@@ -855,8 +872,9 @@ variable "address_space" {
 ---
 name: terraform-outputs
 class: compact
+
 # 작업 결과 출력(outputs.tf) - 작업 결과 확인
- outputs.tf 파일은 `terraform apply`결과, 원하는 메시지 또는 데이터를 화면에 보여줌.
+ outputs.tf 파일은 `terraform apply`결과를 원하는 메시지 또는 데이터로 화면에 보여줌.
 
 ```terraform
 output "Vault_Server_URL" {
@@ -893,7 +911,7 @@ name: lab-exercise-2a
 # 👩‍💻 Lab Exercise: 테라폼 인 액션
 테라폼을 사용하여 Azure 상에서 자원의 생성, 관리 및 삭제를 실습. 이번 실습은  `terraform apply` 명령어를 사용하여 HashiCat 애플리케이션 스택을 배포.
 
-🛑 **STOP** `세 번째` 퀴즈까지만 수행!!!
+🛑 **STOP** **세 번째** 퀴즈까지만 수행!!!
 
 ???
 **We will explore the Terraform Graph together once everyone has completed the lab. Once you have the graph running in your instruqt lab stop there.**
@@ -918,7 +936,9 @@ class: title
 ---
 name: intro-to-provisioners
 # Terraform 프로비저너(Provisioner) 사용하기
-테라폼을 사용하여 VM 또는 Container를 배포한 후, OS 또는 애플리케이션에 대한 변경이 필요한 경우. 테라폼에서 지원하는 프로비저너(provisioner)를 사용. 다음과 같은 프로비저너를 지원:  Bash, Powershell, Chef, Puppet, Habitat 등
+테라폼을 사용하여 VM 또는 Container를 배포한 후, OS 또는 애플리케이션에 대한 변경이 필요한 경우. 테라폼에서 지원하는 프로비저너(provisioner)를 사용. 
+
+다음과 같은 프로비저너를 지원:  Bash, Powershell, Chef, Puppet, Habitat 등
 
 .center[https://www.terraform.io/docs/provisioners/index.html]
 
@@ -945,7 +965,7 @@ provisioner "file" {
 }
 ```
 
-Note 프로비저너 블록 내부에 *connection* 블럭 필요. 파일 프로비저너는 SSH와 WinROm 연결 모두 지원.
+Note 프로비저너 블록 내부에 *connection* 블럭 필요. 파일 프로비저너는 SSH와 WinRM 연결 모두 지원.
 
 ???
 SSH for linux, WinRM for your windows machines.
@@ -978,7 +998,7 @@ class: compact
 # 테라폼과 구성 관리 도구들
 .center[![:scale 50%](images/cpa.jpg)]
 
-테라폼은 잘 알려진 구성 관리 도구(예: Chef, Puppet or Ansible)와 잘 연동 됨. 다음 링크에서 상세 정보 확인 가능:
+테라폼은 잘 알려진 구성 관리 도구(예: Chef, Puppet or Ansible)와 잘 연동. 아래 링크에서 상세 정보 확인 가능:
 
 Official Chef Terraform provisioner:<br>
 https://www.terraform.io/docs/provisioners/chef.html
@@ -994,9 +1014,9 @@ name: provisioner-tips
 # 테라폼 프로비저너 사용 팁!
 원격 실행 프로비저너 처럼 단순 명령어나 스크립트를 수행하는 테라폼 프로비저너는 좋은 도구. 하지만 복잡한 구성 변경이 필요한 경우 구성 관리 도구를 사용하는 것이 나음.
 
-특히, 프로비저너는 인프라가 생성될 때 최초 1회만 구동. 즉, 멱등성(idempotent)이 지원되지 않음. 오랜 시간 기동되어 서비스하는 VM 또는 서버의 경우(), 구성 관리 도구를 통한 관리를 권고.
+특히, 프로비저너는 인프라가 생성될 때 최초 1회만 구동. 즉, 멱등성(idempotent)이 지원되지 않음. 오랜 시간 기동되어 서비스하는 VM 또는 서버의 경우, 구성 관리 도구를 통한 관리를 권고.
 
-반면, 불변 인프라(immutable infrastructure)를 원하는 경우라면, [HashiCorp Packer](https://packer.io) 사용을 권고.
+반면, 불변 인프라(immutable infrastructure)를 원하는 경우라면, <br>[HashiCorp Packer](https://packer.io) 사용을 권고.
 
 ---
 name: lab-exercise-2b
@@ -1004,7 +1024,7 @@ name: lab-exercise-2b
 이번 실습에서는 프로비저너를 사용하여 신규 소프트웨어 패키지 설치하고 변수와 작업 결과 출력에 대하여 알아 봄.
 
 
-🛑 **STOP**  `네 번째 퀴즈`까지만 수행
+🛑 **STOP** **네 번째** 퀴즈까지만 수행
 
 ---
 name: chapter-4-review
@@ -1052,7 +1072,7 @@ state 파일은 *마지막으로 알고 있는* 인프라의 상태를 저장하
 terraform refresh
 ```
 
-Note 테라폼 0.15.4부터 `-refresh-only` 옵션을 apply, plan 시 다음과 같이 사용
+Note : 0.15.4 버전부터 `-refresh-only` 옵션을 apply, plan 시 다음과 같이 사용
 ```bash
 terraform apply -refresh-only
 ```
@@ -1071,7 +1091,7 @@ plan 또는 apply 수행 시, 테라폼은 다음과 같은 서로 다른 데이
 
 테라폼은 작성된 코드 상에 있는 내용을 기반으로 인프라 생성, 삭제, 변경 또는 교체를 수행. plan/apply 실행 시 개별 리소스에 대음과 같은 4가지 중 하나가 적용:
 
-```tex
+```terraform
 +   create (신규 생성)
 -   destroy (삭제)
 -/+ replace (교체)
@@ -1121,13 +1141,13 @@ class: img-right
 ##### Terraform 클라우드는 무료로 제공되는 SaaS 애플리케이션. 테라폼을 활용한 코드형 인프라(IaC)를 위한 최상의 Workflow를 제공.
 ![Terraform Cloud](https://www.terraform.io/assets/images/terraform-overview/automate-the-provisioning-lifecycle@4x-5cc6a17f.png)
 
-* 원격 스테이트 파일 저장 및 관리 (모든 작업 결과 저장)
-* Terraform runs(plan + apply) 조회 및 실행/승인 등을 위한 Web UI 제공
-* 프라이빗 모듈 저장소 제공
-* 버전 관리 시스템 (VCS) 연동 : 소스 코드 변경 시 자동/반자동 인프라 배포
-* 다양한 인프라 배포 방법 지원 : CLI, API 또는 GUI 기반
-* 인프라 변경 작업에 대한 통보(알림) 기능 (webhoo, email, slack)
-* 자동화를 위한 완벽환 HTTP API 제공
+* 원격 스테이트 파일 저장 및 관리
+* Terraform runs 조회 및 실행/승인 등을 위한 Web UI
+* 프라이빗 모듈 저장소
+* 버전 관리 시스템 (VCS) 연동 
+* 다양한 인프라 배포 방법 지원
+* 인프라 작업에 대한 통보(알림)
+* 자동화를 위한 완벽한 HTTP API
 
 ---
 name: tfcloud-vs-tfe
@@ -1168,7 +1188,7 @@ name: lab-exercise-2c
 name: the-end
 class: img-caption
 
-# 축하합니다. Terraform on Azure Workshop을 완료하였습니다!
+# 수고하셨습니다!
 ![HashiCorp Employees - 2019](https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-shared/hashicorp_employees.jpg)
 
 ---
@@ -1178,26 +1198,26 @@ class: compact
 HashiCorp Learning Portal<br>
 https://learn.hashicorp.com/terraform/
 
-Microsoft Terraform Quickstarts<br>
-https://docs.microsoft.com/en-us/azure/terraform/
+Azure의 Terraform 설명서<br>
+https://docs.microsoft.com/ko-kr/azure/developer/terraform/
 
-Terraform with Azure Cloudshell<br>
-https://docs.microsoft.com/en-us/azure/terraform/terraform-cloud-shell
+Bash를 사용하여 Azure Cloud Shell에서 Terraform 구성<br>
+https://docs.microsoft.com/ko-kr/azure/developer/terraform/get-started-cloud-shell-bash?tabs=bash
 
 Terraform Azurerm Provider Documentation<br>
-https://www.terraform.io/docs/providers/azurerm/
+https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs
 
 Link to this Slide Deck<br>
-https://git.io/JeuCI
+https://git.io/JucLg
 
 ---
 name: Feedback-Survey
 # Workshop Feedback Survey
 <br><br>
 .center[
-여러분의 피드백은 저희에게 중요합니다!
+여러분의 피드백은 저희에게 소중합니다!
 
-설문조사는 짧습니다. 약속드립니다.
+설문조사는 간단합니다. 약속드립니다.
 
 ## https://forms.gle/jc3KPYEoKo7LS5Be8
 ]
