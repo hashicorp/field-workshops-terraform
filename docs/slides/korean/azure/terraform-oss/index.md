@@ -589,7 +589,7 @@ name: defining-variables
 # 변수(variable) 선언하기
 Terraform 변수는 *variables.tf* 파일에 선언. 기본 값 지정 가능. 기본 값을 설정하지 않는 경우, 명령어 실행 시 Prompt 창을 통해 변수값 입력. 변수 사용 시 다음과 같이 *정의* 후 사용하게 됨.
 
-```tex
+```terraform
 variable "prefix" {
   description = "자원 생성 시 접두어로 사용할 값 지정"
 }
@@ -615,13 +615,13 @@ class: col-2
 다음 리스트는 우선 순위가 높은 방법(1)부터 낮은 방법(5) 순으로 나열.
 
 <br>
-
+```tex
 1. CLI 플래그(flag) - 명령어 실행 시 `-var` 옵셤으로 지정
 1. 구성 파일 - terraform.tfvars 파일에 설정
 1. 환경 변수  - 작업 중인 Shell의 환경 변수로 설정
 1. 기본 설정 - variables.tf 파알 상의 기본값 (default)
 1. 사용자 직접 입력 - 변수값이 지정되지 않아 Prompt창에 입력하는 경우
-
+```
 ---
 name: lab-exercise-0
 # 👩‍💻 Instruqt 기반 실습 환경 사용
@@ -684,7 +684,7 @@ class:compact
 # Terraform 프로바이더 구성
 테라폼(Terraform) 코어 프로그램은 인프라 생성을 위해 최소 하나 이상의 프로바이더 필요. 사용할 프로바이더 버전 지정 가능. 지정하지 않는 경우, 해당 프로바이더에서 사용 가능한 버전 중 최선 버전을 사용.
 
-```tex
+```terraform
 terraform {
   required_providers {
     azurerm = {
