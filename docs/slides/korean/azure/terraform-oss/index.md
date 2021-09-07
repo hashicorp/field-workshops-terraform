@@ -1138,13 +1138,13 @@ class: img-right
 ##### Terraform 클라우드는 무료로 제공되는 SaaS 애플리케이션. 테라폼을 활용한 코드형 인프라(IaC)를 위한 최상의 Workflow를 제공.
 ![Terraform Cloud](https://www.terraform.io/assets/images/terraform-overview/automate-the-provisioning-lifecycle@4x-5cc6a17f.png)
 
-* 원격 스테이트 파일 저장 및 관리 (모든 작업 결과 저장)
-* Terraform runs(plan + apply) 조회 및 실행/승인 등을 위한 Web UI 제공
-* 프라이빗 모듈 저장소 제공
-* 버전 관리 시스템 (VCS) 연동 : 소스 코드 변경 시 자동/반자동 인프라 배포
-* 다양한 인프라 배포 방법 지원 : CLI, API 또는 GUI 기반
-* 인프라 변경 작업에 대한 통보(알림) 기능 (webhoo, email, slack)
-* 자동화를 위한 완벽환 HTTP API 제공
+원격 스테이트 파일 저장 및 관리 (모든 작업 결과 저장)<br>
+Terraform runs(plan + apply) 조회 및 실행/승인 등을 위한 Web UI 제공<br>
+프라이빗 모듈 저장소 제공<br>
+버전 관리 시스템 (VCS) 연동 : 소스 코드 변경 시 자동/반자동 인프라 배포<br>
+다양한 인프라 배포 방법 지원 : CLI, API 또는 GUI 기반<br>
+인프라 변경 작업에 대한 통보(알림) 기능 (webhoo, email, slack)<br>
+자동화를 위한 완벽환 HTTP API 제공<br>
 
 ---
 name: tfcloud-vs-tfe
