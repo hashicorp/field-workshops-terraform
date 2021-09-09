@@ -367,6 +367,18 @@ name: terraform-vs-others
 class: compact
 # Terraform vs. Other Tools
 
+Terraform is a Declarative Infrastructure as Code (IaC) tool.  
+
+This means that you declare what you want the state of the world but not the how of doing that.
+
+Imperative tools such as Ansible or AWS CLI require that you build logic to ensure the state of the world matches your desired state.  
+
+These tools are ideal for Day 2 operations or variable changes that may need to be adjusted inconsistently between systems or applications after Terraform establishes the state of the world.
+
+???
+Good discussion points here to bring up the Better Together story around Terraform with operational tools such as Ansible or Chef.
+Get information on what tools they may be using and how they are using them for where Terraform may be a good IaC fit.
+ 
 ---
 name: what-is-vcs
 class: img-right
