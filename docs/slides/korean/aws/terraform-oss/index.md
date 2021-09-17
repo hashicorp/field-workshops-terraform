@@ -498,7 +498,7 @@ resource aws_vpc "main" {
 }
 ```
 
-Terraform 코드는 [HCL2 툴킷](https://github.com/hashicorp/hcl2)을 기반으로합니다. HCL은 HashiCorp 구성 언어를 나타냅니다.
+Terraform 코드는 [HCL2 툴킷](https://github.com/hashicorp/hcl)을 기반으로합니다. HCL은 HashiCorp 구성 언어를 나타냅니다.
 
 Terraform 코드는 모든 클라우드 또는 플랫폼에서 인프라를 프로비저닝하기 위해 특별히 설계된 선언적 언어입니다.
 
