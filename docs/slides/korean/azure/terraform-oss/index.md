@@ -515,7 +515,7 @@ resource "azurerm_virtual_network" "vnet" {
 }
 ```
 
-Terraform 코드는 [HCL2 toolkit](https://github.com/hashicorp/hcl2)기반. HCL은  "HashiCorp Configuration Language"의 약자. Terraform 코드 또는 그냥 *terraform* 이라고 하면 클라우드 또는 플랫폼 서비스 상의 인프라 배포를 위한 선언적 언어(declarative language)를 의미.
+Terraform 코드는 [HCL2 toolkit](https://github.com/hashicorp/hcl)기반. HCL은  "HashiCorp Configuration Language"의 약자. Terraform 코드 또는 그냥 *terraform* 이라고 하면 클라우드 또는 플랫폼 서비스 상의 인프라 배포를 위한 선언적 언어(declarative language)를 의미.
 
 ---
 name: main.tf
