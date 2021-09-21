@@ -1,11 +1,20 @@
 version: "2"
 virtualmachines:
-- name: workstation
-  image: instruqt-hashicorp/terraform-workstation-0-14-9
-  shell: /bin/bash -l
-  machine_type: n1-standard-1
+  - name: workstation
+    image: instruqt-hashicorp/terraform-workstation-0-14-9
+    shell: /bin/bash -l
+    machine_type: n1-standard-1
 aws_accounts:
-- name: TF-WORKSHOP
-  managed_policies:
-  - arn:aws:iam::aws:policy/AmazonEC2FullAccess
-  - arn:aws:iam::aws:policy/AmazonVPCFullAccess
+  - name: TF-WORKSHOP
+    managed_policies:
+      - arn:aws:iam::aws:policy/AmazonEC2FullAccess
+      - arn:aws:iam::aws:policy/AmazonVPCFullAccess
+azure_subscriptions:
+  - name: terraform
+    roles:
+      - Owner
+gcp_projects:
+  - name: gcp-project
+    services:
+      - cloudresourcemanager.googleapis.com
+      - compute.googleapis.com
