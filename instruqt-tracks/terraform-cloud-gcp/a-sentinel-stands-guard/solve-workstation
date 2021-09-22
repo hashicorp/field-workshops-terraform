@@ -98,7 +98,7 @@ EOF
 ## Do git operations to add labels (but not for workshops-testbot)
 if [[ -f /root/skipconfig.json ]]; then
   GITUSERID=$(jq -r .gituserid < /root/skipconfig.json)
-  GITPWD=$(jq -r .gitpwd < /root/skipconfig.json)
+  GITPAT=$(jq -r .gitpat < /root/skipconfig.json)
   git pull
   # Add Department label
   sed -i "s/name = \"hashicat\"/name = \"hashicat\"\n    department = \"devops\"/" main.tf
@@ -107,7 +107,7 @@ if [[ -f /root/skipconfig.json ]]; then
   cat <<-EOF > /root/.netrc
   machine github.com
   login $GITUSERID
-  password $GITPWD
+  password $GITPAT
 EOF
   git push origin master
   # Add Billable label

@@ -68,8 +68,8 @@ echo
 echo "Please enter your GitHub user ID."
 read GITUSERID
 echo
-echo "Please enter your GitHub password or personal access token."
-read GITPWD
+echo "Please enter your GitHub personal access token."
+read GITPAT
 echo
 echo "Please enter your GitHub user name (<first_name> <last_name>)."
 read GITUSERNAME
@@ -78,7 +78,7 @@ echo "Please enter your GitHub email."
 read GITEMAIL
 echo
 echo "Please enter your oauth-id. You can find it at this URL:"
-echo "https://app.terraform.io/app/${ORG}/settings/version-control"
+echo "https://app.terraform.io/app/\${ORG}/settings/version-control"
 echo "If you haven't set up VCS integration yet, simply hit enter."
 read OAUTHID
 echo
@@ -86,7 +86,7 @@ echo "Organization: \$ORG"
 echo "Workspace   : \$WORKSPACE"
 echo "Token       : \$TOKEN"
 echo "GitHub User ID : \$GITUSERID"
-echo "GitHub Password : \$GITPWD"
+echo "GitHub Personal Access Token : \$GITPAT"
 echo "GitHub User Name : \$GITUSERNAME"
 echo "GitHub Email : \$GITEMAIL"
 echo "OAuth ID    : \$OAUTHID"
@@ -106,7 +106,7 @@ cat <<-EOM > /root/skipconfig.json
   "workspace": "\$WORKSPACE",
   "token": "\$TOKEN",
   "gituserid": "\$GITUSERID",
-  "gitpwd": "\$GITPWD",
+  "gitpat": "\$GITPAT",
   "gitusername": "\$GITUSERNAME",
   "gitemail": "\$GITEMAIL",
   "oauthid": "\$OAUTHID"

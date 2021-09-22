@@ -12,7 +12,7 @@ WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Conte
 
 if [[ -f /root/skipconfig.json ]]; then
   GITUSERID=$(jq -r .gituserid < /root/skipconfig.json)
-  GITPWD=$(jq -r .gitpwd < /root/skipconfig.json)
+  GITPAT=$(jq -r .gitpat < /root/skipconfig.json)
   GITUSERNAME=$(jq -r .gitusername < /root/skipconfig.json)
   GITEMAIL=$(jq -r .gitemail < /root/skipconfig.json)
   OAUTHID=$(jq -r .oauthid < /root/skipconfig.json)
@@ -35,7 +35,7 @@ if [[ "$GITUSERID" != "workshops-testbot" ]]; then
   cat <<-EOF > /root/.netrc
   machine github.com
   login $GITUSERID
-  password $GITPWD
+  password $GITPAT
 EOF
   git push origin master
 fi
