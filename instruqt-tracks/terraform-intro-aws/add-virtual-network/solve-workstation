@@ -12,7 +12,7 @@ sed -i 's/#   cidr_block = var.subnet_prefix/  cidr_block = var.subnet_prefix/' 
 sed -i 's/#   tags = {/  tags = {/' main.tf
 sed -i 's/#     name = "${var.prefix}-subnet"/    name = "${var.prefix}-subnet"/' main.tf
 sed -i 's/#   }/  }/' main.tf
-sed -i 's/# }/}/' main.tf
+sed -i '0,/# }/{s/# }/}/}' main.tf
 
 terraform apply -auto-approve
 
