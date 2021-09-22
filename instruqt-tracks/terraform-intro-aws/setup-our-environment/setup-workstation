@@ -1,45 +1,4 @@
 #!/bin/bash -l
 set -e
 
-# Allow instruqt time to do its thing
-sleep 15
-
-# Clone the hashicat-aws repo
-git clone https://github.com/hashicorp/hashicat-aws
-GITDIR="/root/hashicat-aws"
-set-workdir /root/hashicat-aws
-
-# Rewind everything back to a single resource group.
-cd ${GITDIR}
-cp ${GITDIR}/exercises/main.tf.start ${GITDIR}/main.tf
-cp ${GITDIR}/exercises/outputs.tf.start ${GITDIR}/outputs.tf
-mv ${GITDIR}/terraform.tfvars.example ${GITDIR}/terraform.tfvars
-
-# Start up Visual Studio Code server
-# Create VSC startup script
-cat <<-EOF > /etc/systemd/system/code-server.service
-[Unit]
-Description=Code Server
-After=network.target
-StartLimitIntervalSec=0
-
-[Service]
-Type=simple
-Restart=always
-RestartSec=1
-User=root
-ExecStart=/usr/bin/code-server --host 0.0.0.0 --port 8443 --cert --auth none /root/hashicat-aws
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-# Add AWS keys to systemd environment
-systemctl import-environment AWS_ACCESS_KEY_ID
-systemctl import-environment AWS_SECRET_ACCESS_KEY
-
-# Start VSC
-systemctl enable code-server
-systemctl start code-server
-
 exit 0

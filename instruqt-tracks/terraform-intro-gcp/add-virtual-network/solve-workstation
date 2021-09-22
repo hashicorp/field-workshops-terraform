@@ -7,7 +7,7 @@ set -o history
 cd /root/hashicat-gcp
 
 sed -i 's/# resource "google_compute_subnetwork" "hashicat" {/resource "google_compute_subnetwork" "hashicat" {/' main.tf
-sed -i 's/#   name          = "\${var.prefix}-subnet"/  name          = "\${var.prefix}-subnet"/' main.tf
+sed -i 's/#   name          = "${var.prefix}-subnet"/  name          = "${var.prefix}-subnet"/' main.tf
 sed -i 's/#   region        = var.region/  region        = var.region/' main.tf
 sed -i 's/#   network       = google_compute_network.hashicat.self_link/  network       = google_compute_network.hashicat.self_link/' main.tf
 sed -i 's/#   ip_cidr_range = var.subnet_prefix/  ip_cidr_range = var.subnet_prefix/' main.tf

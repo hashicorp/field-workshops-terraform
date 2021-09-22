@@ -8,6 +8,6 @@ cd /root/hashicat-gcp
 
 terraform version
 
-terraform help
+terraform --help
 
 exit 0
