@@ -340,6 +340,34 @@ jobs:
               echo "Instruqt track test failed three times."
               exit 1
             fi
+  instruqt-push-terraform-cloud-bonus-lab:
+    docker:
+      - image: docker.mirror.hashicorp.services/ubuntu:latest
+    steps:
+      - checkout
+      - run:
+          name: Run Instruqt Test
+          command: |
+            VERSION=$INSTRUQT_VERSION
+            apt -y update
+            apt -y install wget unzip
+            wget https://github.com/instruqt/cli/releases/download/${VERSION}/instruqt-linux-${VERSION}.zip -O /tmp/instruqt.zip
+            cd /tmp
+            unzip instruqt.zip
+            cp instruqt /usr/local/bin/instruqt
+            chmod +x /usr/local/bin/instruqt
+            echo "yes" | instruqt version
+            RETVAL=$?
+            if [[ $RETVAL -ne 0 ]]; then
+              echo "Instruqt is not installed correctly."
+              exit 1
+            else
+              echo "Instruqt is installed and updated to most recent version."
+            fi
+            cd /root/project/instruqt-tracks/terraform-cloud-bonus-lab
+            echo "Running instruqt track push..."
+            instruqt track push --force
+            echo "No solve script for this track so no tests"
 workflows:
   version: 2
   build-and-deploy:
@@ -405,6 +433,13 @@ workflows:
             branches:
               only:
                 - main
+      - instruqt-push-terraform-cloud-bonus-lab:
+          requires:
+            - instruqt-validate
+          filters:
+            branches:
+              only:
+                - main
   nightly-build:
     triggers:
       - schedule:
@@ -437,5 +472,8 @@ workflows:
           requires:
             - instruqt-validate
       - instruqt-test-sentinel-v4:
+          requires:
+            - instruqt-validate
+      - instruqt-push-terraform-cloud-bonus-lab:
           requires:
             - instruqt-validate
