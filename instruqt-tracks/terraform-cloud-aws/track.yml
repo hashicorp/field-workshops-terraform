@@ -437,7 +437,7 @@ challenges:
 
     At this time, the last command **must** be run on the "Shell" tab since authenticating to GitHub from the VS Code Editor's terminal does not work.
 
-    Note that you'll have to provide your GitHub username and password or personal access token in order to complete the `git push` command.
+    Note that you'll have to provide your GitHub username and personal access token in order to complete the `git push` command.
 
     If you have two-factor authentication enabled and don't remember your personal access token,  you'll need to create a new one. To do that, log onto GitHub and visit the Tokens page:
 
@@ -653,7 +653,7 @@ challenges:
 
     After the module is completely published, please select version `2.2.0` of the module by clicking `Change` under **Version** in the upper left section of your screen. If `2.2.0` is not visible, refresh the page once as versions may take a moment to publish.
 
-    Create a new Terraform file called `s3-bucket.tf` in the hashicat-aws directory and use the module in this file to create a new S3 bucket for Gaurav. You can copy the module creation code from the "Provision Instructions" section of the module's page in your Private Module Registry.
+    Create a new Terraform file called `s3-bucket.tf` in the hashicat-aws directory and use the module in this file to create a new S3 bucket for Gaurav. You can copy the module creation code from the "Usage Instructions" section of the module's page in your Private Module Registry.
 
     Click on the "Inputs" tab of the module. This indicates that you have to specify several module variables (inputs), but they are all marked as optional. We recommend that you set the `bucket_prefix` module variable (input) to the value of your `prefix` variable. The AWS provider will then generate a bucket name that starts with your prefix.
 
@@ -766,7 +766,7 @@ challenges:
   - type: text
     contents: "\U0001F431‍\U0001F4BB Congratulations! You've been promoted to Terraform Cloud Ninja."
   assignment: |
-    The Terraform private module registry automatically syncs modules from the public registry.
+    The Terraform private module registry automatically updates private modules copied from the public registry if the original public modules are updated.
   answers:
   - "True"
   - "False"
@@ -801,4 +801,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "2890960223448803216"
+checksum: "8208392442982860827"

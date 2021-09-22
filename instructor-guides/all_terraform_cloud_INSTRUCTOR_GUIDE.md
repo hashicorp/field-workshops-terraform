@@ -129,7 +129,7 @@ Skipping for HashiCorp users is enabled through the combination of a `fastforwar
 So, if you would like to skip challenges while running one of these tracks, you should do the following:
 
 1. Run the `fastforward` script during a challenge (preferably the first). Just type `fastforward`.
-2. This script will prompt you to enter your TFC organization, the name of your TFC workspace, your TFC token, your GitHub user ID, your GitHub password or personal access token, your GitHub user name (first and last names), your GitHub email, and an OAuth ID for a VCS connection in your TFC organization.
+2. This script will prompt you to enter your TFC organization, the name of your TFC workspace, your TFC token, your GitHub user ID, your GitHub personal access token, your GitHub user name (first and last names), your GitHub email, and an OAuth ID for a VCS connection in your TFC organization.
 3. Providing all of those will enable later solve scripts in the current TFC track to properly skip ahead to later challenges.
 
 To actually skip one or more challenges while running one of the TFC tracks, return to the track's home page and click the "Skip to" button of the challenge you wish to skip to.

@@ -23,7 +23,7 @@ EOF
 if [[ -f /root/skipconfig.json ]]; then
   ORG=$(jq -r .org < /root/skipconfig.json)
   GITUSERID=$(jq -r .gituserid < /root/skipconfig.json)
-  GITPWD=$(jq -r .gitpwd < /root/skipconfig.json)
+  GITPAT=$(jq -r .gitpat < /root/skipconfig.json)
   # Set ORG in vnetc.tf
   sed -i "s/instruqt-circleci/$ORG/g" vnet.tf
   git add .
@@ -31,7 +31,7 @@ if [[ -f /root/skipconfig.json ]]; then
   cat <<-EOF > /root/.netrc
   machine github.com
   login $GITUSERID
-  password $GITPWD
+  password $GITPAT
 EOF
   git push origin master
 fi
