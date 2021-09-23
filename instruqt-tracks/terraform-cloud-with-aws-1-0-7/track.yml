@@ -42,9 +42,9 @@ challenges:
     contents: "Welcome to your first day on the job at ACME Inc. These are some of your coworkers in the local ACME office:\n<center><table cellpadding=20>\n  <tr>\n    <td>\n    \U0001F468\U0001F3FB‍\U0001F4BC Hiro - Product Manager<br>\n    \U0001F9D5\U0001F3FD Aisha - Database Admin<br>\n    \U0001F46E\U0001F3FF‍♂️ William - InfoSec Lead<br>\n    \U0001F468\U0001F3FB‍\U0001F9B2 Lars - Lead Developer<br>\n    </td>\n    <td>\n    \U0001F9D3\U0001F3FB Robin - Operations Admin<br>\n    \U0001F469‍\U0001F3A4 Jane - Quality Assurance<br>\n    \U0001F473\U0001F3FE‍♂️ Gaurav - Network Admin<br>\n    \U0001F469\U0001F3FC‍\U0001F4BC Karen - Finance    </td>\n  </tr>\n</table></center>\n\n<center>\U0001F913 You - Brand New Intern\n</center>"
   - type: text
     contents: Most modern text editors support Terraform syntax highlighting.
-  assignment: "Welcome to your first day as an intern at ACME Inc. [ACME](https://www.youtube.com/watch?v=9m7evoFF83c) is a multi-national conglomerate that sells anvils, rocket powered roller skates, portable holes, earthquake pills and birdseed.\n\nAfter employee orientation you sit down at your workstation and open your text editor.\n\nClick on the **Text Editor** tab now. This is where you'll be editing and writing Terraform code. Open the file called **README.md** by clicking on it in the FILES menu on the left. Add your name at the bottom of the file.\n\nSee the floppy disk icon on the tab? It looks like this: \U0001F4BE. Click on the floppy disk icon to save the file.\n\nNext have a look at your **Shell** tab. This is where you'll be running all your terraform commands.\n\nCongratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new Terraform skills.\n\nClick the **Check** button to continue."
+  assignment: "Welcome to your first day as an intern at ACME Inc. [ACME](https://www.youtube.com/watch?v=9m7evoFF83c) is a multi-national conglomerate that sells anvils, rocket powered roller skates, portable holes, earthquake pills and birdseed.\n\nAfter employee orientation you sit down at your workstation and open your Code Editor.\n\nClick on the **Code Editor** tab now. This is where you'll be editing and writing Terraform code. Open the file called **README.md** by clicking on it in the FILES menu on the left. Add your name at the bottom of the file.\n\nSee the floppy disk icon on the tab? It looks like this: \U0001F4BE. Click on the floppy disk icon to save the file.\n\nNext have a look at your **Shell** tab. This is where you'll be running all your terraform commands.\n\nCongratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new Terraform skills.\n\nClick the **Check** button to continue."
   tabs:
-  - title: Text Editor
+  - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
@@ -91,7 +91,7 @@ challenges:
 
     Before you click the **Check** button, did you change your Execution Mode to Local? This is an easy step to miss so we mention it twice.
   tabs:
-  - title: Text Editor
+  - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
@@ -171,7 +171,7 @@ challenges:
 
     If you'd like to see the hashicat application in your web browser, simply copy the link from the output of your Terraform run, and paste it into the URL bar in another tab or window.
   tabs:
-  - title: Text Editor
+  - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
@@ -246,7 +246,7 @@ challenges:
 
     You can continue to run `terraform plan` and `terraform apply` in your "Shell" tab, but the execution is now done in Terraform Cloud.
   tabs:
-  - title: Text Editor
+  - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
@@ -301,7 +301,7 @@ challenges:
 
     You will need at least two users (including yourself) in your organization to pass this challenge. The users you invite do not have to accept the invite to be counted.
   tabs:
-  - title: Text Editor
+  - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
@@ -415,7 +415,7 @@ challenges:
 
     Click the **Check** button to let Jane know she can clone the hashicat-aws repo for QA testing.
   tabs:
-  - title: Text Editor
+  - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
@@ -465,7 +465,7 @@ challenges:
 
     Once you've merged your changes to the master branch, watch the Terraform run that starts in the Terraform Cloud UI.
   tabs:
-  - title: Text Editor
+  - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
@@ -545,7 +545,7 @@ challenges:
 
     Each time you push a change to master, you'll trigger a new Terraform run. Keep trying until you pass the Sentinel policy check.
   tabs:
-  - title: Text Editor
+  - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
@@ -601,7 +601,7 @@ challenges:
 
     Click on the "Inputs" tab of the module. This indicates that you have to specify several module variables (inputs), but they are all marked as optional. We recommend that you set the `bucket_prefix` module variable (input) to the value of your `prefix` variable. The AWS provider will then generate a bucket name that starts with your prefix.
 
-    Since you are editing a new file, you need to save it even if you are using the VS Code Editor. Use the File > Save menu and type "s3-bucket.tf" for the name. If you are using the Instruqt Text Editor, just click the disk icon above the file.
+    Since you are editing a new file, you need to save it even if you are using the VS Code Editor. Use the File > Save menu and type "s3-bucket.tf" for the name. If you are using the Instruqt Code Editor, just click the disk icon above the file.
 
     After you have saved the `s3-bucket.tf` file, you can add, commit, and push your latest changes to your remote fork. You will be prompted to log onto your github account to push the change.
 
@@ -613,7 +613,7 @@ challenges:
 
     If all went well you should see a new S3 bucket being built in the console output. Wait until your terraform apply command is complete, then click the `Check` button to verify your work.
   tabs:
-  - title: Text Editor
+  - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
@@ -670,7 +670,7 @@ challenges:
     ```
     Copy or save this workspace ID somewhere as you will need it during the challenge.
     ### The Challenge:
-    Use the four *.json files located in the json directory to create your variables and trigger a Terraform plan/apply. Use the Terraform API docs (which are in one of this challenge's notes) to determine which commands to run. You can edit the files in your text editor to customize them for your workspace. Be sure to include `@` before the JSON file names.
+    Use the four *.json files located in the json directory to create your variables and trigger a Terraform plan/apply. Use the Terraform API docs (which are in one of this challenge's notes) to determine which commands to run. You can edit the files in your Code Editor to customize them for your workspace. Be sure to include `@` before the JSON file names.
 
     You can find the relevant curl request instructions here:
     - [For workspace variables](https://www.terraform.io/docs/cloud/api/workspace-variables.html#sample-request)
@@ -680,7 +680,7 @@ challenges:
 
     When you've succesfully triggered a run via the API with the new variables, click the Check button to continue.
   tabs:
-  - title: Text Editor
+  - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
@@ -724,7 +724,7 @@ challenges:
 
     You can continue to build and experiment with Terraform, or simply click the Check button to complete the track.
   tabs:
-  - title: Text Editor
+  - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
@@ -733,4 +733,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "11013925456018231631"
+checksum: "4548989106940736865"
