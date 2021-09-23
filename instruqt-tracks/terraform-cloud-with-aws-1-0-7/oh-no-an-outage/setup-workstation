@@ -1,0 +1,29 @@
+#!/bin/bash -l
+set -e
+
+set-workdir /root/hashicat-aws
+
+cat <<-EOF > /root/hashicat-aws/remote_backend.tf
+terraform {
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "YOURORGANIZATION"
+    workspaces {
+      name = "hashicat-aws"
+    }
+  }
+}
+EOF
+
+mkdir -p /root/.terraform.d
+cat <<-EOF > /root/.terraform.d/credentials.tfrc.json
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "YOURTOKEN"
+    }
+  }
+}
+EOF
+
+exit 0

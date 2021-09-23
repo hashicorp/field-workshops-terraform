@@ -1,0 +1,35 @@
+#!/bin/bash -l
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+cd /root/hashicat-aws
+
+TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
+
+# Test whether remote exec is enabled on the workspace.
+REMOTE_EXEC_ENABLED=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws | jq .data.attributes.operations)
+
+[[ $REMOTE_EXEC_ENABLED == true ]] || fail-message "Oops, it looks like remote exec is not enabled on your workspace."
+
+# Does the workspace have an AWS_ACCESS_KEY_ID
+PLAINTEXT_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$ORG&filter%5Bworkspace%5D%5Bname%5D=hashicat-aws"  | jq -r '.data | .[] | select(.attributes.key|test("AWS_ACCESS_KEY_ID")) | .attributes.key')
+
+[[ $PLAINTEXT_ID == "AWS_ACCESS_KEY_ID" ]] || fail-message "Uh oh, we didn't find an environment variable for your AWS_ACCESS_KEY_ID. Try again."
+
+# Does the workspace have a secure AWS_SECRET_ACCESS_KEY
+SECURE_KEY=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$ORG&filter%5Bworkspace%5D%5Bname%5D=hashicat-aws" | jq '.data | .[] | select(.attributes.key|test("AWS_SECRET_ACCESS_KEY")) | .attributes.sensitive')
+
+[[ $SECURE_KEY == true ]] || fail-message "Uh oh, we didn't find a secure variable for your AWS_ACCESS_KEY_ID. Try again."
+
+# Does the workspace have a prefix variable
+curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$ORG&filter%5Bworkspace%5D%5Bname%5D=hashicat-aws" | grep -q "prefix" || fail-message "Oh dear, it looks like you don't have a Terraform variable called 'prefix' in your workspace."
+
+# Does the workspace have a region variable
+curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$ORG&filter%5Bworkspace%5D%5Bname%5D=hashicat-aws" | grep -q "region" || fail-message "Oh dear, it looks like you don't have a Terraform variable called 'region' in your workspace."
+
+exit 0

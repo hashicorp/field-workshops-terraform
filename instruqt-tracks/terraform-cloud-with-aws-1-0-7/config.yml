@@ -1,0 +1,12 @@
+version: "2"
+virtualmachines:
+- name: workstation
+  image: instruqt-hashicorp/ubuntu-base
+  shell: /bin/bash -l
+  machine_type: n1-standard-1
+aws_accounts:
+- name: TF-WORKSHOP
+  managed_policies:
+  - arn:aws:iam::aws:policy/AmazonEC2FullAccess
+  - arn:aws:iam::aws:policy/AmazonVPCFullAccess
+  - arn:aws:iam::aws:policy/AmazonS3FullAccess
