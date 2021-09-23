@@ -31,4 +31,7 @@ grep $ORG /root/.bashrc || echo "export ORG=\"$ORG\"" >> /root/.bashrc
 echo "Cleaning up the hashicat-aws workspace..."
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws
 
+# Wipe the bash history
+history -c
+
 exit 0
