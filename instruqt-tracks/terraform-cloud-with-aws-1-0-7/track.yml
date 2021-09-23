@@ -387,7 +387,7 @@ challenges:
 
     ```
     git add .
-    git commit -m "adding remote backend"
+    git commit -m "Added remote backend"
     git push origin master
     ```
 
@@ -733,4 +733,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "6649288784217733152"
+checksum: "11013925456018231631"

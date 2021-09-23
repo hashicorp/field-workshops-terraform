@@ -1,4 +1,5 @@
 #!/bin/bash -l
+set -e
 
 # Enable bash history
 HISTFILE=/root/.bash_history
