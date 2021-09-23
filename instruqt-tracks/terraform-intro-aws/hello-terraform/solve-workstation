@@ -7,6 +7,6 @@ set -o history
 cd /root/hashicat-aws
 
 terraform version
-terraform help
+terraform --help
 
 exit 0

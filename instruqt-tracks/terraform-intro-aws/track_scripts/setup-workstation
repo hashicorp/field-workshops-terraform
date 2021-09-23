@@ -1,0 +1,45 @@
+#!/bin/bash -l
+# Track setup script
+
+set -e
+
+# Wait for Instruqt to finish booting the VM
+# This is better than doing sleep
+while [ ! -f /opt/instruqt/bootstrap/host-bootstrap-completed ]
+do
+    echo "Waiting for Instruqt to finish booting the VM"
+    sleep 1
+done
+
+# Set Terraform Version
+TERRAFORM_VERSION="1.0.7"
+
+# Install desired version of Terraform
+wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+mv terraform /usr/local/bin/terraform
+chmod +x /usr/local/bin/terraform
+rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+
+# Install cowsay
+sudo apt-get update -y
+sudo apt-get install -y cowsay
+cp /usr/games/cowsay /usr/local/bin/cowsay
+
+# Install graphviz, pip, and BlastRadius
+apt -y install graphviz
+apt -y install python3-pip
+/usr/bin/pip3 install BlastRadius
+
+# Clone the hashicat-aws repo
+git clone https://github.com/hashicorp/hashicat-aws
+GITDIR="/root/hashicat-aws"
+set-workdir /root/hashicat-aws
+
+# Rewind everything back to a single resource group.
+cd ${GITDIR}
+cp ${GITDIR}/exercises/main.tf.start ${GITDIR}/main.tf
+cp ${GITDIR}/exercises/outputs.tf.start ${GITDIR}/outputs.tf
+mv ${GITDIR}/terraform.tfvars.example ${GITDIR}/terraform.tfvars
+
+exit 0

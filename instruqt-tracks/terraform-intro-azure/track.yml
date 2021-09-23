@@ -1,5 +1,5 @@
 slug: terraform-intro-azure
-id: y5vh1ylranxj
+id: oppbddvupbkc
 type: track
 title: Intro to Terraform on Azure
 teaser: |
@@ -16,16 +16,17 @@ tags:
 owner: hashicorp
 developers:
 - roger@hashicorp.com
+- sean.carolan@hashicorp.com
 private: true
 published: true
 show_timer: true
 challenges:
 - slug: setup-our-environment
-  id: yaudkqu8ak9b
+  id: 11tsvhsfmamz
   type: challenge
-  title: "\U0001F3E1 Moving in - Set Up Your Workspace"
+  title: "\U0001F3E1 Moving in - Explore Your Workspace"
   teaser: |
-    Configure your code editor with the Terraform extension.
+    Explore the Terraform code for the hashicat application.
   notes:
   - type: text
     contents: |
@@ -36,45 +37,29 @@ challenges:
   - type: text
     contents: The Terraform language is designed to be both human and machine-readable.
   - type: text
-    contents: Most modern text editors support Terraform syntax highlighting.
+    contents: Most modern code editors support Terraform syntax highlighting.
   assignment: |-
-    Open the Code Editor tab on the left. First get familiar with the menus. This is running the Visual Studio Code editor. You can also use the simpler "Text Editor" tab if you prefer.
+    Open the "Code Editor" tab on the left. You'll see some terraform configuration files for the hashicat application. Open the file called "main.tf". Note that the file type at the bottom of the screen was automatically set to "hcl" to give optimized syntax highlighting and colors.
 
-    If you do use the VS Code Editor, please perform the following steps:
+    When you edit any of these files, you will see a blue dot and a disk icon on the tab above it. **Be sure to click the disk icon to save your changes!** There is no "auto-saving" in the Instruqt editor!
 
-    Notice the menu bar with File, Edit, and other menus at the top of the VS Code Editor. You can find all the menus on this menu bar.
-
-    You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application. Open file called "main.tf.
-
-    Next you should install the HashiCorp Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes with one slightly out of position.
-
-    Search for **HashiCorp** and select the "HashiCorp Terraform 2.x.y" extension. Click the blue **Install** or blue **Install in Remote** button to install the extension. Then click the icon with two pages under the File menu so you can see your Terraform files again.
-
-    We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
-
-    We recommend executing all commands on the "Shell" tab. But you can also open and use a terminal window at the bottom of the Visual Code Editor by using the Terminal > New Terminal menu or the **<ctrl>-`** shortcut.
-
-    If you do use the VS Code terminal, you can toggle its size up and down with the `^` and inverted `^` buttons above it. You can get rid of it with the garbage can and `x` icons.
+    Throughout this track, please execute all commands on the "Shell" tab.
 
     Congratulations, you are ready to start working with Terraform on Azure. We'll use the hashicat-azure example app in the rest of the challenges as you learn new Terraform skills.
 
     Click the **Check** button to continue.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: hello-terraform
-  id: lrxgnpoxexbk
+  id: komlxib2jult
   type: challenge
   title: "\U0001F44B Getting to Know Terraform"
   teaser: |
@@ -96,7 +81,7 @@ challenges:
       We've pre-installed Terraform in your Instruqt lab environment for you.
   assignment: |-
     Let's start with some basic Terraform commands.
-    Run the following commands in the "Shell" tab or in a terminal in the VS Code editor.
+    Run the following commands on the "Shell" tab.
 
     Check the version of Terraform running on your machine:
 
@@ -107,28 +92,24 @@ challenges:
     You can always get help if you're curious about command syntax:
 
     ```
-    terraform help
+    terraform --help
     ```
 
     Terraform runs on Windows, OSX, or Linux. You can install it on your laptop or on a cloud based workstation. Terraform is also pre-installed in Azure Cloud Shell.
 
-    Today we'll be using the preconfigured Terraform workstation on the left for all our lab exercises.
+    Today we'll be using the preconfigured Terraform workstation in the "Code Editor" and "Shell" tabs on the left for all our lab exercises.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: azure-credentials
-  id: ngrigdvxm2mj
+  id: 57gjkzcdmlym
   type: challenge
   title: "\U0001F510 Connecting Terraform to Azure Cloud"
   teaser: |
@@ -149,28 +130,25 @@ challenges:
 
     Terraform can automatically read and use the environment variables that are in your shell environment.
 
-    Run the following command to see your temporary credentials:
+    Run the following command on your "Shell" tab to see your temporary credentials:
     ```
     env | grep ARM_CLIENT
     ```
+    You should see valid Azure credentials. If not, return to the track home page by clicking the **Close** button, stop the track, and then restart it.
 
     *Do not ever store your credentials in source code files*, as they can be accidentally exposed or copied to a public repository.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: terraform-code
-  id: endtunoxkdqq
+  id: 2g1awofxqb4b
   type: challenge
   title: "\U0001F468‍\U0001F4BB What does Terraform code look like?"
   teaser: |
@@ -198,21 +176,17 @@ challenges:
 
     Files that end in anything other than `*.tf` or `*.tfvars` are ignored by Terraform.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: terraform-init-provider
-  id: m3iuc3ctc5vm
+  id: 9ovxa69cpkvi
   type: challenge
   title: ☁️ Terraform Init - Install the Azure Provider
   teaser: |
@@ -240,21 +214,17 @@ challenges:
     ```
     This hidden directory is where all modules and plugins are stored.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: provider-quiz
-  id: u7k2ysirbkdb
+  id: qkug3tpu7wc8
   type: quiz
   title: "\U0001F4DD Quiz 1 - Providers and Modules"
   teaser: |
@@ -275,7 +245,7 @@ challenges:
   difficulty: basic
   timelimit: 1067
 - slug: terraform-validate
-  id: 6u73c0ulnne5
+  id: 5fyezuqqcwyp
   type: challenge
   title: "\U0001F469‍⚖️ Terraform Validate - Test Your Code"
   teaser: |
@@ -286,9 +256,7 @@ challenges:
   assignment: |-
     Terraform comes with a built-in subcommand called **validate**. This is useful when you want to do a quick syntax check of your code to make sure it parses correctly.
 
-    Click on the File Explorer icon on the left. It looks like a stack of papers.
-
-    Edit the main.tf file and remove the double quotes between `azurerm_resource_group` and `myresourcegroup` on line 14 of the file, keeping the space that was between them.
+    Edit the main.tf file and remove the double quotes between `azurerm_resource_group` and `myresourcegroup` on line 14 of the file, keeping the space that was between them. Save the file.
 
     Validate your code:
 
@@ -296,25 +264,21 @@ challenges:
     terraform validate
     ```
 
-    Now put the double quotes back in line 14 and run the validate command again. This time you should pass the validation test.
+    Now put the double quotes back in line 14, save the file, and run the validate command again. This time you should pass the validation test.
 
     **terraform validate** is most often used in automated CI/CD test pipelines. It allows you to quickly catch errors in your code before any other steps are taken.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Text Editor
+  - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: terraform-plan
-  id: w0wscttkkccr
+  id: oa25zys0y9yr
   type: challenge
   title: "\U0001F914 Terraform Plan - Dry Run Mode"
   teaser: |
@@ -338,50 +302,44 @@ challenges:
 
     The prefix will become part of your application hostname, and therefore must be DNS-compliant. Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, and the hyphen (-).  A hostname may not start with a hyphen.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: terraform-variables
-  id: vw2pxmysaqgv
+  id: bxjgjhy6pj0n
   type: challenge
   title: "\U0001F39B️ Working with Terraform Variables"
   teaser: |
     Terraform variables allow you to customize your infrastructure without editing any code. You can use the same Terraform code to deploy dev, staging and production but with different variables.
   notes:
   - type: text
-    contents: The **terraform.tfvars** file is a convenient place for users to configure their variables.
+    contents: The `terraform.tfvars` file is a convenient place for users to configure their variables.
   assignment: |-
     In Terraform all variables must be declared (with or without an optional default value) before you can use them. Variables are usually declared in the "variables.tf" file although they can also be declared in other "*.tf" files. Their values can be set in the "terraform.tfvars" file and in other ways which we'll explore later.
 
     Open the "terraform.tfvars" file and set your `prefix` variable by deleting the `# ` at the beginning of the line and replacing "yourname" with your own name (first and last with or without a hyphen between them and all lower case).
 
+    **Be sure to click the disk icon above the file to save your change!**
+
     Now run `terraform plan` again. This time you won't have to enter your prefix manually.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: terraform-add-a-variable
-  id: ypytywctsyqw
+  id: sthkanuoyjix
   type: challenge
   title: "\U0001F5FC Change Your Location"
   teaser: |
@@ -407,25 +365,23 @@ challenges:
 
     Choosing a location close to you can help improve speed and performance.
 
+    **Be sure to click the disk icon above the file to save your change!**
+
     Once you've set your location variable try running `terraform plan` again. What's different this time?
 
     Remember that you can set values for any variable declared in your "variables.tf" file in the "terraform.tfvars" file.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: variables-quiz
-  id: jalca5hkxl0n
+  id: cnenux7f8qep
   type: quiz
   title: "\U0001F4DD Quiz 2 - Variables"
   teaser: |
@@ -435,7 +391,7 @@ challenges:
     contents: |
       Another quiz, get ready!
   assignment: |
-    Where are terraform variables *declared*?
+    Where are terraform variables usually *declared*?
   answers:
   - On the command line
   - As environment variables
@@ -446,7 +402,7 @@ challenges:
   difficulty: basic
   timelimit: 1067
 - slug: tf-graph
-  id: yw8kkevaoj82
+  id: pynjmvy4zxjx
   type: challenge
   title: "\U0001F4C8 Terraform Graph"
   teaser: |
@@ -479,7 +435,7 @@ challenges:
 
     Terraform uses this graph to determine which resources can be built in parallel for maximum efficiency.
   tabs:
-  - title: Command Line
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Terraform Graph
@@ -489,7 +445,7 @@ challenges:
   difficulty: basic
   timelimit: 1067
 - slug: tf-plan-and-apply
-  id: yhw1rqpmf4tv
+  id: rwlnusfqiscq
   type: challenge
   title: "\U0001F468‍\U0001F4BB Terraform Plan and Terraform Apply"
   teaser: |
@@ -520,21 +476,17 @@ challenges:
 
     Right now our code only defines a single Azure resource group. We'll be building upon this starting point in the next challenge.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: tf-plan-again
-  id: 6qneqfyux5wi
+  id: m9pq5fqslxck
   type: challenge
   title: "\U0001F469‍\U0001F4BB Test and Repair"
   teaser: |
@@ -566,21 +518,17 @@ challenges:
 
     Terraform checks each resource to ensure it is in the proper state. It will not re-create your resource group if it is already provisioned correctly.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: change-prefix
-  id: t80ag9x0kaii
+  id: xf0u45nhfcyt
   type: challenge
   title: "\U0001F6EB Change Your Prefix"
   teaser: |
@@ -604,21 +552,17 @@ challenges:
 
     Observe the output. What happened?
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: add-a-tag
-  id: rj4ytwkkv1jx
+  id: zom74l3f3uin
   type: challenge
   title: "\U0001F3F7️ Add a Tag to Your Resource Group"
   teaser: |
@@ -633,27 +577,25 @@ challenges:
 
     Add a tag to your resource group in the **main.tf** file using the `tags` argument of the `azurerm_resource_group` resource.
 
-    The name of the tag should be `environment` and the value should be `Production` surrounded by double-quotes. The tag is case-sensitive. Make sure you use a capital P. You'll need to use `=` after `tags` and after `environment`.
+    The name of the tag should be `environment` and the value should be `Production` surrounded by double-quotes. The tag is case-sensitive. Make sure you use a capital P. You'll need to use `=` after `environment`.
+
+    Be sure to save the file.
 
     Re-run `terraform apply`.
 
     What happens?
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: add-virtual-network
-  id: grlsp4h75du2
+  id: mucnzxji72ul
   type: challenge
   title: "\U0001F5A7 Add a Virtual Network"
   teaser: |
@@ -664,7 +606,7 @@ challenges:
   assignment: |-
     Open the **main.tf** file again and uncomment the next resource block in the file. The type of resource is **azurerm_virtual_network** and it is named **vnet**.
 
-    Uncomment the code by removing the `#` characters from the beginning of each line.
+    Uncomment the code by removing the `#` characters from the beginning of each line. Be sure to save the file.
 
     Now run `terraform apply` again. Observe the results.
 
@@ -672,21 +614,17 @@ challenges:
 
     Terraform can map out the complex web of dependencies between hundreds of interconnected resources.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: complete-the-build
-  id: jt1psndgmqez
+  id: qcvvtwcbkwoz
   type: challenge
   title: "\U0001F3D7️ Complete the Build"
   teaser: |
@@ -709,23 +647,19 @@ challenges:
 
     It can take up to ten minutes for the application to finish deploying. You will know it is complete when you see the Terraform output with your application URL at the end of the run.
 
-    Open your web application in a new browser tab. You'll need to copy and paste the URL into your address bar.
+    Open your web application in a new browser tab by clicking on the URL in the `catapp_url` output.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: tf-graph-again
-  id: cppvzhda26uw
+  id: rkgvhqpeny7h
   type: challenge
   title: "\U0001F4C8 Terraform Graph"
   teaser: |
@@ -748,7 +682,7 @@ challenges:
 
     Terraform uses this graph to determine which resources can be built in parallel for maximum efficiency.
   tabs:
-  - title: Command Line
+  - title: Shell
     type: terminal
     hostname: workstation
   - title: Terraform Graph
@@ -758,7 +692,7 @@ challenges:
   difficulty: basic
   timelimit: 1067
 - slug: terraform-apply-quiz
-  id: 4mjonb6mh2om
+  id: 30lixl1wf8jx
   type: quiz
   title: "\U0001F4DD Quiz 3 - Terraform Apply"
   teaser: |
@@ -779,7 +713,7 @@ challenges:
   difficulty: basic
   timelimit: 1067
 - slug: use-a-provisioner
-  id: psf9r0pbtnlm
+  id: 0bubkgzcop1w
   type: challenge
   title: "\U0001F6E0️ Use a Provisioner"
   teaser: |
@@ -788,7 +722,7 @@ challenges:
   - type: text
     contents: Terraform provisioners run once at creation time. They do not run on subsequent applies, except in special circumstances. (Like this training lab...)
   - type: text
-    contents: We've made some special adjustments to force the provisioner run every time you type terraform apply. This is so you can practice playing with provisioners without destroying and recreating your virtual machine every time you make a change.
+    contents: We've made some special adjustments to force the provisioner to run every time you type terraform apply. This is so you can practice playing with provisioners without destroying and recreating your virtual machine every time you make a change.
   - type: text
     contents: |-
       ```
@@ -803,7 +737,7 @@ challenges:
       =============================
       ```
   assignment: |-
-    Open the `main.tf` file in the Code Editor. Scroll down until you find the `remote-exec` provisioner block, or search the file and find it with CTRL-F.
+    Open the `main.tf` file on the "Code Editor" tab. Scroll down until you find the `remote-exec` provisioner block, or search the file and find it with CTRL-F.
 
     Add the following two lines at the end of the inline list of commands:
 
@@ -811,11 +745,11 @@ challenges:
     "sudo apt -y install cowsay",
     "cowsay Mooooooooooo!",
     ```
-    After copying them into your buffer, it will be easier to paste them if you hide the assignment by clicking the icon that looks like a picture frame next to the circular refresh icon. Click it again to redisplay the assignment.
+    After copying them into your buffer, it will be easier to paste them if you hide the assignment by clicking the ">" icon. Click it again to redisplay the assignment. Be sure to save the file.
 
     This might be a good time to use the `terraform fmt` command to line up the commands nicely.
 
-    Now run another `terraform apply -auto-approve` to apply your changes:
+    Now apply your changes:
 
     ```
     terraform apply -auto-approve
@@ -823,21 +757,17 @@ challenges:
 
     Scroll back through the log output. You should see an ASCII art cow saying "Moooooooo!"
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: add-an-output
-  id: 3vc0wbbejvyn
+  id: aboaf1semf3b
   type: challenge
   title: "\U0001F5A8️ Add an Output"
   teaser: |
@@ -850,7 +780,7 @@ challenges:
   - type: text
     contents: The `terraform output` command can be run any time you want to see your Terraform outputs again. Run `terraform output <output_name>` to view a single output.
   assignment: |-
-    Open the **outputs.tf** file in the Code Editor.
+    Open the **outputs.tf** file on the "Code Editor" tab.
 
     Add a second output for the `ip_address` of your web server. It's going to look almost exactly like the first output but will instead output an IP address instead of a DNS name.
 
@@ -860,6 +790,8 @@ challenges:
 
     [Terraform Azure Docs - Click Here](https://www.terraform.io/docs/providers/azurerm/r/public_ip.html#attributes-reference)
     [Terraform Outputs Docs - Click Here](https://www.terraform.io/docs/configuration/outputs.html)
+
+    Be sure to save the changes to the **outputs.tf** file.
 
     Run the terraform refresh command to view your new output:
 
@@ -872,22 +804,20 @@ challenges:
     ```
     terraform output
     ```
+
+    You can click on either URL to use the web app.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: fun-with-variables
-  id: lvo8hfuqkagv
+  id: k9ppxpjeehlo
   type: challenge
   title: "\U0001F436 Fun With Variables"
   teaser: |
@@ -943,21 +873,17 @@ challenges:
 
     See this [doc](https://www.terraform.io/docs/configuration/variables.html#variable-definition-precedence) if you're unsure.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: terraform-variables-quiz
-  id: g7h6193ig5us
+  id: qnrf6zxpmet0
   type: quiz
   title: "\U0001F4DD Quiz 4 - Terraform Variables"
   teaser: |
@@ -976,7 +902,7 @@ challenges:
   difficulty: basic
   timelimit: 1067
 - slug: terraform-cloud-setup
-  id: fxiiwbiui1iz
+  id: mq6cxmxuoxyi
   type: challenge
   title: ☁️ Terraform Cloud Setup
   teaser: |
@@ -1003,21 +929,17 @@ challenges:
 
     Be sure to save your settings by clicking the "Save settings" button at the bottom of the page! This will allow us to run Terraform commands from our workstation with local variables, which we'll do in the next challenge.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
 - slug: configure-remote-state
-  id: klzwoyj1awmq
+  id: xp7nr8olx0kl
   type: challenge
   title: "\U0001F39B️ Configure Remote State"
   teaser: |
@@ -1033,7 +955,7 @@ challenges:
   assignment: |-
     During this challenge we'll configure Terraform Cloud as a remote state backend, and then migrate our existing state file to Terraform Cloud.
 
-    Edit the `remote_backend.tf` file and replace the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name.
+    Edit the "remote_backend.tf" file and replace the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name. Be sure to save the file.
 
     Let's generate a new **user token** for use on your workstation. Visit the User Settings > Tokens page in Terraform Cloud:
 
@@ -1041,13 +963,9 @@ challenges:
 
     Click on the **Create an API token** button. You can name the token whatever you like. Copy the entire token using your mouse or the small copy-paste icon.
 
-    Back in the Instruqt track, you need to add your API token to a file called "credentials.tfrc.json". You can do this in two different ways:
+    Back in the Instruqt track, you need to add your API token to a file called "credentials.tfrc.json". Select the "Credentials File" tab and open the `/root/.terraform.d/credentials.tfrc.json` file directly.
 
-    The easier way is to select the "Credentials File" tab and open the `/root/.terraform.d/credentials.tfrc.json` file directly.
-
-    But if you prefer to use the VS Code Editor, you can use the File > Open menu, click on "..", select ".terraform.d", and then select the "credentials.tfrc.json" file.
-
-    In either case, replace the part that says YOURTOKEN with what you copied from Terraform Cloud. If you use the "Credentials File" tab,  sure to save the file.
+    Replace the part that says YOURTOKEN with what you copied from Terraform Cloud. Be sure to save the file.
 
     Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
 
@@ -1057,17 +975,16 @@ challenges:
     terraform init
     ```
 
-    Type "yes" when it prompts you to migrate your state into Terraform Cloud.
+    Type "yes" when it prompts you to migrate your state to Terraform Cloud.
 
-    Your state is now safely stored in Terraform Cloud. You can check this on the States tab of your workspace.
+    Your state is now safely stored in Terraform Cloud. You can verify this on the "States" tab of your workspace in the TFC UI.
 
     Run a `terraform apply -auto-approve` and watch your state file evolve with each change. You can browse through previous state files with the Terraform Cloud UI.
   tabs:
-  - title: Code Editor
-    type: service
+  - title: Shell
+    type: terminal
     hostname: workstation
-    port: 8443
-  - title: Text Editor
+  - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-azure
@@ -1075,13 +992,10 @@ challenges:
     type: code
     hostname: workstation
     path: /root/.terraform.d/credentials.tfrc.json
-  - title: Shell
-    type: terminal
-    hostname: workstation
   difficulty: basic
   timelimit: 1067
 - slug: terraform-destroy
-  id: 7purfxeier9u
+  id: yzj2xzspnngn
   type: challenge
   title: "\U0001F525 Terraform Destroy"
   teaser: |
@@ -1104,18 +1018,16 @@ challenges:
     Wait until the destroy action has completely finished before clicking on the *Check* button.
 
     Depending on the version of Terraform you are using, it is possible that the destroy action will fail. That will be resolved in a future version of Terraform.
+
+    Congratulations on completing the Intro to Terraform track!
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1067
-checksum: "7536428619671792324"
+checksum: "12765076196805009769"

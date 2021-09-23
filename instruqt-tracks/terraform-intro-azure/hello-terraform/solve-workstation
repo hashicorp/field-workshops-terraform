@@ -8,6 +8,6 @@ cd /root/hashicat-azure
 
 terraform version
 
-terraform help
+terraform --help
 
 exit 0
