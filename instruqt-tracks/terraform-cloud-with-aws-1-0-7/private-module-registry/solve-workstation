@@ -6,35 +6,27 @@ set -o history
 
 cd /root/hashicat-aws
 
-# Two conditions are defined here. The first is a student or instructor
-# attempting to skip to a challenge. The second condition is our CI/CD
-# bot which has a Git PAT token for CI/CD jobs.
 if [[ -f /root/skipconfig.json ]]; then
   ORG=$(jq -r .org < /root/skipconfig.json)
   GITUSERID=$(jq -r .gituserid < /root/skipconfig.json)
   GITPAT=$(jq -r .gitpat < /root/skipconfig.json)
-else
-  ORG="instruqt-circleci"
-  GITUSERID="workshops-testbot"
-  GITPAT=$(cat /var/git_pat_token)
-fi
-
-# Write out s3-bucket.tf
-cat <<-EOF > s3-bucket.tf
+  cat <<-EOF > s3-bucket.tf
 module "s3-bucket" {
   source  = "app.terraform.io/$ORG/s3-bucket/aws"
   version = "2.2.0"
   bucket_prefix = var.prefix
 }
 EOF
-
-git add .
-git commit -m "Added s3 bucket module"
-cat <<-EOF > /root/.netrc
+  git add .
+  git commit -m "Added s3 bucket module"
+  cat <<-EOF > /root/.netrc
 machine github.com
 login $GITUSERID
 password $GITPAT
 EOF
-git push origin master
+  git push origin master
+else
+  echo "CircleCI run - no git push required."
+fi
 
 exit 0
