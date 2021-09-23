@@ -116,7 +116,7 @@ EOM
 # Store the ORG in /root/.bashrc
 grep \$ORG /root/.bashrc || echo "export ORG=\"\$ORG\"" >> /root/.bashrc
 
-ponysay -f twilight -f applejack -f rainbow -f pinkie -f rarity -f fluttershy "Ready to Skip Challenges!"
+cowsay "Ready to Skip Challenges!"
 
 EOF
 

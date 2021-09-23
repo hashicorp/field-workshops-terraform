@@ -25,53 +25,25 @@ tags:
 - enterprise
 owner: hashicorp
 developers:
+- sean.carolan@hashicorp.com
 - roger@hashicorp.com
 private: true
 published: true
 show_timer: true
 challenges:
 - slug: setup-our-environment
-  id: iizp32vukpqi
+  id: yquz9xasyxvx
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: |
-    Configure your code editor for Terraform and open a workspace.
+    Get to know your lab training environment.
   notes:
   - type: text
     contents: "Welcome to your first day on the job at ACME Inc. These are some of your coworkers in the local ACME office:\n<center><table cellpadding=20>\n  <tr>\n    <td>\n    \U0001F468\U0001F3FB‍\U0001F4BC Hiro - Product Manager<br>\n    \U0001F9D5\U0001F3FD Aisha - Database Admin<br>\n    \U0001F46E\U0001F3FF‍♂️ William - InfoSec Lead<br>\n    \U0001F468\U0001F3FB‍\U0001F9B2 Lars - Lead Developer<br>\n    </td>\n    <td>\n    \U0001F9D3\U0001F3FB Robin - Operations Admin<br>\n    \U0001F469‍\U0001F3A4 Jane - Quality Assurance<br>\n    \U0001F473\U0001F3FE‍♂️ Gaurav - Network Admin<br>\n    \U0001F469\U0001F3FC‍\U0001F4BC Karen - Finance    </td>\n  </tr>\n</table></center>\n\n<center>\U0001F913 You - Brand New Intern\n</center>"
   - type: text
     contents: Most modern text editors support Terraform syntax highlighting.
-  assignment: |-
-    Welcome to your first day as an intern at ACME Inc. [ACME](https://www.youtube.com/watch?v=9m7evoFF83c) is a multi-national conglomerate that sells anvils, rocket powered roller skates, portable holes, earthquake pills and birdseed.
-
-    After employee orientation you sit down at your workstation and open your text editor, Visual Studio Code.
-
-    Open the Code Editor tab on the left. First get familiar with the menus. This is running the Visual Studio Code editor. You can also use the simpler "Text Editor" tab if you prefer.
-
-    If you do use the VS Code Editor, please perform the following steps:
-
-    Notice the menu bar with File, Edit, and other menus at the top of the VS Code Editor. You can find all the menus on this menu bar.
-
-    You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application. Open file called "main.tf.
-
-    Next you should install the HashiCorp Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes with one slightly out of position.
-
-    Search for **HashiCorp** and select the "HashiCorp Terraform 2.x.y" extension. Click the blue **Install** or blue **Install in Remote** button to install the extension. You can also install the "HashiCorp Sentinel" extension if you want. Then click the icon with two pages under the File menu so you can see your Terraform files again.
-
-    We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
-
-    We recommend executing all commands on the "Shell" tab. But you can also open and use a terminal window at the bottom of the Visual Code Editor by using the Terminal > New Terminal menu or the **<ctrl>-`** shortcut.
-
-    If you do use the VS Code terminal, you can toggle its size up and down with the `^` and inverted `^` buttons above it. You can get rid of it with the garbage can and `x` icons.
-
-    Congratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new Terraform skills.
-
-    Click the **Check** button to continue.
+  assignment: "Welcome to your first day as an intern at ACME Inc. [ACME](https://www.youtube.com/watch?v=9m7evoFF83c) is a multi-national conglomerate that sells anvils, rocket powered roller skates, portable holes, earthquake pills and birdseed.\n\nAfter employee orientation you sit down at your workstation and open your text editor.\n\nClick on the **Text Editor** tab now. This is where you'll be editing and writing Terraform code. Open the file called **README.md** by clicking on it in the FILES menu on the left. Add your name at the bottom of the file.\n\nSee the floppy disk icon on the tab? It looks like this: \U0001F4BE. Click on the floppy disk icon to save the file.\n\nNext have a look at your **Shell** tab. This is where you'll be running all your terraform commands.\n\nCongratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new Terraform skills.\n\nClick the **Check** button to continue."
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
   - title: Text Editor
     type: code
     hostname: workstation
@@ -82,7 +54,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: terraform-cloud-setup
-  id: 7m5wmcq9txxm
+  id: dora5h0wi2bf
   type: challenge
   title: ☁️ Terraform Cloud Setup
   teaser: |
@@ -119,10 +91,6 @@ challenges:
 
     Before you click the **Check** button, did you change your Execution Mode to Local? This is an easy step to miss so we mention it twice.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
   - title: Text Editor
     type: code
     hostname: workstation
@@ -133,7 +101,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: oh-no-an-outage
-  id: rab8fsiowsbp
+  id: m4ctzp7txgsk
   type: challenge
   title: "\U0001F4D2 Safekeeping Your Terraform State"
   teaser: |
@@ -203,10 +171,6 @@ challenges:
 
     If you'd like to see the hashicat application in your web browser, simply copy the link from the output of your Terraform run, and paste it into the URL bar in another tab or window.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
   - title: Text Editor
     type: code
     hostname: workstation
@@ -221,7 +185,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: quiz-1
-  id: pdz7n2ucikmz
+  id: gsfv40systja
   type: quiz
   title: "\U0001F4DD Quiz 1 - Terraform Remote State"
   teaser: |
@@ -239,7 +203,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: protecting-sensitive-variables
-  id: wpeekyisa2on
+  id: derw2r3nhxda
   type: challenge
   title: "\U0001F510 Securing Cloud Credentials"
   teaser: |
@@ -282,10 +246,6 @@ challenges:
 
     You can continue to run `terraform plan` and `terraform apply` in your "Shell" tab, but the execution is now done in Terraform Cloud.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
   - title: Text Editor
     type: code
     hostname: workstation
@@ -299,7 +259,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: sharing-is-caring
-  id: zsxl4xszjfw9
+  id: teo7g2rxfyxj
   type: challenge
   title: "\U0001F91D\U0001F3FC Working with Teams in Terraform Cloud"
   teaser: |
@@ -341,10 +301,6 @@ challenges:
 
     You will need at least two users (including yourself) in your organization to pass this challenge. The users you invite do not have to accept the invite to be counted.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
   - title: Text Editor
     type: code
     hostname: workstation
@@ -358,7 +314,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: quiz-2
-  id: xmbrwutytzbl
+  id: bntvagsbsn1d
   type: quiz
   title: "\U0001F4DD Quiz 2 - Secure Variables"
   teaser: |
@@ -378,7 +334,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: versioned-infrastructure
-  id: o6iguqjrcmgw
+  id: oxafncjkrbvk
   type: challenge
   title: "\U0001F4BB Version Controlled Infrastructure"
   teaser: |
@@ -459,10 +415,6 @@ challenges:
 
     Click the **Check** button to let Jane know she can clone the hashicat-aws repo for QA testing.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
   - title: Text Editor
     type: code
     hostname: workstation
@@ -476,7 +428,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: vcs-collaboration
-  id: nofeaiatnvou
+  id: 34whqj4x0oh4
   type: challenge
   title: "\U0001F46C Collaborating with VCS"
   teaser: |
@@ -513,10 +465,6 @@ challenges:
 
     Once you've merged your changes to the master branch, watch the Terraform run that starts in the Terraform Cloud UI.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
   - title: Text Editor
     type: code
     hostname: workstation
@@ -530,7 +478,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: a-sentinel-stands-guard
-  id: ffvixgqhr403
+  id: ywgiroiog2zj
   type: challenge
   title: "\U0001F6E1️ Terraform Compliance with Sentinel"
   teaser: |
@@ -597,10 +545,6 @@ challenges:
 
     Each time you push a change to master, you'll trigger a new Terraform run. Keep trying until you pass the Sentinel policy check.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
   - title: Text Editor
     type: code
     hostname: workstation
@@ -611,7 +555,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: quiz-3
-  id: zdnbqaet3sm7
+  id: 7xuhrwuwg9my
   type: quiz
   title: "\U0001F4DD Quiz 3 - Version Control and Terraform"
   teaser: |
@@ -632,7 +576,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: private-module-registry
-  id: c1e2g2vdcegc
+  id: 690kopzbrknk
   type: challenge
   title: "\U0001F4DA Private Module Registry"
   teaser: |
@@ -669,10 +613,6 @@ challenges:
 
     If all went well you should see a new S3 bucket being built in the console output. Wait until your terraform apply command is complete, then click the `Check` button to verify your work.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
   - title: Text Editor
     type: code
     hostname: workstation
@@ -683,7 +623,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: api-driven-workflows
-  id: 4kygn1nmskw5
+  id: pb06vac5w5uo
   type: challenge
   title: "\U0001F517 API Driven Workflows"
   teaser: |
@@ -740,10 +680,6 @@ challenges:
 
     When you've succesfully triggered a run via the API with the new variables, click the Check button to continue.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
   - title: Text Editor
     type: code
     hostname: workstation
@@ -757,7 +693,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: quiz-4
-  id: hmnxkv1qwsyq
+  id: jrqtbsqexg3y
   type: quiz
   title: "\U0001F4DD Quiz 4 - Private Module Registry"
   teaser: |
@@ -775,7 +711,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: this-is-the-end
-  id: dilm0byhvug7
+  id: k4sinn4prftn
   type: challenge
   title: "\U0001F469\U0001F3FB‍\U0001F52C Open Lab"
   teaser: |
@@ -788,10 +724,6 @@ challenges:
 
     You can continue to build and experiment with Terraform, or simply click the Check button to complete the track.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
   - title: Text Editor
     type: code
     hostname: workstation
@@ -801,4 +733,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "2298030292699227988"
+checksum: "6649288784217733152"

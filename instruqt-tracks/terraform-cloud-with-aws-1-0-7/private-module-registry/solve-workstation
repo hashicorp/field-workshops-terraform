@@ -6,36 +6,35 @@ set -o history
 
 cd /root/hashicat-aws
 
+# Two conditions are defined here. The first is a student or instructor
+# attempting to skip to a challenge. The second condition is our CI/CD
+# bot which has a Git PAT token for CI/CD jobs.
+if [[ -f /root/skipconfig.json ]]; then
+  ORG=$(jq -r .org < /root/skipconfig.json)
+  GITUSERID=$(jq -r .gituserid < /root/skipconfig.json)
+  GITPAT=$(jq -r .gitpat < /root/skipconfig.json)
+else
+  ORG="instruqt-circleci"
+  GITUSERID="workshops-testbot"
+  GITPAT=$(cat /var/git_pat_token)
+fi
+
 # Write out s3-bucket.tf
 cat <<-EOF > s3-bucket.tf
 module "s3-bucket" {
-  source  = "app.terraform.io/instruqt-circleci/s3-bucket/aws"
+  source  = "app.terraform.io/$ORG/s3-bucket/aws"
   version = "2.2.0"
   bucket_prefix = var.prefix
 }
 EOF
 
-# Students should run the 'fastforward' command to create this file.
-# Otherwise it is assumed that this is a CI/CD run.
-# The /root/skipconfig.json file is required for skipping challenges.
-if [[ -f /root/skipconfig.json ]]; then
-  ORG=$(jq -r .org < /root/skipconfig.json)
-  GITUSERID=$(jq -r .gituserid < /root/skipconfig.json)
-  GITPAT=$(jq -r .gitpat < /root/skipconfig.json)
-  # Set ORG in s3-bucket.tf
-  sed -i "s/instruqt-circleci/$ORG/g" s3-bucket.tf
-  git add .
-  git commit -m "Added s3 bucket module"
-  cat <<-EOF > /root/.netrc
-  machine github.com
-  login $GITUSERID
-  password $GITPAT
+git add .
+git commit -m "Added s3 bucket module"
+cat <<-EOF > /root/.netrc
+machine github.com
+login $GITUSERID
+password $GITPAT
 EOF
-  git push origin master
-fi
-
-# The above will trigger a run for students who are skipping
-# In theory, we also should trigger an apply with the API for CircleCI tests,
-# but if the first apply worked then we know the new one would too.
+git push origin master
 
 exit 0

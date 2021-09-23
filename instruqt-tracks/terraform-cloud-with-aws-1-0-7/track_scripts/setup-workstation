@@ -15,6 +15,7 @@ done
 TERRAFORM_VERSION="1.0.7"
 
 # Install desired version of Terraform
+rm -f /usr/local/bin/terraform
 wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 mv terraform /usr/local/bin/terraform
@@ -109,7 +110,7 @@ EOM
 # Store the ORG in /root/.bashrc
 grep \$ORG /root/.bashrc || echo "export ORG=\"\$ORG\"" >> /root/.bashrc
 
-ponysay -f twilight -f applejack -f rainbow -f pinkie -f rarity -f fluttershy "Ready to Skip Challenges!"
+cowsay "Ready to Skip Challenges!"
 
 EOF
 
