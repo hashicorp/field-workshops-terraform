@@ -1,0 +1,22 @@
+#!/bin/bash -l
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+cd /root/hashicat-gcp
+
+TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
+
+# Fetch the workspace ID
+WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-gcp | jq -r .data.id)
+
+# Verify that VPC exists in the modules listed in the state file
+MODULE_EXIST=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" https://app.terraform.io/api/v2/workspaces/${WORKSPACE_ID}/current-state-version | jq '.data.attributes.modules | has("root.network.vpc")')
+
+[[ $MODULE_EXIST == true ]] || fail-message "Uh oh, we couldn't find the GCP network module in your state file. Make sure you have added the Google network module to your vpc.tf file and pushed it to your remote repository."
+
+exit 0

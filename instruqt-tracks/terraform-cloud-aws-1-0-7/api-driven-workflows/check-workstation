@@ -1,0 +1,24 @@
+#!/bin/bash -l
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
+
+# Fetch the workspace ID
+WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json"   https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws | jq -r .data.id)
+
+# Does the workspace have a placeholder variable
+curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/workspaces/$WORKSPACE_ID/vars" | grep -q "placeholder" || fail-message "Oh dear, it looks like you don't have a Terraform variable called 'placeholder' in your workspace. Read the notes if you need a hint on how to create this variable with the API."
+
+# Does the workspace have a height variable
+curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/workspaces/$WORKSPACE_ID/vars" | grep -q "height" || fail-message "Oh dear, it looks like you don't have a Terraform variable called 'height' in your workspace. Read the notes if you need a hint on how to create this variable with the API."
+
+# Does the workspace have a width variable
+curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/workspaces/$WORKSPACE_ID/vars" | grep -q "width" || fail-message "Oh dear, it looks like you don't have a Terraform variable called 'width' in your workspace. Read the notes if you need a hint on how to create this variable with the API."
+
+exit 0

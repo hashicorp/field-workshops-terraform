@@ -1,0 +1,77 @@
+#!/bin/bash -l
+set -e
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-gcp
+
+# Students should run the 'fastforward' command to create this file.
+# Otherwise it is assumed that this is a CI/CD run.
+# The /root/skipconfig.json file is required for skipping challenges.
+if [[ -f /root/skipconfig.json ]]; then
+  ORG=$(jq -r .org < /root/skipconfig.json)
+  TOKEN=$(jq -r .token < /root/skipconfig.json)
+else
+  ORG="instruqt-circleci"
+  TOKEN=$(cat /var/tfc_user_token)
+fi
+
+# Configure the /root/.terraform.d/credentials.tfrc.json file
+echo "Configuring the credentials.tfrc.json file..."
+cat <<-EOF > /root/.terraform.d/credentials.tfrc.json
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "$TOKEN"
+    }
+  }
+}
+EOF
+
+# Configure the remote_backend.tf file
+echo "Configuring the remote backend file..."
+cat <<-EOF > /root/hashicat-gcp/remote_backend.tf
+terraform {
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "$ORG"
+    workspaces {
+      name = "hashicat-gcp"
+    }
+  }
+}
+EOF
+
+# Create a workspace JSON payload
+# Set the operations flag to false to do this
+echo "Creating a workspace JSON payload..."
+cat <<-EOF > /tmp/create_workspace.json
+{
+  "data": {
+    "attributes": {
+      "name": "hashicat-gcp",
+      "execution-mode": "local"
+    },
+    "type": "workspaces"
+  }
+}
+EOF
+
+# Create a workspace
+echo "Creating the hashicat-gcp workspace in organization $ORG..."
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/create_workspace.json https://app.terraform.io/api/v2/organizations/$ORG/workspaces
+
+# Update terraform.tfvars
+export PREFIX=hashicat-$RANDOM
+echo "export PREFIX=$PREFIX" >> /root/.bashrc
+echo -e "prefix = \"$PREFIX\"" > terraform.tfvars
+echo -e "region = \"us-central1\"" >> terraform.tfvars
+echo -e "zone = \"us-central1-a\"" >> terraform.tfvars
+
+# Run terraform init and apply
+terraform init
+terraform apply -auto-approve
+
+exit 0

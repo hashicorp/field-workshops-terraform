@@ -1,0 +1,37 @@
+#!/bin/bash -l
+set -e
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+# Fetch a clean copy of the hashicat-azure repo
+cd /root
+rm -rf hashicat-azure
+
+# Check if this is a student or bot run, clone appropriate repo
+if [[ -f /root/skipconfig.json ]]; then
+  ORG=$(jq -r .org < /root/skipconfig.json)
+  TOKEN=$(jq -r .token < /root/skipconfig.json)
+  git clone https://github.com/hashicorp/hashicat-azure
+else
+  ORG="instruqt-circleci"
+  TOKEN=$(cat /var/tfc_user_token)
+  git clone https://github.com/workshops-testbot/hashicat-azure
+fi
+
+cd hashicat-azure
+mv terraform.tfvars.example terraform.tfvars
+echo -e "# location = \"\"" >> terraform.tfvars
+
+# Store the ORG in /root/.bashrc
+grep $ORG /root/.bashrc || echo "export ORG=\"$ORG\"" >> /root/.bashrc
+
+# Delete the workspace. Might result in a 404 but that's OK as long as curl doesn't error out.
+echo "Cleaning up the hashicat-azure workspace..."
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-azure
+
+# Wipe the bash history
+history -c
+
+exit 0

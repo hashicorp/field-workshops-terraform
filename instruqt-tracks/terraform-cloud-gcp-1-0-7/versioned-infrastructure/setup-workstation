@@ -1,0 +1,7 @@
+#!/bin/bash -l
+set -e
+
+# Set workdir
+set-workdir /root/hashicat-gcp
+
+exit 0

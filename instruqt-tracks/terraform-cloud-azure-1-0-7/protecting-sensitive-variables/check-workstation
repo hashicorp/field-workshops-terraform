@@ -1,0 +1,45 @@
+#!/bin/bash -l
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+cd /root/hashicat-azure
+
+TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
+
+# Test whether remote exec is enabled on the workspace.
+REMOTE_EXEC_ENABLED=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-azure | jq .data.attributes.operations)
+
+[[ $REMOTE_EXEC_ENABLED == true ]] || fail-message "Oops, it looks like remote exec is not enabled on your workspace."
+
+# Does the workspace have a ARM_CLIENT_ID
+CLIENT_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$ORG&filter%5Bworkspace%5D%5Bname%5D=hashicat-azure" | jq -r '.data | .[] | select(.attributes.key|test("ARM_CLIENT_ID")) | .type')
+
+[[ $CLIENT_ID == "vars" ]] || fail-message "Uh oh, we didn't find an environment variable for your ARM_CLIENT_ID. Try again."
+
+# Does the workspace have a ARM_TENANT_ID
+TENANT_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$ORG&filter%5Bworkspace%5D%5Bname%5D=hashicat-azure" | jq -r '.data | .[] | select(.attributes.key|test("ARM_TENANT_ID")) | .type')
+
+[[ $TENANT_ID == "vars" ]] || fail-message "Uh oh, we didn't find an environment variable for your ARM_TENANT_ID. Try again."
+
+# Does the workspace have a ARM_SUBSCRIPTION_ID
+SUBSCRIPTION_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$ORG&filter%5Bworkspace%5D%5Bname%5D=hashicat-azure" | jq -r '.data | .[] | select(.attributes.key|test("ARM_SUBSCRIPTION_ID")) | .type')
+
+[[ $SUBSCRIPTION_ID == "vars" ]] || fail-message "Uh oh, we didn't find an environment variable for your ARM_SUBSCRIPTION_ID. Try again."
+
+# Does the workspace have a secure ARM_CLIENT_SECRET
+ARM_CLIENT_SECRET=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$ORG&filter%5Bworkspace%5D%5Bname%5D=hashicat-azure" | jq -r '.data | .[] | select(.attributes.key|test("ARM_CLIENT_SECRET")) | .attributes.sensitive')
+
+[[ $ARM_CLIENT_SECRET == true ]] || fail-message "Uh oh, we didn't find a sensitive environment variable for your ARM_CLIENT_SECRET. Try again."
+
+# Does the workspace have a prefix variable
+curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$ORG&filter%5Bworkspace%5D%5Bname%5D=hashicat-azure" | grep -q "prefix" || fail-message "Oh dear, it looks like you don't have a Terraform variable called 'prefix' in your workspace."
+
+# Does the workspace have a location variable
+curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$ORG&filter%5Bworkspace%5D%5Bname%5D=hashicat-azure" | grep -q "location" || fail-message "Oh dear, it looks like you don't have a Terraform variable called 'location' in your workspace."
+
+exit 0

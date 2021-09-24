@@ -1,0 +1,38 @@
+#!/bin/bash -l
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+cd /root/hashicat-gcp
+
+TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
+
+# TODO: Rewrite these checks for GCP
+
+# Test whether remote exec is enabled on the workspace.
+REMOTE_EXEC_ENABLED=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-gcp | jq .data.attributes.operations)
+
+[[ $REMOTE_EXEC_ENABLED == true ]] || fail-message "Oops, it looks like remote exec is not enabled on your workspace."
+
+# Does the workspace have a secure GOOGLE_CREDENTIALS
+SECURE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$ORG&filter%5Bworkspace%5D%5Bname%5D=hashicat-gcp" | jq '.data | .[] | select(.attributes.key|test("GOOGLE_CREDENTIALS")) | .attributes.sensitive')
+
+[[ $SECURE_ID == true ]] || fail-message "Uh oh, we didn't find a secure variable for your GOOGLE_CREDENTIALS. Try again."
+
+# Does the workspace have a prefix variable
+curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$ORG&filter%5Bworkspace%5D%5Bname%5D=hashicat-gcp" | grep -q "prefix" || fail-message "Oh dear, it looks like you don't have a Terraform variable called 'prefix' in your workspace."
+
+# Does the workspace have a region variable
+curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$ORG&filter%5Bworkspace%5D%5Bname%5D=hashicat-gcp" | grep -q "region" || fail-message "Oh dear, it looks like you don't have a Terraform variable called 'region' in your workspace."
+
+# Does the workspace have a zone variable
+curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$ORG&filter%5Bworkspace%5D%5Bname%5D=hashicat-gcp" | grep -q "zone" || fail-message "Oh dear, it looks like you don't have a Terraform variable called 'zone' in your workspace."
+
+# Does the workspace have a project variable
+curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$ORG&filter%5Bworkspace%5D%5Bname%5D=hashicat-gcp" | grep -q "project" || fail-message "Oh dear, it looks like you don't have a Terraform variable called 'project' in your workspace."
+
+exit 0

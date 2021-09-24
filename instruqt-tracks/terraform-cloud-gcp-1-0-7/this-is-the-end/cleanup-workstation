@@ -1,0 +1,16 @@
+#!/bin/bash -l
+
+cd /root/hashicat-gcp
+
+TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
+
+# We should do a destroy with the API
+
+# We could delete the workspace, but don't really need to
+#echo "Cleaning up the hashicat-gcp workspace..."
+# curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-gcp
+
+# Let the user know we're done
+echo "Cleanup process is complete."
+
+exit 0
