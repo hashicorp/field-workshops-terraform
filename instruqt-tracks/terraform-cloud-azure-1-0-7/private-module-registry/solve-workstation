@@ -11,17 +11,17 @@ if [[ -f /root/skipconfig.json ]]; then
   ORG=$(jq -r .org < /root/skipconfig.json)
   GITUSERID=$(jq -r .gituserid < /root/skipconfig.json)
   GITPAT=$(jq -r .gitpat < /root/skipconfig.json)
-  cat <<-EOF > vnet.tf
+  cat <<-EOF > network.tf
 module "network" {
   source  = "app.terraform.io/$ORG/network/azurerm"
-  version = "3.0.1"
+  version = "3.5.0"
   resource_group_name = azurerm_resource_group.myresourcegroup.name
 
   depends_on = [azurerm_resource_group.myresourcegroup]
 }
 EOF
   git add .
-  git commit -m "Added vnet module"
+  git commit -m "Added network module"
   cat <<-EOF > /root/.netrc
 machine github.com
 login $GITUSERID

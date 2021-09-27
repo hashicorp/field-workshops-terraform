@@ -101,7 +101,7 @@ if [[ -f /root/skipconfig.json ]]; then
   GITUSERID=$(jq -r .gituserid < /root/skipconfig.json)
   GITPAT=$(jq -r .gitpat < /root/skipconfig.json)
   git pull
-  # Add Department label
+  # Add department label
   sed -i "s/name = \"hashicat\"/name = \"hashicat\"\n    department = \"devops\"/" main.tf
   git add .
   git commit -m "Added the first label"
@@ -111,7 +111,7 @@ if [[ -f /root/skipconfig.json ]]; then
   password $GITPAT
 EOF
   git push origin master
-  # Add Billable label
+  # Add billable label
   sed -i "s/department = \"devops\"/department = \"devops\"\n    billable   = \"true\"/" main.tf
   git add .
   git commit -m "Added the second label"

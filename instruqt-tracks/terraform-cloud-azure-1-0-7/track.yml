@@ -71,11 +71,11 @@ challenges:
 
     Once you're signed into Terraform Cloud, you'll see a screen with several options. Please click the "Not right now, skip questions" link and confirm that you want to skip the questions. Then create a new organization.
 
-    Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicat-azure**, and click the "Create workspace" button.
+    Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicat-azure**, enter a description such as "HashiCat for Azure", and click the "Create workspace" button.
 
     No really...you *must* name your workspace **hashicat-azure**. If you don't, the exercises will break. Do not attempt to name it something else.
 
-    **Note:** If you already have a **hashicat-azure** workspace, please delete the workspace by selecting the **Settings >> Destruction and Deletion** menu, clicking the "Delete from Terraform Cloud" button, typing "hashicat-azure" to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you already played this track in the past.
+    **Note:** If you already have a **hashicat-azure** workspace, please delete the workspace by selecting the workpace-level **Settings >> Destruction and Deletion** menu, clicking the "Delete from Terraform Cloud" button, typing "hashicat-azure" to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you already played this track in the past.
 
     DO NOT SKIP THIS NEXT STEP:
 
@@ -159,13 +159,15 @@ challenges:
 
     When the `terraform apply` finishes, you should see output like this:
     ```
-    Apply complete! Resources: 8 added, 0 changed, 0 destroyed.
+    Apply complete! Resources: 9 added, 0 changed, 0 destroyed.
 
     Outputs:
-
+    catapp_ip = "http://"
     catapp_url = http://sean-carolan-meow.centralus.cloudapp.azure.com
     ```
-    Please click on the URL to test that your application is working. If it won't load, please run the `terraform apply` command again. That usually fixes this problem.
+    Please click on the URL to test that your application is working.
+
+    To see a valid value for the `catapp_ip` output, you first need to run `terraform refresh`.
 
     Additionally, you should see a new state file on the "States" tab of your Terraform Cloud workspace.
 
@@ -507,7 +509,7 @@ challenges:
 
     5. In the **More Options** menu set the **Policies Path** to `/azure`. This tells Terraform Cloud to use the Azure specific policies that are stored in the repo.
 
-    6. Leave everything else at its default setting and click on the **Connect Policy Set** button at the bottom of the page.
+    6. Leave everything else at its default setting and click on the **Connect policy set** button at the bottom of the page.
 
     You are now ready to begin the challenge.
 
@@ -519,7 +521,7 @@ challenges:
     git pull
     ```
 
-    Then, add the **Department** tag with a value of "devops" to the azurerm_virtual_machine resource in your main.tf file.
+    Then, add the **Department** tag with a value of "devops" to the azurerm_virtual_machine resource in your main.tf file. Be sure to save the file.
 
     Then run the following commands to push the change to your forked repository:
 
@@ -583,7 +585,7 @@ challenges:
     Some of your users want a simple way to deploy databases and network configurations. Enter the Private Module Registry, in which you can store standard, re-usable Terraform code that others can use in their own workspaces.
   notes:
   - type: text
-    contents: "Most of the devops team is using Terraform to build and configure their infrastructure. Recently users from outside the team have been requesting help building their own workspaces. Gaurav, the database admin, sees you at lunch and asks for your help:\n>\U0001F473\U0001F3FE‍♂️ Hi senior sysadmin, I need to configure a lot of Azure Virtual Networks and I heard you have a Terraform module for this. Can you help me set up a new network in the hashicat-azure workspace?"
+    contents: "Most of the devops team is using Terraform to build and configure their infrastructure. Recently users from outside the team have been requesting help building their own workspaces. Gaurav, the database admin, sees you at lunch and asks for your help:\n>\U0001F473\U0001F3FE‍♂️ Hi senior sysadmin, I need to configure a lot of Azure Networks and I heard you have a Terraform module for this. Can you help me set up a new network in the hashicat-azure workspace?"
   assignment: |-
     In this challenge you'll learn to use the Private Module Registry, which allows you to store and version re-usable modules of Terraform code.
 
@@ -595,17 +597,17 @@ challenges:
 
     Click on the "Publish module" button.
 
-    After the module is completely published, please select version `3.0.1` of the module by clicking `Change` under **Version** in the upper left section of your screen. If `3.0.1` is not visible, refresh the page once as versions may take a moment to publish. **Newer versions will not work with the version of the Azure provider pinned in the `providers` block of main.tf; so please do not use them.**
+    After the module is completely published, please select version `3.5.0` of the module by clicking `Change` under **Version** in the upper left section of your screen. If `3.5.0` is not visible, refresh the page once as versions may take a moment to publish.
 
     Click on the "Inputs" tab of the module. This indicates that you have to specify the `resource_group_name` module variable when creating an instance of the module. For inputs that reference resources already created in your main.tf file, we recommend that you use references that refer to the appropriate attributes of those resources. But you can also use hard-coded values if you prefer.
 
-    Create a new Terraform file called `vnet.tf` in the hashicat-azure directory and use the module in this file to create a new Virtual Network for Gaurav. You can copy the module creation code from the "Usage Instructions" section of the module's page in your Private Module Registry and just add the required `resource_group_name` module variable.
+    Create a new Terraform file called `network.tf` in the hashicat-azure directory and use the module in this file to create a new Virtual Network for Gaurav. You can copy the module creation code from the "Usage Instructions" section of the module's page in your Private Module Registry and just add the required `resource_group_name` module variable.
 
-    After you have saved the `vnet.tf` file, you can add, commit, and push your latest changes to your remote fork. You will be prompted to log onto your github account to push the change.
+    After you have saved the `network.tf` file, you can add, commit, and push your latest changes to your remote fork. You will be prompted to log onto your github account to push the change.
 
     ```
     git add .
-    git commit -m "Added vnet module"
+    git commit -m "Added network module"
     git push origin master
     ```
 
@@ -729,4 +731,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "5062450544194173684"
+checksum: "18355155075969966486"

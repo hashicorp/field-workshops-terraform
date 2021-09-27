@@ -71,11 +71,11 @@ challenges:
 
     Once you're signed into Terraform Cloud, you'll see a screen with several options. Please click the "Not right now, skip questions" link and confirm that you want to skip the questions. Then create a new organization.
 
-    Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicat-gcp**, and click the "Create workspace" button.
+    Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, enter a description such as "HashiCat for GCP", type **hashicat-gcp**, and click the "Create workspace" button.
 
     No really...you *must* name your workspace **hashicat-gcp**. If you don't, the exercises will break. Do not attempt to name it something else.
 
-    **Note:** If you already have a **hashicat-gcp** workspace, please delete the workspace by selecting the **Settings >> Destruction and Deletion** menu, clicking the "Delete from Terraform Cloud" button, typing "hashicat-gcp" to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you already played this track in the past.
+    **Note:** If you already have a **hashicat-gcp** workspace, please delete the workspace by selecting the workspace-level **Settings >> Destruction and Deletion** menu, clicking the "Delete from Terraform Cloud" button, typing "hashicat-gcp" to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you already played this track in the past.
 
     DO NOT SKIP THIS NEXT STEP:
 
@@ -154,10 +154,12 @@ challenges:
     Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
 
     Outputs:
-
+    catapp_ip = "http://"
     catapp_url = http://35.193.203.233
     ```
-    Please click on the URL to test that your application is working. If it won't load, please run the `terraform apply` command again. That usually fixes this problem.
+    Please click on the URL to test that your application is working.
+
+    To see a valid value for the `catapp_ip` output, you first need to run `terraform refresh`.
 
     Additionally, you should see a new state file on the "States" tab of your Terraform Cloud workspace.
 
@@ -505,7 +507,7 @@ challenges:
 
     5. In the **More Options** menu set the **Policies Path** to `/gcp`. This tells Terraform Cloud to use the GCP specific policies that are stored in the repo.
 
-    6. Leave everything else at its default setting and click on the **Connect Policy Set** button at the bottom of the page.
+    6. Leave everything else at its default setting and click on the **Connect policy set** button at the bottom of the page.
 
     You are now ready to begin the challenge.
 
@@ -517,7 +519,7 @@ challenges:
     git pull
     ```
 
-    Then, add the **department** label with a value of "devops" to the google_compute_instance resource in your main.tf file.
+    Then, add the **department** label with a value of "devops" to the google_compute_instance resource in your main.tf file. Be sure to save the file.
 
     Then run the following commands to push the change to your forked repository:
 
@@ -739,4 +741,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "9243313668047319382"
+checksum: "883806253147288577"
