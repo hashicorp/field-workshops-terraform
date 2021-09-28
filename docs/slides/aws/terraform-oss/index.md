@@ -999,9 +999,6 @@ class: compact
 
 Terraform works well with common config management tools like Chef, Puppet or Ansible.
 
-Official Chef Terraform provisioner:<br>
-https://www.terraform.io/docs/provisioners/chef.html
-
 Run Puppet with 'local-exec':<br>
 https://www.terraform.io/docs/provisioners/local-exec.html
 
