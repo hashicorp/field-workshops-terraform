@@ -47,7 +47,7 @@ challenges:
   - title: Code Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
@@ -94,7 +94,7 @@ challenges:
   - title: Code Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
@@ -124,7 +124,7 @@ challenges:
 
     Click on the **Create an API token** button. You can name the token whatever you like. Copy the entire token using your mouse or the small copy-paste icon.
 
-    Back in the Instruqt track, you need to add your API token to a file called "credentials.tfrc.json".Select the "Credentials File" tab and open the `/root/.terraform.d/credentials.tfrc.json` file directly.
+    Back in the Instruqt track, you need to add your API token to a file called "credentials.tfrc.json". Select the "Credentials File" tab and open the `/root/.terraform.d/credentials.tfrc.json` file directly.
 
     Replace the part that says YOURTOKEN with what you copied from Terraform Cloud. Be sure to save the file.
 
@@ -136,7 +136,7 @@ challenges:
 
     See this [page](https://cloud.google.com/compute/docs/regions-zones) for a list of regions and zones. For regions, strip off the "-a", "-b", or "-c" from the zones listed on that page.
 
-    Uncomment the variable values by removing "# " from each line.
+    Uncomment the variable values by removing "# " from each line. Be sure to save the file after editing it.
 
     The variables are actually declared in the "variables.tf" file. The "terraform.tfvars" file is just being used to set values for them.
 
@@ -154,12 +154,12 @@ challenges:
     Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
 
     Outputs:
-    catapp_ip = "http://"
+    catapp_ip = "http://10.0.10.2"
     catapp_url = http://35.193.203.233
     ```
-    Please click on the URL to test that your application is working.
+    Please click on the second URL to test that your application is working.
 
-    To see a valid value for the `catapp_ip` output, you first need to run `terraform refresh`.
+    To see a valid value for the `catapp_ip` output, you sometimes might first need to run `terraform refresh`. Note that the IP is an internal IP and is not accessible from the internet.
 
     Additionally, you should see a new state file on the "States" tab of your Terraform Cloud workspace.
 
@@ -172,7 +172,7 @@ challenges:
   - title: Code Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-gcp
   - title: Credentials File
     type: code
     hostname: workstation
@@ -208,13 +208,13 @@ challenges:
     Your team has started building cloud infrastructure on GCP, but the security team is concerned about protecting access to everyone's cloud credentials.
   notes:
   - type: text
-    contents: "After a few weeks on the job you're starting to get into the rhythm of things. Write some code, run some tests, deploy the website. Everything's going great until someone's GCP keys are accidentally pushed to a public code repository. You get this email from William, the lead infosec admin at ACME:\n\n>\U0001F46E\U0001F3FF‍♂️ Hello junior admin, we ran a remote scan on your laptop last night and found some unsecured Google Cloud access keys. We need you to move those off your laptop and store them in Terraform Cloud by the end of the day."
+    contents: "After a few weeks on the job you're starting to get into the rhythm of things. Write some code, run some tests, deploy the website. Everything's going great until someone's GCP credentials are accidentally pushed to a public code repository. You get this email from William, the lead infosec admin at ACME:\n\n>\U0001F46E\U0001F3FF‍♂️ Hello junior admin, we ran a remote scan on your laptop last night and found some unsecured Google Cloud credentials. We need you to move those off your laptop and store them in Terraform Cloud by the end of the day."
   - type: text
-    contents: "\U0001F914 Did you know?\n\nThousands of API and cryptographic keys are leaking on GitHub every day!\n\nhttps://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/\n\nWhen you store your API keys as sensitive variables they are encrypted and stored in an instance of HashiCorp Vault. These keys are only decrypted in a trusted, secure container that runs the Terraform command."
+    contents: "\U0001F914 Did you know?\n\nThousands of API and cryptographic keys and secrets are leaking on GitHub every day!\n\nhttps://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/\n\nWhen you store your API keys as sensitive variables they are encrypted and stored in an instance of HashiCorp Vault. These keys are only decrypted in a trusted, secure container that runs the Terraform command."
   - type: text
     contents: "\U0001F469\U0001F3FC‍\U0001F4BB Remote Execution, Local Code\n\nRemote Execution allows you to use the same Terraform commands that you're familiar with, but the run and all your variables are safely stored in your Terraform Cloud workspace. This can be helpful when you're upgrading tools that were originally written for Terraform Open Source.\n\nWith Remote Execution your Terraform code is still stored on your local machine and sent to the server each time you run."
   assignment: |-
-    After the GCP credentials issue, the security team is tightening down access to your GCP project. API keys must now be stored as encrypted variables in Terraform Cloud. Your task is to find your Google credentials, and move them into your workspace as a secure environment variable.
+    After the GCP credentials issue, the security team is tightening down access to your GCP project. API creds must now be stored as encrypted variables in Terraform Cloud. Your task is to find your Google credentials, and move them into your workspace as a secure environment variable.
 
     In order to complete this challenge you'll need to do the following:
 
@@ -244,20 +244,17 @@ challenges:
     terraform apply
     ```
 
-    Congratulations, your GCP keys are now safely encrypted and stored in your Terraform Cloud workspace.
+    Congratulations, your GCP credentials are now safely encrypted and stored in your Terraform Cloud workspace.
 
     You can continue to run `terraform plan` and `terraform apply` in your "Shell" tab, but the execution is now done in Terraform Cloud.
   tabs:
   - title: Code Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
 - slug: sharing-is-caring
@@ -306,13 +303,10 @@ challenges:
   - title: Code Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
 - slug: quiz-2
@@ -418,13 +412,10 @@ challenges:
   - title: Code Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
 - slug: vcs-collaboration
@@ -468,13 +459,10 @@ challenges:
   - title: Code Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
 - slug: a-sentinel-stands-guard
@@ -548,7 +536,7 @@ challenges:
   - title: Code Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
@@ -595,7 +583,7 @@ challenges:
 
     Click on the "Publish module" button.
 
-    After the module is completely published, please select version `3.2.2` of the module by clicking `Change` under **Version** in the upper left section of your screen. If `3.2.2` is not visible, refresh the page once as versions may take a moment to publish.
+    After the module is completely published, please select version `3.4.0` of the module by clicking `Change` under **Version** in the upper left section of your screen. If `3.4.0` is not visible, refresh the page once as versions may take a moment to publish.
 
     Click on the "Inputs" tab of the module. This indicates that you have to specify the `network_name`, `project_id`, and `subnets` module variables (inputs) for this module.
 
@@ -626,7 +614,7 @@ challenges:
   - title: Code Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
@@ -691,13 +679,10 @@ challenges:
   - title: Code Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
 - slug: quiz-4
@@ -735,10 +720,10 @@ challenges:
   - title: Code Editor
     type: code
     hostname: workstation
-    path: /root
+    path: /root/hashicat-gcp
   - title: Shell
     type: terminal
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "883806253147288577"
+checksum: "13507485062122174969"

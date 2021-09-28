@@ -144,7 +144,7 @@ challenges:
 
     See this [page](https://azure.microsoft.com/en-us/global-infrastructure/geographies/) for a list of valid Azure locations (which shows the longer names with spaces).
 
-    Uncomment the variable values by removing "# " from each line.
+    Uncomment the variable values by removing "# " from each line. Be sure to save the file after editing it.
 
     The variables are actually declared in the "variables.tf" file. The "terraform.tfvars" file is just being used to set values for them.
 
@@ -165,9 +165,9 @@ challenges:
     catapp_ip = "http://"
     catapp_url = http://sean-carolan-meow.centralus.cloudapp.azure.com
     ```
-    Please click on the URL to test that your application is working.
+    Please click on the second URL to test that your application is working.
 
-    To see a valid value for the `catapp_ip` output, you first need to run `terraform refresh`.
+    To see a valid value for the `catapp_ip` output, you sometimes might first need to run `terraform refresh`.
 
     Additionally, you should see a new state file on the "States" tab of your Terraform Cloud workspace.
 
@@ -216,13 +216,13 @@ challenges:
     Your team has started building cloud infrastructure on Azure, but the security team is concerned about protecting access to everyone's cloud credentials.
   notes:
   - type: text
-    contents: "After a few weeks on the job you're starting to get into the rhythm of things. Write some code, run some tests, deploy the website. Everything's going great until someone's Azure keys are accidentally pushed to a public code repository. You get this email from William, the lead infosec admin at ACME:\n\n>\U0001F46E\U0001F3FF‍♂️ Hello junior admin, we ran a remote scan on your laptop last night and found some unsecured Azure credentials. We need you to move those off your laptop and store them in Terraform Cloud by the end of the day."
+    contents: "After a few weeks on the job you're starting to get into the rhythm of things. Write some code, run some tests, deploy the website. Everything's going great until someone's Azure secrets are accidentally pushed to a public code repository. You get this email from William, the lead infosec admin at ACME:\n\n>\U0001F46E\U0001F3FF‍♂️ Hello junior admin, we ran a remote scan on your laptop last night and found some unsecured Azure credentials. We need you to move those off your laptop and store them in Terraform Cloud by the end of the day."
   - type: text
-    contents: "\U0001F914 Did you know?\n\nThousands of API and cryptographic keys are leaking on GitHub every day!\n\nhttps://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/\n\nWhen you store your API keys as sensitive variables they are encrypted and stored in an instance of HashiCorp Vault. These keys are only decrypted in a trusted, secure container that runs the Terraform command."
+    contents: "\U0001F914 Did you know?\n\nThousands of API and cryptographic keys and secrets are leaking on GitHub every day!\n\nhttps://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/\n\nWhen you store your API keys as sensitive variables they are encrypted and stored in an instance of HashiCorp Vault. These keys are only decrypted in a trusted, secure container that runs the Terraform command."
   - type: text
     contents: "\U0001F469\U0001F3FC‍\U0001F4BB Remote Execution, Local Code\n\nRemote Execution allows you to use the same Terraform commands that you're familiar with, but the run and all your variables are safely stored in your Terraform Cloud workspace. This can be helpful when you're upgrading tools that were originally written for Terraform Open Source.\n\nWith Remote Execution your Terraform code is still stored on your local machine and sent to the server each time you run."
   assignment: |-
-    After the Azure credentials issue, the security team is tightening down access to your Azure account. API keys must now be secured as stored variables in Terraform Cloud. Your task is to find your Azure credentials, and move them into your workspace as secure environment variables.
+    After the Azure credentials issue, the security team is tightening down access to your Azure account. API creds must now be secured as stored variables in Terraform Cloud. Your task is to find your Azure credentials, and move them into your workspace as secure environment variables.
 
     In order to complete this challenge you'll need to do the following:
 
@@ -246,7 +246,7 @@ challenges:
     terraform apply
     ```
 
-    Congratulations, your Azure keys are now safely encrypted and stored in your Terraform Cloud workspace.
+    Congratulations, your Azure credentials are now safely encrypted and stored in your Terraform Cloud workspace.
 
     You can continue to run `terraform plan` and `terraform apply` in your "Shell" tab, but the execution is now done in Terraform Cloud.
   tabs:
@@ -257,9 +257,6 @@ challenges:
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
 - slug: sharing-is-caring
@@ -312,9 +309,6 @@ challenges:
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
 - slug: quiz-2
@@ -424,9 +418,6 @@ challenges:
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
 - slug: vcs-collaboration
@@ -474,9 +465,6 @@ challenges:
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
 - slug: a-sentinel-stands-guard
@@ -685,9 +673,6 @@ challenges:
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
 - slug: quiz-4
@@ -731,4 +716,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "18355155075969966486"
+checksum: "10941988968234662554"
