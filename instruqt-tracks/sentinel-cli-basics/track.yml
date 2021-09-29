@@ -10,7 +10,7 @@ description: |-
 
   In this track, you will learn how to use the Sentinel CLI.
 
-  After doing this track, you can learn how to write and test Sentinel policies for Terraform in the [Sentinel for Terraform (v4)](https://play.instruqt.com/hashicorp/tracks/sentinel-for-terraform-v4) track.
+  After doing this track, you can learn how to write and test Sentinel policies for Terraform in the **Sentinel for Terraform (v4)** track.
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/HashiCorp_Icon_Black.png
 tags:
 - sentinel
@@ -18,7 +18,7 @@ tags:
 owner: hashicorp
 developers:
 - roger@hashicorp.com
-private: false
+private: true
 published: true
 show_timer: true
 challenges:
@@ -37,7 +37,7 @@ challenges:
       To learn more, see https://docs.hashicorp.com/sentinel.
   - type: text
     contents: |-
-      We've launched the Sentinel CLI 0.18.3 on a Ubuntu VM running in GCP so that you don't need to download or install it.
+      We've launched the Sentinel CLI 0.18.4 on a Ubuntu VM running in GCP so that you don't need to download or install it.
 
       If you would like to see syntax highlighting in the editor for Sentinel policies, we suggest selecting "ruby" in the language drop-down at the bottom of the editor.
 
@@ -148,4 +148,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 2400
-checksum: "2535886219396590885"
+checksum: "1526446610734554995"
