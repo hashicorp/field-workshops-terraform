@@ -84,7 +84,7 @@ The slide deck for this training is published here:
 ### https://storage.googleapis.com/instruqt-hashicorp-tracks/sentinel-shared/Sentinel-for-Terraform-v4.pptx
 
 ## Hands-on Labs
-At certain points in the slide deck there are links to the lab exercises. [Instruqt](https://instruqt.com/hashicorp) is our lab platform. Lab exercises can be completed anonymously, but if users want to keep track of their progress they should create accounts on the Instruqt website. There are two Instruqt tracks in this workshop.
+At certain points in the slide deck there are references to the lab exercises. [Instruqt](https://instruqt.com/hashicorp) is our lab platform. Users must register on the Instruqt website to use these tracks. There are two Instruqt tracks in this workshop.
 
 The first Instruqt track, [Sentinel CLI Basics](https://play.instruqt.com/hashicorp/tracks/sentinel-cli-basics), introduces the Sentinel CLI and teaches students how to use the `sentinel apply` and `sentinel test` commands with a very simple policy.
 
@@ -100,7 +100,7 @@ Once you've gotten an invite to the HashiCorp organization you can create tempor
 1. Click on the **Invites** link at the top of the page.
 2. Click on the **New+** button to create a new invite.
 3. Create a descriptive title for internal use. Example: "Atlanta Intro to Terraform on Azure Workshop"
-4. Select the track you want to make available.
+4. Select the tracks you want to make available.
 5. Set the invite to expire in a month or two.
 6. Make the track available to your user for at least a week.
 7. Turn on the **Allow Anonymous** switch so you can hand the URL out on the day of training.
