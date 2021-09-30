@@ -44,13 +44,13 @@ challenges:
     contents: Most modern code editors support Terraform syntax highlighting.
   assignment: "Welcome to your first day as an intern at ACME Inc. [ACME](https://www.youtube.com/watch?v=9m7evoFF83c) is a multi-national conglomerate that sells anvils, rocket powered roller skates, portable holes, earthquake pills and birdseed.\n\nAfter employee orientation you sit down at your workstation and open your Code Editor.\n\nClick on the **Code Editor** tab now. This is where you'll be editing and writing Terraform code. Open the file called **README.md** by clicking on it in the FILES menu on the left. Add your name at the bottom of the file.\n\nSee the floppy disk icon on the tab? It looks like this: \U0001F4BE. Click on the floppy disk icon to save the file.\n\nNext have a look at your **Shell** tab. This is where you'll be running all your terraform commands.\n\nCongratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new Terraform skills.\n\nClick the **Check** button to continue."
   tabs:
+  - title: Shell
+    type: terminal
+    hostname: workstation
   - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Shell
-    type: terminal
-    hostname: workstation
   difficulty: basic
   timelimit: 1800
 - slug: terraform-cloud-setup
@@ -91,13 +91,13 @@ challenges:
 
     Before you click the **Check** button, did you change your Execution Mode to Local? This is an easy step to miss so we mention it twice.
   tabs:
+  - title: Shell
+    type: terminal
+    hostname: workstation
   - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Shell
-    type: terminal
-    hostname: workstation
   difficulty: basic
   timelimit: 1800
 - slug: oh-no-an-outage
@@ -169,6 +169,9 @@ challenges:
 
     If you'd like to see the hashicat application in your web browser, simply copy the link from the output of your Terraform run, and paste it into the URL bar in another tab or window.
   tabs:
+  - title: Shell
+    type: terminal
+    hostname: workstation
   - title: Code Editor
     type: code
     hostname: workstation
@@ -177,9 +180,6 @@ challenges:
     type: code
     hostname: workstation
     path: /root/.terraform.d/credentials.tfrc.json
-  - title: Shell
-    type: terminal
-    hostname: workstation
   difficulty: basic
   timelimit: 1800
 - slug: quiz-1
@@ -246,13 +246,13 @@ challenges:
 
     You can continue to run `terraform plan` and `terraform apply` in your "Shell" tab, but the execution is now done in Terraform Cloud.
   tabs:
+  - title: Shell
+    type: terminal
+    hostname: workstation
   - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Shell
-    type: terminal
-    hostname: workstation
   difficulty: basic
   timelimit: 1800
 - slug: sharing-is-caring
@@ -298,13 +298,13 @@ challenges:
 
     You will need at least two users (including yourself) in your organization to pass this challenge. The users you invite do not have to accept the invite to be counted.
   tabs:
+  - title: Shell
+    type: terminal
+    hostname: workstation
   - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Shell
-    type: terminal
-    hostname: workstation
   difficulty: basic
   timelimit: 1800
 - slug: quiz-2
@@ -407,13 +407,13 @@ challenges:
 
     Click the **Check** button to let Jane know she can clone the hashicat-aws repo for QA testing.
   tabs:
+  - title: Shell
+    type: terminal
+    hostname: workstation
   - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Shell
-    type: terminal
-    hostname: workstation
   difficulty: basic
   timelimit: 1800
 - slug: vcs-collaboration
@@ -454,13 +454,13 @@ challenges:
 
     Once you've merged your changes to the master branch, watch the Terraform run that starts in the Terraform Cloud UI.
   tabs:
+  - title: Shell
+    type: terminal
+    hostname: workstation
   - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Shell
-    type: terminal
-    hostname: workstation
   difficulty: basic
   timelimit: 1800
 - slug: a-sentinel-stands-guard
@@ -531,13 +531,13 @@ challenges:
 
     Each time you push a change to master, you'll trigger a new Terraform run. Keep trying until you pass the Sentinel policy check.
   tabs:
+  - title: Shell
+    type: terminal
+    hostname: workstation
   - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Shell
-    type: terminal
-    hostname: workstation
   difficulty: basic
   timelimit: 1800
 - slug: quiz-3
@@ -597,13 +597,13 @@ challenges:
 
     If all went well you should see a new S3 bucket being built in the console output. Wait until your terraform apply command is complete, then click the `Check` button to verify your work.
   tabs:
+  - title: Shell
+    type: terminal
+    hostname: workstation
   - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Shell
-    type: terminal
-    hostname: workstation
   difficulty: basic
   timelimit: 1800
 - slug: api-driven-workflows
@@ -662,13 +662,13 @@ challenges:
 
     When you've succesfully triggered a run via the API with the new variables, click the Check button to continue.
   tabs:
+  - title: Shell
+    type: terminal
+    hostname: workstation
   - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Shell
-    type: terminal
-    hostname: workstation
   difficulty: basic
   timelimit: 1800
 - slug: quiz-4
@@ -703,13 +703,13 @@ challenges:
 
     You can continue to build and experiment with Terraform, or simply click the Check button to complete the track.
   tabs:
+  - title: Shell
+    type: terminal
+    hostname: workstation
   - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
-  - title: Shell
-    type: terminal
-    hostname: workstation
   difficulty: basic
   timelimit: 1800
-checksum: "15196304024930205520"
+checksum: "3132701049171331344"
