@@ -1,7 +1,0 @@
-#!/bin/bash -l
-set -e
-
-# Set workdir
-set-workdir /root/hashicat-azure
-
-exit 0

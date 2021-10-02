@@ -1,4 +1,5 @@
 #!/bin/bash -l
+set -e
 
 # Enable bash history
 HISTFILE=/root/.bash_history
@@ -100,7 +101,7 @@ if [[ -f /root/skipconfig.json ]]; then
   GITUSERID=$(jq -r .gituserid < /root/skipconfig.json)
   GITPAT=$(jq -r .gitpat < /root/skipconfig.json)
   git pull
-  # Add Department label
+  # Add department label
   sed -i "s/name = \"hashicat\"/name = \"hashicat\"\n    department = \"devops\"/" main.tf
   git add .
   git commit -m "Added the first label"
@@ -110,14 +111,26 @@ if [[ -f /root/skipconfig.json ]]; then
   password $GITPAT
 EOF
   git push origin master
-  # Add Billable label
+  # Add billable label
   sed -i "s/department = \"devops\"/department = \"devops\"\n    billable   = \"true\"/" main.tf
   git add .
   git commit -m "Added the second label"
   git push origin master
 else
   # Trigger a run
-  curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/trigger_run.json https://app.terraform.io/api/v2/runs
+  run_result=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/trigger_run.json https://app.terraform.io/api/v2/runs)
+  run_id=$(echo $run_result | jq -r .data.id)
+  for (( count=1; count<=10; count++)); do
+    sleep 30
+    echo "Checking run status."
+    check_result=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" https://app.terraform.io/api/v2/runs/${run_id})
+    run_status=$(echo $check_result | jq -r '.data.attributes.status')
+    echo "Run Status: " $run_status
+    if [[ "$run_status" == "applied" ]]; then
+      echo "Run was applied."
+      break
+    fi
+  done
 fi
 
 exit 0

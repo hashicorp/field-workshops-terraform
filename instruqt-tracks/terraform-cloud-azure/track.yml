@@ -26,6 +26,7 @@ tags:
 owner: hashicorp
 developers:
 - roger@hashicorp.com
+- sean.carolan@hashicorp.com
 private: true
 published: true
 show_timer: true
@@ -35,50 +36,21 @@ challenges:
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: |
-    Configure your code editor for Terraform.
+    Get to know your lab training environment.
   notes:
   - type: text
     contents: "Welcome to your first day on the job at ACME Inc. These are some of your coworkers in the local ACME office:\n<center><table cellpadding=20>\n  <tr>\n    <td>\n    \U0001F468\U0001F3FB‍\U0001F4BC Hiro - Product Manager<br>\n    \U0001F9D5\U0001F3FD Aisha - Database Admin<br>\n    \U0001F46E\U0001F3FF‍♂️ William - InfoSec Lead<br>\n    \U0001F468\U0001F3FB‍\U0001F9B2 Lars - Lead Developer<br>\n    </td>\n    <td>\n    \U0001F9D3\U0001F3FB Robin - Operations Admin<br>\n    \U0001F469‍\U0001F3A4 Jane - Quality Assurance<br>\n    \U0001F473\U0001F3FE‍♂️ Gaurav - Network Admin<br>\n    \U0001F469\U0001F3FC‍\U0001F4BC Karen - Finance    </td>\n  </tr>\n</table></center>\n\n<center>\U0001F913 You - Brand New Intern\n</center>"
   - type: text
-    contents: Most modern text editors support Terraform syntax highlighting.
-  assignment: |-
-    Welcome to your first day as an intern at ACME Inc. [ACME](https://www.youtube.com/watch?v=9m7evoFF83c) is a multi-national conglomerate that sells anvils, rocket powered roller skates, portable holes, earthquake pills and birdseed.
-
-    After employee orientation you sit down at your workstation and open your text editor, Visual Studio Code.
-
-    Open the Code Editor tab on the left. First get familiar with the menus. This is running the Visual Studio Code editor. You can also use the simpler "Text Editor" tab if you prefer.
-
-    If you do use the VS Code Editor, please perform the following steps:
-
-    Notice the menu bar with File, Edit, and other menus at the top of the VS Code Editor. You can find all the menus on this menu bar.
-
-    You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application. Open file called "main.tf.
-
-    Next you should install the HashiCorp Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes with one slightly out of position.
-
-    Search for **HashiCorp** and select the "HashiCorp Terraform 2.x.y" extension. Click the blue **Install** or blue **Install in Remote** button to install the extension. You can also install the "HashiCorp Sentinel" extension if you want. Then click the icon with two pages under the File menu so you can see your Terraform files again.
-
-    We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
-
-    We recommend executing all commands on the "Shell" tab. But you can also open and use a terminal window at the bottom of the Visual Code Editor by using the Terminal > New Terminal menu or the **<ctrl>-`** shortcut.
-
-    If you do use the VS Code terminal, you can toggle its size up and down with the `^` and inverted `^` buttons above it. You can get rid of it with the garbage can and `x` icons.
-
-    Congratulations, you are ready to start working with Terraform on Azure. We'll use the hashicat-azure example app in the rest of the challenges as you learn new Terraform skills.
-
-    Click the **Check** button to continue.
+    contents: Most modern code editors support Terraform syntax highlighting.
+  assignment: "Welcome to your first day as an intern at ACME Inc. [ACME](https://www.youtube.com/watch?v=9m7evoFF83c) is a multi-national conglomerate that sells anvils, rocket powered roller skates, portable holes, earthquake pills and birdseed.\n\nAfter employee orientation you sit down at your workstation and open your Code Editor.\n\nClick on the **Code Editor** tab now. This is where you'll be editing and writing Terraform code. Open the file called **README.md** by clicking on it in the FILES menu on the left. Add your name at the bottom of the file.\n\nSee the floppy disk icon on the tab? It looks like this: \U0001F4BE. Click on the floppy disk icon to save the file.\n\nNext have a look at your **Shell** tab. This is where you'll be running all your terraform commands.\n\nCongratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-azure example app in the rest of the challenges as you learn new Terraform skills.\n\nClick the **Check** button to continue."
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1800
 - slug: terraform-cloud-setup
@@ -97,13 +69,13 @@ challenges:
 
     If you already have an account you can simply sign in with your existing credentials.
 
-    Once you're signed into Terraform Cloud, you'll see a screen with several options. Please click the "Not right now, skip questions" link and confirm that you want to skip the questions. Then create a new organization called YOURNAME-training. Replace YOURNAME with your own name or other text.
+    Once you're signed into Terraform Cloud, you'll see a screen with several options. Please click the "Not right now, skip questions" link and confirm that you want to skip the questions. Then create a new organization.
 
-    Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicat-azure**, and click the "Create workspace" button.
+    Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicat-azure**, enter a description such as "HashiCat for Azure", and click the "Create workspace" button.
 
     No really...you *must* name your workspace **hashicat-azure**. If you don't, the exercises will break. Do not attempt to name it something else.
 
-    **Note:** If you already have a **hashicat-azure** workspace, please delete the workspace by selecting the **Settings >> Destruction and Deletion** menu, clicking the "Delete from Terraform Cloud" button, typing "hashicat-azure" to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you already played this track in the past.
+    **Note:** If you already have a **hashicat-azure** workspace, please delete the workspace by selecting the workpace-level **Settings >> Destruction and Deletion** menu, clicking the "Delete from Terraform Cloud" button, typing "hashicat-azure" to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you already played this track in the past.
 
     DO NOT SKIP THIS NEXT STEP:
 
@@ -113,23 +85,19 @@ challenges:
 
     Be sure to save your settings by clicking the "Save settings" button at the bottom of the page! This will allow us to run Terraform commands from our workstation with local variables.
 
-    Enable a free 30 day trial of Terraform Cloud's "Team & Governance" plan by navigating to your project's **Settings** menu and then to **Plan & Billing**, select **Change Plan**, select the "Trial Plan" radio button, and click the "Start your free trial" button.
+    Enable a free 30 day trial of Terraform Cloud's "Team & Governance" plan by navigating to your project's **Settings** menu and then to **Plan and billing**, select **Change Plan**, select the "Trial Plan" radio button, and click the "Start your free trial" button.
 
     Or, if you have an existing account where you've already used a trial, provide your instructor with your organization's name. They will upgrade your organization to unlock a 30 day free trial of all paid features.
 
     Before you click the **Check** button, did you change your Execution Mode to Local? This is an easy step to miss so we mention it twice.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1800
 - slug: oh-no-an-outage
@@ -145,7 +113,7 @@ challenges:
     Your task is to configure remote state using your Terraform Cloud account. In order to complete this challenge you'll need the following:
 
     1. A free Terraform Cloud account - log in at https://app.terraform.io<br>
-    2. An organization called **yourname-training**. You just created this in the previous exercise.<br>
+    2. A Terraform Cloud organization. You just created this in the previous exercise.<br>
     3. A workspace named **hashicat-azure** with its Execution Mode set to **Local** (not Remote)<br>
     4. A *user* token for authentication<br>
     5. A `remote_backend` config stored in your workspace<br>
@@ -156,13 +124,9 @@ challenges:
 
     Click on the **Create an API token** button. You can name the token whatever you like. Copy the entire token using your mouse or the small copy-paste icon.
 
-    Back in the Instruqt track, you need to add your API token to a file called "credentials.tfrc.json". You can do this in two different ways:
+    Back in the Instruqt track, you need to add your API token to a file called "credentials.tfrc.json". Select the "Credentials File" tab and open the `/root/.terraform.d/credentials.tfrc.json` file directly.
 
-    The easier way is to select the "Credentials File" tab and open the "/root/.terraform.d/credentials.tfrc.json" file directly.
-
-    But if you prefer to use the VS Code Editor, you can use the File > Open menu, click on "..", select ".terraform.d", and then select the "credentials.tfrc.json" file.
-
-    In either case, replace the part that says `YOURTOKEN` with what you copied from Terraform Cloud. If you use the "Credentials File" tab,  sure to save the file.
+    Replace the part that says YOURTOKEN with what you copied from Terraform Cloud. Be sure to save the file.
 
     Your token is now safely stored in the "credentials.tfrc.json" file.
 
@@ -180,7 +144,7 @@ challenges:
 
     See this [page](https://azure.microsoft.com/en-us/global-infrastructure/geographies/) for a list of valid Azure locations (which shows the longer names with spaces).
 
-    Uncomment the variable values by removing "# " from each line.
+    Uncomment the variable values by removing "# " from each line. Be sure to save the file after editing it.
 
     The variables are actually declared in the "variables.tf" file. The "terraform.tfvars" file is just being used to set values for them.
 
@@ -195,13 +159,15 @@ challenges:
 
     When the `terraform apply` finishes, you should see output like this:
     ```
-    Apply complete! Resources: 8 added, 0 changed, 0 destroyed.
+    Apply complete! Resources: 9 added, 0 changed, 0 destroyed.
 
     Outputs:
-
+    catapp_ip = "http://"
     catapp_url = http://sean-carolan-meow.centralus.cloudapp.azure.com
     ```
-    Please click on the URL to test that your application is working. If it won't load, please run the `terraform apply` command again. That usually fixes this problem.
+    Please click on the second URL to test that your application is working.
+
+    To see a valid value for the `catapp_ip` output, you sometimes might first need to run `terraform refresh`.
 
     Additionally, you should see a new state file on the "States" tab of your Terraform Cloud workspace.
 
@@ -211,11 +177,10 @@ challenges:
 
     If you'd like to see the hashicat application in your web browser, simply copy the link from the output of your Terraform run, and paste it into the URL bar in another tab or window.
   tabs:
-  - title: Code Editor
-    type: service
+  - title: Shell
+    type: terminal
     hostname: workstation
-    port: 8443
-  - title: Text Editor
+  - title: Code Editor
     type: code
     hostname: workstation
     path: /root/hashicat-azure
@@ -223,9 +188,6 @@ challenges:
     type: code
     hostname: workstation
     path: /root/.terraform.d/credentials.tfrc.json
-  - title: Shell
-    type: terminal
-    hostname: workstation
   difficulty: basic
   timelimit: 1800
 - slug: quiz-1
@@ -254,13 +216,13 @@ challenges:
     Your team has started building cloud infrastructure on Azure, but the security team is concerned about protecting access to everyone's cloud credentials.
   notes:
   - type: text
-    contents: "After a few weeks on the job you're starting to get into the rhythm of things. Write some code, run some tests, deploy the website. Everything's going great until someone's Azure keys are accidentally pushed to a public code repository. You get this email from William, the lead infosec admin at ACME:\n\n>\U0001F46E\U0001F3FF‍♂️ Hello junior admin, we ran a remote scan on your laptop last night and found some unsecured Azure credentials. We need you to move those off your laptop and store them in Terraform Cloud by the end of the day."
+    contents: "After a few weeks on the job you're starting to get into the rhythm of things. Write some code, run some tests, deploy the website. Everything's going great until someone's Azure secrets are accidentally pushed to a public code repository. You get this email from William, the lead infosec admin at ACME:\n\n>\U0001F46E\U0001F3FF‍♂️ Hello junior admin, we ran a remote scan on your laptop last night and found some unsecured Azure credentials. We need you to move those off your laptop and store them in Terraform Cloud by the end of the day."
   - type: text
-    contents: "\U0001F914 Did you know?\n\nThousands of API and cryptographic keys are leaking on GitHub every day!\n\nhttps://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/\n\nWhen you store your API keys as sensitive variables they are encrypted and stored in an instance of HashiCorp Vault. These keys are only decrypted in a trusted, secure container that runs the Terraform command."
+    contents: "\U0001F914 Did you know?\n\nThousands of API and cryptographic keys and secrets are leaking on GitHub every day!\n\nhttps://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/\n\nWhen you store your API keys as sensitive variables they are encrypted and stored in an instance of HashiCorp Vault. These keys are only decrypted in a trusted, secure container that runs the Terraform command."
   - type: text
     contents: "\U0001F469\U0001F3FC‍\U0001F4BB Remote Execution, Local Code\n\nRemote Execution allows you to use the same Terraform commands that you're familiar with, but the run and all your variables are safely stored in your Terraform Cloud workspace. This can be helpful when you're upgrading tools that were originally written for Terraform Open Source.\n\nWith Remote Execution your Terraform code is still stored on your local machine and sent to the server each time you run."
   assignment: |-
-    After the Azure credentials issue, the security team is tightening down access to your Azure account. API keys must now be secured as stored variables in Terraform Cloud. Your task is to find your Azure credentials, and move them into your workspace as secure environment variables.
+    After the Azure credentials issue, the security team is tightening down access to your Azure account. API creds must now be secured as stored variables in Terraform Cloud. Your task is to find your Azure credentials, and move them into your workspace as secure environment variables.
 
     In order to complete this challenge you'll need to do the following:
 
@@ -270,13 +232,13 @@ challenges:
     ```
     2. The four environment variables you need are `ARM_CLIENT_ID`, `ARM_CLIENT_SECRET`, `ARM_TENANT_ID`, and `ARM_SUBSCRIPTION_ID`.
     3. Update the **Execution Mode** settings in your workspace to **Remote** on the Settings > General tab.
-    4. Change the **Apply Method** to "Auto apply" on the same page. This will save you the trouble of having to approve every Terraform run manually. Remember to click the **Save** button at the bottom of the page!
+    4. Change the **Apply Method** to "Auto apply" on the same page. This will save you the trouble of having to approve every Terraform run manually. Remember to click the **Save settings** button at the bottom of the page!
     5. Set **Environment Variables** for your Azure credentials on the Variables tab and mark the **ARM_CLIENT_SECRET** as **Sensitive**. The other three environment variables may remain in plaintext.
     6. Set **Terraform Variables** for your `prefix` and `location`. Learn more about these variables by looking in the variables.tf file. Set the same values you used in your terraform.tfvars file to avoid all the resources being destroyed and re-created (unless you like waiting longer). NOTE: You *must* configure these variables on the remote workspace, as they will no longer be read from your local terraform.tfvars file.
 
     Test your work by running `terraform init`. Your backend configuration will be updated for remote execution.
 
-    Next try running `terraform plan`. This will trigger what's known as a speculative plan. You can view this plan by copying the link from your "Shell" tab or from your VS Code Editor terminal. (But note that the "Follow Link|Open" mechanism in the terminal does not currently work.) This plan will not show up in your ordinary terraform runs that are triggered via the UI or API. A copy of the plan output will be streamed back to your "Shell" tab.
+    Next try running `terraform plan`. This will trigger what's known as a speculative plan. You can view this plan by copying the link from your "Shell" tab. This plan will not show up in your ordinary terraform runs that are triggered via the UI or API. A copy of the plan output will be streamed back to your "Shell" tab.
 
     Run a terraform apply. This apply **will** show up if you navigate to the runs page in the Terraform Cloud UI.
 
@@ -284,24 +246,17 @@ challenges:
     terraform apply
     ```
 
-    Congratulations, your Azure keys are now safely encrypted and stored in your Terraform Cloud workspace.
+    Congratulations, your Azure credentials are now safely encrypted and stored in your Terraform Cloud workspace.
 
     You can continue to run `terraform plan` and `terraform apply` in your "Shell" tab, but the execution is now done in Terraform Cloud.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1800
 - slug: sharing-is-caring
@@ -321,7 +276,7 @@ challenges:
     In this challenge you'll create teams with different levels of access to your workspace. You can then invite other users to collaborate on code changes, approvals, and Terraform runs.
 
     1. Go into your organization's General Settings and click on the **Teams** link.<br>
-    2. Add a team called **admins**. Admins should be able to manage policies, manage workspaces, and manage VCS settings. Be sure to click the "Update team organization access" button after checking all 3 checkboxes.<br>
+    2. Add a team called **admins**. Admins should be able to manage policies and policy overrides, manage workspaces, and manage VCS settings. Be sure to click the "Update team organization access" button after checking all 4 checkboxes.<br>
     3. Add another team called **developers**. Developers should not have any organization-wide access.<br>
     4. Add a third team called **managers**. Managers should also not have any organization-wide access.
 
@@ -347,20 +302,13 @@ challenges:
 
     You will need at least two users (including yourself) in your organization to pass this challenge. The users you invite do not have to accept the invite to be counted.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1800
 - slug: quiz-2
@@ -437,11 +385,9 @@ challenges:
 
     ```
     git add .
-    git commit -m "adding remote backend"
+    git commit -m "Added remote backend"
     git push origin master
     ```
-
-    At this time, the last command **must** be run on the "Shell" tab since authenticating to GitHub from the VS Code Editor's terminal does not work.
 
     Note that you'll have to provide your GitHub username and personal access token in order to complete the `git push` command.
 
@@ -457,7 +403,7 @@ challenges:
 
     Make sure you configure an **OAuth** connection for your organization and not the GitHub App for a single workspace! Once you've configured GitHub access for your organization, you can update your workspace to use your hashicat-azure repository as the source for all Terraform runs. Go into the **Settings > Version Control** settings page for your workspace. Connect your workspace to the fork of your hashicat-azure repository on GitHub.
 
-    Be sure to expand the "Advanced options" section of the "Create a new Workspace" page and enable the "Automatic speculative plans" feature before clicking the "Create workspace" button.
+    Be sure to expand the "Advanced options" section of the "Version Control" page and enable the "Automatic speculative plans" feature before clicking the "Update VCS settings" button.
 
     The first VCS-backed apply should trigger immediately. Click on the Runs tab to view the run in action.
 
@@ -465,20 +411,13 @@ challenges:
 
     Click the **Check** button to let Jane know she can clone the hashicat-azure repo for QA testing.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1800
 - slug: vcs-collaboration
@@ -519,20 +458,13 @@ challenges:
 
     Once you've merged your changes to the master branch, watch the Terraform run that starts in the Terraform Cloud UI.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1800
 - slug: a-sentinel-stands-guard
@@ -565,7 +497,7 @@ challenges:
 
     5. In the **More Options** menu set the **Policies Path** to `/azure`. This tells Terraform Cloud to use the Azure specific policies that are stored in the repo.
 
-    6. Leave everything else at its default setting and click on the **Connect Policy Set** button at the bottom of the page.
+    6. Leave everything else at its default setting and click on the **Connect policy set** button at the bottom of the page.
 
     You are now ready to begin the challenge.
 
@@ -577,7 +509,7 @@ challenges:
     git pull
     ```
 
-    Then, add the **Department** tag with a value of "devops" to the azurerm_virtual_machine resource in your main.tf file.
+    Then, add the **Department** tag with a value of "devops" to the azurerm_virtual_machine resource in your main.tf file. Be sure to save the file.
 
     Then run the following commands to push the change to your forked repository:
 
@@ -603,17 +535,13 @@ challenges:
 
     Each time you push a change to master, you'll trigger a new Terraform run. Keep trying until you pass the Sentinel policy check.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1800
 - slug: quiz-3
@@ -645,7 +573,7 @@ challenges:
     Some of your users want a simple way to deploy databases and network configurations. Enter the Private Module Registry, in which you can store standard, re-usable Terraform code that others can use in their own workspaces.
   notes:
   - type: text
-    contents: "Most of the devops team is using Terraform to build and configure their infrastructure. Recently users from outside the team have been requesting help building their own workspaces. Gaurav, the database admin, sees you at lunch and asks for your help:\n>\U0001F473\U0001F3FE‍♂️ Hi senior sysadmin, I need to configure a lot of Azure Virtual Networks and I heard you have a Terraform module for this. Can you help me set up a new network in the hashicat-azure workspace?"
+    contents: "Most of the devops team is using Terraform to build and configure their infrastructure. Recently users from outside the team have been requesting help building their own workspaces. Gaurav, the database admin, sees you at lunch and asks for your help:\n>\U0001F473\U0001F3FE‍♂️ Hi senior sysadmin, I need to configure a lot of Azure Networks and I heard you have a Terraform module for this. Can you help me set up a new network in the hashicat-azure workspace?"
   assignment: |-
     In this challenge you'll learn to use the Private Module Registry, which allows you to store and version re-usable modules of Terraform code.
 
@@ -657,35 +585,29 @@ challenges:
 
     Click on the "Publish module" button.
 
-    After the module is completely published, please select version `3.0.1` of the module by clicking `Change` under **Version** in the upper left section of your screen. If `3.0.1` is not visible, refresh the page once as versions may take a moment to publish. **Newer versions will not work with the version of the Azure provider pinned in the `providers` block of main.tf; so please do not use them.**
+    After the module is completely published, please select version `3.5.0` of the module by clicking `Change` under **Version** in the upper left section of your screen. If `3.5.0` is not visible, refresh the page once as versions may take a moment to publish.
 
     Click on the "Inputs" tab of the module. This indicates that you have to specify the `resource_group_name` module variable when creating an instance of the module. For inputs that reference resources already created in your main.tf file, we recommend that you use references that refer to the appropriate attributes of those resources. But you can also use hard-coded values if you prefer.
 
-    Create a new Terraform file called `vnet.tf` in the hashicat-azure directory and use the module in this file to create a new Virtual Network for Gaurav. You can copy the module creation code from the "Usage Instructions" section of the module's page in your Private Module Registry and just add the required `resource_group_name` module variable.
+    Create a new Terraform file called `network.tf` in the hashicat-azure directory and use the module in this file to create a new Virtual Network for Gaurav. You can copy the module creation code from the "Usage Instructions" section of the module's page in your Private Module Registry and just add the required `resource_group_name` module variable.
 
-    Since you are editing a new file, you need to save it even if you are using the VS Code Editor. Use the File > Save menu and type "vnet.tf" for the name. If you are using the Instruqt Text Editor, just click the disk icon above the file.
-
-    After you have saved the `vnet.tf` file, you can add, commit, and push your latest changes to your remote fork. You will be prompted to log onto your github account to push the change.
+    After you have saved the `network.tf` file, you can add, commit, and push your latest changes to your remote fork. You will be prompted to log onto your github account to push the change.
 
     ```
     git add .
-    git commit -m "Added vnet module"
+    git commit -m "Added network module"
     git push origin master
     ```
 
     If all went well you should see a new network being built in the console output. Wait until your terraform apply command is complete, then click the `Check` button to verify your work.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1800
 - slug: api-driven-workflows
@@ -700,7 +622,7 @@ challenges:
   - type: text
     contents: |-
       Feeling stuck? Remember that the Terraform Cloud docs contain examples for all API endpoints:
-      https://www.terraform.io/docs/cloud/api/variables.html#create-a-variable
+      https://www.terraform.io/docs/cloud/api/workspace-variables.html#create-a-variable
       https://www.terraform.io/docs/cloud/api/run.html#create-a-run
   - type: text
     contents: |-
@@ -736,30 +658,21 @@ challenges:
     ```
     Copy or save this workspace ID somewhere as you will need it during the challenge.
     ### The Challenge:
-    Use the four *.json files located in the json directory to create your variables and trigger a Terraform plan/apply. Use the Terraform API docs (which are in one of this challenge's notes) to determine which commands to run. You can edit the files in your text editor to customize them for your workspace. Be sure to include `@` before the JSON file names.
+    Use the four *.json files located in the json directory to create your variables and trigger a Terraform plan/apply. Use the Terraform API docs (which are in one of this challenge's notes) to determine which commands to run. You can edit the files in your code editor to customize them for your workspace. Be sure to include `@` before the JSON file names.
 
     You can find the relevant curl request instructions here:
     - [For workspace variables](https://www.terraform.io/docs/cloud/api/workspace-variables.html#sample-request)
     - [To apply runs](https://www.terraform.io/docs/cloud/api/run.html#sample-request)
 
-    HINT: The global find-and-replace (magnifying glass icon) allows you to replace text across all the files in your workspace at once.
-
     When you've succesfully triggered a run via the API with the new variables, click the Check button to continue.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
-    type: external
-    url: https://app.terraform.io
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1800
 - slug: quiz-4
@@ -794,17 +707,13 @@ challenges:
 
     You can continue to build and experiment with Terraform, or simply click the Check button to complete the track.
   tabs:
-  - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
-    type: code
-    hostname: workstation
-    path: /root/hashicat-azure
   - title: Shell
     type: terminal
     hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1800
-checksum: "10479087244889973588"
+checksum: "12077414660083449085"

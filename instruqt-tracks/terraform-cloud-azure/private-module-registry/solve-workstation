@@ -1,4 +1,5 @@
 #!/bin/bash -l
+set -e
 
 # Enable bash history
 HISTFILE=/root/.bash_history
@@ -6,38 +7,29 @@ set -o history
 
 cd /root/hashicat-azure
 
-# Write out vnet.tf
-cat <<-EOF > vnet.tf
+if [[ -f /root/skipconfig.json ]]; then
+  ORG=$(jq -r .org < /root/skipconfig.json)
+  GITUSERID=$(jq -r .gituserid < /root/skipconfig.json)
+  GITPAT=$(jq -r .gitpat < /root/skipconfig.json)
+  cat <<-EOF > network.tf
 module "network" {
-  source  = "app.terraform.io/instruqt-circleci/network/azurerm"
-  version = "3.0.1"
+  source  = "app.terraform.io/$ORG/network/azurerm"
+  version = "3.5.0"
   resource_group_name = azurerm_resource_group.myresourcegroup.name
 
   depends_on = [azurerm_resource_group.myresourcegroup]
 }
 EOF
-
-# Students should run the 'fastforward' command to create this file.
-# Otherwise it is assumed that this is a CI/CD run.
-# The /root/skipconfig.json file is required for skipping challenges.
-if [[ -f /root/skipconfig.json ]]; then
-  ORG=$(jq -r .org < /root/skipconfig.json)
-  GITUSERID=$(jq -r .gituserid < /root/skipconfig.json)
-  GITPAT=$(jq -r .gitpat < /root/skipconfig.json)
-  # Set ORG in vnetc.tf
-  sed -i "s/instruqt-circleci/$ORG/g" vnet.tf
   git add .
-  git commit -m "Added vnet module"
+  git commit -m "Added network module"
   cat <<-EOF > /root/.netrc
-  machine github.com
-  login $GITUSERID
-  password $GITPAT
+machine github.com
+login $GITUSERID
+password $GITPAT
 EOF
   git push origin master
+else
+  echo "CircleCI run - no git push required."
 fi
-
-# The above will trigger a run for students who are skipping
-# In theory, we should trigger an apply with the API for CircleCI tests,
-# but if the first apply worked then we know the new one would too.
 
 exit 0

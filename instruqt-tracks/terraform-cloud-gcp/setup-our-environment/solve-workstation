@@ -1,20 +1,29 @@
 #!/bin/bash -l
+set -e
 
 # Enable bash history
 HISTFILE=/root/.bash_history
 set -o history
 
-# Blow away the test workspace, hashicat-gcp if it exists
-# Students should run the 'fastforward' command to create this file.
-# Otherwise it is assumed that this is a CI/CD run.
-# The /root/skipconfig.json file is required for skipping challenges.
+# Fetch a clean copy of the hashicat-gcp repo
+cd /root
+rm -rf hashicat-gcp
+
+# Check if this is a student or bot run, clone appropriate repo
 if [[ -f /root/skipconfig.json ]]; then
   ORG=$(jq -r .org < /root/skipconfig.json)
   TOKEN=$(jq -r .token < /root/skipconfig.json)
+  git clone https://github.com/hashicorp/hashicat-gcp
 else
   ORG="instruqt-circleci"
   TOKEN=$(cat /var/tfc_user_token)
+  git clone https://github.com/workshops-testbot/hashicat-gcp
 fi
+
+cd hashicat-gcp
+mv terraform.tfvars.example terraform.tfvars
+echo -e "# region = \"\"" >> terraform.tfvars
+echo -e "# zone = \"\"" >> terraform.tfvars
 
 # Store the ORG in /root/.bashrc
 grep $ORG /root/.bashrc || echo "export ORG=\"$ORG\"" >> /root/.bashrc
@@ -23,13 +32,7 @@ grep $ORG /root/.bashrc || echo "export ORG=\"$ORG\"" >> /root/.bashrc
 echo "Cleaning up the hashicat-gcp workspace..."
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-gcp
 
-# fudge the git repo for testing; this one is already completed
-cd /root
-rm -rf hashicat-gcp
-git clone https://github.com/workshops-testbot/hashicat-gcp
-cd hashicat-gcp
-mv terraform.tfvars.example terraform.tfvars
-echo -e "# region = \"\"" >> terraform.tfvars
-echo -e "# zone = \"\"" >> terraform.tfvars
+# Wipe the bash history
+history -c
 
 exit 0
