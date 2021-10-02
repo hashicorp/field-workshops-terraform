@@ -94,7 +94,7 @@ cat <<-EOM > /root/skipconfig.json
 }
 EOM
 
-ponysay -f twilight -f applejack -f rainbow -f pinkie -f rarity -f fluttershy "Ready to Skip Challenges!"
+cowsay "Ready to Skip Challenges!"
 
 EOF
 

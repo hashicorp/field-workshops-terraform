@@ -17,14 +17,6 @@ cat <<-EOF > /root/hashicat-gcp/json/var-${VAR}.json
       "category":"terraform",
       "hcl":false,
       "sensitive":false
-    },
-    "relationships": {
-      "workspace": {
-        "data": {
-          "id":"REPLACE_WITH_WORKSPACE_ID",
-          "type":"workspaces"
-        }
-      }
     }
   }
 }
