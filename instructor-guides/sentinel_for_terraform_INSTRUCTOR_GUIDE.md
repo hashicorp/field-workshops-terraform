@@ -169,6 +169,8 @@ We therefore recommend you do the following so that you can show the policies as
 
 Note that when you make changes to files in one window, you might need to select the file again in the other window to make the changes show up.
 
+Alternatively, you can show the complete set of original policies from this [file](https://github.com/rberlind/sentinel-training-solution/blob/v4/sentinel-policies/original-policies.sentinel.hcl) in any text editor that has syntax highlighting for HCL. Just scroll through the exercises in your preferred editor while showing the solutions in a single browser window pointing at your running instance of the Instruqt track.
+
 ## Timing for Two Session Workshop
 The following schedule is for the two session version of the workshop. It includes extra time in the second session to allow the completion of the second Instruqt track; but most customers will be happy to stop after 3 hours and complete the track on their own.
 
