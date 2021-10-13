@@ -16,12 +16,12 @@ Commands can be run on the "Shell" tab or in a terminal within the VS Code Edito
 ### Scheduling your workshop
 Please add all workshops, both public and private, to the shared instruqt-workshops Google calendar as follows:
 
-1. Create a new event on the instruqt-workshops calendar and set the name to the name of your workshop which could match a name being used by Field Marketing if it is public or the name of a specific customer and a product if it is private.
+1. Create a new event on the instruqt-workshops calendar and set the name to the name of your workshop which could match a name being used by Field Marketing if it is public or the name of a specific customer and a product if it is private. **Note that this calendar event should be separate from the one you send to workshop attendees.**
 2. Set the begin and end times of the event to the begin and end times of your workshop.
 3. Include the following information in the description:
     1. The name of the host (probably yourself) after "Host:"
     2. The names of presenters after "Presenters:"
-    3. A list of tracks that your workshop will use after "Tracks:", listing the URL of each track on its own line.
+    3. A list of tracks that your workshop will use after "Tracks:", listing the URL of each track on its own line. **Please do not list links to Instruqt invites.**
 
 Before saving the event, be sure to set the calendar as "instruqt-workshops" instead of your own personal calendar.
 
@@ -89,13 +89,15 @@ We have not yet enabled skipping for end-users even though Instruqt now supports
 #### Creating Instruqt Invites
 Once you've gotten an invite to the HashiCorp organization you can create temporary invite links for your students:
 
-1. Click on the **Invites** link at the top of the page.
-2. Click on the **New+** button to create a new invite.
-3. Create a descriptive title for internal use. Example: "Atlanta Intro to Terraform on Azure Workshop"
-4. Select the track you want to make available.
-5. Set the invite to expire in a month or two.
-6. Make the track available to your user for at least a week.
-7. Turn on the **Allow Anonymous** switch so you can hand the URL out on the day of training.
+1. Click on the **Invites** tab under https://play.instruqt.com/hashicorp. (Note that you must be have the Content Contributor role within the Instruqt HashiCorp organization to create invites. If you don't have that, see this [link](https://hashicorp.atlassian.net/wiki/spaces/SE/pages/511574174/Instruqt+and+Remark+Contributor+Guide#InstruqtandRemarkContributorGuide-GettingAccess).)
+2. Click on the **Create** button to create a new invite.
+3. Create a descriptive title such as "Acme Intro to Terraform (Azure) Workshop".
+4. Select the track you want to make available. Typing "Intro to Terraform" will help you find the right track in the filtered list.
+5. Leave "How many times can this invite be used?" set to 0.
+6. Set the invite to expire in one month.
+7. Leave "How many times can the track be played?" set to 0.
+8. Make the track available to your user for 1 month.
+9. Do not enable the **Allow anonymous** setting if you want to be able to track which users played the track based on their emails.
 
 ### Configuring the Instruqt Pools
 We recommend that you configure Instruqt pools for each Instruqt track used in this workshop 1 hour before you plan to use the track. Please see this Confluence [doc](https://hashicorp.atlassian.net/wiki/spaces/SE/pages/511574174/Instruqt+and+Remark+Contributor+Guide#InstruqtandRemarkContributorGuide-ConfiguringInstruqtPools) for instructions.
