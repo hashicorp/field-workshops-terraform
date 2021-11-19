@@ -1,0 +1,98 @@
+#!/bin/bash -l
+
+set -e
+
+git add . 
+git commit -m "Student Challenge 4 Updates"
+
+export GITLAB_STATUS=$(curl -s -m2 http://$GITLAB_PUBLIC_ADDRESS/api/v4)
+until [ "$GITLAB_STATUS" = "{\"error\":\"404 Not Found\"}" ]; do
+  sleep 5
+  echo "Waiting for Gitlab API to respond"
+  export GITLAB_STATUS=$(curl -s -m2 http://$GITLAB_PUBLIC_ADDRESS/api/v4)
+done
+
+cat <<-EOF >> /root/.bashrc
+
+cd $GITDIR
+echo Temporary Gitlab Server: http://$GITLAB_PUBLIC_ADDRESS/
+echo Username: root
+echo Password: $GITLAB_PASSWORD
+EOF
+
+#Prerequisites for GitLab Access Token script
+apt install -y python3-pip
+pip3 install BeautifulSoup4
+pip3 install lxml
+
+export GITLAB_TOKEN=$(python3 ~/setup/scripts/gitlab_access_token.py access-token 2025-08-31 $GITLAB_PUBLIC_ADDRESS $GITLAB_PASSWORD | awk 'END {print $NF}')
+echo export GITLAB_TOKEN=$GITLAB_TOKEN >> /root/.bashrc
+export TF_VAR_GITLAB_TOKEN=$GITLAB_TOKEN
+echo export TF_VAR_GITLAB_TOKEN=$GITLAB_TOKEN >> /root/.bashrc
+
+cd ~/setup/terraform/gitlab/gitlab-projects
+terraform init
+terraform apply -parallelism=1 -auto-approve
+
+cd /root/gitclones
+
+git config --global user.name "root" > /dev/null 2>&1
+git config --global user.email demo@hashicorp.com > /dev/null 2>&1
+
+for x in development-team/hashicat-aws network-team/terraform-aws-webapp-networking ; do
+  IFS='/'
+  read -a strarr<<< $x
+  git clone https://github.com/hashicorp/${strarr[1]}.git
+  cd ${strarr[1]}
+  rm -Rf .git
+# Adds an environment variable to allow for unique builds per environment.
+# Kind of a hack but we didn't want to modify hashicat-aws based on potential
+# downstream impacts
+  if [ ${strarr[1]} == "hashicat-aws" ]; then
+    cat <<-EOF >> variables.tf
+
+variable "environment" {
+  description = "Environment parameter to provide uniqueness per environment"
+  default = "development"
+}
+EOF
+    sed -i 's/${var.prefix}/${var.prefix}-${var.environment}/g' main.tf
+  fi
+  git init
+  git remote add origin http://$GITLAB_PUBLIC_ADDRESS/${strarr[0]}/${strarr[1]}.git
+  git add .
+  git commit -m "First commit"
+  git tag -a v$((RANDOM % 10)).$((RANDOM % 10)).0 -m "Create Tag"
+  git push http://root:$GITLAB_PASSWORD@$GITLAB_PUBLIC_ADDRESS/${strarr[0]}/${strarr[1]}.git
+  git push --tags http://root:$GITLAB_PASSWORD@$GITLAB_PUBLIC_ADDRESS/${strarr[0]}/${strarr[1]}.git
+  git branch stage
+  git push http://root:$GITLAB_PASSWORD@$GITLAB_PUBLIC_ADDRESS/${strarr[0]}/${strarr[1]}.git stage
+  git branch development
+  git push http://root:$GITLAB_PASSWORD@$GITLAB_PUBLIC_ADDRESS/${strarr[0]}/${strarr[1]}.git development
+  cd ..
+done
+
+cd ~/gitclones/tflabs
+git remote add gitlab http://root:$GITLAB_PASSWORD@$GITLAB_PUBLIC_ADDRESS/Terraform-Labs/terraform-labs.git
+git push --set-upstream http://root:$GITLAB_PASSWORD@$GITLAB_PUBLIC_ADDRESS/Terraform-Labs/terraform-labs.git master
+
+export TERRAFORM_CONFIG=/root/.terraform.d/credentials.tfrc.json
+export TF_VAR_AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID"
+export TF_VAR_AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
+echo export TERRAFORM_CONFIG=/root/.terraform.d/credentials.tfrc.json >> /root/.bashrc
+echo export TF_VAR_AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID" >> /root/.bashrc
+echo export TF_VAR_AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY" >> /root/.bashrc
+
+# Hacky way to get the job to auto apply
+# If you try to add VCS on the first apply it will run the job
+# before having the variables applied and will fail.
+# You need to run the job a second time. I just set the variables
+# in the first apply then added the VCS and auto-apply on the
+# second apply.
+cd ~/setup/terraform/tfc-workspaces
+terraform init
+terraform apply -auto-approve
+
+mv main.tf main.tf.1
+mv main.tf.2 main.tf
+terraform apply -auto-approve

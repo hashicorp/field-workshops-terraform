@@ -1,0 +1,50 @@
+#!/bin/bash
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+if [ ! -f  "/root/.terraform.d/credentials.tfrc.json" ]
+then
+      fail-message "TFC token not set, please run the terraform login command or refresh your Terminal tab before continuing."
+else
+      TOKEN=$(jq -r '.credentials."app.terraform.io".token'  /root/.terraform.d/credentials.tfrc.json)
+      echo $(echo TFE_TOKEN=$TOKEN >> /root/.bashrc)
+fi
+
+if [ -z "$TOKEN" ]
+then
+      fail-message "TFC token not set, please run the terraform login command or refresh your Terminal tab before continuing."
+else
+      echo $(echo TFE_TOKEN=$TOKEN >> /root/.bashrc)
+fi
+
+export TFC_ORG=$(awk -F'"' '/organization/ {print $2}' remote_backend.tf)
+export TFC_WORKSPACE=$(awk -F'"' '/ name/ {print $2}' remote_backend.tf)
+
+# Get Terraform Cloud Workspace ID
+export WRKS_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" https://app.terraform.io/api/v2/organizations/instruqt-circleci/workspaces/$TFC_WORKSPACE|jq -r .data.id)
+
+# Get state download url for further jq queries
+export STATE_URL=$(curl -s  --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" https://app.terraform.io/api/v2/workspaces/$WRKS_ID/current-state-version| tac | jq -r '.data.attributes."hosted-state-download-url"')
+
+# Check if the module was used
+if [ $(curl -s $STATE_URL|jq -r '.resources[] | select (.module == "module.networking") | .type'|wc -l) != 6 ]
+then
+      fail-message "6 AWS resources were not created with the defined networking module. Please review your module declaration or review the additional details for the solution."
+fi
+
+# Check if the AWS instance referenced a data source
+if [ -z $(curl -s $STATE_URL|jq -r '.resources[] | select (.type == "aws_instance") | select (.instances[].dependencies[] == "data.aws_ami.ubuntu") | .name') ]
+then
+      fail-message "The resource aws_instance does not reference and ami via the default data source. Please review your module declaration or review the additional details for the solution."
+fi
+
+# Check state for function usage.
+if [ -z $(curl -s $STATE_URL|jq -r '.resources[] | select (.type == "aws_instance") | .instances[].attributes.tags.created') ]
+then
+      fail-message "The resource aws_instance does not reference and ami via the defined data source. Please review aws_instance resource block ami reference."
+fi

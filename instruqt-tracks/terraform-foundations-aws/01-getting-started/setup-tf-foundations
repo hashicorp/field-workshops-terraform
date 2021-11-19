@@ -1,0 +1,94 @@
+#!/bin/bash -l
+
+set -e
+
+# Wait for Instruqt to finish booting the VM
+# This is better than doing sleep
+while [ ! -f /opt/instruqt/bootstrap/host-bootstrap-completed ]
+do
+    echo "Waiting for Instruqt to finish booting the VM"
+    sleep 1
+done
+
+apt update
+apt install awscli -y
+
+# Source important environment variables
+echo "source /etc/profile.d/instruqt-env.sh" >> /root/.bashrc
+source ~/.bashrc
+
+# Clone Assets
+echo "Cloning assets..."
+git clone https://github.com/hashicorp/field-workshops-terraform-foundations-assets.git /tmp/field-workshops-terraform-foundations-assets
+cp -r /tmp/field-workshops-terraform-foundations-assets/setup /root/.
+mkdir /root/gitclones
+cp -r /tmp/field-workshops-terraform-foundations-assets/gitclones/tflabs/getting-started /root/gitclones/tflabs
+
+# Leaving this in for now... Will change to the built in editor at some point
+#curl -fsSL https://code-server.dev/install.sh | sh
+curl -fsSL https://code-server.dev/install.sh | sh -s -- --version 3.12.0
+
+# Install Terraform Extension
+code-server --install-extension hashicorp.terraform --force
+
+# code-server config
+mkdir -p /root/.local/share/code-server/User
+cat <<-EOF > /root/.local/share/code-server/User/settings.json
+{
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "terminal.integrated.fontFamily": "Inconsolata, Consolas, 'Courier New', monospace",
+    "terminal.integrated.copyOnSelection": true
+    "workbench.colorTheme": "Default Dark+"
+}
+EOF
+
+# Start up Visual Studio Code server
+# Create VSC startup script
+cat <<-EOF > /etc/systemd/system/code-server.service
+[Unit]
+Description=Code Server
+After=network.target
+StartLimitIntervalSec=0
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/usr/bin/code-server --bind-addr 0.0.0.0:8443 --cert --auth none /root/gitclones
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Add AWS keys to systemd environment
+systemctl import-environment AWS_ACCESS_KEY_ID
+systemctl import-environment AWS_SECRET_ACCESS_KEY
+
+# Start VSC
+systemctl enable code-server
+systemctl start code-server
+
+# Provision GitLab
+cd ~/setup/terraform/gitlab/gitlab-server
+terraform init
+terraform apply -auto-approve
+
+export GITLAB_PASSWORD=$(terraform show -json |jq '.values.outputs.gitlab_password.value' --raw-output)
+export GITLAB_PUBLIC_ADDRESS=$(terraform show -json |jq '.values.outputs.gitlab_public_address.value' --raw-output)
+export GITLAB_PROJECT=http://$(terraform show -json |jq '.values.outputs.gitlab_public_address.value' --raw-output)/tflabs
+export GITLAB_BASE_URL=http://$GITLAB_PUBLIC_ADDRESS/api/v4
+
+cat <<-EOF >> /root/.bashrc
+
+echo export GITLAB_PASSWORD=$GITLAB_PASSWORD >> /root/.bashrc
+export GITLAB_BASE_URL=$GITLAB_BASE_URL
+export GITLAB_PUBLIC_ADDRESS=$GITLAB_PUBLIC_ADDRESS
+export GITLAB_PROJECT=$GITLAB_PROJECT
+echo export TF_VAR_GITLAB_PUBLIC_ADDRESS=$GITLAB_PUBLIC_ADDRESS >> /root/.bashrc
+
+echo AWS Console: https://$AWS_ACCOUNT_ID.signin.aws.amazon.com/console/
+echo AWS Account Username:  $AWS_ACCOUNT_USERNAME
+echo AWS Account Password:  $AWS_ACCOUNT_PASSWORD
+
+cd ~/gitclones/tflabs
+
+EOF

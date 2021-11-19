@@ -1,0 +1,14 @@
+#!/bin/bash -l
+set -e
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+export TFC_ORG="instruqt-circleci"
+export TOKEN=$(cat /var/tfc_user_token)
+
+cp -r /tmp/field-workshops-terraform-foundations-assets/gitclones/tflabs/terraform-intermediate-solved/* /root/gitclones/tflabs
+cd /root/gitclones/tflabs
+terraform init && terraform apply --auto-approve
+

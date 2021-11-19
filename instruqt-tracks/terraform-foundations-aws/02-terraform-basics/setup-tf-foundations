@@ -1,0 +1,12 @@
+#!/bin/bash -l
+
+set -e
+
+cd ~/gitclones/tflabs
+git init
+git config --global user.email "tflab@hashicorplabs.com"
+git config --global user.name "HashiCorp Labs"
+git add . 
+git commit -m "Student Challenge 1 Updates"
+
+cp -r /tmp/field-workshops-terraform-foundations-assets/gitclones/tflabs/terraform-basics/* /root/gitclones/tflabs

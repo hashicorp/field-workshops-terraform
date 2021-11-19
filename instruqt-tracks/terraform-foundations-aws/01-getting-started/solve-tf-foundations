@@ -1,0 +1,15 @@
+#!/bin/bash -l
+set -e
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+export TFC_ORG="instruqt-circleci"
+export TOKEN=$(cat /var/tfc_user_token)
+
+cp -r /tmp/field-workshops-terraform-foundations-assets/gitclones/tflabs/getting-started-solved/* /root/gitclones/tflabs
+cd /root/gitclones/tflabs
+terraform init && terraform apply --auto-approve
+
+curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE https://app.terraform.io/api/v2/organizations/$TFC_ORG/workspaces/tflabs

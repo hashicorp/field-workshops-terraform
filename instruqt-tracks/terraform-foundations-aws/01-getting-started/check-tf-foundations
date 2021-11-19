@@ -1,0 +1,24 @@
+#!/bin/bash
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+cd ~/gitclones/tflabs
+
+if [ $(terraform validate -json|jq .valid) == false ]; then
+      fail-message "Please verify your code rerun 'terraform apply'.   $(terraform validate -json|jq .diagnostics[0].severity --raw-output) in $(terraform validate -json|jq .diagnostics[0].range.filename --raw-output) between lines $(terraform validate -json|jq .diagnostics[0].range.start.line) - $(terraform validate -json|jq .diagnostics[0].range.end.line). $(terraform validate -json|jq .diagnostics[0].detail --raw-output)"
+fi
+
+if [ ! -f  ~/gitclones/tflabs/terraform.tfstate ]; then
+      fail-message "Missing state file.  Did you run a successful 'terraform apply'"
+fi
+
+export VPC_ID=$(jq -r '.resources[]| select(.type == "aws_vpc")| .instances[].attributes.id' terraform.tfstate)
+if [ -z $VPC_ID ] ; then
+      fail-message "We did not find a VPC ID in your statefile.  Make sure you have a VPC defined and you ran a successful 'terraform apply'"
+fi
+

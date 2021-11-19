@@ -1,0 +1,29 @@
+#!/bin/bash -l
+
+set -e 
+
+git add . 
+git commit -m "Student Challenge 3 Updates"
+
+cat <<-EOF >> /root/.bashrc
+
+if [ ! -f  "/root/.terraform.d/credentials.tfrc.json" ]; then
+    terraform login
+    export TERRAFORM_CONFIG=/root/.terraform.d/credentials.tfrc.json
+  else
+    export TERRAFORM_CONFIG=/root/.terraform.d/credentials.tfrc.json
+    echo "Terraform Login was Ran"
+fi
+
+EOF
+
+TOKEN=$(awk -F'"' '/token/ {print $4}' /root/.terraform.d/credentials.tfrc.json)
+
+if [ -z "$TOKEN" ] || [ ! -f  "/root/.terraform.d/credentials.tfrc.json" ]; then
+    echo "Terraform Login Needs to be Ran"
+    export TERRAFORM_CONFIG=/root/.terraform.d/credentials.tfrc.json
+  else
+    echo "Terraform Login was Ran"
+fi
+
+cat /tmp/field-workshops-terraform-foundations-assets/gitclones/tflabs/terraform-intermediate/main-merge.tf >> ~/gitclones/tflabs/main.tf
