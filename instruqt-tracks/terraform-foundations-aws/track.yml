@@ -89,7 +89,7 @@ challenges:
     Once the provider block is created, you can move on to creating our first AWS resource, an AWS VPC. The resource block has been started for you but still requires some
     parameters to be set. Please use the reference tab for `AWS VPC` for the relevant documentation. Be sure to note what arguments are "required".
 
-    Once you have both the Provider and VPC resource defined, you can move on to the next steps in the CLI tab.
+    Once you have both the Provider and VPC resource defined, you can move on to the next steps in the `Terminal` tab.
 
     <ins>**CLI Commands - Init, Plan and Apply**</ins>
 
@@ -194,7 +194,7 @@ challenges:
     ```
     The output will report that there is **1 to change** resource. You should notice some key details in this output. **~ update in-place**
     reports that we will be updating our existing VPC we created. The tilde represents a resource about to be changed. The green plus will
-    indicate what is being added. In our case, you should see a green plus each tag that was added.
+    indicate what is being added. In our case, you should see a green plus for each tag that was added.
 
     These are expected changes so let's continue with our `terraform apply` command:
     ```
@@ -591,7 +591,7 @@ challenges:
 
     ```
     module "networking" {
-      source = "github.com/hashicorp/terraform-aws-webapp-networking?ref=v1.0"
+      source = "github.com/hashicorp/terraform-aws-webapp-networking?ref=v1.0.0"
       region =
       prefix =
       tags =
@@ -623,7 +623,7 @@ challenges:
     When you run terraform init on the modular project you will notice some additional output.
     ```
     Initializing modules...
-    Downloading github.com/hashicorp/terraform-aws-webapp-networking?ref=v1.0 for networking...
+    Downloading github.com/hashicorp/terraform-aws-webapp-networking?ref=v1.0.0 for networking...
     - networking in .terraform/modules/networking
     ```
     Like what we saw with the AWS provider, the module will also be downloaded locally to the ".terraform" folder
@@ -636,7 +636,7 @@ challenges:
     **Module declaration**
     ```
     module "networking" {
-      source = "github.com/hashicorp/terraform-aws-webapp-networking?ref=v1.0"
+      source = "github.com/hashicorp/terraform-aws-webapp-networking?ref=v1.0.0"
       region = var.region
       prefix = "${var.prefix}-network"
       tags = local.standard_tags
@@ -782,20 +782,20 @@ challenges:
 
     [<ins>**Terraform Cloud**</ins>](https://app.terraform.io/app/organizations)
 
-    When you navigate to TFC you will see a new Organization name `Terraform-Foundations-<RandomString>`. In this new organization
-    you will have three new workspaces, one for each environment. Each of these workspaces are connected to our GitLab VCS and to
-    the respected branches that we covered in the previous step.
+    When you navigate to TFC you will see a new Organization named `Terraform-Foundations-<RandomString>` in the top left pull down menu.
+    In this new organization you will have three new workspaces, one for each environment. Each of these workspaces are connected to our
+    GitLab VCS and to the respected branches that we covered in the previous step.
 
     If all of your workspaces are not "Applied", please wait until they complete.
 
     Select the `HashiCat-Development` workspace. Let's review the current workspace configuration.
 
-    Select the latest `Run` and select `Apply Finished` to view the apply output. Scroll to the bottom of this output to get the
-    HashiCat app URL. You will have one URL for each environment/workspace. Each of these web pages will report what environment
-    they are part of.
+    From the `Overview` page there will be an `Outputs` tab. There should be two outputs that were created, `catapp_ip` and `catapp_url`. Each
+    Terraform Cloud workspace will have unique outputs for each environment. When you navigate to these URL's, the HashiCat webpage will indicate
+    which environment they are in.
 
-    Variables are set for the AWS credentials and prefix. There is also a variable named "environment" that labels our resources
-    appropriately. This will be the same variable that outputs in our HashiCat web page.
+    Variables are set for the AWS credentials and prefix, similar to the previous challenges. There is also a variable named "environment" that
+    labels our resources appropriately. This will be the same variable that outputs in our HashiCat web page.
 
     Select `Settings` and `Version Control`. You can see that we are connected to our GitLab hashicat-aws project that we reviewed
     earlier. The `VCS branch` will denote which branch in GitLab that this workspace will be watching for changes. Since our triggering
@@ -879,4 +879,4 @@ challenges:
     url: https://app.terraform.io
   difficulty: basic
   timelimit: 5000
-checksum: "4575928146783464658"
+checksum: "8296701521441350551"
