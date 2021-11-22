@@ -89,7 +89,7 @@ challenges:
     Once the provider block is created, you can move on to creating our first AWS resource, an AWS VPC. The resource block has been started for you but still requires some
     parameters to be set. Please use the reference tab for `AWS VPC` for the relevant documentation. Be sure to note what arguments are "required".
 
-    Once you have both the Provider and VPC resource defined, you can move on to the next steps in the CLI tab.
+    Once you have both the Provider and VPC resource defined, you can move on to the next steps in the `Terminal` tab.
 
     <ins>**CLI Commands - Init, Plan and Apply**</ins>
 
@@ -194,7 +194,7 @@ challenges:
     ```
     The output will report that there is **1 to change** resource. You should notice some key details in this output. **~ update in-place**
     reports that we will be updating our existing VPC we created. The tilde represents a resource about to be changed. The green plus will
-    indicate what is being added. In our case, you should see a green plus each tag that was added.
+    indicate what is being added. In our case, you should see a green plus for each tag that was added.
 
     These are expected changes so let's continue with our `terraform apply` command:
     ```
@@ -591,7 +591,7 @@ challenges:
 
     ```
     module "networking" {
-      source = "github.com/hashicorp/terraform-aws-webapp-networking?ref=v1.0"
+      source = "github.com/hashicorp/terraform-aws-webapp-networking?ref=v1.0.0"
       region =
       prefix =
       tags =
@@ -623,7 +623,7 @@ challenges:
     When you run terraform init on the modular project you will notice some additional output.
     ```
     Initializing modules...
-    Downloading github.com/hashicorp/terraform-aws-webapp-networking?ref=v1.0 for networking...
+    Downloading github.com/hashicorp/terraform-aws-webapp-networking?ref=v1.0.0 for networking...
     - networking in .terraform/modules/networking
     ```
     Like what we saw with the AWS provider, the module will also be downloaded locally to the ".terraform" folder
@@ -636,7 +636,7 @@ challenges:
     **Module declaration**
     ```
     module "networking" {
-      source = "github.com/hashicorp/terraform-aws-webapp-networking?ref=v1.0"
+      source = "github.com/hashicorp/terraform-aws-webapp-networking?ref=v1.0.0"
       region = var.region
       prefix = "${var.prefix}-network"
       tags = local.standard_tags
@@ -879,4 +879,4 @@ challenges:
     url: https://app.terraform.io
   difficulty: basic
   timelimit: 5000
-checksum: "4575928146783464658"
+checksum: "8296701521441350551"
