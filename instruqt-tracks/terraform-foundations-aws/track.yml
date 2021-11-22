@@ -782,20 +782,20 @@ challenges:
 
     [<ins>**Terraform Cloud**</ins>](https://app.terraform.io/app/organizations)
 
-    When you navigate to TFC you will see a new Organization name `Terraform-Foundations-<RandomString>`. In this new organization
-    you will have three new workspaces, one for each environment. Each of these workspaces are connected to our GitLab VCS and to
-    the respected branches that we covered in the previous step.
+    When you navigate to TFC you will see a new Organization named `Terraform-Foundations-<RandomString>` in the top left pull down menu.
+    In this new organization you will have three new workspaces, one for each environment. Each of these workspaces are connected to our
+    GitLab VCS and to the respected branches that we covered in the previous step.
 
     If all of your workspaces are not "Applied", please wait until they complete.
 
     Select the `HashiCat-Development` workspace. Let's review the current workspace configuration.
 
-    Select the latest `Run` and select `Apply Finished` to view the apply output. Scroll to the bottom of this output to get the
-    HashiCat app URL. You will have one URL for each environment/workspace. Each of these web pages will report what environment
-    they are part of.
+    From the `Overview` page there will be an `Outputs` tab. There should be two outputs that were created, `catapp_ip` and `catapp_url`. Each
+    Terraform Cloud workspace will have unique outputs for each environment. When you navigate to these URL's, the HashiCat webpage will indicate
+    which environment they are in.
 
-    Variables are set for the AWS credentials and prefix. There is also a variable named "environment" that labels our resources
-    appropriately. This will be the same variable that outputs in our HashiCat web page.
+    Variables are set for the AWS credentials and prefix, similar to the previous challenges. There is also a variable named "environment" that
+    labels our resources appropriately. This will be the same variable that outputs in our HashiCat web page.
 
     Select `Settings` and `Version Control`. You can see that we are connected to our GitLab hashicat-aws project that we reviewed
     earlier. The `VCS branch` will denote which branch in GitLab that this workspace will be watching for changes. Since our triggering
