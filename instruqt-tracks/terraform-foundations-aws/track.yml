@@ -1,0 +1,882 @@
+slug: terraform-foundations
+id: lyqbnw1paseo
+version: 0.0.1
+type: track
+title: Terraform Foundations
+teaser: |
+  Introduction to Infrastructure-as-Code
+description: |
+  This Terraform Foundations workshop will cover all the basic concepts of infrastructure-as-code. You will get hands on experience setting up first Terraform template,
+  running basic to intermediate commands and deploying real cloud infrastructure.
+
+  We will also cover the power of storing and managing your infrastructure-as-code in a version control system (VCS) and the concepts of a collaborative GitOps approach
+  for infrastructure changes.
+icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
+tags: []
+owner: hashicorp
+developers:
+- jlinn@hashicorp.com
+- troy@hashicorp.com
+private: true
+published: true
+show_timer: true
+challenges:
+- slug: 01-getting-started
+  id: yp5lxg4at0ar
+  type: challenge
+  title: "\U0001F4DA Getting Started"
+  teaser: |-
+    Welcome to this HashiCorp workshop on Infrastructure-as-Code with Terraform
+
+    ◉ Setup the AWS Provider
+
+    ◉ Define a AWS VPC
+
+    ◉ CLI Commands - init, plan, apply
+  notes:
+  - type: text
+    contents: |
+      Terraform is an Infrastructure-as-Code (IaC) software tool created by HashiCorp, and released in 2014. It was created with the intent to allow users to define and provision
+      infrastructure using a declarative configuration language known as HashiCorp Configuration Language (HCL) or JSON. Terraform manages external resources, such as public and
+      private cloud infrastructure, network appliances, Software-as-a-Service (SaaS) and Platform-as-a-Service (PaaS) resources. This is done via a catalog providers, that allow
+      Terraform to access the platforms on which infrastructure is managed.
+
+      Declarative configuration allows you to define the desired final state of your resources without having to define the logic necessary to get there. Terraform determines the order
+      that resources need to be provisioned in based on dependencies. For instance, a network needing to be provisiones before a server can be assigned to it.
+  assignment: |
+    **Welcome to the HashiCorp Instruqt Workshop for Terraform Foundations!**
+
+    For this Workshop you have multiple tabs in the Instruqt window. The `Code Editor` tab that is currently displayed is Visual Studio Code, or VSCode for short.
+    VSCode is a popular code editor with support for hundreds of languages providing syntax highlighting, bracket-matching, auto-indentation, Git integration and many other
+    features to streamline development. VSCode has extensions for Terraform that are currently enabled for you. Next is the is the `Terminal` tab, where you can run CLI commands.
+    Alternately, you can run CLI commands using the terminal built into VSCode by pressing CTRL+\` or choosing `Hamburger > Terminal > New Terminal` from the Code Editor tab. The `Slides` tab
+    contains the reference for the workshop content. We've also added tabs that forward you to the HashiCorp documentation that pertains to each particular challenge. Note that
+    some tabs will open a new tab in your browser.
+
+    In order to to familiarize you with Terraform and it's documentation, we're starting you with a non-functional config. Reference the documentation tabs in each exercise to help
+    you fill in the required information.
+
+    This first challenge will familiarize you with some basic concepts in Terraform. We are starting with a project named `tflabs` that consists of a single file named `main.tf`.
+    This file consists of comments that will help get you started writing your first Terraform config, as well as blocks defining the provider and aws_vpc needed for todays
+    workshop. As we build on this project, we will introduce more advanced concepts that will enable scalability, reusability, security and self service.
+
+    All Terraform templates are written in either [<ins>**HCL**</ins>](https://github.com/hashicorp/hcl/blob/hcl2/hclsyntax/spec.md) or JSON. For today's labs, we will be using
+    HCL. In most cases you will need to define the [<ins>**provider(s)**</ins>](https://www.terraform.io/docs/providers/index.html) for the services that you want to provision
+    changes to. We will cover what HCL is and what providers are in more detail below.
+
+    Today we will be using AWS as our cloud provider and `us-east-2` as our desired region. There are multiple ways in which you can set up providers, depending on how you plan
+    to connect to your target. The `AWS Provider` tab contains relevant documentation. In our lab environment we've added environment variables that will be used to authenticate
+    to AWS. You can display this information by running the following commands.
+
+    ```
+    echo $AWS_ACCESS_KEY_ID
+    ```
+    ```
+    echo $AWS_SECRET_ACCESS_KEY
+    ```
+    These credentials can be used for command-line tools like Terraform and the AWS CLI. We've also displayed information in your Terminal that will allow you to login to the AWS
+    console. We won't be pointing and clicking to build infrastructure in the console, as that would defeat the purpose of learning Infrastructure-as-Code. That being said,
+    some people prefer to learn by seeing the outcomes of running our code in the console.
+
+    NOTE: It's very important that you <ins>**NEVER**</ins> put credentials directly in your code!
+
+    Please pay attention to what parameters are **required** vs **optional** when setting up providers or creating resources. Required parameters must be defined in some way.
+    This could be directly in the config, set as environment variables or even called from a configuration file. For instance, the AWS provider could call your access_key and
+    secret_key from the stored environment variables as above, or from a credentials file.
+
+    Complete the AWS provider block and set `us-east-2` as your region.
+
+    Once the provider block is created, you can move on to creating our first AWS resource, an AWS VPC. The resource block has been started for you but still requires some
+    parameters to be set. Please use the reference tab for `AWS VPC` for the relevant documentation. Be sure to note what arguments are "required".
+
+    Once you have both the Provider and VPC resource defined, you can move on to the next steps in the CLI tab.
+
+    <ins>**CLI Commands - Init, Plan and Apply**</ins>
+
+    Before we can do anything with Terraform we need to initialize our workspace. Run the following command in your terminal:
+    ```
+    terraform init
+    ```
+    The `terraform init` command scans your Terraform code, identifies any providers that are needed and downloads them. These files will be saved in a hidden `.terraform`
+    folder in your working directory. If there are any syntax errors in your code, you may see them reported at this point.
+
+    Once you've run `terraform init` without error, run the `terraform plan` command:
+    ```
+    terraform plan
+    ```
+    The command output will report `1 to add` meaning that there is one resource to add, your VPC. The green **+** indicates that these are the changes that will occur if
+    you were to apply this plan. There are some settings that are already known and were set in our template, for instance, the cidr_block IP range that you defined, but there
+    are others that display `(known after apply)`. This means that those outputs are unknown until the resource is created. For instance, we do not know what the VPC ID is until
+    AWS assigns it an ID.
+
+    Run the `terraform apply` command and type `yes` to confirm:
+    ```
+    terraform apply
+    ```
+    The output will indicate that your apply was completed and 1 resource was added. Let's confirm that we have a VPC in AWS now.
+
+    Use the following AWS CLI command in the `Terminal` or log into the AWS console with the provided login information. We will be working in **us-east-2** so be sure
+    to be in that AWS region.
+    ```
+    aws ec2 describe-vpcs --region us-east-2
+    ```
+    The output will show the current configuration, as well as the dynamic ID's that were created by AWS during provisioning. The same information will be shown in the AWS Console.
+    This information is coming directly from the AWS API.
+
+    You can always get help if you're curious about command syntax:
+    ```
+    terraform help
+    ```
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: tf-foundations
+    port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: tf-foundations
+  - title: Slides
+    type: website
+    url: https://hashicorp.github.io/field-workshops-terraform/slides/multi-cloud/terraform-cloud/how-tf-works/#2
+  - title: AWS Provider
+    type: website
+    url: https://registry.terraform.io/providers/hashicorp/aws/latest/docs
+    new_window: true
+  - title: AWS VPC
+    type: website
+    url: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc
+    new_window: true
+  difficulty: basic
+  timelimit: 5000
+- slug: 02-terraform-basics
+  id: 81mf7bazio04
+  type: challenge
+  title: "\U0001F4D8 Terraform Basics"
+  teaser: |-
+    In this challenge we will learn about...
+
+    ◉ Modifying Existing Resources
+
+    ◉ Adding Additional Resources
+
+    ◉ Variables
+  notes:
+  - type: text
+    contents: |
+      So far we've learned the basic Terraform CLI commands and how to deploy a VPC. Next, we will look at modifying our existing VPC and adding additional
+      resources. We will also cover variables and interpolation.
+  assignment: |
+    <ins>**Modifying Existing Resources**</ins>
+
+    Now that we have an existing VPC, what happens if we need to add or change something? In our example, no tags were added to our VPC. These are going to
+    be needed to label our resources by environment and to provide resources names. Before we add these additional parameters, run a plan again and review the
+    output.
+
+    Run the `terraform plan` command:
+    ```
+    terraform plan
+    ```
+    You should have received a **No Changes. Infrastructure is up-to-date** message. Terraform does not operate like a traditional script, which would have
+    created another VPC. Terraform keeps track of the state of the infrastructure that it creates and makes changes based on what is declared in your template.
+
+    With our VPC already created and our Terraform plan reporting that our configuration and state is consistent with what is in AWS, let's add resource tags.
+    Please reference the `AWS VPC` tab for reference material.
+
+    Add the following tags to your VPC
+    ```
+    "Name" = "tflabs-vpc"
+    "environment" = "development"
+    ```
+
+    Run the `terraform plan` command:
+    ```
+    terraform plan
+    ```
+    The output will report that there is **1 to change** resource. You should notice some key details in this output. **~ update in-place**
+    reports that we will be updating our existing VPC we created. The tilde represents a resource about to be changed. The green plus will
+    indicate what is being added. In our case, you should see a green plus each tag that was added.
+
+    These are expected changes so let's continue with our `terraform apply` command:
+    ```
+    terraform apply -auto-approve
+    ```
+
+    The output will indicate that your apply was completed and 1 resource was changed. Let's confirm that we have new tags on our VPC in AWS by
+    running the AWS CLI command again.
+
+    Run the following aws cli command or review the VPC tags in the console.
+    ```
+    aws ec2 describe-vpcs --region us-east-2
+    ```
+    The output will show the VPC configuration details from the AWS API. This is what is currently in AWS and should contain your added resource
+    tags.
+
+    <ins>**Adding Additional Resources**</ins>
+
+    Congratulations, we now have a VPC with two resource tags in AWS. There's not much we can do with that but it's starting the foundation of
+    all the other resources we can deploy in AWS.
+
+    Next, we are going to add a subnet resource by adding an additional resource block for aws_subnet.
+
+    Adding additional resources will be identical to how we modified our VPC tags previously. We would create an additional resource block with
+    the required, and optional, parameters that we want. There is also a concept of interpolation that becomes important to understand.
+
+    So, what is "Interpolation"?
+
+    If you recall from our previous plan outputs, there are some resource parameters that report "(known after apply)". An example of this is the
+    VPC ID from AWS. We won't know what the VPC ID is until after the VPC gets created. So, how would you attach a subnet to a VPC ID without
+    knowing the VPC ID?  You would need to reference what the VPC ID is going to be after the VPC is created.
+
+    Let's dive into this concept and create a new subnet in the VPC that we created previously. We have added an additional Instruqt tab for the
+    `aws_subnet` resource documentation. Please review the documentation to determine which parameters are required to create a aws_subnet. We
+    will also want to continue to tag our resource as we did with our VPC.
+
+    You should have noticed that `vpc_id` is a required parameter. We need to define what VPC our subnet will be part of. We will use
+    interpolation to set this value. There are a few ways to do this. You can review the documentation and examples, which in most cases will
+    provide the required guidance. Currently, we have our VPC already created and a state file that is in-sync. We can use this to determine
+    what attributes are available through interpolation.
+
+    Open a terraform console
+    ```
+    terraform console
+    ```
+    This command will drop you into a different prompt. We know that our VPC resource is of resource type `aws_vpc` and the arbitrary name we assigned
+    is `tflabs`. We can use this information to query the current state file for what attributes are available.
+
+    Query available parameters of our VPC
+    ```
+    aws_vpc.tflabs
+    ```
+    The output of this command will list all the attributes that we can use through interpolation. Since a VPC ID is required for our subnet we
+    plan to create, you should notice that as an option. You can also query that attribute directly in the terraform console.
+
+    Query the VPC ID in terraform console
+    ```
+    aws_vpc.tflabs.id
+    ```
+    This output will be just the VPC ID. This is what we will use to set our VPC ID on our new subnet. Please continue to define your aws_subnet
+    resource using interpolation for the `vpc_id`. There will be one more required parameter that is required and don't forget to add your resource
+    tags. Tags are not required but is a best practice and a good habit to get into.
+
+    You can now exit the terraform console by typing `exit` and pressing enter:
+    ```
+    exit
+    ```
+    Once you have your aws_subnet resource defined, run the terraform plan and apply as you have done a few times already.
+    ```
+    terraform plan
+    ```
+    You should take notice of the output and verify that you approve what the apply will do. You should see `1 to add` resource, that our vpc_id is
+    populated with the existing VPC we created and that our tags are listed. If those are as you expect them, you can run the apply step.
+    ```
+    terraform apply -auto-approve
+    ```
+    At this point, you've probably noticed a rinse and repeat type pattern. This can be a good way to incrementally build a template and troubleshoot
+    problems on the way. You could define the entire template first and run less plan and applies. Either approach is acceptable and up to personal
+    preference.
+
+    Now that we covered how to create our infrastructure with Terraform, we can now destroy what we have done so far and move on to variables.
+    ```
+    terraform destroy -auto-approve
+    ```
+
+    [<ins>**Declaring and Using Input Variables**</ins>](https://www.terraform.io/docs/configuration/variables.html)
+
+    In our previous template we have been setting parameters directly in our Terraform template. This could work through the entire template but
+    hard-coding parameters makes our code less portable between environments and harder to share publicly. We would prefer to set settings that
+    would mutate between environments with variables. This allows us to use the same Terraform template between environments without modifying the
+    code directly. Now, we can have confidence that our environments are identical in configuration. The inputted variables define the
+    required specific settings for the targeted environments. We can continue to use interpolation to leverage variables that we've set.
+
+    Let's take a look at our current resources we've defined. There are settings that we have hardcoded that we would want to change if we wanted to run this
+    in multiple environments. The region, CIDR blocks and environment tag would need to change but if we had anything over just a few resources,
+    changing these parameters on every resource would be time consuming and adds the risk of human error.
+
+    We have added some additional files to your project for you. We will start with declaring the variables. Uncomment the variable blocks by removing
+    the hashtags below the "Uncomment" message in `variables.tf`. You can set data types, default values and descriptions for these variables
+    in this file. After we declare the variables that our template requires, we can update the `terraform.tfvars` with the values that we want to
+    assign to those variables. We have left the prefix variable for you to just uncomment but feel free to set additional values for the environment,
+    region, vpc_cidr and subnet_cidr. These values will override what you set as default values in the `variables.tf`.
+
+    Once we have our variables declared and the values defined, we can use those variables in our template in place of those hardcoded values. Our
+    new variables would be in a `var.<var_name>` format. For example, you can now set your aws_vpc cidr_block value to...
+    ```
+    var.vpc_cidr
+    ```
+    Set the rest of the values in our current project using their defined variables.
+
+    We can also add variables to a string. If we wanted to prefix or append a value to an existing string to make it unique, we could do that with our
+    prefix variable that we set. For instance, if you wanted to prefix your "Name" tag on your subnet, you could do the following. Since this includes
+    the string, be sure to keep it in quotes.
+    ```
+    "${var.prefix}-subnet"
+    ```
+    Update the rest of your parameters with your new variables and run another plan and apply to recreate the defined resources with the variables that
+    you've set.
+    ```
+    terraform plan
+    terraform apply -auto-approve
+    ```
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: tf-foundations
+    port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: tf-foundations
+  - title: Slides
+    type: website
+    url: https://hashicorp.github.io/field-workshops-terraform/slides/multi-cloud/terraform-cloud/tf-basics/#2
+  - title: AWS VPC
+    type: website
+    url: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc
+    new_window: true
+  - title: AWS Subnet
+    type: website
+    url: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet
+    new_window: true
+  - title: AWS Variables
+    type: website
+    url: https://www.terraform.io/docs/configuration/variables.html
+    new_window: true
+  - title: Interpolation
+    type: website
+    url: https://www.terraform.io/docs/configuration-0-11/interpolation.html
+    new_window: true
+  difficulty: basic
+  timelimit: 5000
+- slug: 03-terraform-state
+  id: ehx0g1wbx0eu
+  type: challenge
+  title: "\U0001F4D5 Terraform State"
+  teaser: |-
+    Next we take a look at Terraform state at more depth...
+
+    ◉ Exploring State
+
+    ◉ Terraform Cloud Setup
+
+    ◉ Remote State
+  notes:
+  - type: text
+    contents: |
+      In this next lab, we will look at how Terraform is tracking changes. Knowing how state works and what it contains is critical to understand. Once we have a
+      better understanding the purpose of state, we will move that state to a secure and centralized location.
+  assignment: |-
+    [<ins>**Exploring Infrastructure State**</ins>](https://www.terraform.io/docs/state/purpose.html)
+
+    You may have noticed the two new files in your `Code Editor` tab after we run successful applies called `terraform.tfstate` and `terraform.tfstate.backup`.
+    Click the terraform.tfstate file in the code editor to view the state file. Note that this state file is stored locally on our machine. During the
+    slides we discussed reasons why storing the Terraform state locally is not a best practice. In this lab challenge we will configure remote state
+    and use Terraform Cloud to store and protect our state file.
+
+    You should also notice all of the details of our VPC and subnet in our state file. This is an exact representation of what we currently have provisioned in
+    AWS. If we deleted this state file, the record of what is provisioned would be lost. If we would run another plan and apply after
+    deleting the state file, it would generate a new state file and create a duplicate of the defined infrastructure resources. The previous VPC and subnet would have
+    to be manually removed if the state file was lost. Losing a state file would have serious impacts to how we manage our infrastructure with Terraform going
+    forward.
+
+    Due to the importance of your Terraform state file, it is crucial that you have a secure and stable configuration to manage storage and locking of the
+    your state files.
+
+    [<ins>**Terraform Cloud Setup**</ins>](https://app.terraform.io/)
+
+    Let's start with setting up a Terraform Cloud Account. We recommend not using any production Terraform Cloud accounts for this course.
+
+    Click on the link below and create an account if you do not already have one. Please be sure to validate your email address. This is required to create
+    an organization.
+
+    [https://app.terraform.io/](https://app.terraform.io/)
+
+    After you have validated your email you will be given the option to create an organization. The organization name needs to be unique so be creative.
+    You can now click on "Workspaces". Since this is a new organization, you shouldn't have any in the list yet.
+
+    Now we are going to create an API token for Terraform Cloud. From the terminal run the following command
+    ```
+    terraform login
+    ```
+    When prompted, enter `yes` to proceed. Click on the URL provided. This will forward you to Terraform Cloud to create an API token. Copy the token string
+    and paste that at the "Token for app.terraform.io" prompt.
+
+    [<ins>**Remote State**</ins>](https://www.terraform.io/docs/state/remote.html)
+
+    Before we do a plan and apply to deploy our infrastructure, let's set up remote state. We have already created a `remote_backend.tf` file which configures Terraform
+    Cloud as a remote backend. You will need to update this file with the organization name you created. Once the organization is updated, we just need to migrate
+    our state file to Terraform Cloud by running another init.
+    ```
+    terraform init
+    ```
+    You should have been prompted with a new message asking if you want to copy the existing state to the new backend location we defined. Type 'yes' and press enter.
+    You should now see the new workspace created in Terraform Cloud. In Terraform Cloud, click on your workspace name and click on "States" in the upper right. You should
+    see the state file that you just migrated. You can click on this first version of your state file to look at it's contents.
+
+    Click on "Settings" and select "General". There are two execution modes for Terraform Cloud, Remote and Local. Remote will be the default and sets Terraform
+    Cloud to run the terraform commands in Terraform Cloud. Local will allow you to run the commands on your local computer but still get the advantages of having
+    secure remote state in Terraform Cloud. Select the `Local` option and save this setting.
+
+    Let's make a change to our template and see how Terraform Cloud updates the version of the state file. Change your "prefix" variable to something different.
+    Since we are using this prefix to prefix our resource name tags, it will update those tags on our existing resources.
+
+    Perform a plan to do a dry run on the Terraform code. Review the output to confirm what will be changed when you apply. It should be just the name tags.
+    ```
+    terraform plan
+    ```
+    Now run an apply to make those name tag changes in AWS.
+    ```
+    terraform apply -auto-approve
+    ```
+    After the apply completes, navigate back to Terraform Cloud. Select your workspace and review the states again. You should see a few different revisions
+    of your state with the changes you just made.
+
+    Since we are now confident that our state file is centrally stored in Terraform Cloud, we can delete our local state files that we have been working with.
+    ```
+    rm -Rf *tfstate*
+    ```
+    Now let's go back and change the Execution Mode back to remote. In Terraform Cloud, select your workspace again, go into "Settings" and "General" then select
+    remote. This will have the plan and apply run in Terraform cloud. While you are in the General Settings page, change the "Apply Method" to "Auto apply".
+    This will remove the requirement to confirm your applies in the console. Don't forget to save your settings.
+
+    We will need to transfer our AWS credentials to our workspace environment variables. Echo your AWS access key and secret from your terminal, like we did in
+    the first challenge.
+    ```
+    echo $AWS_ACCESS_KEY_ID
+    echo $AWS_SECRET_ACCESS_KEY
+    ```
+    This will be the information we will transfer to Terraform Cloud. In the "Workspace variables" section on the bottom of the page, click on "Add variable".
+    Choose the "Environment variable" bullet and add both AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY with the values shown above. Be sure to set the
+    "AWS_SECRET_ACCESS_KEY" as "Sensitive" to ensure that your sensitive credentials cannot be retrieved.
+
+    We will also need to set the Terraform Variables in this page. These will be the Terraform variables that you created in the previous challenge. You can
+    also review these in the `terrafom.tfvars` file or in the `variables.tf` file if you set default values. Use the "Terraform variable" bullet for these.
+    ```
+    prefix = <WhateverYouChoose>
+    region = us-east-2
+    environment = development
+    vpc_cidr = <YourVPCCIDR>
+    subnet_cidr = <YourSubnetCIDR>
+    ```
+    With all your required variables set, you can run another plan. If you set all the variables the same, you shouldn't have any changes. If you did set one
+    differently, you will see those changes outputted in your plan. If there were changes reported, run the apply also.
+    ```
+    terraform plan
+    ```
+    ```
+    terraform apply -auto-approve
+    ```
+    If you go back to Terraform Cloud, you will see the "Run Status" of our workspace as "Planning" or "Applying". You can also click on your workspace to review
+    the outputs of your current or previous plans and applies. Feel free to make changes to your prefix variable and run more plan and applies. Review the Terraform
+    Cloud console to see the job status.
+
+    When you have completed exploring Terraform Cloud, run the following command to destroy the infrastructure we have created.
+    ```
+    terraform destroy -auto-approve
+    ```
+    This can be done in Terraform Cloud as well.  Choose "Destruction and Deletion" in the settings of the workspace.  There will be two options in this menu.  Run
+    "Queue destroy plan" to destroy the infrastructure created by this workspace.
+
+    "Delete from Terraform Cloud" will delete the workspace but will not run a terraform destroy.  Use this with caution.  It will remove your state file and workspace
+    but leave your infrastructure in place.  This will remove all terraform management from the infrastructure created with that workspace.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: tf-foundations
+    port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: tf-foundations
+  - title: Slides
+    type: website
+    url: https://hashicorp.github.io/field-workshops-terraform/slides/multi-cloud/terraform-cloud/tf-basics/#2
+  - title: Terraform State
+    type: website
+    url: https://www.terraform.io/docs/state/purpose.html
+    new_window: true
+  difficulty: basic
+  timelimit: 5000
+- slug: 04-terraform-intermediate
+  id: aquqgxdrgn9d
+  type: challenge
+  title: "\U0001F4D7 Terraform Intermediate"
+  teaser: |-
+    Now let's look at some more advanced concepts...
+
+    ◉ Modular Infrastructure
+
+    ◉ Built-in Functions
+
+    ◉ Local Values
+  notes:
+  - type: text
+    contents: |
+      Now we will look at a few more advanced topics. Modules allow us to break up our code into reusable components. If all of our applications need foundational
+      networking resources, we wouldn't want to duplicate that code for every application we deploy. This also gives organizations finer control on who the authors of
+      those components are.
+
+      Built-in functions are included with Terraform and are called within expressions to transform and combine values. We won't cover all that are available but will
+      cover some of the most common ones.
+
+      Local values can be helpful to avoid repeating the same values or expressions multiple times in a configuration.
+  assignment: |
+    In this exercise we will be using everything we've learned so far together, as well as learn a few tricks including modules, data sources, local variables, and functions.
+
+    Please review the additional resources we added to your existing project.
+
+    [<ins>**Data Sources**</ins>](https://www.terraform.io/docs/configuration/data-sources.html)
+
+    Data sources allow data to be fetched or computed for use elsewhere in Terraform configuration. Here we are using an aws_ami data source to search for the latest version
+    of an Ubuntu image in the AWS AMI repository. We will use this image further down when creating an EC2 instance
+
+    ```
+    data "aws_ami" "ubuntu" {
+      most_recent = true
+      filter {
+        name   = "name"
+        values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+      }
+      filter {
+        name   = "virtualization-type"
+        values = ["hvm"]
+      }
+      owners = ["099720109477"] # Canonical
+    }
+    ```
+
+    Once a data source is defined its attributes become available for use in expressions throughout your Terraform configuration. The attributes made available by a data source can be determined using the documentation for that resource or the `terraform console` command.
+
+    You can reference a specific attribute as `data.<TYPE>.<NAME>.<ATTRIBUTE>`. For our AWS AMI example above, if you wanted to reference the AMI's ARN you would use `data.aws_ami.ubuntu.arn`
+
+    [<ins>**Local Values**</ins>](https://www.terraform.io/docs/configuration/locals.html)
+
+    A local value assigns a name to an expression, so you can use it multiple times within a module without repeating it.
+
+    Local values can be helpful to avoid repeating the same values or expressions multiple times in a configuration, but if overused they can also make a
+    configuration hard to read by future maintainers by hiding the actual values used.
+
+    In this example, we will be setting standard tags on resources provisioned by Terraform (the network and compute infrastructure).
+
+    ```
+    locals {
+      standard_tags = {
+        component   = "user-service"
+        environment = "production"
+      }
+    }
+    ```
+
+    Similar to resource or data attributes, local values can be used to assign attribute values or for string interpolation. You can reference local values as `local.<NAME>`.
+    For our example above you would used `local.standard_tags`
+
+    [<ins>**Built-in Functions**</ins>](https://www.terraform.io/docs/configuration/functions.html)
+
+    The Terraform language includes a number of built-in functions that you can call from within expressions to transform and combine values. Make sure you take a quick look at the functions docs, note the variety of function categories listed on the left. You may need to use one of them in this challenge!
+
+    [<ins>**Modular Infrastructure**</ins>](https://www.terraform.io/docs/configuration/modules.html)
+
+    While our networking components are not extremely complex, we want to be able to reuse this pattern for other web applications and build in some
+    organizational best practices.
+
+    IMPORTANT: comment out or delete your VPC and subnet terraform resource definitions as well as the vpc_cidr and subnet_cidr variables in Terraform Cloud. We will now be
+    leveraging a network module instead. This module contains similar code and allows us to abstract away those network details.
+
+    The source of our module is external from our project. By doing this, we decouple these components. This allows for further access controls around the code
+    and we can have separate change approvals for it. It also removes the requirement of the developer to have the required knowledge to setup these resources
+    following industry or organizational best practices.
+
+    Now let's look at the main.tf of the project. You will notice that a network module block declaration was added. Comment out your VPC and Subnet definitions as mentioned
+    above.
+
+    First, we need to pass the required values to the module... We provided the solutions for the next challenges below if you are stuck. Please try to find the answers from
+    the provided documentation tabs above.
+
+    ```
+    module "networking" {
+      source = "github.com/hashicorp/terraform-aws-webapp-networking?ref=v1.0"
+      region =
+      prefix =
+      tags =
+    }
+    ```
+
+    [<ins>**EC2 Instance**</ins>](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance)
+
+    Next we will define an EC2 instance resource. This allows instances to be created, updated, and deleted.
+
+    We've provided a scaffolding definition for you to fill in. You can leverage the documentation to determine which values are required.
+
+    You will need to define the following required values:
+      - The subnet the instance be placed in, which we can determine from the network module defined above.
+      - The AMI ID, which you can obtain from the [data source](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami#image_id) definition.
+      - The `created` tag which should be a timestamp created using a Terraform function. Check out the `Built-in Functions` tab to see which function you can use.
+
+    ```
+    resource "aws_instance" "tflabs" {
+      ami           =
+      instance_type = "t3.micro"
+      subnet_id =
+      tags = {
+        created =
+      }
+    }
+    ```
+
+    When you run terraform init on the modular project you will notice some additional output.
+    ```
+    Initializing modules...
+    Downloading github.com/hashicorp/terraform-aws-webapp-networking?ref=v1.0 for networking...
+    - networking in .terraform/modules/networking
+    ```
+    Like what we saw with the AWS provider, the module will also be downloaded locally to the ".terraform" folder
+
+
+    If you are having a tough time getting the right attributes, click **details** below for the solution.
+
+    <details>
+
+    **Module declaration**
+    ```
+    module "networking" {
+      source = "github.com/hashicorp/terraform-aws-webapp-networking?ref=v1.0"
+      region = var.region
+      prefix = "${var.prefix}-network"
+      tags = local.standard_tags
+    }
+    ```
+    **EC2 declaration**
+    ```
+    resource "aws_instance" "tflabs" {
+      ami           = data.aws_ami.ubuntu.id
+      instance_type = "t3.micro"
+      subnet_id = module.networking.subnet_id
+      tags = {
+          created = timestamp()
+      }
+    }
+    ```
+    </details>
+
+    Once the terraform apply is finished, validate that the VM has been created
+    ```
+    aws ec2 describe-instances --region us-east-2 --query 'Reservations[*].Instances[*].[Placement.AvailabilityZone, State.Name, InstanceId, Tags]'
+    ```
+    The instance's tags should show the creation timestamp
+    ```
+    {
+      "Key": "created",
+      "Value": "2020-12-16T19:01:59Z"
+    }
+    ```
+    Congrats! You've leveraged re-usable code as a network module and created a virtual machine all through terraform.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: tf-foundations
+    port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: tf-foundations
+  - title: Slides
+    type: website
+    url: https://hashicorp.github.io/field-workshops-terraform/slides/multi-cloud/terraform-cloud/tf-intermediate/#2
+  - title: Terraform Data Sources
+    type: website
+    url: https://www.terraform.io/docs/configuration/data-sources.html
+    new_window: true
+  - title: Terraform Locals
+    type: website
+    url: https://www.terraform.io/docs/configuration/locals.html
+    new_window: true
+  - title: Terraform Modules
+    type: website
+    url: https://www.terraform.io/docs/configuration/blocks/modules/syntax.html
+    new_window: true
+  - title: Terraform EC2 Instance
+    type: website
+    url: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
+    new_window: true
+  - title: Terraform Built-in Functions
+    type: website
+    url: https://www.terraform.io/docs/configuration/functions.html
+    new_window: true
+  difficulty: basic
+  timelimit: 5000
+- slug: 05-version-control-basics
+  id: akpvemklgdv7
+  type: challenge
+  title: "\U0001F4DA Version Control System (VCS) Basics"
+  teaser: |-
+    Great, we have code but how do we scale and collaborate on changes?
+
+    ◉ What is a VCS?
+
+    ◉ Terraform Cloud VCS Workflow
+
+    ◉ Managing infrastructure changes in VCS
+  notes:
+  - type: text
+    contents: |
+      Version Control, Revision Control, Source Control, Source Code Management are all synonymous. Version control systems
+      are used for software configuration management. It tracks and manages changes to source code over time. Version control
+      systems keep track of every modification and allows you to revert changes to any point in time.
+
+      For our labs today, we will be using GitLab, which is a Git based Distributed VCS. This is just a way of saying that
+      they entire code based for your project is mirrored to your local computer for local development.
+
+      We will be using GitLab to promote a change to our web app through Development into Stage and then into Production.
+  - type: image
+    url: https://hc-fto.github.io/te-terraform/TTE-101/images/gitflow.png
+  assignment: |
+    [<ins>**Version Control Systems (VCS)**</ins>](https://www.terraform.io/docs/state/remote.html)
+
+    We setup a GitLab server for this part of the labs.  The foundational configurations for Terraform Cloud and GitLab have been setup as well. This includes setting up the
+    webhook integration between them which allows information to be shared between the two tools. We've also added GitLab groups to simulate a Development Team and a Network
+    Team, committed our application code to projects/repositories in these groups, and added branches to represent various application environments. Finally we've added these
+    projects/repositories to Terraform Cloud in the form of "Workspaces".
+
+    HashiCat is a new project that we added for this part of the labs. This will create a simple webserver that we can use to promote changes between environments with
+    Terraform Cloud.
+
+    We've set the foundation for you, so that you can focus on the operational workflows and the power that comes along with them.  Let's start with the VCS...
+
+    [<ins>**GitLab CE**</ins>](https://about.GitLab.com/stages-devops-lifecycle/)
+
+    In the Terminal there will be some additional information. It should look similar to this...
+
+    ```
+    Temporary GitLab Server: http://<ip-addr>/
+    Username: root
+    Password: i-<RandomNumber>
+    ```
+
+    Click on the URL and login with the provided username and password. After logging in, you will see a list of the projects
+    that we will be working with.
+
+    `HashiCat AWS` is the new project we will be working with in this challenge
+
+    `Terraform AWS WebApp Networking` is our module example from our tflabs project
+
+    `Terraform Labs` are your labs. We have been tracking your updates and created a project for you to explore
+
+    Select the `Terraform Labs` project. You will see an identical directory structure from our local project that you can
+    explore.
+
+    Select the `Commits` link underneath our project title. You should see four commits from today...one from each challenge.
+
+    Select "Student Challenge 1 Updates". This will show you what was removed and what was added. This will tell us when configurations were
+    changed, and by whom. This can be a powerful tool for troubleshooting and change control.
+
+    Select `Browse files` button in the upper right. This allows you to view the files from this particular point in time. You may have noticed that
+    our state file was pushed into our repository. This is something that can easily happen by mistake.
+
+    Select the `terraform.tfstate` file. Then in the upper right, select `Blame`. From here, you can see what changes occurred
+    for each commit, who did it and when. Using Terraform Cloud would keep these state files centralized outside of the project and
+    encrypted with HashiCorp Vault.
+
+    Select the `GitLab` logo in the upper left. This will take you back to our project list.
+
+    Select `HashiCat AWS`. We will be working with this project for the remainder of the lab.
+
+    Select the pulldown menu that is labeled `master`. From there you will see three branches of our project. You can think of
+    a branch as a copy of the codebase that you can make changes to without impacting other branches. Keep this in mind as we look
+    at our Terraform Cloud setup for our new HashiCat application.
+
+    [<ins>**Terraform Cloud**</ins>](https://app.terraform.io/app/organizations)
+
+    When you navigate to TFC you will see a new Organization name `Terraform-Foundations-<RandomString>`. In this new organization
+    you will have three new workspaces, one for each environment. Each of these workspaces are connected to our GitLab VCS and to
+    the respected branches that we covered in the previous step.
+
+    If all of your workspaces are not "Applied", please wait until they complete.
+
+    Select the `HashiCat-Development` workspace. Let's review the current workspace configuration.
+
+    Select the latest `Run` and select `Apply Finished` to view the apply output. Scroll to the bottom of this output to get the
+    HashiCat app URL. You will have one URL for each environment/workspace. Each of these web pages will report what environment
+    they are part of.
+
+    Variables are set for the AWS credentials and prefix. There is also a variable named "environment" that labels our resources
+    appropriately. This will be the same variable that outputs in our HashiCat web page.
+
+    Select `Settings` and `Version Control`. You can see that we are connected to our GitLab hashicat-aws project that we reviewed
+    earlier. The `VCS branch` will denote which branch in GitLab that this workspace will be watching for changes. Since our triggering
+    is set to `Always trigger runs`, any changes to our hashicat-aws project in the development branch of GitLab will trigger this
+    workspace to run.
+
+    Each workspace is setup with it's respected variable for environment and watching that respected branch of our hashicat-aws project.
+
+    <ins>**Operational Changes**</ins>
+
+    Let's look how a change promotion would look in this configuration we outlined. We are going to start in our "Development" environment
+    and move, or promote, that change to our other environments. Make sure you have both GitLab and Terraform Cloud web pages up. We will
+    start in GitLab..
+
+    Select the `HashiCat AWS` project, if you are not already there.
+
+    From the branches list (pulldown menu that says master), choose `Development`
+
+    Select the `Files` folder and the `deploy_app.sh`.
+
+    Click on the blue `Edit` button. We will just use the GitLab web editor for simplicity.
+
+    On line 14, add a message after the "Welcome" message. Add a "Commit message" below that describes your change.
+
+    When you're done click on `Commit Changes`
+
+    Navigate back out to Terraform Cloud. You should see that your `HashiCat-Development` workspace is running. If you were not quick enough
+    to see it applying, you can look at the `Runs`. There will be a new run with your message that was triggered.
+
+    Refresh your HashiCat Development web page to confirm that your updates are now displayed.
+
+    Now that we have our change in our development environment and we did our testing to confirm our application is functional, let's promote this
+    change to our stage environment.
+
+    Navigate back to GitLab. You should still be on the development branch viewing the `deploy_app.sh` file that we edited. Click on the
+    `Create merge request` blue button. We will be merging our changes we made in the development branch to our staging branch.
+
+    In the `New Merge Request` menu, select `Change branches`. Our source branch will default to "Development". Change the target branch to
+    `stage` and select `Compare branches and continue`
+
+    Update the Title to `Promote to Stage` and add a short description of your change.
+
+    For "Assignee" select `Assign to me`. We currently do not have users and groups setup in our environment but in a real world scenario
+    we can put security controls around this approval process.
+
+    On the bottom of the page, select `Changes`. This will show you what files and what lines in those files are different between the development
+    and stage branches. These are the changes that will be merged into our target branch.
+
+    Select `Submit merge request`. We now have an opened merge request. In our lab, approvals are optional but we could require multiple approvers
+    before any changes get applied. We could deny the request and put a comment with details regarding why we denied it.
+
+    Right click on the green check-mark next to `Pipeline`. Open this link in a new tab. Under pipelines select the `Terraform Cloud` green check-mark.
+    As a merge request reviewer, you can use this to review the Terraform plan that was ran by the GitLab pipeline.
+
+    We peer reviewed the changes everything looks good. Now go back to the tab we left open with our merge request and select the green `Merge` button
+
+    Notice that another pipeline was started under where the merge button was. It will have incremented by +1. Right click on this new pipeline and
+    open it in a new tab. You can use the external pipeline to link out to Terraform Cloud to review the apply. We could have also been watching
+    the Terraform Cloud workspace list to see our workspaces auto apply from our merge request.
+
+    You can open the stage URL of our HashiCat app to confirm that our changes have been added.
+
+    The process to promote our change into our production environment would be identical. Please feel free to walk through the promotion to production or
+    add more changes. These environments are isolated so feel free to experiment and ask your instructor any questions you may have.
+
+    When you are done, be sure to click `Check` in Instruqt to finish your labs. This will remove the `Terraform-Foundations` organization for you and
+    clean up any other configurations we added.
+  tabs:
+  - title: Code Editor
+    type: service
+    hostname: tf-foundations
+    port: 8443
+  - title: Terminal
+    type: terminal
+    hostname: tf-foundations
+  - title: Slides
+    type: website
+    url: https://hashicorp.github.io/field-workshops-terraform/slides/multi-cloud/terraform-cloud/version-control/#2
+  - title: Terraform Cloud
+    type: external
+    url: https://app.terraform.io
+  difficulty: basic
+  timelimit: 5000
+checksum: "4575928146783464658"

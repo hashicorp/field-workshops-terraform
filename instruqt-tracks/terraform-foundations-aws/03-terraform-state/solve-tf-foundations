@@ -1,0 +1,92 @@
+#!/bin/bash -l
+set -e
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+export TFC_ORG="instruqt-circleci"
+export TOKEN=$(cat /var/tfc_user_token)
+
+cd /root/gitclones/tflabs
+
+# Update the TFC Org 
+sed -i "s/UpdateThisWithYourOrgName/$TFC_ORG/g" remote_backend.tf
+
+# Configure the /root/.terraform.d/credentials.tfrc.json file
+echo "Configuring the credentials.tfrc.json file..."
+cat <<-EOF > /root/.terraform.d/credentials.tfrc.json
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "$TOKEN"
+    }
+  }
+}
+EOF
+
+# Create a workspace JSON payload
+# Set the operations flag to false to do this
+echo "Creating a workspace JSON payload..."
+cat <<-EOF > /tmp/create_workspace.json
+{
+  "data": {
+    "attributes": {
+      "name": "tflabs",
+      "execution-mode": "remote"
+    },
+    "type": "workspaces"
+  }
+}
+EOF
+
+# Create a workspace
+echo "Creating the tflabs workspace in Organization $TFC_ORG..."
+export WRKS_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/create_workspace.json https://app.terraform.io/api/v2/organizations/$TFC_ORG/workspaces |jq -r .data.id)
+
+for x in AWS_ACCESS_KEY_ID,$AWS_ACCESS_KEY_ID,env,false \
+AWS_SECRET_ACCESS_KEY,$AWS_SECRET_ACCESS_KEY,env,true \
+prefix,tflabs,terraform,false \
+region,us-east-2,terraform,false \
+vpc_cidr,10.0.0.0/16,terraform,false \
+subnet_cidr,10.0.0.0/24,terraform,false ; do
+  IFS=','
+  read -a strarr<<< $x
+
+  cat <<-EOF > /tmp/payload.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"${strarr[0]}",
+      "value":"${strarr[1]}",
+      "description":"Auto Created",
+      "category":"${strarr[2]}",
+      "hcl": false,
+      "sensitive": ${strarr[3]}
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id":"$WRKS_ID",
+          "type":"workspaces"
+        }
+      }
+    }
+  }
+}
+EOF
+
+curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/payload.json https://app.terraform.io/api/v2/vars
+
+done
+
+rm -Rf *tfstate*
+# Run terraform init and apply
+terraform init -force-copy
+# This run is a local run
+terraform apply -auto-approve
+terraform destroy -auto-approve
+
+exit 0
+

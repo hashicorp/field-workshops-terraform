@@ -1,0 +1,10 @@
+#!/bin/bash -l
+
+cd ~/setup/terraform/tfc-workspaces
+terraform destroy -auto-approve
+
+cd ~/setup/terraform/gitlab/gitlab-server
+terraform destroy -auto-approve
+
+cd ~/gitclones/tflabs
+terraform destroy --auto-approve

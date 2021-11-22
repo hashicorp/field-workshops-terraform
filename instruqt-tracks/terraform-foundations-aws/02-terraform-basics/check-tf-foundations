@@ -1,0 +1,48 @@
+#!/bin/bash
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+cd ~/gitclones/tflabs
+
+if [ $(terraform validate -json|jq .valid) == false ]; then
+      fail-message "Please verify your code rerun 'terraform apply'.   $(terraform validate -json|jq .diagnostics[0].severity --raw-output) in $(terraform validate -json|jq .diagnostics[0].range.filename --raw-output) between lines $(terraform validate -json|jq .diagnostics[0].range.start.line) - $(terraform validate -json|jq .diagnostics[0].range.end.line). $(terraform validate -json|jq .diagnostics[0].detail --raw-output)"
+fi
+
+if [ ! -f  ~/gitclones/tflabs/terraform.tfstate ]; then
+      fail-message "Missing state file.  Did you run a successful 'terraform apply'"
+fi
+
+export VPC_ID=$(jq -r '.resources[]| select(.type == "aws_vpc")| .instances[].attributes.id' terraform.tfstate)
+if [ -z $VPC_ID ] ; then
+      fail-message "We did not find a VPC ID in your statefile.  Make sure you have a VPC defined and you ran a successful 'terraform apply'"
+fi
+
+export TAGVPC_NAME=$(jq -r '.resources[]| select(.type == "aws_vpc")| .instances[].attributes.tags.Name' terraform.tfstate)
+if [ -z $TAGVPC_NAME ] || [ $TAGVPC_NAME == null ] ; then
+      fail-message "We did not find a VPC 'Name' tag in your statefile.  This is case sensitive!  Make sure you have a tag of 'Name' on your VPC defined and you ran a successful 'terraform apply'"
+fi
+
+export TAGVPC_ENVIRONMENT=$(jq -r '.resources[]| select(.type == "aws_vpc")| .instances[].attributes.tags.environment' terraform.tfstate)
+if [ -z $TAGVPC_ENVIRONMENT ] || [ $TAGVPC_ENVIRONMENT == null ] ; then
+      fail-message "We did not find a VPC 'environment' tag in your statefile.  This is case sensitive! Make sure you have a tag of 'environment' on your VPC defined and you ran a successful 'terraform apply'"
+fi
+
+export SUBNET_ID=$(jq -r '.resources[]| select(.type == "aws_subnet")| .instances[].attributes.id' terraform.tfstate)
+if [ -z $SUBNET_ID ] ; then
+      fail-message "We did not find a subnet ID in your statefile.  Make sure you have a subnet defined and you ran a successful 'terraform apply'"
+fi
+
+export TAGSN_NAME=$(jq -r '.resources[]| select(.type == "aws_subnet")| .instances[].attributes.tags.Name' terraform.tfstate)
+if [ -z $TAGSN_NAME ] || [ $TAGSN_NAME == null ] ; then
+      fail-message "We did not find a subnet 'Name' tag in your statefile.  This is case sensitive!  Make sure you have a tag of 'Name' on your subnet defined and you ran a successful 'terraform apply'"
+fi
+
+export TAGSN_ENVIRONMENT=$(jq -r '.resources[]| select(.type == "aws_subnet")| .instances[].attributes.tags.environment' terraform.tfstate)
+if [ -z $TAGSN_ENVIRONMENT ] || [ $TAGSN_ENVIRONMENT == null ] ; then
+      fail-message "We did not find a subnet 'environment' tag in your statefile.  This is case sensitive!  Make sure you have a tag of 'environment' on your subnet defined and you ran a successful 'terraform apply'"
+fi

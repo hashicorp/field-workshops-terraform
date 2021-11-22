@@ -1,0 +1,10 @@
+#!/bin/bash -l
+set -e
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cp -r /tmp/field-workshops-terraform-foundations-assets/gitclones/tflabs/terraform-basics-solved/* /root/gitclones/tflabs
+cd /root/gitclones/tflabs
+terraform init && terraform apply --auto-approve
