@@ -248,7 +248,7 @@ challenges:
 
     First, in the assignment of the `pgp_key` variable, replace `<expression>` with Sentinel code that will convert `key.change.after.pgp_key` to `null` if it is missing.
 
-    Then replace `<condition_1>` with a condition that tests if the `pgp_key` attribute was missing or null. This condition should use the `pgp_key` variable.
+    Then replace `<condition_1>` with a condition that tests if the `pgp_key` attribute was null. This condition should use the `pgp_key` variable. (We're only testing if it was null since if it had been missing (undefined), it would already have been converted to null.)
 
     Next, replace `<condition_2>` with a condition that tests if the `pgp_key` variable does **not** start with "keybase:". While there are several ways of doing this, please use the "strings" import which is also used in the "filter_attribute_does_not_have_prefix" function that was used by the "require-access-keys-use-pgp-a.sentinel" policy.
 
@@ -778,4 +778,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 1800
-checksum: "13965277504096579300"
+checksum: "6358280498425846924"

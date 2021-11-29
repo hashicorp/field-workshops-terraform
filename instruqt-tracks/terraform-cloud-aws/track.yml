@@ -39,10 +39,30 @@ challenges:
     Get to know your lab training environment.
   notes:
   - type: text
-    contents: "Welcome to your first day on the job at ACME Inc. These are some of your coworkers in the local ACME office:\n<center><table cellpadding=20>\n  <tr>\n    <td>\n    \U0001F468\U0001F3FB‍\U0001F4BC Hiro - Product Manager<br>\n    \U0001F9D5\U0001F3FD Aisha - Database Admin<br>\n    \U0001F46E\U0001F3FF‍♂️ William - InfoSec Lead<br>\n    \U0001F468\U0001F3FB‍\U0001F9B2 Lars - Lead Developer<br>\n    </td>\n    <td>\n    \U0001F9D3\U0001F3FB Robin - Operations Admin<br>\n    \U0001F469‍\U0001F3A4 Jane - Quality Assurance<br>\n    \U0001F473\U0001F3FE‍♂️ Gaurav - Network Admin<br>\n    \U0001F469\U0001F3FC‍\U0001F4BC Karen - Finance    </td>\n  </tr>\n</table></center>\n\n<center>\U0001F913 You - Brand New Intern\n</center>"
+    contents: "Welcome to your first day on the job at ACME Inc. These are some of
+      your coworkers in the local ACME office:\n<center><table cellpadding=20>\n  <tr>\n
+      \   <td>\n    \U0001F468\U0001F3FB‍\U0001F4BC Hiro - Product Manager<br>\n    \U0001F9D5\U0001F3FD
+      Aisha - Database Admin<br>\n    \U0001F46E\U0001F3FF‍♂️ William - InfoSec Lead<br>\n
+      \   \U0001F468\U0001F3FB‍\U0001F9B2 Lars - Lead Developer<br>\n    </td>\n    <td>\n
+      \   \U0001F9D3\U0001F3FB Robin - Operations Admin<br>\n    \U0001F469‍\U0001F3A4
+      Jane - Quality Assurance<br>\n    \U0001F473\U0001F3FE‍♂️ Gaurav - Network Admin<br>\n
+      \   \U0001F469\U0001F3FC‍\U0001F4BC Karen - Finance    </td>\n  </tr>\n</table></center>\n\n<center>\U0001F913
+      You - Brand New Intern\n</center>"
   - type: text
     contents: Most modern code editors support Terraform syntax highlighting.
-  assignment: "Welcome to your first day as an intern at ACME Inc. [ACME](https://www.youtube.com/watch?v=9m7evoFF83c) is a multi-national conglomerate that sells anvils, rocket powered roller skates, portable holes, earthquake pills and birdseed.\n\nAfter employee orientation you sit down at your workstation and open your Code Editor.\n\nClick on the **Code Editor** tab now. This is where you'll be editing and writing Terraform code. Open the file called **README.md** by clicking on it in the FILES menu on the left. Add your name at the bottom of the file.\n\nSee the floppy disk icon on the tab? It looks like this: \U0001F4BE. Click on the floppy disk icon to save the file.\n\nNext have a look at your **Shell** tab. This is where you'll be running all your terraform commands.\n\nCongratulations, you are ready to start working with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the challenges as you learn new Terraform skills.\n\nClick the **Check** button to continue."
+  assignment: "Welcome to your first day as an intern at ACME Inc. [ACME](https://www.youtube.com/watch?v=9m7evoFF83c)
+    is a multi-national conglomerate that sells anvils, rocket powered roller skates,
+    portable holes, earthquake pills and birdseed.\n\nAfter employee orientation you
+    sit down at your workstation and open your Code Editor.\n\nClick on the **Code
+    Editor** tab now. This is where you'll be editing and writing Terraform code.
+    Open the file called **README.md** by clicking on it in the FILES menu on the
+    left. Add your name at the bottom of the file.\n\nSee the floppy disk icon on
+    the tab? It looks like this: \U0001F4BE. Click on the floppy disk icon to save
+    the file.\n\nNext have a look at your **Shell** tab. This is where you'll be running
+    all your terraform commands.\n\nCongratulations, you are ready to start working
+    with Terraform on AWS. We'll use the hashicat-aws example app in the rest of the
+    challenges as you learn new Terraform skills.\n\nClick the **Check** button to
+    continue."
   tabs:
   - title: Shell
     type: terminal
@@ -108,7 +128,14 @@ challenges:
     An unexpected outage has taken down one of the production websites. It took longer than expected to recover because the Terraform state file was stored on someone's laptop. Terraform Cloud's remote state feature is here to help.
   notes:
   - type: text
-    contents: "It's Monday morning and you're the first one into the office. Most of your teammates were up late fixing last night's outage. Eventually senior operations admin Robin shows up at your desk.\n\n>\U0001F9D3 Hey kiddo, how are you doing? Listen, I want your help with something. Last night we had trouble rebuilding the website because the Terraform state file was stored on Lars' laptop. And guess what, Lars is on vacation for the next two weeks. Why don't you help me configure remote state on this application so this doesn't happen again?"
+    contents: "It's Monday morning and you're the first one into the office. Most
+      of your teammates were up late fixing last night's outage. Eventually senior
+      operations admin Robin shows up at your desk.\n\n>\U0001F9D3 Hey kiddo, how
+      are you doing? Listen, I want your help with something. Last night we had trouble
+      rebuilding the website because the Terraform state file was stored on Lars'
+      laptop. And guess what, Lars is on vacation for the next two weeks. Why don't
+      you help me configure remote state on this application so this doesn't happen
+      again?"
   assignment: |-
     Your task is to configure remote state using your Terraform Cloud account. In order to complete this challenge you'll need the following:
 
@@ -208,11 +235,26 @@ challenges:
     Your team has started building cloud infrastructure on AWS, but the security team is concerned about protecting access to everyone's cloud credentials.
   notes:
   - type: text
-    contents: "After a few weeks on the job you're starting to get into the rhythm of things. Write some code, run some tests, deploy the website. Everything's going great until someone's AWS keys are accidentally pushed to a public code repository. You get this email from William, the lead infosec admin at ACME:\n\n>\U0001F46E\U0001F3FF‍♂️ Hello junior admin, we ran a remote scan on your laptop last night and found some unsecured AWS access keys. We need you to move those off your laptop and store them in Terraform Cloud by the end of the day."
+    contents: "After a few weeks on the job you're starting to get into the rhythm
+      of things. Write some code, run some tests, deploy the website. Everything's
+      going great until someone's AWS keys are accidentally pushed to a public code
+      repository. You get this email from William, the lead infosec admin at ACME:\n\n>\U0001F46E\U0001F3FF‍♂️
+      Hello junior admin, we ran a remote scan on your laptop last night and found
+      some unsecured AWS access keys. We need you to move those off your laptop and
+      store them in Terraform Cloud by the end of the day."
   - type: text
-    contents: "\U0001F914 Did you know?\n\nThousands of API and cryptographic keys and secrets are leaking on GitHub every day!\n\nhttps://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/\n\nWhen you store your API keys as sensitive variables they are encrypted and stored in an instance of HashiCorp Vault. These keys are only decrypted in a trusted, secure container that runs the Terraform command."
+    contents: "\U0001F914 Did you know?\n\nThousands of API and cryptographic keys
+      and secrets are leaking on GitHub every day!\n\nhttps://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/\n\nWhen
+      you store your API keys as sensitive variables they are encrypted and stored
+      in an instance of HashiCorp Vault. These keys are only decrypted in a trusted,
+      secure container that runs the Terraform command."
   - type: text
-    contents: "\U0001F469\U0001F3FC‍\U0001F4BB Remote Execution, Local Code\n\nRemote Execution allows you to use the same Terraform commands that you're familiar with, but the run and all your variables are safely stored in your Terraform Cloud workspace. This can be helpful when you're upgrading tools that were originally written for Terraform Open Source.\n\nWith Remote Execution your Terraform code is still stored on your local machine and sent to the server each time you run."
+    contents: "\U0001F469\U0001F3FC‍\U0001F4BB Remote Execution, Local Code\n\nRemote
+      Execution allows you to use the same Terraform commands that you're familiar
+      with, but the run and all your variables are safely stored in your Terraform
+      Cloud workspace. This can be helpful when you're upgrading tools that were originally
+      written for Terraform Open Source.\n\nWith Remote Execution your Terraform code
+      is still stored on your local machine and sent to the server each time you run."
   assignment: |-
     After the AWS credentials issue, the security team is tightening down access to your AWS account. API creds must now be secured as stored variables in Terraform Cloud. Your task is to find your AWS Access Key ID and Secret Access Key, and move them into your workspace as secure environment variables.
 
@@ -263,9 +305,18 @@ challenges:
     As your Terraform usage increases more team members want to collaborate. Let's add some teams and access rules for our organization.
   notes:
   - type: text
-    contents: "A few months go by and you continue building more infrastructure with Terraform Cloud. The devops team are all familiar with Terraform, but some members are unable to access the Terraform Cloud organization. Your manager Hiro steps into your cubicle with a clipboard in hand:\n\n>\U0001F468\U0001F3FB‍\U0001F4BC Thank you for all your hard work on this Terraform project. I'd like to have read access to your workspace, and we also need to get Lars and Aisha set up. Can you please create some teams in our organization and add your co-workers to them?"
+    contents: "A few months go by and you continue building more infrastructure with
+      Terraform Cloud. The devops team are all familiar with Terraform, but some members
+      are unable to access the Terraform Cloud organization. Your manager Hiro steps
+      into your cubicle with a clipboard in hand:\n\n>\U0001F468\U0001F3FB‍\U0001F4BC
+      Thank you for all your hard work on this Terraform project. I'd like to have
+      read access to your workspace, and we also need to get Lars and Aisha set up.
+      Can you please create some teams in our organization and add your co-workers
+      to them?"
   - type: text
-    contents: Teams and role-based access controls are a paid feature of Terraform Cloud. Your instructor will need to upgrade your organization to a free trial in order to complete this challenge.
+    contents: Teams and role-based access controls are a paid feature of Terraform
+      Cloud. Your instructor will need to upgrade your organization to a free trial
+      in order to complete this challenge.
   assignment: |-
     Teams and role-based access controls are a paid feature of Terraform Cloud. You will need to ensure your free trial has been activated from the earlier steps in order to complete this challenge.
 
@@ -335,7 +386,13 @@ challenges:
     The team has grown and you need to implement code reviews. Terraform Cloud can connect to popular Version Control Systems to enable collaboration and testing.
   notes:
   - type: text
-    contents: "As Terraform usage continues to increase across the organization, your team needs a better way to store and organize everyone's Terraform code. Until now you haven't had much testing or code review for infrastructure changes. Jane, the QA lead, introduces herself:\n\n>\U0001F469‍\U0001F3A4 Hi sysadmin, we're trying to implement better quality assurance around our infrastructure deployment process. Can you help me add the hashicat-aws GitHub repository to the workspace so we can implement code reviews?"
+    contents: "As Terraform usage continues to increase across the organization, your
+      team needs a better way to store and organize everyone's Terraform code. Until
+      now you haven't had much testing or code review for infrastructure changes.
+      Jane, the QA lead, introduces herself:\n\n>\U0001F469‍\U0001F3A4 Hi sysadmin,
+      we're trying to implement better quality assurance around our infrastructure
+      deployment process. Can you help me add the hashicat-aws GitHub repository to
+      the workspace so we can implement code reviews?"
   - type: text
     contents: |-
       Once you connect a VCS repository to your Terraform Cloud workspace, **all** changes to the code must be stored in the VCS before Terraform will execute them. This ensures that you have no unauthorized changes to your infrastructure as code.
@@ -424,9 +481,15 @@ challenges:
     Now that you've got your version control system configured with Terraform Cloud, you can collaborate on changes to your Terraform built infrastructure.
   notes:
   - type: text
-    contents: "The marketing team at ACME is running a special promotion next week and they need you to push a change to the hashicat website. If you're doing an instructor led class you can pair up with a fellow student for this exercise. Alternatively you can do the exercise on your own.\n\n>\U0001F468\U0001F3FB‍\U0001F9B2 Hey sysadmin friend, we need to push a change to the hashicat website. Can you please update the placeholder text with some snappy marketing slogans?"
+    contents: "The marketing team at ACME is running a special promotion next week
+      and they need you to push a change to the hashicat website. If you're doing
+      an instructor led class you can pair up with a fellow student for this exercise.
+      Alternatively you can do the exercise on your own.\n\n>\U0001F468\U0001F3FB‍\U0001F9B2
+      Hey sysadmin friend, we need to push a change to the hashicat website. Can you
+      please update the placeholder text with some snappy marketing slogans?"
   - type: text
-    contents: VCS-backed workspaces enable features like code reviews and automated tests that must pass before any changes can be approved for production.
+    contents: VCS-backed workspaces enable features like code reviews and automated
+      tests that must pass before any changes can be approved for production.
   assignment: |-
     In this challenge you'll make a small change to the code that deploys the hashicat-aws application, and then create a "Pull Request", which is simply a way of proposing a change and optionally allowing others to review your changes.
 
@@ -463,6 +526,60 @@ challenges:
     path: /root/hashicat-aws
   difficulty: basic
   timelimit: 1800
+- slug: controlling-costs
+  id: xuteh45yf89x
+  type: challenge
+  title: $ Controlling Costs with Cost Estimation
+  teaser: |
+    Developers in your organization are running large VMs that are costing a lot of money. You need a way to restrict the costs of each workspace.
+  notes:
+  - type: text
+    contents: "Developers often run bigger VMs than are really necessary. Karen from
+      finance pays you a visit to see if you can help:\n\n>\U0001F469\U0001F3FC‍\U0001F4BC\U0001F4C8
+      Hello sysadmin, we got a really big AWS bill last month and would like you to
+      inform developers using Terraform Cloud about estimated monthly costs of their
+      workspaces before they apply runs. Can you do that?"
+  - type: text
+    contents: |-
+      You can learn more about Terraform Cloud's Cost Estimation feature with these links:
+
+        *  https://www.terraform.io/docs/cloud/cost-estimation/index.html
+        * https://www.terraform.io/docs/enterprise/admin/integration.html#cost-estimation-integration
+  - type: text
+    contents: |-
+      Note that Sentinel can be used to prevent runs from being applied if estimated monthly costs or their increases are too high.
+
+      See the following example Sentinel policies:
+        * [limit-proposed-monthly-cost.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/cloud-agnostic/limit-proposed-monthly-cost.sentinel)
+        * [limit-cost-by-workspace-name.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/cloud-agnostic/limit-cost-by-workspace-name.sentinel)
+        * [limit-cost-and-percentage-increase.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/cloud-agnostic/limit-cost-and-percentage-increase.sentinel)
+  assignment: |-
+    In this challenge you'll use Terraform Cloud's [Cost Estimation](https://www.terraform.io/docs/cloud/cost-estimation/index.html) feature to inform developers what the estimated monthly costs of their hashicat-aws workspace will be.
+
+    Enabling Cost Estimation across all workspaces of an organization in Terraform Cloud is very easy. All you need to do is visit the "Settings | Cost estimation" page of your organization and check the "Enable Cost Estimation for all workspaces" checkbox.
+
+    Note that in Terraform Enterprise, you also need to provide cloud credentials for the clouds for which you want cost estimates. See this [link](https://www.terraform.io/docs/enterprise/admin/integration.html#cost-estimation-integration).
+
+    To see a cost estimate for your hashicat-aws workspace, just trigger a new run in it by clicking the `Actions` drop-down and then selecting "Start a new plan". You will then see the estimated monthly cost of the workspace which is based on the costs of the `aws_instance` resource provisioned for the hashicat-aws workspace.
+
+    A complete list of AWS resources for which cost estimates are available in Terraform Cloud is [here](https://www.terraform.io/docs/cloud/cost-estimation/aws.html).
+
+    Finally, note that Sentinel's [tfrun](https://www.terraform.io/docs/cloud/sentinel/import/tfrun.html) import can be used to prevent runs from being applied when workspaces would incur excessive monthly costs or cost increases.
+
+    See the following example Sentinel policies:
+      * [limit-proposed-monthly-cost.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/cloud-agnostic/limit-proposed-monthly-cost.sentinel)
+      * [limit-cost-by-workspace-name.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/cloud-agnostic/limit-cost-by-workspace-name.sentinel)
+      * [limit-cost-and-percentage-increase.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/cloud-agnostic/limit-cost-and-percentage-increase.sentinel)
+  tabs:
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root/hashicat-aws
+  difficulty: basic
+  timelimit: 1800
 - slug: a-sentinel-stands-guard
   id: sy4isyjhahpy
   type: challenge
@@ -471,7 +588,14 @@ challenges:
     Developers in your organization are building cloud resources without tagging them properly. You need a way to enforce tagging on all your AWS instances that are built with Terraform. Meet Sentinel, the governance engine for Terraform.
   notes:
   - type: text
-    contents: "Developers love working in the cloud but sometimes they forget to tag their instances with the right billing and department codes. Karen from finance pays you a visit to see if you can help:\n\n>\U0001F469\U0001F3FC‍\U0001F4BC\U0001F4C8 Hello sysadmin, we got a really big AWS bill last month and we have no idea how much we can bill back to the department who requested this stuff. I have a report that is supposed to show this stuff but it only works if everybody tags their resources properly. Can you make sure all your folks are properly tagging their cloud resources?"
+    contents: "Developers love working in the cloud but sometimes they forget to tag
+      their instances with the right billing and department codes. Karen from finance
+      pays you a visit to see if you can help:\n\n>\U0001F469\U0001F3FC‍\U0001F4BC\U0001F4C8
+      Hello sysadmin, we got a really big AWS bill last month and we have no idea
+      how much we can bill back to the department who requested this stuff. I have
+      a report that is supposed to show this stuff but it only works if everybody
+      tags their resources properly. Can you make sure all your folks are properly
+      tagging their cloud resources?"
   assignment: |-
     In this challenge you'll use Sentinel to enforce a rule that requires any AWS instance created in your account to have the correct billable and department tags.
 
@@ -548,7 +672,8 @@ challenges:
     A quiz about version control
   notes:
   - type: text
-    contents: "\U0001F431‍\U0001F464 Congratulations! You've been promoted to Senior Sysadmin.\n"
+    contents: "\U0001F431‍\U0001F464 Congratulations! You've been promoted to Senior
+      Sysadmin.\n"
   assignment: |
     VCS-backed workspaces enable the following features (choose two)
   answers:
@@ -569,7 +694,12 @@ challenges:
     Some of your users want a simple way to deploy S3 buckets. Enter the Private Module Registry, in which you can store standard, re-usable Terraform code that others can use in their own workspaces.
   notes:
   - type: text
-    contents: "Most of the devops team is using Terraform to build and configure their infrastructure. Recently users from outside the team have been requesting help building their own workspaces. Gaurav, the database admin, sees you at lunch and asks for your help:\n>\U0001F473\U0001F3FE‍♂️ Hi senior sysadmin, I need to configure some S3 buckets and I heard you have a Terraform module for this. Can you help me set up a new S3 bucket in the hashicat-aws workspace?"
+    contents: "Most of the devops team is using Terraform to build and configure their
+      infrastructure. Recently users from outside the team have been requesting help
+      building their own workspaces. Gaurav, the database admin, sees you at lunch
+      and asks for your help:\n>\U0001F473\U0001F3FE‍♂️ Hi senior sysadmin, I need
+      to configure some S3 buckets and I heard you have a Terraform module for this.
+      Can you help me set up a new S3 bucket in the hashicat-aws workspace?"
   assignment: |-
     In this challenge you'll learn to use the Private Module Registry, which allows you to store and version re-usable modules of Terraform code.
 
@@ -614,7 +744,13 @@ challenges:
     Terraform Cloud has a fully featured RESTful API that you can use to integrate with external systems. Where we're going, we don't need a GUI!
   notes:
   - type: text
-    contents: "You've mostly been using the Terraform Cloud Web UI and command line interface (CLI) to build infrastructure. The devops team needs to integrate with their CI/CD tool via the API. Lars sends you a chat message:\n\n>\U0001F468\U0001F3FB‍\U0001F9B2 Hey senior sysadmin, we have this new continuous integration tool that the developers are using to test their application code. I'd like you to test some API calls to our Terraform Cloud organization and workspaces. Can you please take a look at this and learn how the API works?"
+    contents: "You've mostly been using the Terraform Cloud Web UI and command line
+      interface (CLI) to build infrastructure. The devops team needs to integrate
+      with their CI/CD tool via the API. Lars sends you a chat message:\n\n>\U0001F468\U0001F3FB‍\U0001F9B2
+      Hey senior sysadmin, we have this new continuous integration tool that the developers
+      are using to test their application code. I'd like you to test some API calls
+      to our Terraform Cloud organization and workspaces. Can you please take a look
+      at this and learn how the API works?"
   - type: text
     contents: |-
       Feeling stuck? Remember that the Terraform Cloud docs contain examples for all API endpoints:
@@ -679,7 +815,8 @@ challenges:
     A quiz about the private module registry
   notes:
   - type: text
-    contents: "\U0001F431‍\U0001F4BB Congratulations! You've been promoted to Terraform Cloud Ninja."
+    contents: "\U0001F431‍\U0001F4BB Congratulations! You've been promoted to Terraform
+      Cloud Ninja."
   assignment: |
     The Terraform private module registry automatically updates private modules copied from the public registry if the original public modules are updated.
   answers:
@@ -712,4 +849,4 @@ challenges:
     path: /root/hashicat-aws
   difficulty: basic
   timelimit: 1800
-checksum: "15626795270992392956"
+checksum: "3412229663246245313"
