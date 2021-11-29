@@ -16,7 +16,7 @@ grep -q "key.change.after.pgp_key else null" require-access-keys-use-pgp-b.senti
 
 grep -qL "<condition_1>" require-access-keys-use-pgp-a.sentinel && fail-message "You have not replaced '<condition_1>' in require-access-keys-use-pgp-b.sentinel yet."
 
-grep -q "pgp_key is null" require-access-keys-use-pgp-b.sentinel || grep -q "pgp_key == null" require-access-keys-use-pgp-b.sentinel || fail-message "You have not replaced '<condition_1>' with 'pgp_key is null' or 'pgp_key == null' in require-access-keys-use-pgp-b.sentinel yet."
+grep -q "pgp_key is null" require-access-keys-use-pgp-b.sentinel || grep -q "pgp_key == null" require-access-keys-use-pgp-b.sentinel || grep -q "pgp_key in ["null"]  || fail-message "You have not replaced '<condition_1>' with 'pgp_key is null' or 'pgp_key == null' in require-access-keys-use-pgp-b.sentinel yet."
 
 grep -qL "<condition_2>" require-access-keys-use-pgp-a.sentinel && fail-message "You have not replaced '<condition_2>' in require-access-keys-use-pgp-b.sentinel yet."
 
