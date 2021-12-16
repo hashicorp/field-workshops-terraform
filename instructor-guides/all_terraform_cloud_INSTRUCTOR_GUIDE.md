@@ -223,6 +223,8 @@ Create a new variable called `placeholder` and set it to `placedog.net`. Queue u
 
 **Note that the terraform run goes pretty quickly now. This is because we're running a custom provisioner that kicks off on every single run. If I reload the page I now get a picture of a dog instead of a cat.**
 
+**Queue a destroy run to clean it up.** 
+
 **This has been a brief demo of a simple infrastructure as code workflow that you can use to get started with Terraform. We'll take a short break and when we return you'll get to do some hands on exercises in the first lab.**
 
 ### Timing
