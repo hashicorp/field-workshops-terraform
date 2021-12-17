@@ -448,7 +448,7 @@ challenges:
 
     https://github.com/settings/tokens
 
-    Then click on **Personal Access Tokens** and generate a new token for the workshop. You can delete it afterwards if you like. This token enables you to push changes from your workstation.
+    Then click on **Personal Access Tokens** and generate a new token for the workshop. Give it at least the `repo | public_repo` scope, but you can grant the entire `repo` scope and other scopes if desired. You can delete the token afterwards if you like. This token enables you to push changes from your workstation to your public fork of the hashicat-aws repository.
 
     Now that you have your own copy of the hashicat-aws repo to work with, follow the **Configuring GitHub Access** section of the TFC documentation to connect your GitHub account to your Terraform Organization.
 
