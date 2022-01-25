@@ -752,7 +752,8 @@ challenges:
 
     You may refer to the docs page to see what types of outputs are valid:
 
-    [Terraform GCP Docs - Click Here](https://www.terraform.io/docs/providers/google/r/compute_instance.html#attributes-reference)
+    [Terraform GCP Docs - Click Here](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance#attributes-reference)
+    
     [Terraform Outputs Docs - Click Here](https://www.terraform.io/docs/configuration/outputs.html)
 
     Be sure to save the changes to the **outputs.tf** file.
