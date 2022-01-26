@@ -1009,7 +1009,7 @@ Why Consider Terraform Enterprise Over Open Source?
 https://www.hashicorp.com/resources/why-consider-terraform-enterprise-over-open-source
 
 Terraform GCP Provider Documentation
-https://www.terraform.io/docs/providers/google
+https://registry.terraform.io/providers/google
 
 ---
 name: Feedback-Survey

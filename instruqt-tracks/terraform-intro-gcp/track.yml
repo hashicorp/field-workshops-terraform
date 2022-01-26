@@ -33,7 +33,8 @@ challenges:
       Setting up your environment...
       Keep an eye on the bottom right corner to know when you can get started.
   - type: text
-    contents: The Terraform command line tool is available for MacOS, FreeBSD, OpenBSD, Windows, Solaris and Linux.
+    contents: The Terraform command line tool is available for MacOS, FreeBSD, OpenBSD,
+      Windows, Solaris and Linux.
   - type: text
     contents: The Terraform language is designed to be both human and machine-readable.
   - type: text
@@ -245,7 +246,8 @@ challenges:
     Terraform has a built in validation tester. This is useful to see whether your Terraform code is valid and parses correctly.
   notes:
   - type: text
-    contents: Terraform has a built-in syntax checker. You can run it with the `terraform validate` command.
+    contents: Terraform has a built-in syntax checker. You can run it with the `terraform
+      validate` command.
   assignment: |-
     Terraform comes with a built-in subcommand called *validate*. This is useful when you want to do a quick syntax check of your code to make sure it parses correctly.
 
@@ -312,7 +314,8 @@ challenges:
     Terraform variables allow you to customize your infrastructure without editing any code. You can use the same Terraform code to deploy dev, staging and production but with different variables.
   notes:
   - type: text
-    contents: The `terraform.tfvars` file is a convenient place for users to configure their variables.
+    contents: The `terraform.tfvars` file is a convenient place for users to configure
+      their variables.
   assignment: |-
     In Terraform all variables must be declared (with or without an optional default value) before you can use them. Variables are usually declared in the "variables.tf" file although they can also be declared in other "*.tf" files. Their values can be set in the "terraform.tfvars" file and in other ways which we'll explore later.
 
@@ -402,7 +405,9 @@ challenges:
     Terraform creates a graph of all the infrastructure defined in your code.
   notes:
   - type: text
-    contents: Terraform Graph can provide a visual representation of all your infrastructure. This is handy for finding dependency issues or resources that will be affected by a change.
+    contents: Terraform Graph can provide a visual representation of all your infrastructure.
+      This is handy for finding dependency issues or resources that will be affected
+      by a change.
   assignment: |-
     Try running the `terraform graph` command:
 
@@ -563,7 +568,8 @@ challenges:
     Terraform resources are like building blocks. You can continue adding more blocks until your infrastructure reaches the desired state.
   notes:
   - type: text
-    contents: Terraform code can be built incrementally, one or two resources at a time.
+    contents: Terraform code can be built incrementally, one or two resources at a
+      time.
   assignment: |-
     Open the **main.tf** file again and uncomment the next resource block in the file. The type of resource is **google_compute_subnetwork** and it is named **hashicat**.
 
@@ -592,7 +598,8 @@ challenges:
     Terraform code can stand up everything from a GCP project, to virtual networks, to VMs and containers.
   notes:
   - type: text
-    contents: The `-auto-approve` flag can be used to override the "Are you sure?" questions that appear before an apply or destroy. Use with caution!
+    contents: The `-auto-approve` flag can be used to override the "Are you sure?"
+      questions that appear before an apply or destroy. Use with caution!
   assignment: |-
     We've uncommented the rest of the Terraform code in the **main.tf** file for you. Run a `terraform plan` to see what will be built:
 
@@ -683,9 +690,13 @@ challenges:
     Terraform works great with many different provisioning tools including Chef, Puppet, Ansible, Bash, and Powershell.
   notes:
   - type: text
-    contents: Terraform provisioners run once at creation time. They do not run on subsequent applies, except in special circumstances. (Like this training lab...)
+    contents: Terraform provisioners run once at creation time. They do not run on
+      subsequent applies, except in special circumstances. (Like this training lab...)
   - type: text
-    contents: We've made some special adjustments to force the provisioner to run every time you type terraform apply. This is so you can practice playing with provisioners without destroying and recreating your virtual machine every time you make a change.
+    contents: We've made some special adjustments to force the provisioner to run
+      every time you type terraform apply. This is so you can practice playing with
+      provisioners without destroying and recreating your virtual machine every time
+      you make a change.
   - type: text
     contents: |-
       ```
@@ -738,11 +749,15 @@ challenges:
     Outputs are used to convey useful information such as IP addresses, application URLs or other useful data.
   notes:
   - type: text
-    contents: You can mix plain text along with Terraform data in your outputs. Outputs can be used to convey useful information to your users at the end of a run.
+    contents: You can mix plain text along with Terraform data in your outputs. Outputs
+      can be used to convey useful information to your users at the end of a run.
   - type: text
-    contents: The `terraform refresh` command will sync your state file with what exists in your infrastructure. A refresh command will not change your infrastructure.
+    contents: The `terraform refresh` command will sync your state file with what
+      exists in your infrastructure. A refresh command will not change your infrastructure.
   - type: text
-    contents: The `terraform output` command can be run any time you want to see your Terraform outputs again. Run `terraform output <output_name>` to view a single output.
+    contents: The `terraform output` command can be run any time you want to see your
+      Terraform outputs again. Run `terraform output <output_name>` to view a single
+      output.
   assignment: |-
     Open the **outputs.tf** file on the "Code Editor" tab. Note the catapp_url output in the file.
 
@@ -752,7 +767,7 @@ challenges:
 
     You may refer to the docs page to see what types of outputs are valid:
 
-    [Terraform GCP Docs - Click Here](https://www.terraform.io/docs/providers/google/r/compute_instance.html#attributes-reference)
+    [Terraform GCP Docs - Click Here](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance#attributes-reference)
     [Terraform Outputs Docs - Click Here](https://www.terraform.io/docs/configuration/outputs.html)
 
     Be sure to save the changes to the **outputs.tf** file.
@@ -990,4 +1005,4 @@ challenges:
     path: /root/hashicat-gcp
   difficulty: basic
   timelimit: 1000
-checksum: "7926536496804086966"
+checksum: "3454967643602368276"

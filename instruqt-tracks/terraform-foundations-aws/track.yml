@@ -17,6 +17,7 @@ owner: hashicorp
 developers:
 - jlinn@hashicorp.com
 - troy@hashicorp.com
+- roger@hashicorp.com
 private: true
 published: true
 show_timer: true
@@ -61,7 +62,7 @@ challenges:
     workshop. As we build on this project, we will introduce more advanced concepts that will enable scalability, reusability, security and self service.
 
     All Terraform templates are written in either [<ins>**HCL**</ins>](https://github.com/hashicorp/hcl/blob/hcl2/hclsyntax/spec.md) or JSON. For today's labs, we will be using
-    HCL. In most cases you will need to define the [<ins>**provider(s)**</ins>](https://www.terraform.io/docs/providers/index.html) for the services that you want to provision
+    HCL. In most cases you will need to define the [<ins>**provider(s)**</ins>](https://registry.terraform.io/browse/providers) for the services that you want to provision
     changes to. We will cover what HCL is and what providers are in more detail below.
 
     Today we will be using AWS as our cloud provider and `us-east-2` as our desired region. There are multiple ways in which you can set up providers, depending on how you plan
@@ -606,7 +607,7 @@ challenges:
 
     You will need to define the following required values:
       - The subnet the instance be placed in, which we can determine from the network module defined above.
-      - The AMI ID, which you can obtain from the [data source](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami#image_id) definition.
+      - The AMI ID, which you can obtain from the [data source](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami) definition.
       - The `created` tag which should be a timestamp created using a Terraform function. Check out the `Built-in Functions` tab to see which function you can use.
 
     ```
@@ -879,4 +880,4 @@ challenges:
     url: https://app.terraform.io
   difficulty: basic
   timelimit: 5000
-checksum: "8296701521441350551"
+checksum: "3095496004311683293"

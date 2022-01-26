@@ -67,8 +67,8 @@ challenges:
       Your task is to complete and test a Sentinel policy that restricts the Vault authentication methods (backends) provisioned by Terraform's Vault Provider.
 
       Don't worry if you don't know much about Vault. You'll find what you need in these URLs:
-      https://www.terraform.io/docs/providers/vault/r/auth_backend.html
-      https://www.vaultproject.io/docs/auth/index.html
+      https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/auth_backend
+      https://www.vaultproject.io/docs/auth
 
       If you look at the links for various Vault auth methods under the second of these links, you'll see that the `vault auth enable` command always specifies the auth method type with a single lower-case string identical to or similar to the full name of the auth method. These strings are also what the Terraform Vault Provider uses when creating Vault auth methods.
   assignment: |-
@@ -102,7 +102,7 @@ challenges:
 
     Next, you need to replace `<resource_type>` in the call to the "find_resources" method. We've already told you the resource type above.
 
-    Next, replace `<attribute>` and `<list>` in the call to the "filter_attribute_not_in_list" function. You can figure out the attribute you want to restrict by reading the [auth_backend](https://www.terraform.io/docs/providers/vault/r/auth_backend.html) documentation. The name of the list to use should be obvious.
+    Next, replace `<attribute>` and `<list>` in the call to the "filter_attribute_not_in_list" function. You can figure out the attribute you want to restrict by reading the [auth_backend](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/auth_backend) documentation. The name of the list to use should be obvious.
 
     After making all the substitutions, save the "restrict-vault-auth-methods.sentinel" policy by clicking the disk icon above the file.
 
@@ -153,7 +153,7 @@ challenges:
       Your task is to complete and test a Sentinel policy that requires that all AWS IAM access keys provisioned by Terraform's AWS Provider include a PGP key.
   - type: text
     contents: |-
-      Don't worry if you don't know much about AWS. You can find the information you need in this URL: https://www.terraform.io/docs/providers/aws/index.html
+      Don't worry if you don't know much about AWS. You can find the information you need in this URL: https://registry.terraform.io/providers/hashicorp/aws/latest/docs
 
       You can use the filter link at the top of the left-hand menu on that page to search for resources that have "access". There is only one good match that also has "key". Click on it to see what attributes are available for it.
 
@@ -296,7 +296,7 @@ challenges:
     contents: |-
       Your task is to complete and test a Sentinel policy that requires that all AWS Certificate Manager (ACM) Certificates referenced by a data source in Terraform's AWS Provider have domains that are subdomains of "hashidemos.io". (This means the domains must end in ".hashidemos.io".)
 
-      As in Exercise 2, you can look at the [AWS Provider](https://www.terraform.io/docs/providers/aws/index.html) documentation to search for the relevant data source.
+      As in Exercise 2, you can look at the [AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) documentation to search for the relevant data source.
 
       You can use the filter link at the top of the left-hand menu on that page to search for a data source that has "acm". Click on it to see what attributes are available for it.
 
@@ -439,7 +439,7 @@ challenges:
     contents: |-
       Your task is to complete and test a Sentinel policy that requires Google Cloud Platform (GCP) compute instances provisioned by Terraform's Google Provider to use the public image "debian-cloud/debian-9".
 
-      Don't worry if you don't know much about GCP. You can look at the [Google Provider](https://www.terraform.io/docs/providers/google/index.html) documentation to find the relevant GCP resource. (Be sure to pick a resource and not a data source with the same name.)
+      Don't worry if you don't know much about GCP. You can look at the [Google Provider](https://registry.terraform.io/providers/hashicorp/google/latest/docs) documentation to find the relevant GCP resource. (Be sure to pick a resource and not a data source with the same name.)
 
       You might also find the documentation for Sentinel [lists](https://docs.hashicorp.com/sentinel/language/lists), [maps](https://docs.hashicorp.com/sentinel/language/maps), and the standard [types](https://docs.hashicorp.com/sentinel/imports/types) import useful.
   assignment: |-
@@ -778,4 +778,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 1800
-checksum: "4834061913147924417"
+checksum: "8029981488670112052"

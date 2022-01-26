@@ -12,7 +12,7 @@ do
 done
 
 # Set Terraform Version
-TERRAFORM_VERSION="1.0.7"
+TERRAFORM_VERSION="1.1.4"
 
 # Install desired version of Terraform
 rm -f /usr/local/bin/terraform

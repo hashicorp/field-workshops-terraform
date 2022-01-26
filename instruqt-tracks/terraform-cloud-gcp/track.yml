@@ -710,7 +710,7 @@ challenges:
 
     Note the "Source Code" link that points at the GitHub repository for this module. Click on the Source URL. As you did in previous challenges, create your own fork of this repository with the "Fork" button.
 
-    Back in the Terraform Cloud UI, click on the "Registry" tab at the top of the page. Click on the "Publish" button followed by "Module". Click on the "GitHub" button and select the terraform-google-network repository that you just forked.
+    Back in the Terraform Cloud UI, click on the "Registry" tab at the top of the page. Then click the "Publish" button and the "Module" button that appears beneath it. Click on the "GitHub" button and select the terraform-google-network repository that you just forked.
 
     Click on the "Publish module" button.
 
@@ -864,4 +864,4 @@ challenges:
     path: /root/hashicat-gcp
   difficulty: basic
   timelimit: 1800
-checksum: "15053254345161563091"
+checksum: "18431315758612781693"
