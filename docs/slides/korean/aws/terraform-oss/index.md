@@ -1201,7 +1201,7 @@ Terraform - Beyond the Basics with AWS<br>
 https://aws.amazon.com/blogs/apn/terraform-beyond-the-basics-with-aws/
 
 Terraform AWS Provider Documentation<br>
-https://www.terraform.io/docs/providers/aws/index.html
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs
 
 Link to this Slide Deck<br>
 https://git.io/JerH6

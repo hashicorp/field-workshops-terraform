@@ -1185,7 +1185,7 @@ Terraform with Azure Cloudshell<br>
 https://docs.microsoft.com/en-us/azure/terraform/terraform-cloud-shell
 
 Terraform Azurerm Provider Documentation<br>
-https://www.terraform.io/docs/providers/azurerm/
+https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/
 
 Link to this Slide Deck<br>
 https://git.io/JeuCI

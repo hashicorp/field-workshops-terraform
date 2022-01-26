@@ -1166,7 +1166,7 @@ Managing Google Cloud Projects with Terraform<br>
 https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform
 
 Terraform Google Provider Documentation<br>
-https://www.terraform.io/docs/providers/google/index.html
+https://registry.terraform.io/providers/hashicorp/google/latest/docs
 
 Link to this Slide Deck<br>
 https://git.io/JvdX7
