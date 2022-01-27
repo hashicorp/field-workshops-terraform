@@ -27,12 +27,23 @@ challenges:
   title: "\U0001F432 Bonus Lab - The Gauntlet \U0001F9D9\U0001F3FC‍♀️"
   teaser: |
     Welcome back to a familiar environment. You'll have to rely on your skills and knowledge to complete the bonus lab, also known as The Gauntlet.
+  notes:
+  - type: text
+    contents: "\U0001F3F0 Welcome to the Gauntlet! This challenging lab will require
+      all the skills you learned in the Terraform Cloud workshop. \U0001F9DD\U0001F3FB"
+  - type: text
+    contents: Branch protection allows you to create rules that must be passed before
+      any changes get merged into your master branch.
+  - type: image
+    url: https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-cloud-bonuslab/git_branch_protection.png
   assignment: |-
     Welcome back! This is the bonus lab for the Terraform Cloud tracks. There are prerequisites that must be set up before you can begin the bonus lab. This is an intermediate level challenge.
 
-    We recommend executing all commands on the "Shell" tab. But you can also open and use a terminal window at the bottom of the Visual Code Editor by using the Terminal > New Terminal menu or the **<ctrl>-`** shortcut.
+    Open the "Code Editor" tab on the left. You'll see some terraform configuration files for the hashicat application. Open the file called "main.tf". Note that the file type at the bottom of the screen was automatically set to "hcl" to give optimized syntax highlighting and colors.
 
-    If you do use the VS Code terminal, you can toggle its size up and down with the `^` and inverted `^` buttons above it. You can get rid of it with the garbage can and `x` icons.
+    When you edit any of these files, you will see a blue dot and a disk icon on the tab above it. **Be sure to click the disk icon to save your changes!** There is no "auto-saving" in the Instruqt editor!
+
+    Throughout this track, please execute all commands on the "Shell" tab.
 
     ### Workstation Setup
     1. Clone a local copy of your fork of the **hashicat** repo that you created earlier.
@@ -91,21 +102,8 @@ challenges:
     Review the pull request, and if all tests are passing, approve and merge to master. Your changes are now safely being pushed to production.
 
     Congratulations, you built an Infrastructure as Code CI/CD pipeline!
-  notes:
-  - type: text
-    contents: "\U0001F3F0 Welcome to the Gauntlet! This challenging lab will require
-      all the skills you learned in the Terraform Cloud workshop. \U0001F9DD\U0001F3FB"
-  - type: text
-    contents: Branch protection allows you to create rules that must be passed before
-      any changes get merged into your master branch.
-  - type: image
-    url: https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-cloud-bonuslab/git_branch_protection.png
   tabs:
   - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
     type: code
     hostname: workstation
     path: /root
@@ -114,4 +112,4 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 7200
-checksum: "10461104640924123561"
+checksum: "9533558204772732614"

@@ -2,6 +2,14 @@
 
 set -e
 
+# Wait for Instruqt to finish booting the VM
+# This is better than doing sleep
+while [ ! -f /opt/instruqt/bootstrap/host-bootstrap-completed ]
+do
+    echo "Waiting for Instruqt to finish booting the VM"
+    sleep 1
+done
+
 mkdir -p /root/sentinel
 echo "cd /root/sentinel" >> /root/.profile
 

@@ -37,33 +37,19 @@ challenges:
   - type: text
     contents: Most modern text editors support Terraform syntax highlighting.
   assignment: |-
-    Open the Code Editor tab on the left. First get familiar with the menus. This is running the Visual Studio Code editor. You can also use the simpler "Text Editor" tab if you prefer.
+    Open the "Code Editor" tab on the left. You'll see some terraform configuration files for the hashicat application. Open the file called "main.tf". Note that the file type at the bottom of the screen was automatically set to "hcl" to give optimized syntax highlighting and colors.
 
-    If you do use the VS Code Editor, please perform the following steps:
+    When you edit any of these files, you will see a blue dot and a disk icon on the tab above it. **Be sure to click the disk icon to save your changes!** There is no "auto-saving" in the Instruqt editor!
 
-    Notice the menu bar with File, Edit, and other menus at the top of the VS Code Editor. You can find all the menus on this menu bar.
+    Throughout this track, please execute all commands on the "Shell" tab.
 
-    You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application. Open file called "main.tf.
-
-    Next you should install the Terraform extension to enable syntax highlighting in your code. Click on the extensions icon - it looks like four small boxes with one slightly out of position.
-
-    Search for **HashiCorp** and select the "HashiCorp Terraform 2.x.y" extension. Click the blue **Install** or blue **Install in Remote** button to install the extension. Then click the icon with two pages under the File menu so you can see your Terraform files again.
-
-    We have enabled auto-save in your Code Editor, so any changes you make will be saved as you type. You don't have to worry about saving files manually.
-
-    We recommend executing all commands on the "Shell" tab. But you can also open and use a terminal window at the bottom of the Visual Code Editor by using the Terminal > New Terminal menu or the **<ctrl>-`** shortcut.
-
-    If you do use the VS Code terminal, you can toggle its size up and down with the `^` and inverted `^` buttons above it. You can get rid of it with the garbage can and `x` icons.
+    You should see some files in the explorer bar on the left side menu. These are terraform config files for the hashicat application.
 
     Congratulations, you are ready to start working with Terraform.
 
     Click the **Check** button to continue.
   tabs:
   - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
     type: code
     hostname: workstation
     path: /root/workspace
@@ -97,25 +83,15 @@ challenges:
 
     Click on the **Create an API token** button. You can name the token whatever you like. Copy the entire token using your mouse or the small copy-paste icon.
 
-    Back in the Instruqt track, you need to add your API token to a file called "credentials.tfrc.json". You can do this in two different ways:
+    Back in the Instruqt track, you need to add your API token to a file called "credentials.tfrc.json". Select the "Credentials File" tab and open the `/root/.terraform.d/credentials.tfrc.json` file directly.
 
-    The easier way is to select the "Credentials File" tab and open the `/root/.terraform.d/credentials.tfrc.json` file directly.
+    Replace the part that says YOURTOKEN with what you copied from Terraform Cloud. Be sure to save the file.
 
-    But if you prefer to use the VS Code Editor, you can use the File > Open menu, click on "..", select ".terraform.d", and then select the "credentials.tfrc.json" file.
+    Your token is now safely stored in the "credentials.tfrc.json" file.
 
-    In either case, replace the part that says YOURTOKEN with what you copied from Terraform Cloud. If you use the "Credentials File" tab,  sure to save the file.
-
-    Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
-
-    We'll be using this token for some of the lab exercises later in the track.
-
-    Also edit the remote_backend.tf file in your workspace directory, replacing `YOURORGANIZATION` with the name of your Terraform Cloud organization and `YOURWORKSPACE` with `tfc-module-lab`.
+    Return to your Code Editor tab and edit the "remote_backend.tf" file, replacing the `YOURORGANIZATION` placeholder with your organization name. Save the file.
   tabs:
   - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
     type: code
     hostname: workstation
     path: /root/workspace
@@ -150,10 +126,6 @@ challenges:
     Once you've configured GitHub access, you can import modules into your private module registry.
   tabs:
   - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
     type: code
     hostname: workstation
     path: /root/hashicat-aws
@@ -229,10 +201,6 @@ challenges:
     Congratulations on completing the Terraform Module Lab!
   tabs:
   - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
-  - title: Text Editor
     type: code
     hostname: workstation
     path: /root/workspace
@@ -244,4 +212,4 @@ challenges:
     url: https://app.terraform.io
   difficulty: basic
   timelimit: 1800
-checksum: "6882118119378675165"
+checksum: "6927212131122536910"

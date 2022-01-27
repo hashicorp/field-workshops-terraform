@@ -9,6 +9,6 @@ fi
 
 cd /root/hashicat-azure
 
-[[ -f /bin/set-workdir ]] || fail-message "Uh oh, you're missing the set-workdir script. Please restart your track."
+[[ -f /usr/bin/fastforward ]] || fail-message "Uh oh, you're missing the fastforward script. Please restart your track."
 
 exit 0

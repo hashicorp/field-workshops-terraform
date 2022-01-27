@@ -14,4 +14,6 @@ echo $AWS_ACCESS_KEY_ID | grep -P '(?<![A-Z0-9])[A-Z0-9]{20}(?![A-Z0-9])' || fai
 
 echo $AWS_SECRET_ACCESS_KEY | grep -P '(?<![A-Za-z0-9/+=])[A-Za-z0-9/+=]{40}(?![A-Za-z0-9/+=])' || fail-message "Something went wrong, we were unable to find a valid AWS_SECRET_ACCESS_KEY environment variable in your shell. You may need to restart the track."
 
-[[ -f /bin/set-workdir ]] || fail-message "Uh oh, you're missing the set-workdir script. Please restart your track."
+[[ -f /usr/bin/fastforward ]] || fail-message "Uh oh, you're missing the fastforward script. Please restart your track."
+
+exit 0

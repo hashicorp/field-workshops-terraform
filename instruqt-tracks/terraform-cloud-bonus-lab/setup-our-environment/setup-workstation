@@ -3,32 +3,30 @@
 # This is the setup script for the workstation container. Use it to set the stage for your terraform training, demo, or lab.
 set -e
 
-# Allow instruqt time to do its thing
-sleep 10
+# Wait for Instruqt to finish booting the VM
+# This is better than doing sleep
+while [ ! -f /opt/instruqt/bootstrap/host-bootstrap-completed ]
+do
+    echo "Waiting for Instruqt to finish booting the VM"
+    sleep 1
+done
+
+# Set Terraform Version
+TERRAFORM_VERSION="1.1.4"
+
+# Install desired version of Terraform
+wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+mv terraform /usr/local/bin/terraform
+chmod +x /usr/local/bin/terraform
+rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+
+# Install cowsay
+sudo apt-get update -y
+sudo apt-get install -y cowsay
+cp /usr/games/cowsay /usr/local/bin/cowsay
 
 set-workdir /root
-
-# Create VSC startup script
-cat <<-EOF > /etc/systemd/system/code-server.service
-[Unit]
-Description=Code Server
-After=network.target
-StartLimitIntervalSec=0
-
-[Service]
-Type=simple
-Restart=always
-RestartSec=1
-User=root
-ExecStart=/usr/bin/code-server --host 0.0.0.0 --port 8443 --cert --auth none /root
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-# Start VSC
-systemctl enable code-server
-systemctl start code-server
 
 # You can do anything! Clone an existing repo, or write some terraform from scratch.
 
@@ -61,18 +59,30 @@ echo
 echo "Please enter your Terraform Cloud user token."
 read TOKEN
 echo
-echo "Please enter your GitHub user name."
-read GITUSER
+eecho "Please enter your GitHub user ID."
+read GITUSERID
+echo
+echo "Please enter your GitHub personal access token."
+read GITPAT
+echo
+echo "Please enter your GitHub user name (<first_name> <last_name>)."
+read GITUSERNAME
+echo
+echo "Please enter your GitHub email."
+read GITEMAIL
 echo
 echo "Please enter your oauth-id. You can find it at this URL:"
-echo "https://app.terraform.io/app/${ORG}/settings/version-control"
+echo "https://app.terraform.io/app/\${ORG}/settings/version-control"
 echo "If you haven't set up VCS integration yet, simply hit enter."
 read OAUTHID
 echo
 echo "Organization: \$ORG"
 echo "Workspace   : \$WORKSPACE"
 echo "Token       : \$TOKEN"
-echo "GitHub User : \$GITUSER"
+echo "GitHub User ID : \$GITUSERID"
+echo "GitHub Personal Access Token : \$GITPAT"
+echo "GitHub User Name : \$GITUSERNAME"
+echo "GitHub Email : \$GITEMAIL"
 echo "OAuth ID    : \$OAUTHID"
 echo
 read -p "Do these look right to you? Y/n " -n 1 -r
