@@ -59,7 +59,7 @@ challenges:
     contents: |-
       In this challenge, you will write your first Sentinel policy for Terraform.
 
-      We recommend reviewing the [restrict-ec2-instance-type.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/aws/restrict-ec2-instance-type.sentinel) policy and slides 105-110 of the Sentinel-for-Terraform-v4.pptx presentation at this point.
+      We recommend reviewing the [restrict-ec2-instance-type.sentinel](https://github.com/hashicorp/terraform-sentinel-policies/blob/main/aws/restrict-ec2-instance-type.sentinel) policy and slides 105-110 of the Sentinel-for-Terraform-v4.pptx presentation at this point.
 
       We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it after you complete it.
   - type: text
@@ -77,7 +77,7 @@ challenges:
 
     Your task is to complete and test a Sentinel policy that restricts the Vault authentication methods (backends) provisioned by the `vault_auth_backend` resource of Terraform's Vault Provider to the following choices: Azure, Kubernetes, GitHub, and AppRole.
 
-    We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it. The policy uses the "find_resources" and "filter_attribute_not_in_list" functions from the "tfplan-functions.sentinel" module in the /root/sentinel/common-functions/tfplan-functions directory. This module was copied from [tfplan-functions.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/common-functions/tfplan-functions/tfplan-functions.sentinel).
+    We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it. The policy uses the "find_resources" and "filter_attribute_not_in_list" functions from the "tfplan-functions.sentinel" module in the /root/sentinel/common-functions/tfplan-functions directory. This module was copied from [tfplan-functions.sentinel](https://github.com/hashicorp/terraform-sentinel-policies/blob/main/common-functions/tfplan-functions/tfplan-functions.sentinel).
 
     Note that the import statement uses the alias `plan` for the "tfplan-functions" import to keep lines that use it shorter. This also makes it clear which file the module is derived from.
 
@@ -91,7 +91,7 @@ challenges:
 
     When referring to an attribute in the `tfplan/v2` import, you have to use the attribute's key in the `after` map of the `change` collection of a resource or data source contained in the `resource_changes` collection. In other words, a policy evaluating attribute "x" with the `tfplan/v2` import ultimately ends up using an expression like `rc.change.after.x`.
 
-    In this example, `rc` is an iterator variable defined in a `for` loop or in a `filter` or `all` expression that iterates over a collection of resources. Actual code will often use a different variable. The common functions used in this track and in the hashicorp/terraform-guides repository hide a lot of this from you, but it is good to understand what they are doing under the covers.
+    In this example, `rc` is an iterator variable defined in a `for` loop or in a `filter` or `all` expression that iterates over a collection of resources. Actual code will often use a different variable. The common functions used in this track and in the hashicorp/terraform-sentinel-policies repository hide a lot of this from you, but it is good to understand what they are doing under the covers.
 
     At any point while solving the challenge, you can click the green "Check" button to get a hint suggesting something that you still need to do.
 
@@ -309,7 +309,7 @@ challenges:
 
     You'll complete a simple version of the policy in this challenge and then complete a more complex version in the next challenge.
 
-    We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it. The policy uses the "find_datasources" function from the "tfstate-functions.sentinel" module in the /root/sentinel/common-functions/tfstate-functions directory. This module was copied from [tfstate-functions.sentinel](https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/common-functions/tfstate-functions/tfstate-functions.sentinel).
+    We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it. The policy uses the "find_datasources" function from the "tfstate-functions.sentinel" module in the /root/sentinel/common-functions/tfstate-functions directory. This module was copied from [tfstate-functions.sentinel](https://github.com/hashicorp/terraform-sentinel-policies/blob/main/common-functions/tfstate-functions/tfstate-functions.sentinel).
 
     Note that the import statement uses the alias `state` for the "tfstate-functions" import to keep lines that use it shorter. This also makes it clear which file the module is derived from.
 
@@ -317,7 +317,7 @@ challenges:
 
     When referring to an attribute in the `tfstate/v2` import, you have to use the attribute's key in the `values` map of a resource or data source contained in the import's `resources` collection. So, a policy evaluating attribute "x" with the `tfstate/v2` import ultimately ends up using an expression like `r.values.x`. (Recall that the `tfplan/v2` import uses an expression like `rc.change.after.x`.)
 
-    In this example, `r` is an iterator variable defined in a `for` loop or in a `filter` or `all` expression that iterates over a collection of resources. Actual code will often use a different variable. Of course, the common functions used in this track and in the hashicorp/terraform-guides repository hide a lot of this from you, but it is good to understand what they are doing under the covers.
+    In this example, `r` is an iterator variable defined in a `for` loop or in a `filter` or `all` expression that iterates over a collection of resources. Actual code will often use a different variable. Of course, the common functions used in this track and in the hashicorp/terraform-sentinel-policies repository hide a lot of this from you, but it is good to understand what they are doing under the covers.
 
     At any point while solving the challenge, you can click the green "Check" button to get a hint suggesting something that you still need to do.
 
@@ -778,4 +778,4 @@ challenges:
     hostname: sentinel
   difficulty: basic
   timelimit: 1800
-checksum: "8029981488670112052"
+checksum: "15644163684357721153"
