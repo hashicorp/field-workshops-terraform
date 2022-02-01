@@ -48,14 +48,14 @@ if [[ $EXIT_CODE -ne 0 ]]; then
   fail-message "I couldn't find the hashicat-azure workspace in your organization $ORG. Make sure you created it and that it is configured in your remote_backend.tf file."
 fi
 
-# Store the ORG in /root/.bashrc
-grep $ORG /root/.bashrc || echo "export ORG=\"$ORG\"" >> /root/.bashrc
-
 # Check that user has set prefix variable
 grep yourname /root/hashicat-azure/terraform.tfvars
 EXITCODE=$?
 if [ $EXITCODE -ne 1 ]; then
   fail-message "Oops, it looks like you haven't updated your prefix variable yet."
 fi
+
+# Store the ORG in /root/.bashrc
+grep $ORG /root/.bashrc || echo "export ORG=\"$ORG\"" >> /root/.bashrc
 
 exit 0
