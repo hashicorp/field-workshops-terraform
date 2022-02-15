@@ -52,6 +52,7 @@ name:workshop-slides
 * https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/index.html
 * https://hashicorp.github.io/field-workshops-terraform/slides/azure/terraform-oss/index.html
 * https://hashicorp.github.io/field-workshops-terraform/slides/gcp/terraform-oss/index.html
+* https://hashicorp.github.io/field-workshops-terraform/slides/sentinel/index.html
 
 ???
 The workshop slides are written in Remark.js.
