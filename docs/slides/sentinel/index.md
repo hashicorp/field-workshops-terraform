@@ -1436,3 +1436,58 @@ count: false
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
 
 ---
+name: debugging
+# Debugging Policies with Errors
+
+- If your policy shows any syntax errors, these will tell you which lines of your policy you need to fix.
+- A message like **"An error occurred: <policy>.sentinel:34:10"** means Sentinel encountered an error in column 10 of line 34 of the policy.
+  - But the problem that caused the error could occur earlier in the code.
+- Some errors are caused by simple things like missing commas or braces. These are fairly easy to spot.
+- Other errors might be caused by missing or computed attributes or by _null_ values. Consider adding checks that test for these possibilities.
+- Add extra **print** statements to help you narrow down where the error is occurring.
+  - You can even print an entire resource: **print("resource:", r)**
+
+---
+name: checking
+# Checking for Missing Expressions
+
+- An expression can fail to exist in multiple ways:
+  - It could be absent from the data which gives undefined.
+  - It could be set to _null_ or the empty string ("").
+  - It could be an empty map, {}, or an empty list, [].
+- Verify an expression is not _undefined, null,_ or "":
+  - **x else null not in [null, ""]**
+- Verify an expression is not _undefined,_ null or an empty map, list, or string:
+  - **not ( (x else null is null) or (types.type_of(x) in ["map", "list", "string"] and length(x) is 0) )**
+- The length() function can only be applied to strings, maps, and lists, so the type of an expression should be checked before using it.
+
+---
+name: restricting
+# Restricting Multiple Attributes in a Policy
+
+- If you want to restrict multiple attributes in a single policy, you can call multiple filter functions and then check the lengths of all the lists they returned.
+- Alternatively, you can write your own custom function that tests all of the attributes while iterating over the instances just once.
+  - In this case, you should return a map with a boolean for each attribute that you are restricting.
+- We recommend calling any filter or validation functions before your main rule and evaluating the lengths of the lists or the booleans they return in the main rule to minimize verbose Sentinel output.
+
+---
+name: making-external
+# Making Calls to External API Endpoints
+
+- Sentinel policies in Terraform Cloud and Terraform Enterprise can use the http import to call external API endpoints.
+- Parameters can be added to policy sets allowing the secure introduction of credentials needed by API endpoints invoked with the Sentinel HTTP import.
+- Currently, the http import supports the HTTP GET and POST operations against API endpoints that return JSON documents.
+- The http import can send data to an API endpoint with the http import using headers or URL parameters.
+  - But sending data in the URL parameters is insecure, and there are limits on the size of headers.
+- Some example policies that use the http import are here.
+
+---
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
+# Chapter 6 - Completed
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
