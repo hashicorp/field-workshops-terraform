@@ -23,9 +23,9 @@ tags:
 owner: hashicorp
 developers:
 - fraser@hashicorp.com
-- nyoung@hashicorp.com
+- roger@hashicorp.com
 private: true
-published: false
+published: true
 show_timer: true
 challenges:
 - slug: exercise-1
