@@ -669,3 +669,239 @@ count: false
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
 
 ---
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
+# Chapter 4 - Sentinel Language Advanced Concepts
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
+name: language-const
+# Key Sentinel Language Constructs (1)
+
+- **Boolean Expressions:** Evaluate to true, false, or undefined.
+  - They use logical, comparison, set, and other **Operators.**
+  - (5*2 == 10) and (7 in [ 2, 3, 5, 7, 11, 13, 17, 19])
+- **Rules:** Evaluate a single expression which could be the result of calling a single function.
+- **Main Rule:** Every Sentinel policy must have a rule called main.
+  - The result of a policy is the value returned by its main rule.
+- **Statements:** Execute procedural logic.
+- **Functions:** Execute various statements and return a value.
+- **Variables:** Store values for use by rules and functions.
+- **Parameters:** Accept inputs passed to policies.
+
+---
+name: language-const-2
+# Key Sentinel Language Constructs (2)
+
+- **Types:** boolean, integer, float, string, list, map
+  - A **List** is a collection of zero or more items
+  - A **Map** is a collection of zero or more key/value pairs
+- **Operators:** Arithmetic, Logical, Comparison, Set, Matches, Else
+- **Assignments:** Set the value of variables.
+- **If/Else and Case Statements:** Specify conditional execution of different logic within a function.
+- **For Loops:** Repeat statements while iterating over a map or list.
+  - Frequently used inside functions
+  - **break** and **continue** statements can alter loop execution.
+- The **Filter** quantifier expression that returns a subset of a collection.
+- **Imports:** Reusable libraries of Sentinel functions.
+
+---
+name: pre-clared
+class: col-2
+# Sentinel Pre-declared Identifiers
+Constants:
+- false
+- true
+- null
+- undefined
+
+</br>
+Type Conversion Functions:
+- bool
+- float
+- int
+- string
+
+???
+fix later
+
+---
+name: logic-operators
+# Sentinel Numerical and Logical Operators
+
+- **Arithmetic:** +, -, *, /, and % (remainder)
+- **p and q**	p and q must both be true
+- **p or q**	at least one of them must be true
+- **p xor q**	exactly one of them must be true
+- **!p**		p is false
+- **not p**		p is false
+
+---
+name: comparison
+# Sentinel Comparison Operators
+
+- **==**		equal to
+- **!=**		not equal to
+- **<**		less than
+- **<=**		less than or equal to
+- **>**		greater than
+- **>=**		greater than or equal to
+- **is**		equal to
+- **is not**	not equal to
+
+Note that maps and lists are comparable!
+
+---
+name: short-circuit
+# Sentinel's Short-Circuit Logic
+
+- Sentinel applies Short-Circuit Logic for compound boolean expressions like p and q and (a and b) or c:
+- This means that Sentinel does not evaluate all conditions further to the right if it already knows the final answer.
+  - So, if p is false, it does not evaluate q since p and q is already false.
+  - If a and b are both true, it does not evaluate c since (a and b) or c is already true.
+  - If a is false, it does not evaluate b since a and b is already false, but it does evaluate c since (a and b) or c could still be true or false, depending on the value of c.
+
+---
+name: set
+# Sentinel Set Operators
+
+- Set operators can be applied to lists, maps and strings.
+- For strings, the set operators do substring inclusion
+- Examples for lists:
+  - **1 in [1, 2, 3]**			Means that 1 is in the list
+  - **[1, 2, 3] contains 2**	Means that the list contains 2.
+  - **[] is empty**			Means that the collection is empty.
+- You can also use **not in, not contains, and is not empty.**
+
+---
+name: matches
+# The Sentinel Matches Operator
+
+- The **matches** operator tests if a string matches a regular expression.
+- Examples:
+  - **"test" matches "^te"**			# true
+  - **"1352" matches "[0-9]*"**		# true
+  - **"123A" matches "[0-9]*"**		# false
+  - **"xyz.com matches ".*\\.com"**	# true
+
+- The **strings import** can also be used to determine if a string has a specific prefix or suffix
+
+---
+name: else
+# The Sentinel Else Operator
+
+- The else operator converts the _undefined_ value to something else.
+- If a number is _undefined_, you might convert it to 0
+  - **(memory else 0) <= 2048**
+- If a boolean is _undefined_, you might convert it to true or false.
+  - **(memory <= 2048) else false**
+- If a list is _undefined_, you might convert it to the empty list, [].
+  - **keys(tfplan.resource_changes) else []**
+- If a map is _undefined_, you might convert it to the empty map, {}.
+  - **allEC2Instances else {}**
+- Note that the _else_ operator does not affect null.
+
+---
+name: for-loops
+# Sentinel For Loops
+
+- A Sentinel **for** loop iterates over a collection.
+- Each for loop uses the **as** keyword to define one or two iterator variables.
+- When iterating over a list, the first variable is assigned the index and the second variable is assigned the value.
+  - If only one iterator variable is specified, it is assigned the value.
+- When iterating over a map, the first variable is assigned the key and the second variable is assigned the value.
+  - If only one iterator variable is specified, it is assigned the key.
+
+---
+name: for-loop-example
+class: compact
+# Sentinel For Loop Examples
+
+- This example iterates over a list with one variable (for the values).
+```
+count = 0
+for [1, 2, 3] as num {
+  count += num
+}
+```
+
+---
+name: for-loop-example
+class:compact
+# Sentinel For Loop Example
+
+- The count will equal 6.
+  - This example iterates over a map with two variables:
+```
+data = { "a": 12, "b": 32 }
+for data as k, v {
+  sum += v
+}
+```
+
+- The sum will equal 44.
+
+---
+name: all-any
+# The Sentinel all and any Expressions
+
+- The **all** and **any** quantifier expressions are are used like loops, but they are actually quantifier expressions that apply boolean expressions to lists and maps. They return _true_ or _false_.
+- The _all_ expression is a universal quantifier asserting that a boolean expression must be true for all items of a collection.
+- The _any_ expression is an existential quantifier asserting that a boolean expression must be true for at least one item in a collection.
+- It used to be common to use all expressions in Sentinel rules, but it is better to use for loops in functions called before the main rule.
+- This allows your policies to report all violations in a single shot.
+
+---
+name: filter-map
+# The Sentinel filter and map Expressions
+
+- The **filter** quantifier expression applies a boolean expression to each item in a list or map.
+  - However, instead of returning true or false, it returns a sub-collection of the original collection consisting of those items for which the boolean expression was true.
+  - The _filter_ expression is useful with the Terraform Sentinel v2 imports since their collections were designed to be used with it.
+- The **map** quantifier expression returns a list of values, one for each item in the collection it is applied to.
+  - It can be useful in Sentinel rules that want to return non-boolean values including maps and lists.
+
+---
+name: if-else
+# The Sentinel If/Else Conditional
+
+- This example tests if _v_ is defined and equal to _value_:
+
+```
+if v else null is null {
+  print("The value", v, "was null or not defined")
+} else if v is not value {
+  print(v, "is not equal to the required value", value)
+} else {
+  print(v, "is the desired value", value)
+}
+```
+
+---
+name: case
+# The Sentinel Case Conditional
+
+- This example does different processing for different days:
+
+```
+case day {
+when "Saturday", "Sunday":
+	print("Sorry, we are closed.")
+else:
+	print("We are open from 9am to 6pm.")
+}
+```
+
+----
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
+# Chapter 4 - Complete
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
