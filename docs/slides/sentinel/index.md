@@ -895,12 +895,432 @@ else:
 }
 ```
 
-----
+---
 class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
 # Chapter 4 - Complete
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
+# Chapter 5 - Writing and Testing Sentinel Policies for Terraform
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
+name: mocks-in-tf
+# Sentinel Mocks in Terraform
+
+- Sentinel **Mocks** simulate the data that is made available to the Terraform Sentinel imports from Terraform plans.
+- They can be generated from recent plans using the Terraform Cloud UI and API.
+- They can also be copied and edited to simulate various combinations of resource and data source attributes.
+- They enable testing of Terraform Sentinel policies with the Sentinel CLI.
+- Using the Sentinel CLI with mocks speeds up development of new policies since additional plans do not need to be run.
+
+---
+name: methodology-0
+# Basic Methodology for Restricting Resources
+
+- The Eight Steps of the recommended methodology are:
+1. Create a Terraform configuration that creates the resource.
+2. Create a workspace that uses your Terraform configuration.
+3. Run a plan against the workspace.
+4. Generate mocks against the plan in the TFC UI.
+5. Write a new Sentinel policy.
+6. Create test cases and test your policy with the Sentinel CLI.
+7. Revise your policy and test cases until the latter all pass.
+8. Deploy your policy to a TFC organization.
+
+---
+name: methodology-1
+# Create a Terraform Configuration
+
+- Create a Terraform configuration that creates at least one instance of the resource your policy will restrict.
+  - Include a main.tf file to create the resource.
+  - Include a backend.tf file to configure the remote backend (if you would like to use the remote backend).
+- Use variables to set the values of the attributes being restricted.
+- Create more than one instance of the resource to test your policy's ability to correctly handle some that pass and some that fail.
+
+---
+name: methodology-1
+# Create a Terraform Configuration: main.tf
+
+```
+variable "ami_id" {
+  default = "ami-2e1ef954"
+}
+
+variable "instance_type" {
+  default = "t2.micro"
+}
+
+resource "aws_instance" "ubuntu" {
+  count         = 2
+  ami           = "${var.ami_id}"
+  instance_type = "${var.instance_type}"
+}
+```
+
+---
+name: methodology-2
+class: compact
+# Terraform Terminology for Resources
+
+- Let's consider the declaration of the resource from the last slide.
+```
+resource "aws_instance" "ubuntu" {
+  count         = 2
+  ami           = "${var.ami_id}"
+  instance_type = "${var.instance_type}"
+}
+```
+- In this case, "aws_instance" is the **Type** of the resource while "ubuntu" is its **Name.**
+- Each occurrence of a resource is referred to as a **Resource Instance.**
+- This Terraform code will create two **Instances** of the resource since count was set to 2.
+
+---
+name: methodology-3
+# Create a Terraform Configuration: backend.tf
+
+```
+terraform {
+  backend "remote" {
+    hostname = "<your_TFE_server>"
+    organization = "<your_org>"
+
+    workspaces {
+      name = "<your_workspace>"
+    }
+  }
+}
+```
+
+---
+name: methodology-4
+# Generate a User API Token
+
+- In order to use the remote backend against a TFC/TFE server, you need to generate a User API Token for yourself.
+- You then need to list the token in your Terraform CLI configuration file.
+  - On a Mac or Linux machine, this will be the .terraformrc file in your home directory.
+  - On a Windows machine, this will be the terraform.rc file in your %APPDATA% directory.
+- The token should be added in a section like this:
+```
+credentials "app.terraform.io" {
+  token = "<token>"
+}
+```
+
+---
+name: methodology-5
+# Create a TFC or TFE Workspace
+
+- If you trigger your plan with the remote backend, you do not need to set up a VCS connection.
+- Click "CLI-driven workflow" when creating your workspace when prompted to connect to a version control provider.
+- You still need to add environment variables such as cloud credentials to your workspace since local ones are not sent to the server.
+- Several tools can push Terraform and environment variables:
+  - set-variables.sh
+  - tf-helper (tfh)
+
+---
+name: methodology-6
+# Create a Workspace in the TFC/TFE UI
+
+.center[
+![:scale 90%](../images/create-a-workspace.png)
+]
+
+---
+name: methodology-7
+# Set Variables in Your Workspace
+
+.center[
+![:scale 70%](../images/set-variables.png)
+]
+
+---
+name: methodology-8
+# Run a Plan and Generate Mocks Against It
+
+- From your local directory containing main.tf and backend.tf, run _terraform init_ to initialize your Terraform configuration.
+- Then run terraform plan.
+- The plan will run on the TFC server, but its results will be visible locally and in the TFC UI.
+- To see the run in the TFC UI, copy the URL displayed near the top of the local version of the plan and navigate to it with a browser.
+- To generate mocks against your plan, click the "Download Sentinel mocks" button.
+- After a minute, a tar.gz file will be downloaded with 7 mocks.
+- Extract the mock files from the tar.gz file.
+
+---
+name: methodology-9
+# Generate Mocks Against Your Plan
+
+.center[
+![:scale 85%](../images/generate-mocks.png)
+]
+
+---
+name: methodology-10
+# Writing Sentinel Policies for TFC/TFE
+
+- Sometimes, you might be asked to create a Sentinel policy to restrict particular things such as VMs or load balancers.
+- But you might not know the exact Terraform resources that implement these.
+- Fortunately, you can use the Terraform Provider documentation to identify resources that implement the things you want to restrict.
+- Each resource and data source has its own documentation page.
+- Looking at documentation from the underlying cloud service provider or other technology will also help.
+  - For instance, you can determine valid values for VM size.
+
+---
+name: methodology-11
+# Write a Terraform Sentinel Policy
+
+- The next set of slides walks you through a Sentinel policy called **"restrict-ec2-instance-type.sentinel"** that restricts the allowed sizes of AWS EC2 instances.
+- It breaks down the Sentinel code into smaller bites, clarifying what each section of the code is doing.
+
+---
+name: methodology-12
+# Sentinel Import Declarations
+
+```
+# Import tfplan-functions.sentinel with alias "plan"
+import "tfplan-functions" as plan
+```
+
+---
+name: methodology-13
+# List of Allowed Values
+
+```
+# Allowed EC2 Instance Types
+allowed_types = ["t2.small", "t2.medium", "t2.large"]
+```
+
+---
+name: methodology-14
+# Call Sentinel Functions to Find and Filter Resources
+
+```
+# Get all EC2 instances
+allEC2Instances = plan.find_resources("aws_instance")
+
+# Filter to EC2 instances with violations
+# The called function prints warnings for all violations
+violatingEC2Instances = plan.filter_attribute_not_in_list(allEC2Instances, "instance_type", allowed_types, true)
+```
+
+---
+name: methodology-15
+# Calculate Boolean and Check it in Main Rule
+
+```
+# Count violations
+# We determine length of the messages map within the
+# violatingEC2Instances object
+violations = length(violatingEC2Instances["messages"])
+
+# Main rule
+main = rule {
+  violations is 0
+}
+```
+
+---
+name: common-functions
+# Common Functions
+
+- The Instruqt track in this workshop embeds two Sentinel modules with many common functions that can be used in policies.
+- These are copies of the functions located here.
+- The policy we just examined called the following functions:
+  - **find_resources(type)**
+  - **filter_attribute_not_in_list(resources, attr, allowed, prtmsg)**
+- There are other find and filter functions in the above modules.
+- The filter functions print all violations if prtmsg is true.
+- Additionally, the filter functions call a very useful function:
+  - **evaluate_attribute(r, attribute)**
+
+---
+name: find-all
+# Function That Finds All Resources By Type
+
+```
+# Find all resources of a specific type from all modules
+# Only include resources that are being created or updated
+find_resources = func(type) {
+  resources = filter tfplan.resource_changes as address, rc {
+  	rc.type is type and
+  	rc.mode is "managed" and
+  	(rc.change.actions contains "create" or
+	 rc.change.actions contains "update" or
+       rc.change.actions contains "read" or
+       rc.change.actions contains "no-op")
+  }
+  return resources
+}
+```
+
+---
+name: filter-resources
+class: compact
+# Function That Filters Resources
+
+```
+filter_attribute_not_in_list = func(resources, attr, allowed, prtmsg) {
+  violators = {}
+  messages = {}
+  for resources as address, rc {
+    v = evaluate_attribute(rc, attr) else null
+    if v not in allowed {
+      message = to_string(address) + " has " + to_string(attr) + " with value " + to_string(v) +
+                " that is not in the allowed list: " + to_string(allowed)
+      violators[address] = rc
+      messages[address] = message
+      if prtmsg {
+        print(message)
+      }
+    } // end if
+  } // end for
+  return {"resources":violators,"messages":messages}
+```
+
+---
+name: eval-attribute
+# Function that Evaluates Attributes
+
+- The filter functions all call the evaluate_attribute() function that recursively calls itself to evaluate attributes that can be deeply nested inside a resource or data source.
+- This function has the following declaration:
+  - **evaluate_attribute = func(r, attribute)**
+- The resource passed to the first call to the function should be in the form **rc.change.after** or just rc where rc is a resource change derived by applying filters to **tfplan.resource_changes.**
+- The attribute should be given as a string delimited by "." in which indices of lists start with 0: "storage_os_disk.0.managed_disk_type".
+- Do not use something like "storage_os_disk[0].managed_disk_type".
+
+---
+name: setup-test
+# Set Up the Test Cases Directory for the CLI
+
+- To test your policy with the Sentinel CLI, you first need to set up test cases that use the tfplan/v2 mock you generated earlier.
+- Under the directory containing your policy, create a **test** directory.
+- Under the test directory, create a directory with the same name as your policy, but without the ".sentinel" extension.
+- So, for our restrict-ec2-instance-type.sentinel policy, we create the **restrict-ec2-instance-type** directory under the test directory.
+
+---
+name: copy-mocks
+# Copy Mocks and Create Test Cases
+
+- Copy the mock-tfplan-v2.sentinel mock file that you downloaded and extracted from your workspace to this directory.
+- Change the name of the mock file to **mock-tfplan-pass.sentinel.**
+- Create a second copy of the file called **mock-tfplan-fail.sentinel.**
+- Create **pass.hcl** and **fail.hcl** files that have the text on the next two slides respectively.
+
+---
+name: pass-hcl
+# The pass.hcl Test Case
+
+```
+module "tfplan-functions" {
+  source = "../../../common-functions/tfplan-functions/tfplan-functions.sentinel"
+}
+mock "tfplan/v2" {
+  module {
+    source = "mock-tfplan-pass.sentinel"
+  }
+}
+test {
+  rules = {
+    main = true
+  }
+}
+```
+
+---
+name: fail-hcl
+# The fail.hcl Test Case
+
+```
+module "tfplan-functions" {
+  source = "../../../common-functions/tfplan-functions/tfplan-functions.sentinel"
+}
+mock "tfplan/v2" {
+  module {
+    source = "mock-tfplan-fail.sentinel"
+  }
+}
+test {
+  rules = {
+    main = false
+  }
+}
+```
+
+---
+name: pass-fail
+# Edit the Pass and Fail Mocks
+
+- Edit the mock-tfplan-pass.sentinel mock file and make sure that all values of **instance_type** are set to a value such as **"t2.small"** that is in the allowed_types list.
+- Edit the mock-tfplan-fail.sentinel mock file and make sure that at least one value of **instance_type** is set to a value such as **"m5.large"** that is not in the allowed_types list.
+- You should always have at least 1 fail and 1 pass test case.
+- Sometimes, you will want multiple fail test cases and corresponding mocks.
+- You might even want more than 1 pass test case and mock.
+
+---
+name: polcy-with-cli
+# Test Your Policy with the CLI (1)
+
+- Now that you have set up your test cases, you can test your policy with the Sentinel CLI.
+- Navigate back to the directory containing your policy.
+- Run the following command:
+**sentinel test restrict-ec2-instance-type.sentinel**
+- To see the outputs of the print statements, change this to:
+**sentinel test –verbose restrict-ec2-instance-type.sentinel**
+-You can also apply a policy with the sentinel apply command, but you must set up a Sentinel configuration file like the "sentinel.json" file downloaded with the mocks or a "sentinel.hcl" file.
+
+---
+name: policy-with-cli
+#Test Your Policy with the CLI (2)
+
+- The first command gives:
+```
+PASS - restrict-ec2-instance-type.sentinel
+  PASS - test/restrict-ec2-instance-type/fail.hcl
+  PASS - test/restrict-ec2-instance-type/pass.hcl
+```
+
+---
+name: policy-with-cli
+#Test Your Policy with the CLI (3)
+
+- The second command gives:
+```
+PASS - restrict-ec2-instance-type.sentinel
+  PASS - test/restrict-ec2-instance-type/fail.hcl
+    logs:
+       aws_instance.ubuntu[0] has instance_type t2.xlarge that is not in the allowed list:
+       ["t2.small" "t2.medium" "t2.large"]
+      restrict-ec2-instance-type.sentinel:24:1 - Rule "main
+      	Description: Main rule Value: false
+  PASS - test/restrict-ec2-instance-type/pass.json
+     restrict-ec2-instance-type.sentinel:24:1 - Rule "main
+      	Description: Main rule Value: true
+```
+
+---
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
+# Chapter 5 - Complete
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
+# Chapter 6 - Using Sentinel in Terraform Cloud and Terraform Enterprise
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
 
