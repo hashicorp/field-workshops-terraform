@@ -1491,3 +1491,319 @@ count: false
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
 
 ---
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
+# Workshop - References
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
+name: guide-excersise
+# The Original Guide's Exercises
+
+- The Writing and Testing Sentinel Policies for Terraform guide that this presentation is based on contained 5 exercises designed to make readers capable of independently writing and testing new Sentinel policies.
+- Those exercises intentionally did not provide step-by-step, copy-and-paste instructions since we feel it is better for people to try to write their own policies by following the guide's 8-step methodology.
+- That methodology includes reading Terraform provider documentation to determine the resources and attributes that a policy should focus on.
+- This approach can be effective for someone working by themself.
+- But it is more difficult in a workshop or class setting in which time is limited.
+
+---
+name: workshop-excersise
+# The Workshop Exercises
+
+- Fortunately, we found a happy medium between the step-by-step, copy-and-paste and the write everything yourself approaches.
+- We've made things easier in the Instruqt challenges that implement the exercises by writing most of each policy and by providing the test cases and mocks needed to test it.
+- You need to finish each policy, save it, and then run the sentinel test command to verify that it behaves correctly.
+- You'll be asked to complete 2 different versions of the policies in exercises 2-5 across two challenges each.
+- Please use the link for the Sentinel for Terraform (v4) Instruqt track provided by your instructor.
+
+---
+name: challenge-flow
+# Challenge Flow
+
+- After launching each challenge, you should read the note screens while the challenge loads to learn about the challenge's task:
+- When the "Start" button appears, click it to view the challenge's assignment and begin following the instructions.
+- Each challenge has 3 tabs:
+   - The **Policies** tab lets you edit policies.
+   - The **Test Cases** tab lets you inspect test cases and the mocks.
+   - The **Sentinel CLI** tab lets you run the sentinel test command.
+
+---
+name: completing-sentinel
+# Completing the Sentinel Policies (1)
+
+- By reviewing the note screens before each challenge, the links in them, the challenge assignment, and/or these slides, you should be able to successfully complete each policy.
+- We also want to emphasize that you do not need any cloud accounts or HashiCorp software to write and test the policies since you will be using the Sentinel CLI in a VM loaded by the track to test the policies after you complete them.
+- You will need to replace placeholders like <resource_type>, <attribute>, and <condition> in each policy with suitable Sentinel expressions or values in order to complete the policies. But keep any quotes around placeholders.
+- Remember that "attributes" includes "arguments" of resources.
+
+---
+name: completing-sentinel-2
+# Completing the Sentinel Policies (2)
+
+- Please do NOT edit the mock files; that would be cheating.
+- Be sure to look at the suggested Terraform provider link for each challenge; this will help you identify a resource or data source and one of its attributes to use.
+- Also look at suggested links about specific Sentinel features.
+- Replace as many of the placeholders as you can. If you can't replace one of them, save the policy by clicking on the disk icon above the policy and click the Check button to get a hint.
+- This might give you a useful hint. If not, try removing the placeholder, saving the policy, and clicking the Check button again to receive a bigger hint.
+
+---
+name: completing-sentinel-3
+# Completing the Sentinel Policies (3)
+
+- After replacing all the placeholders, please do the following:
+  - Save the file.
+  - Run the _sentinel test_ command with the specified arguments.
+- All test cases should pass. If not, edit the policy and repeat the above 2 steps.
+- Keep doing this until all the test cases pass.
+- Don't forget that clicking the Check button will give hints.
+
+---
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
+# Workshop Challenge: Exercise 1
+
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
+name: restrict-auth
+# Exercise 1: Restrict Vault Auth Methods
+
+- Your task in this challenge is to complete and test a Sentinel policy that restricts the Vault authentication methods (backends) provisioned by Terraform's Vault Provider.
+- The policy uses the tfplan/v2 import and is very similar to the sample restrict-ec2-instance-type.sentinel policy we just reviewed.
+
+---
+name: tfplan-import
+# The tfplan/v2 Import
+
+.center[
+![:scale 70%](../images/tfplan-import.png)
+]
+
+---
+name: tfplan-import-2
+# Using the tfplan/v2 Import
+
+- The tfplan/v2 import includes two different collections, planned_values and resource_changes, that can be used to evaluate the expected values of resource and data source attributes (including both arguments and exported attributes) if an apply were run.
+- Using the resource_changes collection is generally preferred because it includes more information about changes being made to new or existing resources.
+- This data includes the actions being performed such as "create", "update", and "delete", the values of attributes before and after the change, and the after_unknown collection of booleans indicating if the values are computed (will not be known until after the apply).
+
+---
+name: example-tfplan
+# Example of tfplan/v2 Resource Data (1)
+
+- Recall the Terraform code we showed earlier that creates two instances of an "aws_instance" resource with name "ubuntu":
+
+```
+resource "aws_instance" "ubuntu" {
+  count         = 2
+  ami           = "${var.ami_id}"
+  instance_type = "${var.instance_type}"
+}
+```
+
+---
+name: example-tfplan-2
+class: compact
+# Example of tfplan/v2 Resource Data (2)
+
+- A changed resource instance will appear in the tfplan/v2 import like this:
+
+```
+resource_changes = {
+    "aws_instance.ubuntu[0]": {
+        "address": "aws_instance.ubuntu[0]",
+        "change": {
+            "after": {
+                "instance_type": "t2.small",},
+            },
+        "mode": "managed",
+        "name": "ubuntu",
+        "type": "aws_instance",
+    },
+    "aws_instance.ubuntu[1]": {}
+```
+
+---
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
+# Workshop Challenge: Exercise 2 (parts a and b)
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
+name: restrict-aws-keys
+# Exercise 2: Restrict AWS IAM access keys
+
+- Your task in these challenges is to complete and test 2 versions of a Sentinel policy that requires that all AWS IAM access keys provisioned by Terraform's AWS Provider include a PGP key that starts with "keybase:".
+- The policy uses the tfplan/v2 import.
+- The first version calls common functions to find and filter resources.
+- The second version does the filtering inside the policy itself, requiring you to use for loops, if/else conditionals, and the strings import.
+
+---
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
+# Workshop Challenge: Exercise 3 (parts a and b)
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
+name: restrict-cert
+# Exercise 3: Restrict AWS ACM Certificates
+
+- Your task in these challenges is to complete and test two versions of a Sentinel policy that requires that all AWS Certificate Manager (ACM) Certificates referenced by a data source in Terraform's AWS Provider have domains that are subdomains of "hashidemos.io".
+- Since we are restricting a data source, the policy uses the tfstate/v2 import instead of the tfplan/v2 import that we have used in previous policies.
+- It also uses the matches operator.
+- The first version of the policy uses filters both to find an initial list of resources and to find those that violate the policy.
+- The second version of the policy has you write your own validation function.
+
+---
+name: tfstate-import
+# The tfstate/v2 Import
+
+.center[
+![:scale 80%](../images/tfstate-import.png)
+]
+
+---
+name: tfstate-import-2
+# Using the tfstate/v2 Import
+
+- The tfstate/v2 import gives the state of resources and data sources after a plan.
+- Generally, this will be the same as the state before the plan, but it could include additional data for data sources that were evaluated during the refresh operation done by the plan.
+  - Data sources that do not reference computed values are evaluated during the plan.
+  - Data sources that reference computed values are not evaluated until the apply.
+- As a consequence, the tfstate/v2 import is often more useful than the tfplan/v2 import when restricting data sources in policies.
+
+---
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
+# Workshop Challenge: Exercise 4 (parts a and b)
+
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
+name: restrict-google-compute
+# Exercise 4: Restrict Google Compute Instances
+
+- Your task in these challenges is to complete and test two versions of a Sentinel policy that requires Google compute instances provisioned by Terraform's Google Provider to use the public image "debian-cloud/debian-9".
+- This policy uses the tfplan/v2 import.
+- However, it requires you to evaluate an attribute that is inside a block that is itself inside another block of the resource.
+- The first version will call common functions to do this.
+- The second version requires you to write your own filter function and deal with the nested attribute more directly.
+- You'll also be using the types import.
+
+---
+name: restrict-attributes
+# Restricting Nested Attributes in a Policy (1)
+
+- Some attributes of Terraform resource are "top-level" attributes that reside directly under the resource.
+- Other "nested" attributes are inside blocks of the resource.
+- Since blocks can be nested inside other blocks, an attribute can be nested many layers beneath the resource itself.
+- When writing policies that restrict nested attributes, you can do this using Sentinel's native syntax or call special functions that use a slightly modified syntax.
+- Recall that "attributes" includes both the "arguments" and "exported attributes" of resources.
+  - In fact, all the arguments are actually exported.
+
+---
+name: restrict-attributes
+# Restricting Nested Attributes in a Policy (2)
+
+- Sentinel treats blocks as lists of maps. This is true even when a block cannot be repeated.
+- The first index of a Sentinel list is always 0.
+- The value of a nested attribute of a resource change, rc, derived from the resource_changes collection of the tfplan/v2 import can be directly referenced like this:
+  - **rc.change.after.storage_image_reference[0].publisher**
+- A nested attribute of a resource r derived from the resources collection of the tfstate/v2 import can be referenced like this:
+  - **r.values.storage_image_reference[0].publisher**
+
+---
+name: restrict-attributes
+# Restricting Nested Attributes in a Policy (3)
+
+- The evaluate_attribute(r, attribute) functions in this workshop's Sentinel modules can evaluate all attributes of resources and data sources no matter how deeply they are nested.
+- However, the evaluate_attribute functions expect nested attributes to be specified with a string delimited by "." in which each item of the string represents one of the following:
+  - the name of a block above the attribute
+  - an index of a block (0, 1, 2, etc.)
+  - the name of the attribute itself.
+- So, we would set the function's attribute parameter to something like:
+  - "storage_image_reference.0.publisher"
+- We don't include rc.change.after or r.values since that is set in r.
+
+---
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
+# Workshop Challenge: Exercise 5 (parts a and b)
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
+name: modules-from-pmr
+# Exercise 5: Require Modules from a PMR
+
+- Your task in these challenges is to complete and test two versions of a Sentinel policy that requires that all modules loaded by the root module come from the Private Module Registry (PMR) of a Terraform Cloud organization.
+- This policy uses the tfconfig/v2 import.
+- In the first version, you will write a custom validation function.
+- In the second version, you will move this function into a Sentinel module.
+
+---
+name: tfconfig-import
+# The tfconfig/v2 Import
+
+.center[
+![:scale 90%](../images/tfconfig-import.png)
+]
+
+---
+name: tfconfig-import-2
+# The tfconfig/v2 Import Expressions
+
+.center[
+![:scale 90%](../images/tfconfig-expression.png)
+]
+
+- Expressions in the tfconfig/v2 collections are ultimately represented by constant_value fields or by references lists, depending on whether they were constant or required evaluation.
+- The latter must then be cross-referenced against the tfplan/v2 or tfstate/v2 imports.
+- When constants are mixed with references, the constants are lost.
+
+---
+name: tfconfig-import-3
+# Using the tfconfig/v2 Import
+
+- The tfconfig/v2 import gives information about the Terraform configuration used by the run in which Sentinel policies are checked.
+- It does NOT give all information about the Terraform configuration.
+- It can be used to restrict the configuration of module calls, variables, resources, data sources, providers, provisioners, and outputs.
+- It can also be used to compare attributes of different resources even if they are computed since it can compare the expressions the code used.
+- It is useful for restricting things that the other imports don't cover.
+- However, using it to restrict resources and data sources can be challenging because of the need to cross-reference references.
+
+---
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
+# Solutions to Exercises
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
+name: solutions
+# Solutions to Challenges
+
+- You will find solutions to Exercises all 10 challenges of the Sentinel for Terraform (v4) track here:
+https://github.com/hashicorp/sentinel-training-solution
+
+
+---
