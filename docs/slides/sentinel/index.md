@@ -28,11 +28,6 @@ layout: true
 background-image: url(../images/bkgs/HashiCorp-Content-bkg.png)
 background-size: cover
 
-.footer[
-
-- Copyright © 2020 HashiCorp
-]
-
 ---
 name: slide-deck
 exclude: true
@@ -54,11 +49,11 @@ class: cozy
 
 <b>
 - Introduction to Sentinel Concepts
-- *Lab Challenge 1:* Using Sentinel CLI
-- *Lab Challenge 2:* Applying and Testing a Policy with the CLI
 - The Sentinel Language
-- Key Concepts
-- Sentinel Imports and Modules
+  - Key Concepts
+      - *Lab Challenge 1:* Using Sentinel CLI
+      - *Lab Challenge 2:* Applying and Testing a Policy with the CLI
+  - Sentinel Imports and Modules
 - Advanced Concepts
 - Writing Sentiel Policies and Testing Them
 - *Lab Excersise 3-4:* Write and Test more Policies
@@ -80,23 +75,22 @@ count: false
 name: sentinel-overview
 # What is Sentinel
 
-- Sentinel is a **Policy As Code** framework to enable fine-grained, logic-based policy
+- Sentinel is a **Policy As Code** framework to enable fine-grained, logic-based policies
 
-- *Sentinel is to a Policy Framework as Terraform is to Infrastructure as Code*
+  - *Sentinel is to a Policy Framework as Terraform is to Infrastructure as Code*
 
 
 - It includes its own language and is embedded in HashiCorp’s Enterprise products.
 
-- It supports fine-grained policies that use conditional logic. For example - "Is this image in the supported images list?"
-
-
-- It includes a CLI that allows you to test and run policies.
+- It supports fine-grained policies that use conditional logic.
+  - For example - "Is this image in the supported images list?"
 
 ---
 name: sentinel-overview2
 # What is Sentinel
 
 - Sentinel is enabled as part of your provisioning workflow, ensuring that policies are checked each time Terraform runs
+  - It includes a CLI that allows you to test and run policies.
 - Policy as Code takes your excel spreadsheets, legal, regulatory requirement documents and individual security best practice knowledge and turns it into Code.
 
 .center[
@@ -115,7 +109,8 @@ name: benefits-of-policy
 
 - Easily share-able and consumable across multiple organizations and teams in Terraform Cloud
 
-- Can be tested and iterated on in an automated fashion with real test data!*
+- Can be tested and iterated on in an automated fashion with real test data!
+  - We'll discuss mock data and testing in this training!!!
 
 ???
 
@@ -140,8 +135,7 @@ name: customer-use-cases2
 - HashiCorp customers are using Sentinel to avoid excessive costs:
   - Limit the sizes of VMs and Kubernetes clusters in public clouds
   - Limit the monthly spend of each Terraform workspace
-
-- Other
+- HashiCorp customers are using Sentinel to avoid enforce standards:
   - Enforce mandatory tags on resources provisioned by Terraform
   - Mandate that all modules come from a Private Module Registry
 
@@ -212,7 +206,6 @@ name: enforcement-levels
   - Can be overriden by authorized users
 - **Hard Mandatory**
   - Cannot be overriden by anyone
-
 - Customers often create new Sentinel policies as Advisory, then transition to Soft Mandatory, and eventually to Hard Mandatory
 - This gives Terraform coders time to adapt and modify their code
 
@@ -258,16 +251,211 @@ count: false
 name: c1-references
 # References
 
-- <a href="https://docs.hashicorp.com/sentinel">Sentinel Documentation</a>
-- <a href="https://www.terraform.io/docs/cloud/sentinel/index.html">Terraform Cloud with Sentinel</a>
-- <a href="https://github.com/hashicorp/terraform-sentinel-policies">GitHub Repository with Sample Sentinel Policies for AWS, Azure, GCP, and VMware as well as useful common functions in modules</a>
-- <a href="http://WritingAndTestingSentinelPoliciesForTerraform-v3.0.pdf">Guide to Writing and Testing Sentinel</a>
-- [Introducing Sentinel](https://www.hashicorp.com/sentinel/)
-- [Writing and Testing Sentinel - An Indepth Guide](https://www.hashicorp.com/resources/writing-and-testing-sentinel-policies-for-terraform/)
+- [Sentinel Documentation](https://docs.hashicorp.com/sentinel)
+  - Basic introduction to documentation
+- [Sentinel Overview](https://www.terraform.io/cloud-docs/sentinel)
+  - High level overview of Sentinel and Terraform
+- [Manage Policies](https://www.terraform.io/cloud-docs/sentinel/manage-policies)
+  - Managing Policies in Terraform Cloud
+- [Enforcement Levels](https://www.terraform.io/cloud-docs/sentinel/enforce)
+  - The various enforcement levels
 
 ???
 
 Update to all same format please
+
+---
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
+# Chapter 2 - Sentinel Language Key Concepts
+
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
+name: what-do
+# What Does Sentinel DO in Terraform?
+
+- Sentinel has the ability to “check” any resources inside Terraform
+- Using the concept of ‘imports’ Sentinel can get data from;
+  - A Terraform Plan
+  - Terraform Config
+      - Variables, data, etc
+  - Terraform Run
+  - Much much more!
+      - HTTP Import can even call externally!!!
+
+---
+
+name: behind-the-scenes
+# The Engine Behind the Scenes
+
+.center[
+![:scale 100%](../images/sentinel-logic.png)
+]
+
+---
+name: what-does-it-look-like
+# What Does a Sentinel Check Look Like?
+
+.center[
+![:scale 80%](../images/show-sentinel.png)
+]
+
+---
+name: normal-view
+# The UI View
+
+.center[
+![:scale 90%](../images/sentinel-check-yes-no.png)
+]
+
+---
+name: lets-start
+# How Can We Get Started?
+
+- Sentinel supports a CLI for testing
+  - It just needs some **mock data** somehow...
+- Terraform has a plan method that let's you preview changes
+  - That is our data!
+- So let's mock some data and **'Get Started with Sentinel'**
+
+---
+name: mock-intro
+# Let's Talk About Mocks
+
+.center[
+![:scale 90%](../images/mock-highlight.png)
+]
+
+---
+name: mock-intro
+# Sentinel Mocks in Terraform
+
+- Sentinel **Mocks** simulate the data from Terraform plans
+  - They can be generated from Terraform Cloud
+- **Mocks** can be edited and modified to simulate other data
+- Using the Sentinel CLI with mocks speeds up development of new policies since additional plans do not need to be run.
+
+.center[
+![:scale 70%](../images/where-mock.png)
+]
+
+---
+name: mock-preview
+class: compact
+# What a Mock looks like
+
+```
+terraform_version = "1.1.5"
+
+planned_values = {
+	"outputs":   {},
+	"resources": {},
+}
+
+variables = {
+	"aws_region": {
+		"name":  "aws_region",
+		"value": "us-east-1",
+	},
+	"instance_type": {
+		"name":  "instance_type",
+		"value": "t3.large",
+	}
+```
+
+---
+name: mock-preview
+class: compact
+# What a Mock looks like (2)
+
+```
+resource_changes = {
+	"aws_iam_instance_profile.simple-main-profile": {
+		"address": "aws_iam_instance_profile.simple-main-profile",
+		"change": {
+			"actions": [
+				"delete",
+			],
+			"after":         null,
+			"after_unknown": {},
+			"before": {
+				"arn":         "arn:aws:iam::711129375688:instance-profile/potato-access-profile",
+				"create_date": "2022-02-03T16:27:32Z",
+				"id":          "potato-access-profile",
+				"name":        "potato-access-profile",
+				"name_prefix": null,
+				"path":        "/",
+				"role":        "potato-access-role"
+```
+
+---
+name: mocks-in-terraform
+# Sentinel Mocks in Terraform
+
+- **tfplan mock**
+  - gives data generated from Terraform plans
+- **tfconfig mock**
+  - gives data about the Terraform configuration
+- **tfstate mock**
+  - gives data about the current state of a workspace
+- **tfrun mock**
+  - gives metadata for Terraform runs and their workspaces as well as cost estimate data
+- **Some policies might use more than one of these imports.**
+
+---
+name: types-of-policies-0
+# Types of Terraform Sentinel Policies (0)
+
+There are essentially four types of Terraform Sentinel policies corresponding to the 4 Terraform Sentinel imports:
+- Policies can use the **tfplan** import
+  - restricts specific attributes of specific resources and data sources in the current Terraform plan.
+      - `# Get all Azure Security Center Pricings allAzureSecCenterSubPricings = plan.find_resources("azurerm_security_center_subscription_pricing")`
+
+---
+name: types-of-policies-1
+# Types of Terraform Sentinel Policies (1)
+
+- Policies can use the **tfconfig** import
+  - restricts the configuration of Terraform modules, variables, resources, data sources, providers, provisioners, and outputs.
+      - `# List of allowed resources allowed_list = ["aws_instance", "azurerm_virtualmachine", "google_compute_instance"]`
+
+---
+name: types-of-policies-2
+# Types of Terraform Sentinel Policies (2)
+
+- Policies can use the tfstate import
+  - checks whether previously provisioned resources or data sources have attributes with values that are no longer allowed.
+
+---
+name: types-of-policies-3
+# Types of Terraform Sentinel Policies (3)
+
+- Policies can use the tfrun import
+  - checks workspace and run metadata and whether cost estimates for planned resources are within limits.
+      - `# Determine proposed monthly cost proposed_cost = decimal.new(tfrun.cost_estimate.proposed_monthly_cost)`
+
+---
+name: chapter-summary
+# Chapter Summary
+
+- Sentinel can 'import' data from several sources in Terraform and Terraform Cloud
+  - The Terraform Plan, Config, State and Run Data!
+- You can 'simulate' this life-cycle by using **Mocks**
+  - Mocks can be generated from Terraform Cloud
+  - Mocks can then be tested with **Sentinel CLI**
+
+---
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
+# Chapter 2 - Complete
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
 
 ---
 class: title, smokescreen, shelf
@@ -323,55 +511,9 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# Chapter 2 - Sentinel Language Key Concepts
-
+# Chapter 3 - Sentinel Imports and Modules
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
-
----
-name: what-do
-# What Does Sentinel DO in Terraform?
-
-- Sentinel has the ability to “check” any resources inside Terraform
-- Using the concept of ‘imports’ Sentinel can get data from Terraform;
-  - Plan
-  - Config
-  - Run
-  - Much much more!
-
----
-name: what-does-it-look-like
-# What Does a Sentinel Check Look Like?
-
-.center[
-![:scale 80%](../images/show-sentinel.png)
-]
-
----
-name: behind-the-scenes
-# The Engine Behind the Scenes
-
-.center[
-![:scale 100%](../images/sentinel-logic.png)
-]
-
----
-name: normal-view
-# The UI View
-
-.center[
-![:scale 90%](../images/sentinel-check-yes-no.png)
-]
-
----
-name: mock-intro
-# Sentinel Mocks in Terraform
-
-- Sentinel **Mocks** simulate the data from Terraform plans
-  - They can be generated from Terraform Cloud
-- **Mocks** can be edited and modified to simulate other data
-- They enable testing of Terraform Sentinel policies with the Sentinel CLI.
-- Using the Sentinel CLI with mocks speeds up development of new policies since additional plans do not need to be run.
 
 ---
 name: policy-intro-0
@@ -524,6 +666,7 @@ class: col-2
 
 fix later
 
+
 ---
 name: chapter-summary
 # Chapter Summary
@@ -536,15 +679,6 @@ name: chapter-summary
     - **At least one, but could be many**
 - Sentinel has built in functions
   - There’s also common functions you can consume!
-
----
-class: title, smokescreen, shelf
-background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
-count: false
-
-# Chapter 2 - Complete
-
-![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
 
 ---
 class: title, smokescreen, shelf
@@ -607,35 +741,6 @@ name: imports-in-terraform
   - Cool hint: if you’re using more than one HashiCorp product you could get Sentinel data from them!
 
 - Terraform Cloud provides four imports to define policy rules for the plan, configuration, state, and run associated with a policy check
-
----
-name: imports-in-terraform-2
-class: compact
-# Sentinel Imports in Terraform
-
-- **tfplan/v2**
-  - gives data generated from Terraform plans
-
-- **tfconfig/v2**
-  - gives data about the Terraform configuration
-
-- **tfstate/v2**
-  - gives data about the current state of a workspace
-
-- **Tfrun**
-  - gives metadata for Terraform runs and their workspaces as well as cost estimate data
-
----
-name: types-of-policies
-class: compact
-# Types of Terraform Sentinel Policies
-
-There are essentially four types of Terraform Sentinel policies corresponding to the 4 Terraform Sentinel imports:
-- Policies can use the tfplan/v2 import to restrict specific attributes of specific resources and data sources in the current Terraform plan.
-- Policies can use the tfconfig/v2 import to restrict the configuration of Terraform modules, variables, resources, data sources, providers, provisioners, and outputs.
-- Policies can use the tfstate/v2 import to check whether previously provisioned resources or data sources have attributes with values that are no longer allowed.
-- Policies can use the tfrun import to check workspace and run metadata and whether cost estimates for planned resources are within limits.
-  - Some policies might use more than one of these imports.
 
 ---
 name: sentinel-modules
