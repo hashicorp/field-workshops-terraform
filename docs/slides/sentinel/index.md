@@ -43,22 +43,24 @@ Follow along at this link:
 ]
 ---
 name: agenda
-class: cozy
-
+class: compact
 # Workshop Adgenda
 
 <b>
 - Introduction to Sentinel Concepts
-- The Sentinel Language
-  - Key Concepts
-      - *Lab Challenge 1:* Using Sentinel CLI
-      - *Lab Challenge 2:* Applying and Testing a Policy with the CLI
-  - Sentinel Imports and Modules
-- Advanced Concepts
-- Writing Sentiel Policies and Testing Them
-- *Lab Excersise 3-4:* Write and Test more Policies
+- How Sentinel Works
+    - *Lab Challenge 1:* Using Sentinel CLI
+    - *Lab Challenge 2:* Applying and Testing a Policy with the CLI
+- First Sentinel Policy Overview
+  - Imports (Modules and Functions)
+  - Basic evaluation
+  - Print
+- Writing your own Policies Using **Common Functions** and Testing Them
+  - Common Functions
+- Writing your own Policies  **From Scratch**
+  - Advanced Sentinel Language
 - Advanced Techniques
-- Extra Credit
+  - _Lab Challenges 3-7: Sprinkled In_
 
 </b>
 
@@ -269,7 +271,7 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# Chapter 2 - Sentinel Language Key Concepts
+# Chapter 2 - How Sentinel Works
 
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
@@ -462,14 +464,14 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# Workshop Challenge 1: Using the Sentinel CLI
+# Workshop 1: Using the Sentinel CLI
 
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
 
 ---
 name: challenge-one
-# Challenge 1: Using the Sentinel CLI
+# Workshop 1: Using the Sentinel CLI
 
 - The hands-on lab exercises of this workshop are done in an interactive learning platform Instruqt
 
@@ -495,12 +497,13 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# Workshop Challenge 2: Applying and Testing Policies
+# Workshop 2: Applying and Testing Policies
 
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
 ---
-name: Challenge 2: Applying and Testing Policies
+name: challenge-2
+# Workshop 2: Applying and Testing Policies
 
 - In the second challenge, you'll learn how to apply and test a simple Sentinel policy with the Sentinel CLI.
 
@@ -511,13 +514,26 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# Chapter 3 - Sentinel Imports and Modules
+# Chapter 3 - Introducing a Policy
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
 
 ---
+name: chapter3-intro
+# Introducing Policies Agenda
+
+- Discuss the common components of a Sentinel Policy
+  - Imports (Modules and Functions)
+  - Basic evaluation
+  - Printing
+- Writing your own Policies Using **Common Functions**
+  - Common Functions
+- Writing your own Policies **From Scratch**
+  - Advanced Sentinel Language
+
+---
 name: policy-intro-0
-# Sentinel Policy Introduction – Concepts (0)
+# Your First Policy – Concepts
 
 - Imports
   - Modules and Functions
@@ -531,11 +547,159 @@ name: policy-intro-0
 
 ---
 name: policy-intro-1
-# Sentinel Policy Introduction – Concepts (1)
+# Your First Policy – Imports
 
 .center[
 ![:scale 100%](../images/policy-intro-1.png)
 ]
+
+---
+name: what-is-import
+# What is an Import?
+
+- You have already been introduced to a few different kinds of **imports** already!
+  - Terraform Plan, Config and Run Mocks are examples of **imports**
+- Imports in Sentinel are similair to those of other programming langauges
+  - `import` enables a policy to access reusable libraries, external data and **functions**
+- Sentinel ships with a set of standard imports to do basic functions
+  - For example, the import:json capability allows you to parse and access a JSON document
+  - Using import we can also consume **common functions** built by power users
+
+---
+name: sentinel-imports
+# Standard Sentinel Imports
+
+- Standard Imports
+  - base64
+  - decimal
+  - **http**
+  - json
+  - runtime
+  - sockaddr
+  - **strings**
+  - time
+  - types
+  - units
+  - version
+
+???
+
+Highlighting 2 as they are the most important
+
+---
+name: example-operations
+# Example Operations using Imported data
+
+- Check if a string has a prefix:
+  - **strings.has_prefix(s, prefix)**
+- Check if a string has a suffix:
+  - **strings.has_suffix(s, suffix)**
+- Check the type of a Sentinel object:
+  - **types.type_of(obj)**
+- Make external calls to API endpoints:
+  - **response = http.get("https://example.hashicorp.com")**
+- Convert a JSON object to a Sentinel structure:
+  - **json.unmarshal(response.body)**
+  - **Most HashiCorp configuration and data is in JSON**
+
+---
+name: policy-intro-1
+# Your First Policy – Imports: Functions
+
+.center[
+![:scale 100%](../images/policy-intro-1.png)
+]
+
+---
+name: functions-intro
+# What are Functions?
+
+- Functions allow you to create reusable code to perform computations
+
+- A Sentinel **Function** is declared with the **func** keyword.
+
+```
+find_resources = func(resource_type) {
+  # Do something and use the parameter
+  return true
+}
+```
+
+---
+name: functions-again
+# What are Functions?
+
+```
+find_resources = func(resource_type) {
+  # Do something and use the parameter
+  return true
+}
+```
+- Each function has a name such as **find_resources**.
+- Each function can have zero or more parameters.
+  - The function above has the single parameter, **resource_type**
+- Every function must return a value such as **true**.
+- A call to this function could look like:
+  - **s3_buckets = find_resources("aws_s3_bucket")**
+
+---
+name: policy-deep-dive
+class: compact
+# What Does a Function Look Like?
+
+A full function looks like this
+
+```
+Execute various statements and return a value.
+### find_resources ###
+	# Find all resources of a specific type using the tfplan/v2 import.
+	# Include resources that are not being permanently deleted.
+	# Technically, this returns a map of resource changes.
+	find_resources = func(type) {
+  	resources = filter tfplan.resource_changes as address, rc {
+  		rc.type is type and
+  		rc.mode is "managed" and
+  		(rc.change.actions contains "create" or rc.change.actions contains "update" or
+    	 rc.change.actions contains "read" or (rc.change.actions contains "no-op" and
+     	rc.change.after is not null))
+  	} return resources }
+```
+
+???
+
+We wont teach writing functions in this class
+
+---
+name: functions-intro
+# Importing Functions
+
+- But when written once, you can just **Import** it repeatedly;
+    - **import "tfconfig-functions" as config**
+    - **Modules** allow you to re-use Sentinel code as an import*
+- Writing your first function will take some time and effort
+- To get started faster you can use some **[Common Functions](https://github.com/hashicorp/terraform-guides/tree/master/governance/third-generation/common-functions)**
+  - Find all resources called "**foobar**"
+  - Limit proposed monthly cost
+  - Prevent destroy
+  - MORE!!!
+
+???
+
+We won't discuss modules or the structure or writing of modules in this, all you need to know is functions come from modules
+
+---
+name: builtin-functions
+# Builtin Functions
+
+- Sentinel includes some useful **Builtin Functions:**
+  - **append**		Appends a value to the end of a list
+  - **delete**		Deletes an element from a map
+  - **error**	Immediately exit with an error message
+  - **keys**		Returns the keys of a map
+  - **length**		Returns the length of a collection or string
+  - **print**		Prints what you tell it to.  Always returns true.
+  - **range**		Returns a list of numbers in a range.
+  - **values**		Returns the values of a map.
 
 ---
 name: policy-intro-2
@@ -570,104 +734,6 @@ name: policy-intro-5
 ]
 
 ---
-name: policy-deep-dive
-class: compact
-# Sentinel Policies Deep Dive
-Functions
-```
-Execute various statements and return a value.
-### find_resources ###
-	# Find all resources of a specific type using the tfplan/v2 import.
-	# Include resources that are not being permanently deleted.
-	# Technically, this returns a map of resource changes.
-	find_resources = func(type) {
-  	resources = filter tfplan.resource_changes as address, rc {
-  		rc.type is type and
-  		rc.mode is "managed" and
-  		(rc.change.actions contains "create" or rc.change.actions contains "update" or
-    	 rc.change.actions contains "read" or (rc.change.actions contains "no-op" and
-     	rc.change.after is not null))
-  	} return resources }
-```
-
-???
-
-clean up
----
-name: functions-intro
-# Sentinel Policies Deep Dive
-
-- OR
-  - **Functions**
-    - import "tfconfig-functions" as config
-
----
-name: functions-def
-class: compact
-# Sentinel Functions
-
-- A Sentinel **Function** is declared with the **func** keyword.
-
-```
-find_resources = func(resource_type) {
-  # Do something and use the parameter
-  return true
-}
-```
-- Each function has a name such as **find_resources**.
-- Each function can have zero or more parameters.
-  - The function above has the single parameter, **resource_type**
-- Every function must return a value such as **true**.
-- A call to this function could look like:
-  - **s3_buckets = find_resources("aws_s3_bucket")**
-
----
-name: builtin-functions
-# Builtin Functions
-
-- Sentinel includes some useful **Builtin Functions:**
-  - **append**		Appends a value to the end of a list
-  - **delete**		Deletes an element from a map
-  - **error**	Immediately exit with an error message
-  - **keys**		Returns the keys of a map
-  - **length**		Returns the length of a collection or string
-  - **print**		Prints what you tell it to.  Always returns true.
-  - **range**		Returns a list of numbers in a range.
-  - **values**		Returns the values of a map.
-
----
-name: reserved-words
-class: col-2
-# Sentinel Keywords
-
-- all
-- any
-- as
-- break
-- case
-- continue
-- else
-- filter
-- for
-- func
-</br>
-</br>
-</br>
-- if
-- is
-- import
-- map
-- param
-- return
-- rule
-- when
-
-???
-
-fix later
-
-
----
 name: chapter-summary
 # Chapter Summary
 
@@ -679,90 +745,8 @@ name: chapter-summary
     - **At least one, but could be many**
 - Sentinel has built in functions
   - There’s also common functions you can consume!
-
----
-class: title, smokescreen, shelf
-background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
-count: false
-
-# Chapter 3 - Sentinel Imports and Modules
-
-![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
-
----
-name: policy-imports
-class: compact
-# Sentinel Policy - Imports
-
-- A policy can include imports which enable a policy to access reusable libraries, external data and functions
-- Imports enable Sentinel to access External Data
-  - Sentinel ships with a set of standard imports
-  - For example, the import:json capability allows you to parse and access a JSON document
-
-- The true power in Sentinel is using imports/plugins to make policy decisions on any source of data!
-  - Import “http” enables the use of HTTP-accessible data from outside the runtime in Sentinel policy rules.
-  - Simply put I can query any URL to use data in Sentinel!
-
----
-name: sentinel-imports
-# Standard Sentinel Imports
-
-- Standard Imports
-  - base64
-  - decimal
-  - http
-  - json
-  - runtime
-  - sockaddr
-  - strings
-  - time
-  - types
-  - units
-  - version
-
----
-name: common-operations
-# Common Operations of the Standard Imports
-
-- Check if a string has a prefix: **strings.has_prefix(s, prefix)**
-- Check if a string has a suffix: **strings.has_suffix(s, suffix)**
-- Check the type of a Sentinel object: **types.type_of(obj)**
-- Make external calls to API endpoints: **response = http.get("https://example.hashicorp.com")**
-- Convert a JSON object to a Sentinel structure: **json.unmarshal(response.body)**
-
----
-name: imports-in-terraform
-# Sentinel Imports in Terraform
-
-- A policy can include imports which enable a policy to access reusable libraries, external data and functions
-
-- Imports are Sentinel’s way of accessing data
 - Remember that Sentinel is embedded across HashiCorp’s Enterprise tools
   - Cool hint: if you’re using more than one HashiCorp product you could get Sentinel data from them!
-
-- Terraform Cloud provides four imports to define policy rules for the plan, configuration, state, and run associated with a policy check
-
----
-name: sentinel-modules
-# Sentinel Modules
-
-- Modules allow you to re-use Sentinel code as an import
-  - import “tfplan-functions”
-
-- Sentinel modules are registered in Sentinel CLI configuration files and in TFC/TFE policy set configuration files
-
-- There are some AMAZING getting starting Modules available in GitHub!
-  - **Example**
-  - **find_resources_by_provider** and **find_datasources_by_provider** functions that find resources or data sources for a specific provider
-
----
-name: chapter-summary
-# Chapter Summary
-
-- Sentinel contains imports that allow it to access external data
-- In Terraform we use these imports to access **Plan, Config, State and Run Data!**
-- Sentinel makes use of **Modules** to make use of **Functions** in a repeatable way!
-  - There’s lots of re-usable Modules and Functions available on GitHub to get started!
 
 ---
 class: title, smokescreen, shelf
@@ -778,243 +762,7 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# Chapter 4 - Sentinel Language Advanced Concepts
-
-![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
-
----
-name: language-const
-# Key Sentinel Language Constructs (1)
-
-- **Boolean Expressions:** Evaluate to true, false, or undefined.
-  - They use logical, comparison, set, and other **Operators.**
-  - (5*2 == 10) and (7 in [ 2, 3, 5, 7, 11, 13, 17, 19])
-- **Rules:** Evaluate a single expression which could be the result of calling a single function.
-- **Main Rule:** Every Sentinel policy must have a rule called main.
-  - The result of a policy is the value returned by its main rule.
-- **Statements:** Execute procedural logic.
-- **Functions:** Execute various statements and return a value.
-- **Variables:** Store values for use by rules and functions.
-- **Parameters:** Accept inputs passed to policies.
-
----
-name: language-const-2
-# Key Sentinel Language Constructs (2)
-
-- **Types:** boolean, integer, float, string, list, map
-  - A **List** is a collection of zero or more items
-  - A **Map** is a collection of zero or more key/value pairs
-- **Operators:** Arithmetic, Logical, Comparison, Set, Matches, Else
-- **Assignments:** Set the value of variables.
-- **If/Else and Case Statements:** Specify conditional execution of different logic within a function.
-- **For Loops:** Repeat statements while iterating over a map or list.
-  - Frequently used inside functions
-  - **break** and **continue** statements can alter loop execution.
-- The **Filter** quantifier expression that returns a subset of a collection.
-- **Imports:** Reusable libraries of Sentinel functions.
-
----
-name: pre-clared
-class: col-2
-# Sentinel Pre-declared Identifiers
-Constants:
-- false
-- true
-- null
-- undefined
-
-</br>
-Type Conversion Functions:
-- bool
-- float
-- int
-- string
-
-???
-fix later
-
----
-name: logic-operators
-# Sentinel Numerical and Logical Operators
-
-- **Arithmetic:** +, -, *, /, and % (remainder)
-- **p and q**	p and q must both be true
-- **p or q**	at least one of them must be true
-- **p xor q**	exactly one of them must be true
-- **!p**		p is false
-- **not p**		p is false
-
----
-name: comparison
-# Sentinel Comparison Operators
-
-- **==**		equal to
-- **!=**		not equal to
-- **<**		less than
-- **<=**		less than or equal to
-- **>**		greater than
-- **>=**		greater than or equal to
-- **is**		equal to
-- **is not**	not equal to
-
-Note that maps and lists are comparable!
-
----
-name: short-circuit
-# Sentinel's Short-Circuit Logic
-
-- Sentinel applies Short-Circuit Logic for compound boolean expressions like p and q and (a and b) or c:
-- This means that Sentinel does not evaluate all conditions further to the right if it already knows the final answer.
-  - So, if p is false, it does not evaluate q since p and q is already false.
-  - If a and b are both true, it does not evaluate c since (a and b) or c is already true.
-  - If a is false, it does not evaluate b since a and b is already false, but it does evaluate c since (a and b) or c could still be true or false, depending on the value of c.
-
----
-name: set
-# Sentinel Set Operators
-
-- Set operators can be applied to lists, maps and strings.
-- For strings, the set operators do substring inclusion
-- Examples for lists:
-  - **1 in [1, 2, 3]**			Means that 1 is in the list
-  - **[1, 2, 3] contains 2**	Means that the list contains 2.
-  - **[] is empty**			Means that the collection is empty.
-- You can also use **not in, not contains, and is not empty.**
-
----
-name: matches
-# The Sentinel Matches Operator
-
-- The **matches** operator tests if a string matches a regular expression.
-- Examples:
-  - **"test" matches "^te"**			# true
-  - **"1352" matches "[0-9]*"**		# true
-  - **"123A" matches "[0-9]*"**		# false
-  - **"xyz.com matches ".*\\.com"**	# true
-
-- The **strings import** can also be used to determine if a string has a specific prefix or suffix
-
----
-name: else
-# The Sentinel Else Operator
-
-- The else operator converts the _undefined_ value to something else.
-- If a number is _undefined_, you might convert it to 0
-  - **(memory else 0) <= 2048**
-- If a boolean is _undefined_, you might convert it to true or false.
-  - **(memory <= 2048) else false**
-- If a list is _undefined_, you might convert it to the empty list, [].
-  - **keys(tfplan.resource_changes) else []**
-- If a map is _undefined_, you might convert it to the empty map, {}.
-  - **allEC2Instances else {}**
-- Note that the _else_ operator does not affect null.
-
----
-name: for-loops
-# Sentinel For Loops
-
-- A Sentinel **for** loop iterates over a collection.
-- Each for loop uses the **as** keyword to define one or two iterator variables.
-- When iterating over a list, the first variable is assigned the index and the second variable is assigned the value.
-  - If only one iterator variable is specified, it is assigned the value.
-- When iterating over a map, the first variable is assigned the key and the second variable is assigned the value.
-  - If only one iterator variable is specified, it is assigned the key.
-
----
-name: for-loop-example
-class: compact
-# Sentinel For Loop Examples
-
-- This example iterates over a list with one variable (for the values).
-```
-count = 0
-for [1, 2, 3] as num {
-  count += num
-}
-```
-
----
-name: for-loop-example
-class:compact
-# Sentinel For Loop Example
-
-- The count will equal 6.
-  - This example iterates over a map with two variables:
-```
-data = { "a": 12, "b": 32 }
-for data as k, v {
-  sum += v
-}
-```
-
-- The sum will equal 44.
-
----
-name: all-any
-# The Sentinel all and any Expressions
-
-- The **all** and **any** quantifier expressions are are used like loops, but they are actually quantifier expressions that apply boolean expressions to lists and maps. They return _true_ or _false_.
-- The _all_ expression is a universal quantifier asserting that a boolean expression must be true for all items of a collection.
-- The _any_ expression is an existential quantifier asserting that a boolean expression must be true for at least one item in a collection.
-- It used to be common to use all expressions in Sentinel rules, but it is better to use for loops in functions called before the main rule.
-- This allows your policies to report all violations in a single shot.
-
----
-name: filter-map
-# The Sentinel filter and map Expressions
-
-- The **filter** quantifier expression applies a boolean expression to each item in a list or map.
-  - However, instead of returning true or false, it returns a sub-collection of the original collection consisting of those items for which the boolean expression was true.
-  - The _filter_ expression is useful with the Terraform Sentinel v2 imports since their collections were designed to be used with it.
-- The **map** quantifier expression returns a list of values, one for each item in the collection it is applied to.
-  - It can be useful in Sentinel rules that want to return non-boolean values including maps and lists.
-
----
-name: if-else
-# The Sentinel If/Else Conditional
-
-- This example tests if _v_ is defined and equal to _value_:
-
-```
-if v else null is null {
-  print("The value", v, "was null or not defined")
-} else if v is not value {
-  print(v, "is not equal to the required value", value)
-} else {
-  print(v, "is the desired value", value)
-}
-```
-
----
-name: case
-# The Sentinel Case Conditional
-
-- This example does different processing for different days:
-
-```
-case day {
-when "Saturday", "Sunday":
-	print("Sorry, we are closed.")
-else:
-	print("We are open from 9am to 6pm.")
-}
-```
-
----
-class: title, smokescreen, shelf
-background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
-count: false
-
-# Chapter 4 - Complete
-
-![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
-
----
-class: title, smokescreen, shelf
-background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
-count: false
-
-# Chapter 5 - Writing and Testing Sentinel Policies for Terraform
+# Chapter 4 - Writing and Testing Sentinel Policies for Terraform
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
 
@@ -1416,9 +1164,277 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
+# Chapter 4 - Complete
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
+# Chapter 5 - Sentinel Language Advanced Concepts
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
+name: language-const
+# Key Sentinel Language Constructs (1)
+
+- **Boolean Expressions:** Evaluate to true, false, or undefined.
+  - They use logical, comparison, set, and other **Operators.**
+  - (5*2 == 10) and (7 in [ 2, 3, 5, 7, 11, 13, 17, 19])
+- **Rules:** Evaluate a single expression which could be the result of calling a single function.
+- **Main Rule:** Every Sentinel policy must have a rule called main.
+  - The result of a policy is the value returned by its main rule.
+- **Statements:** Execute procedural logic.
+- **Functions:** Execute various statements and return a value.
+- **Variables:** Store values for use by rules and functions.
+- **Parameters:** Accept inputs passed to policies.
+
+---
+name: language-const-2
+# Key Sentinel Language Constructs (2)
+
+- **Types:** boolean, integer, float, string, list, map
+  - A **List** is a collection of zero or more items
+  - A **Map** is a collection of zero or more key/value pairs
+- **Operators:** Arithmetic, Logical, Comparison, Set, Matches, Else
+- **Assignments:** Set the value of variables.
+- **If/Else and Case Statements:** Specify conditional execution of different logic within a function.
+- **For Loops:** Repeat statements while iterating over a map or list.
+  - Frequently used inside functions
+  - **break** and **continue** statements can alter loop execution.
+- The **Filter** quantifier expression that returns a subset of a collection.
+- **Imports:** Reusable libraries of Sentinel functions.
+
+---
+name: pre-clared
+class: col-2
+# Sentinel Pre-declared Identifiers
+Constants:
+- false
+- true
+- null
+- undefined
+
+</br>
+Type Conversion Functions:
+- bool
+- float
+- int
+- string
+
+???
+fix later
+
+---
+name: reserved-words
+class: col-2
+# Sentinel Keywords
+
+- all
+- any
+- as
+- break
+- case
+- continue
+- else
+- filter
+- for
+- func
+</br>
+</br>
+</br>
+- if
+- is
+- import
+- map
+- param
+- return
+- rule
+- when
+
+???
+
+fix later
+---
+name: logic-operators
+# Sentinel Numerical and Logical Operators
+
+- **Arithmetic:** +, -, *, /, and % (remainder)
+- **p and q**	p and q must both be true
+- **p or q**	at least one of them must be true
+- **p xor q**	exactly one of them must be true
+- **!p**		p is false
+- **not p**		p is false
+
+---
+name: comparison
+# Sentinel Comparison Operators
+
+- **==**		equal to
+- **!=**		not equal to
+- **<**		less than
+- **<=**		less than or equal to
+- **>**		greater than
+- **>=**		greater than or equal to
+- **is**		equal to
+- **is not**	not equal to
+
+Note that maps and lists are comparable!
+
+---
+name: short-circuit
+# Sentinel's Short-Circuit Logic
+
+- Sentinel applies Short-Circuit Logic for compound boolean expressions like p and q and (a and b) or c:
+- This means that Sentinel does not evaluate all conditions further to the right if it already knows the final answer.
+  - So, if p is false, it does not evaluate q since p and q is already false.
+  - If a and b are both true, it does not evaluate c since (a and b) or c is already true.
+  - If a is false, it does not evaluate b since a and b is already false, but it does evaluate c since (a and b) or c could still be true or false, depending on the value of c.
+
+---
+name: set
+# Sentinel Set Operators
+
+- Set operators can be applied to lists, maps and strings.
+- For strings, the set operators do substring inclusion
+- Examples for lists:
+  - **1 in [1, 2, 3]**			Means that 1 is in the list
+  - **[1, 2, 3] contains 2**	Means that the list contains 2.
+  - **[] is empty**			Means that the collection is empty.
+- You can also use **not in, not contains, and is not empty.**
+
+---
+name: matches
+# The Sentinel Matches Operator
+
+- The **matches** operator tests if a string matches a regular expression.
+- Examples:
+  - **"test" matches "^te"**			# true
+  - **"1352" matches "[0-9]*"**		# true
+  - **"123A" matches "[0-9]*"**		# false
+  - **"xyz.com matches ".*\\.com"**	# true
+
+- The **strings import** can also be used to determine if a string has a specific prefix or suffix
+
+---
+name: else
+# The Sentinel Else Operator
+
+- The else operator converts the _undefined_ value to something else.
+- If a number is _undefined_, you might convert it to 0
+  - **(memory else 0) <= 2048**
+- If a boolean is _undefined_, you might convert it to true or false.
+  - **(memory <= 2048) else false**
+- If a list is _undefined_, you might convert it to the empty list, [].
+  - **keys(tfplan.resource_changes) else []**
+- If a map is _undefined_, you might convert it to the empty map, {}.
+  - **allEC2Instances else {}**
+- Note that the _else_ operator does not affect null.
+
+---
+name: for-loops
+# Sentinel For Loops
+
+- A Sentinel **for** loop iterates over a collection.
+- Each for loop uses the **as** keyword to define one or two iterator variables.
+- When iterating over a list, the first variable is assigned the index and the second variable is assigned the value.
+  - If only one iterator variable is specified, it is assigned the value.
+- When iterating over a map, the first variable is assigned the key and the second variable is assigned the value.
+  - If only one iterator variable is specified, it is assigned the key.
+
+---
+name: for-loop-example
+class: compact
+# Sentinel For Loop Examples
+
+- This example iterates over a list with one variable (for the values).
+```
+count = 0
+for [1, 2, 3] as num {
+  count += num
+}
+```
+
+---
+name: for-loop-example
+class:compact
+# Sentinel For Loop Example
+
+- The count will equal 6.
+  - This example iterates over a map with two variables:
+```
+data = { "a": 12, "b": 32 }
+for data as k, v {
+  sum += v
+}
+```
+
+- The sum will equal 44.
+
+---
+name: all-any
+# The Sentinel all and any Expressions
+
+- The **all** and **any** quantifier expressions are are used like loops, but they are actually quantifier expressions that apply boolean expressions to lists and maps. They return _true_ or _false_.
+- The _all_ expression is a universal quantifier asserting that a boolean expression must be true for all items of a collection.
+- The _any_ expression is an existential quantifier asserting that a boolean expression must be true for at least one item in a collection.
+- It used to be common to use all expressions in Sentinel rules, but it is better to use for loops in functions called before the main rule.
+- This allows your policies to report all violations in a single shot.
+
+---
+name: filter-map
+# The Sentinel filter and map Expressions
+
+- The **filter** quantifier expression applies a boolean expression to each item in a list or map.
+  - However, instead of returning true or false, it returns a sub-collection of the original collection consisting of those items for which the boolean expression was true.
+  - The _filter_ expression is useful with the Terraform Sentinel v2 imports since their collections were designed to be used with it.
+- The **map** quantifier expression returns a list of values, one for each item in the collection it is applied to.
+  - It can be useful in Sentinel rules that want to return non-boolean values including maps and lists.
+
+---
+name: if-else
+# The Sentinel If/Else Conditional
+
+- This example tests if _v_ is defined and equal to _value_:
+
+```
+if v else null is null {
+  print("The value", v, "was null or not defined")
+} else if v is not value {
+  print(v, "is not equal to the required value", value)
+} else {
+  print(v, "is the desired value", value)
+}
+```
+
+---
+name: case
+# The Sentinel Case Conditional
+
+- This example does different processing for different days:
+
+```
+case day {
+when "Saturday", "Sunday":
+	print("Sorry, we are closed.")
+else:
+	print("We are open from 9am to 6pm.")
+}
+```
+
+---
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
 # Chapter 5 - Complete
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
 
 ---
 class: title, smokescreen, shelf
