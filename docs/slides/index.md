@@ -4,8 +4,8 @@ background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/
 count: false
 
 .white[
-# Terraform Field Workshops Slides
-## Slides for Terraform field workshops
+# Sentinel For Terraform Workshop
+
 ]
 
 ![:scale 15%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
@@ -25,8 +25,8 @@ You make a slide a title slide by including `class: title`.
 
 ---
 name: terraform-workshops-slides
-# Terraform Workshops Slides
-### This directory contains slides for Terraform workshops.
+# Sentinel for Terraform Workshop
+### This directory contains slides for Sentinel workshops.
 * They are organized by cloud.
 * Workshops for each cloud are organized by type:
   1. Terraform OSS

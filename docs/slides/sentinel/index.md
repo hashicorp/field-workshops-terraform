@@ -39,12 +39,12 @@ class: img-left-full
 .center[
 Follow along at this link:
 
-## https://git.io/JvSPW
+## https://hashicorp.github.io/workshops/
 ]
 ---
 name: agenda
 class: compact
-# Workshop Adgenda
+# Workshop Agenda
 
 <b>
 - Introduction to Sentinel Concepts
@@ -460,6 +460,23 @@ count: false
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
 
 ---
+name: chapter-2-references
+class: compact
+# References
+
+- [Sentinel Imports](https://docs.hashicorp.com/sentinel/intro/getting-started/imports)
+  - Imports enable Sentinel to access external data and functions
+- [Generating Mock Data](https://www.terraform.io/cloud-docs/sentinel/mock)
+  - [Basics of TF Config Import](https://www.terraform.io/cloud-docs/sentinel/import/tfconfig-v2)
+      - Policies using the tfconfig import can access all aspects of the configuration: providers, resources, data sources, modules, and variables
+  - [Basics of TF Plan Import](https://www.terraform.io/cloud-docs/sentinel/import/tfplan-v2)
+      - The plan represents the changes that Terraform needs to make to infrastructure to reach the desired state represented by the configuration
+  - [Basics of TF State Import](https://www.terraform.io/cloud-docs/sentinel/import/tfstate-v2)
+      - The state is the data that Terraform has recorded about a workspace at a particular point in its lifecycle, usually after an apply
+  - [Basics of TF Run Import](https://www.terraform.io/cloud-docs/sentinel/import/tfrun)
+      - This import currently consists of run attributes, as well as namespaces for the organization, workspace and cost-estimate
+
+---
 class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
@@ -758,6 +775,19 @@ count: false
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
 
 ---
+name: references
+# References
+
+- [Sentinel Built in Functions](https://docs.hashicorp.com/sentinel/language/functions)
+  - Functions allow you to create reusable code to perform computations.
+- Sentinel in HashiCorp Products
+  - [Sentinel in Terraform](https://www.terraform.io/cloud-docs/sentinel)
+  - [Sentinel in Vault](https://www.vaultproject.io/docs/enterprise/sentinel)
+  - [Sentinel in Consul](https://docs.hashicorp.com/sentinel/consul)
+- [Common Functions](https://github.com/hashicorp/terraform-guides/tree/master/governance/third-generation/common-functions)
+  - A great resource to get started writing and consuming existing policies
+
+---
 class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
@@ -767,32 +797,53 @@ count: false
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
 
 ---
-name: mocks-in-tf
-# Sentinel Mocks in Terraform
+name: authoring-workflow
+# Introducing the Sentinel Authoring Workflow
 
-- Sentinel **Mocks** simulate the data that is made available to the Terraform Sentinel imports from Terraform plans.
-- They can be generated from recent plans using the Terraform Cloud UI and API.
-- They can also be copied and edited to simulate various combinations of resource and data source attributes.
-- They enable testing of Terraform Sentinel policies with the Sentinel CLI.
-- Using the Sentinel CLI with mocks speeds up development of new policies since additional plans do not need to be run.
+Developing and testing Sentinel policies follows a standard workflow.
+
+You can use three different methods for testing your Terraform Sentinel policies:
+  - You can manually test policies against actual Terraform code by using the Terraform UI or the Terraform CLI with the remote backend.
+  - You can execute automated tests against actual Terraform code by using the Terraform API.
+  - You can use the Sentinel Simulator with mocks generated from Terraform plans.
+
+---
+name: authoring-workflow
+# Introducing the Sentinel Authoring Workflow
+
+For the purpose of this course and as a general recommendation we suggest using the third method;
+
+- Using the Sentinel Simulator with mocks generated from Terraform plans.
+
+This allows a user to rapidly iterate, test and observe changes locally by simulating the process
 
 ---
 name: methodology-0
-# Basic Methodology for Restricting Resources
+# Introducing the Sentinel Authoring Workflow
 
-- The Eight Steps of the recommended methodology are:
-1. Create a Terraform configuration that creates the resource.
-2. Create a workspace that uses your Terraform configuration.
-3. Run a plan against the workspace.
-4. Generate mocks against the plan in the TFC UI.
-5. Write a new Sentinel policy.
-6. Create test cases and test your policy with the Sentinel CLI.
-7. Revise your policy and test cases until the latter all pass.
-8. Deploy your policy to a TFC organization.
+- Writing and Testing Sentinel Policies involves Eight Steps;
+1. Write Terraform code to create a resource
+2. Create a workspace that uses your Terraform code
+3. Start a plan in the workspace
+4. `Download Sentinel mocks` in the workspace
+5. Write a new Sentinel policy
+  - **Or copy common functions and tests!!!**
+6. Create positive and negative test cases, test them!
+7. Iterate, Iterate, Iterate
+8. Deploy your policy
+  - _Secret Step 9, relax and enjoy automated policy enforcement_
+
+---
+name: authoring-workflow-diagram
+#Authoring Workflow Diagram
+
+.center[
+![:scale 100%](../images/authoring.png)
+]
 
 ---
 name: methodology-1
-# Create a Terraform Configuration
+# Step 1 - Write Terraform Code
 
 - Create a Terraform configuration that creates at least one instance of the resource your policy will restrict.
   - Include a main.tf file to create the resource.
@@ -1243,6 +1294,7 @@ class: col-2
 - filter
 - for
 - func
+</br>
 </br>
 </br>
 </br>
@@ -1927,4 +1979,22 @@ name: solutions
 https://github.com/hashicorp/sentinel-training-solution
 
 
+---
+name: extra slides
+# Extra Slides
+
+Lorem ipsum placeholder
+Lorem ipsum placeholder
+Lorem ipsum placeholder
+
+
+---
+name: mocks-in-tf
+# Sentinel Mocks in Terraform
+
+- Sentinel **Mocks** simulate the data that is made available to the Terraform Sentinel imports from Terraform plans.
+- They can be generated from recent plans using the Terraform Cloud UI and API.
+- They can also be copied and edited to simulate various combinations of resource and data source attributes.
+- They enable testing of Terraform Sentinel policies with the Sentinel CLI.
+- Using the Sentinel CLI with mocks speeds up development of new policies since additional plans do not need to be run.
 ---
