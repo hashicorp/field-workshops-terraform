@@ -1239,6 +1239,8 @@ name: references
 
 - [The Legendary Roger Berlind's Guide on Writing and Testing Sentinel Policies](https://www.hashicorp.com/resources/writing-and-testing-sentinel-policies-for-terraform)
 
+- [Video Guide](https://www.youtube.com/watch?v=z_m4fFYym30)
+
 ---
 class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
@@ -1253,7 +1255,119 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# Chapter 5 - Sentinel Language Advanced Concepts
+# Chapter 5 - Using Sentinel in Terraform Cloud and Terraform Enterprise
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
+name: test-policies
+# Testing Policies in Terraform Cloud
+
+- After successfully testing a policy with the CLI, you might also want to test it against actual Terraform code on a TFC or TFE server.
+- When doing this, we suggest you follow these recommendations:
+  - Put each new policy in a policy set that does not contain any other policies.
+  - Assign the workspaces you will be using to test your policy to that policy set.
+  - Do not assign any other workspaces to the policy set.
+  - Set the policy enforcement level to **hard mandatory.**
+- Following these recommendations will make your testing easier:
+  - You won't see results from other policies.
+  - You won't have to worry about overriding soft-mandatory failures.
+
+---
+name: creating-policies
+# Creating Policy Sets with Policies
+
+- **Policy Sets** are created in a VCS repository.
+- Each policy set contains the policies and a configuration file called "sentinel.hcl" that lists the policies and their enforcement levels.
+- The "sentinel.hcl" file can also specify Sentinel modules to load.
+- Policies and Modules can be in any directory of the current repository and even in remote repositories.
+- You then configure the policy set in the Terraform Cloud UI by registering it, indicating the repository, branch, and policies path.
+- You can specify **Parameters** for it including sensitive ones.
+- You determine the workspaces it should be enforced on.
+
+---
+name: policy-sets
+
+.center[
+![:scale 60%](../images/create-policy-sets.png)
+]
+
+---
+name: policy-sets
+# Example Policy Set
+
+- Here is an example policy set:
+
+```
+module "tfplan-functions" {
+    source = "../common-functions/tfplan-functions/tfplan
+		  -functions.sentinel"
+}
+policy "restrict-ec2-instance-type" {
+    source = "./restrict-ec2-instance-type.sentinel"
+    enforcement_level = "soft-mandatory"
+}
+
+```
+
+---
+name: policy-fails
+# Sentinel Policy that Fails
+
+.center[
+![:scale 100%](../images/policy-fails.png)
+]
+
+---
+name: policy-fail-example
+# Sentinel Policy that Fails
+
+.center[
+![:scale 100%](../images/sentinel-policy-fails.png)
+]
+
+---
+name: policy-pass
+# Sentinel Policy that Passes
+
+.center[
+![:scale 90%](../images/sentinel-policy-pass.png)
+]
+
+---
+name: policy-pass-example
+# Sentinel Policy that Passes
+
+.center[
+![:scale 90%](../images/policy-pass-example.png)
+]
+
+---
+name: deploying
+# Deploying Policies in Terraform Cloud
+
+- After successfully testing a policy with the CLI and possibly also on TFC itself, you will want to deploy it to your TFC organizations.
+- If you have not already added the policy to a policy set in your organizations, do that at this time.
+- Add the new policy to an existing policy set that is already applied against desired workspaces, or create a new policy set for the policy and apply that policy set to desired workspaces across your organizations.
+- Also add any parameters the policy requires to your policy set.
+- And add references to any Sentinel Modules that policies in it use.
+
+---
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
+# Chapter 5 - Complete
+
+![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
+
+---
+
+class: title, smokescreen, shelf
+background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
+count: false
+
+# Chapter 6 - Sentinel Language Advanced Concepts
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
 
@@ -1505,119 +1619,6 @@ else:
 	print("We are open from 9am to 6pm.")
 }
 ```
-
----
-class: title, smokescreen, shelf
-background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
-count: false
-
-# Chapter 5 - Complete
-
-![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
-
----
-
----
-class: title, smokescreen, shelf
-background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
-count: false
-
-# Chapter 6 - Using Sentinel in Terraform Cloud and Terraform Enterprise
-
-![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
-
----
-name: test-policies
-# Testing Policies in Terraform Cloud
-
-- After successfully testing a policy with the CLI, you might also want to test it against actual Terraform code on a TFC or TFE server.
-- When doing this, we suggest you follow these recommendations:
-  - Put each new policy in a policy set that does not contain any other policies.
-  - Assign the workspaces you will be using to test your policy to that policy set.
-  - Do not assign any other workspaces to the policy set.
-  - Set the policy enforcement level to **hard mandatory.**
-- Following these recommendations will make your testing easier:
-  - You won't see results from other policies.
-  - You won't have to worry about overriding soft-mandatory failures.
-
----
-name: creating-policies
-# Creating Policy Sets with Policies
-
-- **Policy Sets** are created in a VCS repository.
-- Each policy set contains the policies and a configuration file called "sentinel.hcl" that lists the policies and their enforcement levels.
-- The "sentinel.hcl" file can also specify Sentinel modules to load.
-- Policies and Modules can be in any directory of the current repository and even in remote repositories.
-- You then configure the policy set in the Terraform Cloud UI by registering it, indicating the repository, branch, and policies path.
-- You can specify **Parameters** for it including sensitive ones.
-- You determine the workspaces it should be enforced on.
-
----
-name: policy-sets
-
-.center[
-![:scale 60%](../images/create-policy-sets.png)
-]
-
----
-name: policy-sets
-# Example Policy Set
-
-- Here is an example policy set:
-
-```
-module "tfplan-functions" {
-    source = "../common-functions/tfplan-functions/tfplan
-		  -functions.sentinel"
-}
-policy "restrict-ec2-instance-type" {
-    source = "./restrict-ec2-instance-type.sentinel"
-    enforcement_level = "soft-mandatory"
-}
-
-```
-
----
-name: policy-fails
-# Sentinel Policy that Fails
-
-.center[
-![:scale 100%](../images/policy-fails.png)
-]
-
----
-name: policy-fail-example
-# Sentinel Policy that Fails
-
-.center[
-![:scale 100%](../images/sentinel-policy-fails.png)
-]
-
----
-name: policy-pass
-# Sentinel Policy that Passes
-
-.center[
-![:scale 90%](../images/sentinel-policy-pass.png)
-]
-
----
-name: policy-pass-example
-# Sentinel Policy that Passes
-
-.center[
-![:scale 90%](../images/policy-pass-example.png)
-]
-
----
-name: deploying
-# Deploying Policies in Terraform Cloud
-
-- After successfully testing a policy with the CLI and possibly also on TFC itself, you will want to deploy it to your TFC organizations.
-- If you have not already added the policy to a policy set in your organizations, do that at this time.
-- Add the new policy to an existing policy set that is already applied against desired workspaces, or create a new policy set for the policy and apply that policy set to desired workspaces across your organizations.
-- Also add any parameters the policy requires to your policy set.
-- And add references to any Sentinel Modules that policies in it use.
 
 ---
 class: title, smokescreen, shelf
