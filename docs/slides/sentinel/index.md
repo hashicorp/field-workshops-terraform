@@ -845,11 +845,12 @@ name: authoring-workflow-diagram
 name: methodology-1
 # Step 1 - Write Terraform Code
 
-- Create a Terraform configuration that creates at least one instance of the resource your policy will restrict.
-  - Include a main.tf file to create the resource.
-  - Include a backend.tf file to configure the remote backend (if you would like to use the remote backend).
-- Use variables to set the values of the attributes being restricted.
-- Create more than one instance of the resource to test your policy's ability to correctly handle some that pass and some that fail.
+- Create a Terraform code that provisions at least one instance of the resource your policy will effect
+  - For example I want to restrict AWS Instance Types, therefore I need a "aws_instance" to test
+- Use Variables to set the values you want to test
+  - `instance_type = "${var.instance_type}"`
+- Bonus Tip
+  - **Create more than one instance to test positive and negative**
 
 ---
 name: methodology-1
@@ -873,10 +874,8 @@ resource "aws_instance" "ubuntu" {
 
 ---
 name: methodology-2
-class: compact
 # Terraform Terminology for Resources
 
-- Let's consider the declaration of the resource from the last slide.
 ```
 resource "aws_instance" "ubuntu" {
   count         = 2
@@ -884,13 +883,19 @@ resource "aws_instance" "ubuntu" {
   instance_type = "${var.instance_type}"
 }
 ```
-- In this case, "aws_instance" is the **Type** of the resource while "ubuntu" is its **Name.**
-- Each occurrence of a resource is referred to as a **Resource Instance.**
-- This Terraform code will create two **Instances** of the resource since count was set to 2.
+- Remember for writing policies later!
+  - "aws_instance" is the **Type** of the resource.
+      - "ubuntu" is its **Name.**
+  - Each occurrence of a resource is referred to as a **Resource Instance.**
+  - This code will create two **Instances** of the resource since count was set to 2.
 
 ---
-name: methodology-3
-# Create a Terraform Configuration: backend.tf
+name: methodology-4
+# Integrate with Terraform Cloud
+
+- In order to use the Remote Backend against a TFC/TFE server;
+  - Authenticate to Terraform Cloud `terraform login`
+  - Configure your backend
 
 ```
 terraform {
@@ -906,34 +911,8 @@ terraform {
 ```
 
 ---
-name: methodology-4
-# Generate a User API Token
-
-- In order to use the remote backend against a TFC/TFE server, you need to generate a User API Token for yourself.
-- You then need to list the token in your Terraform CLI configuration file.
-  - On a Mac or Linux machine, this will be the .terraformrc file in your home directory.
-  - On a Windows machine, this will be the terraform.rc file in your %APPDATA% directory.
-- The token should be added in a section like this:
-```
-credentials "app.terraform.io" {
-  token = "<token>"
-}
-```
-
----
-name: methodology-5
-# Create a TFC or TFE Workspace
-
-- If you trigger your plan with the remote backend, you do not need to set up a VCS connection.
-- Click "CLI-driven workflow" when creating your workspace when prompted to connect to a version control provider.
-- You still need to add environment variables such as cloud credentials to your workspace since local ones are not sent to the server.
-- Several tools can push Terraform and environment variables:
-  - set-variables.sh
-  - tf-helper (tfh)
-
----
 name: methodology-6
-# Create a Workspace in the TFC/TFE UI
+#  Step 2 - Create a Workspace in the TFC/TFE UI
 
 .center[
 ![:scale 90%](../images/create-a-workspace.png)
@@ -948,8 +927,16 @@ name: methodology-7
 ]
 
 ---
-name: methodology-8
-# Run a Plan and Generate Mocks Against It
+name: methodology-9
+# Step 3 and 4 - Mock Against Your Plan
+
+Start a Terraform Plan then get your Mocks!
+
+.center[
+![:scale 85%](../images/generate-mocks.png)
+]
+
+???
 
 - From your local directory containing main.tf and backend.tf, run _terraform init_ to initialize your Terraform configuration.
 - Then run terraform plan.
@@ -961,15 +948,15 @@ name: methodology-8
 
 ---
 name: methodology-9
-# Generate Mocks Against Your Plan
+# You are Here - Step 5
 
 .center[
-![:scale 85%](../images/generate-mocks.png)
+![:scale 85%](../images/authoring-here.png)
 ]
 
 ---
 name: methodology-10
-# Writing Sentinel Policies for TFC/TFE
+# Step 5 - Writing Sentinel Policies for TFC/TFE
 
 - Sometimes, you might be asked to create a Sentinel policy to restrict particular things such as VMs or load balancers.
 - But you might not know the exact Terraform resources that implement these.
