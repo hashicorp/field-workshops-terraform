@@ -951,23 +951,12 @@ name: methodology-9
 # You are Here - Step 5
 
 .center[
-![:scale 85%](../images/authoring-here.png)
+![:scale 100%](../images/authoring-here.png)
 ]
 
 ---
 name: methodology-10
 # Step 5 - Writing Sentinel Policies for TFC/TFE
-
-- Sometimes, you might be asked to create a Sentinel policy to restrict particular things such as VMs or load balancers.
-- But you might not know the exact Terraform resources that implement these.
-- Fortunately, you can use the Terraform Provider documentation to identify resources that implement the things you want to restrict.
-- Each resource and data source has its own documentation page.
-- Looking at documentation from the underlying cloud service provider or other technology will also help.
-  - For instance, you can determine valid values for VM size.
-
----
-name: methodology-11
-# Write a Terraform Sentinel Policy
 
 - The next set of slides walks you through a Sentinel policy called **"restrict-ec2-instance-type.sentinel"** that restricts the allowed sizes of AWS EC2 instances.
 - It breaks down the Sentinel code into smaller bites, clarifying what each section of the code is doing.
@@ -1021,17 +1010,33 @@ main = rule {
 
 ---
 name: common-functions
-# Common Functions
+# Common Functions - Find
 
-- The Instruqt track in this workshop embeds two Sentinel modules with many common functions that can be used in policies.
-- These are copies of the functions located here.
-- The policy we just examined called the following functions:
+- Remember our introduction to functions?
+  - Let's use some [common functions!](https://github.com/hashicorp/terraform-sentinel-policies/tree/main/common-functions)
+
+- The policy we just started uses the following functions:
   - **find_resources(type)**
-  - **filter_attribute_not_in_list(resources, attr, allowed, prtmsg)**
-- There are other find and filter functions in the above modules.
-- The filter functions print all violations if prtmsg is true.
+      - Simple, finds all resources by the type specified
+      - **Remember we're looking for "aws_instance" as the Type**
+
+---
+name: common-functions
+# Common Functions - Filter
+
+- **filter_attribute_not_in_list(resources, attr, allowed, prtmsg)**
+  - The filter functions print all violations if prtmsg is true.
+
 - Additionally, the filter functions call a very useful function:
-  - **evaluate_attribute(r, attribute)**
+    - **evaluate_attribute(r, attribute)**
+        - The filter functions all call the evaluate_attribute() function that recursively calls itself to evaluate attributes that can be deeply nested inside a resource or data source.
+
+???
+
+- This function has the following declaration:
+- **evaluate_attribute = func(r, attribute)**
+- The resource passed to the first call to the function should be in the form **rc.change.after** or just rc where rc is a resource change derived by applying filters to **tfplan.resource_changes.**
+- The attribute should be given as a string delimited by "." in which indices of lists start with 0: "storage_os_disk.0.managed_disk_type".
 
 ---
 name: find-all
@@ -1078,33 +1083,30 @@ filter_attribute_not_in_list = func(resources, attr, allowed, prtmsg) {
 ```
 
 ---
-name: eval-attribute
-# Function that Evaluates Attributes
+name: setup-test
+# Step 6 - Set Up the Test Cases
 
-- The filter functions all call the evaluate_attribute() function that recursively calls itself to evaluate attributes that can be deeply nested inside a resource or data source.
-- This function has the following declaration:
-  - **evaluate_attribute = func(r, attribute)**
-- The resource passed to the first call to the function should be in the form **rc.change.after** or just rc where rc is a resource change derived by applying filters to **tfplan.resource_changes.**
-- The attribute should be given as a string delimited by "." in which indices of lists start with 0: "storage_os_disk.0.managed_disk_type".
-- Do not use something like "storage_os_disk[0].managed_disk_type".
+- To test your policy with the Sentinel CLI, you first need to set up test cases
+  - On your local PC, under the directory containing your policy, create a **test** directory.
+      - Under the test directory, create a directory with the same name as your policy, but without the ".sentinel" extension.
+- So, for our restrict-ec2-instance-type.sentinel policy:
+  - create the **restrict-ec2-instance-type** directory under the test directory.
 
 ---
-name: setup-test
-# Set Up the Test Cases Directory for the CLI
+name: file-structure
 
-- To test your policy with the Sentinel CLI, you first need to set up test cases that use the tfplan/v2 mock you generated earlier.
-- Under the directory containing your policy, create a **test** directory.
-- Under the test directory, create a directory with the same name as your policy, but without the ".sentinel" extension.
-- So, for our restrict-ec2-instance-type.sentinel policy, we create the **restrict-ec2-instance-type** directory under the test directory.
+.center[
+  ![:scale 90%](../images/file-structure.png)
+]
 
 ---
 name: copy-mocks
 # Copy Mocks and Create Test Cases
 
 - Copy the mock-tfplan-v2.sentinel mock file that you downloaded and extracted from your workspace to this directory.
-- Change the name of the mock file to **mock-tfplan-pass.sentinel.**
-- Create a second copy of the file called **mock-tfplan-fail.sentinel.**
-- Create **pass.hcl** and **fail.hcl** files that have the text on the next two slides respectively.
+  - Change the name of the mock file to **mock-tfplan-pass.sentinel.**
+  - Create a second copy of the file called **mock-tfplan-fail.sentinel.**
+      - Create **pass.hcl** and **fail.hcl** files that have the text on the next two slides respectively.
 
 ---
 name: pass-hcl
@@ -1147,30 +1149,43 @@ test {
 ```
 
 ---
-name: pass-fail
-# Edit the Pass and Fail Mocks
+name: pass-mock
+# Create your Pass Mock
 
-- Edit the mock-tfplan-pass.sentinel mock file and make sure that all values of **instance_type** are set to a value such as **"t2.small"** that is in the allowed_types list.
-- Edit the mock-tfplan-fail.sentinel mock file and make sure that at least one value of **instance_type** is set to a value such as **"m5.large"** that is not in the allowed_types list.
+- Edit the mock-tfplan-pass.sentinel mock file
+  - Make sure that all values of **instance_type** are set to a valid value
+      - such as **"t2.small"** that is in the allowed_types list.
+
+---
+name: fail-mock
+# Create your Fail Mock
+
+- Edit the mock-tfplan-fail.sentinel mock file
+  - Make sure that at least one value of **instance_type** is set to a invalid value
+      - such as **"m5.large"** that is not in the allowed_types list.
+
+---
+name: pass-fail
+# Testing Best Practices
+
 - You should always have at least 1 fail and 1 pass test case.
 - Sometimes, you will want multiple fail test cases and corresponding mocks.
 - You might even want more than 1 pass test case and mock.
 
 ---
 name: polcy-with-cli
-# Test Your Policy with the CLI (1)
+# Test Your Policy with the CLI
 
-- Now that you have set up your test cases, you can test your policy with the Sentinel CLI.
-- Navigate back to the directory containing your policy.
-- Run the following command:
-**sentinel test restrict-ec2-instance-type.sentinel**
-- To see the outputs of the print statements, change this to:
-**sentinel test –verbose restrict-ec2-instance-type.sentinel**
--You can also apply a policy with the sentinel apply command, but you must set up a Sentinel configuration file like the "sentinel.json" file downloaded with the mocks or a "sentinel.hcl" file.
+- Now that you have set up your test cases you can test your policy with the Sentinel CLI.
+  - Navigate back to the directory containing your policy.
+  - Run the following command:
+      - **sentinel test restrict-ec2-instance-type.sentinel**
+  - To see the outputs of the print statements, change this to:
+      - **sentinel test –verbose restrict-ec2-instance-type.sentinel**
 
 ---
 name: policy-with-cli
-#Test Your Policy with the CLI (2)
+# Test Your Policy with the CLI
 
 - The first command gives:
 ```
@@ -1181,7 +1196,7 @@ PASS - restrict-ec2-instance-type.sentinel
 
 ---
 name: policy-with-cli
-#Test Your Policy with the CLI (3)
+# Test Your Policy with the CLI
 
 - The second command gives:
 ```
@@ -1196,6 +1211,33 @@ PASS - restrict-ec2-instance-type.sentinel
      restrict-ec2-instance-type.sentinel:24:1 - Rule "main
       	Description: Main rule Value: true
 ```
+
+---
+name: testing-policy-loop
+# Iteration Loop
+
+
+.center[
+![:scale 100%](../images/authoring-next.png)
+]
+
+---
+name: chapter-4-summary
+# Chapter 4 Summary
+
+- Writing policies is an iterative process
+  - Write Terraform, generate mocks, test against Mocks, repeat!
+- Remember [common functions](https://github.com/hashicorp/terraform-sentinel-policies/tree/main/common-functions) and [policy examples](https://github.com/hashicorp/terraform-sentinel-policies) exist!
+
+- **Next Chapter - Final Step - Deploying Policies**
+
+---
+name: references
+# References
+
+- [Writing your first Policy](https://learn.hashicorp.com/tutorials/terraform/sentinel-policy)
+
+- [The Legendary Roger Berlind's Guide on Writing and Testing Sentinel Policies](https://www.hashicorp.com/resources/writing-and-testing-sentinel-policies-for-terraform)
 
 ---
 class: title, smokescreen, shelf
@@ -1984,4 +2026,14 @@ name: mocks-in-tf
 - They can also be copied and edited to simulate various combinations of resource and data source attributes.
 - They enable testing of Terraform Sentinel policies with the Sentinel CLI.
 - Using the Sentinel CLI with mocks speeds up development of new policies since additional plans do not need to be run.
+---
+name: find-what-you-need
+
+- Sometimes, you might be asked to create a Sentinel policy to restrict particular things such as VMs or load balancers.
+- But you might not know the exact Terraform resources that implement these.
+- Fortunately, you can use the Terraform Provider documentation to identify resources that implement the things you want to restrict.
+- Each resource and data source has its own documentation page.
+- Looking at documentation from the underlying cloud service provider or other technology will also help.
+  - For instance, you can determine valid values for VM size.
+
 ---
