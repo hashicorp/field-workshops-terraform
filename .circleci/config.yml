@@ -224,6 +224,7 @@ jobs:
               echo "Instruqt track test failed three times."
               exit 1
             fi
+          no_output_timeout: 30m
   instruqt-test-cloud-gcp:
     docker:
       - image: docker.mirror.hashicorp.services/ubuntu:latest
