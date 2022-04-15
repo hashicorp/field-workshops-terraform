@@ -1,6 +1,6 @@
 # Sentinel for Terraform - Instructor Guide
 
-This guide will prepare you to deliver a full-day [Sentinel for Terraform Workshop](https://storage.googleapis.com/instruqt-hashicorp-tracks/sentinel-shared/Sentinel-for-Terraform-v4.pptx), although the workshop is usually broken up into two sessions as described below. The workshop is a combination of [Slides](https://storage.googleapis.com/instruqt-hashicorp-tracks/sentinel-shared/Sentinel-for-Terraform-v4.pptx) and two hands-on [Instruqt tracks](https://play.instruqt.com/hashicorp/topics/sentinel) that teach students how to write and test Sentinel policies for Terraform.
+This guide will prepare you to deliver a full-day [Sentinel for Terraform Workshop](https://hashicorp.github.io/field-workshops-terraform/slides/sentinel/index.html#1), although the workshop is usually broken up into two sessions as described below. The workshop is a combination of [Slides](https://hashicorp.github.io/field-workshops-terraform/slides/sentinel/index.html#1) and two hands-on [Instruqt tracks](https://play.instruqt.com/hashicorp/topics/sentinel) that teach students how to write and test Sentinel policies for Terraform.
 
 This workshop content is suitable for HashiCorp customers who are already using Terraform Cloud or Terraform Enterprise. It is not well-suited for prospects since it exposes the fact that using Sentinel can be complex.
 
