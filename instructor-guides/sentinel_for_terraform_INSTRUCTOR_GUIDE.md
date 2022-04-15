@@ -1,6 +1,6 @@
 # Sentinel for Terraform - Instructor Guide
 
-This guide will prepare you to deliver a full-day [Sentinel for Terraform Workshop](https://storage.googleapis.com/instruqt-hashicorp-tracks/sentinel-shared/Sentinel-for-Terraform-v4.pptx), although the workshop is usually broken up into two sessions as described below. The workshop is a combination of [Slides](https://storage.googleapis.com/instruqt-hashicorp-tracks/sentinel-shared/Sentinel-for-Terraform-v4.pptx) and two hands-on [Instruqt tracks](https://play.instruqt.com/hashicorp/topics/sentinel) that teach students how to write and test Sentinel policies for Terraform.
+This guide will prepare you to deliver a full-day [Sentinel for Terraform Workshop](https://hashicorp.github.io/field-workshops-terraform/slides/sentinel/index.html#1), although the workshop is usually broken up into two sessions as described below. The workshop is a combination of [Slides](https://hashicorp.github.io/field-workshops-terraform/slides/sentinel/index.html#1) and two hands-on [Instruqt tracks](https://play.instruqt.com/hashicorp/topics/sentinel) that teach students how to write and test Sentinel policies for Terraform.
 
 This workshop content is suitable for HashiCorp customers who are already using Terraform Cloud or Terraform Enterprise. It is not well-suited for prospects since it exposes the fact that using Sentinel can be complex.
 
@@ -31,7 +31,7 @@ The first session is unfortunately dominated by slides. This is done so that stu
 If you or your customer really wants to do this workshop in a single session, then allocate 6-8 hours and follow the agenda on the "Single Session Workshop Agenda" slide. This agenda delays some of the slides until after parts of the second track to avoid too many slides at the beginning of the day.
 
 ## Prerequisites
-Prerequisites are minimal. All that is required to participate in the workshop is a web browser and Internet access. No software needs to be downloaded or installed. Self-contained lab environments run on the Instruqt platform. The [slides](https://storage.googleapis.com/instruqt-hashicorp-tracks/sentinel-shared/Sentinel-for-Terraform-v4.pptx) are in PowerPoint and can be downloaded from a Google Cloud storage bucket.
+Prerequisites are minimal. All that is required to participate in the workshop is a web browser and Internet access. No software needs to be downloaded or installed. Self-contained lab environments run on the Instruqt platform. The [new slides vs 5](https://hashicorp.github.io/field-workshops-terraform/slides/sentinel/index.html#1) have been updated as of April 2022, from an older [slide version 4](https://storage.googleapis.com/instruqt-hashicorp-tracks/sentinel-shared/Sentinel-for-Terraform-v4.pptx) which was written in PowerPoint and can be downloaded from a Google Cloud storage bucket.
 
 Students do not need any previous exposure to Sentinel, but they should have familarity with Terraform and preferably also with Terraform Cloud. We recommend that all students first complete one of the Intro to Terraform workshops listed under https://hashicorp.github.io/workshops/.
 
@@ -83,7 +83,7 @@ The only prerequisites for this workshop are a web browser and willingness to le
 ## PowerPoint Slide Deck
 The slide deck for this training is published here:
 
-### https://storage.googleapis.com/instruqt-hashicorp-tracks/sentinel-shared/Sentinel-for-Terraform-v4.pptx
+### https://hashicorp.github.io/field-workshops-terraform/slides/sentinel/index.html#1
 
 ## Hands-on Labs
 At certain points in the slide deck there are references to the lab exercises. [Instruqt](https://instruqt.com/hashicorp) is our lab platform. Users must generally register on the Instruqt website to use these tracks unless you send an invite that allows anonymous access. There are two Instruqt tracks in this workshop.
