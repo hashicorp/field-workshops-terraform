@@ -101,7 +101,7 @@ class: img-right
 # Public Module Registry
 ![](../images/publicmoduleregistry.png)
 
-The Terraform Registry contains over 4000 examples of modules for a variety of providers.
+The Terraform Registry contains over 9000 examples of modules for a variety of providers.
 
 [Terraform Registry](http://registry.teraform.io)
 
