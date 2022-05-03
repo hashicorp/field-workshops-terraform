@@ -163,12 +163,12 @@ name: providers-2
 class: compact
 # Terraform Providers
 
-There are over 400 providers for Terraform
+There are 2000+ providers for Terraform
 
 ![:scale 90%](../images/tf-registry.png)
 
 ???
-There are over 400 providers for Terraform covering cloud vendors (AWS, GCP, Azure, etc.), SaaS (DataDog, Splunk, GitHub), and on-premise (VMware, Cisco, etc.).
+There are over 2000 providers for Terraform covering cloud vendors (AWS, GCP, Azure, etc.), SaaS (DataDog, Splunk, GitHub), and on-premise (VMware, Cisco, etc.).
 
 ---
 name: provider-docs
