@@ -17,6 +17,7 @@ tags:
 owner: hashicorp
 developers:
 - roger@hashicorp.com
+- jthompson@hashicorp.com
 private: true
 published: true
 show_timer: true
@@ -48,7 +49,7 @@ challenges:
     2. Open the local repo in your text editor.
     3. Create a new git branch called **dev** and switch to that branch.
     4. Delete any extra terraform files containing modules. For example, `vpc.tf` or `vnet.tf`. You won't need external modules for this challenge.
-    5. Open the file called `main.tf``. Note that the file type at the bottom of the screen was automatically set to "hcl" to give optimized syntax highlighting and colors.
+    5. Open the file called `main.tf`. Note that the file type at the bottom of the screen was automatically set to "hcl" to give optimized syntax highlighting and colors.
     6. Add, commit, and push your changes to the remote **dev** branch.
 
     ### Terraform Cloud Setup
