@@ -40,7 +40,7 @@ challenges:
   assignment: |-
     Welcome back! This is the bonus lab for the Terraform Cloud tracks. There are prerequisites that must be set up before you can begin the bonus lab. This is an intermediate level challenge.
 
-    During this lab you'll use the "Code Editor" tab on the left. As you work through the setup steps below, you'll see some terraform configuration files for the hashicat application show up.  When you edit any of these files, you will see a blue dot and a disk icon on the tab above it. **Be sure to click the disk icon to save your changes** -- there is no "auto-saving" in the Instruqt editor!
+    During this lab you'll use the "Code Editor" tab on the left. As you work through the setup steps below, you'll see some Terraform configuration files for the hashicat application show up.  When you edit any of these files, you will see a blue dot and a disk icon on the tab above it. **Be sure to click the disk icon to save your changes** -- there is no "auto-saving" in the Instruqt editor!
 
     Throughout this track, please execute all commands on the "Shell" tab.
 
