@@ -17,6 +17,7 @@ tags:
 owner: hashicorp
 developers:
 - roger@hashicorp.com
+- jthompson@hashicorp.com
 private: true
 published: true
 show_timer: true
@@ -39,9 +40,7 @@ challenges:
   assignment: |-
     Welcome back! This is the bonus lab for the Terraform Cloud tracks. There are prerequisites that must be set up before you can begin the bonus lab. This is an intermediate level challenge.
 
-    Open the "Code Editor" tab on the left. You'll see some terraform configuration files for the hashicat application. Open the file called "main.tf". Note that the file type at the bottom of the screen was automatically set to "hcl" to give optimized syntax highlighting and colors.
-
-    When you edit any of these files, you will see a blue dot and a disk icon on the tab above it. **Be sure to click the disk icon to save your changes!** There is no "auto-saving" in the Instruqt editor!
+    During this lab you'll use the "Code Editor" tab on the left. As you work through the setup steps below, you'll see some Terraform configuration files for the hashicat application show up.  When you edit any of these files, you will see a blue dot and a disk icon on the tab above it. **Be sure to click the disk icon to save your changes** -- there is no "auto-saving" in the Instruqt editor!
 
     Throughout this track, please execute all commands on the "Shell" tab.
 
@@ -50,7 +49,8 @@ challenges:
     2. Open the local repo in your text editor.
     3. Create a new git branch called **dev** and switch to that branch.
     4. Delete any extra terraform files containing modules. For example, `vpc.tf` or `vnet.tf`. You won't need external modules for this challenge.
-    5. Add, commit, and push your changes to the remote **dev** branch.
+    5. Open the file called `main.tf`. Note that the file type at the bottom of the screen was automatically set to "hcl" to give optimized syntax highlighting and colors.
+    6. Add, commit, and push your changes to the remote **dev** branch.
 
     ### Terraform Cloud Setup
     1. Log onto your Terraform Cloud organization and create a new workspace called **hashicat-dev**.
