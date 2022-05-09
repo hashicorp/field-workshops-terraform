@@ -1139,7 +1139,7 @@ name: terraform-cloud
 class: img-right
 # Terraform 클라우드
 ##### Terraform 클라우드는 무료로 제공되는 SaaS 애플리케이션. 테라폼을 활용한 코드형 인프라(IaC)를 위한 최상의 Workflow를 제공.
-![Terraform Cloud](https://www.terraform.io/assets/images/terraform-overview/automate-the-provisioning-lifecycle@4x-5cc6a17f.png)
+![Terraform Cloud](https://hashicorp.github.io/field-workshops-assets/assets/logos/Terraform_Cloud_Logo_Color_RGB.png)
 
 * 원격 스테이트 파일 저장 및 관리
 * Terraform runs 조회 및 실행/승인 등을 위한 Web UI

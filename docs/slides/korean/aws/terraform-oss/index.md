@@ -1138,7 +1138,7 @@ class: img-right
 
 # Terraform Cloud
 ##### Terraform Cloud는 Terraform을 사용하여 코드로 인프라를 작성하고 구축하기위한 최고의 워크 플로를 제공하는 무료 SaaS 애플리케이션입니다.
-![Terraform Cloud](https://www.terraform.io/assets/images/terraform-overview/automate-the-provisioning-lifecycle@4x-5cc6a17f.png)
+![Terraform Cloud](https://hashicorp.github.io/field-workshops-assets/assets/logos/Terraform_Cloud_Logo_Color_RGB.png)
 
 * 상태 저장 및 관리
 * Terraform 실행을보고 승인하기위한 웹 UI

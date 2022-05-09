@@ -1118,7 +1118,7 @@ name: terraform-cloud
 class: img-right
 # Terraform Cloud
 ##### Terraform Cloud is a free to use SaaS application that provides the best workflow for writing and building infrastructure as code with Terraform.
-![Terraform Cloud](https://www.terraform.io/assets/images/terraform-overview/automate-the-provisioning-lifecycle@4x-5cc6a17f.png)
+![Terraform Cloud](https://hashicorp.github.io/field-workshops-assets/assets/logos/Terraform_Cloud_Logo_Color_RGB.png)
 
 * State storage and management
 * Web UI for viewing and approving Terraform runs
@@ -1134,7 +1134,7 @@ class: compact
 # Terraform Cloud or Terraform Enterprise?
 **[Terraform Cloud](https://app.terraform.io/signup)** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud-based SaaS solution because they don't want to maintain the infrastructure to run it.
 
-**[Terraform Cloud for Business](https://www.hashicorp.com/contact-sales/terraform)** utilizes the same hosted environment as Terraform Cloud, but you get the features more applicable to larger teams.  Single Sign-on, Audit Logging, and the ability to Terraform on-prem resources from the cloud.
+**[Terraform Cloud for Business](https://www.hashicorp.com/contact-sales/terraform)** utilizes the same hosted environment as Terraform Cloud, but you get the features more applicable to larger teams.  Single Sign-on, Audit Logging, the abbility to use [Agents](https://www.terraform.io/cloud-docs/agents) to deploy in private environments, and integrate with external tools via [Run Tasks](https://www.terraform.io/cloud-docs/integrations/run-tasks).
 
 **[Terraform Enterprise](https://www.hashicorp.com/go/terraform-enterprise)** is the same application, but it runs in your own cloud environment or data center. Some users require more control over the Terraform Cloud application, or wish to run it in restricted networks behind corporate firewalls.
 
@@ -1151,11 +1151,14 @@ All state files are encrypted (using HashiCorp Vault) and stored securely in you
 
 ---
 name: execution-mode
+class: compact
 # Terraform Cloud Execution Modes
 
 **Local Execution** - Terraform commands run on your laptop or workstation and all variables are configured locally. Only the terraform state is stored remotely.
 
 **Remote Execution** - Terraform commands are run in a Terraform Cloud container environment. All variables are stored in the remote workspace. Code can be stored in a Version Control System repository. Limited to 1 concurrent run for free tier users.
+
+**Agent Execution** *(Enterprise only)* - Terraform Cloud Agents allow Terraform Cloud and Enterprise to communicate with isolated, private, or on-premises infrastructure. The agent architecture is pull-based, so no inbound connectivity is required. Any agent you provision will poll Terraform Cloud or Enterprise for work and carry out execution of that work locally.
 
 ---
 name: lab-exercise-2c
