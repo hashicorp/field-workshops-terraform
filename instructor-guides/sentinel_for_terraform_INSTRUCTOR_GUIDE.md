@@ -115,7 +115,7 @@ Go through these tracks from start to finish and make sure you understand all th
 ### General lab notes
 The Instruqt lab environment includes a very recent version of the Sentinel CLI and leverages the default Instruqt code editor for editing Sentinel policies.
 
-Commands suchs as `sentinel test` should be run on the "Sentinel CLI" tab. Policies should be edited on the "Policies" tab. Test cases and mocks can be viewed on the "Test Cases" tab.
+Commands such as `sentinel test` should be run on the "Sentinel CLI" tab. Policies should be edited on the "Policies" tab. Test cases and mocks can be viewed on the "Test Cases" tab.
 
 Please note that the second Instruqt track of this workshop is challenging because it does not give students simple copy/paste instructions. Instead, it forces students to think for themselves, search relevant Terraform provider and Sentinel documentation, and identify the resources and attributes that need to be restricted by the policies.
 
@@ -142,7 +142,7 @@ Alternatively, you can show the complete set of original policies from this [fil
 ### Skipping
 HashiCorp employees (if members of the Instruqt HashiCorp organization) can skip ahead in the Sentinel tracks.
 
-To actually skip one or more challenges while running one of this track, return to the track's home page and click the "Skip to" button of the challenge you wish to skip to.
+To actually skip one or more challenges while running one of these tracks, return to the track home page and click the "Skip to" button of the challenge you wish to "skip to".
 
 We have not yet enabled skipping for end-users even though Instruqt now supports that.
 
@@ -198,7 +198,7 @@ The only prerequisites for this workshop are a web browser and willingness to le
 ## Creating Instruqt Invites
 Once you've gotten an invite to the HashiCorp organization you can create temporary invite links for your students. You can create separate invites for each track or a single invite for both of them.
 
-1. Click on the **Invites** tab under https://play.instruqt.com/hashicorp. Note that you must be have the Content Contributor role within the Instruqt HashiCorp organization to create invites. If you don't have that, see this [link](https://hashicorp.atlassian.net/wiki/spaces/SCESS/pages/2229403888/Instruqt+Access+and+Usage#Instruqt-Access).
+1. Click on the **Invites** tab under https://play.instruqt.com/hashicorp. Note that you must have the Content Contributor role within the Instruqt HashiCorp organization to create invites. If you don't have that, see this [link](https://hashicorp.atlassian.net/wiki/spaces/SCESS/pages/2229403888/Instruqt+Access+and+Usage#Instruqt-Access).
 2. Click on the **Create** button to create a new invite.
 3. Create a descriptive title such as "Acme Sentinel Workshop".
 4. Select the tracks you want to make available. If you begin typing "Sentinel", the right tracks will show up in the filtered list.
