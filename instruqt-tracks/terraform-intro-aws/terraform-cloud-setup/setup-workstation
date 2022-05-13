@@ -8,9 +8,9 @@ cd /root/hashicat-aws
 
 cat <<-EOF > remote_backend.tf
 terraform {
-  backend "remote" {
-    hostname = "app.terraform.io"
+  cloud {
     organization = "YOURORGANIZATION"
+
     workspaces {
       name = "hashicat-aws"
     }
