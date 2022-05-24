@@ -812,7 +812,7 @@ resource aws_key_pair "my-keypair" {
 resource "aws_instance" "web" {
 * ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
-* key_name      = aws_key_pair.my-keypair.name
+* key_name      = aws_key_pair.my-keypair.key_name
 ```
 ???
 **Apart from the SSH keypair, you can also see how we reference the data source block from the previous slide. Flick back to the previous slide to show the relationship.**
