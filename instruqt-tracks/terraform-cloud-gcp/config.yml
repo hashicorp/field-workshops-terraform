@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 virtualmachines:
 - name: workstation
   image: instruqt-hashicorp/tfc-workstation-1-1-4
@@ -9,3 +9,4 @@ gcp_projects:
   services:
   - cloudresourcemanager.googleapis.com
   - compute.googleapis.com
+  roles: []

@@ -16,7 +16,7 @@ TERRAFORM_VERSION="1.1.4"
 
 # Install desired version of Terraform
 rm -f /usr/local/bin/terraform
-wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+wget --quiet https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 mv terraform /usr/local/bin/terraform
 chmod +x /usr/local/bin/terraform
