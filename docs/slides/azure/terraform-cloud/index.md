@@ -1,9 +1,7 @@
 name: Intro-to-Terraform-Cloud
-class: center,middle,title-slide
-count: false
-<br><br>
-![:scale 60%](images/tf_az.png)
-<br><br>
+class: title,smokescreen
+
+background-image: url(images/hashicorp-title-bkg-azure.jpg)
 # Terraform Cloud on Azure
 
 ???
