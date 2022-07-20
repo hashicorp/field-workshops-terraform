@@ -159,7 +159,7 @@ challenges:
 
     Return to your Code Editor tab and edit the "remote_backend.tf" file, replacing the `YOURORGANIZATION` placeholder with your organization name. Save the file.
 
-    Also, please edit the "terraform.tfvars" file, setting `prefix` to your name (first and last with or without a hyphen between them and all lower case) and setting `region` to a valid AWS region such as "us-east-1", "us-west-1", "eu-west-2", or "ap-southeast-1".
+    Also, please edit the "terraform.tfvars" file, setting `prefix` to your name (first and last with or without a hyphen between them, all lower case, and no spaces) and setting `region` to a valid AWS region such as "us-east-1", "us-west-1", "eu-west-2", or "ap-southeast-1".
 
     See this [page](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions) for a list of valid AWS regions.
 
