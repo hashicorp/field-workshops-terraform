@@ -159,7 +159,7 @@ challenges:
 
     Return to your Code Editor tab and edit the "remote_backend.tf" file, replacing the `YOURORGANIZATION` placeholder with your organization name. Save the file.
 
-    Also, please edit the "terraform.tfvars" file, setting `prefix` to your name (first and last with or without a hyphen between them and all lower case), setting `region` to a valid GCP region such as "us-east1", "us-west1", "europe-west2", or "asia-southeast1", and setting `zone` to a valid GCP zone within your selected region.
+    Also, please edit the "terraform.tfvars" file, setting `prefix` to your name (first and last with or without a hyphen between them and all lower case. Do not use an underscore or space in your prefix.), setting `region` to a valid GCP region such as "us-east1", "us-west1", "europe-west2", or "asia-southeast1", and setting `zone` to a valid GCP zone within your selected region.
 
     See this [page](https://cloud.google.com/compute/docs/regions-zones) for a list of regions and zones. For regions, strip off the "-a", "-b", or "-c" from the zones listed on that page.
 
