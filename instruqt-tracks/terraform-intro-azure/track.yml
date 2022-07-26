@@ -300,7 +300,7 @@ challenges:
 
     Enter a short string of lower-case letters and/or numbers. We recommend that you use your first and last name.
 
-    **Keep your prefix string all lower case, and between 5-12 characters long. Do not use an underscore in your prefix.**
+    **Keep your prefix string all lower case, and between 5-12 characters long. Do not use an underscore or space in your prefix.**
 
     The prefix will become part of your application hostname, and therefore must be DNS-compliant. Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, and the hyphen (-).  A hostname may not start with a hyphen.
   tabs:
