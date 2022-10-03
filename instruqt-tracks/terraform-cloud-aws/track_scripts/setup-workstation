@@ -30,7 +30,7 @@ cp /usr/games/cowsay /usr/local/bin/cowsay
 # clone the hashicat-aws repo
 git clone https://github.com/hashicorp/hashicat-aws
 GITDIR="/root/hashicat-aws"
-
+git config --global credential.helper "cache --timeout=86400"
 # Set workdir
 set-workdir /root/hashicat-aws
 

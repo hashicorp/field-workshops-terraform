@@ -30,6 +30,8 @@ cp /usr/games/cowsay /usr/local/bin/cowsay
 # clone the hashicat-gcp repo
 git clone https://github.com/hashicorp/hashicat-gcp
 GITDIR="/root/hashicat-gcp"
+git config --global credential.helper "cache --timeout=86400"
+
 
 # Set workdir
 set-workdir /root/hashicat-gcp

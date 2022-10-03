@@ -30,6 +30,7 @@ cp /usr/games/cowsay /usr/local/bin/cowsay
 # clone the hashicat-azure repo
 git clone https://github.com/hashicorp/hashicat-azure
 GITDIR="/root/hashicat-azure"
+git config --global credential.helper "cache --timeout=86400"
 
 # Set workdir
 set-workdir /root/hashicat-azure
