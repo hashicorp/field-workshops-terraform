@@ -55,9 +55,8 @@ challenges:
     Click the **Check** button to continue.
   tabs:
   - title: Code Editor
-    type: service
-    hostname: workstation
-    port: 8443
+    type: code
+    path: ./
   - title: Text Editor
     type: code
     hostname: workstation
