@@ -347,12 +347,11 @@ INSTRUCTOR NOTE: You can use the same instruqt track that the students will be u
 1. Start your own copy of the Terraform Cloud on Azure track
 2. Echo out your Azure credentials and set them as environment variables in TFC:
 ```
-echo $Azure_ACCESS_KEY_ID
-echo $Azure_SECRET_ACCESS_KEY
+ env | grep ARM
+ 
 ```
 3. Open a browser tab to your fork of the hashicat-azure git repo. Edit the main.tf file and make sure your azurerm_virtual_machine resource is missing the `Department` and `Billable` tags.
-4. Make sure you remove the VPC file (vpc.tf) from your hashicat-azure repo. This will make the demo take longer and may break if the regions aren't set up right.
-5. Begin your demo dialog:
+4. Begin your demo dialog:
 
 **This is a brief demo showing off some of the features of Terraform cloud. You'll get to work with all these features during the hands-on labs today.**
 
