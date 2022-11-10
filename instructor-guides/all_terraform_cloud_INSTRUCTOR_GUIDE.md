@@ -169,13 +169,19 @@ After chapter 1 there is a slide that says *Live Demo*. You can use an instruqt 
 You can use the same instruqt track that the students will be using to do this demo. Make sure you've gone through the entire track yourself and have your own organization, fork of the hashicat-aws repo, and sentinel policy in place. Once you have done these steps it's easy to create a new demo:
 
 1. Start your own copy of the Terraform Cloud on AWS track
-2. Echo out your AWS credentials and set them as environment variables in TFC:
+2. Echo out your cloud credentials and set them as environment variables in TFC:
 ```
+
+** AWS **
 echo $AWS_ACCESS_KEY_ID
 echo $AWS_SECRET_ACCESS_KEY
+
+** Azure **
+env | grep ARM
+
 ```
 3. Open a browser tab to your fork of the hashicat-aws git repo. Edit the main.tf file and make sure your aws_instance resource is missing the `Department` and `Billable` tags.
-4. Make sure you remove the VPC file (vpc.tf) from your hashicat-aws repo. This will make the demo take longer and may break if the regions aren't set up right.
+4. Make sure you remove the VPC file (vpc.tf) from your hashicat-aws repo. This will make the demo take longer and may break if the regions aren't set up right.  **This is not needed for Azure **
 5. Begin your demo dialog:
 
 #### Demo Talk Track
@@ -187,7 +193,7 @@ echo $AWS_SECRET_ACCESS_KEY
 
 **Before I build anything I might want to configure some variables to adjust my infrastructure settings. Here you can see some terraform variables, prefix and region. These will determine the names of my resources and the region they will be deployed in.**
 
-**Down bottom you see the Environment Variables. These are system shell variables that are injected into the Terraform Cloud container at runtime. You can optionally encrypt sensitive environment variables such as these AWS keys. Note that these are write-only. Once you encrypt a variable by marking it sensitive, you won't see it here in plaintext again. These are dynamic AWS credentials that are good for only a few hours. You can paste them in manually or use the API to auto-populate them from HashiCorp Vault.**
+**Down bottom you see the Environment Variables. These are system shell variables that are injected into the Terraform Cloud container at runtime. You can optionally encrypt sensitive environment variables such as these cloud keys. Note that these are write-only. Once you encrypt a variable by marking it sensitive, you won't see it here in plaintext again. These are dynamic AWS credentials that are good for only a few hours. You can paste them in manually or use the API to auto-populate them from HashiCorp Vault.**
 
 **New and advanced users can utilize the GUI to trigger infrastructure builds. Let's do that now by clicking on this Queue Plan button. I'm going to put "new dev environment" down as the reason for the build. Now notice that a new terraform plan has kicked off. This is the dry run. terraform is figuring out if any of the infrastructure already exists from a previous run, and then it will build or change everything to match what's in the code. That is, unless we fail a sentinel policy...**
 
