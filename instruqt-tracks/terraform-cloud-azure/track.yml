@@ -171,6 +171,8 @@ challenges:
 
     See this [page](https://azure.microsoft.com/en-us/global-infrastructure/geographies/) for a list of valid Azure locations (which shows the longer names with spaces).
 
+    (**Note that not all Azure regions support all VM types**; if you get an error about the SKU failing because of capacity restrictions when you run the Terraform commands below, try changing to a different region.)
+
     Uncomment the variable values by removing "# " from each line. Be sure to save the file after editing it.
 
     The variables are actually declared in the "variables.tf" file. The "terraform.tfvars" file is just being used to set values for them.
@@ -190,7 +192,7 @@ challenges:
 
     Outputs:
     catapp_ip = "http://"
-    catapp_url = http://sean-carolan-meow.centralus.cloudapp.azure.com
+    catapp_url = http://sean-carolan-meow.eastus.cloudapp.azure.com
     ```
     Please click on the second URL to test that your application is working.
 

@@ -6,6 +6,6 @@ set -o history
 
 cd /root/hashicat-azure
 
-echo -e "location=\"centralus\"" >> terraform.tfvars
+echo -e "location=\"eastus\"" >> terraform.tfvars
 
 exit 0

@@ -163,7 +163,7 @@ cat <<-EOF > /tmp/location.json
     "type":"vars",
     "attributes": {
       "key":"location",
-      "value":"centralus",
+      "value":"eastus",
       "category":"terraform",
       "hcl":false,
       "sensitive":false

@@ -67,7 +67,7 @@ curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application
 export PREFIX=hashicat-$RANDOM
 echo "export PREFIX=$PREFIX" >> /root/.bashrc
 echo -e "prefix = \"$PREFIX\"" > terraform.tfvars
-echo -e "location = \"centralus\"" >> terraform.tfvars
+echo -e "location = \"eastus\"" >> terraform.tfvars
 
 # Run terraform init and apply
 terraform init
