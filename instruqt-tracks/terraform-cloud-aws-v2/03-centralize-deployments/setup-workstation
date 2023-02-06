@@ -1,0 +1,10 @@
+#!/bin/bash -l
+set -e
+
+# Set workdir
+set-workdir /root/hashicat-$CLOUD_ENV
+
+# Create a working copy of the terraform.tfvars for the hashicat application
+cp /root/hashicat-$CLOUD_ENV/terraform.tfvars.example /root/hashicat-$CLOUD_ENV/terraform.tfvars
+
+exit 0

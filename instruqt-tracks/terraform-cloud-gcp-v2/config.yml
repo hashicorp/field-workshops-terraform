@@ -1,0 +1,16 @@
+version: "3"
+virtualmachines:
+- name: workstation
+  image: instruqt-hashicorp/tfc-workstation-1-3-4
+  shell: /bin/bash -l
+  environment:
+    CLOUD_ENV: gcp
+  machine_type: n1-standard-1
+gcp_projects:
+- name: gcpproject
+  services:
+  - cloudresourcemanager.googleapis.com
+  - compute.googleapis.com
+  roles:
+  - roles/compute.admin
+  - roles/storage.admin

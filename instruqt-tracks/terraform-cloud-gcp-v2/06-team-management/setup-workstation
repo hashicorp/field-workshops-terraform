@@ -1,0 +1,10 @@
+#!/bin/bash -l
+set -e
+
+# Set workdir
+set-workdir /root/terraform-cloud
+
+cat /root/terraform-cloud/exercises/06-main.tf >> /root/terraform-cloud/main.tf
+cat /root/terraform-cloud/exercises/06-variables.tf >> /root/terraform-cloud/variables.tf
+
+exit 0

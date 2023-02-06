@@ -1,0 +1,30 @@
+slug: terraform-cloud-azure-v2
+id: w0mxyr7gzpwb
+title: Terraform Cloud with Azure
+teaser: |
+  Terraform Cloud enables infrastructure automation for provisioning, compliance, and management of any cloud, data center, and service.
+description: |-
+  Work with the devops team at ACME as they go from manual provisioning with Terraform to a fully automated devops workflow with code reviews, testing, and automated provisioning in Azure Cloud.
+
+  ---
+  <br>
+
+  1. **Run infrastructure as code remotely**: Store state and execute Terraform runs in an SOC2 compliant and reliable environment.
+
+  2. **Establish Cloud compliance and management**: Set up permissions and governance features across any resource managed by Terraform. Add capabilities for policy enforcement.
+
+  3. **Create self-service infrastructure with a private registry**: Standardize infrastructure across your provisioning processes using your own private registry.
+icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
+level: beginner
+tags:
+- terraform
+- cloud
+- enterprise
+- azure
+owner: hashicorp
+developers:
+- jthompson@hashicorp.com
+- thomas@hashicorp.com
+- gilberto@hashicorp.com
+show_timer: true
+checksum: "14794166878495359466"

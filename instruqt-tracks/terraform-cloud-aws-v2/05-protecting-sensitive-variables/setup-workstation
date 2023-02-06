@@ -1,0 +1,25 @@
+#!/bin/bash -l
+set -e
+
+# Set workdir
+set-workdir /root/terraform-cloud
+
+# Replace the entire file. We need to do this
+# in this manner as to replacethe code block for
+# the TFE workspace. We can manipulate the code with
+# bash but this is more straight forward.
+cp -f /root/terraform-cloud/exercises/05-main.tf /root/terraform-cloud/main.tf
+
+# Aggregate the required content
+# main.tf
+cat /root/terraform-cloud/exercises/05-env_vars_main.tf >> /root/terraform-cloud/main.tf
+cat /root/terraform-cloud/exercises/05-tf_vars_main.tf >> /root/terraform-cloud/main.tf
+
+# variables.tf
+cat /root/terraform-cloud/exercises/05-env_vars_variables.tf >> /root/terraform-cloud/variables.tf
+cat /root/terraform-cloud/exercises/05-tf_vars_variables.tf >> /root/terraform-cloud/variables.tf
+
+# Re-use deployment variables so we can upload to TFC 
+cat /root/hashicat-aws/terraform.tfvars >> /root/terraform-cloud/terraform.tfvars
+
+exit 0

@@ -1,0 +1,18 @@
+#!/bin/bash -l
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+cd /root/hashicat-$CLOUD_ENV
+
+# Make sure we have valid GCP credentials in our shell environment
+echo $ARM_CLIENT_ID || fail-message "Unable to find a valid ARM_CLIENT_ID environment variable in your shell. You may need to restart the track."
+echo $ARM_CLIENT_SECRET || fail-message "Unable to find a valid ARM_CLIENT_SECRET environment variable in your shell. You may need to restart the track."
+echo $ARM_SUBSCRIPTION_ID || fail-message "Unable to find a valid ARM_SUBSCRIPTION_ID environment variable in your shell. You may need to restart the track."
+echo $ARM_TENANT_ID || fail-message "Unable to find a valid ARM_TENANT_ID environment variable in your shell. You may need to restart the track."
+
+exit 0
