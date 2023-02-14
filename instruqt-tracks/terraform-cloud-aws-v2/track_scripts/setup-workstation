@@ -28,12 +28,11 @@ git clone https://github.com/hashicorp/se-workshop-hashicat-app.git
 echo "Done cloning assets..."
 
 mv /root/se-workshop-hashicat-app/hashicat-$CLOUD_ENV /root/hashicat-$CLOUD_ENV
-mv /root/se-workshop-hashicat-app/hashicat-policies /root/hashicat-$CLOUD_ENV/policies
-mv /root/hashicat-$CLOUD_ENV/policies/$CLOUD_ENV/* /root/hashicat-$CLOUD_ENV/policies/.
+mv /root/se-workshop-hashicat-app/hashicat-policies/$CLOUD_ENV /root/hashicat-$CLOUD_ENV/policies
 
-rm -fR  /root/hashicat-$CLOUD_ENV/policies/$CLOUD_ENV
-rm -fR  /root/hashicat-$CLOUD_ENV/policies/azure
-rm -fR  /root/hashicat-$CLOUD_ENV/policies/gcp
+# rm -fR  /root/hashicat-$CLOUD_ENV/policies/$CLOUD_ENV
+# rm -fR  /root/hashicat-$CLOUD_ENV/policies/azure
+# rm -fR  /root/hashicat-$CLOUD_ENV/policies/gcp
 
 mv /root/se-workshop-hashicat-app/terraform-cloud /root/terraform-cloud
 mv /root/se-workshop-hashicat-app/terraform-github /root/terraform-github
