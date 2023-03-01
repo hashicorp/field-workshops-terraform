@@ -64,9 +64,8 @@ timelimit: 1800
     justify-content: center;
     height: 24px;
   }
-  t > img {
+  t > a img {
     display: inline-block;
-    max-height: 16px;
   }
   c {
     display: flex;

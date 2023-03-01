@@ -91,35 +91,9 @@ timelimit: 1800
     height: 24px;
   }
 
-  t > img {
+  t > a img {
     display: inline-block;
   }
-
-/* Lightbox credit: Alex Rosenkranz
-https://gist.github.com/arosenkranz/3359c65fbfda36f17f622ff624b74aea
-*/
-
-.lightbox {
-  display: none;
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.lightbox:target {
-  display: flex;
-}
-
-.lightbox img {
-  max-height: 100%
-}
 
 o {
   color:#BA55D3;
@@ -178,13 +152,7 @@ The first step to begin work with your deployment tasks is to set up your Terraf
 
 Please see the example image below.
 
-<a href="#enable_trial">
-  <img alt="example" src="../assets/enable_trial.png" />
-</a>
-
-<a href="#" class="lightbox" id="enable_trial">
-  <img alt="example" src="../assets/enable_trial.png" />
-</a>
+![Enable Trial](../assets/enable_trial.png)
 
 - If you have an existing account and already used a trial, please create a different organization and unlock the 30-day "Team and Governance" plan features.
 
@@ -238,13 +206,7 @@ terraform apply -auto-approve
 
 Please see the example image below.
 
-<a href="#new-workspace">
-  <img alt="New Workspace" src="../assets/new_workspace.png" />
-</a>
-
-<a href="#" class="lightbox" id="new-workspace">
-  <img alt="New Workspace" src="../assets/new_workspace.png" />
-</a>
+![New Workspace](../assets/new_workspace.png)
 
 ---
 

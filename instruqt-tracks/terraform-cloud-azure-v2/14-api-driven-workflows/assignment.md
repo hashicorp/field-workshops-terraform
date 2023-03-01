@@ -94,7 +94,7 @@ timelimit: 1800
     height: 24px;
   }
 
-  t > img {
+  t > a img {
     display: inline-block;
   }
 
@@ -116,37 +116,10 @@ timelimit: 1800
     max-height: 20px;
   }
 
-/*
-  Lightbox credit: Alex Rosenkranz
-  https://gist.github.com/arosenkranz/3359c65fbfda36f17f622ff624b74aea
-*/
-
-.lightbox {
-  display: none;
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.lightbox:target {
-  display: flex;
-}
-
-.lightbox img {
-  max-height: 100%
-}
-
-.tab {
-  display: inline-block;
-  margin-left: 30px;
-}
+  .tab {
+    display: inline-block;
+    margin-left: 30px;
+  }
 </style>
 In the final challenge you'll directly interact with the Terraform Cloud API.
 
@@ -241,13 +214,7 @@ curl -s \
 
 - On the Terraform Cloud portal, navigate to <x>Workspaces</x>-<x>hashicat-api</x>-<x>Overview</x>. Please see the example image below.
 
-<a href="#api_create">
-  <img alt="example" src="../assets/api_create.png" />
-</a>
-
-<a href="#" class="lightbox" id="api_create">
-  <img alt="example" src="../assets/api_create.png" />
-</a>
+![API Create](../assets/api_create.png)
 
 ### 2.2 - Read
 - Read the properties of the workspace.
@@ -286,13 +253,7 @@ curl \
 ```
 - On the Terraform Cloud portal, navigate to <x>Workspaces</x>-<x>hashicat-api</x>-<x>Overview</x>. Please see the example image below.
 
-<a href="#api_update">
-  <img alt="example" src="../assets/api_update.png" />
-</a>
-
-<a href="#" class="lightbox" id="api_update">
-  <img alt="example" src="../assets/api_update.png" />
-</a>
+![API Update](../assets/api_update.png)
 
 ### 2.4 - Delete
 - Delete the workspace.
@@ -312,13 +273,7 @@ curl \
 ```
 - On the Terraform Cloud portal and reload your page. Please see the example image below.
 
-<a href="#api_delete">
-  <img alt="example" src="../assets/api_delete.png" />
-</a>
-
-<a href="#" class="lightbox" id="api_delete">
-  <img alt="example" src="../assets/api_delete.png" />
-</a>
+![API Delete](../assets/api_delete.png)
 
 3. Automation with wrappers
 ===
@@ -342,13 +297,7 @@ bash vending_macheen.bash
 
 - On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x> and pick <x>Vending_Macheen</x> to see your resources. Please see the example image below.
 
-<a href="#api_vending_macheen">
-  <img alt="example" src="../assets/api_vending_macheen.png" />
-</a>
-
-<a href="#" class="lightbox" id="api_vending_macheen">
-  <img alt="example" src="../assets/api_vending_macheen.png" />
-</a>
+![API Vending Macheen](../assets/api_vending_macheen.png)
 
 - You can run the script as many times as desired. When satisfied, remove the resources with the following:
 
@@ -408,13 +357,7 @@ git push -u origin main
 ```
 - On your Web browser, navigate to your GitHub repository page. On the top menu look for <x>Actions</x> and expand the <x>Terraform</x> job. Please see the example image below.
 
-<a href="#github_actions_tf_job">
-  <img alt="example" src="../assets/github_actions_tf_job.png" />
-</a>
-
-<a href="#" class="lightbox" id="github_actions_tf_job">
-  <img alt="example" src="../assets/github_actions_tf_job.png" />
-</a>
+![GitHub Actions TF Job](../assets/github_actions_tf_job.png)
 
 - Expand and explore any of the job steps. This example showcases how the work is triggered from the CICD workflow, but the permissions for users, Cloud identity authorization, deployment policies and private module resources are all managed in Terraform Cloud.
 

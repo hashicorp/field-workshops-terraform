@@ -97,36 +97,9 @@ timelimit: 1800
     height: 24px;
   }
 
-  t > img {
+  t > a img {
     display: inline-block;
   }
-
-/*
-  Lightbox credit: Alex Rosenkranz
-  https://gist.github.com/arosenkranz/3359c65fbfda36f17f622ff624b74aea
-*/
-
-.lightbox {
-  display: none;
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.lightbox:target {
-  display: flex;
-}
-
-.lightbox img {
-  max-height: 100%
-}
 
 lb {
   display: flex;
@@ -211,13 +184,7 @@ terraform apply -auto-approve
 
 - On your browser, confirm that your GitHub repository is ready to accept a payload. Please see the example image below.
 
-<a href="#git_repo_new">
-  <img alt="example" src="../assets/git_repo_new.png" />
-</a>
-
-<a href="#" class="lightbox" id="git_repo_new">
-  <img alt="example" src="../assets/git_repo_new.png" />
-</a>
+![New Git Repo](../assets/git_repo_new.png)
 
 2- Populate the GitHub Repository
 ===
@@ -252,13 +219,7 @@ echo ""
 
 - On your browser, your GitHub repository shows the payload. Please see the example image below.
 
-<a href="#git_repo_populated">
-  <img alt="example" src="../assets/git_repo_populated.png" />
-</a>
-
-<a href="#" class="lightbox" id="git_repo_populated">
-  <img alt="example" src="../assets/git_repo_populated.png" />
-</a>
+![Populated Git Repo](../assets/git_repo_populated.png)
 
 3- Integrate Terraform Cloud VCS
 ===
@@ -283,13 +244,7 @@ terraform apply -auto-approve
 
 Please see the example image below.
 
-<a href="#org_vcs">
-  <img alt="example" src="../assets/org_vcs.png" />
-</a>
-
-<a href="#" class="lightbox" id="org_vcs">
-  <img alt="example" src="../assets/org_vcs.png" />
-</a>
+![Organization VCS](../assets/org_vcs.png)
 
 - Note the `Callback URL` and the `OAuth Token ID`. These unique identifiers map to a unique payload URL and secret exchange with your GitHub repository.
 
@@ -299,13 +254,7 @@ Please see the example image below.
 
 - On the Terraform Cloud portal, navigate to the <x>[[ Instruqt-Var key="TF_ORG" hostname="workstation" ]]</x> organization and open <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Settings</x>-<x>Version Control</x>. Please see the example image below.
 
-<a href="#workspace_vcs">
-  <img alt="example" src="../assets/workspace_vcs.png" />
-</a>
-
-<a href="#" class="lightbox" id="workspace_vcs">
-  <img alt="example" src="../assets/workspace_vcs.png" />
-</a>
+![Workspace VCS](../assets/workspace_vcs.png)
 
 ---
 

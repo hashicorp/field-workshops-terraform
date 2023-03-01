@@ -92,36 +92,9 @@ timelimit: 1800
     height: 24px;
   }
 
-  t > img {
+  t > a img {
     display: inline-block;
   }
-
-/*
-  Lightbox credit: Alex Rosenkranz
-  https://gist.github.com/arosenkranz/3359c65fbfda36f17f622ff624b74aea
-*/
-
-.lightbox {
-  display: none;
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.lightbox:target {
-  display: flex;
-}
-
-.lightbox img {
-  max-height: 100%
-}
 </style>
 
 In this challenge we use HashiCorp Sentinel policies to enforce two rules:
@@ -168,35 +141,17 @@ In our environment, Terraform Cloud looks at your GitHub repo that contains the 
 
 - On the Terraform Cloud portal, navigate to <x>[[ Instruqt-Var key="TF_ORG" hostname="workstation" ]]</x>-<x>Settings</x>-<x>Policy Sets</x> and explore the <x>Hashicat-Social</x> policy set.
 
-<a href="#org_policy_sets">
-  <img alt="example" src="../assets/org_policy_sets.png" />
-</a>
-
-<a href="#" class="lightbox" id="org_policy_sets">
-  <img alt="example" src="../assets/org_policy_sets.png" />
-</a>
+![Organization Policy Set](../assets/org_policy_sets.png)
 
 - To view the results of this new configuration, issue a manual run in the Terraform Cloud UI.
 
 - On the Terraform Cloud portal, navigate to <x>Workspaces</x>-<x>hashicat-aws</x>, choose <x>Actions</x> and <x>Start new run</x>. Please see the example image below.
 
-<a href="#workspace_new_run">
-  <img alt="example" src="../assets/workspace_new_run.png" />
-</a>
-
-<a href="#" class="lightbox" id="workspace_new_run">
-  <img alt="example" src="../assets/workspace_new_run.png" />
-</a>
+![Workspace New Run](../assets/workspace_new_run.png)
 
 - On the Terraform Cloud portal, navigate to <x>Workspaces</x>-<x>hashicat-aws</x>-<x>Runs</x> and, on the <x>Current Run</x> note the application of the policies AFTER the plan, but BEFORE the apply phase. Please see the example image below.
 
-<a href="#workspace_policy_checks">
-  <img alt="example" src="../assets/workspace_policy_checks.png" />
-</a>
-
-<a href="#" class="lightbox" id="workspace_policy_checks">
-  <img alt="example" src="../assets/workspace_policy_checks.png" />
-</a>
+![Workspace Policy Checks](../assets/workspace_policy_checks.png)
 
 - Use the <m>Override & Continue</m> button, and then <m>Override Policy Check</m> to complete the sequence.
 

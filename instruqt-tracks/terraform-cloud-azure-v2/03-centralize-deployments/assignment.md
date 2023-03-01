@@ -89,36 +89,9 @@ timelimit: 1800
     height: 24px;
   }
 
-  t > img {
+  t > a img {
     display: inline-block;
   }
-
-/* Lightbox credit: Alex Rosenkranz
-https://gist.github.com/arosenkranz/3359c65fbfda36f17f622ff624b74aea
-*/
-
-.lightbox {
-  display: none;
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.lightbox:target {
-  display: flex;
-}
-
-.lightbox img {
-  max-height: 100%
-}
-
 </style>
 The objective of this challenge is to configure remote state using your Terraform Cloud account.
 
@@ -168,25 +141,13 @@ terraform refresh
 ===
 - On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Overview</x> and click on <x>Outputs</x>. Please see the example image below.
 
-<a href="#workspace_outputs">
-  <img alt="example" src="../assets/workspace_outputs.png" />
-</a>
-
-<a href="#" class="lightbox" id="workspace_outputs">
-  <img alt="example" src="../assets/workspace_outputs.png" />
-</a>
+![Workspace Outputs](../assets/workspace_outputs.png)
 
 - From the user interface, you can follow the `catapp_ip`, or the `catapp_url`, link to open the application instance.
 
 - On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>States</x>. Please see the example image below.
 
-<a href="#workspace_state">
-  <img alt="example" src="../assets/workspace_state.png" />
-</a>
-
-<a href="#" class="lightbox" id="workspace_state">
-  <img alt="example" src="../assets/workspace_state.png" />
-</a>
+![Workspace State](../assets/workspace_state.png)
 
 - Open the state file to view your deployment data.
 

@@ -96,35 +96,9 @@ timelimit: 1800
     height: 24px;
   }
 
-  t > img {
+  t > a img {
     display: inline-block;
   }
-
-/* Lightbox credit: Alex Rosenkranz
-https://gist.github.com/arosenkranz/3359c65fbfda36f17f622ff624b74aea
-*/
-
-.lightbox {
-  display: none;
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.lightbox:target {
-  display: flex;
-}
-
-.lightbox img {
-  max-height: 100%
-}
 </style>
 
 The security team is looking to mitigate the exposure of Cloud credentials.
@@ -180,13 +154,7 @@ echo "ARM_TENANT_ID = $ARM_TENANT_ID"
 
 - On the Terraform Cloud portal, navigate to <x>Settings</x>-<x>Variable sets</x>. Please see the example image below.
 
-<a href="#variable_sets">
-  <img alt="example" src="../assets/variable_sets.png" />
-</a>
-
-<a href="#" class="lightbox" id="variable_sets">
-  <img alt="example" src="../assets/variable_sets.png" />
-</a>
+![Variable Sets](../assets/variable_sets.png)
 
 - Explore the Variable Set and figure out how it links to your `[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]` workspace.
 
@@ -194,13 +162,7 @@ echo "ARM_TENANT_ID = $ARM_TENANT_ID"
 
 - On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Variables</x>-<x>Variable Sets</x> Please see the example image below.
 
-<a href="#variable_sets_link">
-  <img alt="example" src="../assets/variable_sets_link.png" />
-</a>
-
-<a href="#" class="lightbox" id="variable_sets_link">
-  <img alt="example" src="../assets/variable_sets_link.png" />
-</a>
+![Variable Sets Linked in Workspace](../assets/variable_sets_link.png)
 
 - Note that Global variables are immutable at the `[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]` workspace level. You need administrative control of the variable set to make changes.
 
@@ -214,13 +176,7 @@ Workspace variables always overwrite variables from variable sets that have the 
 
 - On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Variables</x>-<x>Workspace Variables</x>. Please see the example image below.
 
-<a href="#workspace_variables">
-  <img alt="example" src="../assets/workspace_variables.png" />
-</a>
-
-<a href="#" class="lightbox" id="workspace_variables">
-  <img alt="example" src="../assets/workspace_variables.png" />
-</a>
+![Workspace Variables](../assets/workspace_variables.png)
 
 3- Test Remote Execution
 ===
@@ -244,13 +200,7 @@ terraform apply -auto-approve
 
 - To examine the results, on the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Overview</x>. Please see the example image below.
 
-<a href="#remote_execution">
-  <img alt="example" src="../assets/remote_execution.gif" />
-</a>
-
-<a href="#" class="lightbox" id="remote_execution">
-  <img alt="example" src="../assets/remote_execution.gif" />
-</a>
+![Remote Execution](../assets/remote_execution.gif)
 
 ---
 Congratulations, you have accomplished a number of things:

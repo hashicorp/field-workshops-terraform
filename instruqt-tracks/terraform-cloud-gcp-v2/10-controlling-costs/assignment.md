@@ -104,36 +104,9 @@ timelimit: 1800
     height: 24px;
   }
 
-  t > img {
+  t > a img {
     display: inline-block;
   }
-
-/*
-  Lightbox credit: Alex Rosenkranz
-  https://gist.github.com/arosenkranz/3359c65fbfda36f17f622ff624b74aea
-*/
-
-.lightbox {
-  display: none;
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.lightbox:target {
-  display: flex;
-}
-
-.lightbox img {
-  max-height: 100%
-}
 </style>
 
 In this challenge you are setting up [Cost Estimation](https://www.terraform.io/docs/cloud/cost-estimation/index.html). Terraform Cloud provides cost estimates for many resources found in your Terraform configuration.
@@ -150,13 +123,7 @@ Enabling Cost Estimation across all workspaces of an organization in Terraform C
 
 - On the Terraform Cloud portal, navigate to <x>Settings</x>-<x>Cost Estimation</x> and check the <x>Enable Cost Estimation for all workspaces</x> box. Please see the example image below.
 
-<a href="#org_cost_estimation">
-  <img alt="example" src="../assets/org_cost_estimation.png" />
-</a>
-
-<a href="#" class="lightbox" id="org_cost_estimation">
-  <img alt="example" src="../assets/org_cost_estimation.png" />
-</a>
+![Organization Cost Estimation](../assets/org_cost_estimation.png)
 
 - **Note**: In Terraform Enterprise, you need to provide Cloud credentials for the platform for which you want cost estimates. See this [link](https://www.terraform.io/docs/enterprise/admin/integration.html#cost-estimation-integration).
 
@@ -168,23 +135,11 @@ When enabled, Terraform Cloud performs a cost estimate for every run. Estimated 
 
 - On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>, choose <x>Actions</x> and <x>Start new run</x>. Please see the example image below.
 
-<a href="#workspace_new_run">
-  <img alt="example" src="../assets/workspace_new_run.png" />
-</a>
-
-<a href="#" class="lightbox" id="workspace_new_run">
-  <img alt="example" src="../assets/workspace_new_run.png" />
-</a>
+![Workspace New Run](../assets/workspace_new_run.png)
 
 - You will then see the estimated monthly cost of the workspace which is based on the costs of the Google Cloud resources provisioned for the hashicat-gcp workspace. Please see the example image below.
 
-<a href="#workspace_cost_estimation">
-  <img alt="example" src="../assets/workspace_cost_estimation.png" />
-</a>
-
-<a href="#" class="lightbox" id="workspace_cost_estimation">
-  <img alt="example" src="../assets/workspace_cost_estimation.png" />
-</a>
+![Workspace Cost Estimation](../assets/workspace_cost_estimation.png)
 
 A complete list of Google Cloud resources for which cost estimates are available in Terraform Cloud is [here](https://developer.hashicorp.com/terraform/cloud-docs/cost-estimation/gcp).
 

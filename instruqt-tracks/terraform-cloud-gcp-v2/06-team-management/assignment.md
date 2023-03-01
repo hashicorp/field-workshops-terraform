@@ -89,36 +89,9 @@ timelimit: 1800
     height: 24px;
   }
 
-  t > img {
+  t > a img {
     display: inline-block;
   }
-
-/*
-  Lightbox credit: Alex Rosenkranz
-  https://gist.github.com/arosenkranz/3359c65fbfda36f17f622ff624b74aea
-*/
-
-.lightbox {
-  display: none;
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.lightbox:target {
-  display: flex;
-}
-
-.lightbox img {
-  max-height: 100%
-}
 </style>
 
 The purpose of this challenge is to create an access strategy with Team Management and multiple levels of privileges to your workspaces. The following table reflects the desired alignment.
@@ -153,13 +126,7 @@ Teams let you group users into specific categories to enable finer grained acces
 
 - On the Terraform Cloud portal, navigate to <x>Settings</x>-<x>Teams</x>. Please see the example image below.
 
-<a href="#org_teams">
-  <img alt="example" src="../assets/org_teams.png" />
-</a>
-
-<a href="#" class="lightbox" id="org_teams">
-  <img alt="example" src="../assets/org_teams.png" />
-</a>
+![Organization Teams](../assets/org_teams.png)
 
 - Review each of your teams and their assigned Organization Access.
 
@@ -171,13 +138,7 @@ Terraform Cloud's access model is team-based. There are two ways to choose which
 
 - On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Settings</x>-<x>Team Access</x>. Please see the example image below.
 
-<a href="#workspace_teams">
-  <img alt="example" src="../assets/workspace_teams.png" />
-</a>
-
-<a href="#" class="lightbox" id="workspace_teams">
-  <img alt="example" src="../assets/workspace_teams.png" />
-</a>
+![Workspace Teams](../assets/workspace_teams.png)
 
 - Fixed permission sets are bundles of specific permissions on a workspace, designed for basic patterns of delegated access.
 
@@ -191,13 +152,7 @@ User accounts belong to individual people. Each user can be part of one or more 
 
 - On the Terraform Cloud portal, navigate to <x>Settings</x>-<x>Users</x>-<x>Invited</x>. Please see the example image below.
 
-<a href="#users_invited">
-  <img alt="example" src="../assets/users_invited.png" />
-</a>
-
-<a href="#" class="lightbox" id="users_invited">
-  <img alt="example" src="../assets/users_invited.png" />
-</a>
+![Users Invited](../assets/users_invited.png)
 
 - When a user sends you an invitation to join an existing Terraform Cloud organization, the email includes a sign-up link.
 

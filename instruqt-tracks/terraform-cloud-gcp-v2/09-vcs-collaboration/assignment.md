@@ -94,7 +94,7 @@ timelimit: 1800
     height: 24px;
   }
 
-  t > img {
+  t > a img {
     display: inline-block;
   }
 
@@ -110,37 +110,10 @@ timelimit: 1800
     justify-content: center;
   }
 
-/*
-  Lightbox credit: Alex Rosenkranz
-  https://gist.github.com/arosenkranz/3359c65fbfda36f17f622ff624b74aea
-*/
-
-.lightbox {
-  display: none;
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.lightbox:target {
-  display: flex;
-}
-
-.lightbox img {
-  max-height: 100%
-}
-
-.tab {
-  display: inline-block;
-  margin-left: 30px;
-}
+  .tab {
+    display: inline-block;
+    margin-left: 30px;
+  }
 </style>
 
 In this challenge we make a small change to the code that deploys the hashicat application, and then create a "Pull Request".
@@ -186,23 +159,11 @@ On your Web browser, open the page to your GitHub repository.
 
 - When you execute the <x>Create pull request</x> step, ensure you explore the Terraform Cloud Check to review the changes to the deployment. For reference, please see the example image below.
 
-<a href="#git_pr_check">
-  <img alt="example" src="../assets/git_pr_check.png" />
-</a>
-
-<a href="#" class="lightbox" id="git_pr_check">
-  <img alt="example" src="../assets/git_pr_check.png" />
-</a>
+![Git PR Check](../assets/git_pr_check.png)
 
 - For reference on the entire sequence, please see the example image below.
 
-<a href="#pull_request">
-  <img alt="example" src="../assets/pull_request.gif" />
-</a>
-
-<a href="#" class="lightbox" id="pull_request">
-  <img alt="example" src="../assets/pull_request.gif" />
-</a>
+![Pull Request](../assets/pull_request.gif)
 
 - Clean up the local `update` branch
 
@@ -227,13 +188,7 @@ With an approved pull request/merge request to a branch, any Terraform Cloud wor
 
 - On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Overview</x> and note that a new deployment is occuring. Please see the example image below.
 
-<a href="#workspace_pr_merge">
-  <img alt="example" src="../assets/workspace_pr_merge.png" />
-</a>
-
-<a href="#" class="lightbox" id="workspace_pr_merge">
-  <img alt="example" src="../assets/workspace_pr_merge.png" />
-</a>
+![Workspace PR Merge](../assets/workspace_pr_merge.png)
 
 - When a workspace is linked to a VCS repository, Terraform Cloud runs start automatically when you merge or commit changes to version control.
 

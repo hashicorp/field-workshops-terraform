@@ -87,7 +87,7 @@ timelimit: 1800
     height: 24px;
   }
 
-  t > img {
+  t > a img {
     display: inline-block;
   }
 
@@ -109,37 +109,10 @@ timelimit: 1800
     max-height: 20px;
   }
 
-/*
-  Lightbox credit: Alex Rosenkranz
-  https://gist.github.com/arosenkranz/3359c65fbfda36f17f622ff624b74aea
-*/
-
-.lightbox {
-  display: none;
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.lightbox:target {
-  display: flex;
-}
-
-.lightbox img {
-  max-height: 100%
-}
-
-.tab {
-  display: inline-block;
-  margin-left: 30px;
-}
+  .tab {
+    display: inline-block;
+    margin-left: 30px;
+  }
 </style>
 Congratulations, you've learned all the major features of Terraform Cloud.
 
@@ -181,14 +154,7 @@ curl \
 
 - On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Overview</x> to confirm. Please see the example image below.
 
-<a href="#workspace_destroy">
-  <img alt="example" src="../assets/workspace_destroy.png" />
-</a>
-
-<a href="#" class="lightbox" id="workspace_destroy">
-  <img alt="example" src="../assets/workspace_destroy.png" />
-</a>
-
+![Destroy Workspace](../assets/workspace_destroy.png)
 
 Remove TFC Configurations
 ===

@@ -91,7 +91,7 @@ timelimit: 1800
     height: 24px;
   }
 
-  t > img {
+  t > a img {
     display: inline-block;
   }
 
@@ -113,37 +113,10 @@ timelimit: 1800
     max-height: 20px;
   }
 
-/*
-  Lightbox credit: Alex Rosenkranz
-  https://gist.github.com/arosenkranz/3359c65fbfda36f17f622ff624b74aea
-*/
-
-.lightbox {
-  display: none;
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.lightbox:target {
-  display: flex;
-}
-
-.lightbox img {
-  max-height: 100%
-}
-
-.tab {
-  display: inline-block;
-  margin-left: 30px;
-}
+  .tab {
+    display: inline-block;
+    margin-left: 30px;
+  }
 </style>
 
 In this challenge you'll learn to use the Private Module Registry, which allows you to store and version re-usable modules of Terraform code.
@@ -188,13 +161,7 @@ git push origin main
 
 - On the Terraform Cloud portal, navigate to <x>Workspaces</x>-<x>hashicat-gcp</x>-<x>Runs</x> and, on the <x>Current Run</x> note the application of the new **module**. Please see the example image below.
 
-<a href="#workspace_public_module">
-  <img alt="example" src="../assets/workspace_public_module.png" />
-</a>
-
-<a href="#" class="lightbox" id="workspace_public_module">
-  <img alt="example" src="../assets/workspace_public_module.png" />
-</a>
+![Workspace Public Module](../assets/workspace_public_module.png)
 
 This provides an adequate technical solution. However, Gaurav and the development team need to lock down the attributes for the Google Cloud Storage, and the customization must be held privately to avoid vulnerable exposures.
 
@@ -211,13 +178,7 @@ Terraform Cloud's private registry works similarly to the public Terraform Regis
 
 - For reference, please see the example image below.
 
-<a href="#module_fork">
-  <img alt="example" src="../assets/module_fork.gif" />
-</a>
-
-<a href="#" class="lightbox" id="module_fork">
-  <img alt="example" src="../assets/module_fork.gif" />
-</a>
+![Module Fork](../assets/module_fork.gif)
 
 With a private copy of the module, you can customize the content to enforce business rules, technical requirements and security guidelines.
 
@@ -259,13 +220,8 @@ You do not need to perform these actions with the selected Terraform module, but
 <w><img src="../assets/three.png"/>Confirm Selection</w> - with <m>Publish Module</m>.
 
 - For reference, please see the example image below.
-<a href="#pmr_register_module">
-  <img alt="example" src="../assets/pmr_register_module.gif" />
-</a>
 
-<a href="#" class="lightbox" id="pmr_register_module">
-  <img alt="example" src="../assets/pmr_register_module.gif" />
-</a>
+![Private Registry Register Module](../assets/pmr_register_module.gif)
 
 The main difference between these two methods is automation. In this workshop, we prefer to perform the operation with code to maintain automated control with code. Creating a Private Module entry manually means you have to maintain and document the process it manually.
 
@@ -314,13 +270,8 @@ git push origin main
 - On the Terraform Cloud portal, navigate to <x>Workspaces</x>-<x>hashicat-gcp</x>-<x>Runs</x> to view the effective changes.
 
 - For reference, please see the example image below.
-<a href="#pmr_private_module">
-  <img alt="example" src="../assets/pmr_private_module.png" />
-</a>
 
-<a href="#" class="lightbox" id="pmr_private_module">
-  <img alt="example" src="../assets/pmr_private_module.png" />
-</a>
+![Private Module](../assets/pmr_private_module.png)
 
 - The logs reflect the change from the use a public module on the Terraform Registry, to a private module on `app.terraform.io/[[ Instruqt-Var key="TF_ORG" hostname="workstation" ]]`.
 
