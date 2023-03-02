@@ -1,0 +1,12 @@
+#!/bin/bash -l
+set -e
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+touch /tmp/skip-check
+
+cd /root/hashicat-$CLOUD_ENV
+
+exit 0

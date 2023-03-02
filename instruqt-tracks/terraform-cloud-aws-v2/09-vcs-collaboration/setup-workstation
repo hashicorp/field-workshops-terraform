@@ -1,0 +1,10 @@
+#!/bin/bash -l
+set -e
+
+# Set workdir
+set-workdir /root/hashicat-aws
+
+cd /root/terraform-github
+echo "export REPO_URL=$(terraform output -json | jq -r '.repo_url.value')" >> /root/.bashrc
+
+exit 0

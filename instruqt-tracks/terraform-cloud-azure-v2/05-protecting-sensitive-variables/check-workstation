@@ -1,0 +1,54 @@
+#!/bin/bash -l
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+cd /root/hashicat-$CLOUD_ENV
+
+TOKEN=$(cat /root/.terraform.d/credentials.tfrc.json | jq -r '.credentials."app.terraform.io".token')
+
+# Test whether remote exec is enabled on the workspace.
+REMOTE_EXEC_ENABLED=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/workspaces/$WORKSPACE | jq .data.attributes.operations)
+
+[[ $REMOTE_EXEC_ENABLED == true ]] || fail-message "Oops, it looks like remote exec is not enabled on your workspace."
+
+# Obtain the organization-wide Variable Set
+VARSET_ID=$(curl -s \
+  --header "Authorization: Bearer $TOKEN" \
+  --header "Content-Type: application/vnd.api+json" \
+  --request GET \
+  https://app.terraform.io/api/v2/organizations/$ORG/varsets \
+  | jq -r '.data | .[] | .id'
+)
+
+# Does the workspace have an ARM_CLIENT_ID
+PLAINTEXT_ID=$(curl -s \
+  --header "Authorization: Bearer $TOKEN" \
+  --header "Content-Type: application/vnd.api+json" \
+  --request GET \
+  https://app.terraform.io/api/v2/varsets/$VARSET_ID/relationships/vars \
+  | jq -r '.data | .[] | select(.attributes.key|test("ARM_CLIENT_ID")) | .attributes.key')
+
+[[ $PLAINTEXT_ID == "ARM_CLIENT_ID" ]] || fail-message "We didn't find an environment variable for your ARM_CLIENT_ID. Try again."
+
+# Does the workspace have a secure ARM_CLIENT_SECRET
+SECURE_KEY=$(curl -s \
+  --header "Authorization: Bearer $TOKEN" \
+  --header "Content-Type: application/vnd.api+json" \
+  --request GET \
+  https://app.terraform.io/api/v2/varsets/$VARSET_ID/relationships/vars \
+  | jq '.data | .[] | select(.attributes.key|test("ARM_CLIENT_SECRET")) | .attributes.sensitive')
+
+[[ $SECURE_KEY == true ]] || fail-message "We didn't find a secure variable for your ARM_CLIENT_SECRET. Try again."
+
+# Does the workspace have a prefix variable
+curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$ORG&filter%5Bworkspace%5D%5Bname%5D=$WORKSPACE" | grep -q "prefix" || fail-message "It looks like you don't have a Terraform variable called 'prefix' in your workspace."
+
+# Does the workspace have a region variable
+curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$ORG&filter%5Bworkspace%5D%5Bname%5D=$WORKSPACE" | grep -q "location" || fail-message "It looks like you don't have a Terraform variable called 'location' in your workspace."
+
+exit 0

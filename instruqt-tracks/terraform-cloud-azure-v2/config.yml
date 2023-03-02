@@ -1,0 +1,12 @@
+version: "3"
+virtualmachines:
+- name: workstation
+  image: instruqt-hashicorp/tfc-workstation-1-3-4
+  shell: /bin/bash -l
+  environment:
+    CLOUD_ENV: azure
+  machine_type: n1-standard-1
+azure_subscriptions:
+- name: azuresubscription
+  roles:
+  - Owner
