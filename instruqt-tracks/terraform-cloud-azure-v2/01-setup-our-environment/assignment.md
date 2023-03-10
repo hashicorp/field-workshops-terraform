@@ -66,6 +66,7 @@ timelimit: 1800
   }
   t > a img {
     display: inline-block;
+    max-height: 24px;
   }
   c {
     display: flex;
