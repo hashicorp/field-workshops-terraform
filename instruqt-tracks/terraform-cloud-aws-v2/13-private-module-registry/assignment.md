@@ -104,11 +104,11 @@ timelimit: 1800
     padding: 2px 10px 2px 5px;
     font-size: 12px;
     font-weight: bold;
-    justify-content: center;
+    align-items: center;
     height: 24px;
   }
 
-  w > img {
+  w > a img {
     display: inline-block;
   }
 

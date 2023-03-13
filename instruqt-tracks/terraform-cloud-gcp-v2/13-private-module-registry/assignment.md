@@ -107,7 +107,7 @@ timelimit: 1800
     height: 24px;
   }
 
-  w > img {
+  w > a img {
     display: inline-block;
   }
 
