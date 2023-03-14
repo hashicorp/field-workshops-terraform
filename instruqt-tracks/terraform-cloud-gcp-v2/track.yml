@@ -27,4 +27,8 @@ developers:
 - jthompson@hashicorp.com
 - thomas@hashicorp.com
 show_timer: true
-checksum: "895278163304549454"
+lab_config:
+  overlay: false
+  width: 25
+  position: right
+checksum: "18201625740643483324"
