@@ -15,6 +15,8 @@ on:
         required: true
       SLACK_BOT_TOKEN:
         required: true
+permissions:
+  contents: read
 env:
   # See IL-568 for information about the source of these
   # secrets and variables

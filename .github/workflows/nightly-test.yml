@@ -85,6 +85,7 @@ jobs:
       - terraform-intro-gcp
     if: ${{ always() }}   # Always run after needs, even if they failed, so we can notify
     runs-on: ubuntu-latest
+    permissions: {}
     steps:
       # https://github.com/actions/runner/issues/1656#issuecomment-1030077729
       - name: Get Jobs State

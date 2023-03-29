@@ -20,6 +20,8 @@ on:
       test_runs:
         description: "Number of runs test took"
         value: ${{ jobs.test-track.outputs.test_runs }}
+permissions:
+  contents: read
 env:
   # See IL-568 for information about the source of these
   # secrets and variables
