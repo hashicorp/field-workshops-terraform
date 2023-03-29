@@ -22,63 +22,54 @@ jobs:
     uses: ./.github/workflows/instruqt-track-test.yml
     with:
       working_directory: instruqt-tracks/sentinel-cli-basics
-      INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
     secrets:
       INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
   sentinel-for-terraform-v4:
     uses: ./.github/workflows/instruqt-track-test.yml
     with:
       working_directory: instruqt-tracks/sentinel-for-terraform-v4
-      INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
     secrets:
       INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
   terraform-cloud-aws:
     uses: ./.github/workflows/instruqt-track-test.yml
     with:
       working_directory: instruqt-tracks/terraform-cloud-aws
-      INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
     secrets:
       INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
   terraform-cloud-azure:
     uses: ./.github/workflows/instruqt-track-test.yml
     with:
       working_directory: instruqt-tracks/terraform-cloud-azure
-      INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
     secrets:
       INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
   terraform-cloud-gcp:
     uses: ./.github/workflows/instruqt-track-test.yml
     with:
       working_directory: instruqt-tracks/terraform-cloud-gcp
-      INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
     secrets:
       INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
   terraform-foundations-aws:
     uses: ./.github/workflows/instruqt-track-test.yml
     with:
       working_directory: instruqt-tracks/terraform-foundations-aws
-      INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
     secrets:
       INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
   terraform-intro-aws:
     uses: ./.github/workflows/instruqt-track-test.yml
     with:
       working_directory: instruqt-tracks/terraform-intro-aws
-      INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
     secrets:
       INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
   terraform-intro-azure:
     uses: ./.github/workflows/instruqt-track-test.yml
     with:
       working_directory: instruqt-tracks/terraform-intro-azure
-      INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
     secrets:
       INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
   terraform-intro-gcp:
     uses: ./.github/workflows/instruqt-track-test.yml
     with:
       working_directory: instruqt-tracks/terraform-intro-gcp
-      INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
     secrets:
       INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
   notify-slack:
