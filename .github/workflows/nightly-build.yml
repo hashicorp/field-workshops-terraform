@@ -1,0 +1,436 @@
+name: hashicorp/field-workshops-terraform/nightly-build
+on:
+  schedule:
+  - cron: 0 5 * * *
+#   # 'filters' was not transformed because there is no suitable equivalent in GitHub Actions
+env:
+  INSTRUQT_TOKEN: xxxxxxx
+  INSTRUQT_VERSION: xxxxxxx
+jobs:
+  instruqt-validate:
+    runs-on: ubuntu-latest
+    container:
+      image: docker.mirror.hashicorp.services/ubuntu:latest
+    steps:
+    - uses: actions/checkout@v3.5.0
+    - name: Run Instruqt Validate
+      run: |-
+        VERSION=$INSTRUQT_VERSION
+        apt -y update
+        apt -y install wget unzip
+        wget https://github.com/instruqt/cli/releases/download/${VERSION}/instruqt-linux-${VERSION}.zip -O /tmp/instruqt.zip
+        cd /tmp
+        unzip instruqt.zip
+        cp instruqt /usr/local/bin/instruqt
+        chmod +x /usr/local/bin/instruqt
+        echo "yes" | instruqt version
+        RETVAL=$?
+        if [[ $RETVAL -ne 0 ]]; then
+          echo "Instruqt is not installed correctly."
+          exit 1
+        else
+          echo "Instruqt is installed and updated to most recent version."
+        fi
+        echo "Running instruqt track validate..."
+        for dir in $(ls -d /root/project/instruqt-tracks/*); do
+          cd $dir && instruqt track validate
+        done
+  instruqt-test-oss-aws:
+    runs-on: ubuntu-latest
+    container:
+      image: docker.mirror.hashicorp.services/ubuntu:latest
+    needs:
+    - instruqt-validate
+    steps:
+    - uses: actions/checkout@v3.5.0
+    - name: Run Instruqt Test
+      run: |-
+        VERSION=$INSTRUQT_VERSION
+        apt -y update
+        apt -y install wget unzip
+        wget https://github.com/instruqt/cli/releases/download/${VERSION}/instruqt-linux-${VERSION}.zip -O /tmp/instruqt.zip
+        cd /tmp
+        unzip instruqt.zip
+        cp instruqt /usr/local/bin/instruqt
+        chmod +x /usr/local/bin/instruqt
+        echo "yes" | instruqt version
+        RETVAL=$?
+        if [[ $RETVAL -ne 0 ]]; then
+          echo "Instruqt is not installed correctly."
+          exit 1
+        else
+          echo "Instruqt is installed and updated to most recent version."
+        fi
+        cd /root/project/instruqt-tracks/terraform-intro-aws
+        echo "Running instruqt track push..."
+        instruqt track push --force
+        echo "Running instruqt track test..."
+        # Retry instruqt track test up to 3 times
+        n=0
+        until [ $n -ge 3 ]; do
+          instruqt track test --skip-fail-check && break
+          n=$[$n+1]
+          sleep 5
+        done
+        if [ $n -ge 3 ]; then
+          echo "Instruqt track test failed three times."
+          exit 1
+        fi
+  instruqt-test-oss-azure:
+    runs-on: ubuntu-latest
+    container:
+      image: docker.mirror.hashicorp.services/ubuntu:latest
+    needs:
+    - instruqt-validate
+    steps:
+    - uses: actions/checkout@v3.5.0
+    - name: Run Instruqt Test
+      run: |-
+        VERSION=$INSTRUQT_VERSION
+        apt -y update
+        apt -y install wget unzip
+        wget https://github.com/instruqt/cli/releases/download/${VERSION}/instruqt-linux-${VERSION}.zip -O /tmp/instruqt.zip
+        cd /tmp
+        unzip instruqt.zip
+        cp instruqt /usr/local/bin/instruqt
+        chmod +x /usr/local/bin/instruqt
+        echo "yes" | instruqt version
+        RETVAL=$?
+        if [[ $RETVAL -ne 0 ]]; then
+          echo "Instruqt is not installed correctly."
+          exit 1
+        else
+          echo "Instruqt is installed and updated to most recent version."
+        fi
+        cd /root/project/instruqt-tracks/terraform-intro-azure
+        echo "Running instruqt track push..."
+        instruqt track push --force
+        echo "Running instruqt track test..."
+        # Retry instruqt track test up to 3 times
+        n=0
+        until [ $n -ge 3 ]; do
+          instruqt track test --skip-fail-check && break
+          n=$[$n+1]
+          sleep 5
+        done
+        if [ $n -ge 3 ]; then
+          echo "Instruqt track test failed three times."
+          exit 1
+        fi
+  instruqt-test-oss-gcp:
+    runs-on: ubuntu-latest
+    container:
+      image: docker.mirror.hashicorp.services/ubuntu:latest
+    needs:
+    - instruqt-validate
+    steps:
+    - uses: actions/checkout@v3.5.0
+    - name: Run Instruqt Test
+      run: |-
+        VERSION=$INSTRUQT_VERSION
+        apt -y update
+        apt -y install wget unzip
+        wget https://github.com/instruqt/cli/releases/download/${VERSION}/instruqt-linux-${VERSION}.zip -O /tmp/instruqt.zip
+        cd /tmp
+        unzip instruqt.zip
+        cp instruqt /usr/local/bin/instruqt
+        chmod +x /usr/local/bin/instruqt
+        echo "yes" | instruqt version
+        RETVAL=$?
+        if [[ $RETVAL -ne 0 ]]; then
+          echo "Instruqt is not installed correctly."
+          exit 1
+        else
+          echo "Instruqt is installed and updated to most recent version."
+        fi
+        cd /root/project/instruqt-tracks/terraform-intro-gcp
+        echo "Running instruqt track push..."
+        instruqt track push --force
+        echo "Running instruqt track test..."
+        # Retry instruqt track test up to 3 times
+        n=0
+        until [ $n -ge 3 ]; do
+          instruqt track test --skip-fail-check && break
+          n=$[$n+1]
+          sleep 5
+        done
+        if [ $n -ge 3 ]; then
+          echo "Instruqt track test failed three times."
+          exit 1
+        fi
+  instruqt-test-cloud-aws:
+    runs-on: ubuntu-latest
+    container:
+      image: docker.mirror.hashicorp.services/ubuntu:latest
+    needs:
+    - instruqt-validate
+    steps:
+    - uses: actions/checkout@v3.5.0
+    - name: Run Instruqt Test
+      run: |-
+        VERSION=$INSTRUQT_VERSION
+        apt -y update
+        apt -y install wget unzip
+        wget https://github.com/instruqt/cli/releases/download/${VERSION}/instruqt-linux-${VERSION}.zip -O /tmp/instruqt.zip
+        cd /tmp
+        unzip instruqt.zip
+        cp instruqt /usr/local/bin/instruqt
+        chmod +x /usr/local/bin/instruqt
+        echo "yes" | instruqt version
+        RETVAL=$?
+        if [[ $RETVAL -ne 0 ]]; then
+          echo "Instruqt is not installed correctly."
+          exit 1
+        else
+          echo "Instruqt is installed and updated to most recent version."
+        fi
+        cd /root/project/instruqt-tracks/terraform-cloud-aws
+        echo "Running instruqt track push..."
+        instruqt track push --force
+        echo "Running instruqt track test..."
+        # Retry instruqt track test up to 3 times
+        n=0
+        until [ $n -ge 3 ]; do
+          instruqt track test --skip-fail-check && break
+          n=$[$n+1]
+          sleep 5
+        done
+        if [ $n -ge 3 ]; then
+          echo "Instruqt track test failed three times."
+          exit 1
+        fi
+  instruqt-test-cloud-azure:
+    runs-on: ubuntu-latest
+    container:
+      image: docker.mirror.hashicorp.services/ubuntu:latest
+    needs:
+    - instruqt-validate
+    steps:
+    - uses: actions/checkout@v3.5.0
+    - name: Run Instruqt Test
+      run: |-
+        VERSION=$INSTRUQT_VERSION
+        apt -y update
+        apt -y install wget unzip
+        wget https://github.com/instruqt/cli/releases/download/${VERSION}/instruqt-linux-${VERSION}.zip -O /tmp/instruqt.zip
+        cd /tmp
+        unzip instruqt.zip
+        cp instruqt /usr/local/bin/instruqt
+        chmod +x /usr/local/bin/instruqt
+        echo "yes" | instruqt version
+        RETVAL=$?
+        if [[ $RETVAL -ne 0 ]]; then
+          echo "Instruqt is not installed correctly."
+          exit 1
+        else
+          echo "Instruqt is installed and updated to most recent version."
+        fi
+        cd /root/project/instruqt-tracks/terraform-cloud-azure
+        echo "Running instruqt track push..."
+        instruqt track push --force
+        echo "Running instruqt track test..."
+        # Retry instruqt track test up to 3 times
+        n=0
+        until [ $n -ge 3 ]; do
+          instruqt track test --skip-fail-check && break
+          n=$[$n+1]
+          sleep 5
+        done
+        if [ $n -ge 3 ]; then
+          echo "Instruqt track test failed three times."
+          exit 1
+        fi
+  instruqt-test-cloud-gcp:
+    runs-on: ubuntu-latest
+    container:
+      image: docker.mirror.hashicorp.services/ubuntu:latest
+    needs:
+    - instruqt-validate
+    steps:
+    - uses: actions/checkout@v3.5.0
+    - name: Run Instruqt Test
+      run: |-
+        VERSION=$INSTRUQT_VERSION
+        apt -y update
+        apt -y install wget unzip
+        wget https://github.com/instruqt/cli/releases/download/${VERSION}/instruqt-linux-${VERSION}.zip -O /tmp/instruqt.zip
+        cd /tmp
+        unzip instruqt.zip
+        cp instruqt /usr/local/bin/instruqt
+        chmod +x /usr/local/bin/instruqt
+        echo "yes" | instruqt version
+        RETVAL=$?
+        if [[ $RETVAL -ne 0 ]]; then
+          echo "Instruqt is not installed correctly."
+          exit 1
+        else
+          echo "Instruqt is installed and updated to most recent version."
+        fi
+        cd /root/project/instruqt-tracks/terraform-cloud-gcp
+        echo "Running instruqt track push..."
+        instruqt track push --force
+        echo "Running instruqt track test..."
+        # Retry instruqt track test up to 3 times
+        n=0
+        until [ $n -ge 3 ]; do
+          instruqt track test --skip-fail-check && break
+          n=$[$n+1]
+          sleep 5
+        done
+        if [ $n -ge 3 ]; then
+          echo "Instruqt track test failed three times."
+          exit 1
+        fi
+  instruqt-test-sentinel-cli-basics:
+    runs-on: ubuntu-latest
+    container:
+      image: docker.mirror.hashicorp.services/ubuntu:latest
+    needs:
+    - instruqt-validate
+    steps:
+    - uses: actions/checkout@v3.5.0
+    - name: Run Instruqt Test
+      run: |-
+        VERSION=$INSTRUQT_VERSION
+        apt -y update
+        apt -y install wget unzip
+        wget https://github.com/instruqt/cli/releases/download/${VERSION}/instruqt-linux-${VERSION}.zip -O /tmp/instruqt.zip
+        cd /tmp
+        unzip instruqt.zip
+        cp instruqt /usr/local/bin/instruqt
+        chmod +x /usr/local/bin/instruqt
+        echo "yes" | instruqt version
+        RETVAL=$?
+        if [[ $RETVAL -ne 0 ]]; then
+          echo "Instruqt is not installed correctly."
+          exit 1
+        else
+          echo "Instruqt is installed and updated to most recent version."
+        fi
+        cd /root/project/instruqt-tracks/sentinel-cli-basics
+        echo "Running instruqt track push..."
+        instruqt track push --force
+        echo "Running instruqt track test..."
+        # Retry instruqt track test up to 3 times
+        n=0
+        until [ $n -ge 3 ]; do
+          instruqt track test --skip-fail-check && break
+          n=$[$n+1]
+          sleep 5
+        done
+        if [ $n -ge 3 ]; then
+          echo "Instruqt track test failed three times."
+          exit 1
+        fi
+  instruqt-test-sentinel-v4:
+    runs-on: ubuntu-latest
+    container:
+      image: docker.mirror.hashicorp.services/ubuntu:latest
+    needs:
+    - instruqt-validate
+    steps:
+    - uses: actions/checkout@v3.5.0
+    - name: Run Instruqt Test
+      run: |-
+        VERSION=$INSTRUQT_VERSION
+        apt -y update
+        apt -y install wget unzip
+        wget https://github.com/instruqt/cli/releases/download/${VERSION}/instruqt-linux-${VERSION}.zip -O /tmp/instruqt.zip
+        cd /tmp
+        unzip instruqt.zip
+        cp instruqt /usr/local/bin/instruqt
+        chmod +x /usr/local/bin/instruqt
+        echo "yes" | instruqt version
+        RETVAL=$?
+        if [[ $RETVAL -ne 0 ]]; then
+          echo "Instruqt is not installed correctly."
+          exit 1
+        else
+          echo "Instruqt is installed and updated to most recent version."
+        fi
+        cd /root/project/instruqt-tracks/sentinel-for-terraform-v4
+        echo "Running instruqt track push..."
+        instruqt track push --force
+        echo "Running instruqt track test..."
+        # Retry instruqt track test up to 3 times
+        n=0
+        until [ $n -ge 3 ]; do
+          instruqt track test --skip-fail-check && break
+          n=$[$n+1]
+          sleep 5
+        done
+        if [ $n -ge 3 ]; then
+          echo "Instruqt track test failed three times."
+          exit 1
+        fi
+  instruqt-push-terraform-cloud-bonus-lab:
+    runs-on: ubuntu-latest
+    container:
+      image: docker.mirror.hashicorp.services/ubuntu:latest
+    needs:
+    - instruqt-validate
+    steps:
+    - uses: actions/checkout@v3.5.0
+    - name: Run Instruqt Test
+      run: |-
+        VERSION=$INSTRUQT_VERSION
+        apt -y update
+        apt -y install wget unzip
+        wget https://github.com/instruqt/cli/releases/download/${VERSION}/instruqt-linux-${VERSION}.zip -O /tmp/instruqt.zip
+        cd /tmp
+        unzip instruqt.zip
+        cp instruqt /usr/local/bin/instruqt
+        chmod +x /usr/local/bin/instruqt
+        echo "yes" | instruqt version
+        RETVAL=$?
+        if [[ $RETVAL -ne 0 ]]; then
+          echo "Instruqt is not installed correctly."
+          exit 1
+        else
+          echo "Instruqt is installed and updated to most recent version."
+        fi
+        cd /root/project/instruqt-tracks/terraform-cloud-bonus-lab
+        echo "Running instruqt track push..."
+        instruqt track push --force
+        echo "No solve script for this track so no tests"
+  instruqt-test-foundations-aws:
+    runs-on: ubuntu-latest
+    container:
+      image: docker.mirror.hashicorp.services/ubuntu:latest
+    needs:
+    - instruqt-validate
+    steps:
+    - uses: actions/checkout@v3.5.0
+    - name: Run Instruqt Test
+      run: |-
+        VERSION=$INSTRUQT_VERSION
+        apt -y update
+        apt -y install wget unzip
+        wget https://github.com/instruqt/cli/releases/download/${VERSION}/instruqt-linux-${VERSION}.zip -O /tmp/instruqt.zip
+        cd /tmp
+        unzip instruqt.zip
+        cp instruqt /usr/local/bin/instruqt
+        chmod +x /usr/local/bin/instruqt
+        echo "yes" | instruqt version
+        RETVAL=$?
+        if [[ $RETVAL -ne 0 ]]; then
+          echo "Instruqt is not installed correctly."
+          exit 1
+        else
+          echo "Instruqt is installed and updated to most recent version."
+        fi
+        cd /root/project/instruqt-tracks/terraform-foundations-aws
+        echo "Running instruqt track push..."
+        instruqt track push --force
+        echo "Running instruqt track test..."
+        # Retry instruqt track test up to 3 times
+        n=0
+        until [ $n -ge 3 ]; do
+          instruqt track test --skip-fail-check && break
+          n=$[$n+1]
+          sleep 5
+        done
+        if [ $n -ge 3 ]; then
+          echo "Instruqt track test failed three times."
+          exit 1
+        fi
