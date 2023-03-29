@@ -1,0 +1,164 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+name: hashicorp/field-workshops-terraform/nightly-test
+on:
+  workflow_dispatch:
+  schedule:
+  # This is UTC
+  - cron: 37 4 * * *
+permissions:
+  contents: read
+env:
+  # See IL-568 for information about the source of these
+  # secrets and variables
+  # You MUST encode any secret which is json as base64, and then
+  # decode it within the job, otherwise GHA in being zealous about
+  # redacting secrets will turn all the curly braces in the `needs`
+  # context json we require in the Slack notification steps into
+  # '***' and you will be sad
+  INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
+jobs:
+  sentinel-cli-basics:
+    uses: ./.github/workflows/instruqt-track-test.yml
+    with:
+      working_directory: instruqt-tracks/sentinel-cli-basics
+      INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
+    secrets:
+      INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
+  sentinel-for-terraform-v4:
+    uses: ./.github/workflows/instruqt-track-test.yml
+    with:
+      working_directory: instruqt-tracks/sentinel-for-terraform-v4
+      INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
+    secrets:
+      INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
+  terraform-cloud-aws:
+    uses: ./.github/workflows/instruqt-track-test.yml
+    with:
+      working_directory: instruqt-tracks/terraform-cloud-aws
+      INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
+    secrets:
+      INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
+  terraform-cloud-azure:
+    uses: ./.github/workflows/instruqt-track-test.yml
+    with:
+      working_directory: instruqt-tracks/terraform-cloud-azure
+      INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
+    secrets:
+      INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
+  terraform-cloud-gcp:
+    uses: ./.github/workflows/instruqt-track-test.yml
+    with:
+      working_directory: instruqt-tracks/terraform-cloud-gcp
+      INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
+    secrets:
+      INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
+  terraform-foundations-aws:
+    uses: ./.github/workflows/instruqt-track-test.yml
+    with:
+      working_directory: instruqt-tracks/terraform-foundations-aws
+      INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
+    secrets:
+      INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
+  terraform-intro-aws:
+    uses: ./.github/workflows/instruqt-track-test.yml
+    with:
+      working_directory: instruqt-tracks/terraform-intro-aws
+      INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
+    secrets:
+      INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
+  terraform-intro-azure:
+    uses: ./.github/workflows/instruqt-track-test.yml
+    with:
+      working_directory: instruqt-tracks/terraform-intro-azure
+      INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
+    secrets:
+      INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
+  terraform-intro-gcp:
+    uses: ./.github/workflows/instruqt-track-test.yml
+    with:
+      working_directory: instruqt-tracks/terraform-intro-gcp
+      INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
+    secrets:
+      INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
+  notify-slack:
+    needs:
+      - sentinel-cli-basics
+      - sentinel-for-terraform-v4
+      - terraform-cloud-aws
+      - terraform-cloud-azure
+      - terraform-cloud-gcp
+      - terraform-foundations-aws
+      - terraform-intro-aws
+      - terraform-intro-azure
+      - terraform-intro-gcp
+    if: ${{ always() }}   # Always run after needs, even if they failed, so we can notify
+    runs-on: ubuntu-latest
+    steps:
+      # https://github.com/actions/runner/issues/1656#issuecomment-1030077729
+      - name: Get Jobs State
+        id: get-jobs-state
+        run: |-
+          cat<<EOF >> job-state.json
+          ${{ toJSON(needs) }}
+          EOF
+          cat job-state.json
+      - name: Build Message
+        id: build-message
+        shell: python
+        run: |-
+          import json
+          import secrets
+          msg = {"blocks": []}
+          # Parse 'needs' context
+          needs_f = open("job-state.json")
+          needs = json.load(needs_f)
+          # Header Section
+          WORKFLOW_ICON=":white_check_mark:"
+          WORKFLOW_STATUS="successful"
+          for job in needs.keys():
+            if needs[job]['result'] != "success":
+              WORKFLOW_ICON=":exclamation:"
+              WORKFLOW_STATUS="*FAILED*"
+              break
+          msg['blocks'].append({"type": "section", "text": { "type": "mrkdwn", "text": f'{WORKFLOW_ICON} Workflow <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|${{ github.workflow }} #${{ github.run_number }}> {WORKFLOW_STATUS}'}})
+          msg['blocks'].append({"type": "divider"})
+
+          # Per-job section
+          for job in needs.keys():
+            if needs[job]['result'] == "success":
+              TEST_ICON=":white_check_mark:"
+              TEST_STATUS="succeeded"
+            else:
+              TEST_ICON=":exclamation:"
+              TEST_STATUS="*FAILED*"
+
+            TEST_RUNS=int(needs[job]['outputs']['test_runs'])
+            if TEST_RUNS == 1:
+              TEST_RUN_STRING="run"
+            else:
+              TEST_RUN_STRING="runs"
+
+            job_msg = {"type": "section", "text": { "type": "mrkdwn", "text": f'{TEST_ICON} {job}: {TEST_STATUS} in {TEST_RUNS} {TEST_RUN_STRING}'}}
+            msg['blocks'].append(job_msg)
+
+          # Output
+          # https://trstringer.com/github-actions-multiline-strings/ Option 2
+          # NOTE: Where we typically use 'EOF' as a heredoc delimiter, following
+          # the security advice in
+          # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
+          # we generate a random delimiter every time
+          EOF = secrets.token_hex(24)
+          env = open('${{ github.env }}', mode='a')
+          env.writelines([f'SLACK_PAYLOAD<<{EOF}\n'])
+          json.dump(msg, env)
+          env.writelines([f'\n{EOF}\n'])
+          env.close()
+      - name: Post to Slack Channel
+        id: slack
+        uses: slackapi/slack-github-action@007b2c3c751a190b6f0f040e47ed024deaa72844 # v1.23.0
+        with:
+          channel-id: ${{ vars.SLACK_NOTIFICATION_CHANNELS }}
+          payload: ${{ env.SLACK_PAYLOAD }}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
