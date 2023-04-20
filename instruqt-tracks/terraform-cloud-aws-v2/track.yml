@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 slug: terraform-cloud-aws-v2
 id: 3xf7hxwimjqx
 title: Terraform Cloud with AWS

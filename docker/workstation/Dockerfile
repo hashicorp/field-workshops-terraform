@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 #FROM gcr.io/instruqt/cloud-client:latest
 FROM codercom/code-server:v2
 ARG VAULT_TOKEN
