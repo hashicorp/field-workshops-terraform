@@ -1,6 +1,6 @@
 ---
 slug: clean-up-and-teardown
-id: vnyhnswr7exl
+id: shyxdq8mco5i
 type: challenge
 title: Clean up
 teaser: |

@@ -1,6 +1,6 @@
 ---
 slug: versioned-infrastructure
-id: 4enbswlypudy
+id: ynqomi9mdg4c
 type: challenge
 title: Version Controlled Infrastructure
 teaser: |

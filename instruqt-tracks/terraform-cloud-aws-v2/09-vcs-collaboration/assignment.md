@@ -1,6 +1,6 @@
 ---
 slug: vcs-collaboration
-id: hq384nwu38h5
+id: awtzpmxvztyb
 type: challenge
 title: Collaborating with VCS
 teaser: |
