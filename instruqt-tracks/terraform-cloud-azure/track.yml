@@ -1,10 +1,9 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-slug: terraform-cloud-azure
-id: ywejivwkxtlp
-type: track
-title: Terraform Cloud with Azure
+slug: zzz-il-632-terraform-cloud-azure
+id: wmd59n3snzpu
+title: ZZZ IL-632  Terraform Cloud with Azure
 teaser: |
   Join the ACME devops team on their journey to fully automated provisioning with Azure Cloud.
 description: |-
@@ -30,12 +29,12 @@ owner: hashicorp
 developers:
 - roger@hashicorp.com
 - sean.carolan@hashicorp.com
-private: true
-published: true
+- thomas@hashicorp.com
+- swalker@hashicorp.com
 show_timer: true
 challenges:
 - slug: setup-our-environment
-  id: hhsegltjsdbz
+  id: htiwonvxj1fv
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: |
@@ -77,7 +76,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: terraform-cloud-setup
-  id: xkegpjvvhefh
+  id: 4mt7mjqgcjqx
   type: challenge
   title: ☁️ Terraform Cloud Setup
   teaser: |
@@ -124,7 +123,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: oh-no-an-outage
-  id: yjyi8oj0itwx
+  id: 4jxfxd07vhqc
   type: challenge
   title: "\U0001F4D2 Safekeeping Your Terraform State"
   teaser: |
@@ -223,7 +222,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: quiz-1
-  id: 8a5uhvi5mqfp
+  id: sq43v8uk4bex
   type: quiz
   title: "\U0001F4DD Quiz 1 - Terraform Remote State"
   teaser: |
@@ -241,7 +240,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: protecting-sensitive-variables
-  id: zwnz5hjcihvl
+  id: 401lskeeeav7
   type: challenge
   title: "\U0001F510 Securing Cloud Credentials"
   teaser: |
@@ -308,7 +307,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: sharing-is-caring
-  id: o5i1gijyobly
+  id: h877fp0vxwac
   type: challenge
   title: "\U0001F91D\U0001F3FC Working with Teams in Terraform Cloud"
   teaser: |
@@ -369,7 +368,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: quiz-2
-  id: yrxvfe5m6gch
+  id: ipqyboycmiqx
   type: quiz
   title: "\U0001F4DD Quiz 2 - Secure Variables"
   teaser: |
@@ -389,7 +388,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: versioned-infrastructure
-  id: sjpkbtwfy8jy
+  id: mxgec8uaic9u
   type: challenge
   title: "\U0001F4BB Version Controlled Infrastructure"
   teaser: |
@@ -484,7 +483,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: vcs-collaboration
-  id: 0oyaeu7muj2n
+  id: ax0k6aqmj2is
   type: challenge
   title: "\U0001F46C Collaborating with VCS"
   teaser: |
@@ -537,7 +536,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: controlling-costs
-  id: pg64saounjpa
+  id: k5n4h7hkttxq
   type: challenge
   title: $ Controlling Costs with Cost Estimation
   teaser: |
@@ -591,7 +590,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: a-sentinel-stands-guard
-  id: nheiyb6b8ywx
+  id: xtoashmzzx9k
   type: challenge
   title: "\U0001F6E1️ Terraform Compliance with Sentinel"
   teaser: |
@@ -675,7 +674,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: quiz-3
-  id: oywvzir3qzns
+  id: rsq2y65osr85
   type: quiz
   title: "\U0001F4DD Quiz 3 - Version Control and Terraform"
   teaser: |
@@ -697,7 +696,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: private-module-registry
-  id: ytmsd9gbq40h
+  id: 0d5xn8dkrmxz
   type: challenge
   title: "\U0001F4DA Private Module Registry"
   teaser: |
@@ -751,7 +750,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: api-driven-workflows
-  id: f52at0jcg8el
+  id: xuxu5z410x6u
   type: challenge
   title: "\U0001F517 API Driven Workflows"
   teaser: |
@@ -822,7 +821,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: quiz-4
-  id: a3i52f1yri6v
+  id: on1ql2bqth3s
   type: quiz
   title: "\U0001F4DD Quiz 4 - Private Module Registry"
   teaser: |
@@ -841,7 +840,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: this-is-the-end
-  id: yxtlghkqz8o2
+  id: 7jbwe1caybcq
   type: challenge
   title: "\U0001F469\U0001F3FB‍\U0001F52C Open Lab"
   teaser: |
@@ -863,4 +862,8 @@ challenges:
     path: /root/hashicat-azure
   difficulty: basic
   timelimit: 1800
-checksum: "13420782745786726003"
+lab_config:
+  overlay: false
+  width: 25
+  position: right
+checksum: "8134481496392269436"
