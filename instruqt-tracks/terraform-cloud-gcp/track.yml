@@ -1,10 +1,9 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-slug: terraform-cloud-gcp
-id: mjfywxvlky8d
-type: track
-title: Terraform Cloud with GCP
+slug: zzz-il-632-terraform-cloud-gcp
+id: t2gt1mlqfkvc
+title: ZZZ IL-632 Terraform Cloud with GCP
 teaser: |
   Join the ACME devops team on their journey to fully automated provisioning with GCP.
 description: |-
@@ -30,12 +29,12 @@ owner: hashicorp
 developers:
 - roger@hashicorp.com
 - sean.carolan@hashicorp.com
-private: true
-published: true
+- thomas@hashicorp.com
+- swalker@hashicorp.com
 show_timer: true
 challenges:
 - slug: setup-our-environment
-  id: jsjmhzzadzhr
+  id: akvidhs2qyqo
   type: challenge
   title: "\U0001F3E1 Moving in - Set Up Your Workspace"
   teaser: |
@@ -77,7 +76,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: terraform-cloud-setup
-  id: hv9tg7mosrtu
+  id: ccqhasbynmzj
   type: challenge
   title: ☁️ Terraform Cloud Setup
   teaser: |
@@ -124,7 +123,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: oh-no-an-outage
-  id: yf1h7ubtd5jk
+  id: 3yxljswdogoe
   type: challenge
   title: "\U0001F4D2 Safekeeping Your Terraform State"
   teaser: |
@@ -213,7 +212,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: quiz-1
-  id: bvqph09uews2
+  id: vihvu7jd3klk
   type: quiz
   title: "\U0001F4DD Quiz 1 - Terraform Remote State"
   teaser: |
@@ -231,7 +230,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: protecting-sensitive-variables
-  id: kj6nuxx09sxx
+  id: l3jxpewxvsyg
   type: challenge
   title: "\U0001F510 Securing Cloud Credentials"
   teaser: |
@@ -304,7 +303,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: sharing-is-caring
-  id: xyrlfrkiyqxb
+  id: xx5ogubacwhz
   type: challenge
   title: "\U0001F91D\U0001F3FC Working with Teams in Terraform Cloud"
   teaser: |
@@ -365,7 +364,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: quiz-2
-  id: hyoaiw0upbho
+  id: ogob3vhh4odf
   type: quiz
   title: "\U0001F4DD Quiz 2 - Secure Variables"
   teaser: |
@@ -385,7 +384,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: versioned-infrastructure
-  id: 75oxgo8jz6ee
+  id: rg27l39sup5f
   type: challenge
   title: "\U0001F4BB Version Controlled Infrastructure"
   teaser: |
@@ -480,7 +479,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: vcs-collaboration
-  id: smwimw3rjodo
+  id: le67lpjf81ws
   type: challenge
   title: "\U0001F46C Collaborating with VCS"
   teaser: |
@@ -533,7 +532,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: controlling-costs
-  id: 8syzn8rvjsgr
+  id: hugoce2ulprq
   type: challenge
   title: $ Controlling Costs with Cost Estimation
   teaser: |
@@ -587,7 +586,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: a-sentinel-stands-guard
-  id: 0fpxlgi8ux53
+  id: mrszou5vgltr
   type: challenge
   title: "\U0001F6E1️ Terraform Compliance with Sentinel"
   teaser: |
@@ -671,7 +670,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: quiz-3
-  id: aovfsuasqhin
+  id: o6rzt5ahnubm
   type: quiz
   title: "\U0001F4DD Quiz 3 - Version Control and Terraform"
   teaser: |
@@ -693,7 +692,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: private-module-registry
-  id: 0y2q3lwe6yhp
+  id: ohrqacypezeu
   type: challenge
   title: "\U0001F4DA Private Module Registry"
   teaser: |
@@ -757,7 +756,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: api-driven-workflows
-  id: jkpnkvjlylpk
+  id: b5zkkchl0hke
   type: challenge
   title: "\U0001F517 API Driven Workflows"
   teaser: |
@@ -828,7 +827,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: quiz-4
-  id: n3x9eszvwg1i
+  id: hodhfkgpfy9j
   type: quiz
   title: "\U0001F4DD Quiz 4 - Private Module Registry"
   teaser: |
@@ -847,7 +846,7 @@ challenges:
   difficulty: basic
   timelimit: 1800
 - slug: this-is-the-end
-  id: idxctnamridr
+  id: refdgrs2xlqc
   type: challenge
   title: "\U0001F469\U0001F3FB‍\U0001F52C Open Lab"
   teaser: |
@@ -869,4 +868,8 @@ challenges:
     path: /root/hashicat-gcp
   difficulty: basic
   timelimit: 1800
-checksum: "13183869528367053184"
+lab_config:
+  overlay: false
+  width: 25
+  position: right
+checksum: "689141154299363889"
