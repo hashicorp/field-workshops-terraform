@@ -31,6 +31,7 @@ developers:
 - sean.carolan@hashicorp.com
 - thomas@hashicorp.com
 - swalker@hashicorp.com
+- randy.keener@hashicorp.com
 show_timer: true
 challenges:
 - slug: setup-our-environment

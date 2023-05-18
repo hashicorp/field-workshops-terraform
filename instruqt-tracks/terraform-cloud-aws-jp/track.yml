@@ -1,0 +1,36 @@
+slug: terraform-cloud-aws-jp
+id: iuwgk3lvoqwd
+title: Terraform Cloud with AWS (Japanese)
+teaser: |
+  AWS クラウドでプロビジョニングを完全に自動化するために、ACME Inc. のdevops チームに参加してみませんか？
+description: |-
+  Acme Inc. のdevops チームと一緒に、Terraform を使ったプロビジョニングから、コードレビュー、テスト、AWS での自動プロビジョニングによる完全に自動化されたdevops ワークフローを目指します。このワークショップでは、以下のトピックを取り上げます。
+
+  * Terraform オープンソース
+  * Terraform Cloud
+  * リモートステート
+  * セキュア変数ストレージ
+  * VCS 連携
+  * ロールベースのアクセスコントロール
+  * Sentinel セキュリティポリシー
+  * 変更に関するコラボレーション
+  * プライベート・モジュール・レジストリ
+  * APIドリブンワークフロー
+icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
+tags:
+- terraform
+- aws
+- cloud
+- enterprise
+owner: hashicorp
+developers:
+- roger@hashicorp.com
+- tadashi@hashicorp.com
+- shogo.katsurada@hashicorp.com
+- masa@hashicorp.com
+show_timer: true
+lab_config:
+  overlay: false
+  width: 33
+  position: right
+checksum: "15330736162789100516"

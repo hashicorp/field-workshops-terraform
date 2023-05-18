@@ -30,6 +30,7 @@ developers:
 - swalker@hashicorp.com
 - thomas@hashicorp.com
 - jthompson@hashicorp.com
+- randy.keener@hashicorp.com
 show_timer: true
 lab_config:
   overlay: false
