@@ -1,6 +1,6 @@
 ---
 slug: quiz-2
-id: pwqr2tocqixx
+id: akmeyjrdcqzo
 type: quiz
 title: Quiz 2 - Secure Variables
 teaser: |

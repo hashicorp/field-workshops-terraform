@@ -1,6 +1,6 @@
 ---
 slug: private-module-registry
-id: 96rznpabnlha
+id: rxb1aqjeiu2y
 type: challenge
 title: Private Module Registry
 teaser: |
