@@ -169,7 +169,7 @@ Please see the example images below.
 
 ![Enable Trial](../assets/activate_trial.png)
 
-#- If you have an existing account and already used a trial, please create a different organization and unlock the 30-day "Team and Governance" plan #features.
+#- If you have an existing account and already used a trial, please create a different organization and unlock the "Standard" plan #features.
 
 - If you have an existing account and see an upgrade message at the top of the screen, please upgrade your account to the new Free Tier in order to continue with the workshop.
 
