@@ -134,29 +134,51 @@ w {
 The first step to begin work with your deployment tasks is to set up your Terraform Cloud resources.
 
 
-1- Terraform Cloud Organization
+1- HashiCorp Cloud Platform Account
 ===
-- Sign up for a free Terraform Cloud account at https://app.terraform.io/signup/account.
+- Sign up for a free HCP Account at https://portal.cloud.hashicorp.com/sign-in
 
 - If you already have an account, sign in with your existing credentials.
 
 - Create a new organization. Your organization can be named anything you want.
 
-2- Terraform Trial Plan
+- Click on Terraform Cloud and follow the link to https://app.terraform.io
+
+- Click the button to sign in with your HCP credentials
+
+
+2- Terraform Cloud Trial Plan
 ===
-- Enable a free 30-day Trial Plan of the "Team & Governance" plan features.
+- Enable a free 30-day Trial Plan of the "Standard" plan features.
 
-- On the Terraform Cloud portal, navigate to <x>Settings</x>-<x>Plan & Billing</x> and pick <w>Change plan</w>
+- On the Terraform Cloud portal, click <m>Start from Scratch</m> and create an organization
 
-- Choose the radio button for **Trial Plan** and click on <m>Start your free trial</m>
+- navigate to <x>Settings</x>-<x>Plan & Billing</x>, click <w>Edit plan</w> in the middle of the page
 
-Please see the example image below.
+- Choose the radio button for **Standard Plan** and click on <m>Next</m> in the bottom left corner
 
-![Enable Trial](../assets/enable_trial.png)
+- On the next screen click the radio button for **Pay-as-you-go**, then click <m>Next</m> in the bottom left corner
 
-- If you have an existing account and already used a trial, please create a different organization and unlock the 30-day "Team and Governance" plan features.
+- On the next screen just click <m>Activate plan</m> (Do not enter any CC information).
+
+Please see the example images below.
+
+![Enable Trial](../assets/enable_trial_2.png)
+
+![Enable Trial](../assets/enable_payg.png)
+
+![Enable Trial](../assets/activate_trial.png)
+
+#- If you have an existing account and already used a trial, please create a different organization and unlock the "Standard" plan features.
+
+ - If you have an existing account and see an upgrade message at the top of the screen, please upgrade your account to the new Free Tier in order to continue with the workshop.
+
+- If you get an error message about your TFC account not being linked to HCP, please create an HCP account and link it to Terraform Cloud. 
+
+- Please ask your workshop leader for assistance if you have any problems.
 
 - **IMPORTANT**: Once you activate the trial, sign out of Terraform Cloud, then sign back in so your account can access the new features.
+
 
 3- Terraform Cloud Token
 ===
