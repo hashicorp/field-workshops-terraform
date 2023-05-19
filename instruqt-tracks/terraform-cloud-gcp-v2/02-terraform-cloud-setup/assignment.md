@@ -1,6 +1,6 @@
 ---
 slug: terraform-cloud-setup
-id: jopgzpxlhzro
+id: vwt4nczgvcj6
 type: challenge
 title: Terraform Cloud Setup
 teaser: |
