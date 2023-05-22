@@ -142,18 +142,17 @@ The first step to begin work with your deployment tasks is to set up your Terraf
 
 - Create a new organization. Your organization can be named anything you want.
 
-- Click on Terraform Cloud and follow the link to https://app.terraform.io
+- Click on Terraform > Terraform Cloud and follow the link to https://app.terraform.io
 
-- Click the button to sign in with your HCP credentials
+- Click the button "Continue with HCP account" to sign in with your HCP credentials
 
 
 2- Terraform Cloud Trial Plan
 ===
-- Enable a free 30-day Trial Plan of the "Standard" plan features.
 
-- On the Terraform Cloud portal, click <m>Start from Scratch</m> and create an organization
+- On the Terraform Cloud portal, when prompted, click <m>Start from Scratch</m> and create an organization
 
-- navigate to <x>Settings</x>-<x>Plan & Billing</x>, click <w>Edit plan</w> in the middle of the page
+- To enable a Trial of the "Standard" plan features, navigate to <x>Settings</x>-<x>Plan & Billing</x>, click <w>Edit plan</w> in the middle of the page
 
 - Choose the radio button for **Standard Plan** and click on <m>Next</m> in the bottom left corner
 
@@ -182,7 +181,7 @@ Please see the example images below.
 
 3- Terraform Cloud Token
 ===
-- Use this <o>[link](https://app.terraform.io/app/settings/tokens?source=terraform-login)</o> to visit the <x>User Settings</x>-<x>Tokens</x> page in your Terraform Cloud account.
+- Use this <o>[link](https://app.terraform.io/app/settings/tokens?source=terraform-login)</o> to create a new user token. When prompted to create a user token, click "Generate Token"
 
 - Use the <m>Create API token</m> button to generate a new **personal user token** to use in this workshop.
 
