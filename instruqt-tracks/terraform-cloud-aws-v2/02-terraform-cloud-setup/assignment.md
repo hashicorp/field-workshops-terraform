@@ -11,7 +11,7 @@ notes:
     With your Terraform Cloud account
 
     1. Create a new Terraform Cloud Organization
-    2. Enable 30-day Trial Plan of "Team & Governance" features
+    2. Enable Trial Plan of "Standard" features
     3. Create a new personal account token
     4. Create a dedicated workspace
 tabs:
@@ -142,20 +142,20 @@ The first step to begin work with your deployment tasks is to set up your Terraf
 
 - Create a new organization. Your organization can be named anything you want.
 
-- Click on Terraform Cloud and follow the link to https://app.terraform.io
+- Click on Terraform > Terraform Cloud and follow the link to https://app.terraform.io
 
-- Click the button to sign in with your HCP credentials
+- Click the button "Continue with HCP account" to sign in with your HCP credentials
 
 
 2- Terraform Cloud Trial Plan
 ===
-- Enable a free 30-day Trial Plan of the "Standard" plan features.
 
-- On the Terraform Cloud portal, click <m>Start from Scratch</m> and create an organization
+- On the Terraform Cloud portal, when prompted, click <m>Start from Scratch</m> and create an organization
 
-- navigate to <x>Settings</x>-<x>Plan & Billing</x>, click <w>Edit plan</w> in the middle of the page
+- To enable a Trial of the "Standard" plan features, navigate to <x>Settings</x>-<x>Plan & Billing</x>, click <w>Edit plan</w> in the middle of the page
 
 - Choose the radio button for **Standard Plan** and click on <m>Next</m> in the bottom left corner
+
 
 - On the next screen click the radio button for **Pay-as-you-go**, then click <m>Next</m> in the bottom left corner
 
