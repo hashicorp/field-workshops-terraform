@@ -11,7 +11,7 @@ notes:
     With your Terraform Cloud account
 
     1. Create a new Terraform Cloud Organization
-    2. Enable Trial Plan of "Standard" features
+    2. Enable a Trial of the "Standard" plan features
     3. Create a new personal account token
     4. Create a dedicated workspace
 tabs:
@@ -156,7 +156,6 @@ The first step to begin work with your deployment tasks is to set up your Terraf
 
 - Choose the radio button for **Standard Plan** and click on <m>Next</m> in the bottom left corner
 
-
 - On the next screen click the radio button for **Pay-as-you-go**, then click <m>Next</m> in the bottom left corner
 
 - On the next screen just click <m>Activate plan</m> (Do not enter any CC information).
@@ -181,7 +180,7 @@ Please see the example images below.
 
 3- Terraform Cloud Token
 ===
-- Use this <o>[link](https://app.terraform.io/app/settings/tokens?source=terraform-login)</o> to visit the <x>User Settings</x>-<x>Tokens</x> page in your Terraform Cloud account.
+- Use this <o>[link](https://app.terraform.io/app/settings/tokens?source=terraform-login)</o> to create a new user token. When prompted to create a user token, click "Generate Token"
 
 - Use the <m>Create API token</m> button to generate a new **personal user token** to use in this workshop.
 
