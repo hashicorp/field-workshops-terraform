@@ -86,12 +86,26 @@ challenges:
   - type: text
     contents: Terraform Cloud remote state storage is free for all users.
   assignment: |-
-    Sign up for a free Terraform Cloud account at the following URL:
+    Sign up for a free HCP Account at https://portal.cloud.hashicorp.com/sign-in
 
-    https://app.terraform.io/signup/account
+    If you already have an account, sign in with your existing credentials.
 
-    If you already have an account you can simply sign in with your existing credentials.
+    Create a new organization. Your organization can be named anything you want
 
+    Click on Terraform > Terraform Cloud and follow the link to https://app.terraform.io
+
+    Click the button "Continue with HCP account" to sign in with your HCP credentials
+
+    On the Terraform Cloud portal, when prompted, click <m>Start from Scratch</m> and create an organization
+
+    To enable a Trial of the "Standard" plan features, navigate to <x>Settings</x>-<x>Plan & Billing</x>, click <w>Edit plan</w> in the middle of the page
+
+    Choose the radio button for **Standard Plan** and click on <m>Next</m> in the bottom left corner
+
+    On the next screen click the radio button for **Pay-as-you-go**, then click <m>Next</m> in the bottom left corner
+
+    On the next screen just click <m>Activate plan</m> (Do not enter any CC information)
+    
     Once you're signed into Terraform Cloud, you'll see a screen with several options. Please click the "Not right now, skip questions" link and confirm that you want to skip the questions. Then create a new organization.
 
     Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicat-aws**, enter a description such as "HashiCat for AWS", and click the "Create workspace" button.
