@@ -134,32 +134,40 @@ w {
 The first step to begin work with your deployment tasks is to set up your Terraform Cloud resources.
 
 
+
 1- HashiCorp Cloud Platform Account
 ===
+
 - Sign up for a free HCP Account at https://portal.cloud.hashicorp.com/sign-in
+	- Create HCP account
+	- Verify email address
+	- Setup a new  Organization
 
 - If you already have an account, sign in with your existing credentials.
 
 - Create a new organization. Your organization can be named anything you want.
 
-- Click on Terraform > Terraform Cloud and follow the link to https://app.terraform.io
+- Click on "Terraform" then "Continue to Terraform Cloud" and follow the link to https://app.terraform.io
 
-- Click the button "Continue with HCP account" to sign in with your HCP credentials
+- Click  "Continue with HCP account" to sign in with your HCP credentials
 
+- If prompted to Create a new HCP-linked account" click "Continue"
+
+- Once in the Terraform Cloud portal,  click "Start from Scratch" and create an Organization
+
+- Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicat-aws** as the workspace name, enter a description such as "HashiCat for AWS", and click "Create workspace"
 
 2- Terraform Cloud Trial Plan
 ===
 
-- On the Terraform Cloud portal, when prompted, click <m>Start from Scratch</m> and create an organization
+- To enable a Trial of the "Standard" plan features, navigate to **Organizational Settings** >> **Plan & Billing**, click "Edit plan" in the middle of the page
 
-- To enable a Trial of the "Standard" plan features, navigate to <x>Settings</x>-<x>Plan & Billing</x>, click <w>Edit plan</w> in the middle of the page
+- Choose the radio button for **Standard Plan** and click on "Next" in the bottom left corner
 
-- Choose the radio button for **Standard Plan** and click on <m>Next</m> in the bottom left corner
+- On the next screen click the radio button for **Pay-as-you-go**, then click "Next" in the bottom left corner
 
-- On the next screen click the radio button for **Pay-as-you-go**, then click <m>Next</m> in the bottom left corner
-
-- On the next screen just click <m>Activate plan</m> (Do not enter any CC information).
-
+- On the next screen just click "Activate plan" (Do not enter any CC information)
+- 
 Please see the example images below.
 
 ![Enable Trial](../assets/enable_trial_2.png)
