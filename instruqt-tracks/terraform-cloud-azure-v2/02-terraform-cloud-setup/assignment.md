@@ -168,19 +168,20 @@ Please see the example images below.
 
 ![Enable Trial](../assets/activate_trial.png)
 
-#- If you have an existing account and already used a trial, please create a different organization and unlock the "Standard" plan features.
+- If you have an existing account and already used a trial, please create a different organization and unlock the "Standard" plan features.
 
- - If you have an existing account and see an upgrade message at the top of the screen, please upgrade your account to the new Free Tier in order to continue with the workshop.
+- If you have an existing account and see an upgrade message at the top of the screen, please upgrade your account to the new Free Tier in order to continue with the workshop.
 
 - If you get an error message about your TFC account not being linked to HCP, please create an HCP account and link it to Terraform Cloud. 
 
 - Please ask your workshop leader for assistance if you have any problems.
 
-- **IMPORTANT**: Once you activate the trial, sign out of Terraform Cloud, then sign back in so your account can access the new features.
+**IMPORTANT**: Once you activate the trial, sign out of Terraform Cloud, then sign back in so your account can access the new features.
 
 
 3- Terraform Cloud Token
 ===
+
 - Use this <o>[link](https://app.terraform.io/app/settings/tokens?source=terraform-login)</o> to create a new user token. When prompted to create a user token, click "Generate Token"
 
 - Use the <m>Create API token</m> button to generate a new **personal user token** to use in this workshop.
