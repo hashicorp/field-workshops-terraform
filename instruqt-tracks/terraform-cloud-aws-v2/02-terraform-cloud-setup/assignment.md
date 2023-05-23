@@ -180,9 +180,8 @@ Please see the example images below.
 
 3- Terraform Cloud Token
 ===
-- Use this <o>[link](https://app.terraform.io/app/settings/tokens?source=terraform-login)</o> to create a new user token. When prompted to create a user token, click "Generate Token"
 
-- Use the <m>Create API token</m> button to generate a new **personal user token** to use in this workshop.
+- Use this <o>[link](https://app.terraform.io/app/settings/tokens?source=terraform-login)</o> to create a new user token. When prompted, click "Generate Token" to generate the new token.
 
 - <lb>Make sure to save your Terraform Cloud token. It will not be displayed again.</lb>
 
