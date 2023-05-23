@@ -98,9 +98,9 @@ challenges:
 
     On the Terraform Cloud portal, when prompted, click "Start from Scratch" and create an organization
 
-    To enable a Trial of the **Standard** plan features, navigate to **Settings** **Plan & Billing**, click "Edit plan" in the middle of the page
+    To enable a Trial of the **Standard** plan features, navigate to **Settings >> Plan & Billing**, click "Edit plan" in the middle of the page
 
-    Choose the radio button for **Standard Plan** and click on "Next" in the bottom left corner
+    Choose the radio button for "Standard Plan" and click on "Next" in the bottom left corner
 
     On the next screen click the radio button for **Pay-as-you-go**, then click "Next" in the bottom left corner
 
