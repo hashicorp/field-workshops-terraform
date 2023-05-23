@@ -106,7 +106,7 @@ challenges:
 
     On the next screen just click <m>Activate plan</m> (Do not enter any CC information)
     
-    Once you're signed into Terraform Cloud, you'll see a screen with several options. Please click the "Not right now, skip questions" link and confirm that you want to skip the questions. Then create a new organization.
+    Once you're signed into Terraform Cloud, you may see a screen with several options. If so, click the "Not right now, skip questions" link and confirm that you want to skip the questions. Then create a new organization.
 
     Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicat-aws**, enter a description such as "HashiCat for AWS", and click the "Create workspace" button.
 
