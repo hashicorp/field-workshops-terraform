@@ -86,25 +86,21 @@ challenges:
   - type: text
     contents: Terraform Cloud remote state storage is free for all users.
   assignment: |-
-    Sign up for a free HCP Account at https://portal.cloud.hashicorp.com/sign-in:
-
-    Create HCP account
-
-    Verify email address
-
-    Setup a new  Organization
+    Sign up for a free HCP Account at https://portal.cloud.hashicorp.com/sign-in
 
     If you already have an account, sign in with your existing credentials.
 
-    Create a new organization. Your organization can be named anything you want.
+    Follow the on-screen instructions to verify your email address
 
-    Click on "Terraform" then "Continue to Terraform Cloud" and follow the link to https://app.terraform.io
+    Setup your Organization.  We recommend using the default name provided
 
-    Click  "Continue with HCP account" to sign in with your HCP credentials
+    Navigate to "Services" "Terraform" and follow the "Continue to Terraform Cloud" link  to https://app.terraform.io
 
-    If prompted to Create a new HCP-linked account" click "Continue"
+    Select  "Continue with HCP account" to sign in with your HCP credentials
 
-    Once in the Terraform Cloud portal,  click "Start from Scratch" and create an Organization
+    If prompted to Create a new HCP-linked account click "Continue"
+
+    Once in the Terraform Cloud portal,  select "Start from Scratch" and create an Organization
 
     Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicat-azure** as the workspace name, enter a description such as "HashiCat for Azure", and click "Create workspace"
 
