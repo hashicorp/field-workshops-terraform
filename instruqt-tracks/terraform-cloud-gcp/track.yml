@@ -106,11 +106,11 @@ challenges:
 
     Once in the Terraform Cloud portal,  click "Start from Scratch" and create an Organization
 
-    Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicat-aws** as the workspace name, enter a description such as "HashiCat for AWS", and click "Create workspace"
+    Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicat-gcp** as the workspace name, enter a description such as "HashiCat for GCP", and click "Create workspace"
 
-    No really...you *must* name your workspace **hashicat-aws**. If you don't the exercises will break. Do not attempt to name it something else.
+    No really...you *must* name your workspace **hashicat-gcp**. If you don't the exercises will break. Do not attempt to name it something else.
 
-    **Note:** If you already have a **hashicat-aws** workspace, please delete the workspace by selecting the workspace-level **Settings >> Destruction and Deletion** menu, clicking the **Delete from Terraform Cloud** button, typing **hashicat-aws** to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you already played this track in the past.
+    **Note:** If you already have a **hashicat-gcp** workspace, please delete the workspace by selecting the workspace-level **Settings >> Destruction and Deletion** menu, clicking the **Delete from Terraform Cloud** button, typing **hashicat-gcp** to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you already played this track in the past.
 
     To enable a Trial of the "Standard" plan features, navigate to **Organizational Settings** >> **Plan & Billing**, click "Edit plan" in the middle of the page
 
