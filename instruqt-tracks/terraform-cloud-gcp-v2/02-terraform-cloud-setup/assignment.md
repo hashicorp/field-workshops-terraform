@@ -241,9 +241,9 @@ terraform apply -auto-approve
 
 ```
 
-- On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>hashicat-gcp</x>-<x>Settings</x>-<x>General</x>
+- On the Terraform Cloud portal, navigate to **Projects & workspaces**-**hashicat-gcp**-**Settings**-**General**
 
-- Note that your new workspace is configured for <x>Local</x> execution.
+- Note that your new workspace is configured for **Local** execution.
 
 Please see the example image below.
 
