@@ -135,7 +135,7 @@ The first step to begin work with your deployment tasks is to set up your Terraf
 
 ## Create a HashiCorp Cloud Platform Account
 
----
+===
 
 Follow these step-by-step instructions:
 
@@ -168,7 +168,7 @@ Follow these step-by-step instructions:
 	
 ## Activate the Terraform Cloud Standard Plan
 
----
+===
 
 1. To activate  the Standard plan features required for the lab:
 
@@ -197,7 +197,8 @@ Common issues:
 
 Please ask your workshop leader for assistance if you have any issues creating accounts and activating the plan.
 
-3- Terraform Cloud Token
+## Terraform Cloud Token
+
 ===
 
 - Use this <o>[link](https://app.terraform.io/app/settings/tokens?source=terraform-login)</o> to create a new user token. When prompted, click  <x>Generate Token <x> to generate the new token.
@@ -212,7 +213,8 @@ terraform login
 
 ```
 
-4- Terraform Cloud Workspace
+## Terraform Cloud Workspace
+
 ===
 Use local Terraform utility deployment code to create and configure a new Terraform Cloud Workspace.
 
