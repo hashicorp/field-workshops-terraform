@@ -137,37 +137,34 @@ The first step to begin work with your deployment tasks is to set up your Terraf
 
 1- HashiCorp Cloud Platform Account
 ===
-
 - Sign up for a free HCP Account at https://portal.cloud.hashicorp.com/sign-in
-	- Create HCP account
-	- Verify email address
-	- Setup a new  Organization
 
 - If you already have an account, sign in with your existing credentials.
 
-- Create a new organization. Your organization can be named anything you want.
+- Follow the on-screen instructions to verify your email address
 
-- Click on "Terraform" then "Continue to Terraform Cloud" and follow the link to https://app.terraform.io
+- Setup your Organization.  We recommend using the default name provided
 
-- Click  "Continue with HCP account" to sign in with your HCP credentials
+- Navigate to <x>Services<x> <x>Terraform<x> and follow the "Continue to Terraform Cloud" link  to https://app.terraform.io
 
-- If prompted to Create a new HCP-linked account" click "Continue"
+- Select  <x>Continue with HCP account<x> to sign in with your HCP credentials
 
-- Once in the Terraform Cloud portal,  click "Start from Scratch" and create an Organization
+- If prompted to Create a new HCP-linked account click <x>Continue<x>
 
-- Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicat-gcp** as the workspace name, enter a description such as "HashiCat for GCP", and click "Create workspace"
+- Once in the Terraform Cloud portal,  select <x>Start from Scratch<x> and create an Organization
+
+- Next you'll be prompted to create a workspace. Select the <x>CLI-driven workflow<x> panel and use any name you wish for the workspace name, entering a description is optional, click <x>Create workspace<x>
 
 2- Terraform Cloud Trial Plan
 ===
+- To enable a Trial of the "Standard" plan features, navigate to <x>Organizational Settings<x>  <x>Plan & Billing<x>, click <x>Edit plan<x> in the middle of the page
 
-- To enable a Trial of the "Standard" plan features, navigate to **Organizational Settings** >> **Plan & Billing**, click "Edit plan" in the middle of the page
+- Choose the radio button for <x>Standard Plan<x> and click  <x>Next<x> in the bottom left corner
 
-- Choose the radio button for **Standard Plan** and click on "Next" in the bottom left corner
+- On the next screen click the radio button for <x>Pay-as-you-go<x>, then click <x>Next<x> in the bottom left corner
 
-- On the next screen click the radio button for **Pay-as-you-go**, then click "Next" in the bottom left corner
-
-- On the next screen just click "Activate plan" (Do not enter any CC information)
-- 
+- On the next screen click <x>Activate plan<x> (Do not enter any CC information)
+  
 Please see the example images below.
 
 ![Enable Trial](../assets/enable_trial_2.png)
@@ -189,7 +186,7 @@ Please see the example images below.
 3- Terraform Cloud Token
 ===
 
-- Use this <o>[link](https://app.terraform.io/app/settings/tokens?source=terraform-login)</o> to create a new user token. When prompted, click "Generate Token" to generate the new token.
+- Use this <o>[link](https://app.terraform.io/app/settings/tokens?source=terraform-login)</o> to create a new user token. When prompted, click  <x>Generate Token <x> to generate the new token.
 
 - <lb>Make sure to save your Terraform Cloud token. It will not be displayed again.</lb>
 
