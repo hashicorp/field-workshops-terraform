@@ -143,6 +143,8 @@ Follow these step-by-step instructions:
 
 2. If you already have an account, sign in using your existing credentials and goto Step 5
 
+3. **Accept the services agreements** and click **Continue**
+
 3. Complete the on-screen instructions to verify your email address.
 
 4. When prompted to **Set up your Organization**, we recommended using the default name provided.
