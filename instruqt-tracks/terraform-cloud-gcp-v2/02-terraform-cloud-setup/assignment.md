@@ -145,23 +145,23 @@ Follow these step-by-step instructions:
 
 3. **Accept the services agreements** and click **Continue**
 
-3. Complete the on-screen instructions to verify your email address.
+4. Complete the on-screen instructions to verify your email address.
 
-4. When prompted to **Set up your Organization**, we recommended using the default name provided.
+5. When prompted to **Set up your Organization**, we recommended using the default name provided.
 
-5. Go to **Services**-**Terraform** and click on the **Continue to Terraform Cloud** link to access https://app.terraform.io
+6. Go to **Services**-**Terraform** and click on the **Continue to Terraform Cloud** link to access https://app.terraform.io
 
-6. Select **Continue with HCP account** to sign in using your HCP credentials.
+7. Select **Continue with HCP account** to sign in using your HCP credentials.
 
-7. If prompted to create a new HCP-linked account, click  **Continue**
+8. If prompted to create a new HCP-linked account, click  **Continue**
 
-8. Once you are in the Terraform Cloud portal, you should be prompted to Choose your setup workflow:
+9. Once you are in the Terraform Cloud portal, you should be prompted to Choose your setup workflow:
 
 - Select  **Start from Scratch** 
 - Name your organization.  We recommend using the prefix  used to create the HCP Organization.
 - Click **Create an organization**
 
-9. When prompted to Create a workspace:
+10. When prompted to Create a workspace:
 
 - Select the **CLI-driven workflow** 
 - Name the workspace anything you want to
