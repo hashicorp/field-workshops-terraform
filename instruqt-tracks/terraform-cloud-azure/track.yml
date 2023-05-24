@@ -110,7 +110,7 @@ challenges:
 
     No really...you *must* name your workspace **hashicat-azure**. If you don't the exercises will break. Do not attempt to name it something else.
 
-    **Note:** If you already have a **hashicat-azure** workspace, please delete the workspace by selecting the workspace-level **Settings >> Destruction and Deletion** menu, clicking the **Delete from Terraform Cloud** button, typing **hashicat-aws** to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you already played this track in the past.
+    **Note:** If you already have a **hashicat-azure** workspace, please delete the workspace by selecting the workspace-level **Settings >> Destruction and Deletion** menu, clicking the **Delete from Terraform Cloud** button, typing **hashicat-azure** to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you already played this track in the past.
 
     To enable a Trial of the "Standard" plan features, navigate to **Organizational Settings** >> **Plan & Billing**, click "Edit plan" in the middle of the page
 
