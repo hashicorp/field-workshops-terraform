@@ -216,6 +216,7 @@ terraform login
 ## Terraform Cloud Workspace
 
 ===
+
 Use local Terraform utility deployment code to create and configure a new Terraform Cloud Workspace.
 
 - Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder and open the file <t><img src="../assets/tf-icon.png"/>terraform.tfvars</t>
