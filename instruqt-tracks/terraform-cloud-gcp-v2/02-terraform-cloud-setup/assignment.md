@@ -141,25 +141,25 @@ Follow these step-by-step instructions:
 
 1. Sign up for a free HCP Account by visiting https://portal.cloud.hashicorp.com/sign-in
 
-1. If you already have an account, sign in using your existing credentials and goto Step 5
+2. If you already have an account, sign in using your existing credentials and goto Step 5
 
-1. Complete the on-screen instructions to verify your email address.
+3. Complete the on-screen instructions to verify your email address.
 
-1. When prompted to **Set up your Organization**, we recommended using the default name provided.
+4. When prompted to **Set up your Organization**, we recommended using the default name provided.
 
-1. Go to **Services**-**Terraform** and click on the **Continue to Terraform Cloud** link to access https://app.terraform.io
+5. Go to **Services**-**Terraform** and click on the **Continue to Terraform Cloud** link to access https://app.terraform.io
 
-1. Select **Continue with HCP account** to sign in using your HCP credentials.
+6. Select **Continue with HCP account** to sign in using your HCP credentials.
 
-1. If prompted to create a new HCP-linked account, click  **Continue**
+7. If prompted to create a new HCP-linked account, click  **Continue**
 
-1. Once you are in the Terraform Cloud portal, you should be prompted to Choose your setup workflow:
+8. Once you are in the Terraform Cloud portal, you should be prompted to Choose your setup workflow:
 
 - Select  **Start from Scratch** 
 - Name your organization.  We recommend using the prefix  used to create the HCP Organization.
 - Click **Create an organization**
 
-1. When prompted to Create a workspace:
+9. When prompted to Create a workspace:
 
 - Select the **CLI-driven workflow** 
 - Name the workspace anything you want to
