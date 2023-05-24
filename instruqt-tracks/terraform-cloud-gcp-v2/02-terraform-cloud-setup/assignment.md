@@ -145,25 +145,25 @@ The first step to begin work with your deployment tasks is to set up your Terraf
 
 - Setup your Organization.  We recommend using the default name provided
 
-- Navigate to <x>Services<x> <x>Terraform<x> and follow the "Continue to Terraform Cloud" link  to https://app.terraform.io
+- Navigate to <x>Services</x> <x>Terraform</x> and follow the "Continue to Terraform Cloud" link  to https://app.terraform.io
 
-- Select  <x>Continue with HCP account<x> to sign in with your HCP credentials
+- Select  <x>Continue with HCP account</x> to sign in with your HCP credentials
 
-- If prompted to Create a new HCP-linked account click <x>Continue<x>
+- If prompted to Create a new HCP-linked account click <x>Continue</x>
 
-- Once in the Terraform Cloud portal,  select <x>Start from Scratch<x> and create an Organization
+- Once in the Terraform Cloud portal,  select <x>Start from Scratch</x> and create an Organization
 
-- Next you'll be prompted to create a workspace. Select the <x>CLI-driven workflow<x> panel and use any name you wish for the workspace name, entering a description is optional, click <x>Create workspace<x>
+- Next you'll be prompted to create a workspace. Select the <x>CLI-driven workflow</x> panel and use any name you wish for the workspace name, entering a description is optional, click <x>Create workspace</x>
 
 2- Terraform Cloud Trial Plan
 ===
-- To enable a Trial of the "Standard" plan features, navigate to <x>Organizational Settings<x>  <x>Plan & Billing<x>, click <x>Edit plan<x> in the middle of the page
+- To enable a Trial of the "Standard" plan features, navigate to <x>Organizational Settings</x>  <x>Plan & Billing</x>, click <x>Edit plan</x> in the middle of the page
 
-- Choose the radio button for <x>Standard Plan<x> and click  <x>Next<x> in the bottom left corner
+- Choose the radio button for <x>Standard Plan</x> and click  <x>Next</x> in the bottom left corner
 
-- On the next screen click the radio button for <x>Pay-as-you-go<x>, then click <x>Next<x> in the bottom left corner
+- On the next screen click the radio button for <x>Pay-as-you-go</x>, then click <x>Next</x> in the bottom left corner
 
-- On the next screen click <x>Activate plan<x> (Do not enter any CC information)
+- On the next screen click <x>Activate plan</x> (Do not enter any CC information)
   
 Please see the example images below.
 
