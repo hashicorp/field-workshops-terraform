@@ -155,7 +155,7 @@ The first step to begin work with your deployment tasks is to set up your Terraf
 
 - Once in the Terraform Cloud portal,  click "Start from Scratch" and create an Organization
 
-- Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicat-aws** as the workspace name, enter a description such as "HashiCat for AWS", and click "Create workspace"
+- Next you'll be prompted to create a workspace. Select the "CLI-driven workflow" panel, type **hashicat-gcp** as the workspace name, enter a description such as "HashiCat for GCP", and click "Create workspace"
 
 2- Terraform Cloud Trial Plan
 ===
