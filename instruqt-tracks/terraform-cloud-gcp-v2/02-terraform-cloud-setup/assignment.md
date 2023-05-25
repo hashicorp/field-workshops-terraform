@@ -167,6 +167,8 @@ If you are using a pre-existing account:
 
   * Select your current organization at the bottom of the navigation menu
   * Click **Create new organization**
+  * Name your organization.  We recommend using the prefix  used to create the HCP Organization.
+  * Click **Create an organization**
 
 10. When prompted to Create a workspace:
 
