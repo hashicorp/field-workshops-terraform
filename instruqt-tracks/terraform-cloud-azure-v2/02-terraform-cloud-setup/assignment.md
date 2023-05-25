@@ -133,37 +133,61 @@ w {
 </style>
 The first step to begin work with your deployment tasks is to set up your Terraform Cloud resources.
 
+## Create a HashiCorp Cloud Platform Account
 
-
-1- HashiCorp Cloud Platform Account
 ===
-- Sign up for a free HCP Account at https://portal.cloud.hashicorp.com/sign-in
 
-- If you already have an account, sign in with your existing credentials.
+Follow these step-by-step instructions:
 
-- Follow the on-screen instructions to verify your email address
+1. Sign up for a free HCP Account by visiting https://portal.cloud.hashicorp.com/sign-in
 
-- Setup your Organization.  We recommend using the default name provided
+2. If you already have an account, sign in using your existing credentials and goto Step 5
 
-- Navigate to <x>Services</x> <x>Terraform</x> and follow the "Continue to Terraform Cloud" link  to https://app.terraform.io
+3. **Accept the services agreements** and click **Continue**
 
-- Select  <x>Continue with HCP account</x> to sign in with your HCP credentials
+4. Complete the on-screen instructions to verify your email address.
 
-- If prompted to Create a new HCP-linked account click <x>Continue</x>
+5. When prompted to **Set up your Organization**, we recommended using the default name provided.
 
-- Once in the Terraform Cloud portal,  select <x>Start from Scratch</x> and create an Organization
+6. Navigate to **Services > Terraform** and click on the **Continue to Terraform Cloud** link to access https://app.terraform.io
 
-- Next you'll be prompted to create a workspace. Select the <x>CLI-driven workflow</x> panel and use any name you wish for the workspace name, entering a description is optional, click <x>Create workspace</x>
+7. Select **Continue with HCP account** to sign in using your HCP credentials.
 
-2- Terraform Cloud Trial Plan
+8. If prompted to create a new HCP-linked account, click  **Continue**
+
+9. Once you are in the Terraform Cloud portal, you should be prompted to Choose your setup workflow:
+
+  * Select  **Start from Scratch** 
+  * Name your organization.  We recommend using the prefix  used to create the HCP Organization.
+  * Click **Create an organization**
+
+or
+
+If you are using a pre-existing account:
+
+  * Select your current organization at the bottom of the navigation menu
+  * Click **Create new organization**
+  * Name your organization.  We recommend using the prefix  used to create the HCP Organization.
+  * Click **Create an organization**
+
+10. When prompted to Create a workspace:
+
+* Select the **CLI-driven workflow** 
+* Name the workspace anything you want to
+* Description is optional 
+* Click **Create workspace**
+	
+## Activate the Terraform Cloud Standard Plan
+
 ===
-- To enable a Trial of the "Standard" plan features, navigate to <x>Organizational Settings</x>  <x>Plan & Billing</x>, click <x>Edit plan</x> in the middle of the page
 
-- Choose the radio button for <x>Standard Plan</x> and click  <x>Next</x> in the bottom left corner
+1. To activate the Standard plan features required for the lab:
 
-- On the next screen click the radio button for <x>Pay-as-you-go</x>, then click <x>Next</x> in the bottom left corner
-
-- On the next screen click <x>Activate plan</x> (Do not enter any CC information)
+* From the Projects & workspaces dashboard, navigate to **Settings > Organizational Settings > Plan & Billing** 
+* Click **Edit plan**
+* Select **Standard Plan** then Click  **Next**
+* Select **Pay-as-you-go** then Click **Next**
+* On the final screen click **Activate plan** (Do not enter any CC information)
 
 Please see the example images below.
 
@@ -173,25 +197,26 @@ Please see the example images below.
 
 ![Enable Trial](../assets/activate_trial.png)
 
-- If you have an existing account and already used a trial, please create a different organization and unlock the "Standard" plan features.
+**Common issues**:
 
-- If you have an existing account and see an upgrade message at the top of the screen, please upgrade your account to the new Free Tier in order to continue with the workshop.
+* You have an existing account and already used a trial:
+  * Create a different organization and unlock the Standard plan features.
+* You have an existing account and see an upgrade message at the top of the screen:
+  * Upgrade your account to the new Free tier in order to continue with the workshop.
+* You get an error message about your TFC account not being linked to HCP:
+  * Create an HCP account and link it to Terraform Cloud.
 
-- If you get an error message about your TFC account not being linked to HCP, please create an HCP account and link it to Terraform Cloud. 
+Please ask your workshop leader for assistance if you have any issues creating accounts and activating the plan.
 
-- Please ask your workshop leader for assistance if you have any problems.
+## Terraform Cloud Token
 
-**IMPORTANT**: Once you activate the trial, sign out of Terraform Cloud, then sign back in so your account can access the new features.
-
-
-3- Terraform Cloud Token
 ===
 
-- Use this <o>[link](https://app.terraform.io/app/settings/tokens?source=terraform-login)</o> to create a new user token. When prompted, click "Generate Token" to generate the new token.
+* Use this <o>[link](https://app.terraform.io/app/settings/tokens?source=terraform-login)</o> to create a new user token. When prompted, click  **Generate Token** to generate the new token.
 
-- <lb>Make sure to save your Terraform Cloud token. It will not be displayed again.</lb>
+* <lb>Make sure to save your Terraform Cloud token. It will not be displayed again.</lb>
 
-- Move to the <t><img src="../assets/shell.png"/>Terminal</t> tab and store your Terraform Cloud Token locally with the following command:
+* Move to the <t><img src="../assets/shell.png"/>Terminal</t> tab and store your Terraform Cloud Token locally with the following command:
 
 ```bash
 terraform login
@@ -199,19 +224,21 @@ terraform login
 
 ```
 
-4- Terraform Cloud Workspace
+## Terraform Cloud Workspace
+
 ===
-Use local Terraform utility deployment code to create and configure a new Terraform Cloud Workspace.
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder and open the file <t><img src="../assets/tf-icon.png"/>terraform.tfvars</t>
+Use local Terraform utility deployment code to create and configure a new Terraform Cloud Workspace:
 
-- Replace the `YOUR_ORGANIZATION` placeholder with your Terraform Cloud organization name.
+* Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder and open the file <t><img src="../assets/tf-icon.png"/>terraform.tfvars</t>
 
-- We default the name of your Terraform Cloud workspace to `hashicat-azure`. You can choose a different name at this time.
+* Replace the `YOUR_ORGANIZATION` placeholder with your Terraform Cloud organization name.
+
+* We default the name of your Terraform Cloud workspace to `hashicat-azure`. You can choose a different name at this time.
 
 ---
 
-- Move to the <t><img src="../assets/shell.png"/>Terminal</t> tab and execute the following commands:
+* Move to the <t><img src="../assets/shell.png"/>Terminal</t> tab and execute the following commands:
 
 ```bash
 cd /root/terraform-cloud
@@ -225,9 +252,9 @@ terraform apply -auto-approve
 
 ```
 
-- On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>hashicat-azure</x>-<x>Settings</x>-<x>General</x>
+* From the Terraform Cloud portal, navigate to **Projects & workspaces > hashicat-azure > Settings > General**
 
-- Note that your new workspace is configured for <x>Local</x> execution.
+* Note that your new workspace is configured for **Local** execution.
 
 Please see the example image below.
 

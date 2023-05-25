@@ -172,22 +172,22 @@ If you are using a pre-existing account:
 
 10. When prompted to Create a workspace:
 
-- Select the **CLI-driven workflow** 
-- Name the workspace anything you want to
-- Description is optional 
-- Click **Create workspace**
+* Select the **CLI-driven workflow** 
+* Name the workspace anything you want to
+* Description is optional 
+* Click **Create workspace**
 	
 ## Activate the Terraform Cloud Standard Plan
 
 ===
 
-1. To activate  the Standard plan features required for the lab:
+1. To activate the Standard plan features required for the lab:
 
-- From the Projects & workspaces dashboard, navigate to **Settings > Organizational Settings > Plan & Billing** 
-- Click **Edit plan**
-- Select **Standard Plan** then Click  **Next**
-- Select **Pay-as-you-go** then Click **Next**
-- On the final screen click **Activate plan** (Do not enter any CC information)
+* From the Projects & workspaces dashboard, navigate to **Settings > Organizational Settings > Plan & Billing** 
+* Click **Edit plan**
+* Select **Standard Plan** then Click  **Next**
+* Select **Pay-as-you-go** then Click **Next**
+* On the final screen click **Activate plan** (Do not enter any CC information)
 
 Please see the example images below.
 
@@ -212,11 +212,11 @@ Please ask your workshop leader for assistance if you have any issues creating a
 
 ===
 
-- Use this <o>[link](https://app.terraform.io/app/settings/tokens?source=terraform-login)</o> to create a new user token. When prompted, click  **Generate Token** to generate the new token.
+* Use this <o>[link](https://app.terraform.io/app/settings/tokens?source=terraform-login)</o> to create a new user token. When prompted, click  **Generate Token** to generate the new token.
 
-- <lb>Make sure to save your Terraform Cloud token. It will not be displayed again.</lb>
+* <lb>Make sure to save your Terraform Cloud token. It will not be displayed again.</lb>
 
-- Move to the <t><img src="../assets/shell.png"/>Terminal</t> tab and store your Terraform Cloud Token locally with the following command:
+* Move to the <t><img src="../assets/shell.png"/>Terminal</t> tab and store your Terraform Cloud Token locally with the following command:
 
 ```bash
 terraform login
@@ -252,7 +252,7 @@ terraform apply -auto-approve
 
 ```
 
-- On the Terraform Cloud portal, navigate to **Projects & workspaces > hashicat-gcp > Settings > General**
+* From the Terraform Cloud portal, navigate to **Projects & workspaces > hashicat-gcp > Settings > General**
 
 * Note that your new workspace is configured for **Local** execution.
 
