@@ -168,7 +168,7 @@ If you are using a pre-existing account:
 * Select your current organization at the bottom of the navigation menu
 * Click **Create new organization**
 
-1.  When prompted to Create a workspace:
+10. When prompted to Create a workspace:
 
 - Select the **CLI-driven workflow** 
 - Name the workspace anything you want to
