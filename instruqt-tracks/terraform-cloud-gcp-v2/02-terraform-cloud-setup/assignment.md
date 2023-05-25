@@ -165,8 +165,8 @@ or
 
 If you are using a pre-existing account:
 
-* Select your current organization at the bottom of the navigation menu
-* Click **Create new organization**
+  * Select your current organization at the bottom of the navigation menu
+  * Click **Create new organization**
 
 10. When prompted to Create a workspace:
 
