@@ -133,7 +133,7 @@ w {
 </style>
 The first step to begin work with your deployment tasks is to set up your Terraform Cloud resources.
 
-## Create a HashiCorp Cloud Platform Account
+# Create a HashiCorp Cloud Platform Account
 
 ===
 
@@ -177,7 +177,7 @@ If you are using a pre-existing account:
 * Description is optional 
 * Click **Create workspace**
 	
-## Activate the Terraform Cloud Standard Plan
+# Activate the Terraform Cloud Standard Plan
 
 ===
 
@@ -208,7 +208,7 @@ Please see the example images below.
 
 Please ask your workshop leader for assistance if you have any issues creating accounts and activating the plan.
 
-## Terraform Cloud Token
+# Terraform Cloud Token
 
 ===
 
@@ -224,7 +224,7 @@ terraform login
 
 ```
 
-## Terraform Cloud Workspace
+# Terraform Cloud Workspace
 
 ===
 
