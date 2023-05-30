@@ -1,6 +1,6 @@
 ---
 slug: protecting-sensitive-variables
-id: jvmbzexkwvzz
+id: f75zfwi9ieh5
 type: challenge
 title: Workspace Variables and Securing Cloud Credentials
 teaser: |

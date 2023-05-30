@@ -1,5 +1,5 @@
-slug: terraform-cloud-gcp-v2
-id: bpy7hbylexsf
+slug: zzz-il-632-terraform-cloud-gcp-v2
+id: geqxx26i7zlh
 title: Terraform Cloud with GCP
 teaser: |
   Terraform Cloud enables infrastructure automation for provisioning, compliance, and management of any cloud, data center, and service.
@@ -31,4 +31,4 @@ lab_config:
   overlay: false
   width: 33
   position: right
-checksum: "18077132859396943179"
+checksum: "7835564982315695024"

@@ -1,6 +1,6 @@
 ---
 slug: setup-our-environment
-id: isixml2f4k60
+id: au4za1tl4leh
 type: challenge
 title: |
   Getting Started - Explore the lab

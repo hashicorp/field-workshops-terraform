@@ -134,7 +134,6 @@ w {
 </style>
 The first step to begin work with your deployment tasks is to set up your Terraform Cloud resources.
 
-
 1- Terraform Cloud Organization
 ===
 - Sign up for a free Terraform Cloud account at https://app.terraform.io/signup/account.

@@ -1,5 +1,5 @@
-slug: terraform-cloud-azure-v2
-id: w0mxyr7gzpwb
+slug: zzz-il-632-terraform-cloud-azure-v2
+id: anous8kghzgp
 title: Terraform Cloud with Azure
 teaser: |
   Terraform Cloud enables infrastructure automation for provisioning, compliance, and management of any cloud, data center, and service.
@@ -31,4 +31,4 @@ lab_config:
   overlay: false
   width: 33
   position: right
-checksum: "12839241470914291156"
+checksum: "17966099905541573928"

@@ -1,6 +1,6 @@
 ---
 slug: terraform-cloud-setup
-id: vwt4nczgvcj6
+id: qngabttx6fhf
 type: challenge
 title: Terraform Cloud Setup
 teaser: |
@@ -133,30 +133,21 @@ w {
 </style>
 The first step to begin work with your deployment tasks is to set up your Terraform Cloud resources.
 
-
 1- Terraform Cloud Organization
 ===
 - Sign up for a free Terraform Cloud account at https://app.terraform.io/signup/account.
 
 - If you already have an account, sign in with your existing credentials.
 
-- Create a new organization. Your organization can be named anything you want.
-
-2- Terraform Trial Plan
+2- Terraform Cloud Trial Plan
 ===
-- Enable a free 30-day Trial Plan of the "Team & Governance" plan features.
+- Navigate to the [Create a new organization](https://app.terraform.io/app/organizations/new?trial=workshop2023) page and create a Terraform Cloud Organization for this workshop.
 
-- On the Terraform Cloud portal, navigate to <x>Settings</x>-<x>Plan & Billing</x> and pick <w>Change plan</w>
+- Use the <m>Create organization & start 14 day trial</m> button to enable the "Plus" features in your organization. Please see the image below.
 
-- Choose the radio button for **Trial Plan** and click on <m>Start your free trial</m>
+![Create New Org](../assets/create_new_org.png)
 
-Please see the example image below.
-
-![Enable Trial](../assets/enable_trial.png)
-
-- If you have an existing account and already used a trial, please create a different organization and unlock the 30-day "Team and Governance" plan features.
-
-- **IMPORTANT**: Once you activate the trial, sign out of Terraform Cloud, then sign back in so your account can access the new features.
+- If you have an existing account and already used a trial, please create a different organization and unlock the 14-day "Plus" plan features.
 
 3- Terraform Cloud Token
 ===
