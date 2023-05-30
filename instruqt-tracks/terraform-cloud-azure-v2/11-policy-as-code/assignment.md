@@ -1,6 +1,5 @@
 ---
 slug: policy-as-code
-id: rojyxdacdyvq
 type: challenge
 title: Terraform Compliance with Sentinel
 teaser: |
@@ -137,7 +136,7 @@ In our environment, Terraform Cloud looks at your GitHub repo that contains the 
 
 - Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder.
 
-- Note the changes to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> which automatically configures a Policy Set and links it to the hashicat-azure workspace (lines 300-319).
+- Note the changes to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> which automatically configures a Policy Set and links it to the hashicat-azure workspace (lines 329-348).
 
 - On the Terraform Cloud portal, navigate to <x>[[ Instruqt-Var key="TF_ORG" hostname="workstation" ]]</x>-<x>Settings</x>-<x>Policy Sets</x> and explore the <x>Hashicat-Social</x> policy set.
 

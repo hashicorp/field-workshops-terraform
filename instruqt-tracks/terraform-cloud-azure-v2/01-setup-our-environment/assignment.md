@@ -1,6 +1,5 @@
 ---
 slug: setup-our-environment
-id: b6eiczeenhyb
 type: challenge
 title: |
   Getting Started - Explore the lab
@@ -66,6 +65,7 @@ timelimit: 1800
   }
   t > a img {
     display: inline-block;
+    max-height: 24px;
   }
   c {
     display: flex;

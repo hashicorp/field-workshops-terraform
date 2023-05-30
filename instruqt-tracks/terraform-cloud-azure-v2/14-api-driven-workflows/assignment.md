@@ -1,6 +1,5 @@
 ---
 slug: api-driven-workflows
-id: r29mrgbdk3t2
 type: challenge
 title: API Driven Workflows
 teaser: |
