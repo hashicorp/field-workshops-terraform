@@ -1,6 +1,6 @@
 ---
 slug: api-driven-workflows
-id: edlbtrlewvv6
+id: xmpfr68dmruv
 type: challenge
 title: API Driven Workflows
 teaser: |
@@ -92,6 +92,7 @@ timelimit: 1800
     align-items: center;
     justify-content: center;
     height: 24px;
+    align-items: center;
   }
 
   t > a img {

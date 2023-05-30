@@ -1,6 +1,6 @@
 ---
 slug: protecting-sensitive-variables
-id: bxa7hxtjjswe
+id: jvmbzexkwvzz
 type: challenge
 title: Workspace Variables and Securing Cloud Credentials
 teaser: |
@@ -150,7 +150,7 @@ echo "ARM_TENANT_ID = $ARM_TENANT_ID"
 
 - Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t>
 
-- Note the update to configure a Variable Set named Cloud Crendentials (lines 51-95). These variables are sensitive and reflect a dedicated Azure Service Principal to support infrastructure deployments.
+- Note the update to configure a Variable Set named Cloud Crendentials (lines 51-121). These variables are sensitive and reflect a dedicated Azure Service Principal to support infrastructure deployments.
 
 - On the Terraform Cloud portal, navigate to <x>Settings</x>-<x>Variable sets</x>. Please see the example image below.
 
@@ -172,7 +172,7 @@ Workspace variables always overwrite variables from variable sets that have the 
 
 - Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t>
 
-- The application uses two Terraform variables, `region` and `prefix`. We configure these workspace-specific variables (lines 96-119). These are _not_ sensitive and relate to the properties that you can define in your TERRAFORM code for deployment.
+- The application uses two Terraform variables, `prefix` and `location`. We configure these workspace-specific variables (lines 122-145). These are _not_ sensitive and relate to the properties that you can define in your TERRAFORM code for deployment.
 
 - On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Variables</x>-<x>Workspace Variables</x>. Please see the example image below.
 

@@ -1,6 +1,6 @@
 ---
 slug: private-module-registry
-id: mmyaw5ff8wqf
+id: oob8lyy2lzzf
 type: challenge
 title: Private Module Registry
 teaser: |
@@ -90,6 +90,7 @@ timelimit: 1800
     align-items: center;
     justify-content: center;
     height: 24px;
+    align-items: center;
   }
 
   t > a img {
@@ -105,13 +106,11 @@ timelimit: 1800
     font-size: 12px;
     font-weight: bold;
     align-items: center;
-    justify-content: center;
     height: 24px;
   }
 
-  w > img {
+  w > a img {
     display: inline-block;
-    max-height: 20px;
   }
 
 .tab {
@@ -135,8 +134,9 @@ The Terraform Registry is an interactive resource for discovering a wide selecti
 
 ```bash
 module "s3-bucket" {
-  source  = "cloudposse/s3-bucket/aws"
-  version = "3.0.0"
+  source              = "cloudposse/s3-bucket/aws"
+  version             = "3.1.0"
+  s3_object_ownership = "BucketOwnerEnforced"
 }
 ```
 
@@ -232,8 +232,9 @@ The main difference between these two methods is automation. In this workshop, w
 
 ```bash
 module "s3-bucket" {
-  source  = "cloudposse/s3-bucket/aws"
-  version = "3.0.0"
+  source              = "cloudposse/s3-bucket/aws"
+  version             = "3.1.0"
+  s3_object_ownership = "BucketOwnerEnforced"
 }
 ```
 
@@ -241,8 +242,9 @@ module "s3-bucket" {
 
 ```bash
 module "s3_bucket" {
-  source  = "app.terraform.io/[[ Instruqt-Var key="TF_ORG" hostname="workstation" ]]/s3-bucket/aws"
-  version = "3.0.0"
+  source              = "app.terraform.io/[[ Instruqt-Var key="TF_ORG" hostname="workstation" ]]/s3-bucket/aws"
+  version             = "3.1.0"
+  s3_object_ownership = "BucketOwnerEnforced"
 }
 ```
 

@@ -1,9 +1,6 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
-slug: zzz-il-632-terraform-cloud-gcp-v2
-id: 4azxgynom8q2
-title: ZZZ IL-632 Terraform Cloud with GCP
+slug: terraform-cloud-gcp-v2
+id: bpy7hbylexsf
+title: Terraform Cloud with GCP
 teaser: |
   Terraform Cloud enables infrastructure automation for provisioning, compliance, and management of any cloud, data center, and service.
 description: |-
@@ -29,11 +26,9 @@ developers:
 - gilberto@hashicorp.com
 - jthompson@hashicorp.com
 - thomas@hashicorp.com
-- swalker@hashicorp.com
-- randy.keener@hashicorp.com
 show_timer: true
 lab_config:
   overlay: false
-  width: 25
+  width: 33
   position: right
-checksum: "2570181359766920568"
+checksum: "18077132859396943179"

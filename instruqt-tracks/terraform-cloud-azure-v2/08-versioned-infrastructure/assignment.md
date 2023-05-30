@@ -1,6 +1,6 @@
 ---
 slug: versioned-infrastructure
-id: iuqyhc4jqiyb
+id: rs2gtija9pvk
 type: challenge
 title: Version Controlled Infrastructure
 teaser: |
@@ -164,8 +164,7 @@ To trigger Terraform Cloud runs from changes to VCS, you first need to create a 
 - In the <t><img src="../assets/shell.png"/>Terminal</t> tab run the helper script to cache your GitHub credentials temporarily.
 
 ```bash
-cd /root/scripts
-source configure_git.bash
+cd /root/scripts && source configure_git.bash
 
 
 ```
@@ -238,7 +237,7 @@ terraform apply -auto-approve
 
 ```
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review the OAuth Client configuration (Lines 286-299).
+- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review the OAuth Client configuration (Lines 315-328).
 
 - On the Terraform Cloud portal, navigate to the <x>[[ Instruqt-Var key="TF_ORG" hostname="workstation" ]]</x> organization and open <x>Settings</x>-<x>Version Control</x>-<x>Providers</x>
 
@@ -250,7 +249,7 @@ Please see the example image below.
 
 ---
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review the VCS Configuration for your `[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]` workspace (Lines 67-70).
+- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review the VCS Configuration for your `[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]` workspace (Lines 69-72).
 
 - On the Terraform Cloud portal, navigate to the <x>[[ Instruqt-Var key="TF_ORG" hostname="workstation" ]]</x> organization and open <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Settings</x>-<x>Version Control</x>. Please see the example image below.
 

@@ -1,6 +1,6 @@
 ---
 slug: team-management
-id: 4y8vyzxlhphi
+id: ocifbc5mhvyq
 type: challenge
 title: Working with Teams in Terraform Cloud
 teaser: |
@@ -130,7 +130,7 @@ Teams let you group users into specific categories to enable finer grained acces
 
 - Review each of your teams and their assigned Organization Access.
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review the assignment for your teams (Lines 118-161).
+- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review the assignment for your teams (Lines 146-189).
 
 2- Workspace Permissions
 ===
@@ -144,7 +144,7 @@ Terraform Cloud's access model is team-based. There are two ways to choose which
 
 - Use Edit Permissions to review the permissions assigned for each team on the hashicat-azure workspace.
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review the association between the hashicat-azure workspace and your teams (Lines 162-218).
+- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review the association between the hashicat-azure workspace and your teams (Lines 190-247).
 
 3- Assign Users
 ===
@@ -158,7 +158,7 @@ User accounts belong to individual people. Each user can be part of one or more 
 
 - With existing accounts, you can automatically join that organization and can begin using Terraform Cloud.
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review how users invited to an organization and added to a team (Lines 220-261).
+- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review how users invited to an organization and added to a team (Lines 248-289).
 
 ---
 Excellent work. You have a foundational access strategy for teams, workspaces and users. You can write the following notes in your report:

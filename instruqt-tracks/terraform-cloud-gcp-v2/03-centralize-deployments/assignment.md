@@ -1,6 +1,6 @@
 ---
 slug: centralize-deployments
-id: lsm7jwr9tkub
+id: k69scdti468a
 type: challenge
 title: Safekeeping Your Terraform State
 teaser: |
@@ -109,7 +109,7 @@ The objective of this challenge is to configure remote state using your Terrafor
 
   * Set the `prefix` variable to your name or a prefered pseudonym. If you use multiple words, use hyphens or underscores between words, and keep it all lower case.
 
-  * Optionally modify the `region` to a valid Google Cloud region such as "us-east1-a", "us-west1-a", "eu-west2-c", or "ap-southeast1-b".
+  * Optionally modify the `region` to a valid Google Cloud region such as "us-east-1", "us-west-1", "eu-west-2", or "ap-southeast-1".
 
 2- Deploy the hashicat application
 ===

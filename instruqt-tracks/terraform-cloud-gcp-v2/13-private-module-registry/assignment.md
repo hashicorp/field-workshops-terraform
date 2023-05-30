@@ -1,6 +1,6 @@
 ---
 slug: private-module-registry
-id: rxb1aqjeiu2y
+id: 96rznpabnlha
 type: challenge
 title: Private Module Registry
 teaser: |
@@ -104,13 +104,11 @@ timelimit: 1800
     font-size: 12px;
     font-weight: bold;
     align-items: center;
-    justify-content: center;
     height: 24px;
   }
 
-  w > img {
+  w > a img {
     display: inline-block;
-    max-height: 20px;
   }
 
   .tab {
