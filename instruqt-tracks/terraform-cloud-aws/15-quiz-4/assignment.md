@@ -1,13 +1,14 @@
 ---
 slug: quiz-4
-id: mxsh9aupqddg
+id: gzm6rry7gsqu
 type: quiz
-title: Quiz 4 - Private Module Registry
+title: "\U0001F4DD Quiz 4 - Private Module Registry"
 teaser: |
   A quiz about the private module registry
 notes:
 - type: text
-  contents: Congratulations! You've been promoted to Terraform Cloud Ninja.
+  contents: "\U0001F431‍\U0001F4BB Congratulations! You've been promoted to Terraform
+    Cloud Ninja."
 answers:
 - "True"
 - "False"

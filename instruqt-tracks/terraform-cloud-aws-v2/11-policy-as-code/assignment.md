@@ -1,6 +1,6 @@
 ---
 slug: policy-as-code
-id: vm9nh9bdysyy
+id: fwx9rxg7qf3y
 type: challenge
 title: Terraform Compliance with Sentinel
 teaser: |
@@ -90,6 +90,7 @@ timelimit: 1800
     align-items: center;
     justify-content: center;
     height: 24px;
+    align-items: center;
   }
 
   t > a img {

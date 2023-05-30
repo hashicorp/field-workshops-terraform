@@ -1,14 +1,13 @@
 ---
 slug: quiz-1
-id: jbdodj5qtzjz
+id: 2mfzejlymkh8
 type: quiz
-title: Quiz 1 - Terraform Remote State
+title: "\U0001F4DD Quiz 1 - Terraform Remote State"
 teaser: |
   A quiz about Terraform State
 notes:
 - type: text
-  contents: |
-    Congratulations! You've been promoted to Cloud Admin.
+  contents: "\U0001F431 Congratulations! You've been promoted to Junior Admin.\n"
 answers:
 - "True"
 - "False"

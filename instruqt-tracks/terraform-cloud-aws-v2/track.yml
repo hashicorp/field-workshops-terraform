@@ -1,8 +1,5 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
-slug: terraform-cloud-aws-v2
-id: 3xf7hxwimjqx
+slug: zzz-il-632-terraform-cloud-aws-v2
+id: qdt5utv2pjog
 title: Terraform Cloud with AWS
 teaser: |
   Terraform Cloud enables infrastructure automation for provisioning, compliance, and management of any cloud, data center, and service.
@@ -30,4 +27,8 @@ developers:
 - jthompson@hashicorp.com
 - thomas@hashicorp.com
 show_timer: true
-checksum: "17537646843176302563"
+lab_config:
+  overlay: false
+  width: 33
+  position: right
+checksum: "4823313502047280080"

@@ -1,14 +1,14 @@
 ---
 slug: quiz-3
-id: rpy7guvyoqz7
+id: ebrlegkixdmz
 type: quiz
-title: Quiz 3 - Version Control and Terraform
+title: "\U0001F4DD Quiz 3 - Version Control and Terraform"
 teaser: |
   A quiz about version control
 notes:
 - type: text
-  contents: |
-    Congratulations! You've been promoted to Senior Cloud Admin.
+  contents: "\U0001F431‍\U0001F464 Congratulations! You've been promoted to Senior
+    Sysadmin.\n"
 answers:
 - Code reviews
 - Cost estimation

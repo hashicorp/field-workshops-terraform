@@ -1,6 +1,6 @@
 ---
 slug: setup-our-environment
-id: 6xgtn6y78aii
+id: etqfwtlaeiue
 type: challenge
 title: |
   Getting Started - Explore the lab
@@ -60,12 +60,13 @@ timelimit: 1800
     padding: 2px 10px 2px 5px;
     font-size: 14px;
     letter-spacing: 1.2px;
-    align-items: center;
     justify-content: center;
     height: 24px;
+    align-items: center;
   }
   t > a img {
     display: inline-block;
+    max-height: 24px;
   }
   c {
     display: flex;
