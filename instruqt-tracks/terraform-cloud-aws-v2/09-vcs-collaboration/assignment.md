@@ -1,6 +1,5 @@
 ---
 slug: vcs-collaboration
-id: spuuyjtlclci
 type: challenge
 title: Collaborating with VCS
 teaser: |
