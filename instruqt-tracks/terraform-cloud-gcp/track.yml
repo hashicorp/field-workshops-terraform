@@ -1,6 +1,9 @@
-slug: zzz-il-632-terraform-cloud-gcp
-id: t2gt1mlqfkvc
-title: ZZZ IL-632 Terraform Cloud with GCP
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
+slug: terraform-cloud-gcp
+id: mjfywxvlky8d
+title: Terraform Cloud with GCP
 teaser: |
   Join the ACME devops team on their journey to fully automated provisioning with GCP.
 description: |-

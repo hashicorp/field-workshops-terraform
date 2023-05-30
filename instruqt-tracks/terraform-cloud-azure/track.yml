@@ -1,6 +1,9 @@
-slug: zzz-il-632-terraform-cloud-azure
-id: wmd59n3snzpu
-title: ZZZ IL-632  Terraform Cloud with Azure
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
+slug: terraform-cloud-azure
+id: ywejivwkxtlp
+title: Terraform Cloud with Azure
 teaser: |
   Join the ACME devops team on their journey to fully automated provisioning with Azure Cloud.
 description: |-
