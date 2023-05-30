@@ -133,7 +133,7 @@ w {
 </style>
 The first step to begin work with your deployment tasks is to set up your Terraform Cloud resources.
 
-# Create a HashiCorp Cloud Platform Account
+# Create the HCP/TFC Accounts
 
 ===
 
@@ -181,7 +181,7 @@ If you are using a pre-existing account:
 
 ===
 
-1. To activate the Standard plan features required for the lab:
+To activate the Standard plan features required for the lab:
 
 * From the Projects & workspaces dashboard, navigate to **Settings > Organizational Settings > Plan & Billing** 
 * Click **Edit plan**
