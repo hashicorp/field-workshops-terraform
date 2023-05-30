@@ -1,6 +1,5 @@
 ---
 slug: oh-no-an-outage
-id: o1b67spt97jv
 type: challenge
 title: "\U0001F4D2 Safekeeping Your Terraform State"
 teaser: |

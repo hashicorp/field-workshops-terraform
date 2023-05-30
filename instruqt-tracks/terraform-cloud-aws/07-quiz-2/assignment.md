@@ -1,6 +1,5 @@
 ---
 slug: quiz-2
-id: btibkdyphec0
 type: quiz
 title: "\U0001F4DD Quiz 2 - Secure Variables"
 teaser: |

@@ -1,6 +1,5 @@
 ---
 slug: sharing-is-caring
-id: qj6wmytdai2k
 type: challenge
 title: "\U0001F91D\U0001F3FC Working with Teams in Terraform Cloud"
 teaser: |
