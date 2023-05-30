@@ -1,6 +1,9 @@
-slug: zzz-il-632-terraform-cloud-aws
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
+slug: terraform-cloud-aws
 id: yuqc5c3exhgz
-title: zzz-il-632-terraform-cloud-aws
+title: terraform-cloud-aws
 teaser: |
   Join the ACME devops team on their journey to fully automated provisioning with AWS Cloud.
 description: |-
@@ -33,4 +36,3 @@ lab_config:
   overlay: false
   width: 25
   position: right
-checksum: "17191210056585242701"

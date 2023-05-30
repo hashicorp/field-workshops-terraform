@@ -1,4 +1,7 @@
-slug: zzz-il-632-terraform-cloud-aws-v2
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
+slug: terraform-cloud-aws-v2
 id: qdt5utv2pjog
 title: Terraform Cloud with AWS
 teaser: |
@@ -31,4 +34,4 @@ lab_config:
   overlay: false
   width: 33
   position: right
-checksum: "4823313502047280080"
+
