@@ -1,8 +1,5 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
-slug: terraform-cloud-azure-v2
-id: w0mxyr7gzpwb
+slug: zzz-il-632-terraform-cloud-azure-v2
+id: anous8kghzgp
 title: Terraform Cloud with Azure
 teaser: |
   Terraform Cloud enables infrastructure automation for provisioning, compliance, and management of any cloud, data center, and service.
@@ -30,4 +27,8 @@ developers:
 - thomas@hashicorp.com
 - gilberto@hashicorp.com
 show_timer: true
-checksum: "9524668273455762397"
+lab_config:
+  overlay: false
+  width: 33
+  position: right
+checksum: "17966099905541573928"

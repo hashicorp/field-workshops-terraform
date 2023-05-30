@@ -1,6 +1,6 @@
 ---
 slug: private-module-registry
-id: bc3vpcocuio8
+id: x5eg8xokurgm
 type: challenge
 title: Private Module Registry
 teaser: |
@@ -104,13 +104,11 @@ timelimit: 1800
     font-size: 12px;
     font-weight: bold;
     align-items: center;
-    justify-content: center;
     height: 24px;
   }
 
-  w > img {
+  w > a img {
     display: inline-block;
-    max-height: 20px;
   }
 
 .tab {
@@ -190,7 +188,7 @@ To implement this private module in your Private Registry do the following:
 
 - Open the file <t><img src="../assets/tf-icon.png"/>terraform.tfvars.tf</t> and ensure value for the variable `module_repo` matches your own module repository name.
 
-- Open the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and note the code snippet to automate the integration on (lines 320-332).
+- Open the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and note the code snippet to automate the integration on (lines 349-362).
 
 - Use the <t><img src="../assets/shell.png"/>Terminal</t> tab to register your Private Registry with the following command:
 

@@ -1,6 +1,6 @@
 ---
 slug: team-management
-id: a6yz7nm9ltsl
+id: 9xgf7ixqeyby
 type: challenge
 title: Working with Teams in Terraform Cloud
 teaser: |

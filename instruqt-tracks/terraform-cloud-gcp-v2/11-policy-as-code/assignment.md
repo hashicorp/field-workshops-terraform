@@ -1,6 +1,6 @@
 ---
 slug: policy-as-code
-id: fkrnyukntvxx
+id: lmqzlaygl5hy
 type: challenge
 title: Terraform Compliance with Sentinel
 teaser: |

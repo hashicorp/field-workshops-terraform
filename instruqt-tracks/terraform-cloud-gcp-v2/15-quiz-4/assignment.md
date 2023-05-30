@@ -1,6 +1,6 @@
 ---
 slug: quiz-4
-id: tz0sip5ykctc
+id: bvuhdstbudao
 type: quiz
 title: Quiz 4 - Private Module Registry
 teaser: |
