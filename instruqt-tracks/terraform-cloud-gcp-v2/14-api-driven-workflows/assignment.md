@@ -1,6 +1,5 @@
 ---
 slug: api-driven-workflows
-id: dncny1dql73f
 type: challenge
 title: API Driven Workflows
 teaser: |

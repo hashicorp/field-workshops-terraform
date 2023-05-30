@@ -1,6 +1,5 @@
 ---
 slug: terraform-cloud-setup
-id: ccqhasbynmzj
 type: challenge
 title: Terraform Cloud Setup
 teaser: |

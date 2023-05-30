@@ -1,6 +1,5 @@
 ---
 slug: controlling-costs
-id: hugoce2ulprq
 type: challenge
 title: $ Controlling Costs with Cost Estimation
 teaser: |

@@ -1,6 +1,5 @@
 ---
 slug: quiz-4
-id: hodhfkgpfy9j
 type: quiz
 title: "\U0001F4DD Quiz 4 - Private Module Registry"
 teaser: |

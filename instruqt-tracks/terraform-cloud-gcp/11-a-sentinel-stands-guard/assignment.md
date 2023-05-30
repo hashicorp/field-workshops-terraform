@@ -1,6 +1,5 @@
 ---
 slug: a-sentinel-stands-guard
-id: mrszou5vgltr
 type: challenge
 title: "\U0001F6E1️ Terraform Compliance with Sentinel"
 teaser: |

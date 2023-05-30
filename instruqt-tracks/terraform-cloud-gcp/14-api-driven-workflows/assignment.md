@@ -1,6 +1,5 @@
 ---
 slug: api-driven-workflows
-id: b5zkkchl0hke
 type: challenge
 title: "\U0001F517 API Driven Workflows"
 teaser: |

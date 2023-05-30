@@ -1,6 +1,5 @@
 ---
 slug: private-module-registry
-id: jo9ygm27mkdb
 type: challenge
 title: Private Module Registry
 teaser: |

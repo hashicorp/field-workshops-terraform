@@ -1,6 +1,5 @@
 ---
 slug: versioned-infrastructure
-id: mxgec8uaic9u
 type: challenge
 title: "\U0001F4BB Version Controlled Infrastructure"
 teaser: |

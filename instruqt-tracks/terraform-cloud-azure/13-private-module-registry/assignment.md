@@ -1,6 +1,5 @@
 ---
 slug: private-module-registry
-id: 0d5xn8dkrmxz
 type: challenge
 title: "\U0001F4DA Private Module Registry"
 teaser: |

@@ -1,6 +1,5 @@
 ---
 slug: protecting-sensitive-variables
-id: l3jxpewxvsyg
 type: challenge
 title: "\U0001F510 Securing Cloud Credentials"
 teaser: |

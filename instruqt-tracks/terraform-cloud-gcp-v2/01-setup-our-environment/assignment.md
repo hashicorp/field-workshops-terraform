@@ -1,6 +1,5 @@
 ---
 slug: setup-our-environment
-id: au4za1tl4leh
 type: challenge
 title: |
   Getting Started - Explore the lab
