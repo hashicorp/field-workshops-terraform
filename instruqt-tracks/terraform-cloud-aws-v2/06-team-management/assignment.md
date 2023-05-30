@@ -1,6 +1,5 @@
 ---
 slug: team-management
-id: uqidzmhjvxxm
 type: challenge
 title: Working with Teams in Terraform Cloud
 teaser: |
@@ -87,6 +86,7 @@ timelimit: 1800
     align-items: center;
     justify-content: center;
     height: 24px;
+    align-items: center;
   }
 
   t > a img {

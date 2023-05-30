@@ -1,6 +1,5 @@
 ---
 slug: vcs-collaboration
-id: hq384nwu38h5
 type: challenge
 title: Collaborating with VCS
 teaser: |
@@ -92,6 +91,7 @@ timelimit: 1800
     align-items: center;
     justify-content: center;
     height: 24px;
+    align-items: center;
   }
 
   t > a img {

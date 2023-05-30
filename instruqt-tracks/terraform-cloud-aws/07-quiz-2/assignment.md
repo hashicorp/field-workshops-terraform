@@ -1,13 +1,12 @@
 ---
 slug: quiz-2
 type: quiz
-title: Quiz 2 - Secure Variables
+title: "\U0001F4DD Quiz 2 - Secure Variables"
 teaser: |
   A quiz about secure variables
 notes:
 - type: text
-  contents: |
-    Congratulations! You've been promoted to Senior Cloud Administrator.
+  contents: "\U0001F63A Congratulations! You've been promoted to Sysadmin.\n"
 answers:
 - In your Terraform workspace
 - In a text file on your Desktop
