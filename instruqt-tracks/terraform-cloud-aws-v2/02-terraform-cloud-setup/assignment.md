@@ -10,7 +10,7 @@ notes:
     With your Terraform Cloud account
 
     1. Create a new Terraform Cloud Organization
-    2. Enable a 14-day Trial Plan of "Plus" features
+    2. Enable a 14-day Trial Plan of "Team and Governance" features
     3. Create a new personal account token
     4. Create a dedicated workspace
 tabs:
@@ -144,11 +144,11 @@ The first step to begin work with your deployment tasks is to set up your Terraf
 ===
 - Navigate to the [Create a new organization](https://app.terraform.io/app/organizations/new?trial=workshop2023) page and create a Terraform Cloud Organization for this workshop.
 
-- Use the <m>Create organization & start 14 day trial</m> button to enable the "Plus" features in your organization. Please see the image below.
+- Use the <m>Create organization & start 14 day trial</m> button to enable "Team and Governance" features in your organization. Please see the image below.
 
 ![Create New Org](../assets/create_new_org.png)
 
-- If you have an existing account and already used a trial, please create a different organization and unlock the 14-day "Plus" plan features.
+- If you have an existing account and already used a trial, please create a different organization and unlock the 14-day "Team and Governance" plan features.
 
 3- Terraform Cloud Token
 ===
