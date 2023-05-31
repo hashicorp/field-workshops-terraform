@@ -30,7 +30,7 @@ Terraform Cloud Setup
 
   - Navigate to the [Create a new organization](https://app.terraform.io/app/organizations/new?trial=workshop2023) page and create a Terraform Cloud Organization for this workshop
 
-  - Use the `Create organization & start 14 day trial` button to enable Plus features in your organization. Please see reference below.
+  - Use the `Create organization & start 14 day trial` button to enable Team and Governance features in your organization. Please see reference below.
 
 ![Create New Org](../assets/create_new_org.png)
 
