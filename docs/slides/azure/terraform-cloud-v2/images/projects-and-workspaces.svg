@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="480px" height="400px" viewBox="0 0 480 400" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>projects-and-workspaces</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="48" height="48" rx="2"></rect>
+        <filter x="-24.0%" y="-19.8%" width="147.9%" height="147.9%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1">
+            </feColorMatrix>
+        </filter>
+        <rect id="path-3" x="0" y="0" width="48" height="48" rx="2"></rect>
+        <filter x="-24.0%" y="-19.8%" width="147.9%" height="147.9%" filterUnits="objectBoundingBox" id="filter-4">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1">
+            </feColorMatrix>
+        </filter>
+        <rect id="path-5" x="0" y="0" width="48" height="48" rx="2"></rect>
+        <filter x="-24.0%" y="-19.8%" width="147.9%" height="147.9%" filterUnits="objectBoundingBox" id="filter-6">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1">
+            </feColorMatrix>
+        </filter>
+    </defs>
+    <g id="slides" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="projects-and-workspaces" transform="translate(-80.000000, -80.000000)">
+            <g transform="translate(80.000000, 80.000000)">
+                <g id="svg-background" fill="#F2F2F3">
+                    <rect id="rectangle" x="0" y="0" width="480" height="400"></rect>
+                </g>
+                <g id="icon_box-/-vault" transform="translate(48.000000, 128.000000)" fill="#FFFFFF" stroke="#727274"
+                    stroke-width="1.5">
+                    <rect id="box" x="0.75" y="0.75" width="382.5" height="254.5" rx="2"></rect>
+                </g>
+                <g id="group_02" transform="translate(240.000000, 164.000000)">
+                    <g id="icon_box-/-group" transform="translate(18.400000, 22.000000)" fill="#FFFFFF" stroke="#9BBCF2"
+                        stroke-width="1.5">
+                        <rect id="box" x="0.75" y="0.75" width="145.7" height="174.5" rx="2"></rect>
+                    </g>
+                    <g id="workgroups" transform="translate(22.000000, 52.000000)">
+                        <g id="icon_box-/-white" transform="translate(50.000000, 67.358065)" fill="#FFFFFF"
+                            stroke="#9BBCF2" stroke-width="1.5">
+                            <rect id="box" x="0.75" y="0.75" width="78.5" height="56.8483871" rx="2"></rect>
+                        </g>
+                        <g id="icon_box-/-white" transform="translate(30.000000, 37.325806)" fill="#FFFFFF"
+                            stroke="#9BBCF2" stroke-width="1.5">
+                            <rect id="box" x="0.75" y="0.75" width="78.5" height="56.8483871" rx="2"></rect>
+                        </g>
+                        <g id="icon_box-/-white" transform="translate(10.000000, 7.293548)" fill="#FFFFFF"
+                            stroke="#9BBCF2" stroke-width="1.5">
+                            <rect id="box" x="0.75" y="0.75" width="78.5" height="56.8483871" rx="2"></rect>
+                        </g>
+                        <text id="prime-koala-workspac" font-family="Roboto-Medium, Roboto" font-size="12"
+                            font-weight="400" letter-spacing="0.18">
+                            <tspan x="17.0090234" y="33.4677419" fill="#222222">prime-koala</tspan>
+                            <tspan x="19.9927344" y="47.4677419" fill="#727274">workspace</tspan>
+                        </text>
+                        <text id="market-bear" font-family="Roboto-Medium, Roboto" font-size="12" font-weight="400"
+                            letter-spacing="0.18" fill="#222222">
+                            <tspan x="36.2238672" y="80.1532258">market-bear</tspan>
+                        </text>
+                        <text id="bold-eagle" font-family="Roboto-Medium, Roboto" font-size="12" font-weight="400"
+                            letter-spacing="0.18" fill="#222222">
+                            <tspan x="60.7992188" y="114.475806">bold-eagle</tspan>
+                        </text>
+                    </g>
+                    <text id="vending-machine-proj" font-family="Roboto-Medium, Roboto" font-size="12" font-weight="400"
+                        line-spacing="14" letter-spacing="0.18">
+                        <tspan x="32" y="38" fill="#222222">vending-machine</tspan>
+                        <tspan x="32" y="52" fill="#727274">project</tspan>
+                    </text>
+                </g>
+                <g id="group_01" transform="translate(56.000000, 164.000000)">
+                    <g id="icon_box-/-group" transform="translate(18.400000, 22.000000)" fill="#FFFFFF" stroke="#844FBA"
+                        stroke-width="1.5">
+                        <rect id="box" x="0.75" y="0.75" width="145.7" height="174.5" rx="2"></rect>
+                    </g>
+                    <g id="workgroups" transform="translate(22.000000, 52.000000)">
+                        <g id="icon_box-/-white" transform="translate(50.000000, 67.358065)" fill="#FFFFFF"
+                            stroke="#844FBA" stroke-width="1.5">
+                            <rect id="box" x="0.75" y="0.75" width="78.5" height="56.8483871" rx="2"></rect>
+                        </g>
+                        <g id="icon_box-/-white" transform="translate(30.000000, 37.325806)" fill="#FFFFFF"
+                            stroke="#844FBA" stroke-width="1.5">
+                            <rect id="box" x="0.75" y="0.75" width="78.5" height="56.8483871" rx="2"></rect>
+                        </g>
+                        <g id="icon_box-/-white" transform="translate(10.000000, 7.293548)" fill="#FFFFFF"
+                            stroke="#844FBA" stroke-width="1.5">
+                            <rect id="box" x="0.75" y="0.75" width="78.5" height="56.8483871" rx="2"></rect>
+                        </g>
+                        <text id="production-workspace" font-family="Roboto-Medium, Roboto" font-size="12"
+                            font-weight="400" letter-spacing="0.18">
+                            <tspan x="20.1605469" y="33.4677419" fill="#222222">production</tspan>
+                            <tspan x="19.9927344" y="47.4677419" fill="#727274">workspace</tspan>
+                        </text>
+                        <text id="qa" font-family="Roboto-Medium, Roboto" font-size="12" font-weight="400"
+                            letter-spacing="0.18" fill="#222222">
+                            <tspan x="63.1666797" y="80.1532258">qa</tspan>
+                        </text>
+                        <text id="dev" font-family="Roboto-Medium, Roboto" font-size="12" font-weight="400"
+                            letter-spacing="0.18" fill="#222222">
+                            <tspan x="80.1938672" y="114.475806">dev</tspan>
+                        </text>
+                    </g>
+                    <text id="hashicat-azure-project" font-family="Roboto-Medium, Roboto" font-size="12"
+                        font-weight="400" line-spacing="14" letter-spacing="0.18">
+                        <tspan x="32" y="38" fill="#222222">hashicat-azure</tspan>
+                        <tspan x="32" y="52" fill="#727274">project</tspan>
+                    </text>
+                </g>
+                <g id="Group" transform="translate(248.000000, 86.000000)">
+                    <path id="user-to-iac"
+                        d="M113,0 L113,11 C113,14.3137085 110.313708,17 107,17 L85,17 C82.790861,17 81,18.790861 81,21 L81,82 L87,82 L80,96 L73,82 L79,82 L79,21 C79,17.6862915 81.6862915,15 85,15 L107,15 C109.209139,15 111,13.209139 111,11 L111,0 L113,0 Z"
+                        fill="#1D1E1F" fill-rule="nonzero"></path>
+                    <path
+                        d="M80,0 L80,11 C80,13.7614237 77.7614237,16 75,16 L5,16 C2.23857625,16 -3.38176876e-16,18.2385763 0,21 L0,75 L0,75"
+                        id="user-to-iac" stroke="#1D1E1F" stroke-width="2"
+                        transform="translate(40.000000, 37.500000) scale(-1, 1) translate(-40.000000, -37.500000) ">
+                    </path>
+                </g>
+                <g id="Group"
+                    transform="translate(176.000000, 134.000000) scale(-1, 1) translate(-176.000000, -134.000000) translate(120.000000, 86.000000)">
+                    <path id="user-to-iac"
+                        d="M113,0 L113,11 C113,14.3137085 110.313708,17 107,17 L85,17 C82.790861,17 81,18.790861 81,21 L81,82 L87,82 L80,96 L73,82 L79,82 L79,21 C79,17.6862915 81.6862915,15 85,15 L107,15 C109.209139,15 111,13.209139 111,11 L111,0 L113,0 Z"
+                        fill="#1D1E1F" fill-rule="nonzero"></path>
+                    <path
+                        d="M80,0 L80,11 C80,13.7614237 77.7614237,16 75,16 L5,16 C2.23857625,16 -3.38176876e-16,18.2385763 0,21 L0,75 L0,75"
+                        id="user-to-iac" stroke="#1D1E1F" stroke-width="2"
+                        transform="translate(40.000000, 37.500000) scale(-1, 1) translate(-40.000000, -37.500000) ">
+                    </path>
+                </g>
+                <g id="org_label" transform="translate(64.000000, 136.000000)">
+                    <text id="organization" font-family="Roboto-Medium, Roboto" font-size="12" font-weight="400"
+                        line-spacing="14" letter-spacing="0.18" fill="#727274">
+                        <tspan x="0" y="32">organization</tspan>
+                    </text>
+                    <text id="acme" font-family="Roboto-Regular, Roboto" font-size="18" font-weight="normal"
+                        line-spacing="24" letter-spacing="0.52" fill="#222222">
+                        <tspan x="0" y="17">acme</tspan>
+                    </text>
+                </g>
+                <g id="all_users" transform="translate(90.000000, 10.000000)">
+                    <g id="users">
+                        <g id="box" transform="translate(6.000000, 6.000000)">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <rect stroke="#727274" stroke-width="1" stroke-linejoin="square" fill="#FFFFFF"
+                                fill-rule="evenodd" x="0.5" y="0.5" width="47" height="47" rx="2"></rect>
+                        </g>
+                        <g id="Users" transform="translate(14.000000, 18.000000)" fill="#000001">
+                            <path
+                                d="M12,0 C8.31866667,0 5.33333333,3.11111111 5.33333333,6.94444444 C5.33333333,10.7777778 8.31866667,13.8888889 12,13.8888889 C15.6813333,13.8888889 18.6666667,10.7777778 18.6666667,6.94444444 C18.6666667,3.11111111 15.6813333,0 12,0 Z M7.33333333,6.94444444 C7.33333333,4.26388889 9.42266667,2.08333333 12,2.08333333 C14.5773333,2.08333333 16.6666667,4.26388889 16.6666667,6.94444444 C16.6666667,9.625 14.5773333,11.8055556 12,11.8055556 C9.42266667,11.8055556 7.33333333,9.625 7.33333333,6.94444444 Z"
+                                id="Shape"></path>
+                            <path
+                                d="M6.33333333,15.9722222 C2.836,15.9722222 0,18.9305556 0,22.5694444 L0,23.9583333 C0,24.5277778 0.448,25 1,25 C1.552,25 2,24.5277778 2,23.9583333 L2,22.5694444 C2,20.0833333 3.94,18.0555556 6.33333333,18.0555556 L17.6666667,18.0555556 C20.06,18.0555556 22,20.0833333 22,22.5694444 L22,23.9583333 C22,24.5277778 22.448,25 23,25 C23.552,25 24,24.5277778 24,23.9583333 L24,22.5694444 C24,18.9305556 21.164,15.9722222 17.6666667,15.9722222 L6.33333333,15.9722222 Z"
+                                id="Path" fill-rule="nonzero"></path>
+                            <path
+                                d="M24.3333333,17.0138889 C24.3333333,16.4444444 24.7813333,15.9722222 25.3333333,15.9722222 L25.6666667,15.9722222 C29.164,15.9722222 32,18.9305556 32,22.5694444 L32,23.9583333 C32,24.5277778 31.552,25 31,25 C30.448,25 30,24.5277778 30,23.9583333 L30,22.5694444 C30,20.0833333 28.06,18.0555556 25.6666667,18.0555556 L25.3333333,18.0555556 C24.7813333,18.0555556 24.3333333,17.5833333 24.3333333,17.0138889 Z"
+                                id="Path" fill-rule="nonzero"></path>
+                            <path
+                                d="M20,0 C19.448,0 19,0.472222222 19,1.04166667 C19,1.61111111 19.448,2.08333333 20,2.08333333 C22.5773333,2.08333333 24.6666667,4.26388889 24.6666667,6.94444444 C24.6666667,9.625 22.5773333,11.8055556 20,11.8055556 C19.448,11.8055556 19,12.2777778 19,12.8472222 C19,13.4166667 19.448,13.8888889 20,13.8888889 C23.6813333,13.8888889 26.6666667,10.7777778 26.6666667,6.94444444 C26.6666667,3.11111111 23.6813333,0 20,0 Z"
+                                id="Path" fill-rule="nonzero"></path>
+                        </g>
+                    </g>
+                    <g id="users" transform="translate(240.000000, 0.000000)">
+                        <g id="box" transform="translate(6.000000, 6.000000)">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                            <rect stroke="#727274" stroke-width="1" stroke-linejoin="square" fill="#FFFFFF"
+                                fill-rule="evenodd" x="0.5" y="0.5" width="47" height="47" rx="2"></rect>
+                        </g>
+                        <g id="Users" transform="translate(14.000000, 18.000000)" fill="#000001">
+                            <path
+                                d="M12,0 C8.31866667,0 5.33333333,3.11111111 5.33333333,6.94444444 C5.33333333,10.7777778 8.31866667,13.8888889 12,13.8888889 C15.6813333,13.8888889 18.6666667,10.7777778 18.6666667,6.94444444 C18.6666667,3.11111111 15.6813333,0 12,0 Z M7.33333333,6.94444444 C7.33333333,4.26388889 9.42266667,2.08333333 12,2.08333333 C14.5773333,2.08333333 16.6666667,4.26388889 16.6666667,6.94444444 C16.6666667,9.625 14.5773333,11.8055556 12,11.8055556 C9.42266667,11.8055556 7.33333333,9.625 7.33333333,6.94444444 Z"
+                                id="Shape"></path>
+                            <path
+                                d="M6.33333333,15.9722222 C2.836,15.9722222 0,18.9305556 0,22.5694444 L0,23.9583333 C0,24.5277778 0.448,25 1,25 C1.552,25 2,24.5277778 2,23.9583333 L2,22.5694444 C2,20.0833333 3.94,18.0555556 6.33333333,18.0555556 L17.6666667,18.0555556 C20.06,18.0555556 22,20.0833333 22,22.5694444 L22,23.9583333 C22,24.5277778 22.448,25 23,25 C23.552,25 24,24.5277778 24,23.9583333 L24,22.5694444 C24,18.9305556 21.164,15.9722222 17.6666667,15.9722222 L6.33333333,15.9722222 Z"
+                                id="Path" fill-rule="nonzero"></path>
+                            <path
+                                d="M24.3333333,17.0138889 C24.3333333,16.4444444 24.7813333,15.9722222 25.3333333,15.9722222 L25.6666667,15.9722222 C29.164,15.9722222 32,18.9305556 32,22.5694444 L32,23.9583333 C32,24.5277778 31.552,25 31,25 C30.448,25 30,24.5277778 30,23.9583333 L30,22.5694444 C30,20.0833333 28.06,18.0555556 25.6666667,18.0555556 L25.3333333,18.0555556 C24.7813333,18.0555556 24.3333333,17.5833333 24.3333333,17.0138889 Z"
+                                id="Path" fill-rule="nonzero"></path>
+                            <path
+                                d="M20,0 C19.448,0 19,0.472222222 19,1.04166667 C19,1.61111111 19.448,2.08333333 20,2.08333333 C22.5773333,2.08333333 24.6666667,4.26388889 24.6666667,6.94444444 C24.6666667,9.625 22.5773333,11.8055556 20,11.8055556 C19.448,11.8055556 19,12.2777778 19,12.8472222 C19,13.4166667 19.448,13.8888889 20,13.8888889 C23.6813333,13.8888889 26.6666667,10.7777778 26.6666667,6.94444444 C26.6666667,3.11111111 23.6813333,0 20,0 Z"
+                                id="Path" fill-rule="nonzero"></path>
+                        </g>
+                    </g>
+                    <g id="users" transform="translate(120.000000, 0.000000)">
+                        <g id="box" transform="translate(6.000000, 6.000000)">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                            <rect stroke="#727274" stroke-width="1" stroke-linejoin="square" fill="#FFFFFF"
+                                fill-rule="evenodd" x="0.5" y="0.5" width="47" height="47" rx="2"></rect>
+                        </g>
+                        <g id="Users" transform="translate(14.000000, 18.000000)" fill="#000001">
+                            <path
+                                d="M12,0 C8.31866667,0 5.33333333,3.11111111 5.33333333,6.94444444 C5.33333333,10.7777778 8.31866667,13.8888889 12,13.8888889 C15.6813333,13.8888889 18.6666667,10.7777778 18.6666667,6.94444444 C18.6666667,3.11111111 15.6813333,0 12,0 Z M7.33333333,6.94444444 C7.33333333,4.26388889 9.42266667,2.08333333 12,2.08333333 C14.5773333,2.08333333 16.6666667,4.26388889 16.6666667,6.94444444 C16.6666667,9.625 14.5773333,11.8055556 12,11.8055556 C9.42266667,11.8055556 7.33333333,9.625 7.33333333,6.94444444 Z"
+                                id="Shape"></path>
+                            <path
+                                d="M6.33333333,15.9722222 C2.836,15.9722222 0,18.9305556 0,22.5694444 L0,23.9583333 C0,24.5277778 0.448,25 1,25 C1.552,25 2,24.5277778 2,23.9583333 L2,22.5694444 C2,20.0833333 3.94,18.0555556 6.33333333,18.0555556 L17.6666667,18.0555556 C20.06,18.0555556 22,20.0833333 22,22.5694444 L22,23.9583333 C22,24.5277778 22.448,25 23,25 C23.552,25 24,24.5277778 24,23.9583333 L24,22.5694444 C24,18.9305556 21.164,15.9722222 17.6666667,15.9722222 L6.33333333,15.9722222 Z"
+                                id="Path" fill-rule="nonzero"></path>
+                            <path
+                                d="M24.3333333,17.0138889 C24.3333333,16.4444444 24.7813333,15.9722222 25.3333333,15.9722222 L25.6666667,15.9722222 C29.164,15.9722222 32,18.9305556 32,22.5694444 L32,23.9583333 C32,24.5277778 31.552,25 31,25 C30.448,25 30,24.5277778 30,23.9583333 L30,22.5694444 C30,20.0833333 28.06,18.0555556 25.6666667,18.0555556 L25.3333333,18.0555556 C24.7813333,18.0555556 24.3333333,17.5833333 24.3333333,17.0138889 Z"
+                                id="Path" fill-rule="nonzero"></path>
+                            <path
+                                d="M20,0 C19.448,0 19,0.472222222 19,1.04166667 C19,1.61111111 19.448,2.08333333 20,2.08333333 C22.5773333,2.08333333 24.6666667,4.26388889 24.6666667,6.94444444 C24.6666667,9.625 22.5773333,11.8055556 20,11.8055556 C19.448,11.8055556 19,12.2777778 19,12.8472222 C19,13.4166667 19.448,13.8888889 20,13.8888889 C23.6813333,13.8888889 26.6666667,10.7777778 26.6666667,6.94444444 C26.6666667,3.11111111 23.6813333,0 20,0 Z"
+                                id="Path" fill-rule="nonzero"></path>
+                        </g>
+                    </g>
+                    <text id="admins" font-family="Roboto-Medium, Roboto" font-size="12" font-weight="400"
+                        letter-spacing="0.18" fill="#222222">
+                        <tspan x="9.64066406" y="67">admins</tspan>
+                    </text>
+                    <text id="developers" font-family="Roboto-Medium, Roboto" font-size="12" font-weight="400"
+                        letter-spacing="0.18" fill="#222222">
+                        <tspan x="120.630273" y="67">developers</tspan>
+                    </text>
+                    <text id="managers" font-family="Roboto-Medium, Roboto" font-size="12" font-weight="400"
+                        letter-spacing="0.18" fill="#222222">
+                        <tspan x="242.403047" y="67">managers</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
