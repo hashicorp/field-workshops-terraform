@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240px" height="280px" viewBox="0 0 240 280" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>contract-testing</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="40" height="40" rx="2"></rect>
+        <filter x="-28.8%" y="-23.8%" width="157.5%" height="157.5%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="48.3377249%" y1="-43.1543784%" x2="50.5402394%" y2="111.08006%" id="linearGradient-3">
+            <stop stop-color="#32D4F5" offset="22%"></stop>
+            <stop stop-color="#31D1F3" offset="47%"></stop>
+            <stop stop-color="#2EC9EB" offset="63%"></stop>
+            <stop stop-color="#29BADE" offset="77%"></stop>
+            <stop stop-color="#22A5CB" offset="89%"></stop>
+            <stop stop-color="#198AB3" offset="100%"></stop>
+            <stop stop-color="#198AB3" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-4" x="0" y="0" width="40" height="40" rx="2"></rect>
+        <filter x="-28.8%" y="-23.8%" width="157.5%" height="157.5%" filterUnits="objectBoundingBox" id="filter-5">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="0%" id="linearGradient-6">
+            <stop stop-color="#0078D4" offset="0%"></stop>
+            <stop stop-color="#5EA0EF" offset="82%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="0%" id="linearGradient-7">
+            <stop stop-color="#727274" offset="15%"></stop>
+            <stop stop-color="#707070" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-8" x="0" y="0" width="84" height="48" rx="2"></rect>
+        <filter x="-13.7%" y="-19.8%" width="127.4%" height="147.9%" filterUnits="objectBoundingBox" id="filter-9">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="aws" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="contract-testing" transform="translate(-40.000000, -20.000000)">
+            <g transform="translate(40.000000, 20.000000)">
+                <g id="svg-background" fill="#F2F2F3">
+                    <rect id="rectangle" x="0" y="0" width="240" height="280"></rect>
+                </g>
+                <g id="Group" transform="translate(16.000000, 16.000000)">
+                    <g id="icon_box-/-org" fill="#FFFFFF" stroke="#727274" stroke-width="1.5">
+                        <rect id="box" x="0.75" y="0.75" width="206.5" height="246.5" rx="2"></rect>
+                    </g>
+                    <text id="Azure-Virtual-Networ" font-family="CourierNewPS-BoldMT, Courier New" font-size="6" font-weight="bold" letter-spacing="0.09" fill="#1D1E1F">
+                        <tspan x="146.773535" y="165">Azure </tspan>
+                        <tspan x="128.320605" y="172">Virtual Network </tspan>
+                        <tspan x="143.082949" y="179">Gateway</tspan>
+                    </text>
+                    <g id="box" transform="translate(136.000000, 117.000000)">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <rect stroke="#727274" stroke-width="1" stroke-linejoin="square" fill="#FFFFFF" fill-rule="evenodd" x="0.5" y="0.5" width="39" height="39" rx="2"></rect>
+                    </g>
+                    <g id="az-vng" transform="translate(148.000000, 126.000000)" fill-rule="nonzero">
+                        <path d="M15.6494771,10.5675938 L14.4306705,10.5675938 L14.4306705,6.81366943 C14.4412381,5.05054799 13.7936782,3.34690053 12.6146486,2.03594745 C11.4984892,0.735674866 9.86742007,-0.00855614576 8.15381634,0.000540380792 C6.42322788,-0.0229837465 4.77140697,0.722567854 3.64423182,2.03594745 C2.4569216,3.34183274 1.80808617,5.04883602 1.82820994,6.81366943 L1.82820994,10.5675938 L0.840976573,10.5675938 C0.379258424,10.574144 0.00655017746,10.9468523 -1.08251774e-15,11.4085704 L-1.08251774e-15,21.1590234 C0.00655017746,21.6207416 0.379258424,21.9934498 0.840976573,22 L15.6494771,22 C16.1132993,21.9936495 16.4896186,21.6227062 16.5026417,21.1590234 L16.5026417,11.4085704 C16.4896186,10.9448876 16.1132993,10.5739443 15.6494771,10.5675938 Z M11.5420988,10.5675938 L4.76553391,10.5675938 L4.76553391,6.75272909 C4.77648542,5.77690667 5.15514847,4.84113017 5.82589568,4.13229485 C6.40365074,3.46997484 7.23835934,3.08814006 8.11725214,3.08412115 C8.99936821,3.08936026 9.83735508,3.47066645 10.4207967,4.13229485 C10.5652752,4.29573956 10.6957417,4.47105388 10.8108148,4.6563817 L10.8108148,4.6563817 C11.2679518,5.25763745 11.5276725,5.98570698 11.5542868,6.74054103 L11.5420988,10.5675938 Z" id="Shape" fill="url(#linearGradient-3)"></path>
+                        <path d="M15.6860413,10.5675938 L0.853164639,10.5675938 C0.654986298,10.5682417 0.464021855,10.6420235 0.316889723,10.774791 L16.2223162,21.7440506 C16.4143042,21.5895839 16.5262758,21.3566831 16.5270179,21.1102712 L16.5270179,11.3598181 C16.4898407,10.9198733 16.1274204,10.5784628 15.6860413,10.5675938 Z" id="Path" fill="#50E6FF"></path>
+                        <path d="M0.877540772,10.5675938 L15.6982294,10.5675938 C15.8997863,10.5697013 16.0940876,10.6431041 16.2466923,10.774791 L0.329077789,21.7440506 C0.141119511,21.5864199 0.0301059862,21.3555117 0.0243761325,21.1102712 L0.0243761325,11.3598181 C0.0674209514,10.9179481 0.433697208,10.5778344 0.877540772,10.5675938 Z" id="Path" fill="#FFFFFF" opacity="0.2"></path>
+                        <path d="M6.80094098,12.9198906 L8.26350893,11.4573227 C8.29522794,11.4307024 8.34148252,11.4307024 8.37320153,11.4573227 L9.82358141,12.9198906 C9.84400704,12.9334395 9.85628657,12.9563202 9.85628657,12.980831 C9.85628657,13.0053417 9.84400704,13.0282225 9.82358141,13.0417713 L8.97041678,13.0417713 C8.93002908,13.0417713 8.89728838,13.074512 8.89728838,13.1148997 L8.89728838,14.9918619 C8.89728838,15.0322496 8.86454768,15.0649903 8.82415998,15.0649903 L7.86130274,15.0649903 C7.84081282,15.0697403 7.8193218,15.0635884 7.80444901,15.0487156 C7.78957622,15.0338428 7.78342431,15.0123518 7.78817435,14.9918619 L7.78817435,13.1148997 C7.78207019,13.072593 7.74560045,13.0413332 7.70285788,13.0417713 L6.84969324,13.0417713 C6.82189108,13.0396498 6.79771479,13.0219028 6.78735931,12.9960141 C6.77700382,12.9701254 6.78227149,12.9406008 6.80094098,12.9198906 L6.80094098,12.9198906 Z M9.81139335,19.5989509 L8.36101346,21.0493308 C8.34713128,21.0650718 8.32715506,21.0740893 8.30616716,21.0740893 C8.28517927,21.0740893 8.26520305,21.0650718 8.25132087,21.0493308 L6.80094098,19.5989509 C6.78051535,19.5854021 6.76823582,19.5625214 6.76823582,19.5380106 C6.76823582,19.5134999 6.78051535,19.4906191 6.80094098,19.4770703 L7.65410562,19.4770703 C7.69684819,19.4775084 7.73331793,19.4462486 7.73942208,19.4039419 L7.73942208,17.5147916 C7.73942208,17.4744039 7.77216278,17.4416632 7.81255048,17.4416632 L8.71446738,17.4416632 C8.73386224,17.4416632 8.75246273,17.4493678 8.76617697,17.463082 C8.7798912,17.4767963 8.78759578,17.4953968 8.78759578,17.5147916 L8.78759578,19.4039419 C8.78759578,19.4443296 8.82033648,19.4770703 8.86072418,19.4770703 L9.71388882,19.4770703 C9.74754523,19.4501451 9.79665628,19.4556019 9.82358141,19.4892583 C9.85050655,19.5229148 9.84504976,19.5720258 9.81139335,19.5989509 Z M4.0830022,17.7098007 L4.0830022,16.856636 C4.0830022,16.8162483 4.0502615,16.7835076 4.0098738,16.7835076 L2.1694758,16.7835076 C2.1290881,16.7835076 2.0963474,16.7507669 2.0963474,16.7103792 L2.0963474,15.8450265 C2.0820136,15.8208386 2.0828164,15.7905748 2.0984124,15.7671808 C2.1140084,15.7437868 2.14163546,15.7314058 2.1694758,15.7353339 L4.0098738,15.7353339 C4.0502615,15.7353339 4.0830022,15.7025932 4.0830022,15.6622055 L4.0830022,14.8090409 C4.08611303,14.7788993 4.10497799,14.7526693 4.13256368,14.7401304 C4.16014936,14.7275914 4.192316,14.7306252 4.21707093,14.7481006 L5.66745082,16.2106685 C5.69227976,16.2384281 5.69227976,16.2804134 5.66745082,16.3081731 L4.21707093,17.770741 C4.192316,17.7882164 4.16014936,17.7912501 4.13256368,17.7787112 C4.10497799,17.7661722 4.08611303,17.7399423 4.0830022,17.7098007 L4.0830022,17.7098007 Z M12.5293321,14.8090409 L12.5293321,15.6622055 C12.5293321,15.7025932 12.5620728,15.7353339 12.6024605,15.7353339 L14.4794227,15.7353339 C14.4794227,15.7353339 14.5647392,15.7353339 14.5647392,15.8084623 L14.5647392,16.7103792 C14.558635,16.752686 14.5221653,16.7839457 14.4794227,16.7835076 L12.6024605,16.7835076 C12.5830657,16.7835076 12.5644652,16.7912122 12.5507509,16.8049264 C12.5370367,16.8186407 12.5293321,16.8372412 12.5293321,16.856636 L12.5293321,17.7098007 C12.5320978,17.7398099 12.5161711,17.7684426 12.4892164,17.78192 C12.4622616,17.7953973 12.4297994,17.7909591 12.4074515,17.770741 L10.9570716,16.3081731 L12.4074515,14.8456051 C12.4074515,14.8456051 12.5293321,14.7359125 12.5293321,14.8090409 L12.5293321,14.8090409 Z" id="Shape" fill="#FFFFFF"></path>
+                    </g>
+                    <g id="box" transform="translate(32.000000, 117.000000)">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                        <rect stroke="#727274" stroke-width="1" stroke-linejoin="square" fill="#FFFFFF" fill-rule="evenodd" x="0.5" y="0.5" width="39" height="39" rx="2"></rect>
+                    </g>
+                    <g id="AZ-vm" transform="translate(41.000000, 127.000000)" fill-rule="nonzero">
+                        <rect id="Rectangle" fill="url(#linearGradient-6)" x="0" y="1.0855514e-15" width="22" height="14.6666667" rx="0.6"></rect>
+                        <polygon id="Path" fill="#50E6FF" points="14.6666667 5.19444444 14.6666667 9.46 11 11.6111111 11 7.33333333"></polygon>
+                        <polygon id="Path" fill="#C3F1FF" points="14.6666667 5.19444444 11 7.34555556 7.33333333 5.19444444 11 3.05555556"></polygon>
+                        <polygon id="Path" fill="#9CEBFF" points="11 7.34555556 11 11.6111111 7.33333333 9.46 7.33333333 5.19444444"></polygon>
+                        <polygon id="Path" fill="#C3F1FF" points="7.33333333 9.46 11 7.33333333 11 11.6111111"></polygon>
+                        <polygon id="Path" fill="#9CEBFF" points="14.6666667 9.46 11 7.33333333 11 11.6111111"></polygon>
+                        <path d="M15.4122222,19.1033333 C13.2366667,18.7611111 13.1511111,17.1966667 13.1511111,14.6666667 L8.83666667,14.6666667 C8.83666667,17.1966667 8.76333333,18.7611111 6.58777778,19.1033333 C5.96574619,19.1721629 5.49620349,19.699739 5.49997714,20.3255556 L16.5000229,20.3255556 C16.5037965,19.699739 16.0342538,19.1721629 15.4122222,19.1033333 Z" id="Path" fill="url(#linearGradient-7)"></path>
+                    </g>
+                    <rect id="box" stroke="#844FBA" stroke-width="1.5" fill="#FFFFFF" x="8.55" y="8.95" width="190.5" height="94.5" rx="2"></rect>
+                    <text id="hashicat-azure-proje" font-family="Roboto-Medium, Roboto" font-size="12" font-weight="400" line-spacing="14" letter-spacing="0.18">
+                        <tspan x="19" y="27" fill="#222222">hashicat-azure</tspan>
+                        <tspan x="19" y="41" fill="#727274">project</tspan>
+                    </text>
+                    <g id="workgroups" transform="translate(10.800000, 44.200000)">
+                        <g id="icon_box-/-white" transform="translate(8.200000, 5.600000)" fill="#FFFFFF" stroke="#844FBA" stroke-width="1.5">
+                            <rect id="box" x="0.75" y="0.75" width="64.1" height="43.3" rx="2"></rect>
+                        </g>
+                        <text id="VMs-workspace" font-family="Roboto-Medium, Roboto" font-size="10" font-weight="400" letter-spacing="0.15">
+                            <tspan x="30.5821289" y="25" fill="#222222">VMs</tspan>
+                            <tspan x="15.9939453" y="36" fill="#727274">workspace</tspan>
+                        </text>
+                    </g>
+                    <g id="workgroups" transform="translate(114.800000, 44.200000)">
+                        <g id="icon_box-/-white" transform="translate(8.200000, 5.600000)" fill="#FFFFFF" stroke="#844FBA" stroke-width="1.5">
+                            <rect id="box" x="0.75" y="0.75" width="64.1" height="43.3" rx="2"></rect>
+                        </g>
+                        <text id="Netowork-workspace" font-family="Roboto-Medium, Roboto" font-size="10" font-weight="400" letter-spacing="0.15">
+                            <tspan x="18.8008789" y="25" fill="#222222">Netowork</tspan>
+                            <tspan x="15.9939453" y="36" fill="#727274">workspace</tspan>
+                        </text>
+                    </g>
+                    <text id="Azure-Compute-Instan" font-family="CourierNewPS-BoldMT, Courier New" font-size="6" font-weight="bold" letter-spacing="0.09" fill="#1D1E1F">
+                        <tspan x="42.7735352" y="165">Azure </tspan>
+                        <tspan x="39.0829492" y="172">Compute </tspan>
+                        <tspan x="37.2376563" y="179">Instance</tspan>
+                    </text>
+                    <g id="Group-4" transform="translate(107.000000, 120.000000)" stroke="#727274">
+                        <path d="M19.9908027,1.03553391 L24.9644661,1.03553391 C21.6311328,4.36886724 19.9644661,6.03553391 19.9644661,6.03553391 C19.9644661,6.03553391 19.973245,4.36886724 19.9908027,1.03553391 Z" id="arrow-right" stroke-linecap="round" stroke-linejoin="round" transform="translate(22.464466, 3.535534) rotate(135.000000) translate(-22.464466, -3.535534) "></path>
+                        <line x1="22.4644661" y1="3.53553391" x2="0.964466094" y2="3.32842712" id="Path-26"></line>
+                    </g>
+                    <g id="Group-2" transform="translate(75.000000, 144.000000)" stroke="#727274">
+                        <path d="M1.06187047,1.03553391 L6.03553391,1.03553391 C2.70220057,4.36886724 1.03553391,6.03553391 1.03553391,6.03553391 C1.03553391,6.03553391 1.04431276,4.36886724 1.06187047,1.03553391 Z" id="arrow-left" stroke-linecap="round" stroke-linejoin="round" transform="translate(3.535534, 3.535534) scale(-1, 1) rotate(135.000000) translate(-3.535534, -3.535534) "></path>
+                        <line x1="3.53553391" y1="3.53553391" x2="25.5355339" y2="3.53553391" id="Path-24"></line>
+                    </g>
+                    <g id="Group-3" transform="translate(75.000000, 120.000000)" stroke="#727274">
+                        <path d="M19.5263366,1.03553391 L24.5,1.03553391 C21.1666667,4.36886724 19.5,6.03553391 19.5,6.03553391 C19.5,6.03553391 19.5087789,4.36886724 19.5263366,1.03553391 Z" id="arrow-right-copy" stroke-linecap="round" stroke-linejoin="round" transform="translate(22.000000, 3.535534) rotate(135.000000) translate(-22.000000, -3.535534) "></path>
+                        <line x1="22" y1="3.53553391" x2="7.1748163e-14" y2="3.68198052" id="Path-23"></line>
+                    </g>
+                    <g id="Group-5" transform="translate(107.000000, 144.000000)" stroke="#727274">
+                        <path d="M1.06187047,1.03553391 L6.03553391,1.03553391 C2.70220057,4.36886724 1.03553391,6.03553391 1.03553391,6.03553391 C1.03553391,6.03553391 1.04431276,4.36886724 1.06187047,1.03553391 Z" id="arrow-left-copy" stroke-linecap="round" stroke-linejoin="round" transform="translate(3.535534, 3.535534) scale(-1, 1) rotate(135.000000) translate(-3.535534, -3.535534) "></path>
+                        <line x1="3.53553391" y1="3.53553391" x2="25.5355339" y2="3.53553391" id="Path-25"></line>
+                    </g>
+                    <line x1="104" y1="112" x2="104" y2="184" id="Path-22" stroke="#727274" stroke-dasharray="2"></line>
+                    <g id="Group-6" transform="translate(51.000000, 183.000000)">
+                        <g id="box" transform="translate(10.500000, 6.000000)">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-9)" xlink:href="#path-8"></use>
+                            <rect stroke="#727274" stroke-width="1" stroke-linejoin="square" fill="#FFFFFF" fill-rule="evenodd" x="0.5" y="0.5" width="83" height="47" rx="2"></rect>
+                        </g>
+                        <g id="Group-7" transform="translate(13.000000, 15.000000)" font-family="CourierNewPS-BoldMT, Courier New" font-size="6" font-weight="bold" letter-spacing="0.09">
+                            <text id="NSG-rules-allow-ingr" fill="#727274">
+                                <tspan x="12.3206055" y="13">NSG rules allow </tspan>
+                                <tspan x="3.09414063" y="20">ingress traffic from </tspan>
+                                <tspan x="6.78472656" y="27">IG to EC2 instance</tspan>
+                            </text>
+                            <text id="CONTRACT" fill="#1D1E1F">
+                                <tspan x="25.2376563" y="5">CONTRACT</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
