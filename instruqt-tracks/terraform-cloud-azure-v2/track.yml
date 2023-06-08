@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 slug: terraform-cloud-azure-v2
 id: w0mxyr7gzpwb
 title: Terraform Cloud with Azure
@@ -34,4 +31,3 @@ lab_config:
   overlay: false
   width: 33
   position: right
-checksum: "17966099905541573928"
