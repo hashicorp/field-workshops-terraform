@@ -9,6 +9,12 @@ fi
 
 cd /root/hashicat-gcp
 
+# Make sure Terraform is not still running
+
+if [ -f .terraform.tfstate.lock.info ]; then
+    fail-message "Terraform is still running, please wait for it to finish."
+fi
+
 RESOURCES=$(cat terraform.tfstate | jq '.resources | .[]')
 
 if [ ! -z $RESOURCES ]; then

@@ -578,11 +578,14 @@ challenges:
 
     Uncomment the code by removing the `#` characters from the beginning of each line. Be sure to save the file.
 
-    Now run `terraform apply` again. Observe the results.
+    Now run `terraform plan` and observe the results.
 
     Look at the **network** parameter inside the google_compute_subnetwork resource. See how it points back at the first resource in the file? The subnet resource inherits settings from the VPC network.
 
     Terraform can map out the complex web of dependencies between hundreds of interconnected resources.
+
+    Finally, create your Virtual Network. Run `terraform apply` and answer "yes" when prompted.
+
   tabs:
   - title: Shell
     type: terminal
