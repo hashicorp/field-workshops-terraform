@@ -85,15 +85,18 @@ class: compact
 
 The resource graph is an internal representation of all resources and their dependencies.
 
-```JSON
-resource "google_compute_instance" "server" {
-  name         = "server"
-  machine_type = "g1-small"
-  zone         = "us-central1-a"
+```terraform
+resource "google_compute_instance" "hashicat" {
+  name         = "${var.prefix}-hashicat"
+  zone         = "${var.region}-b"
+  machine_type = var.machine_type
 
-  disk {
-   image = "ubuntu-1404-trusty-v20160114e"
+  boot_disk {
+    initialize_params {
+      image = "ubuntu-os-cloud/ubuntu-2204-lts"
+    }
   }
+  #...some config omitted...
 }
 
 resource "dnsimple_record" "hello" {

@@ -163,17 +163,19 @@ Terraform is written in HashiCorp Configuration Language (HCL)
 HCL is designed to strike a balance between human-readable and machine-parsable
 
 The Terraform language is declarative, describing an intended goal rather than the steps to reach that goal
-```JSON
-resource "google_compute_instance" "server" {
-  name         = "server"
-  machine_type = "g1-small"
-  zone         = "us-central1-a"
+```terraform
+resource "google_compute_instance" "hashicat" {
+  name         = "${var.prefix}-hashicat"
+  zone         = "${var.region}-b"
+  machine_type = var.machine_type
 
-  disk {
-   image = "ubuntu-1404-trusty-v20160114e"
+  boot_disk {
+    initialize_params {
+      image = "ubuntu-os-cloud/ubuntu-2204-lts"
+    }
   }
+  #...some config omitted...
 }
-
 ```
 
 ???
