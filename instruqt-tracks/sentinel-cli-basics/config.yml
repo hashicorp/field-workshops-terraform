@@ -4,6 +4,6 @@
 version: "2"
 virtualmachines:
 - name: sentinel
-  image: instruqt-hashicorp/ubuntu-base
+  image: instruqt-hashicorp/ubuntu-2004-base
   shell: /bin/bash -l
   machine_type: n1-standard-1

@@ -4,7 +4,7 @@
 version: "2"
 virtualmachines:
 - name: workstation
-  image: instruqt-hashicorp/ubuntu-base
+  image: instruqt-hashicorp/ubuntu-2004-base
   shell: /bin/bash -l
   machine_type: n1-standard-1
 azure_subscriptions:
