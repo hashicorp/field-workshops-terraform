@@ -11,12 +11,6 @@ fi
 BR_PID=$(lsof -i :5000 -F p |awk '/^p/{print substr($1,2);}')
 if [ -z "$BR_PID" ]; then
     fail-message "Looks like Blast Radius is not running, please start it"
-else
-    # And now shut it down, since we rely on it *not* being running
-    # later on, and thanks to IL-710 and related, Instruqt doesn't
-    # reliably shut down processes when you move from one challenge
-    # to another
-    kill ${BR_PID}
 fi
 
 exit 0

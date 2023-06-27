@@ -1,0 +1,14 @@
+#!/bin/bash -l
+set -e
+
+# Shut down Blast Radius, since we assume it isn't running later
+# on, but didn't ask the user to stop it
+BR_PID=$(lsof -i :5000 -F p |awk '/^p/{print substr($1,2);}')
+if [ -z "$BR_PID" ]; then
+    # It wasn't running anyways, so just exit
+    exit 0
+else
+    kill ${BR_PID}
+fi
+
+exit 0
