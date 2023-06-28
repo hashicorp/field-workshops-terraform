@@ -9,4 +9,10 @@ fi
 
 cd /root/hashicat-aws
 
+# Make sure Terraform is not still running
+
+if [ -f .terraform.tfstate.lock.info ]; then
+    fail-message "Terraform is still running, please wait for it to finish."
+fi
+
 exit 0

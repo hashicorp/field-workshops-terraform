@@ -9,10 +9,16 @@ fi
 
 cd /root/hashicat-aws
 
+# Make sure Terraform is not still running
+
+if [ -f .terraform.tfstate.lock.info ]; then
+    fail-message "Terraform is still running, please wait for it to finish."
+fi
+
 # Check state file for vnet
 VNET=$(cat terraform.tfstate | jq -r '.resources[] | select(.type == "aws_subnet") | .type')
 
-if [ $VNET != "aws_subnet" ]; then
+if [ "$VNET" != "aws_subnet" ]; then
   fail-message "We didn't find your aws_subnet resource. Try again."
 fi
 

@@ -7,6 +7,12 @@ if [ -f /tmp/skip-check ]; then
     exit 0
 fi
 
+# Make sure Terraform is not still running
+
+if [ -f .terraform.tfstate.lock.info ]; then
+    fail-message "Terraform is still running, please wait for it to finish."
+fi
+
 cd /root/hashicat-aws
 if [ ! -f terraform.tfstate ]; then
   fail-message "Oops, it looks like you haven't run terraform apply yet."

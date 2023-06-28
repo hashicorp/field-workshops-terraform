@@ -8,9 +8,16 @@ if [ -f /tmp/skip-check ]; then
 fi
 
 cd /root/hashicat-aws
+
+# Make sure Terraform is not still running
+
+if [ -f .terraform.tfstate.lock.info ]; then
+    fail-message "Terraform is still running, please wait for it to finish."
+fi
+
 OUTPUT=$(cat terraform.tfstate | jq -r .outputs.catapp_ip.value)
 
-if [ -z $OUTPUT ]; then
+if [ -z "$OUTPUT" ]; then
   fail-message "We didn't find your catapp_ip output. Try again."
 fi
 
