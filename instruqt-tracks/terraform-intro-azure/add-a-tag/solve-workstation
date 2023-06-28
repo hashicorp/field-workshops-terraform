@@ -8,4 +8,6 @@ cd /root/hashicat-azure
 
 sed -i 's/^  tags = {}/  tags = {\n   environment = "Production"\n  }/' main.tf
 
+terraform apply -auto-approve
+
 exit 0
