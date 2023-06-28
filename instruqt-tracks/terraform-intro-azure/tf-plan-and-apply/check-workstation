@@ -8,13 +8,20 @@ if [ -f /tmp/skip-check ]; then
 fi
 
 cd /root/hashicat-azure
+
+# Make sure Terraform is not still running
+
+if [ -f .terraform.tfstate.lock.info ]; then
+    fail-message "Terraform is still running, please wait for it to finish."
+fi
+
 if [ ! -f terraform.tfstate ]; then
   fail-message "Oops, it looks like you haven't run terraform apply yet."
 fi
 
 MYRG=$(cat terraform.tfstate | jq -r '.resources | .[].name')
 
-if [ $MYRG != "myresourcegroup" ]; then
+if [ "$MYRG" != "myresourcegroup" ]; then
   fail-message "It looks like your resource group has not been built yet. Please try again."
 fi
 
