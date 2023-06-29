@@ -9,10 +9,16 @@ fi
 
 cd /root/hashicat-gcp
 
+# Is Terraform still running
+
+if [ -f .terraform.tfstate.lock.info ]; then
+    fail-message "Terraform is still running, please wait for it to finish."
+fi
+
 # Check state file for network
 SUBNET=$(cat terraform.tfstate | jq -r '.resources[] | select(.type == "google_compute_subnetwork") | .type')
 
-if [ $SUBNET != "google_compute_subnetwork" ]; then
+if [ "$SUBNET" != "google_compute_subnetwork" ]; then
   fail-message "We didn't find your google_compute_subnetwork resource. Try again."
 fi
 

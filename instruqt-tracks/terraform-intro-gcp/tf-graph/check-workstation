@@ -7,7 +7,10 @@ if [ -f /tmp/skip-check ]; then
     exit 0
 fi
 
-# Fix this after getting the solve script working.
-curl -I http://localhost:5000 | grep -q "HTTP/1.0 200 OK" || fail-message "Oops, it looks like the Blast Radius tool is not running."
+# Make sure user actually started blast-radius
+BR_PID=$(lsof -i :5000 -F p |awk '/^p/{print substr($1,2);}')
+if [ -z "$BR_PID" ]; then
+    fail-message "Looks like Blast Radius is not running, please start it"
+fi
 
 exit 0
