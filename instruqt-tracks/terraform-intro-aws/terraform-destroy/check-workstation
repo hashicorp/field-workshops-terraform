@@ -9,9 +9,15 @@ fi
 
 cd /root/hashicat-aws
 
+# Make sure Terraform is not still running
+
+if [ -f .terraform.tfstate.lock.info ]; then
+    fail-message "Terraform is still running, please wait for it to finish."
+fi
+
 RESOURCES=$(cat terraform.tfstate | jq '.resources | .[]')
 
-if [ ! -z $RESOURCES ]; then
+if [ ! -z "$RESOURCES" ]; then
   fail-message "Oops, looks like you still have some resources. Try running `terraform destroy` again."
 fi
 

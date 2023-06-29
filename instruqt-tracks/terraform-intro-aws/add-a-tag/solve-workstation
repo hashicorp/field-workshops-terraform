@@ -9,4 +9,6 @@ cd /root/hashicat-aws
 # sed -i '19 a \ \ \ \ environment = "Production"' main.tf
 sed -i 's/name = "\${var\.prefix}-vpc-\${var\.region}"/name = "\${var.prefix}-vpc-\${var.region}"\n    environment = "Production"/' main.tf
 
+terraform apply -auto-approve
+
 exit 0

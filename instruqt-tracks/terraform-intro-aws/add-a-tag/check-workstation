@@ -10,13 +10,16 @@ fi
 # Checks the state file to make sure the student has added a tag.
 cd /root/hashicat-aws
 
-# Apply
-terraform apply -auto-approve
+# Make sure Terraform is not still running
+
+if [ -f .terraform.tfstate.lock.info ]; then
+    fail-message "Terraform is still running, please wait for it to finish."
+fi
 
 # Check for tags
 TAG=$(cat terraform.tfstate | jq -r '.resources[] | select(.type == "aws_vpc")| .instances[] | .attributes | .tags | .environment')
 
-if [ $TAG != "Production" ]; then
+if [ "$TAG" != "Production" ]; then
    fail-message "You haven't added your Production environment tag yet."
 fi
 
