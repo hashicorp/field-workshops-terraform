@@ -10,7 +10,8 @@ sed -i 's/# resource "azurerm_virtual_network" "vnet" {/resource "azurerm_virtua
 sed -i 's/#   name                = "\${var.prefix}-vnet"/  name                = "\${var.prefix}-vnet"/' main.tf
 sed -i 's/#   location            = azurerm_resource_group.myresourcegroup.location/  location            = azurerm_resource_group.myresourcegroup.location/' main.tf
 sed -i 's/#   address_space       = \[var.address_space\]/  address_space       = [var.address_space]/' main.tf
-sed -i 's/#   resource_group_name = azurerm_resource_group.myresourcegroup.name/  resource_group_name = azurerm_resource_group.myresourcegroup.name/' main.tf
+# Replace only the *first* instance of a commented out `resource_group_name` line
+sed -i '0,/#   resource_group_name/{s/# //}' main.tf
 sed -i '0,/# }/{s/# }/}/}' main.tf
 
 terraform apply -auto-approve

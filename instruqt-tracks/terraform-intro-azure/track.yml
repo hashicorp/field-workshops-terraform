@@ -620,7 +620,7 @@ challenges:
 
     Uncomment the code by removing the `#` characters from the beginning of each line. Be sure to save the file.
 
-    Now run `terraform apply` again. Observe the results.
+    Now run `terraform apply` again and answer "yes" when prompted. Observe the results.
 
     Look at the **location** and **resource_group_name** parameters inside the vnet resource. See how they point back at the first resource in the file? The virtual network resource inherits settings from the resource group.
 
