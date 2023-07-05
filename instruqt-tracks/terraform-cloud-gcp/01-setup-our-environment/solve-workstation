@@ -9,16 +9,15 @@ set -o history
 cd /root
 rm -rf hashicat-gcp
 
-# Check if this is a student or bot run, clone appropriate repo
+# Check if this is a student or bot run
 if [[ -f /root/skipconfig.json ]]; then
   ORG=$(jq -r .org < /root/skipconfig.json)
   TOKEN=$(jq -r .token < /root/skipconfig.json)
-  git clone https://github.com/hashicorp/hashicat-gcp
 else
   ORG="instruqt-circleci"
   TOKEN=$(cat /var/tfc_user_token)
-  git clone https://github.com/workshops-testbot/hashicat-gcp
 fi
+git clone https://github.com/hashicorp/hashicat-gcp
 
 cd hashicat-gcp
 mv terraform.tfvars.example terraform.tfvars
