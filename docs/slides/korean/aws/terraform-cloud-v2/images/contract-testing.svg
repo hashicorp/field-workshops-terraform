@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240px" height="280px" viewBox="0 0 240 280" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>contract-testing</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="40" height="40" rx="2"></rect>
+        <filter x="-28.8%" y="-23.8%" width="157.5%" height="157.5%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-3" x="0" y="0" width="40" height="40" rx="2"></rect>
+        <filter x="-28.8%" y="-23.8%" width="157.5%" height="157.5%" filterUnits="objectBoundingBox" id="filter-4">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-5" x="0" y="0" width="84" height="48" rx="2"></rect>
+        <filter x="-13.7%" y="-19.8%" width="127.4%" height="147.9%" filterUnits="objectBoundingBox" id="filter-6">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="slides" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="contract-testing" transform="translate(-40.000000, -20.000000)">
+            <g transform="translate(40.000000, 20.000000)">
+                <g id="svg-background" fill="#F2F2F3">
+                    <rect id="rectangle" x="0" y="0" width="240" height="280"></rect>
+                </g>
+                <g id="Group" transform="translate(16.000000, 16.000000)">
+                    <g id="icon_box-/-org" fill="#FFFFFF" stroke="#727274" stroke-width="1.5">
+                        <rect id="box" x="0.75" y="0.75" width="206.5" height="246.5" rx="2"></rect>
+                    </g>
+                    <text id="AWS-Internet-Gateway" font-family="CourierNewPS-BoldMT, Courier New" font-size="6" font-weight="bold" letter-spacing="0.09" fill="#1D1E1F">
+                        <tspan x="150.464121" y="165">AWS </tspan>
+                        <tspan x="141.237656" y="172">Internet </tspan>
+                        <tspan x="143.082949" y="179">Gateway</tspan>
+                    </text>
+                    <g id="box" transform="translate(32.000000, 117.000000)">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <rect stroke="#727274" stroke-width="1" stroke-linejoin="square" fill="#FFFFFF" fill-rule="evenodd" x="0.5" y="0.5" width="39" height="39" rx="2"></rect>
+                    </g>
+                    <g id="box" transform="translate(136.000000, 117.000000)">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                        <rect stroke="#727274" stroke-width="1" stroke-linejoin="square" fill="#FFFFFF" fill-rule="evenodd" x="0.5" y="0.5" width="39" height="39" rx="2"></rect>
+                    </g>
+                    <g id="VPC-Internet-GW" transform="translate(145.000000, 126.000000)" fill="#4D27AA">
+                        <path d="M15.7477112,16.6235026 L14.997176,16.6235026 L14.997176,7.76738784 C14.9970509,7.57047115 14.8815887,7.39188696 14.7020724,7.31095422 L14.6559781,7.28991118 C13.6494193,6.83548167 12.6077887,6.36501936 11.1107265,6.36501936 C9.54602596,6.36501936 8.39767707,6.8705534 7.26285584,7.43420633 C7.09223673,7.51875167 6.98429114,7.69270715 6.98428604,7.88312457 L6.98428604,16.6235026 L6.25128672,16.6235026 L6.25128672,7.1711683 C7.47078114,6.17913915 9.22887725,5.61448417 11.1162378,5.61448417 C12.8698246,5.61448417 14.5422455,6.11400592 15.7477112,6.99130039 L15.7477112,16.6235026 L15.7477112,16.6235026 Z M11.1157367,4.61243453 C8.89870189,4.61243453 6.82245502,5.32338875 5.41908449,6.56392621 C5.31112787,6.65876289 5.24923708,6.7954975 5.24923708,6.93919381 L5.24923708,17.1245274 C5.24923708,17.4012358 5.47355353,17.6255523 5.7502619,17.6255523 L7.48531086,17.6255523 C7.76201923,17.6255523 7.98633569,17.4012358 7.98633569,17.1245274 L7.98633569,8.19526304 C8.94830335,7.73081303 9.88020952,7.367069 11.1107265,7.367069 C12.2806194,7.367069 13.1313596,7.70526076 13.9951264,8.0915509 L13.9951264,17.1245274 C13.9951264,17.4012358 14.2194428,17.6255523 14.4961512,17.6255523 L16.2487361,17.6255523 C16.5254444,17.6255523 16.7497609,17.4012358 16.7497609,17.1245274 L16.7497609,6.7432931 C16.7497609,6.59098155 16.6801184,6.4466864 16.5603735,6.35099066 C15.1705306,5.24623093 13.1859713,4.61243453 11.1157367,4.61243453 L11.1157367,4.61243453 Z M10.999499,20.9979504 C5.48722387,20.9979504 1.00204965,16.5127761 1.00204965,11 C1.00204965,5.48672284 5.48722387,1.00255067 10.999499,1.00255067 C16.5122751,1.00255067 20.9979504,5.48672284 20.9979504,11 C20.9979504,16.5127761 16.5127761,20.9979504 11,20.9979504 L10.999499,20.9979504 Z M10.999499,0 C4.93409246,0.000501024824 0,4.93559554 0,11.000501 C0,17.0664086 4.93509451,22.000501 11,22.000501 C17.0654065,22.000501 22,17.0664086 22,11.000501 C22,4.93509451 17.0649055,0.000501024824 10.999499,0.000501024824 L10.999499,0 Z" id="Shape"></path>
+                    </g>
+                    <g id="EC2-Instance" transform="translate(41.000000, 126.000000)" fill="#D45B07">
+                        <path d="M3.5,18.5 L18.5,18.5 L18.5,3.5 L3.5,3.5 L3.5,18.5 Z M22,5.5 L22,4.5 L19.5,4.5 L19.5,3 C19.5,2.72385763 19.2761424,2.5 19,2.5 L17.5,2.5 L17.5,0 L16.5,0 L16.5,2.5 L14.5,2.5 L14.5,0 L13.5,0 L13.5,2.5 L11.5,2.5 L11.5,0 L10.5,0 L10.5,2.5 L8.5,2.5 L8.5,0 L7.5,0 L7.5,2.5 L5.5,2.5 L5.5,0 L4.5,0 L4.5,2.5 L3,2.5 C2.72385763,2.5 2.5,2.72385763 2.5,3 L2.5,4.5 L0,4.5 L0,5.5 L2.5,5.5 L2.5,7.5 L0,7.5 L0,8.5 L2.5,8.5 L2.5,10.5 L0,10.5 L0,11.5 L2.5,11.5 L2.5,13.5 L0,13.5 L0,14.5 L2.5,14.5 L2.5,16.5 L0,16.5 L0,17.5 L2.5,17.5 L2.5,19 C2.5,19.2761424 2.72385763,19.5 3,19.5 L4.5,19.5 L4.5,22 L5.5,22 L5.5,19.5 L7.5,19.5 L7.5,22 L8.5,22 L8.5,19.5 L10.5,19.5 L10.5,22 L11.5,22 L11.5,19.5 L13.5,19.5 L13.5,22 L14.5,22 L14.5,19.5 L16.5,19.5 L16.5,22 L17.5,22 L17.5,19.5 L19,19.5 C19.2761424,19.5 19.5,19.2761424 19.5,19 L19.5,17.5 L22,17.5 L22,16.5 L19.5,16.5 L19.5,14.5 L22,14.5 L22,13.5 L19.5,13.5 L19.5,11.5 L22,11.5 L22,10.5 L19.5,10.5 L19.5,8.5 L22,8.5 L22,7.5 L19.5,7.5 L19.5,5.5 L22,5.5 Z" id="Shape"></path>
+                    </g>
+                    <rect id="box" stroke="#844FBA" stroke-width="1.5" fill="#FFFFFF" x="8.55" y="8.95" width="190.5" height="94.5" rx="2"></rect>
+                    <text id="hashicat-aws-project" font-family="Roboto-Medium, Roboto" font-size="12" font-weight="400" line-spacing="14" letter-spacing="0.18">
+                        <tspan x="19" y="27" fill="#222222">hashicat-aws</tspan>
+                        <tspan x="19" y="41" fill="#727274">project</tspan>
+                    </text>
+                    <g id="workgroups" transform="translate(10.800000, 44.200000)">
+                        <g id="icon_box-/-white" transform="translate(8.200000, 5.600000)" fill="#FFFFFF" stroke="#844FBA" stroke-width="1.5">
+                            <rect id="box" x="0.75" y="0.75" width="64.1" height="43.3" rx="2"></rect>
+                        </g>
+                        <text id="EC2-workspace" font-family="Roboto-Medium, Roboto" font-size="10" font-weight="400" letter-spacing="0.15">
+                            <tspan x="31.8418945" y="25" fill="#222222">EC2</tspan>
+                            <tspan x="15.9939453" y="36" fill="#727274">workspace</tspan>
+                        </text>
+                    </g>
+                    <g id="workgroups" transform="translate(114.800000, 44.200000)">
+                        <g id="icon_box-/-white" transform="translate(8.200000, 5.600000)" fill="#FFFFFF" stroke="#844FBA" stroke-width="1.5">
+                            <rect id="box" x="0.75" y="0.75" width="64.1" height="43.3" rx="2"></rect>
+                        </g>
+                        <text id="VPC-workspace" font-family="Roboto-Medium, Roboto" font-size="10" font-weight="400" letter-spacing="0.15">
+                            <tspan x="31.0801758" y="25" fill="#222222">VPC</tspan>
+                            <tspan x="15.9939453" y="36" fill="#727274">workspace</tspan>
+                        </text>
+                    </g>
+                    <text id="AWS-EC2-Instance" font-family="CourierNewPS-BoldMT, Courier New" font-size="6" font-weight="bold" letter-spacing="0.09" fill="#1D1E1F">
+                        <tspan x="46.4641211" y="165">AWS </tspan>
+                        <tspan x="46.4641211" y="172">EC2 </tspan>
+                        <tspan x="37.2376563" y="179">Instance</tspan>
+                    </text>
+                    <g id="Group-4" transform="translate(107.000000, 120.000000)" stroke="#727274">
+                        <path d="M19.9908027,1.03553391 L24.9644661,1.03553391 C21.6311328,4.36886724 19.9644661,6.03553391 19.9644661,6.03553391 C19.9644661,6.03553391 19.973245,4.36886724 19.9908027,1.03553391 Z" id="arrow-right" stroke-linecap="round" stroke-linejoin="round" transform="translate(22.464466, 3.535534) rotate(135.000000) translate(-22.464466, -3.535534) "></path>
+                        <line x1="22.4644661" y1="3.53553391" x2="0.964466094" y2="3.32842712" id="Path-26"></line>
+                    </g>
+                    <g id="Group-2" transform="translate(75.000000, 144.000000)" stroke="#727274">
+                        <path d="M1.06187047,1.03553391 L6.03553391,1.03553391 C2.70220057,4.36886724 1.03553391,6.03553391 1.03553391,6.03553391 C1.03553391,6.03553391 1.04431276,4.36886724 1.06187047,1.03553391 Z" id="arrow-left" stroke-linecap="round" stroke-linejoin="round" transform="translate(3.535534, 3.535534) scale(-1, 1) rotate(135.000000) translate(-3.535534, -3.535534) "></path>
+                        <line x1="3.53553391" y1="3.53553391" x2="25.5355339" y2="3.53553391" id="Path-24"></line>
+                    </g>
+                    <g id="Group-3" transform="translate(75.000000, 120.000000)" stroke="#727274">
+                        <path d="M19.5263366,1.03553391 L24.5,1.03553391 C21.1666667,4.36886724 19.5,6.03553391 19.5,6.03553391 C19.5,6.03553391 19.5087789,4.36886724 19.5263366,1.03553391 Z" id="arrow-right-copy" stroke-linecap="round" stroke-linejoin="round" transform="translate(22.000000, 3.535534) rotate(135.000000) translate(-22.000000, -3.535534) "></path>
+                        <line x1="22" y1="3.53553391" x2="7.1748163e-14" y2="3.68198052" id="Path-23"></line>
+                    </g>
+                    <g id="Group-5" transform="translate(107.000000, 144.000000)" stroke="#727274">
+                        <path d="M1.06187047,1.03553391 L6.03553391,1.03553391 C2.70220057,4.36886724 1.03553391,6.03553391 1.03553391,6.03553391 C1.03553391,6.03553391 1.04431276,4.36886724 1.06187047,1.03553391 Z" id="arrow-left-copy" stroke-linecap="round" stroke-linejoin="round" transform="translate(3.535534, 3.535534) scale(-1, 1) rotate(135.000000) translate(-3.535534, -3.535534) "></path>
+                        <line x1="3.53553391" y1="3.53553391" x2="25.5355339" y2="3.53553391" id="Path-25"></line>
+                    </g>
+                    <line x1="104" y1="112" x2="104" y2="184" id="Path-22" stroke="#727274" stroke-dasharray="2"></line>
+                    <g id="Group-6" transform="translate(51.000000, 183.000000)">
+                        <g id="box" transform="translate(10.500000, 6.000000)">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                            <rect stroke="#727274" stroke-width="1" stroke-linejoin="square" fill="#FFFFFF" fill-rule="evenodd" x="0.5" y="0.5" width="83" height="47" rx="2"></rect>
+                        </g>
+                        <g id="Group-7" transform="translate(13.000000, 15.000000)" font-family="CourierNewPS-BoldMT, Courier New" font-size="6" font-weight="bold" letter-spacing="0.09">
+                            <text id="NSG-rules-allow-ingr" fill="#727274">
+                                <tspan x="12.3206055" y="13">NSG rules allow </tspan>
+                                <tspan x="3.09414063" y="20">ingress traffic from </tspan>
+                                <tspan x="6.78472656" y="27">IG to EC2 instance</tspan>
+                            </text>
+                            <text id="CONTRACT" fill="#1D1E1F">
+                                <tspan x="25.2376563" y="5">CONTRACT</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <g id="projects_workspaces" transform="translate(8.000000, 8.000000)"></g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
