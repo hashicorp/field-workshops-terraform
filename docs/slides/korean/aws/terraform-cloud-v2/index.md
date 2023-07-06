@@ -185,36 +185,36 @@ class: table-exercises
 ---
 name: participant-requirements
 class: col-3, header-adjust, minimal-list
-# Participant Requirements
+# 참석자 요구 사항
 ### Terraform Cloud
-- Terraform Cloud account (free)
+- Terraform Cloud 계정 (free)
 
 - Terraform "___Team & Governance Plan___" Trial
 
-- Terraform Cloud personal access token 
+- Terraform Cloud 개인 액세스(Personal Access) 토큰
 
 ### GitHub
-- Personal account
+- 개인 계정
   
-- GitHub personal access token (classic)
+- GitHub 개인 액세스(Personal Acces)토큰 (classic)
 
 - ~ five (5) GitHub Actions minutes (optional)
 
 ### Instruqt Account
 
-- Free to sign up
+- 무료 가입
 
-- HashiCorp private invite link (your instructor will provide)
+- HashiCorp 비공개 초대 링크(강사가 제공)
 
 
 ???
 # Participant Requirements
 
-- The requirements for the lab exercises are described in detail in the workshop
+- 실습에 대한 요구 사항은 워크샵에 자세히 설명되어 있습니다.
 
-- The lab exercises make allowences for sign up and set up of these accounts
+- 실습을 통해 다음 계정을 가입하고 설정할 수 있습니다.
 
-- The required experience level is **beginner**
+- 필요한 경험 수준은 **초급**입니다.
 
 ---
 name: TFE-Chapter-1
@@ -249,15 +249,15 @@ This chapter is organized in three sections:
 ---
 name: terraform-adoption-journey-individual
 class: col-2, minimal-list
-# Terraform Adoption Journey: Individual
+# 테라폼 도입 여정: 개인
 
-A Terraform deployment usually starts with an individual practitioner and a prescriptive workflow
+Terraform 배포는 일반적으로 개인 실무자와 규범적인(prescriptive) 워크플로우에서 시작됩니다.
 
-1. Write a Terraform configuration file or "infrastructure-as-code"
+1. Terraform 구성 파일 또는 "코드형 인프라"를 작성합니다.
      
-2. Iterate to make the plan correct, then apply the plan
+2. 계획(Plan)을 올바르게 만들기 위해 반복한 다음 계획(Plan)을 배포합니다.
 
-3. As needs change, modify the configuration file and repeat the plan-and-apply process
+3. 요구 사항이 변경되면 구성 파일을 수정하고 계획(Plan)-배포(Apply) 프로세스를 반복합니다.
 
 ![Adoption Journey - Individual](images/adoption_journey_individual.svg)
 
@@ -283,13 +283,13 @@ A Terraform deployment usually starts with an individual practitioner and a pres
 ---
 name: terraform-adoption-journey-teams
 class: col-2, minimal-list
-# Terraform Adoption Journey: Teams (1/2)
+# 테라폼 도입 여정: 팀 (1/2)
 
-With teams, the process is fundamentally the same, but there should be a version control system to provide a single source of truth
+팀의 경우 프로세스는 기본적으로 동일하지만, 단일 소스 원천을 제공하기 위한 버전 관리 시스템이 있어야 합니다.
 
-1. With a version control system, there is only one change at a time
+1. 버전 제어 시스템을 사용하면 한 번에 하나의 변경만 가능합니다.
    
-2. Teams apply changes to the infrastructure from that single source of truth
+2. 팀은 단일 진실 소스에서 인프라에 변경 사항을 적용합니다.
 
 ![Adoption Journey - Singular Team](images/adoption_journey_groups.svg)
 
@@ -313,13 +313,13 @@ name: terraform-adoption-journey-multiple-teams
 class: col-2, minimal-list
 # Terraform Adoption Journey: Teams (2/2)
 
-With several teams involved, it is best to decompose the infrastructure hierarchically
+여러 팀이 참여하는 경우 인프라를 계층적으로 분리하는 것이 가장 좋습니다.
 
-1. Each team becomes responsible for a functional part of the infrastructure
+1. 각 팀은 인프라의 기능적인 부분을 담당합니다.
    
-2. The Terraform configuration components decompose into separate workspaces
+2. Terraform 구성 구성 요소는 별도의 workspaces로 분리됩니다.
    
-3. Each workspace should have role-based access control to differentiate producers and consumers
+3. 각 workspace에는 생산자와 소비자를 구분하기 위한 역할 기반 액세스 제어(RBAC)가 있어야 합니다.
 
 ![Adoption Journey - Teams](images/adoption_journey_multiple_groups.svg)
 
@@ -347,13 +347,13 @@ name: terraform-adoption-journey-organization
 class: col-2, minimal-list
 # Terraform Adoption Journey: Organization
 
-Most organizations have a few publishers and many consumers working against a central registry
+대부분의 조직은 소수의 개발자(publishers)와 다수의 소비자(consumers)가 중앙 레지스트리에 대해 작업합니다.
 
-1. A central registry consists of pre-approved templates with configurable properties
+1. 중앙 레지스트리는 구성 가능한 속성이 있는 사전 승인된 템플릿으로 구성됩니다.
 
-2. Catalogue items are governed by policies that reflect technical, security and compliance guidelines
+2. 카탈로그 항목은 기술, 보안 및 규정 준수 지침을 반영하는 정책의 적용을 받습니다.
 
-3. Self-service infrastructure must fall within the "sandbox" model 
+3. 셀프 서비스 인프라는 "샌드박스" 모델에 속해야 합니다.
 
 ![](images/adoption_journey_organization.svg)
 
@@ -379,7 +379,7 @@ Most organizations have a few publishers and many consumers working against a ce
 name: terraform-adoption-journey
 class: center
 # Video from our CTO
-[![:scale 60%](images/terraform_adoption_journey_yt.png)](https://www.youtube.com/embed/FWpCQar9dYg)
+[![:scale 60%](images/terraform_adoption_journey_yt.png)](https://youtu.be/BlFKzTyjaTI)
 
 Blog: [Terraform Adoption Journey](https://www.hashicorp.com/resources/terraform-adoption-journey)
 ???
@@ -398,20 +398,20 @@ class: col-3, header-adjust, header-adjust-minimal-list
 # Terraform Editions
 
 ### Terraform Open Source
-* Adopt infrastructure as code and use a standard configuration language
-* Store configuration files in a version control system
-* Manually pull and commit the most up-to-date version to perform Terraform operations
-* Use and publish public modules as infrastructure templates
+* 인프라를 코드로 적용하고 표준 구성 언어 사용
+* 버전 관리 시스템에 구성 파일 저장
+* 최신 버전을 수동으로 가져와서 커밋하여 Terraform 작업 수행
+* 인프라 템플릿으로 퍼블릭 모듈 사용 및 게시
 
 ### Terraform Cloud
-* Integrate Terraform Cloud into your existing workflows
-* Ensure that only approved teams can access, edit, and provision infrastructure
-* Publish configuration modules in a private registry to define approved infrastructure patterns
-* Enforce best practices and security rules with policy as code framework
+* 기존 워크플로우에 Terraform Cloud 통합
+* 승인된 팀만 인프라에 액세스, 편집 및 프로비저닝할 수 있도록 보장
+* 승인된 인프라 패턴을 정의하기 위해 비공개 레지스트리에 구성 모듈 게시
+* Policy as Code 프레임워크를 사용하여 모범 사례 및 보안 규칙 적용
 
 ### Terraform Enterprise
-* Set up a private instance of Terraform Cloud with dedicated support from HashiCorp
-* Accommodate advanced security and compliance requirements
+* HashiCorp 전문 지원을 통해 Terraform Cloud의 프라이빗 인스턴스를 설정
+* 고급 보안 및 규정 준수 요구 사항 수용
 
 ???
 # Terraform Editions
