@@ -42,9 +42,6 @@ cp ${GITDIR}/exercises/main.tf.start ${GITDIR}/main.tf
 cp ${GITDIR}/exercises/outputs.tf.start ${GITDIR}/outputs.tf
 mv ${GITDIR}/terraform.tfvars.example ${GITDIR}/terraform.tfvars
 
-echo "$INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID"
-echo "$INSTRUQT_GCP_PROJECT_GCP_PROJECT_SERVICE_ACCOUNT_KEY" | base64 -d | jq 'tostring'
-
 # Store our project ID as a Terraform env var
 echo "TF_VAR_project=\"$INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID\"" >> /root/.bashrc
 echo "export TF_VAR_project" >> /root/.bashrc
