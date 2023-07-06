@@ -1,7 +1,7 @@
 #!/bin/bash -l
 # Track setup script
 
-set -e
+set -euvo pipefail
 
 # Wait for Instruqt to finish booting the VM
 # This is better than doing sleep
@@ -26,10 +26,19 @@ sudo apt-get update -y
 sudo apt-get install -y cowsay
 cp /usr/games/cowsay /usr/local/bin/cowsay
 
-# Install graphviz, pip, and BlastRadius
+# Needed for BlastRadius
 apt -y install graphviz
-apt -y install python3-pip
-/usr/bin/pip3 install BlastRadius
+
+# Install BlastRadius in a virtualenv to get around issues with
+# dependencies and system-installed versions of packages
+apt -y install virtualenv
+/usr/bin/virtualenv --python /usr/bin/python3 /root/venv
+source /root/venv/bin/activate
+pip3 install BlastRadius
+# Just add /root/venv/bin to PATH so we don't force participants
+# to have to activate the venv
+echo "PATH=/root/venv/bin:\${PATH}" >> /root/.bashrc
+echo "export PATH" >> /root/.bashrc
 
 # Clone the hashicat-aws repo
 git clone https://github.com/hashicorp/hashicat-aws
