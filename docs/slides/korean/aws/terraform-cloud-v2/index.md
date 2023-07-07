@@ -566,17 +566,17 @@ class: col-2, adjust-minimal-sub-list
 
 1. 시작하기 - 실습 랩 둘러보기
    * Instruqt 알아보기
-   * 코드 편집기 설정
+   * 코드 에디터 설정
    * Terraform 명령 사용해 보기
 
 2. Terraform 클라우드 설정
    * Terraform Cloud에 가입 또는 로그인
-   * 팀 및 거버넌스 평가판으로 업그레이드
+   * 팀 & 거버넌스 평가판으로 업그레이드
    * 개인용 Terraform Cloud 토큰 생성
 
-3. Terraform 상태 보호
+3. Terraform State 보호
    * AWS에서 작동하는 앱 환경 배포
-   * Terraform Cloud를 사용하여 Terraform 상태 관리
+   * Terraform Cloud를 사용하여 Terraform State 관리
 
 - Quiz 1 - Terraform Remote State
 ???
@@ -615,9 +615,9 @@ name: chapter-1-review
 class: review, no-footer
 # Chapter 1 review
 
-1. The adoption journey of infrastructure-as-code with Terraform includes phases of maturity for individuals, groups, and organizations
+1. Terraform을 사용한 코드형 인프라의 도입 여정에는 개인, 그룹 및 조직의 성숙 단계가 포함됩니다.
 
-2. Terraform Cloud is a SOC2-compliant cloud service to manage the lifecycle of infrastructure deployments
+2. Terraform Cloud는 인프라 배포의 수명 주기를 관리하는 SOC2 호환 클라우드 서비스입니다.
 
 ???
 # Chapter 1 review
@@ -655,12 +655,12 @@ This chapter is organized in three sections:
 ---
 name: infrastructure-as-code
 class: col-2, minimal-list, constrain-image
-# The Core of Infrastructure as Code
+# Infrastructure as Code의 핵심
 
-With HashiCorp Configuration Language (HCL), infrastructure and services from any provider can be provisioned in a codified, secure, and automated fashion.
-* HCL is human-readable and machine-executable
-* Declarative, Turing-complete language
-* Engineered for automation and collaboration 
+HashiCorp Configuration Language(HCL)를 사용하면 모든 프로바이더의 인프라와 서비스를 코드화되고 안전하며 자동화된 방식으로 프로비저닝할 수 있습니다.
+* HCL은 사람이 읽을 수 있고 기계가 실행할 수 있음
+* 선언적, 튜링 완전(Turing-complete) 언어
+* 자동화 및 협업을 위해 설계됨
 
 ![Sample Code](images/code_example.svg)
 
@@ -678,20 +678,20 @@ With HashiCorp Configuration Language (HCL), infrastructure and services from an
 ---
 name: core-terraform-workflow
 class: col-3, header-adjust, header-adjust-minimal-list
-# The Core Terraform Workflow
+# 핵심 Terraform 워크플로우
 
 ### Write
-* Author infrastructure as code
-* You write Terraform configuration just like you write code
-* It parallels working on application code as an individual
+* 인프라를 코드로(IaC) 작성
+* 코드를 작성하는 것처럼 Terraform 구성을 작성
+* 개인으로서 애플리케이션 코드를 작업하는 것과 유사
 
 ### Plan
-* Preview changes before applying
-* When the feedback loop of the Write step has yielded a change that looks good, commit your work and review the final plan
+* 적용하기 전에 변경 사항 미리보기
+* 쓰기(Write) 단계의 피드백 루프를 통해 보기 좋은 변경 사항이 도출되면, 작업을 커밋하고 최종 계획(Plan)을 검토
 
 ### Apply
-* Provision reproducible infrastructure
-* Instruct Terraform to provision real infrastructure
+* 재현 가능한(reproducible) 인프라 프로비저닝
+* 실제 인프라를 프로비저닝하도록 Terraform에 지시(Instruct)
 ???
 # The Core Terraform Workflow
 
@@ -712,21 +712,21 @@ class: col-3, header-adjust, header-adjust-minimal-list
 # The Core Terraform Workflow and Terraform Cloud
 
 ### Write
-* Author infrastructure as code and maintain in VCS
-* Team members work on authoring config until it is ready to propose changes via a pull request
-* Terraform Cloud secures state, input variables, and authorized access
+* 인프라를 코드로(IaC) 작성하고 VCS에서 유지 관리
+* 팀원들은 풀 리퀘스트(PR)를 통해 변경 사항을 제안할 준비가 될 때까지 구성 작성 작업을 수행
+* Terraform Cloud는 안전한 상태관리(State), 입력 변수 및 승인된 액세스를 제공
   
 <br>
 
 ### Plan
-* Automated, speculative plans review changes before applying so team members can quickly analyze the full plan details
-* Terraform Cloud estimates monthly costs of deployment
-* Terraform Cloud evaluates policies against the plan to determine compliance with policy-as-code logic
+* 자동화된 예측(speculative) 계획(plans)은 적용하기 전에 변경 사항을 검토하므로 팀원이 전체 계획 세부 정보를 빠르게 분석할 수 있음
+* Terraform Cloud는 월별 배포 비용을 예측할 수 있음
+* Terraform Cloud는 계획에 대해 정책을 평가하여 코드형 정책(policy-as-code) 로직의 준수 여부를 판단
 
 ### Apply
-* Team members trigger __apply__ directives via CLI, API or VCS change control
-* Authorized Terraform Cloud users can approve or reject deployments 
-* Terraform Cloud can integrate third-party tools and services to manage cost, security, and compliance; Or, to enhance your workflow with custom logic
+* 팀 구성원은 CLI, API 또는 VCS 변경 제어를 통해 __apply__ 지시문(directives)을 트리거
+* 권한이 부여된 Terraform Cloud 사용자는 배포를 승인하거나 거부할 수 있음
+* Terraform Cloud는 3rd Party 도구와 서비스를 통합하여 비용, 보안 및 규정 준수를 관리하거나 사용자 정의 로직으로 워크플로우를 개선할 수 있음
 ???
 # The Core Terraform Workflow and Terraform Cloud
 
@@ -746,11 +746,11 @@ name: tfc-workspaces
 class: col-2, minimal-list
 # Projects and Workspaces
 
-- Terraform Cloud organizes infrastructure collections with projects and workspaces that align to teams
+- Terraform Cloud는 팀에 맞는 프로젝트 및 워크스페이스로 인프라 컬렉션을 구성
 
-- A project is a logical grouping of Terraform Cloud workspaces 
+- 프로젝트(Project)는 Terraform Cloud 워크스페이스의 논리적 그룹
 
-- Workspaces contain everything Terraform needs to manage a given collection of infrastructure, and separate workspaces function like completely separate working entities
+- 워크스페이스에는 지정된 인프라 모음(collection)을 관리하는 데 필요한 모든 것이 포함되며, 별도의 워크스페이스는 완전히 별개의(separate) 작업 개체처럼 작동합니다.
 
 ![Browser](images/projects-and-workspaces.svg)
 ???
@@ -771,13 +771,13 @@ name: tfc-state
 class: col-2, minimal-list
 # Deployment State
 
-- Terraform Cloud retains historical state versions, available for analysis of infrastructure changes over time
+- Terraform Cloud는 시간 경과에 따른 인프라 변경 사항을 분석하는 데 사용할 수 있도록 과거 상태(state) 버전을 유지함
 
-- Authorized users can download and manipulate state to manually import, taint, move, or rename existing resources to match a drift in configuration
+- 권한이 부여된 사용자는 상태(state)를 다운로드하고 조작하여 구성의 변동에 맞게 기존 리소스를 수동으로 가져오거나, 테인트(taint)하거나, 이동하거나, 이름을 바꿀 수 있음
 
-- Authorized users can roll back to a previous state version with the UI
+- 권한이 부여된 사용자는 UI를 통해 이전 상태(state) 버전으로 롤백할 수 있음
 
-- Terraform Cloud uses state to measure drift with automated Health Assessments
+- 테라폼 클라우드는 상태를 사용하여 자동화된 상태(state) 평가로 드리프트(drift)를 측정
 
 ![Browser](images/workspace-state.svg)
 ???
@@ -794,24 +794,24 @@ name: tfc-variables
 class: col-2, minimal-list
 # Deployment Variables
 
-- Terraform Cloud supports a global scope with **variable sets**. These can be exposed globaly or to select workspaces
+- Terraform Cloud는 **변수 세트(variable sets)**를 글로벌 범위로 지원합니다. 이러한 변수는 전역적으로 노출되거나 일부 워크스페이스에 노출될 수 있음
 
-- Terraform Cloud workspaces use local variables - may override variable sets
+- Terraform Cloud 워크스페이스는 로컬 변수를 사용하며 변수 세트를 재정의할 수 있음
 
-- Variable subsets include
+- 변수 하위 집합(subsets)에는 다음이 포함
   <table>
   <tr>
-    <td>Environment variables to store provider credentials or Terraform's default behaviours</td>
+    <td>프로바이더 자격 증명 또는 Terraform의 기본 동작을 저장하는 환경 변수</td>
   </tr>
   <tr>
-    <td>Terraform variables for dynamic input parameters used to configure properties in a deployment</td>
+    <td>배포에서 속성(properties)를 구성하는 데 사용되는 동적 입력 매개변수(dynamic input parameters)를 위한 Terraform 변수</td>
   </tr>
 </table>
 
 ![Terraform Cloud Variables](images/deployment_variables.svg)
 
 ???
-# Deployment Variables
+# 배포 변수(Deployment Variables)
 - Variable Sets are meaningful when an organization organizes deployments in logical groupings. Instead of managing individual deployments and their properties, administrators make assignments a global set of variables, and focus on the lifecyle of those variables.
   
 - Consider the followign scenarios. With the HCL language, Terraform works in a dynamic form to support variables in a global or local scope. How would you apply these variables?
@@ -824,13 +824,13 @@ class: col-2, minimal-list
 ---
 name: tfc-user-permissions
 class: col-2, minimal-list
-# Permissions Model
+# 권한 모델(Permissions Model)
 
-- Users must belong to a team with appropriate grant permissions to perform actions in Terraform Cloud
+- 사용자는 적절한 부여(grant) 권한이 있는 팀에 소속되어 있어야 Terraform Cloud에서 작업을 수행할 수 있음
 
-- The permissions model splits into organization-level and workspace-level permissions
+- 권한 모델은 조직 수준(organization-level)과 워크스페이스 수준(workspace-level) 권한으로 분류됨
 
-- Organization owners can grant teams permissions to manage policies, projects and workspaces, VCS settings, private registry providers and modules, and policy overrides across an organization
+- 조직(Organization) 소유자는 팀에 정책, 프로젝트 및 워크스페이스, VCS 설정, 개인 레지스트리 프로바이더 및 모듈, 조직 전반의 정책 재정의 관리 권한을 부여할 수 있음
 
 ![Terraform Cloud Permissions Model](images/permissions_model.svg)
 ???
@@ -846,11 +846,11 @@ class: col-2, minimal-list
 ---
 name: tfc-team-collaboration
 class: col-2, header-adjust-minimal-list
-# Team collaboration
-There are three main elements to the Terraform collaboration experience:
-- **Central registry**: Share reusable Terraform modules across teams
-- **Centralized plans and applies**: Safely run Terraform plans and applies in one location where collaborators can review and make decisions together
-- **State management**: Store, secure, lock, and version Terraform state files
+# 팀 협업(Team collaboration)
+Terraform 협업 환경에는 세 가지 주요 요소가 있습니다:
+- **중앙 레지스트리(Central registry)**: 팀 간에 재사용 가능한 Terraform 모듈 공유
+- **중앙 집중식 계획 및 적용(Centralized plans and applies)**: 협력자들이 함께 검토하고 의사 결정을 내릴 수 있는 한 곳에서 Terraform 계획(plans) 및 적용(applys)을 안전하게 실행합니다.
+- **상태 관리(State management)**: Terraform 상태 파일의 저장, 보안, 잠금 및 버전 관리
 
 ![Terraform Cloud Permissions Model](images/collaboration_experience.svg)
 
@@ -872,14 +872,14 @@ There are three main elements to the Terraform collaboration experience:
 name: lab-guidance-02
 class: col-2, adjust-minimal-sub-list
 # Workshop - Part Two
-1. Workspace Variables
-  * Explore Variable Sets
-  * Compare workspace variables    
+1. 워크스페이스 변수(Workspace Variables)
+  * Variable Sets 살펴보기
+  * Workspace variables 비교하기
 
 1. Working with Teams in Terraform Cloud
-  * Create Organization Teams
-  * Assign Workspace Permissions to Teams
-  * Invite Terraform Cloud users to join Teams
+  * Organization Teams 생성하기
+  * Teams에 워크스페이스 권한(Workspace Permissions) 할당하기
+  * Terraform Cloud 사용자를 Teams에 초대하기
 
 - Quiz 2 - Secure Variables
 
@@ -901,11 +901,11 @@ class: col-2, adjust-minimal-sub-list
 ---
 name: chapter-2-review
 class:  review, no-footer
-# Chapter 2 review
+# Chapter 2 리뷰
 
-1. Terraform Cloud permissions model splits into organization and workspace levels
+1. 조직(organization) 및 워크스페이스(workspace) 수준으로 분할되는 Terraform Cloud 권한 모델을 알아보았습니다.
 
-2. Resource administration in Terraform Cloud defaults to an implicit deny-all model, and teams require global, project or workspace assignments
+2. Terraform Cloud의 리소스 관리(Resource administration)는 기본적으로 암시적 거부(implicit deny-all) 모델을 사용하며, 팀은 글로벌, 프로젝트 또는 워크스페이스 할당이 필요합니다.
 
 ???
 # Chapter 2 review
