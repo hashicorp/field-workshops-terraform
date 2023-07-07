@@ -1220,11 +1220,11 @@ name: terraform-public-registry
 class: col-2, minimal-list
 # Terraform Registry
 
-- The Terraform Registry is a public library of trusted providers, modules, policies and run tasks used with Terraform deployments
+- 테라폼 레지스트리는 테라폼 배포에 사용되는 신뢰할 수 있는 프로바이더, 모듈, 정책 및 실행 작업(run tasks)의 공개 라이브러리
 
-- The resources are owned and maintained by a technology organization that maintains a partnership with HashiCorp through the Terraform Integration Program 
+- 이 리소스는 Terraform Integration Program을 통해 HashiCorp와 파트너십을 유지하는 기술 조직이 소유하고 유지 관리함
 
-- To use a resource from the Registry, add it to your IaC configuration and Terraform  automatically downloads everything
+- 레지스트리의 리소스를 사용하려면, 해당 리소스를 IaC 구성에 추가하면 Terraform이 모든 것을 자동으로 다운로드함
 
 ![Terraform Registry](images/terraform_registry.svg)
 ???
@@ -1242,11 +1242,11 @@ name: terraform-modules
 class: col-2, minimal-list
 # Terraform Modules
 
-- Terraform modules are self-contained, composable and reusable infrastructure collections to build deployments
+- Terraform 모듈은 배포를 구축하기 위한 독립적(self-contained)이고 구성 가능하며(composable) 재사용 가능한(reusable) 인프라 모음
 
-- Producer groups create curated modules as standard, templated offerings with configurable properties
+- 생산자(Producer) 그룹은 구성 가능한 속성을 갖춘 표준 템플릿 제안(offerings)으로 선별된(curated) 모듈을 생성
 
-- Modules are maintained in VCS repositories and published to a private registry in Terraform Cloud
+- 모듈은 VCS 리포지토리에서 유지 관리되고 Terraform Cloud의 프라이빗 레지스트리에 게시됨
 
 ![Terraform Modules](images/terraform_modules.svg)
 ???
@@ -1261,11 +1261,11 @@ name: tfc-private-registry
 class: col-2, minimal-list
 # Private Module Registry
 
-- Terraform Cloud includes a private registry where teams can set up modules and providers from private VCS repositories
+- Terraform Cloud에는 팀이 프라이빗 VCS 리포지토리에서 모듈과 프로바이더를 설정할 수 있는 프라이빗 레지스트리가 포함되어 있음
 
-- Many organizations use modules, providers, or policies that cannot or do not need to be publicly available
+- 많은 조직에서 공개적으로 사용할 수 없거나 공개할 필요가 없는 모듈, 프로바이더 또는 정책을 사용
 
-- Practitioners can copy modules from the public Terraform Registry, customize a private version, and publish to their Private Module Registry in Terraform Cloud
+- 실무자(Practitioners)는 퍼블릭 Terraform 레지스트리에서 모듈을 복사하고, 비공개 버전을 사용자 지정하고, Terraform Cloud의 프라이빗 모듈 레지스트리에 게시할 수 있음
 
 ![PMR Workflow](images/pmr_technical_workflow.svg)
 ???
@@ -1287,11 +1287,11 @@ name: tfc-api
 class: col-2, minimal-list
 # Terraform API
 
-- Terraform Cloud supports a rich HTTP API to perform most operations, replacing UI directives and CLI commands
+- Terraform Cloud는 대부분의 작업을 수행할 수 있는 풍부한 HTTP API를 지원하여 UI 지시문(directives)과 CLI 명령을 대체함
 
-- The TFC Terraform Provider is a practical API implementation for automating Terraform Cloud managment with Terraform (HCL) configuration code
+- TFC Terraform Provider는 Terraform(HCL) 구성 코드로 Terraform Cloud 관리를 자동화하기 위한 실용적인 API 구현입니다.
 
-- The Terraform CDK supports the following:
+- Terraform CDK는 다음 언어를 지원합니다:
 
   <table>
   <tr>
@@ -1320,11 +1320,11 @@ name: tfc-api-workflows
 class: col-2, minimal-list
 # Service Management
 
-- Terraform Cloud operations can be entirely managed via API, allowing organizations to integrate automated deployments in their existing business processes easily
+- Terraform Cloud 운영은 API를 통해 완전히 관리할 수 있으므로 조직은 기존 비즈니스 프로세스에 자동화된 배포를 쉽게 통합할 수 있음
 
-- Trusted orchestrators use the Terraform API to procure resources and coordinate runtime operations 
+- 신뢰할 수 있는 오케스트레이터는 Terraform API를 사용하여 리소스를 조달(coordinate)하고 런타임 작업을 조율함
 
-- VCS integrations enhance team collaborations, code reviews and automated testing
+- VCS 통합으로 팀 협업, 코드 검토 및 자동화된 테스트 향상
    
 ![Terraform API](images/terraform_workflow.svg)
 ???
@@ -1340,13 +1340,13 @@ class: col-2, minimal-list
 ---
 name: tfc-api-cicd
 class: center_p
-# CICD Integration
+# CI/CD 통합(Integration)
 
-Terraform Cloud integrates into your existing CI/CD pipelines, IT service management interfaces, and version control system processes.
+Terraform Cloud는 기존 CI/CD 파이프라인, IT 서비스 관리 인터페이스 및 버전 제어 시스템 프로세스에 통합됩니다.
 
 ![Terraform Cloud CIDC](images/terraform_cloud_cicd.svg)
 ???
-# CICD Integration
+# CI/CD 통합(Integration)
 - The illustration showcases the type of service layers involved in a CI/CD process. Here is a quick breakdown of each from left to right:
 
 > | Service         | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Function                                                                             |
@@ -1377,16 +1377,16 @@ name: lab-guidance-04
 class: col-2, adjust-minimal-sub-list
 # Workshop - Part Four
 
-1. Private Module Registry
-  * Implement a Terraform module from the [Terraform Registry](https://registry.terraform.io)
-  * Clone a Terraform Registry module to your private VCS
-  * Implement a module from your Private Module Registry
+1. 프라이빗 모듈 레지스트리
+  * [Terraform Registry](https://registry.terraform.io)에서 테라폼 모듈을 구현
+  * Terraform Registry 모듈을 프라이빗 VCS에 복제
+  * 프라이빗 모듈 레지스트리에서 모듈을 구현
 
-1. API Driven Workflows
-  * Test core HTTP API methods
-  * Experiment with CRUD operations
-  * Explore API wrappers concepts
-  * Use continuous integration with GitHub Actions  
+1. API 중심(Driven) 워크플로우
+  * 핵심(Core) HTTP API 메서드 테스트
+  * CRUD 작업 실험
+  * API 래퍼 개념 살펴보기
+  * GitHub Actions와 지속적 통합 사용
 
 - Quiz 4 - Private Module Registry
 
@@ -1425,9 +1425,9 @@ name: chapter-4-review
 class: review, no-footer
 # Chapter 4 review
 
-1. The Private Registry establishes a service catalogue of infrastructure deployments and options for no-code  
+1. Private Registry는 인프라 배포의 서비스 카탈로그와 **no-code**을 위한 옵션을 설정(establishes)
 
-2. Terraform Cloud supports rich API options that adapt to your existing service model workflows and integrate agnostically into your delivery pipelines
+2. Terraform Cloud는 기존 서비스 모델 워크플로우에 맞게 적용(adapt)하고 배포 파이프라인에 불가지론적으로(agnostically) 통합할 수 있는 다양한 API 옵션을 지원
 ???
 # Chapter 4 review
 
@@ -1437,13 +1437,13 @@ class: review, no-footer
 ---
 name: additional-resources
 class: header-adjust, minimal
-## Additional Resources
+## 추가 리소스(Additional Resources)
 ### HashiCorp Developer
-Learn at your own pace in one place with reference docs, step by step tutorials, videos, and real hands-on lab workstations. `https://developer.hashicorp.com`
+참조 문서, 단계별 자습서, 비디오 및 실제 핸즈온 워크스테이션을 통해 한 곳에서 원하는 속도로 학습하세요. `https://developer.hashicorp.com`
 ### HashiCorp Community
-Join our forum or a user group to engage and learn from the broader community. `https://www.hashicorp.com/community`
+포럼이나 사용자 그룹에 가입하여 더 넓은 커뮤니티에 참여하고 학습하세요. `https://www.hashicorp.com/community`
 ### HashiCorp Forum
-Terraform, Terraform Cloud, Terraform Enterprise, and CDK for Terraform use cases, questions, and best practices discussions. `https://discuss.hashicorp.com`
+Terraform 사용 사례, 질문 및 모범 사례 토론을 위한 Terraform, Terraform Cloud, Terraform Enterprise 및 CDK를 확인하세요. `https://discuss.hashicorp.com`
 
 ???
 # Additional Resources
