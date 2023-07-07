@@ -47,7 +47,7 @@ SOC2를 준수하고 신뢰할 수 있는 환경에서 State 저장 및 Terrafor
 
 - **클라우드 규정 준수 및 관리 설정**
   
-Terraform에서 관리하는 모든 리소스에서 권한 및 거버넌스 기능을 설정하고 정책 시행을 위한 기능을 추가하세요.
+Terraform에서 관리하는 모든 리소스에서 권한 및 거버넌스 기능을 설정하고 정책 시행을 위한 기능을 추가
 
 - **프라이빗 레지스트리로 셀프 서비스 인프라 생성**
   
@@ -435,15 +435,15 @@ class: col-3, header-adjust, header-adjust-minimal-list
 name: terraform-cloud
 class: col-2, header-adjust, minimal-list
 # Terraform Cloud
-### Single control plane for provisioning
+### 프로비저닝을 위한 단일 컨트롤 플레인
 
-* Fully-managed, infrastructure-as-code cloud service
+* 완전 관리형(Fully-managed), 코드형 인프라(infrastructure-as-code) 클라우드 서비스
   
-* Provision and manage any infrastructure with one workflow
+* 하나의 워크플로우로 모든 인프라 프로비저닝 및 관리
 
-* Self-Service infrastructure to provision infrastructure on-demand from a private registry
+* 프라이빗 레지스트리에서 온디맨드 방식으로 인프라를 프로비저닝하는 셀프 서비스 인프라
   
-* Enterprise features to provide advanced security, compliance and governance 
+* 고급 보안, 규정 준수 및 거버넌스를 제공하는 엔터프라이즈 기능
 
 ![Terraform Cloud](images/terraform_cloud.svg)
 
@@ -452,28 +452,31 @@ class: col-2, header-adjust, minimal-list
 
 ## Why Terraform Cloud?
 
-- Terraform Cloud enables infrastructure automation for provisioning, compliance, and management of any cloud, datacenter, and service.
+- Terraform Cloud는 모든 클라우드, 데이터센터 및 서비스의 프로비저닝, 규정 준수 및 관리를 위한 인프라 자동화를 지원합니다.
+Terraform Cloud enables infrastructure automation for provisioning, compliance, and management of any cloud, datacenter, and service.
 
 - Terraform Cloud provides infrastructure automation as a service, is free to get started, and has an in-place upgrade to paid option.
+Terraform Cloud는 인프라 자동화를 서비스로 제공하며, 무료로 시작할 수 있고, 제자리에서(in-place) 유료로 업그레이드할 수 있는 옵션이 있습니다.
 
 - Terraform Cloud is not the same as Terraform OSS. Terraform Cloud is a cloud service, and Terraform OSS is the technology used to provision infrastructure.
+Terraform Cloud는 Terraform OSS와 동일하지 않습니다. Terraform Cloud는 클라우드 서비스이며, Terraform OSS는 인프라를 프로비저닝하는 데 사용되는 기술입니다.
 
 ---
 name: terraform-cloud-build
 class: col-2, header-adjust, minimal-paragraph
 # Build infrastructure remotely with your team
 
-###Remote state storage
-Store and dynamically update your Terraform state file securely with encryption at rest
+###원격 상태(State) 저장소
+저장된 상태(State) 파일을 암호화하여 안전하게 저장하고 동적으로 업데이트합니다.
 
-###Version control (VCS) integration
-Manually approve changes or automate a run as soon as a pull request merges into a main branch
+###버전 제어(VCS) 통합
+풀 리퀘스트가 메인 브랜치에 병합되는 즉시 수동으로 변경 사항을 승인하거나 실행을 자동화합니다.
 
-###Flexible workflows
-Run Terraform from the CLI, a UI, version control, or the API
+###유연한 워크플로우
+CLI, UI, 버전 제어 또는 API에서 Terraform을 실행할 수 있습니다.
 
-###Collaborate on infrastructure changes
-Review and comment on plans before executing any change to infrastructure
+###인프라 변경에 대한 협업
+인프라 변경을 실행하기 전에 계획 검토하고 의견을 제시합니다.
 
 ???
 # Build infrastructure remotely with your team
@@ -495,17 +498,17 @@ Review and comment on plans before executing any change to infrastructure
 name: terraform-cloud-standard
 class: col-2, header-adjust, minimal-paragraph
 # Standardize best practices 
-###Private registry
-Create sets of modules and providers for your infrastructure that promote best practices across your teams
+###프라이빗 레지스트리
+팀 전체에 모범 사례(best practices)를 권장하는 인프라를 위한 모듈 및 프로아비더 세트를 만듭니다.
 
-###Cost estimation
-Calculate costs before applying infrastructure changes, and control them using policy as code
+###비용 견적(estimation)
+인프라 변경 사항을 적용하기 전에 비용을 계산하고 정책을 코드로 사용하여 제어하빈다.
 
-###Custom workspace permissions
-Set up different access levels for administrators, operators, and developers
+###워크스페이스 권한 사용자화
+관리자, 운영자, 개발자를 위해 서로 다른 액세스 수준을 설정합니다.
 
 ###Policy as code
-Create security and compliance guidelines for any Terraform run with Sentinel or third-party tools
+Sentinel 또는 3rd party 도구로 실행되는 모든 Terraform에 대한 보안 및 규정 준수 지침을 생성합니다.
 
 ???
 # Standardize best practices
@@ -527,17 +530,17 @@ Create security and compliance guidelines for any Terraform run with Sentinel or
 name: terraform-cloud-cicd
 class: col-2, header-adjust, minimal-paragraph
 # Integrating into your CI/CD pipelines 
-###CI/CD integration
-Integrate Terraform runs into your existing toolchain for improved automation
+###CI/CD 통합
+테라폼 실행(runs)을 기존 툴체인에 통합하여 자동화를 개선합니다.
 
-###API-driven Operations
-Build Terraform Cloud into your existing automation workflows
+###API 기반 작업
+기존 자동화 워크플로에 Terraform Cloud를 빌드합니다.
 
-###Concurrent runs
-Increase your team’s velocity by adding concurrent runs to your plan
+###동시 실행
+계획(plan)에 동시(concurrent) 실행(runs)을 추가하여 팀의 속도를 높입니다.
 
-###Private datacenter connectivity
-Execute Terraform runs from behind your firewall or connect to other private resources
+###사설 데이터 센터 연결
+방화벽 뒤에서 Terraform을 실행하거나 다른 프라이빗 리소스에 연결합니다.
 ???
 # Standardize best practices
 - This slide is about **`process optimization`** in service delivery.
@@ -561,19 +564,19 @@ class: col-2, adjust-minimal-sub-list
 
 ![Lab Part One](images/part_01.png)
 
-1. Getting Started - Explore the Lab
-  * Get to know Instruqt
-  * Set up Code Editor
-  * Try out Terraform commands    
+1. 시작하기 - 실습 랩 둘러보기
+   * Instruqt 알아보기
+   * 코드 편집기 설정
+   * Terraform 명령 사용해 보기
 
-1. Terraform Cloud Setup
-  * Sign-up or log in to Terraform Cloud
-  * Upgrade to a Team & Governance trial plan
-  * Generate a personal Terraform Cloud token
+2. Terraform 클라우드 설정
+   * Terraform Cloud에 가입 또는 로그인
+   * 팀 및 거버넌스 평가판으로 업그레이드
+   * 개인용 Terraform Cloud 토큰 생성
 
-1. Safekeeping Your Terraform State
-  * Deploy a working app environment in AWS
-  * Use Terraform Cloud to manage Terraform state
+3. Terraform 상태 보호
+   * AWS에서 작동하는 앱 환경 배포
+   * Terraform Cloud를 사용하여 Terraform 상태 관리
 
 - Quiz 1 - Terraform Remote State
 ???
