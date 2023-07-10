@@ -918,38 +918,38 @@ class:  review, no-footer
 name: VCS-and-Governance
 class: title, no-footer
 
-# Chapter 3
-## VCS and Governance
+# 챕터 3
+## VCS와 거버넌스
 
 ???
-# Chapter 3: VCS and Governance
+# 챕터3: VCS와 거버넌스 
 
-## Organization
-This chapter is organized in three sections:
-1. Integration with Version Control Systems
+## 조직 (Organization)
+해당 챕터는 세개의 섹션으로 구성되어 있습니다:
+1. 버전 관리 시스템(VSC)과의 통합
 
-   - Why are VCS connections important?
-   - What does the VCS workflow do?
+   - VCS 연결이 중요한 이유는 무엇인가요?
+   - VCS 워크플로우는 어떤 기능을 하나요?
 
 2. Policy as Code 
 
-   - Why is policy-as-code relevant?
-   - How policy validation works
+   - Policy-as-code (코드로서의 정책)이 중요한 이유는 무엇인가요?
+   - 정책 유효성 검사(Policy Validation)의 작동 방식
 
-3. Automated Testing
+3. 자동화된 테스트 
 
-   - Combine VCS and PaC
-   - Simplified use cases for 
+   - VCS와 PaC 결합
+   - 사용 사례 
 
      - Unit Testing
      - Contract Testing
      - Integration Testing
 
-**INSTRUCTOR NOTE**: Remind the audience that the hands-on portions of the lab demonstrate the topics above. 
+*INSTRUCTOR NOTE*: Remind the audience that the hands-on portions of the lab demonstrate the topics above. 
 ---
 name: tfc-vcs-workflow
 class: col-2, minimal-list
-# VCS Connections
+# VCS 연결
 - Access a list of repositories and link to your private module registry, policy sets and workspaces in Terraform Cloud
 
 - Terraform Cloud downloads the contents of a repository based on workflow triggers   
@@ -959,16 +959,16 @@ class: col-2, minimal-list
 ![VCS Workflow Overview](images/vcs_workflow_overview.svg)
 
 ???
-# VCS Connections
-- Terraform Cloud uses VCS connection to link directly to assets in repos
+# VCS 연결 
+- Terraform Cloud는 VCS 연결을 사용하여 리포지토리에 있는 에셋에 직접 연결합니다.
 
-- VCS connections are configured once and used for three specific types of assets:
+- VCS 연결은 한 번 구성되며 세 가지 특정 유형의 에셋에 사용됩니다:
   
-  1. Terraform Modules to list in the private Terraform Cloud Registry
+  1. 비공개 Terraform Cloud 레지스트리에 나열할 Terraform 모듈
    
-  2. Policy collections to align with Policy Sets
+  2. 정책 세트에 맞게 조정할 정책 컬렉션
    
-  3. Terraform deployments in a 1:1 relationship with Workspaces
+  3. 워크스페이스와 1:1 관계의 Terraform 배포
 
 - It is important to remember that Terraform Cloud Worspaces can use up to three types of workflows to trigger a run: 1- `CLI`, 2- `VCS` and 3- `API`. Using VCS satisfies one of these workflow patterns.
 
@@ -976,11 +976,11 @@ class: col-2, minimal-list
 name: tfc-vcs-connection
 class: col-2, minimal-list
 # VCS Workflow
-- Workspaces register webhooks with your VCS provider, and Terraform Cloud gets notified of new commits to a branch
+- 워크스페이스가 VCS 제공업체에 웹훅을 등록하면 Terraform Cloud가 브랜치에 대한 새로운 커밋에 대한 알림을 받습니다.
   
-- With VCS integration, Terraform Cloud can automatically initiate a run on a dedicated Terraform Cloud worker
+- VCS 통합을 통해 Terraform Cloud는 전용 Terraform Cloud 워커에서 자동으로 실행을 시작할 수 있습니다.
 
-- Terraform Cloud makes code review easier by automatically predicting how pull requests affect infrastructure with speculative plans
+- Terraform Cloud는 풀 리퀘스트가 추측 계획(speculative plans)으로 인프라에 어떤 영향을 미치는지 자동으로 예측하여 코드 검토를 더 쉽게 만듭니다. 
 
 ![VCS Connection Overview](images/vcs_connection_overview.svg)
 
@@ -1011,11 +1011,11 @@ name: tfc-policy-as-code
 class: col-2, minimal-list, constrain-image
 # Policy As Code
 
-- Terraform Cloud enforces rules with policies written with HashiCorp Sentinel or Open Policy Agent (OPA)
+- Terraform Cloud는 해시코프 센티널 또는 오픈 정책 에이전트(OPA)로 작성된 정책으로 규칙을 적용합니다.
 
-- Policies are expressed as code and grouped into policy sets 
+- 정책은 코드로 표현되고 정책 세트로 그룹화됩니다. 
 
-- Policy sets extend to one or more workspaces in your organization by assignment
+- 정책 세트는 할당에 따라 조직 내 하나 이상의 워크스페이스로 확장됩니다.
 
 ![Policy as Code](images/policy-as-code.svg)
 
@@ -1024,11 +1024,11 @@ class: col-2, minimal-list, constrain-image
 
 Policy as code is important for validation of the configuration that support multiple standards. The following are typical categories:
 
-- **Resource Configuration** to confirm expected values are assigned according to standards, e.g.,
+- *Resource Configuration* to confirm expected values are assigned according to standards, e.g.,
 
 >> A group of VMs in a deployment should have Department and Enviroment tags (see example). 
 
-- **Security Adherence** to validate that rules are within the boundaries of a well-defined sandbox model, e.g.,
+- *Security Adherence* to validate that rules are within the boundaries of a well-defined sandbox model, e.g.,
 
 >> Deny any AWS DB instance of an unencrypted database.
 
@@ -1036,7 +1036,7 @@ Policy as code is important for validation of the configuration that support mul
 
 >> [Source](https://github.com/intel/policy-library-intel-aws)
 
-- **Corporate Compliance** to report on formalized frameworks such as CIS, or business compliance rules, e.g.,
+- *Corporate Compliance* to report on formalized frameworks such as CIS, or business compliance rules, e.g.,
 
 >> CIS 4.1: Ensure no security groups allow ingress from 0.0.0.0/0 to port 22.
 
@@ -1046,7 +1046,7 @@ Policy as code is important for validation of the configuration that support mul
 
 The categories above are not exhaustive and there are many other optional categories. Consider for instance, 
 
-- **Ad hoc rules** to address situational scenarios, e.g., 
+- *Ad hoc rules* to address situational scenarios, e.g., 
 
 >> A development group should not deploy a fleet of VMs, any with 8-32 cores and/or 16-64GB memory, on a Friday afternoon past 3PM.
 ---
@@ -1054,20 +1054,20 @@ name: tfc-policy-as-code-validation
 class: col-2, minimal-list
 # Automated Policy Validation
 
-- Policy validation overlaps with automated testing after the plan stage and before the apply stage of a workspace run cycle 
+- 정책 유효성 검사는 계획 단계 이후 및 워크스페이스 실행 주기의 적용 단계 전에 자동화된 테스트와 중복됩니다. 
 
-- Policies analyze patterns to filter properties and check configuration, security and compliance guidelines
+- 정책은 패턴을 분석하여 속성을 필터링하고 구성, 보안 및 규정 준수 지침을 확인합니다.
   
 - Enforcement Levels:
   <table>
   <tr>
-    <td>Advisory: Warning when a policy fails</td>
+    <td>Advisory: 정책 실패 시 경고</td>
   </tr>
   <tr>
-    <td>Soft Mandatory: Must explicitly override a policy</td>
+    <td>Soft Mandatory: 정책을 명시적으로 재정의해야 함</td>
   </tr>
   <tr>
-    <td>Hard Mandatory: Provisioning not allowed</td>
+    <td>Hard Mandatory: 프로비저닝 허용되지 않음</td>
   </tr>
 </table>
 
@@ -1077,7 +1077,7 @@ class: col-2, minimal-list
 # Automated Policy Validation
 - Automation in policy validations support workflow steps to ensure a deployment is within safe standards for completion. 
   
-- Policy validations are **complementary to external testing sequences**, and policy validations can overlap in both intent and execution.
+- Policy validations are *complementary to external testing sequences*, and policy validations can overlap in both intent and execution.
   
 - For the audience, it is important to highlight context (use the diagram):
   
@@ -1091,39 +1091,39 @@ class: col-2, minimal-list
 ---
 name: tfc-vcs-automation
 class: col-3, header-adjust, header-adjust-minimal-paragraph
-# Automated Testing
+# 자동화된 테스트
 
 ### Unit Testing
-- Verify individual resources and configurations for expected values from a plan stage
+- 플랜 단계에서 예상 값에 대한 개별 리소스 및 구성을 확인합니다.
 
 ![Unit Testing](images/unit-testing.svg)
 
 ### Contract Testing  
-- Validate interactions between components with input and output results between deployments
+- 배포 간 입력 및 출력 결과를 통해 컴포넌트 간의 상호 작용을 검증합니다.
 
 ![Unit Testing](images/contract-testing.svg)    
 
 ### Integration Testing
-- Require active infrastructure resources to run and connect properly for acceptance
+- 수락을 위해 활성 인프라 리소스를 실행하고 제대로 연결해야 합니다.
 
 ![Unit Testing](images/integration-testing.svg)  
 ???
 # Automated Testing
-- Policy validations are **complementary to external testing sequences**, and policy validations can overlap in both intent and execution. (___This is intentionally repeated from the previous slide to make this point clear.___)
+- Policy validations are *complementary to external testing sequences*, and policy validations can overlap in both intent and execution. (__This is intentionally repeated from the previous slide to make this point clear.__)
 
-- It must be clear that the concept of testing applies to the results observed from `plan` or `apply` stages. And, testing ___is not___ focused on confirming that the HCL syntax language is ok, and functional logic of a Terraform resource -as in the processing output.
+- It must be clear that the concept of testing applies to the results observed from `plan` or `apply` stages. And, testing __is not__ focused on confirming that the HCL syntax language is ok, and functional logic of a Terraform resource -as in the processing output.
 
 > In other words, syntax testing happens as a `linting` step - analogous to `terraform validate`. While, confirming that the Terraform `aws` provider works properly is a derivative from the joint development between AWS and HashiCorp.
 
 -- 
 
-- **Unit testing** looks at expected values in the Terraform plan.
+- *Unit testing* looks at expected values in the Terraform plan.
 
-- **Contract testing** compares infrastructure state. Highlight that Terraform Cloud allows state sharing between workspaces to explore key informational data points.
+- *Contract testing* compares infrastructure state. Highlight that Terraform Cloud allows state sharing between workspaces to explore key informational data points.
 
-- **Integration testing** compares ___real___ resources and their interaction. These often include functional, policy and security domains. You can introduce `Run Tasks` as the vehicle to perform this type of testing. 
+- *Integration testing* compares __real__ resources and their interaction. These often include functional, policy and security domains. You can introduce `Run Tasks` as the vehicle to perform this type of testing. 
   
-### ___"Terraform changes can be like #YOLO-driven development!"___
+### _"Terraform changes can be like #YOLO-driven development!"_
 - The concepts in this slide are derived from Rosemary Wang's brilliant talk about [Test-driven development (TDD) for infrastructure](https://www.youtube.com/watch?v=AAcPuYfVt2c). The talk is just over half-hour in length and focuses on TDD to deploying and configuring infrastructure.
 ---
 name: lab-guidance-03
@@ -1133,19 +1133,19 @@ class: col-2, adjust-minimal-sub-list
 ![Lab Guidance Part Three](images/part_03.png)
 
 1. Versioned Controlled Infrastructure
-  * Migrate application assets to VCS
-  * Set up a VCS Provider
+  * 애플리케이션 자산을 VCS로 마이그레이션
+  * VCS 프로바이더 설정
 
-1. Collaborating with VCS
-  * Create a pull request and follow the VCS workflow
-  * Explore automated code reviews 
+1. VCS와 협업하기
+  * 풀 리퀘스트 생성 및 VCS 워크플로우 따르기
+  * 자동화된 코드 리뷰 살펴보기  
 
-1. Controlling costs with Cost Estimation
-  * Enable and test cost estimation 
+1. 비용 추정을 통한 비용 관리
+  * 비용 추정 활성화 및 테스트  
 
-1. Terraform Compliance with Sentinel
-  * Integrate policy-as-code to review configuration checks
-  * Enable containment policies for cost control
+1. Sentinel을 통한 Terraform 규정 준수
+  * 코드형 정책을 통합하여 구성 검사 검토 
+  * 비용 제어를 위한 격리 정책 활성화
 
 - Quiz 3 - Version Control and Terraform
 ???
