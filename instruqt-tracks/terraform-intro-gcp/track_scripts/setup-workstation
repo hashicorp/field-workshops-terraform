@@ -52,6 +52,7 @@ cp ${GITDIR}/exercises/outputs.tf.start ${GITDIR}/outputs.tf
 mv ${GITDIR}/terraform.tfvars.example ${GITDIR}/terraform.tfvars
 
 # Store our project ID as a Terraform env var
+source /etc/profile.d/instruqt-env.sh
 echo "TF_VAR_project=\"$INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID\"" >> /root/.bashrc
 echo "export TF_VAR_project" >> /root/.bashrc
 GOOGLE_CREDENTIALS=$(echo "$INSTRUQT_GCP_PROJECT_GCP_PROJECT_SERVICE_ACCOUNT_KEY" | base64 -d | jq 'tostring')
