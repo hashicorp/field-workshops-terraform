@@ -1,7 +1,7 @@
 #!/bin/bash -l
 # Track setup script
 
-set -e
+set -euvo pipefail
 
 # Wait for Instruqt to finish booting the VM
 # This is better than doing sleep
@@ -26,10 +26,19 @@ sudo apt-get update -y
 sudo apt-get install -y cowsay
 cp /usr/games/cowsay /usr/local/bin/cowsay
 
-# Install graphviz, pip, and BlastRadius
+# Needed for BlastRadius
 apt -y install graphviz
-apt -y install python3-pip
-/usr/bin/pip3 install BlastRadius
+
+# Install BlastRadius in a virtualenv to get around issues with
+# dependencies and system-installed versions of packages
+apt -y install virtualenv
+/usr/bin/virtualenv --python /usr/bin/python3 /root/venv
+source /root/venv/bin/activate
+pip3 install BlastRadius
+# Just add /root/venv/bin to PATH so we don't force participants
+# to have to activate the venv
+echo "PATH=/root/venv/bin:\${PATH}" >> /root/.bashrc
+echo "export PATH" >> /root/.bashrc
 
 # Clone the hashicat-gcp repo
 git clone https://github.com/hashicorp/hashicat-gcp
@@ -43,9 +52,11 @@ cp ${GITDIR}/exercises/outputs.tf.start ${GITDIR}/outputs.tf
 mv ${GITDIR}/terraform.tfvars.example ${GITDIR}/terraform.tfvars
 
 # Store our project ID as a Terraform env var
-export TF_VAR_project=$INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID
-grep $INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID /root/.bashrc || echo "export TF_VAR_project=\"$INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID\"" >> /root/.bashrc
-export GOOGLE_CREDENTIALS=$(echo $INSTRUQT_GCP_PROJECT_GCP_PROJECT_SERVICE_ACCOUNT_KEY | base64 -d | jq 'tostring')
-echo "export GOOGLE_CREDENTIALS=$GOOGLE_CREDENTIALS" >> /root/.bashrc
+echo "TF_VAR_project=\"$INSTRUQT_GCP_PROJECT_GCP_PROJECT_PROJECT_ID\"" >> /root/.bashrc
+echo "export TF_VAR_project" >> /root/.bashrc
+GOOGLE_CREDENTIALS=$(echo "$INSTRUQT_GCP_PROJECT_GCP_PROJECT_SERVICE_ACCOUNT_KEY" | base64 -d | jq 'tostring')
+# Do not quote '$GOOGLE_CREDENTIALS' because `jq 'tostring'` does that for us
+echo "GOOGLE_CREDENTIALS=$GOOGLE_CREDENTIALS" >> /root/.bashrc
+echo "export GOOGLE_CREDENTIALS" >> /root/.bashrc
 
 exit 0

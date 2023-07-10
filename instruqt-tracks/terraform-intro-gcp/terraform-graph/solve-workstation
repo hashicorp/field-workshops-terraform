@@ -6,7 +6,6 @@ set -o history
 
 cd /root/hashicat-gcp
 
-# This needs to be fixed so it runs cleanly.
 blast-radius --serve . > blastradius.log 2>&1 &
 
 exit 0
