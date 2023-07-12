@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" fill="none">
+    <defs>
+        <g id="b">
+            <use href="#a" />
+            <use x="13" href="#a" />
+            <use x="26" href="#a" />
+            <use x="39" href="#a" />
+            <use x="52" href="#a" />
+            <use x="65" href="#a" />
+            <use x="78" href="#a" />
+            <use x="91" href="#a" />
+            <use x="104" href="#a" />
+        </g>
+        <g id="c">
+            <use x="6.5" href="#b" />
+            <use y="3.25" href="#b" />
+            <use x="6.5" y="6.5" href="#b" />
+            <use y="9.75" href="#b" />
+        </g>
+        <g id="d">
+            <use href="#c" />
+            <use y="13" href="#c" />
+            <use y="26" href="#c" />
+            <use y="39" href="#c" />
+        </g>
+        <g id="g">
+            <use href="#d" />
+            <use y="52" href="#d" />
+            <use y="104" href="#e" />
+        </g>
+        <g id="k" stroke="url(#f)" stroke-width="1.5">
+            <path
+                d="M0 87.75 162.5 6.5M0 94.25 162.5 13M0 100.75 162.5 19.5M0 107.25 162.5 26M0 113.75 162.5 32.5M0 120.25 162.5 39M0 126.75 162.5 45.5M0 133.25 162.5 52M0 139.75 162.5 58.5M0 146.25 162.5 65M0 152.75 162.5 71.5M0 159.25 162.5 78" />
+        </g>
+        <g id="m" stroke="url(#f)" stroke-width="1.5">
+            <path
+                d="m0 243.75 162.5-81.25M0 250.25 162.5 169M0 256.75l162.5-81.25M0 263.25 162.5 182M0 269.75l162.5-81.25M0 276.25 162.5 195M0 282.75l162.5-81.25M0 289.25 162.5 208M0 295.75l162.5-81.25M0 302.25 162.5 221M0 308.75l162.5-81.25M0 315.25 162.5 234M0 321.75l162.5-81.25M0 328.25 162.5 247" />
+        </g>
+        <linearGradient id="f" gradientTransform="rotate(-45)">
+            <stop offset="0%" stop-color="#844FBA" />
+            <stop offset="75%" stop-color="#F4ECFF" />
+        </linearGradient>
+        <circle id="a" stroke="none" r="0.75" />
+        <path id="i" stroke="url(#f)" stroke-width="1.5"
+            d="M0 9.75 19.5 0M0 16.25 32.5 0M0 22.75 45.5 0M0 29.25 58.5 0M0 35.75 71.5 0M0 42.25 84.5 0" />
+        <use id="e" href="#c" />
+    </defs>
+    <g>
+        <use x="6.5" y="4" fill="#844FBA" href="#g" />
+        <use x="6.5" y="121" fill="#4C316B" href="#g" />
+        <use x="6.5" y="238" fill="#844FBA" href="#g" />
+        <use x="123.5" y="4" fill="#4C316B" href="#g" />
+    </g>
+    <g transform="translate(866 266)">
+        <use x="0" y="117" href="#g" fill="#4C316B" />
+        <use x="117" y="0" href="#g" fill="#4C316B" />
+        <use x="117" y="117" href="#g" fill="#844FBA" />
+        <use x="0" y="234" href="#g" fill="#844FBA" />
+        <use x="117" y="234" href="#g" fill="#4C316B" />
+    </g>
+    <mask id="h" width="102" height="52" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:luminance">
+        <path fill="#fff" fill-rule="evenodd" d="M0 0v52L102 0H0Z" clip-rule="evenodd" />
+    </mask>
+    <g mask="url(#h)">
+        <use x=".5" y=".5" href="#i" />
+    </g>
+    <mask id="j" width="118" height="188" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:luminance">
+        <path fill="#fff" fill-rule="evenodd" d="M0 0v188l171-96V0Z" clip-rule="evenodd" />
+    </mask>
+    <g mask="url(#j)">
+        <use x=".5" y=".5" href="#k" />
+    </g>
+    <mask id="l" width="118" height="500" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+        <path fill="#fff" fill-rule="evenodd" d="M-5 245.5h250.5V117Z" clip-rule="evenodd" />
+    </mask>
+    <g mask="url(#l)">
+        <use x=".5" y=".5" href="#m" />
+    </g>
+</svg>
