@@ -95,11 +95,19 @@ https://github.com/hashicorp/field-workshops-terraform/issues
 ### Instruqt Labs
 At certain points in the slide deck there are links to the lab exercises. [Instruqt](https://instruqt.com/hashicorp) is our lab platform. The lab exercises are stored in private tracks so you'll need to log onto instruqt and request access to join the `members` team to see these links. Join the #proj-instruqt channel in Slack to request access.
 
-https://instruqt.com/hashicorp/tracks/terraform-cloud-aws<br>
-https://instruqt.com/hashicorp/tracks/terraform-cloud-azure<br>
-https://instruqt.com/hashicorp/tracks/terraform-cloud-gcp<br>
-
 Go through your track from start to finish and make sure you understand everything. Students may have questions during the labs. When presenting a workshop be sure to give enough time for all your participants to go through the labs.
+
+### v2 (new) tracks
+
+https://play.instruqt.com/hashicorp/tracks/terraform-cloud-aws-v2<br>
+https://play.instruqt.com/hashicorp/tracks/terraform-cloud-azure-v2<br>
+https://play.instruqt.com/hashicorp/tracks/terraform-cloud-gcp-v2<br>
+
+### v1 (legacy) tracks
+https://play.instruqt.com/hashicorp/tracks/terraform-cloud-aws<br>
+https://play.instruqt.com/hashicorp/tracks/terraform-cloud-azure<br>
+https://play.instruqt.com/hashicorp/tracks/terraform-cloud-gcp<br>
+
 
 #### Creating Instruqt Invites
 Once you've gotten an invite to the HashiCorp organization you can create temporary invite links for your students:
