@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 slug: terraform-cloud-azure-v2
 id: w0mxyr7gzpwb
 title: Terraform Cloud with Azure
