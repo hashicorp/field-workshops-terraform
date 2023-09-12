@@ -225,7 +225,7 @@ The main difference between these two methods is automation. In this workshop, w
 
 - Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>hashicat-azure</t> folder.
 
-- Revise the `module "backupstorage"` code snippet in the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and update with a reference to your Private Module registry. The code currently reads:
+- Revise the `module "azure-backup"` code snippet in the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and update with a reference to your Private Module registry. The code currently reads:
 
 ```bash
 module "azure-backup" {
