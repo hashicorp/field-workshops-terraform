@@ -134,25 +134,14 @@ The objectives of this challenge are to configure a VCS integration for your org
 - Please visit your [GitHub Developer Settings](https://github.com/settings/tokens) to generate a Personal Access Token (classic).
 
 - The scopes for the token should include:
-
-<table>
-  <tr>
-    <td>repo</td>
-    <td>workflow</td>
-  </tr>
-  <tr>
-    <td>write:packages</td>
-    <td>delete:packages</td>
-  </tr>
-  <tr>
-    <td>admin:repo_hook</td>
-    <td>admin:org_hook</td>
-  </tr>
-  <tr>
-    <td>delete_repo</td>
-    <td>notifications</td>
-  </tr>
-</table>
+    - [x] repo
+    - [x] workflow
+    - [x] write:packages
+    - [x] delete: packages
+    - [x] admin:repo_hook
+    - [x] admin:org_hook
+    - [x] notifications
+    - [x] delete_repo
 
 - <lb>Make sure to save your GitHub Personal Access Token. It will not be displayed again.</lb>
 
