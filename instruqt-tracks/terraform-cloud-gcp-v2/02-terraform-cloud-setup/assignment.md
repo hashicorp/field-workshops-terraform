@@ -140,7 +140,7 @@ The first step to begin work with your deployment tasks is to set up your Terraf
 
 2- Terraform Cloud Trial Plan
 ===
-- Navigate to the [Create a new organization](https://app.terraform.io/app/organizations/new?trial=workshop2023) page and create a Terraform Cloud Organization for this workshop.
+- Click on [THIS](https://app.terraform.io/app/organizations/new?trial=workshop2023) link to create a Terraform Cloud Organization for this workshop.
 
 - Use the <m>Create organization & start 14 day trial</m> button to enable "Team and Governance" features in your organization. Please see the image below.
 
