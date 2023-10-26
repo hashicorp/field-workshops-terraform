@@ -47,11 +47,11 @@ sed -i "s/YOUR_WORKSPACE/$WORKSPACE/g" terraform.tfvars
 # exists. However, to keep the consistency between code blocks, we kept this the 
 # same as above where we search and replace in the remote_backend.tf file. 
 
-# Store the ORG in /root/.bashrc
-grep $ORG /root/.bashrc || echo "export ORG=\"$ORG\"" >> /root/.bashrc
+# # Store the ORG in /root/.bashrc
+# grep $ORG /root/.bashrc || echo "export ORG=\"$ORG\"" >> /root/.bashrc
 
-# Store the WORKSPACE in /root/.bashrc
-grep $WORKSPACE /root/.bashrc || echo "export WORKSPACE=\"$WORKSPACE\"" >> /root/.bashrc
+# # Store the WORKSPACE in /root/.bashrc
+# grep $WORKSPACE /root/.bashrc || echo "export WORKSPACE=\"$WORKSPACE\"" >> /root/.bashrc
 
 # Do we have a valid token
 if [ -z "${TFC_TOKEN}" ]; then
