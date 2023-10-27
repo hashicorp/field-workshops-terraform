@@ -45,7 +45,7 @@ Supercharge your Cloud infrastructure management with Terraform Cloud.
 
 Here's the workshop syllabus showing the topics we will cover:
 
-1. OSS to Cloud/Enterprise
+1. Community Edition to Cloud/Enterprise
 🌥️ Terraform Cloud Overview
 👨🏽‍🏫 Review the Basics
 🔗 Configure Remote State
