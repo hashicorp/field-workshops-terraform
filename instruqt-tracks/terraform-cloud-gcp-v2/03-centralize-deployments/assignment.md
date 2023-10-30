@@ -1,6 +1,5 @@
 ---
 slug: centralize-deployments
-id: 1xxg9xarqcbi
 type: challenge
 title: Safekeeping Your Terraform State
 teaser: |
