@@ -108,7 +108,7 @@ The objective of this challenge is to configure remote state using your Terrafor
 
   * Set the `prefix` variable to your name or a prefered pseudonym. If you use multiple words, use hyphens or underscores between words, and keep it all lower case.
 
-  * Optionally modify the `region` to a valid Google Cloud region such as "us-east-1", "us-west-1", "eu-west-2", or "ap-southeast-1".
+  * Optionally modify the `region` to a valid Google Cloud region such as "us-east1", "us-west1", "europe-west2", or "asia-southeast1".
 
 2- Deploy the hashicat application
 ===
