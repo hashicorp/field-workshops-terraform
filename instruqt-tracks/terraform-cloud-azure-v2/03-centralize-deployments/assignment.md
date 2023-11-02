@@ -1,5 +1,6 @@
 ---
 slug: centralize-deployments
+id: yb7qfm4q9ebb
 type: challenge
 title: Safekeeping Your Terraform State
 teaser: |
@@ -129,7 +130,7 @@ terraform apply -auto-approve
 
 # We need a refresh to see the public
 # NIC IP from the Azure enviornment.
-terraform refresh
+terraform apply -refresh-only
 
 
 ```
