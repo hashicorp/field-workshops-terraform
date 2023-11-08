@@ -7,7 +7,7 @@ count: true
 ???
 # Terraform Cloud on AWS workshop
 ## Getting started
-This is a half-day workshop that introduces Terraform Cloud using an AWS-based application for the Instruqt labs. If you're brand new to Terraform you should try the Introduction to Terraform OSS on AWS Instruqt track before this one.
+This is a half-day workshop that introduces Terraform Cloud using an AWS-based application for the Instruqt labs. If you're brand new to Terraform you should try the Introduction to Terraform Community Edition on AWS Instruqt track before this one.
 
 The instructions on how to conduct a workshop are in the standard [instructor's guide](https://github.com/hashicorp/field-workshops-terraform/blob/main/instructor-guides/all_terraform_cloud_INSTRUCTOR_GUIDE.md).
 
@@ -233,7 +233,7 @@ This chapter is organized in three sections:
 
 2. Terraform Editions
 
-   - Understand Terraform OSS and the differences between OSS and Cloud and Enterprise
+   - Understand Terraform Community Edition and the differences between Community Edition and Cloud and Enterprise
 
 3. Benefits of using Terraform Cloud
 
@@ -414,7 +414,7 @@ class: col-3, header-adjust, header-adjust-minimal-list
 
 ???
 # Terraform Editions
-## Terraform OSS
+## Terraform Community Edition
 - A.K.A. Terraform
 
 - Terraform is a sophisticated technology used to deploy infrastructure
@@ -455,7 +455,7 @@ class: col-2, header-adjust, minimal-list
 
 - Terraform Cloud provides infrastructure automation as a service, is free to get started, and has an in-place upgrade to paid option.
 
-- Terraform Cloud is not the same as Terraform OSS. Terraform Cloud is a cloud service, and Terraform OSS is the technology used to provision infrastructure.
+- Terraform Cloud is not the same as Terraform Community Edition. Terraform Cloud is a cloud service, and Terraform Community Edition is the technology used to provision infrastructure.
 
 ---
 name: terraform-cloud-build
@@ -620,7 +620,7 @@ class: review, no-footer
 
 1. The adoption patterns we see, both among our large-scale users as well as individual contributors, involve multiple adaptive stages. The central idea remains uniform in that automation should be standardized as shared practice, and that governance guidelines are needed to support emerging requirements.
 
-2. Terraform Cloud is not the same as Terraform OSS. Terraform Cloud is a cloud service, and Terraform OSS is the technology used to provision infrastructure. We use Terraform Cloud to manage the lifecyle of infrastructure deployemnts using Terraform [OSS]. 
+2. Terraform Cloud is not the same as Terraform Community Edition. Terraform Cloud is a cloud service, and Terraform Community Edition is the technology used to provision infrastructure. We use Terraform Cloud to manage the lifecyle of infrastructure deployemnts using Terraform [Community]. 
 ---
 name: Access-Control
 class: title, no-footer
