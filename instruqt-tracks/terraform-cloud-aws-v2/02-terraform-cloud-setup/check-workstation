@@ -91,9 +91,7 @@ STATUS=$(curl \
     -w "%{response_code}" \
     -s \
     -o /tmp/.out.json \
-    https://app.terraform.io/api/v2/organizations/"${ORG}"/subscription 2>/dev/null) # originally TFC_ORG
-
-echo "Status = " $STATUS
+    https://app.terraform.io/api/v2/organizations/"${ORG}"/subscription 2>/dev/null)
 
 if [ "${STATUS}" != "200" ]; then
     echo "Failed to get organization subscription, status ${STATUS}"
@@ -107,15 +105,14 @@ if [ "${STATUS}" != "200" ]; then
 fi
 
 TRIAL=$(jq -r '.included[].attributes."identifier"' /tmp/.out.json 2>/dev/null)
-echo "############## Account identifier: " $TRIAL
 if [ -z "${TRIAL}" ]; then
-    echo ".included.[].attributes."identifier" was empty"
+    echo ".included[].attributes."identifier" was empty"
     fail-message "Unable to determine TFC Trial Status, please go back to the \"2- Terraform Cloud Trial Plan\" steps"
     exit 1
 fi
 
 if [ "${TRIAL}" != "trial" ]; then
-    echo ".data.attributes.versioned-policy-set-limit was '${TRIAL}' not 'true'"
+    echo ".included[].attributes."identifier" was '${TRIAL}' not 'trial'"
     fail-message "Your TFC Organization is not a trial one, please go back to the \"2- Terraform Cloud Trial Plan\" step"
     exit 1
 fi

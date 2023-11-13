@@ -111,7 +111,7 @@ if [ -z "${TRIAL}" ]; then
 fi
 
 if [ "${TRIAL}" != "trial" ]; then
-    echo ".included[].attributes."identifier" was '${TRIAL}' not 'true'"
+    echo ".included[].attributes."identifier" was '${TRIAL}' not 'trial'"
     fail-message "Your TFC Organization is not a trial one, please go back to the \"2- Terraform Cloud Trial Plan\" step"
     exit 1
 fi
