@@ -106,13 +106,13 @@ fi
 
 TRIAL=$(jq -r '.included[].attributes."identifier"' /tmp/.out.json 2>/dev/null)
 if [ -z "${TRIAL}" ]; then
-    echo ".included[].attributes."identifier" was empty"
+    echo ".included[].attributes.\"identifier\" was empty"
     fail-message "Unable to determine TFC Trial Status, please go back to the \"2- Terraform Cloud Trial Plan\" steps"
     exit 1
 fi
 
 if [ "${TRIAL}" != "trial" ]; then
-    echo ".included[].attributes."identifier" was '${TRIAL}' not 'trial'"
+    echo ".included[].attributes.\"identifier\" was '${TRIAL}' not 'trial'"
     fail-message "Your TFC Organization is not a trial one, please go back to the \"2- Terraform Cloud Trial Plan\" step"
     exit 1
 fi
