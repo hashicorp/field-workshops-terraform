@@ -1,9 +1,119 @@
 #!/bin/bash -l
+# Copyright (c) HashiCorp, Inc.
 set -euxvo pipefail
 
+# Get TFC token and organization
+# these jq commands may fail, that's okay, we account for 
+# that later, so temporarily disable set -e
+set +e
+# Check to make sure these are the right paths
+TFC_TOKEN=$(jq -r '.credentials."app.terraform.io".token' /root/.terraform.d/credentials.tfrc.json 2>/dev/null)
+set -e
+
 # Create /tmp/skip-check to disable this check
+# This /tmp/skip-check file is only necessary for the instruqt track test command 
+# When running this track as a customer/participant, skipping is disabled so it
+# this code will not have an affect.
 if [ -f /tmp/skip-check ]; then
     rm /tmp/skip-check
+fi
+
+# Save the Terraform Org and Workspace name as env variables 
+export ORG=$(grep organization /root/terraform-cloud/terraform.tfvars | cut -d '"' -f2)
+export WORKSPACE=$(grep workspace /root/terraform-cloud/terraform.tfvars | cut -d '"' -f2)
+
+# These are considered runtime variables, which allow you to use dynamic content in the challenge 
+# assignments and lifecycle scripts. 
+# In order to register a runtime variable in a host's lifecycle script, use the following command: 
+# agent variable set {KEY} {VALUE}
+agent variable set TF_ORG $ORG
+agent variable set TF_WORKSPACE $WORKSPACE
+
+cp /root/hashicat-azure/remote_backend.tf.example /root/hashicat-azure/remote_backend.tf
+
+cd /root/hashicat-azure
+sed -i "s/YOUR_ORGANIZATION/$ORG/g" remote_backend.tf
+sed -i "s/YOUR_WORKSPACE/$WORKSPACE/g" remote_backend.tf
+
+cp /root/hashicat-azure/terraform.tfvars.example /root/hashicat-azure/terraform.tfvars
+
+# This was originally going into the terraform-api directory... might need to check on this in the API challenge
+cd /root/terraform-cloud
+sed -i "s/YOUR_ORGANIZATION/$ORG/g" terraform.tfvars # This was originally looking in terraform.tfvars.example
+sed -i "s/YOUR_WORKSPACE/$WORKSPACE/g" terraform.tfvars
+# mv terraform.tfvars.example terraform.tfvars
+# The above command will get rid of the terraform.tfvars.example file, but when
+# we run the check script more than once, it cannot find that file bc it no longer
+# exists. However, to keep the consistency between code blocks, we kept this the 
+# same as above where we search and replace in the remote_backend.tf file. 
+
+# # Store the ORG in /root/.bashrc
+# grep $ORG /root/.bashrc || echo "export ORG=\"$ORG\"" >> /root/.bashrc
+
+# # Store the WORKSPACE in /root/.bashrc
+# grep $WORKSPACE /root/.bashrc || echo "export WORKSPACE=\"$WORKSPACE\"" >> /root/.bashrc
+
+# Do we have a valid token
+if [ -z "${TFC_TOKEN}" ]; then
+    fail-message "Unable to find Terraform Cloud Token, please double-check the \"3- Terraform Cloud Token\" steps"
+    exit 1
+fi
+
+STATUS=$(curl \
+    --header "Authorization: Bearer ${TFC_TOKEN}" \
+    --header "Content-Type: application/vnd.api+json" \
+    --request GET \
+    -w "%{response_code}" \
+    -s \
+    -o /tmp/.out.json \
+    https://app.terraform.io/api/v2/account/details 2>/dev/null)
+
+if [ "${STATUS}" != "200" ]; then
+    echo "Failed to get account details, status ${STATUS}"
+    if [ -f /tmp/.out.json ]; then
+	echo "Output was:"
+	cat /tmp/.out.json
+	echo "End of output"
+    fi
+    fail-message "Terraform Cloud Token is not valid, please double-check the \"3- Terraform Cloud Token\" steps"
+    exit 1
+fi
+
+rm -f /tmp/.out.json
+echo "We have a valid TFC token"
+
+# Is it a trial organization
+STATUS=$(curl \
+    --header "Authorization: Bearer ${TFC_TOKEN}" \
+    --header "Content-Type: application/vnd.api+json" \
+    --request GET \
+    -w "%{response_code}" \
+    -s \
+    -o /tmp/.out.json \
+    https://app.terraform.io/api/v2/organizations/"${ORG}"/subscription 2>/dev/null) # originally TFC_ORG
+
+if [ "${STATUS}" != "200" ]; then
+    echo "Failed to get organization subscription, status ${STATUS}"
+    if [ -f /tmp/.out.json ]; then
+	echo "Output was:"
+	cat /tmp/.out.json
+	echo "End of output"
+    fi
+    fail-message "Unable to get TFC Organization Subscription, please go back to the \"2- Terraform Cloud Trial Plan\" steps"
+    exit 1
+fi
+
+TRIAL=$(jq -r '.included[].attributes."identifier"' /tmp/.out.json 2>/dev/null)
+if [ -z "${TRIAL}" ]; then
+    echo ".included[].attributes.\"identifier\" was empty"
+    fail-message "Unable to determine TFC Trial Status, please go back to the \"2- Terraform Cloud Trial Plan\" steps"
+    exit 1
+fi
+
+if [ "${TRIAL}" != "trial" ]; then
+    echo ".included[].attributes.\"identifier\" was '${TRIAL}' not 'trial'"
+    fail-message "Your TFC Organization is not a trial one, please go back to the \"2- Terraform Cloud Trial Plan\" step"
+    exit 1
 fi
 
 exit 0
