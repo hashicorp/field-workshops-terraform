@@ -1,7 +1,7 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-version: "2"
+version: "3"
 virtualmachines:
 - name: tf-foundations
   image: instruqt-hashicorp/tfc-workstation-1-1-4
