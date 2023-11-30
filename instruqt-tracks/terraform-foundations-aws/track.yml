@@ -1,11 +1,10 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-slug: terraform-foundations
-id: lyqbnw1paseo
+slug: wip-vcdl-240-terraform-foundations
 version: 0.0.1
 type: track
-title: Terraform Foundations
+title: WIP - VCDL-240 - Terraform Foundations
 teaser: |
   Introduction to Infrastructure-as-Code
 description: |
@@ -26,7 +25,6 @@ published: true
 show_timer: true
 challenges:
 - slug: 01-getting-started
-  id: yp5lxg4at0ar
   type: challenge
   title: "\U0001F4DA Getting Started"
   teaser: |-
@@ -153,7 +151,6 @@ challenges:
   difficulty: basic
   timelimit: 5000
 - slug: 02-terraform-basics
-  id: 81mf7bazio04
   type: challenge
   title: "\U0001F4D8 Terraform Basics"
   teaser: |-
@@ -351,7 +348,6 @@ challenges:
   difficulty: basic
   timelimit: 5000
 - slug: 03-terraform-state
-  id: ehx0g1wbx0eu
   type: challenge
   title: "\U0001F4D5 Terraform State"
   teaser: |-
@@ -499,7 +495,6 @@ challenges:
   difficulty: basic
   timelimit: 5000
 - slug: 04-terraform-intermediate
-  id: aquqgxdrgn9d
   type: challenge
   title: "\U0001F4D7 Terraform Intermediate"
   teaser: |-
@@ -624,7 +619,12 @@ challenges:
     }
     ```
 
-    When you run terraform init on the modular project you will notice some additional output.
+    Run
+    ```
+    terraform init
+    ```
+
+    When you do so, you will notice some additional output:
     ```
     Initializing modules...
     Downloading github.com/hashicorp/terraform-aws-webapp-networking?ref=v1.0.0 for networking...
@@ -659,18 +659,23 @@ challenges:
     ```
     </details>
 
-    Once the terraform apply is finished, validate that the VM has been created
+    Run
+    ```
+    terraform apply -auto-approve
+    ```
+
+    Once that is finished, validate that the VM has been created
     ```
     aws ec2 describe-instances --region us-east-2 --query 'Reservations[*].Instances[*].[Placement.AvailabilityZone, State.Name, InstanceId, Tags]'
     ```
-    The instance's tags should show the creation timestamp
+    The instance's tags should show the creation timestamp --- obviously, your timestamp value will be different.
     ```
     {
       "Key": "created",
       "Value": "2020-12-16T19:01:59Z"
     }
     ```
-    Congrats! You've leveraged re-usable code as a network module and created a virtual machine all through terraform.
+    Congrats! You've leveraged re-usable code as a network module and created a virtual machine all through Terraform.
   tabs:
   - title: Code Editor
     type: service
@@ -705,7 +710,6 @@ challenges:
   difficulty: basic
   timelimit: 5000
 - slug: 05-version-control-basics
-  id: akpvemklgdv7
   type: challenge
   title: "\U0001F4DA Version Control System (VCS) Basics"
   teaser: |-
@@ -883,4 +887,3 @@ challenges:
     url: https://app.terraform.io
   difficulty: basic
   timelimit: 5000
-checksum: "8365794586055670043"
