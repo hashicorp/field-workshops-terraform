@@ -1,5 +1,5 @@
 ---
-slug: 02-terraform-basics
+slug: terraform-basics
 type: challenge
 title: "\U0001F4D8 Terraform Basics"
 teaser: |-

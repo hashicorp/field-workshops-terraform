@@ -1,5 +1,5 @@
 ---
-slug: 03-terraform-state
+slug: terraform-state
 type: challenge
 title: "\U0001F4D5 Terraform State"
 teaser: |-

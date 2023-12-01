@@ -1,5 +1,5 @@
 ---
-slug: 05-version-control-basics
+slug: version-control-basics
 type: challenge
 title: "\U0001F4DA Version Control System (VCS) Basics"
 teaser: |-
