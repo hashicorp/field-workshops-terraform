@@ -1,5 +1,5 @@
 ---
-slug: 01-getting-started
+slug: getting-started
 type: challenge
 title: "\U0001F4DA Getting Started"
 teaser: |-

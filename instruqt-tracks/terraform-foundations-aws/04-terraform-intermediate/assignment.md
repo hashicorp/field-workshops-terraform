@@ -1,5 +1,5 @@
 ---
-slug: 04-terraform-intermediate
+slug: terraform-intermediate
 type: challenge
 title: "\U0001F4D7 Terraform Intermediate"
 teaser: |-
