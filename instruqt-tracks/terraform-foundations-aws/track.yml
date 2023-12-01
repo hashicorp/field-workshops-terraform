@@ -1,9 +1,9 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-slug: wip-vcdl-240-terraform-foundations
+slug: terraform-foundations
 version: 0.0.1
-title: WIP - VCDL-240 - Terraform Foundations
+title: Terraform Foundations
 teaser: |
   Introduction to Infrastructure-as-Code
 description: |
