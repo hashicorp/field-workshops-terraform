@@ -190,7 +190,7 @@ git init
 git add .
 git commit -m "first commit"
 git branch -M main
-git remote add origin https://github.com/$GITHUB_ORGANIZATION/$GITHUB_REPO.git
+git remote add origin https://github.com/$GITHUB_OWNER/$GITHUB_REPO.git
 git push -u origin main
 
 
@@ -200,7 +200,7 @@ git push -u origin main
 
 ```bash
 echo "" && \
-echo "https://github.com/${GITHUB_ORGANIZATION}/${GITHUB_REPO}" && \
+echo "https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}" && \
 echo ""
 
 
@@ -251,7 +251,7 @@ Please see the example image below.
 
 ```bash
 echo "" && \
-echo "https://github.com/${GITHUB_ORGANIZATION}/${GITHUB_REPO}/settings/hooks" && \
+echo "https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/settings/hooks" && \
 echo ""
 
 
