@@ -9,9 +9,9 @@ fi
 TOKEN=$(cat /root/.terraform.d/credentials.tfrc.json | jq -r '.credentials."app.terraform.io".token')
 
 # Test whether remote exec is enabled on the workspace.
-REMOTE_EXEC_ENABLED=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/workspaces/$WORKSPACE | jq .data.attributes.operations)
+REMOTE_EXEC_ENABLED=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/workspaces/$WORKSPACE | jq '.data.attributes."execution-mode"')
 
-[[ $REMOTE_EXEC_ENABLED == true ]] || fail-message "Oops, it looks like remote exec is not enabled on your workspace."
+[[ $REMOTE_EXEC_ENABLED != "remote" ]] || fail-message "Oops, it looks like remote exec is not enabled on your workspace."
 
 # Obtain the organization-wide Variable Set
 VARSET_ID=$(curl -s \
