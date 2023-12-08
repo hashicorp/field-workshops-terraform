@@ -8,6 +8,7 @@ set -euxvo pipefail
 set +e
 # Check to make sure these are the right paths
 TFC_TOKEN=$(jq -r '.credentials."app.terraform.io".token' /root/.terraform.d/credentials.tfrc.json 2>/dev/null)
+echo "THIS IS THE TOKEN: ${TFC_TOKEN}" 
 set -e
 
 # Create /tmp/skip-check to disable this check
@@ -16,6 +17,7 @@ set -e
 # this code will not have an affect.
 if [ -f /tmp/skip-check ]; then
     rm /tmp/skip-check
+    exit 0
 fi
 
 # Save the Terraform Org and Workspace name as env variables 
