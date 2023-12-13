@@ -149,7 +149,6 @@ class: table-exercises
       <ul>
         <li>Versioned Controlled Infrastructure</li>
         <li>Collaborating with VCS</li>
-        <li>Controlling Costs with Cost Estimation</li>
         <li>Terraform Compliance with Sentinel</li>
         <li>Quiz 3: Version Control and Terraform</li>
       </ul>
@@ -497,9 +496,6 @@ class: col-2, header-adjust, minimal-paragraph
 ###Private registry
 Create sets of modules and providers for your infrastructure that promote best practices across your teams
 
-###Cost estimation
-Calculate costs before applying infrastructure changes, and control them using policy as code
-
 ###Custom workspace permissions
 Set up different access levels for administrators, operators, and developers
 
@@ -518,9 +514,7 @@ Create security and compliance guidelines for any Terraform run with Sentinel or
 
 2. **Custom workspace permissions**: Allow practitioners and teams to use the service based on their working roles, not individual identities. 
 
-3. **Cost estimation**: Control the rate of deployments based on sound financial check points.
-
-4. **Policy as code**: Remove risk with standard deployments, avoiding common misconfigurations, maintaining security standards and confirming compliance requirements.
+3. **Policy as code**: Remove risk with standard deployments, avoiding common misconfigurations, maintaining security standards and confirming compliance requirements.
    
 ---
 name: terraform-cloud-cicd
@@ -1135,9 +1129,6 @@ class: col-2, adjust-minimal-sub-list
 1. Collaborating with VCS
   * Create a pull request and follow the VCS workflow
   * Explore automated code reviews 
-
-1. Controlling costs with Cost Estimation
-  * Enable and test cost estimation 
 
 1. Terraform Compliance with Sentinel
   * Integrate policy-as-code to review configuration checks

@@ -1,14 +1,13 @@
 ---
 slug: policy-as-code
-id: fwx9rxg7qf3y
 type: challenge
 title: Terraform Compliance with Sentinel
 teaser: |
-  Developers in your organization are building cloud resources without tagging them properly. Use Sentinel to enforce tagging on all your AWS instances that are built with Terraform.
+  Developers in your organization are building cloud resources without tagging them properly. Use Sentinel to enforce tagging on all your Google Cloud vm instances that are built with Terraform.
 notes:
 - type: text
   contents: |-
-    Developers love working in the cloud but do not have guidance on spending limits. Finance has a large AWS bill from last month and they want to bill-back to each project.
+    Developers love working in the cloud but do not have guidance on spending limits. Finance has a large Google Cloud bill from last month and they want to bill-back to each project.
 
     Karen from finance asks for help:
 
@@ -90,7 +89,6 @@ timelimit: 1800
     align-items: center;
     justify-content: center;
     height: 24px;
-    align-items: center;
   }
 
   t > a img {
@@ -100,18 +98,18 @@ timelimit: 1800
 
 In this challenge we use HashiCorp Sentinel policies to enforce two rules:
 
-1. A rule that requires any AWS instance created in your account to have  identifying tags for `Environment` and `Department`.
+1. A rule that requires any Google Cloud vm instance created in your account to have  identifying tags for `Environment` and `Department`.
 
 2. A rule to ensure that costs are maintained below an estimation of $100 USD prior to deployment.
 
-To get started, use the <t><img src="../assets/shell.png"/>Terminal</t> tab to create a new Policy Set and assign it to the hashicat-aws workspace with the following:
+To get started, use the <t><img src="../assets/shell.png"/>Terminal</t> tab to create a new Policy Set and assign it to the hashicat-gcp workspace with the following:
 
 ```bash
 cd /root/terraform-cloud
 
 # 1. Create a policy set from VCS.
 # 2. Enable automated policy as code
-# 3. Apply to hashicat-aws workspace
+# 3. Apply to hashicat-gcp workspace
 terraform apply -auto-approve
 
 
@@ -124,7 +122,7 @@ Sentinel policies define rules that restrict the provisioning of resources by Te
 
 Terraform enforces Sentinel policies between the plan and apply phases of a run, preventing out of policy infrastructure from being provisioned.
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab to expand the <t><img src="../assets/folder.png"/>hashicat-aws</t> folder, and browse the <t><img src="../assets/folder.png"/>policies</t> folder.
+- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab to expand the <t><img src="../assets/folder.png"/>hashicat-gcp</t> folder, and browse the <t><img src="../assets/folder.png"/>policies</t> folder.
 
 - Open the <t><img src="../assets/file-icon.png"/>enforce-mandatory-tags.sentinel</t> file and read the structure of the Sentinel language. This rule checks for configuration properties in the Terraform plan prior to the "apply" stage.
 
@@ -138,7 +136,7 @@ In our environment, Terraform Cloud looks at your GitHub repo that contains the 
 
 - Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder.
 
-- Note the changes to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> which automatically configures a Policy Set and links it to the hashicat-aws workspace (lines 300-319).
+- Note the changes to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> which automatically configures a Policy Set and links it to the hashicat-gcp workspace (lines 300-319).
 
 - On the Terraform Cloud portal, navigate to <x>[[ Instruqt-Var key="TF_ORG" hostname="workstation" ]]</x>-<x>Settings</x>-<x>Policy Sets</x> and explore the <x>Hashicat-Social</x> policy set.
 
@@ -146,11 +144,11 @@ In our environment, Terraform Cloud looks at your GitHub repo that contains the 
 
 - To view the results of this new configuration, issue a manual run in the Terraform Cloud UI.
 
-- On the Terraform Cloud portal, navigate to <x>Workspaces</x>-<x>hashicat-aws</x>, choose <x>Actions</x> and <x>Start new run</x>. Please see the example image below.
+- On the Terraform Cloud portal, navigate to <x>Workspaces</x>-<x>hashicat-gcp</x>, choose <x>+ New run</x> and <x>Start run</x>. Please see the example image below.
 
 ![Workspace New Run](../assets/workspace_new_run.png)
 
-- On the Terraform Cloud portal, navigate to <x>Workspaces</x>-<x>hashicat-aws</x>-<x>Runs</x> and, on the <x>Current Run</x> note the application of the policies AFTER the plan, but BEFORE the apply phase. Please see the example image below.
+- On the Terraform Cloud portal, navigate to <x>Workspaces</x>-<x>hashicat-gcp</x>-<x>Runs</x> and, on the <x>Current Run</x> note the application of the policies AFTER the plan, but BEFORE the apply phase. Please see the example image below.
 
 ![Workspace Policy Checks](../assets/workspace_policy_checks.png)
 
@@ -158,7 +156,7 @@ In our environment, Terraform Cloud looks at your GitHub repo that contains the 
 
 ---
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab to expand the <t><img src="../assets/folder.png"/>hashicat-aws</t> folder, and browse the <t><img src="../assets/folder.png"/>policies</t> folder.
+- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab to expand the <t><img src="../assets/folder.png"/>hashicat-gcp</t> folder, and browse the <t><img src="../assets/folder.png"/>policies</t> folder.
 
 - Read the <t><img src="../assets/hcl-icon.png"/>sentinel.hcl</t> file. This file is used to direct Terraform Cloud how to apply these policies.
 
