@@ -187,7 +187,7 @@ class: col-3, header-adjust, minimal-list
 ### Terraform Cloud
 - Terraform Cloud account (free)
 
-- Terraform "___Team & Governance Plan___" Trial
+- Terraform "___Plus Tier___" Trial
 
 - Terraform Cloud personal access token 
 
@@ -395,7 +395,7 @@ name: terraform-editions
 class: col-3, header-adjust, header-adjust-minimal-list
 # Terraform Editions
 
-### Terraform Open Source
+### Terraform Community 
 * Adopt infrastructure as code and use a standard configuration language
 * Store configuration files in a version control system
 * Manually pull and commit the most up-to-date version to perform Terraform operations
@@ -491,16 +491,16 @@ Review and comment on plans before executing any change to infrastructure
 
 ---
 name: terraform-cloud-standard
-class: col-2, header-adjust, minimal-paragraph
+class: col-3, header-adjust, minimal-list
 # Standardize best practices 
-###Private registry
-Create sets of modules and providers for your infrastructure that promote best practices across your teams
+### Private registry
+- Create sets of modules and providers for your infrastructure that promote best practices across your teams
 
-###Custom workspace permissions
-Set up different access levels for administrators, operators, and developers
+### Custom workspace permissions
+- Set up different access levels for administrators, operators, and developers
 
-###Policy as code
-Create security and compliance guidelines for any Terraform run with Sentinel or third-party tools
+### Policy as code
+- Create security and compliance guidelines for any Terraform run with Sentinel or third-party tools
 
 ???
 # Standardize best practices
@@ -561,7 +561,7 @@ class: col-2, adjust-minimal-sub-list
 
 1. Terraform Cloud Setup
   * Sign-up or log in to Terraform Cloud
-  * Upgrade to a Team & Governance trial plan
+  * Create a Plus Tier trial organization 
   * Generate a personal Terraform Cloud token
 
 1. Safekeeping Your Terraform State
