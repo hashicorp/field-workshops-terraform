@@ -10,7 +10,7 @@ notes:
     With your Terraform Cloud account
 
     1. Create a new Terraform Cloud Organization
-    2. Enable a 14-day Trial Plan of "Team and Governance" features
+    2. Enable a 14-day Trial Plan of "Plus Tier" features
     3. Create a new personal account token
     4. Create a dedicated workspace
 tabs:
