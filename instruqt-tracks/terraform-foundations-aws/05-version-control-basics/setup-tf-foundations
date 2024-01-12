@@ -23,7 +23,7 @@ EOF
 #Prerequisites for GitLab Access Token script
 apt install -y python3-pip
 pip3 install BeautifulSoup4
-pip3 install lxml
+pip3 install lxml==5.0.0
 
 export GITLAB_TOKEN=$(python3 ~/setup/scripts/gitlab_access_token.py access-token 2025-08-31 $GITLAB_PUBLIC_ADDRESS $GITLAB_PASSWORD | awk 'END {print $NF}')
 echo export GITLAB_TOKEN=$GITLAB_TOKEN >> /root/.bashrc
