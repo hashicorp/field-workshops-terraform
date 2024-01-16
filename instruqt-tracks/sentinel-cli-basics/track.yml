@@ -1,9 +1,4 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 slug: sentinel-cli-basics
-id: pjznvlgplwiq
-type: track
 title: Sentinel CLI Basics
 teaser: Learn how to use the Sentinel CLI.
 description: |-
@@ -16,139 +11,19 @@ description: |-
   After doing this track, you can learn how to write and test Sentinel policies for Terraform in the **Sentinel for Terraform (v4)** track.
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/HashiCorp_Icon_Black.png
 tags:
-- sentinel
 - terraform
+- sentinel
 owner: hashicorp
 developers:
 - roger@hashicorp.com
-private: true
-published: true
+- jenna.wong@hashicorp.com
 show_timer: true
-challenges:
-- slug: sentinel-cli
-  id: krvmyfhnkqkx
-  type: challenge
-  title: The Sentinel CLI
-  teaser: Learn about the Sentinel CLI commands.
-  notes:
-  - type: text
-    contents: |-
-      [Sentinel](https://docs.hashicorp.com/sentinel) allows customers to implement policy-as-code in the same way that Terraform implements infrastructure-as-code.
-
-      The Sentinel Command Line Interface (CLI) allows you to apply and test Sentinel policies including those that use mocks generated from Terraform Cloud and Terraform Enterprise plans.
-
-      To learn more, see https://docs.hashicorp.com/sentinel.
-  - type: text
-    contents: |-
-      We've launched the Sentinel CLI 0.18.4 on a Ubuntu VM running in GCP so that you don't need to download or install it.
-
-      If you would like to see syntax highlighting in the editor for Sentinel policies, we suggest selecting "ruby" in the language drop-down at the bottom of the editor.
-
-      After learning how to use the Sentinel CLI in the first challenge, you will run a very simple policy in the second challenge.
-  assignment: |-
-    The Sentinel Command Line Interface (CLI) allows you to apply and test Sentinel policies including those that use mocks generated from Terraform Cloud plans.
-
-    Let's start with some basic Sentinel commands, running them in the "Sentinel CLI" tab on the left.
-
-    Check the version of Sentinel running on your machine:
-    ```
-    sentinel version
-    ```
-
-    See the list of Sentinel CLI commands:
-    ```
-    sentinel
-    ```
-
-    Get help for the "sentinel apply" command:
-    ```
-    sentinel apply -h
-    ```
-    Please read the output to learn about the "apply" command.
-
-    Note that you can also use the "-help" and "--help" flags instead of "-h".
-
-    Get help for the "sentinel test" command:
-    ```
-    sentinel test -h
-    ```
-    Please read the output to learn about the "test" command.
-
-    The "sentinel apply" and "sentinel test" commands both evaluate a Sentinel policy, but the latter tests it against multiple test case files.
-  tabs:
-  - title: Sentinel CLI
-    type: terminal
-    hostname: sentinel
-  difficulty: basic
-  timelimit: 1200
-- slug: sentinel-first-policy
-  id: 6tjgxtqkwwsp
-  type: challenge
-  title: Run Your First Sentinel Policy
-  teaser: Apply and test your first Sentinel policy.
-  notes:
-  - type: text
-    contents: |-
-      The Sentinel "apply" command lets you evaluate Sentinel policies:
-      https://docs.hashicorp.com/sentinel/commands/apply
-
-      The Sentinel "test" command lets you test a Sentinel policy against multiple test cases:
-      https://docs.hashicorp.com/sentinel/commands/test
-
-      Both commands use Sentinel CLI configuration files:
-      https://docs.hashicorp.com/sentinel/commands/config
-  assignment: |-
-    ## Apply the Policy
-    Now that you are familiar with the Sentinel CLI commands, let's apply and test your first Sentinel policy.
-
-    Take a look at the "require-even-number.sentinel" policy on the "First Policy" tab. This checks that a parameter called "the_number" is an even integer; it's default value is 1.
-
-    Apply the "require-even-number.sentinel" policy with the default value of 1 on the "Sentinel CLI" tab:
-    ```
-    sentinel apply require-even-number.sentinel
-    ```
-    This will fail since 1 is an odd number.
-
-    Apply the "require-even-number.sentinel" policy with a value of 2:
-    ```
-    sentinel apply -param the_number=2 require-even-number.sentinel
-    ```
-    This will pass since 2 is an even number.
-
-    Run that command again, but add `-trace` before the name of the policy to make Sentinel print more information:
-    ```
-    sentinel apply -param the_number=2 -trace require-even-number.sentinel
-    ```
-    Note that adding `-trace` causes the `sentinel test` command to print output from any of the policy's `print` statements even when a test case passes.
-
-    ## Test the Policy
-    Now, we will test the policy with the "sentinel test" command using test cases. For any policy, the test cases must be placed under the directory test/<policy\> under the directory containing the policy where <policy\> is the name of the policy without the ".sentinel" extension.
-
-    Edit the "fail.hcl" test case for the "require-even-number.sentinel" policy on the "Test Cases" tab, replacing `<an_odd_number>` with any odd number.  Save the "fail.hcl" file by clicking the disk icon above the file.
-
-    Edit the "pass.hcl" test case for the "require-even-number.sentinel" policy on the "Test Cases" tab, replacing `<an_even_number>` with any even number. Save the "pass.hcl" file by clicking the disk icon above the file.
-
-    Test the "require-even-number.sentinel" policy against both test cases on the "Sentinel CLI" tab:
-    ```
-    sentinel test -run=number -verbose
-    ```
-    Both test cases should pass and show you the numbers that were used.
-
-    Note that when specifying a policy with the "-run" argument, you can match any portion of the policy name. Often, you will want to use something that only matches a single policy in the current directory.
-
-    Congratulations on completing the track. That was easy!
-  tabs:
-  - title: First Policy
-    type: code
-    hostname: sentinel
-    path: /root/sentinel/require-even-number.sentinel
-  - title: Test Cases
-    type: code
-    hostname: sentinel
-    path: /root/sentinel/test/require-even-number/
-  - title: Sentinel CLI
-    type: terminal
-    hostname: sentinel
-  difficulty: basic
-  timelimit: 2400
-checksum: "1003347624552156159"
+idle_timeout: 300
+timelimit: 3600
+lab_config:
+  overlay: false
+  width: 33
+  position: right
+  sidebar_enabled: true
+  feedback_recap_enabled: true
+  loadingMessages: true
