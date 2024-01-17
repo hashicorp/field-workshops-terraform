@@ -142,11 +142,11 @@ The first step to begin work with your deployment tasks is to set up your Terraf
 ===
 - Click on [THIS](https://app.terraform.io/app/organizations/new?trial=workshop2023) link to create a Terraform Cloud Organization for this workshop.
 
-- Use the <m>Create organization & start 14 day trial</m> button to enable "Team and Governance" features in your organization. Please see the image below.
+- Use the <m>Create organization & start 14 day trial</m> button to enable "Plus Tier" features in your organization. Please see the image below.
 
 ![Create New Org](../assets/create_new_org.png)
 
-- If you have an existing account and already used a trial, please create a different organization and unlock the 14-day "Team and Governance" plan features.
+- If you have an existing account and already used a trial, please create a different organization and unlock the 14-day "Plus Tier" plan features.
 
 3- Terraform Cloud Token
 ===
