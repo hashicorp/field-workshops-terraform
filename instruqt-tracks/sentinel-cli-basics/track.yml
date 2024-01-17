@@ -1,3 +1,5 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
 slug: sentinel-cli-basics
 title: Sentinel CLI Basics
 teaser: Learn how to use the Sentinel CLI.
