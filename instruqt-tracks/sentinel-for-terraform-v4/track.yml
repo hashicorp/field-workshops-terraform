@@ -1,6 +1,5 @@
-slug: wip-vcdl-315-sentinel-for-terraform-v4
-id: fzu0jnxzbdmy
-title: WIP VCDL-315 - Sentinel for Terraform (v4)
+slug: sentinel-for-terraform-v4
+title: Sentinel for Terraform (v4)
 teaser: Learn how to write and test Sentinel policies for Terraform.
 description: |-
   [Sentinel](https://docs.hashicorp.com/sentinel) allows customers to implement policy-as-code in the same way that Terraform implements infrastructure-as-code.
