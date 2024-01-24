@@ -1,9 +1,10 @@
 ---
 slug: extra-credit
+id: evcxnlktzbc8
 type: challenge
 title: Extra Credit
 teaser: |
-Prevent auto apply on production workspaces.
+  Prevent auto apply on production workspaces.
 notes:
 - type: text
   contents: |-
@@ -38,7 +39,7 @@ tabs:
   hostname: sentinel
   path: /root/sentinel/test/prevent-auto-apply-in-production/
 - title: Sentinel CLI
-type: terminal
+  type: terminal
   hostname: sentinel
 difficulty: basic
 timelimit: 1800
@@ -83,30 +84,34 @@ timelimit: 1800
   }
 </style>
 
-## Introduction
 In this extra credit challenge, you will use the [tfrun](https://www.terraform.io/docs/cloud/sentinel/import/tfrun.html) import to prevent production workspaces from having [Auto Apply](https://www.terraform.io/docs/cloud/workspaces/settings.html#auto-apply-and-manual-apply) enabled.
 
 Your task is to complete and test a Sentinel policy that prevents any workspace with a name starting with "prod-" or ending in "-prod" from having the Auto Apply property set to `true`.
 
-We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it.
+> [!NOTE]
+> At any point while solving the challenge, you can click the green "Check" button to get a hint suggesting something that you still need to do.
 
-At any point while solving the challenge, you can click the green "Check" button to get a hint suggesting something that you still need to do.
+Complete the Policy
+===
+1. Open the `prevent-auto-apply-in-production.sentinel` policy on the "Policies" tab.
+    - Note that it uses the `tfrun` import.
 
-## Complete the Policy
-Open the "prevent-auto-apply-in-production.sentinel" policy on the "Policies" tab. Note that it uses the `tfrun` import.
+2. Replace `<condition_1>` and `<condition_2>` in the `validate_auto_apply` function with conditions that test if the workspace name starts with "prod-" or ends with "-prod".
+    - You will probably want to use Sentinel's [strings](https://docs.hashicorp.com/sentinel/imports/strings) import or [matches](https://docs.hashicorp.com/sentinel/language/spec/#matches-operator) operator as you have done in earlier challenges.
+    - If you use the `strings` import, be sure to declare it at the top of the policy.
+    - If you use the `matches` operator, note that the comment at the top of the policy gives you regex expressions you can use with it.
 
-The first thing you need to do is replace `<condition_1>` and `<condition_2>` in the `validate_auto_apply` function with conditions that test if the workspace name starts with "prod-" or ends with "-prod". You will probably want to use Sentinel's [strings](https://docs.hashicorp.com/sentinel/imports/strings) import or [matches](https://docs.hashicorp.com/sentinel/language/spec/#matches-operator) operator as you have done in earlier challenges. If you use the `strings` import, be sure to declare it at the top of the policy. If you use the `matches` operator, note that the comment at the top of the policy gives you regex expressions you can use with it.
+3. Replace `<condition_3>` with a condition that tests if the workspace has auto apply enabled.
+    - Review the [tfrun](https://www.terraform.io/docs/cloud/sentinel/import/tfrun.html) import's documentation to figure out what to use.
 
-Next, you need to replace `<condition_3>` with a condition that tests if the workspace has auto apply enabled. Review the [tfrun](https://www.terraform.io/docs/cloud/sentinel/import/tfrun.html) import's documentation to figure out what to use.
+4. You should now replace `<expression_1>` in the `validate_auto_apply` function with an expression that gives the name of the workspace.
 
-You should now replace `<expression_1>` in the `validate_auto_apply` function with an expression that gives the name of the workspace.
-
-After making all the above substitutions, save the "prevent-auto-apply-in-production.sentinel" policy.
-
-# Examine the Test Cases and Mocks
+Examine the Test Cases and Mocks
+===
 Please review the test cases and mock files on the "Test Cases" tab. You'll see that there are two fail test cases and two pass test cases with corresponding mocks. These give us fail and test cases for workspace names that start with "prod-" and end with "-prod".
 
-## Test the Policy
+Test the Policy
+===
 Finally, test your policy:
 ```
 sentinel test -run=auto -verbose

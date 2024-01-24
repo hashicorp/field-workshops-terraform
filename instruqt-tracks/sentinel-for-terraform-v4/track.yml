@@ -1,7 +1,5 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 slug: wip-vcdl-315-sentinel-for-terraform-v4
+id: fzu0jnxzbdmy
 title: WIP VCDL-315 - Sentinel for Terraform (v4)
 teaser: Learn how to write and test Sentinel policies for Terraform.
 description: |-
@@ -25,14 +23,13 @@ developers:
 - fraser@hashicorp.com
 - roger@hashicorp.com
 - jenna.wong@hashicorp.com
+idle_timeout: 300
+timelimit: 14400
 lab_config:
   overlay: false
   width: 33
   position: right
   sidebar_enabled: true
   feedback_recap_enabled: true
-  feedback_tab_enabled: false
   loadingMessages: true
-# private: true
-# published: true
-# show_timer: true
+checksum: "3086848839158658136"

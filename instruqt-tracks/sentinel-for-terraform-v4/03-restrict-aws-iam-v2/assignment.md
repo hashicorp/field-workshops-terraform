@@ -1,9 +1,10 @@
 ---
-slug: exercise-2b
+slug: restrict-aws-iam-v2
+id: ok4nxhtmg9ox
 type: challenge
 title: Exercise 2b
 teaser: |
-Restrict AWS IAM access keys (second version).
+  Restrict AWS IAM access keys (second version).
 notes:
 - type: text
   contents: |-
@@ -67,33 +68,35 @@ timelimit: 1800
   }
 </style>
 
-## Introduction
 In this challenge, you will write a second version of the second Sentinel policy for Terraform.
 
-We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it.
+> [!NOTE]
+> At any point while solving the challenge, you can click the green "Check" button to get a hint suggesting something that you still need to do.
 
-At any point while solving the challenge, you can click the green "Check" button to get a hint suggesting something that you still need to do.
+Complete the Second Version
+===
+Completing the `require-access-keys-use-pgp-a.sentinel` policy should have been fairly easy since it had the same structure as the `restrict-ec2-instance-type.sentinel` and `restrict-vault-auth-methods.sentinel` policies. Almost all the exercises in this track could be solved with short policies that call functions that we have already defined. However, if you only called those functions, you would not learn how to write similar functions yourself.
 
-## Complete the Second Version
-Completing the "require-access-keys-use-pgp-a.sentinel" policy should have been fairly easy since it had the same structure as the "restrict-ec2-instance-type.sentinel" and "restrict-vault-auth-methods.sentinel" policies. Almost all the exercises in this track could be solved with short policies that call functions that we have already defined. However, if you only called those functions, you would not learn how to write similar functions yourself.
+So, we would like you to pretend that the generic `filter_attribute_does_not_have_prefix` function did not exist and write your own Sentinel code to handle the specific needs of the exercise.
 
-So, we would like you to pretend that the generic "filter_attribute_does_not_have_prefix" function did not exist and write your own Sentinel code to handle the specific needs of the exercise. Accordingly, please open the "require-access-keys-use-pgp-b.sentinel" policy and observe that it also has several placeholders in angular brackets that need to be replaced.
+1. Open the `require-access-keys-use-pgp-b.sentinel` policy and observe that it also has several placeholders in angular brackets that need to be replaced.
 
-First, in the assignment of the `pgp_key` variable, replace `<expression>` with Sentinel code that will convert `key.change.after.pgp_key` to `null` if it is missing.
+2. In the assignment of the `pgp_key` variable, replace `<expression>` with Sentinel code that will convert `key.change.after.pgp_key` to `null` if it is missing.
 
-Then replace `<condition_1>` with a condition that tests if the `pgp_key` attribute was null. This condition should use the `pgp_key` variable. (We're only testing if it was null since if it had been missing (undefined), it would already have been converted to null.)
+3. Then replace `<condition_1>` with a condition that tests if the `pgp_key` attribute was null.
+    - This condition should use the `pgp_key` variable. (We're only testing if it was null since if it had been missing (undefined), it would already have been converted to null.)
 
-Next, replace `<condition_2>` with a condition that tests if the `pgp_key` variable does **not** start with "keybase:". While there are several ways of doing this, please use the "strings" import which is also used in the "filter_attribute_does_not_have_prefix" function that was used by the "require-access-keys-use-pgp-a.sentinel" policy.
+4. Next, replace `<condition_2>` with a condition that tests if the `pgp_key` variable does **not** start with "keybase:".
+    - While there are several ways of doing this, please use the "strings" import which is also used in the `filter_attribute_does_not_have_prefix` function that was used by the `require-access-keys-use-pgp-a.sentinel` policy.
 
 Note that this version of the policy sets `violations` to `length(violatingIAMAccessKeys)` instead of `violatingIAMAccessKeys["length"]` since `violatingIAMAccessKeys` is just a regular map without a key called `length` as had been the case when it was returned by the filter function.
 
-After making all of the above substitutions, save the "require-access-keys-use-pgp-b.sentinel" policy.
-
-## Test the Second Version
+Test the Second Version
+===
 Finally, test your policy:
 ```
 sentinel test -run=pgp-b.sentinel -verbose
 ```
 All 4 test cases should pass with green output. Additionally, the 3 fail test cases should print violation messages.
 
-If that is not the case, you will need to edit the "require-access-keys-use-pgp-b.sentinel" policy and test the policy again until all 4 test cases pass.
+If that is not the case, you will need to edit the `require-access-keys-use-pgp-b.sentinel` policy and test the policy again until all 4 test cases pass.

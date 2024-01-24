@@ -1,9 +1,10 @@
 ---
-slug: exercise-4a
+slug: restrict-images-v1
+id: govkro8vqpdq
 type: challenge
 title: Exercise 4a
 teaser: |
-Restrict images used by Google Cloud Platform compute instances (first version).
+  Restrict images used by Google Cloud Platform compute instances (first version).
 notes:
 - type: text
   contents: |-
@@ -44,7 +45,7 @@ tabs:
   hostname: sentinel
 difficulty: basic
 timelimit: 1800
---- 
+---
 <style>
   v {
     display: inline-flex;
@@ -85,42 +86,51 @@ timelimit: 1800
   }
 </style>
 
-## Introduction
 In this challenge, you will write a fourth Sentinel policy for Terraform.
 
 Your task is to complete and test a Sentinel policy that requires Google Cloud Platform (GCP) compute instances provisioned by Terraform's Google Provider to use the public image "debian-cloud/debian-9". In a real-world policy, you would allow multiple images, but we wanted to keep things simple for this exercise.
 
-You'll complete a simple version of the policy in this challenge and then complete a more complex version in the next challenge.
+We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it. The policy uses the "find_resources" function from the `tfplan-functions.sentinel` module in the `/root/sentinel/common-functions/tfplan-functions` directory.
 
-We've made things easier by writing most of the policy for you and by providing the test cases and mocks that you need to test it. The policy uses the "find_resources" function from the "tfplan-functions.sentinel" module in the /root/sentinel/common-functions/tfplan-functions directory.
+> [!NOTE]
+> At any point while solving the challenge, you can click the green "Check" button to get a hint suggesting something that you still need to do.
 
-At any point while solving the challenge, you can click the green "Check" button to get a hint suggesting something that you still need to do.
+Complete the First Version
+===
+1. Open the `restrict-gcp-instance-image-a.sentinel` policy on the "Policies" tab.
+    - You'll see several placeholders in angular brackets throughout the policy.
+    - You need to replace those placeholders with suitable Sentinel expressions.
 
-## Complete the First Version
-Open the "restrict-gcp-instance-image-a.sentinel" policy on the "Policies" tab. You'll see several placeholders in angular brackets throughout the policy. You need to replace those placeholders with suitable Sentinel expressions.
-
-Replace `<resource_type>` in the call to the `find_resources` function with the correct resource type from the Google provider.
+2. Replace `<resource_type>` in the call to the `find_resources` function with the correct resource type from the Google provider.
 
 Now that you have found the documentation page for the resource you are restricting, you can determine the specific attribute that is used to set the image on a Google compute instance. This attribute is nested inside one block which is itself contained in a second block. Each of these blocks can only occur once.
 
 In Sentinel, a block is treated as a list of maps. Additionally, lists are indexed starting with 0. We would use the expression, `x[0].y[0].z`, to refer directly to the attribute `z` of the first map inside the `y` block of the first map inside the `x` block of a resource. However, the `evaluate_attribute` function called by the `filter_attribute_is_not_value` function expects an expression like `x[0].y[0].z` to be given as `x.0.y.0.z`.
 
-You now need to replace `<expression_1>` in the "restrict-gcp-instance-image-a.sentinel" policy with a reference to the attribute that represents the image of a Google compute instance. Use an expression like the final one given in the last paragraph.
+3. You now need to replace `<expression_1>` in the `restrict-gcp-instance-image-a.sentinel` policy with a reference to the attribute that represents the image of a Google compute instance.
+    - Use an expression like the final one given in the last paragraph.
 
-Next, you need to replace `<expression_2>` in the "restrict-gcp-instance-image-a.sentinel" policy with an expression that gives the number of GCP compute instances with violations. This expression will be similar to expressions that have been assigned to the `violations` variable in earlier exercises.
+4. Next, you need to replace `<expression_2>` in the `restrict-gcp-instance-image-a.sentinel` policy with an expression that gives the number of GCP compute instances with violations.
+    - This expression will be similar to expressions that have been assigned to the `violations` variable in earlier exercises.
 
-## Examine the Test Cases and Mocks
-Now open the test cases and mock files on the "Test Cases" tab. You'll see that the test cases, "fail-invalid-image.hcl" and "fail-no-initialize-params.hcl", refer to the "mock-tfplan-fail-invalid-image.sentinel" and "mock-tfplan-fail-no-initialize-params.sentinel" mock files respectively and expect the main rule to return `false`. You'll also see that the test case, "pass.hcl", refers to the "mock-tfplan-pass.sentinel" mock file and expects the main rule to return `true`. All 3 test cases also refer to the "tfplan-functions.sentinel" module.
+Examine the Test Cases and Mocks
+===
+Now open the test cases and mock files on the "Test Cases" tab.
 
-The mock files are simplified versions of mocks generated from plans of Terraform Cloud runs done against Terraform code that used the Google provider to create a GCE compute instance. The "mock-tfplan-fail-no-initialize-params.sentinel" mock file was generated from a Terraform configuration that first generated a GCE compute disk and then created a GCE compute instance from it, avoiding the need to use the `initialize_params` block of the compute instance resource. The other two mocks created the compute instance resource directly from standard images.
+You'll see that the test cases, `fail-invalid-image.hcl` and `fail-no-initialize-params.hcl`, refer to the `mock-tfplan-fail-invalid-image.sentinel` and `mock-tfplan-fail-no-initialize-params.sentinel` mock files respectively and expect the main rule to return `false`.
 
-## Test the First Version
+You'll also see that the test case, `pass.hcl`, refers to the `mock-tfplan-pass.sentinel` mock file and expects the main rule to return `true`. All 3 test cases also refer to the `tfplan-functions.sentinel` module.
+
+The mock files are simplified versions of mocks generated from plans of Terraform Cloud runs done against Terraform code that used the Google provider to create a GCE compute instance. The `mock-tfplan-fail-no-initialize-params.sentinel` mock file was generated from a Terraform configuration that first generated a GCE compute disk and then created a GCE compute instance from it, avoiding the need to use the `initialize_params` block of the compute instance resource. The other two mocks created the compute instance resource directly from standard images.
+
+Test the First Version
+===
 Now, you should test your policy on the "Sentinel CLI" tab with this command:
 ```
 sentinel test -run=image-a.sentinel -verbose
 ```
-Setting the `-run` argument to "image-a.sentinel" will only match the desired policy and avoid running other policies. All 3 test cases should pass with green output. Additionally, the fail tests will print messages indicating that an image was either not defined or not allowed.
+Setting the `-run` argument to `image-a.sentinel` will only match the desired policy and avoid running other policies. All 3 test cases should pass with green output. Additionally, the fail tests will print messages indicating that an image was either not defined or not allowed.
 
-If that is not the case, you will need to edit the "restrict-gcp-instance-image-a.sentinel" policy and test the policy again until all 3 test cases pass.
+If that is not the case, you will need to edit the `restrict-gcp-instance-image-a.sentinel` policy and test the policy again until all 3 test cases pass.
 
 In the next challenge, you will complete a second version of this policy.
