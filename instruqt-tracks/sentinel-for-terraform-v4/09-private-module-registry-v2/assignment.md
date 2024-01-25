@@ -1,6 +1,5 @@
 ---
 slug: private-module-registry-v2
-id: vkoczgu1dkmz
 type: challenge
 title: Exercise 5b
 teaser: |

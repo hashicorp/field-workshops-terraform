@@ -1,6 +1,5 @@
 ---
 slug: private-module-registry-v1
-id: spww1iljv88o
 type: challenge
 title: Exercise 5a
 teaser: |

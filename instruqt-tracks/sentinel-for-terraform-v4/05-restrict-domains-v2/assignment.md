@@ -1,6 +1,5 @@
 ---
 slug: restrict-domains-v2
-id: sxafq5mq9ylk
 type: challenge
 title: Exercise 3b
 teaser: |

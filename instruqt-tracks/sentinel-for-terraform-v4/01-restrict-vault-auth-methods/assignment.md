@@ -1,6 +1,5 @@
 ---
 slug: restrict-vault-auth-methods
-id: ythxlywtqm9b
 type: challenge
 title: Exercise 1
 teaser: |

@@ -1,6 +1,5 @@
 ---
 slug: restrict-images-v2
-id: rkzydik0ncoe
 type: challenge
 title: Exercise 4b
 teaser: |

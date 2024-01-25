@@ -1,6 +1,5 @@
 ---
 slug: extra-credit
-id: evcxnlktzbc8
 type: challenge
 title: Extra Credit
 teaser: |

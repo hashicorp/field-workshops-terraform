@@ -1,6 +1,5 @@
 ---
 slug: restrict-aws-iam-v1
-id: 5zp6wklyvaf2
 type: challenge
 title: Exercise 2a
 teaser: |

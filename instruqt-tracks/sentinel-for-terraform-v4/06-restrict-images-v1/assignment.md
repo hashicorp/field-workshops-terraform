@@ -1,6 +1,5 @@
 ---
 slug: restrict-images-v1
-id: govkro8vqpdq
 type: challenge
 title: Exercise 4a
 teaser: |
