@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 slug: sentinel-for-terraform-v4
 title: Sentinel for Terraform (v4)
 teaser: Learn how to write and test Sentinel policies for Terraform.
