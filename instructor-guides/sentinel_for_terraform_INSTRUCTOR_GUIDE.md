@@ -1,8 +1,8 @@
 # Sentinel for Terraform - Instructor Guide
 
-This guide will prepare you to deliver a full-day [Sentinel for Terraform Workshop](https://hashicorp.github.io/field-workshops-terraform/slides/sentinel/index.html#1), although the workshop is usually broken up into two sessions as described below. The workshop is a combination of [slides](https://hashicorp.github.io/field-workshops-terraform/slides/sentinel/index.html#1) and two hands-on [Instruqt tracks](https://play.instruqt.com/hashicorp/topics/sentinel) that teach students how to write and test Sentinel policies for Terraform.  Participants will learn an 8-step methodology for writing and testing Sentinel policies. Everything is done using the Sentinel CLI provided within the Instruqt tracks, so access to Terraform Cloud or Terraform Enterprise is not required. All students need is a browser.
+This guide will prepare you to deliver a full-day [Sentinel for Terraform Workshop](https://hashicorp.github.io/field-workshops-terraform/slides/sentinel/index.html#1), although the workshop is usually broken up into two sessions as described below. The workshop is a combination of [slides](https://hashicorp.github.io/field-workshops-terraform/slides/sentinel/index.html#1) and two hands-on [Instruqt tracks](https://play.instruqt.com/hashicorp/topics/sentinel) that teach students how to write and test Sentinel policies for Terraform.  Participants will learn an 8-step methodology for writing and testing Sentinel policies. Everything is done using the Sentinel CLI provided within the Instruqt tracks, so access to HCP Terraform or Terraform Enterprise is not required. All students need is a browser.
 
-This workshop content is suitable for HashiCorp customers who are already using Terraform Cloud or Terraform Enterprise; we recommend that all students first complete one of the Intro to Terraform workshops listed under https://hashicorp.github.io/workshops/ or have equivalent experience.  It is not well-suited for prospects since it exposes the fact that using Sentinel can be complex.
+This workshop content is suitable for HashiCorp customers who are already using HCP Terraform or Terraform Enterprise; we recommend that all students first complete one of the Intro to Terraform workshops listed under https://hashicorp.github.io/workshops/ or have equivalent experience.  It is not well-suited for prospects since it exposes the fact that using Sentinel can be complex.
 
 ## Attendee prerequisites
 Prerequisites are minimal. All that is required to participate in the workshop is a web browser and Internet access. No software needs to be downloaded or installed -- self-contained lab environments run on the Instruqt platform. 
@@ -38,7 +38,7 @@ Please ask students to complete the [feedback survey](https://bit.ly/hashiworksh
 *Session 1*
 
 0:00 - 0:05 - Wait for attendees to arrive and Introductions<br>
-0:05 - 0:25 - Sentinel in Terraform Cloud and Terraform Enterprise<br>
+0:05 - 0:25 - Sentinel in HCP Terraform and Terraform Enterprise<br>
 0:25 - 0:50 - The Sentinel Language<br>
 0:50 - 1:05 - Lab 1 (The Sentinel CLI)<br>
 1:05 - 1:10 - Review of Lab 1<br>
@@ -46,9 +46,9 @@ Please ask students to complete the [feedback survey](https://bit.ly/hashiworksh
 1:15 - 1:30 - The Evolution of Sentinel Policies<br>
 1:30 - 1:35 - Demo of Sentinel CLI
 1:35 - 2:05 - Writing and Testing Sentinel Policies<br>
-2:05 - 2:15 - Demo of Sentinel in Terraform Cloud
+2:05 - 2:15 - Demo of Sentinel in HCP Terraform
 2:15 - 2:25 - Break<br>
-2:25 - 2:45 - Using Sentinel in Terraform Cloud<br>
+2:25 - 2:45 - Using Sentinel in HCP Terraform<br>
 2:45 - 3:00 - Q&A<br>
 
 *Session 2*
@@ -101,7 +101,7 @@ sentinel test -verbose restrict-vm-disk-size.sentinel
 
 Point out that the first of these two VMware Sentinel policies has three failure test cases with associated mocks. Point out that the second policy delays printing violation messages for disks created with VMware VMs so that the messages look like "Disk 0 has size with value 120 that is greater than 100" instead of the less meaningful "0 has size with value 120 that is greater than 100".
 
-While presenting the "Writing and Testing Sentinel Policies for Terraform" slides, we recommend you show the Terraform Cloud UI opened to a workspace that points at Terraform code that creates an EC2 instance. You could use this [code](https://github.com/hashicorp/terraform-guides/tree/master/infrastructure-as-code/aws-ec2-instance), although you will probably want to update it to be more modern and use a newer version of Terraform instead of Terraform 0.11. You can then do a plan and show how mocks can be downloaded from the plan.  You can also show the restrict-ec2-instance-type.sentinel policy failing if you have registered this [policy set](https://github.com/hashicorp/terraform-sentinel-policies/blob/main/aws/sentinel.hcl) with your TFC organization.
+While presenting the "Writing and Testing Sentinel Policies for Terraform" slides, we recommend you show the HCP Terraform UI opened to a workspace that points at Terraform code that creates an EC2 instance. You could use this [code](https://github.com/hashicorp/terraform-guides/tree/master/infrastructure-as-code/aws-ec2-instance), although you will probably want to update it to be more modern and use a newer version of Terraform instead of Terraform 0.11. You can then do a plan and show how mocks can be downloaded from the plan.  You can also show the restrict-ec2-instance-type.sentinel policy failing if you have registered this [policy set](https://github.com/hashicorp/terraform-sentinel-policies/blob/main/aws/sentinel.hcl) with your TFC organization.
 
 ## Hands-on Labs
 At certain points in the slide deck there are references to the lab exercises. [Instruqt](https://instruqt.com/hashicorp) is our lab platform. Users must generally register on the Instruqt website to use these tracks unless you send an invite that allows anonymous access. There are two Instruqt tracks in this workshop.
@@ -173,17 +173,17 @@ Here is some boilerplate text you can use or customize when inviting or announci
 Introduction to Sentinel for Terraform Workshop
 A hands-on technical workshop
 
-Learn how to write and test Sentinel policies that restrict the provisioning of resources done with Terraform Cloud and Terraform Enterprise workspace. Sentinel is HashiCorp's policy-as-code framework and language for codifying policies in the same way that Terraform codifies infrastructure as code. Beginners can create Sentinel policies that use common functions that avoid use of advanced Sentinel language constructs. Experts can write their own Sentinel functions that do use those constructs and implement more sophisticated policies.
+Learn how to write and test Sentinel policies that restrict the provisioning of resources done with HCP Terraform and Terraform Enterprise workspace. Sentinel is HashiCorp's policy-as-code framework and language for codifying policies in the same way that Terraform codifies infrastructure as code. Beginners can create Sentinel policies that use common functions that avoid use of advanced Sentinel language constructs. Experts can write their own Sentinel functions that do use those constructs and implement more sophisticated policies.
 
 Join us for two 3-hour training sessions that will teach you how to write and test Sentinel policies using standard and Terraform Sentinel imports and some common functions.
 
 Topics covered in the workshop include:
 
-* Sentinel in Terraform Cloud and Terraform Enterprise
+* Sentinel in HCP Terraform and Terraform Enterprise
 * The Sentinel Language
 * The Evolution of Terraform Sentinel Policies
 * Writing Sentinel Policies and Testing them with the Sentinel CLI
-* Using Sentinel in Terraform Cloud
+* Using Sentinel in HCP Terraform
 * Advanced Techniques
 
 All of these but the last will be covered during the first session which will also include one lab that teaches you how to use the Sentinel CLI.
