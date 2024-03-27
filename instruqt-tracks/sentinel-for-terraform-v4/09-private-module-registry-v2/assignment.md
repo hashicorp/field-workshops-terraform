@@ -67,7 +67,7 @@ timelimit: 1800
 
 In this challenge, you will write a second version of the fifth Sentinel policy for Terraform.
 
-Your task is to complete and test a Sentinel policy that requires that all modules loaded by the root module come from the [Private Module Registry](https://www.terraform.io/docs/cloud/registry/index.html) (PMR) of a Terraform Cloud organization.
+Your task is to complete and test a Sentinel policy that requires that all modules loaded by the root module come from the [Private Module Registry](https://www.terraform.io/docs/cloud/registry/index.html) (PMR) of a HCP Terraform organization.
 
 > [!NOTE]
 > At any point while solving the challenge, you can click the green "Check" button to get a hint suggesting something that you still need to do.

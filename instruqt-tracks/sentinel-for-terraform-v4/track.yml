@@ -7,7 +7,7 @@ teaser: Learn how to write and test Sentinel policies for Terraform.
 description: |-
   [Sentinel](https://docs.hashicorp.com/sentinel) allows customers to implement policy-as-code in the same way that Terraform implements infrastructure-as-code.
 
-  Governance and security teams can write Sentinel policies to restrict what can be provisioned in Terraform Cloud and Terraform Enterprise workspaces. Sentinel allows these teams to control costs and enforce security standards.
+  Governance and security teams can write Sentinel policies to restrict what can be provisioned in HCP Terraform and Terraform Enterprise workspaces. Sentinel allows these teams to control costs and enforce security standards.
 
   In this track, you will write and test policies that restrict resources, data sources, and modules provisioned by Terraform in AWS, Azure, and GCP. This version of the track uses the v2 versions of the tfplan, tfstate, and tfconfig Sentinel imports.
 

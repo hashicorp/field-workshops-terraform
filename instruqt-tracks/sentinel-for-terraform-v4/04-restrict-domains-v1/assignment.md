@@ -123,7 +123,7 @@ Examine the Test Cases and Mocks
 ===
 Now open the test cases and mock files on the "Test Cases" tab. You'll see that the `fail.hcl` test case refers to the `tfstate-functions.sentinel` module and the `mock-tfstate-fail.sentinel` mock file and expects the main rule to return `false`. You'll also see that the `pass.hcl` test case refers to the same module and the `mock-tfstate-pass.sentinel` mock file and expects the main rule to return `true`.
 
-The mock files are simplified versions of mocks generated from plans of Terraform Cloud runs done against Terraform code that used the AWS provider to retrieve information from two AWS ACM certificates.
+The mock files are simplified versions of mocks generated from plans of HCP Terraform runs done against Terraform code that used the AWS provider to retrieve information from two AWS ACM certificates.
 
 Test the First Version
 ===
