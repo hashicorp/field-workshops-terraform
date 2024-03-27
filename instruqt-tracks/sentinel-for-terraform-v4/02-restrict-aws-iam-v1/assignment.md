@@ -90,7 +90,7 @@ Your task is to complete and test a Sentinel policy that requires that all AWS I
 
 Complete the First Version
 ===
-1. Open the `require-access-keys-use-pgp-a.sentinel` policy on the "Poilicies" tab.
+1. Open the `require-access-keys-use-pgp-a.sentinel` policy on the "Policies" tab.
     - You'll see several placeholders in angular brackets throughout the policy.
     - You need to replace those placeholders with suitable Sentinel expressions.
 
@@ -124,7 +124,7 @@ Using multiple fail test cases allows us to test multiple ways in which a policy
 
 All 3 fail test cases expect the main rule to return `false`. Of course, we've also included a pass test case and a corresponding mock file that does include the desired attribute with an allowed value. The pass test case expects the main rule to return `true`.
 
-The mock files are simplified versions of mocks generated from plans of Terraform Cloud runs done against Terraform code that used the AWS provider to create an AWS IAM access key.
+The mock files are simplified versions of mocks generated from plans of HCP Terraform runs done against Terraform code that used the AWS provider to create an AWS IAM access key.
 
 Test the First Version
 ===

@@ -120,7 +120,7 @@ You'll see that the test cases, `fail-invalid-image.hcl` and `fail-no-initialize
 
 You'll also see that the test case, `pass.hcl`, refers to the `mock-tfplan-pass.sentinel` mock file and expects the main rule to return `true`. All 3 test cases also refer to the `tfplan-functions.sentinel` module.
 
-The mock files are simplified versions of mocks generated from plans of Terraform Cloud runs done against Terraform code that used the Google provider to create a GCE compute instance. The `mock-tfplan-fail-no-initialize-params.sentinel` mock file was generated from a Terraform configuration that first generated a GCE compute disk and then created a GCE compute instance from it, avoiding the need to use the `initialize_params` block of the compute instance resource. The other two mocks created the compute instance resource directly from standard images.
+The mock files are simplified versions of mocks generated from plans of HCP Terraform runs done against Terraform code that used the Google provider to create a GCE compute instance. The `mock-tfplan-fail-no-initialize-params.sentinel` mock file was generated from a Terraform configuration that first generated a GCE compute disk and then created a GCE compute instance from it, avoiding the need to use the `initialize_params` block of the compute instance resource. The other two mocks created the compute instance resource directly from standard images.
 
 Test the First Version
 ===
