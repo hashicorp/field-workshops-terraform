@@ -18,7 +18,7 @@ Prerequisites for these workshops are as follows:
 * A trial-enabled organization in Terraform Cloud
 * A Github.com account
 
-We strongly recommend having your participants sign up for Terraform Cloud *before* the training.  Users who create new organizations and have not already used a free 30 day trial can enable a free trial on their new organizations themselves.
+Participants may sign up for a Terraform Cloud account *before* the training, however they will have the option of creating an account during the workshop. Users will be instructed to create a new 14 day *trial* organization in the Instruqt track. They should NOT be using an existing organization. 
 
 **Work with your local SME or Terraform Cloud admin to get your organizations upgraded to trials.**
 
