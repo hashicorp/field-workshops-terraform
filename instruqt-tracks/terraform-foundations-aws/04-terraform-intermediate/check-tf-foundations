@@ -9,7 +9,7 @@ fi
 
 if [ ! -f  "/root/.terraform.d/credentials.tfrc.json" ]
 then
-      fail-message "TFC token not set, please run the terraform login command or refresh your Terminal tab before continuing."
+      fail-message "HCP Terraform token not set, please run the terraform login command or refresh your Terminal tab before continuing."
 else
       TOKEN=$(jq -r '.credentials."app.terraform.io".token'  /root/.terraform.d/credentials.tfrc.json)
       echo $(echo TFE_TOKEN=$TOKEN >> /root/.bashrc)
@@ -17,7 +17,7 @@ fi
 
 if [ -z "$TOKEN" ]
 then
-      fail-message "TFC token not set, please run the terraform login command or refresh your Terminal tab before continuing."
+      fail-message "HCP Terraform token not set, please run the terraform login command or refresh your Terminal tab before continuing."
 else
       echo $(echo TFE_TOKEN=$TOKEN >> /root/.bashrc)
 fi
@@ -25,7 +25,7 @@ fi
 export TFC_ORG=$(awk -F'"' '/organization/ {print $2}' remote_backend.tf)
 export TFC_WORKSPACE=$(awk -F'"' '/ name/ {print $2}' remote_backend.tf)
 
-# Get Terraform Cloud Workspace ID
+# Get HCP Terraform Workspace ID
 export WRKS_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" https://app.terraform.io/api/v2/organizations/$TFC_ORG/workspaces/$TFC_WORKSPACE|jq -r .data.id)
 
 # Get state download url for further jq queries

@@ -7,7 +7,7 @@ teaser: |-
 
   ◉ What is a VCS?
 
-  ◉ Terraform Cloud VCS Workflow
+  ◉ HCP Terraform VCS Workflow
 
   ◉ Managing infrastructure changes in VCS
 notes:
@@ -34,7 +34,7 @@ tabs:
 - title: Slides
   type: website
   url: https://hashicorp.github.io/field-workshops-terraform/slides/multi-cloud/terraform-cloud/version-control/#2
-- title: Terraform Cloud
+- title: HCP Terraform
   type: external
   url: https://app.terraform.io
 difficulty: basic
@@ -42,13 +42,13 @@ timelimit: 5000
 ---
 [<ins>**Version Control Systems (VCS)**</ins>](https://www.terraform.io/docs/state/remote.html)
 
-We setup a GitLab server for this part of the labs.  The foundational configurations for Terraform Cloud and GitLab have been setup as well. This includes setting up the
+We setup a GitLab server for this part of the labs.  The foundational configurations for HCP Terraform and GitLab have been setup as well. This includes setting up the
 webhook integration between them which allows information to be shared between the two tools. We've also added GitLab groups to simulate a Development Team and a Network
 Team, committed our application code to projects/repositories in these groups, and added branches to represent various application environments. Finally we've added these
-projects/repositories to Terraform Cloud in the form of "Workspaces".
+projects/repositories to HCP Terraform in the form of "Workspaces".
 
 HashiCat is a new project that we added for this part of the labs. This will create a simple webserver that we can use to promote changes between environments with
-Terraform Cloud.
+HCP Terraform.
 
 We've set the foundation for you, so that you can focus on the operational workflows and the power that comes along with them.  Let's start with the VCS...
 
@@ -83,7 +83,7 @@ Select `Browse files` button in the upper right. This allows you to view the fil
 our state file was pushed into our repository. This is something that can easily happen by mistake.
 
 Select the `terraform.tfstate` file. Then in the upper right, select `Blame`. From here, you can see what changes occurred
-for each commit, who did it and when. Using Terraform Cloud would keep these state files centralized outside of the project and
+for each commit, who did it and when. Using HCP Terraform would keep these state files centralized outside of the project and
 encrypted with HashiCorp Vault.
 
 Select the `GitLab` logo in the upper left. This will take you back to our project list.
@@ -92,11 +92,11 @@ Select `HashiCat AWS`. We will be working with this project for the remainder of
 
 Select the pulldown menu that is labeled `master`. From there you will see three branches of our project. You can think of
 a branch as a copy of the codebase that you can make changes to without impacting other branches. Keep this in mind as we look
-at our Terraform Cloud setup for our new HashiCat application.
+at our HCP Terraform setup for our new HashiCat application.
 
-[<ins>**Terraform Cloud**</ins>](https://app.terraform.io/app/organizations)
+[<ins>**HCP Terraform**</ins>](https://app.terraform.io/app/organizations)
 
-When you navigate to TFC you will see a new Organization named `Terraform-Foundations-<RandomString>` in the top left pull down menu.
+When you navigate to HCP Terraform you will see a new Organization named `Terraform-Foundations-<RandomString>` in the top left pull down menu.
 In this new organization you will have three new workspaces, one for each environment. Each of these workspaces are connected to our
 GitLab VCS and to the respected branches that we covered in the previous step.
 
@@ -105,7 +105,7 @@ If all of your workspaces are not "Applied", please wait until they complete.
 Select the `HashiCat-Development` workspace. Let's review the current workspace configuration.
 
 From the `Overview` page there will be an `Outputs` tab. There should be two outputs that were created, `catapp_ip` and `catapp_url`. Each
-Terraform Cloud workspace will have unique outputs for each environment. When you navigate to these URL's, the HashiCat webpage will indicate
+HCP Terraform workspace will have unique outputs for each environment. When you navigate to these URL's, the HashiCat webpage will indicate
 which environment they are in.
 
 Variables are set for the AWS credentials and prefix, similar to the previous challenges. There is also a variable named "environment" that
@@ -121,7 +121,7 @@ Each workspace is setup with it's respected variable for environment and watchin
 <ins>**Operational Changes**</ins>
 
 Let's look how a change promotion would look in this configuration we outlined. We are going to start in our "Development" environment
-and move, or promote, that change to our other environments. Make sure you have both GitLab and Terraform Cloud web pages up. We will
+and move, or promote, that change to our other environments. Make sure you have both GitLab and HCP Terraform web pages up. We will
 start in GitLab..
 
 Select the `HashiCat AWS` project, if you are not already there.
@@ -136,7 +136,7 @@ On line 14, add a message after the "Welcome" message. Add a "Commit message" be
 
 When you're done click on `Commit Changes`
 
-Navigate back out to Terraform Cloud. You should see that your `HashiCat-Development` workspace is running. If you were not quick enough
+Navigate back out to HCP Terraform. You should see that your `HashiCat-Development` workspace is running. If you were not quick enough
 to see it applying, you can look at the `Runs`. There will be a new run with your message that was triggered.
 
 Refresh your HashiCat Development web page to confirm that your updates are now displayed.
@@ -161,14 +161,14 @@ and stage branches. These are the changes that will be merged into our target br
 Select `Submit merge request`. We now have an opened merge request. In our lab, approvals are optional but we could require multiple approvers
 before any changes get applied. We could deny the request and put a comment with details regarding why we denied it.
 
-Right click on the green check-mark next to `Pipeline`. Open this link in a new tab. Under pipelines select the `Terraform Cloud` green check-mark.
+Right click on the green check-mark next to `Pipeline`. Open this link in a new tab. Under pipelines select the `HCP Terraform` green check-mark.
 As a merge request reviewer, you can use this to review the Terraform plan that was ran by the GitLab pipeline.
 
 We peer reviewed the changes everything looks good. Now go back to the tab we left open with our merge request and select the green `Merge` button
 
 Notice that another pipeline was started under where the merge button was. It will have incremented by +1. Right click on this new pipeline and
-open it in a new tab. You can use the external pipeline to link out to Terraform Cloud to review the apply. We could have also been watching
-the Terraform Cloud workspace list to see our workspaces auto apply from our merge request.
+open it in a new tab. You can use the external pipeline to link out to HCP Terraform to review the apply. We could have also been watching
+the HCP Terraform workspace list to see our workspaces auto apply from our merge request.
 
 You can open the stage URL of our HashiCat app to confirm that our changes have been added.
 

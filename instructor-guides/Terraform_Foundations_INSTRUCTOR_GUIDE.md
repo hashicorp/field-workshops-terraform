@@ -12,9 +12,9 @@ When possible you should attend a live training session to observe and learn fro
 Prerequisites for these workshops are as follows:
 
 * A web browser
-* Terraform Cloud account
+* HCP Terraform account
 
-We strongly recommend having your participants sign up for Terraform Cloud *before* the training.
+Participants may sign up for an HCP Terraform account *before* the training, however they will have the option of creating an account during the workshop. Users will be instructed to create a new 14 day *trial* organization in the Instruqt track. They should NOT be using an existing organization. 
 
 ### Scheduling your workshop
 Please add all workshops, both public and private, to the shared instruqt-workshops Google calendar as follows:
@@ -37,7 +37,7 @@ A hands-on technical workshop to learn the basics of Terraform.
 
 
 Prerequisites:
-* Have a Terraform Cloud account
+* Have a HCP Terraform account
 
 ```
 
