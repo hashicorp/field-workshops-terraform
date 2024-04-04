@@ -1,11 +1,11 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-slug: terraform-cloud-aws-v2
+slug: hcp-terraform-aws-v2
 id: 3xf7hxwimjqx
-title: Terraform Cloud with AWS
+title: HCP Terraform with AWS
 teaser: |
-  Terraform Cloud enables infrastructure automation for provisioning, compliance, and management of any cloud, data center, and service.
+  HCP Terraform enables infrastructure automation for provisioning, compliance, and management of any cloud, data center, and service.
 description: |-
   Work with the devops team at ACME as they go from manual provisioning with Terraform to a fully automated devops workflow with code reviews, testing, and automated provisioning in AWS Cloud.
 
@@ -29,6 +29,7 @@ developers:
 - gilberto@hashicorp.com
 - jthompson@hashicorp.com
 - thomas@hashicorp.com
+- jenna.wong@hashicorp.com
 show_timer: true
 lab_config:
   overlay: false

@@ -2,7 +2,7 @@
 # Copyright (c) HashiCorp, Inc.
 set -euxvo pipefail
 
-# Get TFC token and organization
+# Get HCP Terraform token and organization
 # these jq commands may fail, that's okay, we account for 
 # that later, so temporarily disable set -e
 set +e
@@ -25,7 +25,7 @@ export WORKSPACE=$(grep workspace /root/terraform-cloud/terraform.tfvars | cut -
 
 # Do we have a valid token
 if [ -z "${TFC_TOKEN}" ]; then
-    fail-message "Unable to find Terraform Cloud Token, please double-check the \"3- Terraform Cloud Token\" steps"
+    fail-message "Unable to find HCP Terraform Token, please double-check the \"3- HCP Terraform Token\" steps"
     exit 1
 fi
 
@@ -45,12 +45,12 @@ if [ "${STATUS}" != "200" ]; then
 	cat /tmp/.out.json
 	echo "End of output"
     fi
-    fail-message "Terraform Cloud Token is not valid, please double-check the \"3- Terraform Cloud Token\" steps"
+    fail-message "HCP Terraform Token is not valid, please double-check the \"3- HCP Terraform Token\" steps"
     exit 1
 fi
 
 rm -f /tmp/.out.json
-echo "We have a valid TFC token"
+echo "We have a valid HCP Terraform token"
 
 # Is it a trial organization
 STATUS=$(curl \
@@ -69,20 +69,20 @@ if [ "${STATUS}" != "200" ]; then
 	cat /tmp/.out.json
 	echo "End of output"
     fi
-    fail-message "Unable to get TFC Organization Subscriptions, please go back to the \"2- Terraform Cloud Trial Plan\" steps"
+    fail-message "Unable to get HCP Terraform Organization Subscriptions, please go back to the \"2- HCP Terraform Trial Plan\" steps"
     exit 1
 fi
 
 TRIAL=$(jq -r '.included[].attributes."identifier"' /tmp/.out.json 2>/dev/null)
 if [ -z "${TRIAL}" ]; then
     echo ".included[].attributes.\"identifier\" was empty"
-    fail-message "Unable to determine TFC Trial Status, please go back to the \"2- Terraform Cloud Trial Plan\" steps"
+    fail-message "Unable to determine HCP Terraform Trial Status, please go back to the \"2- HCP Terraform Trial Plan\" steps"
     exit 1
 fi
 
 if [ "${TRIAL}" != "trial" ]; then
     echo ".included[].attributes.\"identifier\" was '${TRIAL}' not 'trial'"
-    fail-message "Your TFC Organization is not a trial one, please go back to the \"2- Terraform Cloud Trial Plan\" step"
+    fail-message "Your HCP Terraform Organization is not a trial one, please go back to the \"2- HCP Terraform Trial Plan\" step"
     exit 1
 fi
 
