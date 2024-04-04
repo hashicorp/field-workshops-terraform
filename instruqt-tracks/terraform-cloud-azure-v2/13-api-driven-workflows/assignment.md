@@ -3,11 +3,11 @@ slug: api-driven-workflows
 type: challenge
 title: API Driven Workflows
 teaser: |
-  Terraform Cloud has a fully featured RESTful API that you can use to integrate with external systems.
+  HCP Terraform has a fully featured RESTful API that you can use to integrate with external systems.
 notes:
 - type: text
   contents: |-
-    You've mostly been using the Terraform Cloud Web UI and command line
+    You've mostly been using the HCP Terraform Web UI and command line
     interface (CLI) to build infrastructure. The devops team needs to integrate with
     their CI/CD tool via the API.
 
@@ -15,7 +15,7 @@ notes:
 
     > Hey Sysadmin, we have this new continuous integration tool that the developers
     are using to test their application code. I'd like you to test some API calls
-    to our Terraform Cloud organization and workspaces. Can you please take a look
+    to our HCP Terraform organization and workspaces. Can you please take a look
     at this and learn how the API works?
 tabs:
 - title: Code Editor
@@ -120,19 +120,19 @@ timelimit: 1800
     margin-left: 30px;
   }
 </style>
-In the final challenge you'll directly interact with the Terraform Cloud API.
+In the final challenge you'll directly interact with the HCP Terraform API.
 
-- Terraform Cloud has a rich API that lets you do everything you can do in the GUI and more.
+- HCP Terraform has a rich API that lets you do everything you can do in the GUI and more.
 
 - Intermediate and advanced users utilize the API to create complex integrations that work with external systems.
 
 1. API Subsets
 ===
 
-The Terraform Cloud API will continue to evolve, but we consider it stable for general use, and HashiCorp will maintain all stable API endpoints in a backwards compatible manner.
+The HCP Terraform API will continue to evolve, but we consider it stable for general use, and HashiCorp will maintain all stable API endpoints in a backwards compatible manner.
 
 ### 1.1 HTTP API Core
-This is the most straight-forward method to access the Terraform Cloud API. All requests must include the following:
+This is the most straight-forward method to access the HCP Terraform API. All requests must include the following:
 
 <w>Authentication</w> All requests must be authenticated with a bearer token.
 
@@ -174,7 +174,7 @@ Before planning an API integration, it is important to consider whether the [TFE
 
  It can't create or approve runs in response to arbitrary events, but it's a useful tool for managing your organizations, teams, and workspaces as code.
 
- - In the workshop we assumed **producer** and **consumer** roles. The producer code is in the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder as it helps create, read, update and delete the resources in Terraform Cloud.
+ - In the workshop we assumed **producer** and **consumer** roles. The producer code is in the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder as it helps create, read, update and delete the resources in HCP Terraform.
 
 ### 1.3 CDK for Terraform
 
@@ -211,7 +211,7 @@ curl -s \
 
 ```
 
-- On the Terraform Cloud portal, navigate to <x>Workspaces</x>-<x>hashicat-api</x>-<x>Overview</x>. Please see the example image below.
+- On the HCP Terraform portal, navigate to <x>Workspaces</x>-<x>hashicat-api</x>-<x>Overview</x>. Please see the example image below.
 
 ![API Create](../assets/api_create.png)
 
@@ -250,7 +250,7 @@ curl \
 
 
 ```
-- On the Terraform Cloud portal, navigate to <x>Workspaces</x>-<x>hashicat-api</x>-<x>Overview</x>. Please see the example image below.
+- On the HCP Terraform portal, navigate to <x>Workspaces</x>-<x>hashicat-api</x>-<x>Overview</x>. Please see the example image below.
 
 ![API Update](../assets/api_update.png)
 
@@ -270,13 +270,13 @@ curl \
 
 
 ```
-- On the Terraform Cloud portal and reload your page. Please see the example image below.
+- On the HCP Terraform portal and reload your page. Please see the example image below.
 
 ![API Delete](../assets/api_delete.png)
 
 3. Automation with wrappers
 ===
-Terraform Cloud's main unit of organization is a workspace. A workspace is a collection of everything Terraform needs to run: a Terraform configuration (usually from a VCS repo), values for that configuration's variables, and state data to keep track of operations between runs.
+HCP Terraform's main unit of organization is a workspace. A workspace is a collection of everything Terraform needs to run: a Terraform configuration (usually from a VCS repo), values for that configuration's variables, and state data to keep track of operations between runs.
 
 Automation of Terraform can come in various forms, and to varying degrees. The Vending Machine simulates how teams continue to run Terraform locally but use wrapper scripts to prepare a consistent working directory for Terraform to run in, while other teams run Terraform entirely within an orchestration tool such as Jenkins.
 
@@ -292,9 +292,9 @@ bash vending_macheen.bash
 ```
 - There is an assumption that the infrastructure deliverables are supported with tested and secure code modules.
 
-- The workflow manager is responsible for picking the appropriate implementation of those modules and allocating Terraform Cloud resources.
+- The workflow manager is responsible for picking the appropriate implementation of those modules and allocating HCP Terraform resources.
 
-- On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x> and pick <x>Vending_Macheen</x> to see your resources. Please see the example image below.
+- On the HCP Terraform portal, navigate to <x>Projects & workspaces</x> and pick <x>Vending_Macheen</x> to see your resources. Please see the example image below.
 
 ![API Vending Macheen](../assets/api_vending_macheen.png)
 
@@ -310,7 +310,7 @@ terraform destroy -auto-approve
 4. Automation with CI/CD
 ===
 
-While Terraform Cloud offers version control system integrations, including GitHub, using CI/CD tasks in your workflow enables you to add status checks before or after Terraform Cloud remote runs are triggered, better adapting Terraform Cloud to your use case.
+While HCP Terraform offers version control system integrations, including GitHub, using CI/CD tasks in your workflow enables you to add status checks before or after HCP Terraform remote runs are triggered, better adapting HCP Terraform to your use case.
 
 To illustrate, set up GitHub Actions for your deployment.
 
@@ -323,15 +323,15 @@ terraform apply -auto-approve
 
 ```
 
-- Create a secret to access Terraform Cloud from your GitHub deployment repo.
+- Create a secret to access HCP Terraform from your GitHub deployment repo.
 
 ```bash
 # Move to /root/hashicat-azure which has
 # a proper .git and GitHub credentials
 cd /root/hashicat-azure
 
-# Configure the TFC Token so Github Actions
-# can interact with Terraform Cloud
+# Configure the HCP Terraform Token so Github Actions
+# can interact with HCP Terraform
 gh secret set TF_API_TOKEN \
   --body "$TFC_TOKEN"
 
@@ -358,15 +358,15 @@ git push -u origin main
 
 ![GitHub Actions TF Job](../assets/github_actions_tf_job.png)
 
-- Expand and explore any of the job steps. This example showcases how the work is triggered from the CICD workflow, but the permissions for users, Cloud identity authorization, deployment policies and private module resources are all managed in Terraform Cloud.
+- Expand and explore any of the job steps. This example showcases how the work is triggered from the CICD workflow, but the permissions for users, Cloud identity authorization, deployment policies and private module resources are all managed in HCP Terraform.
 
 ---
 
 Congratulations, Senior Cloud Admin. With this exercise we conclude that:
 
-- Terraform Cloud provides a fundamental and secure API to manage its features.
+- HCP Terraform provides a fundamental and secure API to manage its features.
 
-- The [Terraform Cloud/Enterprise Provider](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs) meet most of our needs to support prescriptive workflows.
+- The [HCP Terraform/Enterprise Provider](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs) meet most of our needs to support prescriptive workflows.
 
 - You can use the API endpoints to create your own CRUD operations wrappers to integrate into your workflows.
 

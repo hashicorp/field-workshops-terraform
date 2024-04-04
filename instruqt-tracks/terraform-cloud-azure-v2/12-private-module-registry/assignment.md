@@ -1,9 +1,9 @@
 ---
 slug: private-module-registry
 type: challenge
-title: Private Module Registry
+title: Terraform Private Registry
 teaser: |
-  Some of your users want a simple way to deploy Azure Backup Storage for our application. Use the Private Module Registry, in which you can store standard, re-usable Terraform code for IaC consumers.
+  Some of your users want a simple way to deploy Azure Backup Storage for our application. Use the Terraform Private Registry, in which you can store standard, re-usable Terraform code for IaC consumers.
 notes:
 - type: text
   contents: |-
@@ -116,7 +116,7 @@ timelimit: 1800
 }
 </style>
 
-In this challenge you'll learn to use the Private Module Registry, which allows you to store and version re-usable modules of Terraform code.
+In this challenge you'll learn to use the Terraform Private Registry, which allows you to store and version re-usable modules of Terraform code.
 
 1- Terraform Registry
 ===
@@ -154,7 +154,7 @@ git push origin main
 
 ```
 
-- On the Terraform Cloud portal, navigate to <x>Workspaces</x>-<x>hashicat-azure</x>-<x>Runs</x> and, on the <x>Current Run</x> note the application of the new **module**. Please see the example image below.
+- On the HCP Terraform portal, navigate to <x>Workspaces</x>-<x>hashicat-azure</x>-<x>Runs</x> and, on the <x>Current Run</x> note the application of the new **module**. Please see the example image below.
 
 ![Workspace Public Module](../assets/workspace_public_module.png)
 
@@ -162,7 +162,7 @@ This provides an adequate technical solution. However, Gaurav and the developmen
 
 2- Private Registry
 ===
-Terraform Cloud's private registry works similarly to the public Terraform Registry and helps you share Terraform providers and Terraform modules across your organization.
+HCP Terraform's private registry works similarly to the public Terraform Registry and helps you share Terraform providers and Terraform modules across your organization.
 
 - Visit the [Terraform Azure Backup Storage](https://registry.terraform.io/modules/ravensorb/azure-backup/azurerm/latest) page on the Terraform Registry to work with the module. Complete the following steps:
 
@@ -200,11 +200,11 @@ terraform apply -auto-approve
 
 ---
 
-Your Terraform modules can be imported to your Private Module Registry using a workflow method in the Terraform Cloud portal.
+Your Terraform modules can be imported to your Terraform Private Registry using a workflow method in the HCP Terraform portal.
 
 You do not need to perform these actions with the selected Terraform module, but you can experiment with your own Terraform modules.
 
-- On the Terraform Cloud portal, navigate to <x>Registry</x>-<x>Modules</x> and use <x>Publish</x>.
+- On the HCP Terraform portal, navigate to <x>Registry</x>-<x>Modules</x> and use <x>Publish</x>.
 
 - Follow the workflow:
 
@@ -225,7 +225,7 @@ The main difference between these two methods is automation. In this workshop, w
 
 - Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>hashicat-azure</t> folder.
 
-- Revise the `module "azure-backup"` code snippet in the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and update with a reference to your Private Module registry. The code currently reads:
+- Revise the `module "azure-backup"` code snippet in the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and update with a reference to your Terraform Private Registry. The code currently reads:
 
 ```bash
 module "azure-backup" {
@@ -235,7 +235,7 @@ module "azure-backup" {
 }
 ```
 
-- Update the code with the example below. Notice the update to the module reference with your Terraform Cloud and your Organization name.
+- Update the code with the example below. Notice the update to the module reference with your HCP Terraform and your Organization name.
 
 ```bash
 module "backupstorage" {
@@ -258,7 +258,7 @@ git push origin main
 
 - The end result is the implementation of a private module that supports your decision criteria.
 
-- On the Terraform Cloud portal, navigate to <x>Workspaces</x>-<x>hashicat-azure</x>-<x>Runs</x> to view the effective changes.
+- On the HCP Terraform portal, navigate to <x>Workspaces</x>-<x>hashicat-azure</x>-<x>Runs</x> to view the effective changes.
 
 - For reference, please see the example image below.
 

@@ -1,11 +1,11 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-slug: terraform-cloud-azure-v2
+slug: hcp-terraform-azure-v2
 id: w0mxyr7gzpwb
-title: Terraform Cloud with Azure
+title: HCP Terraform with Azure
 teaser: |
-  Terraform Cloud enables infrastructure automation for provisioning, compliance, and management of any cloud, data center, and service.
+  HCP Terraform enables infrastructure automation for provisioning, compliance, and management of any cloud, data center, and service.
 description: |-
   Work with the devops team at ACME as they go from manual provisioning with Terraform to a fully automated devops workflow with code reviews, testing, and automated provisioning in Azure Cloud.
 

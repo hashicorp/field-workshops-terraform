@@ -3,7 +3,7 @@ slug: centralize-deployments
 type: challenge
 title: Safekeeping Your Terraform State
 teaser: |
-  Deploy your application to Azure. Execute Terraform commands locally and use Terraform Cloud to store and synchronize Terraform State.
+  Deploy your application to Azure. Execute Terraform commands locally and use HCP Terraform to store and synchronize Terraform State.
 notes:
 - type: text
   contents: |-
@@ -11,7 +11,7 @@ notes:
 
     Senior operations admin, Robin, shows up at your desk.
 
-    > Last night we had trouble rebuilding the website because the deployment code is locked on Lars' laptop, and Lars is on vacation. Can you configure Terraform Cloud to deploy the application and centralize its dependencies?
+    > Last night we had trouble rebuilding the website because the deployment code is locked on Lars' laptop, and Lars is on vacation. Can you configure HCP Terraform to deploy the application and centralize its dependencies?
 tabs:
 - title: Code Editor
   type: service
@@ -92,11 +92,11 @@ timelimit: 1800
     display: inline-block;
   }
 </style>
-The objective of this challenge is to configure remote state using your Terraform Cloud account.
+The objective of this challenge is to configure remote state using your HCP Terraform account.
 
 - When you perform the deployment of the `hashicat-azure` application, the Terraform code executes on your workstation.
 
-- We want to centralize and secure the associated Terraform state of your deployment in your Terraform Cloud workspace.
+- We want to centralize and secure the associated Terraform state of your deployment in your HCP Terraform workspace.
 
 1- Configure the workspace backend
 ===
@@ -136,15 +136,15 @@ terraform apply -refresh-only
 
 - When completed, you can follow the `catapp_ip`, or the `catapp_url`, link to open the application instance.
 
-3- See results in Terraform Cloud
+3- See results in HCP Terraform
 ===
-- On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Overview</x> and click on <x>Outputs</x>. Please see the example image below.
+- On the HCP Terraform portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Overview</x> and click on <x>Outputs</x>. Please see the example image below.
 
 ![Workspace Outputs](../assets/workspace_outputs.png)
 
 - From the user interface, you can follow the `catapp_ip`, or the `catapp_url`, link to open the application instance.
 
-- On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>States</x>. Please see the example image below.
+- On the HCP Terraform portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>States</x>. Please see the example image below.
 
 ![Workspace State](../assets/workspace_state.png)
 
@@ -156,6 +156,6 @@ Well done!
 
 - You successfully deployed the `hashicat-azure` application.
 
-- The Terraform state is stored securely in the Terraform Cloud platform.
+- The Terraform state is stored securely in the HCP Terraform platform.
 
 Report to Robin by clicking the <v>Check</v> button for this challenge.

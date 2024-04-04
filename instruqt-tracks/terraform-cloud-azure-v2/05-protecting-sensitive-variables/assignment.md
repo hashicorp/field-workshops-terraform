@@ -3,7 +3,7 @@ slug: protecting-sensitive-variables
 type: challenge
 title: Workspace Variables and Securing Cloud Credentials
 teaser: |
-  The security team is concerned about protecting access to Cloud credentials. Create global variable sets, deployment variables and store them securely in Terraform Cloud.
+  The security team is concerned about protecting access to Cloud credentials. Create global variable sets, deployment variables and store them securely in HCP Terraform.
 notes:
 - type: text
   contents: |-
@@ -11,14 +11,14 @@ notes:
 
     You get the following request from William, the lead infosec admin at ACME:
 
-    > Can you set the Terraform Cloud Organization to manage sensitive Cloud Principal credentials? Once that is done, we can rotate those items regularly, and we can remove any hard-coded Cloud credentials from our deployments.
+    > Can you set the HCP Terraform Organization to manage sensitive Cloud Principal credentials? Once that is done, we can rotate those items regularly, and we can remove any hard-coded Cloud credentials from our deployments.
 - type: text
   contents: |-
     Thousands of API and cryptographic keys and secrets are leaking on GitHub every day!
 
     https://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/
 
-    When you store your API keys as sensitive variables, they are encrypted and stored in the Terraform Cloud platform. These keys are only decrypted in trusted, secure containers that run Terraform commands.
+    When you store your API keys as sensitive variables, they are encrypted and stored in the HCP Terraform platform. These keys are only decrypted in trusted, secure containers that run Terraform commands.
 tabs:
 - title: Code Editor
   type: service
@@ -107,9 +107,9 @@ The security team is looking to mitigate the exposure of Cloud credentials.
 - The second task is to set up the non-sensitive, deployment-specific variables for the `hashicat-azure` application with Workspace Variables.
 
 ---
-- The utility code for Terraform Cloud is pre-configured with examples for Variable Sets and Workspace Variables.
+- The utility code for HCP Terraform is pre-configured with examples for Variable Sets and Workspace Variables.
 
-- In the <t><img src="../assets/shell.png"/>Terminal</t> tab, update your Terraform Cloud resources with Variable Sets and Workspace Variables:
+- In the <t><img src="../assets/shell.png"/>Terminal</t> tab, update your HCP Terraform resources with Variable Sets and Workspace Variables:
 
 ```bash
 cd /root/terraform-cloud
@@ -151,7 +151,7 @@ echo "ARM_TENANT_ID = $ARM_TENANT_ID"
 
 - Note the update to configure a Variable Set named Cloud Crendentials (lines 51-121). These variables are sensitive and reflect a dedicated Azure Service Principal to support infrastructure deployments.
 
-- On the Terraform Cloud portal, navigate to <x>Settings</x>-<x>Variable sets</x>. Please see the example image below.
+- On the HCP Terraform portal, navigate to <x>Settings</x>-<x>Variable sets</x>. Please see the example image below.
 
 ![Variable Sets](../assets/variable_sets.png)
 
@@ -159,7 +159,7 @@ echo "ARM_TENANT_ID = $ARM_TENANT_ID"
 
 ---
 
-- On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Variables</x>-<x>Variable Sets</x> Please see the example image below.
+- On the HCP Terraform portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Variables</x>-<x>Variable Sets</x> Please see the example image below.
 
 ![Variable Sets Linked in Workspace](../assets/variable_sets_link.png)
 
@@ -173,13 +173,13 @@ Workspace variables always overwrite variables from variable sets that have the 
 
 - The application uses two Terraform variables, `prefix` and `location`. We configure these workspace-specific variables (lines 122-145). These are _not_ sensitive and relate to the properties that you can define in your TERRAFORM code for deployment.
 
-- On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Variables</x>-<x>Workspace Variables</x>. Please see the example image below.
+- On the HCP Terraform portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Variables</x>-<x>Workspace Variables</x>. Please see the example image below.
 
 ![Workspace Variables](../assets/workspace_variables.png)
 
 3- Test Remote Execution
 ===
-Your <x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x> workspace is updated to **Remote Execution** mode. This means plans and applies occur on Terraform Cloud's infrastructure. You and your team have the ability to review and collaborate on runs within the app.
+Your <x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x> workspace is updated to **Remote Execution** mode. This means plans and applies occur on HCP Terraform's infrastructure. You and your team have the ability to review and collaborate on runs within the app.
 
 - Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> in lines 38-50.
 
@@ -189,15 +189,15 @@ Your <x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x> workspa
 cd /root/hashicat-azure
 
 # Use local apply command option to trigger
-# a remote run in Terraform Cloud
+# a remote run in HCP Terraform
 terraform apply -auto-approve
 
 
 ```
 
-- The `terraform apply` command triggers your plans and applies to occur on Terraform Cloud's infrastructure.
+- The `terraform apply` command triggers your plans and applies to occur on HCP Terraform's infrastructure.
 
-- To examine the results, on the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Overview</x>. Please see the example image below.
+- To examine the results, on the HCP Terraform portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Overview</x>. Please see the example image below.
 
 ![Remote Execution](../assets/remote_execution.gif)
 
@@ -208,6 +208,6 @@ Congratulations, you have accomplished a number of things:
 
 2. Your deployment properties are configured with your workspace-specific variables.
 
-3. Terraform Cloud manages your application deployments and you can trigger work remotely.
+3. HCP Terraform manages your application deployments and you can trigger work remotely.
 
-Report back to William with the <v>Check</v> button below once you've successfully deployed the hashicat application via Terraform Cloud.
+Report back to William with the <v>Check</v> button below once you've successfully deployed the hashicat application via HCP Terraform.
