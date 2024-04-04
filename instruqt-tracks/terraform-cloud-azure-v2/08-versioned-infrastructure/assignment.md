@@ -3,7 +3,7 @@ slug: versioned-infrastructure
 type: challenge
 title: Version Controlled Infrastructure
 teaser: |
-  The team has grown and you need to implement code reviews. Terraform Cloud can connect to popular Version Control Systems to enable collaboration and testing.
+  The team has grown and you need to implement code reviews. HCP Terraform can connect to popular Version Control Systems to enable collaboration and testing.
 notes:
 - type: text
   contents: |-
@@ -17,7 +17,7 @@ notes:
     process. Can you add the `hashicat-azure` application code to a GitHub repository so we can implement code reviews?
 - type: text
   contents: |-
-    Once you connect a VCS repository to your Terraform Cloud workspace, **all** changes to the code must be stored in the VCS before Terraform will execute them. This ensures that you have no unauthorized changes to your infrastructure as code.
+    Once you connect a VCS repository to your HCP Terraform workspace, **all** changes to the code must be stored in the VCS before Terraform will execute them. This ensures that you have no unauthorized changes to your infrastructure as code.
 
     In addition it allows you to enable features like code reviews, pull requests, and automated testing of your code.
 tabs:
@@ -147,7 +147,7 @@ The objectives of this challenge are to configure a VCS integration for your org
 
 1- Create a GitHub Repository
 ===
-To trigger Terraform Cloud runs from changes to VCS, you first need to create a new repository in your personal GitHub account.
+To trigger HCP Terraform runs from changes to VCS, you first need to create a new repository in your personal GitHub account.
 
 - In the <t><img src="../assets/shell.png"/>Terminal</t> tab run the helper script to cache your GitHub credentials temporarily.
 
@@ -208,17 +208,17 @@ echo ""
 
 ![Populated Git Repo](../assets/git_repo_populated.png)
 
-3- Integrate Terraform Cloud VCS
+3- Integrate HCP Terraform VCS
 ===
 Version control (VCS) integration allows you to manually approve changes or automate a run as soon as a pull request is merged into a repository branch.
 
-- In the <t><img src="../assets/shell.png"/>Terminal</t> tab, create a VCS connection to your GitHub organization, and link the Terraform Cloud workspace to your GitHub repository.
+- In the <t><img src="../assets/shell.png"/>Terminal</t> tab, create a VCS connection to your GitHub organization, and link the HCP Terraform workspace to your GitHub repository.
 
 ```bash
 cd /root/terraform-cloud
 
 # 1. Create an OAuth Client as the connection
-#    for your TFC organization and the
+#    for your HCP Terraform organization and the
 #    GitHub provider
 terraform apply -auto-approve
 
@@ -227,7 +227,7 @@ terraform apply -auto-approve
 
 - Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review the OAuth Client configuration (Lines 315-328).
 
-- On the Terraform Cloud portal, navigate to the <x>[[ Instruqt-Var key="TF_ORG" hostname="workstation" ]]</x> organization and open <x>Settings</x>-<x>Version Control</x>-<x>Providers</x>
+- On the HCP Terraform portal, navigate to the <x>[[ Instruqt-Var key="TF_ORG" hostname="workstation" ]]</x> organization and open <x>Settings</x>-<x>Version Control</x>-<x>Providers</x>
 
 Please see the example image below.
 
@@ -239,7 +239,7 @@ Please see the example image below.
 
 - Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review the VCS Configuration for your `[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]` workspace (Lines 69-72).
 
-- On the Terraform Cloud portal, navigate to the <x>[[ Instruqt-Var key="TF_ORG" hostname="workstation" ]]</x> organization and open <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Settings</x>-<x>Version Control</x>. Please see the example image below.
+- On the HCP Terraform portal, navigate to the <x>[[ Instruqt-Var key="TF_ORG" hostname="workstation" ]]</x> organization and open <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Settings</x>-<x>Version Control</x>. Please see the example image below.
 
 ![Workspace VCS](../assets/workspace_vcs.png)
 
@@ -255,9 +255,9 @@ echo ""
 
 ```
 
-- Terraform Cloud registers webhooks with your VCS provider, then automatically queues a Terraform run whenever new commits are merged to the branch of the linked repository.
+- HCP Terraform registers webhooks with your VCS provider, then automatically queues a Terraform run whenever new commits are merged to the branch of the linked repository.
 
-- When GitHub registers a `Pull Request` or a `Push` succesfully to the repository, there is a secure sequence to push the code and trigger a run in Terraform Cloud.
+- When GitHub registers a `Pull Request` or a `Push` succesfully to the repository, there is a secure sequence to push the code and trigger a run in HCP Terraform.
 
 ---
 Congratulations, you have implemented a significant milestone to support code reviews.

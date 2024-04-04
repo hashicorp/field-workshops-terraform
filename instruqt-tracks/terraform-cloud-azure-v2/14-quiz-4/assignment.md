@@ -1,12 +1,12 @@
 ---
 slug: quiz-4
 type: quiz
-title: Quiz 4 - Private Module Registry
+title: Quiz 4 - Terraform Private Registry
 teaser: |
-  A quiz about the private module registry
+  A quiz about the Terraform Private Registry
 notes:
 - type: text
-  contents: Congratulations! You've been promoted to Terraform Cloud Ninja.
+  contents: Congratulations! You've been promoted to HCP Terraform Ninja.
 answers:
 - "True"
 - "False"
@@ -15,4 +15,4 @@ solution:
 difficulty: basic
 timelimit: 1800
 ---
-The Terraform private module registry automatically updates private modules copied from the public registry if the original public modules are updated.
+The Terraform Private Registry automatically updates private modules copied from the public registry if the original public modules are updated.
