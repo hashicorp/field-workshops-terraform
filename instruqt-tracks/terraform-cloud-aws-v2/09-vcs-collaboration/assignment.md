@@ -3,7 +3,7 @@ slug: vcs-collaboration
 type: challenge
 title: Collaborating with VCS
 teaser: |
-  Now that you've got your version control system configured with Terraform Cloud, you can collaborate on changes to your application deployment.
+  Now that you've got your version control system configured with HCP Terraform, you can collaborate on changes to your application deployment.
 notes:
 - type: text
   contents: |-
@@ -157,7 +157,7 @@ On your Web browser, open the page to your GitHub repository.
 <br><span class="tab"></span>4 - Confirm merge
 <br><span class="tab"></span>5 - Delete branch
 
-- When you execute the <x>Create pull request</x> step, ensure you explore the Terraform Cloud Check to review the changes to the deployment. For reference, please see the example image below.
+- When you execute the <x>Create pull request</x> step, ensure you explore the HCP Terraform Check to review the changes to the deployment. For reference, please see the example image below.
 
 ![Git PR Check](../assets/git_pr_check.png)
 
@@ -182,21 +182,21 @@ git pull origin main
 
 ```
 
-3- See results in Terraform Cloud
+3- See results in HCP Terraform
 ===
-With an approved pull request/merge request to a branch, any Terraform Cloud workspaces based on that branch will perform a speculative plan with the contents of the request and links to the results on the PR's page.
+With an approved pull request/merge request to a branch, any HCP Terraform workspaces based on that branch will perform a speculative plan with the contents of the request and links to the results on the PR's page.
 
-- On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Overview</x> and note that a new deployment is occuring. Please see the example image below.
+- On the HCP Terraform portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Overview</x> and note that a new deployment is occuring. Please see the example image below.
 
 ![Workspace PR Merge](../assets/workspace_pr_merge.png)
 
-- When a workspace is linked to a VCS repository, Terraform Cloud runs start automatically when you merge or commit changes to version control.
+- When a workspace is linked to a VCS repository, HCP Terraform runs start automatically when you merge or commit changes to version control.
 
 ---
 Amazing! You have enabled your team to collaborate using GitHub as a VCS provider. You can report the following:
 
-- With approved commits to a branch, any Terraform Cloud workspaces based on that branch will begin a Terraform run.
+- With approved commits to a branch, any HCP Terraform workspaces based on that branch will begin a Terraform run.
 
-- Although any contributor to the repository can see the status indicators for pull request plans, only members of your Terraform Cloud organization with permission to read runs for the affected workspaces can click through and view the complete plan output.
+- Although any contributor to the repository can see the status indicators for pull request plans, only members of your HCP Terraform organization with permission to read runs for the affected workspaces can click through and view the complete plan output.
 
 Report to Lars with the <v>Check</v> button below and let him know that the updates are working through the VCS workflow process.
