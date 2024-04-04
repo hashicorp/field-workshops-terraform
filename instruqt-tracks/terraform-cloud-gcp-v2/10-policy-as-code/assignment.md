@@ -132,23 +132,23 @@ For a comprehensive collection of Sentinel Policies, please visit this [HashiCor
 
 2- Policy Sets
 ===
-In our environment, Terraform Cloud looks at your GitHub repo that contains the Sentinel Policy Sets to use in your own organization.
+In our environment, HCP Terraform looks at your GitHub repo that contains the Sentinel Policy Sets to use in your own organization.
 
 - Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder.
 
 - Note the changes to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> which automatically configures a Policy Set and links it to the hashicat-gcp workspace (lines 300-319).
 
-- On the Terraform Cloud portal, navigate to <x>[[ Instruqt-Var key="TF_ORG" hostname="workstation" ]]</x>-<x>Settings</x>-<x>Policy Sets</x> and explore the <x>Hashicat-Social</x> policy set.
+- On the HCP Terraform portal, navigate to <x>[[ Instruqt-Var key="TF_ORG" hostname="workstation" ]]</x>-<x>Settings</x>-<x>Policy Sets</x> and explore the <x>Hashicat-Social</x> policy set.
 
 ![Organization Policy Set](../assets/org_policy_sets.png)
 
-- To view the results of this new configuration, issue a manual run in the Terraform Cloud UI.
+- To view the results of this new configuration, issue a manual run in the HCP Terraform UI.
 
-- On the Terraform Cloud portal, navigate to <x>Workspaces</x>-<x>hashicat-gcp</x>, choose <x>+ New run</x> and <x>Start run</x>. Please see the example image below.
+- On the HCP Terraform portal, navigate to <x>Workspaces</x>-<x>hashicat-gcp</x>, choose <x>+ New run</x> and <x>Start run</x>. Please see the example image below.
 
 ![Workspace New Run](../assets/workspace_new_run.png)
 
-- On the Terraform Cloud portal, navigate to <x>Workspaces</x>-<x>hashicat-gcp</x>-<x>Runs</x> and, on the <x>Current Run</x> note the application of the policies AFTER the plan, but BEFORE the apply phase. Please see the example image below.
+- On the HCP Terraform portal, navigate to <x>Workspaces</x>-<x>hashicat-gcp</x>-<x>Runs</x> and, on the <x>Current Run</x> note the application of the policies AFTER the plan, but BEFORE the apply phase. Please see the example image below.
 
 ![Workspace Policy Checks](../assets/workspace_policy_checks.png)
 
@@ -158,7 +158,7 @@ In our environment, Terraform Cloud looks at your GitHub repo that contains the 
 
 - Use the <t><img src="../assets/web.png"/>Code Editor</t> tab to expand the <t><img src="../assets/folder.png"/>hashicat-gcp</t> folder, and browse the <t><img src="../assets/folder.png"/>policies</t> folder.
 
-- Read the <t><img src="../assets/hcl-icon.png"/>sentinel.hcl</t> file. This file is used to direct Terraform Cloud how to apply these policies.
+- Read the <t><img src="../assets/hcl-icon.png"/>sentinel.hcl</t> file. This file is used to direct HCP Terraform how to apply these policies.
 
 - Notice that the policies are set to **soft-mandatory** - which implies that failed policies stop the run, and someone with authority can override a failed policy check during a run. Other possible values are:
 

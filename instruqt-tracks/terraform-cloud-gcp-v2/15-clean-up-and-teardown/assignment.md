@@ -8,7 +8,7 @@ notes:
 - type: text
   contents: |-
     1. Destroy infrastructure.
-    2. Remove TFC Configurations
+    2. Remove HCP Terraform Configurations
     3. Delete GitHub repository
 tabs:
 - title: Code Editor
@@ -113,7 +113,7 @@ timelimit: 1800
     margin-left: 30px;
   }
 </style>
-Congratulations, you've learned all the major features of Terraform Cloud.
+Congratulations, you've learned all the major features of HCP Terraform.
 
 Destroy hashicat infrastructure
 ===
@@ -151,11 +151,11 @@ curl \
 
 - Ensure that the `hashicat-gcp` deployment **Triggered Destroy** finishes.
 
-- On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Overview</x> to confirm. Please see the example image below.
+- On the HCP Terraform portal, navigate to <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Overview</x> to confirm. Please see the example image below.
 
 ![Destroy Workspace](../assets/workspace_destroy.png)
 
-Remove TFC Configurations
+Remove HCP Terraform Configurations
 ===
 - Remove workspace, variables, users, policies, VCS, private module
 

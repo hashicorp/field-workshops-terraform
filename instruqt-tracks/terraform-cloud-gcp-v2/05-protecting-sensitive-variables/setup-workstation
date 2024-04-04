@@ -19,7 +19,7 @@ cat /root/terraform-cloud/exercises/05-tf_vars_main.tf >> /root/terraform-cloud/
 cat /root/terraform-cloud/exercises/05-env_vars_variables.tf >> /root/terraform-cloud/variables.tf
 cat /root/terraform-cloud/exercises/05-tf_vars_variables.tf >> /root/terraform-cloud/variables.tf
 
-# Re-use deployment variables so we can upload to TFC 
+# Re-use deployment variables so we can upload to HCP Terraform 
 cat /root/hashicat-$CLOUD_ENV/terraform.tfvars >> /root/terraform-cloud/terraform.tfvars
 
 exit 0

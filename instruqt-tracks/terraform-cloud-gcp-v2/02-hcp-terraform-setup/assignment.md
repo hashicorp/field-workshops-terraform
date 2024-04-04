@@ -1,15 +1,15 @@
 ---
-slug: terraform-cloud-setup
+slug: hcp-terraform-setup
 type: challenge
-title: Terraform Cloud Setup
+title: HCP Terraform Setup
 teaser: |
-  Customize your Terraform Cloud resources.
+  Customize your HCP Terraform resources.
 notes:
 - type: text
   contents: |
-    With your Terraform Cloud account
+    With your HCP Terraform account
 
-    1. Create a new Terraform Cloud Organization
+    1. Create a new HCP Terraform Organization
     2. Enable 14-day Trial Plan of "Plus Tier" features
     3. Create a new personal account token
     4. Create a dedicated workspace
@@ -130,17 +130,17 @@ w {
 }
 
 </style>
-The first step to begin work with your deployment tasks is to set up your Terraform Cloud resources.
+The first step to begin work with your deployment tasks is to set up your HCP Terraform resources.
 
-1- Terraform Cloud Organization
+1- HCP Terraform Organization
 ===
-- Sign up for a free Terraform Cloud account at https://app.terraform.io/signup/account.
+- Sign up for a free HCP Terraform account at https://app.terraform.io/signup/account.
 
 - If you already have an account, sign in with your existing credentials.
 
-2- Terraform Cloud Trial Plan
+2- HCP Terraform Trial Plan
 ===
-- Click on [THIS](https://app.terraform.io/app/organizations/new?trial=workshop2023) link to create a Terraform Cloud Organization for this workshop.
+- Click on [THIS](https://app.terraform.io/app/organizations/new?trial=workshop2023) link to create a HCP Terraform Organization for this workshop.
 
 - Use the <m>Create organization & start 14 day trial</m> button to enable "Plus Tier" features in your organization. Please see the image below.
 
@@ -148,15 +148,15 @@ The first step to begin work with your deployment tasks is to set up your Terraf
 
 - If you have an existing account and already used a trial, please create a different organization and unlock the 14-day "Plus Tier" plan features.
 
-3- Terraform Cloud Token
+3- HCP Terraform Token
 ===
-- Use this <o>[link](https://app.terraform.io/app/settings/tokens?source=terraform-login)</o> to visit the <x>User Settings</x>-<x>Tokens</x> page in your Terraform Cloud account.
+- Use this <o>[link](https://app.terraform.io/app/settings/tokens?source=terraform-login)</o> to visit the <x>User Settings</x>-<x>Tokens</x> page in your HCP Terraform account.
 
 - Use the <m>Create API token</m> button to generate a new **personal user token** to use in this workshop.
 
-- <lb>Make sure to save your Terraform Cloud token. It will not be displayed again.</lb>
+- <lb>Make sure to save your HCP Terraform token. It will not be displayed again.</lb>
 
-- Move to the <t><img src="../assets/shell.png"/>Terminal</t> tab and store your Terraform Cloud Token locally with the following command:
+- Move to the <t><img src="../assets/shell.png"/>Terminal</t> tab and store your HCP Terraform Token locally with the following command:
 
 ```bash
 terraform login
@@ -164,15 +164,15 @@ terraform login
 
 ```
 
-4- Terraform Cloud Workspace
+4- HCP Terraform Workspace
 ===
-Use local Terraform utility deployment code to create and configure a new Terraform Cloud Workspace.
+Use local Terraform utility deployment code to create and configure a new HCP Terraform Workspace.
 
 - Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder and open the file <t><img src="../assets/tf-icon.png"/>terraform.tfvars</t>
 
-- Replace the `YOUR_ORGANIZATION` placeholder with your Terraform Cloud organization name.
+- Replace the `YOUR_ORGANIZATION` placeholder with your HCP Terraform organization name.
 
-- We default the name of your Terraform Cloud workspace to `hashicat-gcp`. You can choose a different name at this time.
+- We default the name of your HCP Terraform workspace to `hashicat-gcp`. You can choose a different name at this time.
 
 ---
 
@@ -183,14 +183,14 @@ cd /root/terraform-cloud
 terraform init
 
 # The following creates a workspace in
-# Terraform Cloud called "hashicat-gcp"
+# HCP Terraform called "hashicat-gcp"
 # ... unless the default is changed.
 terraform apply -auto-approve
 
 
 ```
 
-- On the Terraform Cloud portal, navigate to <x>Projects & workspaces</x>-<x>hashicat-gcp</x>-<x>Settings</x>-<x>General</x>
+- On the HCP Terraform portal, navigate to <x>Projects & workspaces</x>-<x>hashicat-gcp</x>-<x>Settings</x>-<x>General</x>
 
 - Note that your new workspace is configured for <x>Local</x> execution.
 

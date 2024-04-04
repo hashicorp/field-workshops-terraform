@@ -2,7 +2,7 @@
 # Copyright (c) HashiCorp, Inc.
 set -euxvo pipefail
 
-# Get TFC token and organization
+# Get HCP Terraform token and organization
 # these jq commands may fail, that's okay, we account for 
 # that later, so temporarily disable set -e
 set +e
@@ -51,7 +51,7 @@ if [ "${STATUS}" != "200" ]; then
 fi
 
 rm -f /tmp/.out.json
-echo "We have a valid TFC token"
+echo "We have a valid HCP Terraform token"
 
 # VCDL-103
 # Is it a trial organization
@@ -71,20 +71,20 @@ if [ "${STATUS}" != "200" ]; then
 	cat /tmp/.out.json
 	echo "End of output"
     fi
-    fail-message "Unable to get TFC Organization Subscriptions, please go back to the \"2- Terraform Cloud Trial Plan\" steps"
+    fail-message "Unable to get HCP Terraform Organization Subscriptions, please go back to the \"2- Terraform Cloud Trial Plan\" steps"
     exit 1
 fi
 
 TRIAL=$(jq -r '.included[].attributes."identifier"' /tmp/.out.json 2>/dev/null)
 if [ -z "${TRIAL}" ]; then
     echo ".included[].attributes.\"identifier\" was empty"
-    fail-message "Unable to determine TFC Trial Status, please go back to the \"2- Terraform Cloud Trial Plan\" steps"
+    fail-message "Unable to determine HCP Terraform Trial Status, please go back to the \"2- Terraform Cloud Trial Plan\" steps"
     exit 1
 fi
 
 if [ "${TRIAL}" != "trial" ]; then
     echo ".included[].attributes.\"identifier\" was '${TRIAL}' not 'trial'"
-    fail-message "Your TFC Organization is not a trial one, please go back to the \"2- Terraform Cloud Trial Plan\" step"
+    fail-message "Your HCP Terraform Organization is not a trial one, please go back to the \"2- Terraform Cloud Trial Plan\" step"
     exit 1
 fi
 

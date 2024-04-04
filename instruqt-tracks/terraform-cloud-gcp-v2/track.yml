@@ -3,9 +3,9 @@
 
 slug: terraform-cloud-gcp-v2
 id: bpy7hbylexsf
-title: Terraform Cloud with GCP
+title: HCP Terraform with GCP
 teaser: |
-  Terraform Cloud enables infrastructure automation for provisioning, compliance, and management of any cloud, data center, and service.
+  HCP Terraform enables infrastructure automation for provisioning, compliance, and management of any cloud, data center, and service.
 description: |-
   Work with the devops team at ACME as they go from manual provisioning with Terraform to a fully automated devops workflow with code reviews, testing, and automated provisioning in Google Cloud.
 
