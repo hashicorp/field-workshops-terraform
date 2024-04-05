@@ -1,6 +1,6 @@
 ---
 slug: private-module-registry
-id: oob8lyy2lzzf
+id: w3olatnrkbpc
 type: challenge
 title: Terraform Private Registry
 teaser: |
@@ -186,7 +186,7 @@ The private registry uses your configured Version Control System (VCS) integrati
 
 To implement this private module in your Private Registry do the following:
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder.
+- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>hcp-terraform</t> folder.
 
 - Open the file <t><img src="../assets/tf-icon.png"/>terraform.tfvars.tf</t> and ensure value for the variable `module_repo` matches your own module repository name.
 
@@ -195,7 +195,7 @@ To implement this private module in your Private Registry do the following:
 - Use the <t><img src="../assets/shell.png"/>Terminal</t> tab to register your Private Registry with the following command:
 
 ```bash
-cd /root/terraform-cloud
+cd /root/hcp-terraform
 terraform apply -auto-approve
 
 

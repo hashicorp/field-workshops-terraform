@@ -1,5 +1,6 @@
 ---
 slug: versioned-infrastructure
+id: qxpkkegxtpar
 type: challenge
 title: Version Controlled Infrastructure
 teaser: |
@@ -217,7 +218,7 @@ Version control (VCS) integration allows you to manually approve changes or auto
 - In the <t><img src="../assets/shell.png"/>Terminal</t> tab, create a VCS connection to your GitHub organization, and link the HCP Terraform workspace to your GitHub repository.
 
 ```bash
-cd /root/terraform-cloud
+cd /root/hcp-terraform
 
 # 1. Create an OAuth Client as the connection
 #    for your HCP Terraform organization and the
@@ -227,7 +228,7 @@ terraform apply -auto-approve
 
 ```
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review the OAuth Client configuration (Lines 286-299).
+- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>hcp-terraform</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review the OAuth Client configuration (Lines 286-299).
 
 - On the HCP Terraform portal, navigate to the <x>[[ Instruqt-Var key="TF_ORG" hostname="workstation" ]]</x> organization and open <x>Settings</x>-<x>Version Control</x>-<x>Providers</x>
 
@@ -239,7 +240,7 @@ Please see the example image below.
 
 ---
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review the VCS Configuration for your `[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]` workspace (Lines 67-70).
+- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>hcp-terraform</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review the VCS Configuration for your `[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]` workspace (Lines 67-70).
 
 - On the HCP Terraform portal, navigate to the <x>[[ Instruqt-Var key="TF_ORG" hostname="workstation" ]]</x> organization and open <x>Projects & workspaces</x>-<x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x>-<x>Settings</x>-<x>Version Control</x>. Please see the example image below.
 

@@ -1,5 +1,6 @@
 ---
 slug: policy-as-code
+id: tbryjvdek2as
 type: challenge
 title: Terraform Compliance with Sentinel
 teaser: |
@@ -106,7 +107,7 @@ In this challenge we use HashiCorp Sentinel policies to enforce two rules:
 To get started, use the <t><img src="../assets/shell.png"/>Terminal</t> tab to create a new Policy Set and assign it to the hashicat-aws workspace with the following:
 
 ```bash
-cd /root/terraform-cloud
+cd /root/hcp-terraform
 
 # 1. Create a policy set from VCS.
 # 2. Enable automated policy as code
@@ -135,7 +136,7 @@ For a comprehensive collection of Sentinel Policies, please visit this [HashiCor
 ===
 In our environment, HCP Terraform looks at your GitHub repo that contains the Sentinel Policy Sets to use in your own organization.
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder.
+- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>hcp-terraform</t> folder.
 
 - Note the changes to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> which automatically configures a Policy Set and links it to the hashicat-aws workspace (lines 300-319).
 

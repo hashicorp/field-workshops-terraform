@@ -1,5 +1,6 @@
 ---
 slug: setup-our-environment
+id: tzvywwpsojw5
 type: challenge
 title: |
   Getting Started - Explore the lab

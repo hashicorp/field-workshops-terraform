@@ -1,6 +1,6 @@
 ---
 slug: quiz-4
-id: mxsh9aupqddg
+id: oofp9qomyji4
 type: quiz
 title: Quiz 4 - Terraform Private Registry
 teaser: |
