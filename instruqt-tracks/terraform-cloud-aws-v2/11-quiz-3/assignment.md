@@ -1,6 +1,6 @@
 ---
 slug: quiz-3
-id: rpy7guvyoqz7
+id: vytzsyi5wcdj
 type: quiz
 title: Quiz 3 - Version Control and Terraform
 teaser: |
