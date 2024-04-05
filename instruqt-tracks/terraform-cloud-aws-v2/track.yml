@@ -23,8 +23,6 @@ tags:
 - terraform
 owner: hashicorp
 developers:
-- gilberto@hashicorp.com
-- jthompson@hashicorp.com
 - thomas@hashicorp.com
 - jenna.wong@hashicorp.com
 show_timer: true

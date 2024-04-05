@@ -112,7 +112,7 @@ The security team is looking to mitigate the exposure of Cloud credentials.
 - In the <t><img src="../assets/shell.png"/>Terminal</t> tab, update your HCP Terraform resources with Variable Sets and Workspace Variables:
 
 ```bash
-cd /root/terraform-cloud
+cd /root/hcp-terraform
 
 # 1. Create global variable set with Cloud
 #    credentials marked as sensitive
@@ -145,7 +145,7 @@ echo "GOOGLE_PROJECT_ID = $INSTRUQT_GCP_PROJECT_GCPPROJECT_PROJECT_ID"
 
 ```
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t>
+- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>hcp-terraform</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t>
 
 - Note the update to configure a Variable Set named Cloud Crendentials (lines 51-95). These variables are sensitive and reflect a dedicated Google Cloud Service Principal to support infrastructure deployments.
 
@@ -167,7 +167,7 @@ echo "GOOGLE_PROJECT_ID = $INSTRUQT_GCP_PROJECT_GCPPROJECT_PROJECT_ID"
 ===
 Workspace variables always overwrite variables from variable sets that have the same type and the same key.
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t>
+- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>hcp-terraform</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t>
 
 - The application uses two Terraform variables, `region` and `prefix`. We configure these workspace-specific variables (lines 96-119). These are _not_ sensitive and relate to the properties that you can define in your TERRAFORM code for deployment.
 
@@ -179,7 +179,7 @@ Workspace variables always overwrite variables from variable sets that have the 
 ===
 Your <x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x> workspace is updated to **Remote Execution** mode. This means plans and applies occur on HCP Terraform's infrastructure. You and your team have the ability to review and collaborate on runs within the app.
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> in lines 38-50.
+- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>hcp-terraform</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> in lines 38-50.
 
 - Test your application deployment with REMOTE execution. In the <t><img src="../assets/shell.png"/>Terminal</t> tab, perform an update to your <x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x> workspace.
 

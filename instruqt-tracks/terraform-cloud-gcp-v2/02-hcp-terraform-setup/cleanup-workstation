@@ -3,8 +3,8 @@
 set -euxvo pipefail
 
 # Save the Terraform Org and Workspace name as env variables 
-export ORG=$(grep organization /root/terraform-cloud/terraform.tfvars | cut -d '"' -f2)
-export WORKSPACE=$(grep workspace /root/terraform-cloud/terraform.tfvars | cut -d '"' -f2)
+export ORG=$(grep organization /root/hcp-terraform/terraform.tfvars | cut -d '"' -f2)
+export WORKSPACE=$(grep workspace /root/hcp-terraform/terraform.tfvars | cut -d '"' -f2)
 
 # These are considered runtime variables, which allow you to use dynamic content in the challenge 
 # assignments and lifecycle scripts. 
@@ -19,9 +19,9 @@ cd /root/hashicat-$CLOUD_ENV
 sed -i "s/YOUR_ORGANIZATION/$ORG/g" remote_backend.tf
 sed -i "s/YOUR_WORKSPACE/$WORKSPACE/g" remote_backend.tf
 
-cp /root/terraform-cloud/terraform.tfvars.example /root/terraform-cloud/terraform.tfvars
+cp /root/hcp-terraform/terraform.tfvars.example /root/hcp-terraform/terraform.tfvars
 
-cd /root/terraform-cloud
+cd /root/hcp-terraform
 sed -i "s/YOUR_ORGANIZATION/$ORG/g" terraform.tfvars # This was originally looking in terraform.tfvars.example
 sed -i "s/YOUR_WORKSPACE/$WORKSPACE/g" terraform.tfvars
 
