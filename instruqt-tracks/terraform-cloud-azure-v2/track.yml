@@ -29,6 +29,7 @@ developers:
 - jthompson@hashicorp.com
 - thomas@hashicorp.com
 - gilberto@hashicorp.com
+- jenna.wong@hashicorp.com
 show_timer: true
 lab_config:
   overlay: false

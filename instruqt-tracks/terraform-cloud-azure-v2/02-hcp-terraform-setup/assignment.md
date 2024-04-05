@@ -179,7 +179,7 @@ Use local Terraform utility deployment code to create and configure a new HCP Te
 - Move to the <t><img src="../assets/shell.png"/>Terminal</t> tab and execute the following commands:
 
 ```bash
-cd /root/terraform-cloud
+cd /root/hcp-terraform
 terraform init
 
 # The following creates a workspace in

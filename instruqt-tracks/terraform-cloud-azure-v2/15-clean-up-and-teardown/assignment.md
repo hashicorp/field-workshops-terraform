@@ -161,7 +161,7 @@ Remove HCP Terraform Configurations
 - Remove workspace, variables, users, policies, VCS, private module
 
 ```bash
-cd /root/terraform-cloud
+cd /root/hcp-terraform
 terraform destroy -auto-approve
 
 

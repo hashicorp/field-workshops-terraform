@@ -174,7 +174,7 @@ Before planning an API integration, it is important to consider whether the [TFE
 
  It can't create or approve runs in response to arbitrary events, but it's a useful tool for managing your organizations, teams, and workspaces as code.
 
- - In the workshop we assumed **producer** and **consumer** roles. The producer code is in the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder as it helps create, read, update and delete the resources in HCP Terraform.
+ - In the workshop we assumed **producer** and **consumer** roles. The producer code is in the <t><img src="../assets/folder.png"/>hcp-terraform</t> folder as it helps create, read, update and delete the resources in HCP Terraform.
 
 ### 1.3 CDK for Terraform
 
@@ -317,7 +317,7 @@ To illustrate, set up GitHub Actions for your deployment.
 - Use the <t><img src="../assets/shell.png"/>Terminal</t> tab to update your <x>[[ Instruqt-Var key="TF_WORKSPACE" hostname="workstation" ]]</x> workspace configuration. In this case, we are removing the VCS setup:
 
 ```bash
-cd /root/terraform-cloud
+cd /root/hcp-terraform
 terraform apply -auto-approve
 
 

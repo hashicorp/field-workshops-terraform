@@ -21,8 +21,8 @@ if [ -f /tmp/skip-check ]; then
 fi
 
 # Save the Terraform Org and Workspace name as env variables 
-export ORG=$(grep organization /root/terraform-cloud/terraform.tfvars | cut -d '"' -f2)
-export WORKSPACE=$(grep workspace /root/terraform-cloud/terraform.tfvars | cut -d '"' -f2)
+export ORG=$(grep organization /root/hcp-terraform/terraform.tfvars | cut -d '"' -f2)
+export WORKSPACE=$(grep workspace /root/hcp-terraform/terraform.tfvars | cut -d '"' -f2)
 
 # Do we have a valid token
 if [ -z "${TFC_TOKEN}" ]; then

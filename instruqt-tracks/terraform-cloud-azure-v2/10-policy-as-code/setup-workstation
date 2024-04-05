@@ -4,7 +4,7 @@ set -e
 cd /root/hashicat-$CLOUD_ENV
 git pull origin main
 
-cat /root/terraform-cloud/exercises/11-main.tf >> /root/terraform-cloud/main.tf
+cat /root/hcp-terraform/exercises/11-main.tf >> /root/hcp-terraform/main.tf
 
 TFC_TOKEN=$(jq -r '.credentials."app.terraform.io".token' /root/.terraform.d/credentials.tfrc.json 2>/dev/null)
 TF_ORG=$(agent variable get TF_ORG)
