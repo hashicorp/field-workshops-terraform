@@ -1,10 +1,10 @@
-# Terraform Cloud Workshops - Instructor Guide
+# HCP Terraform Workshops - Instructor Guide
 
-This guide will prepare you to deliver a 3/4 day [Terraform Cloud on AWS/Azure/GCP Workshop](https://hashicorp.github.io/workshops).
+This guide will prepare you to deliver a 3/4 day [HCP Terraform on AWS/Azure/GCP Workshop](https://hashicorp.github.io/workshops).
 
 Because the content is almost identical, we will cover the instructions for all three major cloud vendors (Azure/AWS/GCP) in one document.
 
-This workshop content is suitable for HashiCorp prospects and customers. The workshop is a combination of lecture slides and hands-on labs that introduce Terraform Cloud features and is targeted toward intermediate users. The workshop may be presented in-person, over the web, or as a self-guided tutorial.
+This workshop content is suitable for HashiCorp prospects and customers. The workshop is a combination of lecture slides and hands-on labs that introduce HCP Terraform features and is targeted toward intermediate users. The workshop may be presented in-person, over the web, or as a self-guided tutorial.
 
 The workshop alternates between lectures with accompanying slides and hands-on lab exercises. New concepts that are introduced in the slides are reinforced in the labs. As an instructor you should be well familiar with the slide deck and training labs. Go through the course and make sure you understand all of the major concepts and lab exercises.
 
@@ -14,13 +14,13 @@ When possible you should attend a live training session to observe and learn fro
 Prerequisites for these workshops are as follows:
 
 * Complete one of the Intro to Terraform workshops (or equivalent experience)
-* A Terraform Cloud account
-* A trial-enabled organization in Terraform Cloud
+* An HCP Terraform account
+* A trial-enabled organization in HCP Terraform
 * A Github.com account
 
-Participants may sign up for a Terraform Cloud account *before* the training, however they will have the option of creating an account during the workshop. Users will be instructed to create a new 14 day *trial* organization in the Instruqt track. They should NOT be using an existing organization. 
+Participants may sign up for an HCP Terraform account *before* the training, however they will have the option of creating an account during the workshop. Users will be instructed to create a new 14 day *trial* organization in the Instruqt track. They should NOT be using an existing organization. 
 
-**Work with your local SME or Terraform Cloud admin to get your organizations upgraded to trials.**
+**Work with your local SME or HCP Terraform admin to get your organizations upgraded to trials.**
 
 ### Scheduling your workshop
 Please add all workshops, both public and private, to the shared instruqt-workshops Google calendar as follows:
@@ -38,15 +38,15 @@ Before saving the event, be sure to set the calendar as "instruqt-workshops" ins
 Here is some boilerplate text you can use or customize when inviting or announcing your workshop:
 
 ```
-Terraform Cloud on XXXXX
+HCP Terraform on XXXXX
 A hands-on technical workshop
 
-Supercharge your Cloud infrastructure management with Terraform Cloud.
+Supercharge your Cloud infrastructure management with HCP Terraform.
 
 Here's the workshop syllabus showing the topics we will cover:
 
-1. Community Edition to Cloud/Enterprise
-🌥️ Terraform Cloud Overview
+1. Community Edition to HCP/Enterprise
+🌥️ HCP Terraform Overview
 👨🏽‍🏫 Review the Basics
 🔗 Configure Remote State
 
@@ -69,8 +69,8 @@ Here's the workshop syllabus showing the topics we will cover:
 
 Prerequisites:
 * Complete one of the Intro to Terraform workshops
-* Have a Terraform Cloud account
-* Organization in Terraform Cloud with trial features enabled
+* Have an HCP Terraform account
+* Organization in HCP Terraform with trial features enabled
 * A github.com account
 
 ```
@@ -99,14 +99,14 @@ Go through your track from start to finish and make sure you understand everythi
 
 ### v2 (new) tracks
 
-https://play.instruqt.com/hashicorp/tracks/terraform-cloud-aws-v2<br>
-https://play.instruqt.com/hashicorp/tracks/terraform-cloud-azure-v2<br>
-https://play.instruqt.com/hashicorp/tracks/terraform-cloud-gcp-v2<br>
+https://play.instruqt.com/hashicorp/tracks/hcp-terraform-aws-v2<br>
+https://play.instruqt.com/hashicorp/tracks/hcp-terraform-azure-v2<br>
+https://play.instruqt.com/hashicorp/tracks/hcp-terraform-gcp-v2<br>
 
 ### v1 (legacy) tracks
-https://play.instruqt.com/hashicorp/tracks/terraform-cloud-aws<br>
-https://play.instruqt.com/hashicorp/tracks/terraform-cloud-azure<br>
-https://play.instruqt.com/hashicorp/tracks/terraform-cloud-gcp<br>
+https://play.instruqt.com/hashicorp/tracks/hcp-terraform-aws<br>
+https://play.instruqt.com/hashicorp/tracks/hcp-terraform-azure<br>
+https://play.instruqt.com/hashicorp/tracks/hcp-terraform-gcp<br>
 
 
 #### Creating Instruqt Invites
@@ -114,8 +114,8 @@ Once you've gotten an invite to the HashiCorp organization you can create tempor
 
 1. Click on the **Invites** tab under https://play.instruqt.com/hashicorp. (Note that you must be have the Content Contributor role within the Instruqt HashiCorp organization to create invites. If you don't have that, see this [link](https://hashicorp.atlassian.net/wiki/spaces/SE/pages/511574174/Instruqt+and+Remark+Contributor+Guide#InstruqtandRemarkContributorGuide-GettingAccess).)
 2. Click on the **Create** button to create a new invite.
-3. Create a descriptive title such as "Acme Terraform Cloud Workshop".
-4. Select the track you want to make available. Typing "Terraform Cloud" will help you find the right track in the filtered list.
+3. Create a descriptive title such as "Acme HCP Terraform Workshop".
+4. Select the track you want to make available. Typing "HCP Terraform" will help you find the right track in the filtered list.
 5. Leave "How many times can this invite be used?" set to 0.
 6. Set the invite to expire in one month.
 7. Leave "How many times can the track be played?" set to 0.
@@ -129,7 +129,7 @@ We recommend you perform the following steps before TA-ing or teaching any of th
 2. Delete your fork of the https://github.com/hashicorp/tfc-workshops-sentinel repository and re-fork it. This will ensure that you have the latest version.
 3. Delete your "hashicat-aws", "hashicat-azure", or "hashicat-gcp" workspace from your TFC organization.
 
-### Skipping in the Terraform Cloud tracks
+### Skipping in the HCP Terraform tracks
 HashiCorp employees (if members of the Instruqt HashiCorp organization) can now skip ahead in the TFC tracks. This has actually been the case for some time, but had never previously been documented. In actuality, the skipping would not have worked very well since the solve script needed to support skipping were not fully implemented.
 
 We have not yet enabled skipping for end-users even though Instruqt now supports that. It is debatable whether allowing end-users to skip challenges is really desireable. They'll learn more if they don't skip.
@@ -159,7 +159,7 @@ Note that in the rest of this section, "*" is a placeholder for "aws", "azure", 
 The solve scripts will do the following for you when skipping:
 * Configure your "credentials.tfrc.json" and "remote_backend.tf" files, create the "hashicat-*" workspace and configure it to use local execution, update your "terraform.tfvars" file, and do the first `terraform init` and `terraform apply -auto-approve` (in the "Safekeeping Your Terraform State" solve script).
 * Convert your "hashicat-*" workspace to use remote execution, create workspace variables (both environment and Terraform), and trigger your first remote run with `terraform apply -auto-approve` (in the "Securing Cloud Credentials" solve script).
-* Create the `admins`, `developers`, and `managers` teams in your organization if they don't already exist and assign them team permissions in your "hashicat-*" workspace (in the "Working with Teams in Terraform Cloud" solve script).
+* Create the `admins`, `developers`, and `managers` teams in your organization if they don't already exist and assign them team permissions in your "hashicat-*" workspace (in the "Working with Teams in HCP Terraform" solve script).
 * Execute various `git` commands, push your modified "remote_backend.tf" file to your fork of the "hashicat-*" repository, and update your workspace to use your VCS connection to that repository (in the "Version Controlled Infrastructure" solve script). This will trigger another run.
 * Create the "tfc-workshops-sentinel-aws", "tfc-workshops-sentinel-azure", or "tfc-workshops-sentinel-gcps" Sentinel policy set in your organization, attach your "hashicat-*" workspace to it, add tags to your VM in your "main.tf" file and execute `git` commands including two `git push` commands to push the tags one at a time to your fork of the "hashicat" repository (in the "Terraform Compliance with Sentinel" solve script). Each `git push` will trigger another run; the first will fail the Sentinel policy check while the second will pass it.
 * Write out a new file that uses a Terraform module and execute several `git` commands including `git push` to add the module to your workspace (in the "Private Module Registry" solve script). This will also trigger a run against your workspace.
@@ -176,7 +176,7 @@ After chapter 1 there is a slide that says *Live Demo*. You can use an instruqt 
 #### Demo Setup
 You can use the same instruqt track that the students will be using to do this demo. Make sure you've gone through the entire track yourself and have your own organization, fork of the hashicat-aws repo, and sentinel policy in place. Once you have done these steps it's easy to create a new demo:
 
-1. Start your own copy of the Terraform Cloud on AWS track
+1. Start your own copy of the HCP Terraform on AWS track
 2. Echo out your AWS credentials and set them as environment variables in TFC:
 ```
 echo $AWS_ACCESS_KEY_ID
@@ -187,15 +187,15 @@ echo $AWS_SECRET_ACCESS_KEY
 5. Begin your demo dialog:
 
 #### Demo Talk Track
-**This is a brief demo showing off some of the features of Terraform cloud. You'll get to work with all these features during the hands-on labs today.**
+**This is a brief demo showing off some of the features of HCP Terraform. You'll get to work with all these features during the hands-on labs today.**
 
 **Pretend I'm a brand new developer and I want to spin up a copy of my company's web application that I can use for testing. I have my own fork of the code here on github. This is the hashicat-aws application. Like the name implies, it provides kittens as a service. You give it a placeholder URL, a height, and a width, and you get a cat. Neat huh?**
 
-**Let's hop over to Terraform Cloud and take a look at my workspace. Here you can see the most recent terraform runs and their status, along with the exact git commit hash that led to each run being triggered. All changes are recorded, and only code that passes our sentinel policies is allowed to run.**
+**Let's hop over to HCP Terraform and take a look at my workspace. Here you can see the most recent terraform runs and their status, along with the exact git commit hash that led to each run being triggered. All changes are recorded, and only code that passes our sentinel policies is allowed to run.**
 
 **Before I build anything I might want to configure some variables to adjust my infrastructure settings. Here you can see some terraform variables, prefix and region. These will determine the names of my resources and the region they will be deployed in.**
 
-**Down bottom you see the Environment Variables. These are system shell variables that are injected into the Terraform Cloud container at runtime. You can optionally encrypt sensitive environment variables such as these AWS keys. Note that these are write-only. Once you encrypt a variable by marking it sensitive, you won't see it here in plaintext again. These are dynamic AWS credentials that are good for only a few hours. You can paste them in manually or use the API to auto-populate them from HashiCorp Vault.**
+**Down bottom you see the Environment Variables. These are system shell variables that are injected into the HCP Terraform container at runtime. You can optionally encrypt sensitive environment variables such as these AWS keys. Note that these are write-only. Once you encrypt a variable by marking it sensitive, you won't see it here in plaintext again. These are dynamic AWS credentials that are good for only a few hours. You can paste them in manually or use the API to auto-populate them from HashiCorp Vault.**
 
 **New and advanced users can utilize the GUI to trigger infrastructure builds. Let's do that now by clicking on this Queue Plan button. I'm going to put "new dev environment" down as the reason for the build. Now notice that a new terraform plan has kicked off. This is the dry run. terraform is figuring out if any of the infrastructure already exists from a previous run, and then it will build or change everything to match what's in the code. That is, unless we fail a sentinel policy...**
 
@@ -213,7 +213,7 @@ INSTRUCTOR NOTE: Have your code commented and ready to go like this. That way yo
   }
 ```
 
-**Now if I pop back over to Terraform Cloud you can see that a new run has triggered based on the change I just made. Terraform Cloud watches that master branch for any changes and automatically picks them up. I still have a chance to review the run in the UI here. You can see that my policy check is now passing, which will make the finance people happy, and I can continue building my dev environment.**
+**Now if I pop back over to HCP Terraform you can see that a new run has triggered based on the change I just made. HCP Terraform watches that master branch for any changes and automatically picks them up. I still have a chance to review the run in the UI here. You can see that my policy check is now passing, which will make the finance people happy, and I can continue building my dev environment.**
 
 **I'll click Confirm & Apply and we'll start building.**
 
@@ -237,7 +237,7 @@ Create a new variable called `placeholder` and set it to `placedog.net`. Queue u
 The following schedule assumes you have a group of participants who are somewhat new to Terraform. You should budget between five to six hours for this workshop. This is meant as a guideline, you can adjust as needed.
 
 0:00 - 0:10 - Wait for attendees to arrive, intros, coffee<br>
-0:10 - 0:50 - Terraform Cloud Lecture & Demo<br>
+0:10 - 0:50 - HCP Terraform Lecture & Demo<br>
 0:50 - 1:00 - Break<br>
 1:00 - 1:20 - Review the Basics / Remote State<br>
 1:20 - 2:00 - Lab #1<br>
@@ -251,4 +251,4 @@ The following schedule assumes you have a group of participants who are somewhat
 6:00 - 6:30 - Optional Bonus Lab, Wrap-up
 
 ### The Bonus Lab
-The bonus lab is extra content you can share with participants if you feel they're ready for it. This is a loosely structured lab with minimal setup instructions. No details are provided for commands like "git add, git commit, git push". The student is expected to know how to create a git branch, commit changes to it, push those changes, and create a pull request. They also need to know how to set up branch protection and understand how Terraform Cloud interacts with git repos and directories. In the challenge there is a sentinel policy that blocks security groups from allowing unrestricted (0.0.0.0/0) access to the web app (AWS) or restricts the size of the VM you can build (Azure and GCP). The participants need to figure out how to update their terraform code, commit their changes to a dev branch, push the changes to the remote dev branch, then ensure that the dev workspace runs correctly, and finally create a pull request to merge to master. As an instructor you should go through this lab and be familiar with it if you plan to teach it.
+The bonus lab is extra content you can share with participants if you feel they're ready for it. This is a loosely structured lab with minimal setup instructions. No details are provided for commands like "git add, git commit, git push". The student is expected to know how to create a git branch, commit changes to it, push those changes, and create a pull request. They also need to know how to set up branch protection and understand how HCP Terraform interacts with git repos and directories. In the challenge there is a sentinel policy that blocks security groups from allowing unrestricted (0.0.0.0/0) access to the web app (AWS) or restricts the size of the VM you can build (Azure and GCP). The participants need to figure out how to update their terraform code, commit their changes to a dev branch, push the changes to the remote dev branch, then ensure that the dev workspace runs correctly, and finally create a pull request to merge to master. As an instructor you should go through this lab and be familiar with it if you plan to teach it.
