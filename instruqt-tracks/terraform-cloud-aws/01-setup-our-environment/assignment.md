@@ -1,5 +1,6 @@
 ---
 slug: setup-our-environment
+id: posubzo3cest
 type: challenge
 title: "\U0001F3E1 Moving in - Set Up Your Workspace"
 teaser: |

@@ -10,8 +10,8 @@ notes:
 answers:
 - In your Terraform workspace
 - In a text file on your Desktop
-- As encrypted environment variables in Terraform Cloud
-- As Terraform variables in Terraform Cloud
+- As encrypted environment variables in HCP Terraform
+- As Terraform variables in HCP Terraform
 solution:
 - 2
 difficulty: basic

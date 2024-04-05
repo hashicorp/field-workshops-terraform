@@ -1,12 +1,12 @@
 ---
-slug: terraform-cloud-setup
+slug: hcp-terraform-setup
 type: challenge
-title: Terraform Cloud Setup
+title: HCP Terraform Setup
 teaser: |
-  Terraform Cloud offers unlimited free Terraform state storage for users. Safeguard your state files by storing them remotely in Terraform Cloud.
+  HCP Terraform offers unlimited free Terraform state storage for users. Safeguard your state files by storing them remotely in HCP Terraform.
 notes:
 - type: text
-  contents: Terraform Cloud remote state storage is free for all users.
+  contents: HCP Terraform remote state storage is free for all users.
 tabs:
 - title: Shell
   type: terminal
@@ -18,17 +18,17 @@ tabs:
 difficulty: basic
 timelimit: 1800
 ---
-Terraform Cloud Setup
+HCP Terraform Setup
 ===
-1. Sign up for a free Terraform Cloud account:
+1. Sign up for a free HCP Terraform account:
 
   - Go to the [Sign-in page](https://portal.cloud.hashicorp.com/sign-in) and create a new account
 
   - If you already have an account, sign in with your existing credentials
 
-2. Create a new Terraform Cloud Organization
+2. Create a new HCP Terraform Organization
 
-  - Navigate to the [Create a new organization](https://app.terraform.io/app/organizations/new?trial=workshop2023) page and create a Terraform Cloud Organization for this workshop
+  - Navigate to the [Create a new organization](https://app.terraform.io/app/organizations/new?trial=workshop2023) page and create a HCP Terraform Organization for this workshop
 
   - Use the `Create organization & start 14 day trial` button to enable Team and Governance features in your organization. Please see reference below.
 
@@ -45,7 +45,7 @@ Workspace Configuration
 
 No really...you *must* name your workspace **hashicat-gcp**. If you don't the exercises will break. Do not attempt to name it something else.
 
-**Note:** If you already have a **hashicat-gcp** workspace, please delete the workspace by selecting the workspace-level **Settings >> Destruction and Deletion** menu, clicking the **Delete from Terraform Cloud** button, typing **hashicat-gcp** to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you already played this track in the past.
+**Note:** If you already have a **hashicat-gcp** workspace, please delete the workspace by selecting the workspace-level **Settings >> Destruction and Deletion** menu, clicking the **Delete from HCP Terraform** button, typing **hashicat-gcp** to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you already played this track in the past.
 
 ---
 

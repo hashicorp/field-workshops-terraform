@@ -1,9 +1,10 @@
 ---
 slug: versioned-infrastructure
+id: ktqrbfw9puyr
 type: challenge
 title: "\U0001F4BB Version Controlled Infrastructure"
 teaser: |
-  The team has grown and you need to implement code reviews. Terraform Cloud can connect to popular Version Control Systems to enable collaboration and testing.
+  The team has grown and you need to implement code reviews. HCP Terraform can connect to popular Version Control Systems to enable collaboration and testing.
 notes:
 - type: text
   contents: "As Terraform usage continues to increase across the organization, your
@@ -15,7 +16,7 @@ notes:
     so we can implement code reviews?"
 - type: text
   contents: |-
-    Once you connect a VCS repository to your Terraform Cloud workspace, **all** changes to the code must be stored in the VCS before Terraform will execute them. This ensures that you have no unauthorized changes to your infrastructure as code.
+    Once you connect a VCS repository to your HCP Terraform workspace, **all** changes to the code must be stored in the VCS before Terraform will execute them. This ensures that you have no unauthorized changes to your infrastructure as code.
 
     In addition it allows you to enable features like code reviews, pull requests, and automated testing of your code.
 tabs:
@@ -29,7 +30,7 @@ tabs:
 difficulty: basic
 timelimit: 1800
 ---
-In order for different teams and individuals to be able to work on the same Terraform code, you need to use a Version Control System (VCS). Terraform Cloud can integrate with the most popular VCS systems including GitHub, GitLab and Bitbucket.
+In order for different teams and individuals to be able to work on the same Terraform code, you need to use a Version Control System (VCS). HCP Terraform can integrate with the most popular VCS systems including GitHub, GitLab and Bitbucket.
 
 You will need a free GitHub.com account for this challenge. We recommend using a personal account for training instead your work account (if you have one).
 
@@ -80,7 +81,7 @@ https://github.com/settings/tokens
 
 Then click on **Personal Access Tokens** and generate a new token for the workshop. Give it at least the `repo | public_repo` scope, but you can grant the entire `repo` scope and other scopes if desired. You can delete the token afterwards if you like. This token enables you to push changes from your workstation to your public fork of the hashicat-aws repository.
 
-Now that you have your own copy of the hashicat-aws repo to work with, follow the **Configuring GitHub Access** section of the TFC documentation to connect your GitHub account to your Terraform Organization.
+Now that you have your own copy of the hashicat-aws repo to work with, follow the **Configuring GitHub Access** section of the HCP Terraform documentation to connect your GitHub account to your Terraform Organization.
 
 https://www.terraform.io/docs/cloud/vcs/github.html
 

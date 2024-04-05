@@ -7,10 +7,10 @@ set -o history
 
 cd /root/hashicat-azure
 
-# Get our TFC token and organization from the local config files
+# Get our HCP Terraform token and organization from the local config files
 TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
 
-# These are the terraform cloud IDs of our fictional users. They are persistent and should not be deleted from TFC.
+# These are the HCP Terraform IDs of our fictional users. They are persistent and should not be deleted from HCP Terraform.
 LARS_ID="user-V2Qt225RgAUzsWpz"
 HIRO_ID="user-egHewG9Z5eNa9u9m"
 AISHA_ID="user-CsBb94bVHrq7E5AA"

@@ -18,6 +18,6 @@ tabs:
 difficulty: basic
 timelimit: 1800
 ---
-Congratulations, you've learned all the major features of Terraform Cloud.
+Congratulations, you've learned all the major features of HCP Terraform.
 
 You can continue to build and experiment with Terraform, or simply click the Check button to complete the track.

@@ -134,7 +134,7 @@ cat <<-EOF > /tmp/region.json
 }
 EOF
 
-# Create our variables in terraform cloud
+# Create our variables in HCP Terraform
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/access_key.json https://app.terraform.io/api/v2/vars
 
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/secret_key.json https://app.terraform.io/api/v2/vars

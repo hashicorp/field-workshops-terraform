@@ -12,7 +12,7 @@ notes:
     repository. You get this email from William, the lead infosec admin at ACME:\n\n>\U0001F46E\U0001F3FF‍♂️
     Hello junior admin, we ran a remote scan on your laptop last night and found some
     unsecured Google Cloud credentials. We need you to move those off your laptop
-    and store them in Terraform Cloud by the end of the day."
+    and store them in HCP Terraform by the end of the day."
 - type: text
   contents: "\U0001F914 Did you know?\n\nThousands of API and cryptographic keys and
     secrets are leaking on GitHub every day!\n\nhttps://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/\n\nWhen
@@ -22,7 +22,7 @@ notes:
 - type: text
   contents: "\U0001F469\U0001F3FC‍\U0001F4BB Remote Execution, Local Code\n\nRemote
     Execution allows you to use the same Terraform commands that you're familiar with,
-    but the run and all your variables are safely stored in your Terraform Cloud workspace.
+    but the run and all your variables are safely stored in your HCP Terraform workspace.
     This can be helpful when you're upgrading tools that were originally written for
     Terraform Open Source.\n\nWith Remote Execution your Terraform code is still stored
     on your local machine and sent to the server each time you run."
@@ -37,7 +37,7 @@ tabs:
 difficulty: basic
 timelimit: 1800
 ---
-After the GCP credentials issue, the security team is tightening down access to your GCP project. API creds must now be stored as encrypted variables in Terraform Cloud. Your task is to find your Google credentials, and move them into your workspace as a secure environment variable.
+After the GCP credentials issue, the security team is tightening down access to your GCP project. API creds must now be stored as encrypted variables in HCP Terraform. Your task is to find your Google credentials, and move them into your workspace as a secure environment variable.
 
 In order to complete this challenge you'll need to do the following:
 
@@ -61,12 +61,12 @@ Test your work by running `terraform init`. Your backend configuration will be u
 
 Next try running `terraform plan`. This will trigger what's known as a speculative plan. You can view this plan by copying the link from your "Shell" tab. This plan will not show up in your ordinary terraform runs that are triggered via the UI or API. A copy of the plan output will be streamed back to your "Shell" tab.
 
-Run a terraform apply. This apply **will** show up if you navigate to the runs page in the Terraform Cloud UI.
+Run a terraform apply. This apply **will** show up if you navigate to the runs page in the HCP Terraform UI.
 
 ```
 terraform apply
 ```
 
-Congratulations, your GCP credentials are now safely encrypted and stored in your Terraform Cloud workspace.
+Congratulations, your GCP credentials are now safely encrypted and stored in your HCP Terraform workspace.
 
-You can continue to run `terraform plan` and `terraform apply` in your "Shell" tab, but the execution is now done in Terraform Cloud.
+You can continue to run `terraform plan` and `terraform apply` in your "Shell" tab, but the execution is now done in HCP Terraform.

@@ -32,14 +32,14 @@ if [[ $EXIT_CODE -ne 0 ]]; then
   fail-message "Oops, we couldn't find the hashicat-gcp workspace in your remote_backend.tf config file. Try again."
 fi
 
-# Verify the organization exists in TFC
+# Verify the organization exists in HCP Terraform
 curl -I -s -L --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG | grep "HTTP/2 200"
 EXIT_CODE=$?
 if [[ $EXIT_CODE -ne 0 ]]; then
-  fail-message "I couldn't find your organization, $ORG in Terraform Cloud. Make sure you created it and that it is configured in your remote_backend.tf file."
+  fail-message "I couldn't find your organization, $ORG in HCP Terraform. Make sure you created it and that it is configured in your remote_backend.tf file."
 fi
 
-# Verify the workspace exists in TFC
+# Verify the workspace exists in HCP Terraform
 curl -I -s -L --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-gcp | grep "HTTP/2 200"
 EXIT_CODE=$?
 if [[ $EXIT_CODE -ne 0 ]]; then

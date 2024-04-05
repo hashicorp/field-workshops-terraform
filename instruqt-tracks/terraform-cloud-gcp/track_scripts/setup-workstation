@@ -52,18 +52,18 @@ echo "******************************************************************"
 echo "* Skip to Challenge Configuration Script"
 echo "******************************************************************"
 echo
-echo "This script will set up your Terraform Cloud token and organization"
+echo "This script will set up your HCP Terraform token and organization"
 echo "configuration. Once that is done you may use the 'skip to challenge'"
 echo "feature of Instruqt to fast-forward to a particular point in the"
 echo "training."
 echo
-echo "Please enter your Terraform Cloud organization name."
+echo "Please enter your HCP Terraform organization name."
 read ORG
 echo
 echo "Please enter your workspace name."
 read WORKSPACE
 echo
-echo "Please enter your Terraform Cloud user token."
+echo "Please enter your HCP Terraform user token."
 read TOKEN
 echo
 echo "Please enter your GitHub user ID."

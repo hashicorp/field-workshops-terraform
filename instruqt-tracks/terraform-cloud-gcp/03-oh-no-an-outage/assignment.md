@@ -3,7 +3,7 @@ slug: oh-no-an-outage
 type: challenge
 title: "\U0001F4D2 Safekeeping Your Terraform State"
 teaser: |
-  An unexpected outage has taken down one of the production websites. It took longer than expected to recover because the Terraform state file was stored on someone's laptop. Terraform Cloud's remote state feature is here to help.
+  An unexpected outage has taken down one of the production websites. It took longer than expected to recover because the Terraform state file was stored on someone's laptop. HCP Terraform's remote state feature is here to help.
 notes:
 - type: text
   contents: "It's Monday morning and you're the first one into the office. Most of
@@ -28,15 +28,15 @@ tabs:
 difficulty: basic
 timelimit: 1800
 ---
-Your task is to configure remote state using your Terraform Cloud account. In order to complete this challenge you'll need the following:
+Your task is to configure remote state using your HCP Terraform account. In order to complete this challenge you'll need the following:
 
-1. A free Terraform Cloud account - log in at https://app.terraform.io<br>
-2. A Terraform Cloud organization. You just created this in the previous exercise.<br>
+1. A free HCP Terraform account - log in at https://app.terraform.io<br>
+2. An HCP Terraform organization. You just created this in the previous exercise.<br>
 3. A workspace named **hashicat-gcp** with its Execution Mode set to **Local** (not Remote)<br>
 4. A *user* token for authentication<br>
 5. A `remote_backend` config stored in your workspace<br>
 
-Let's generate a new **user token** for use on your workstation. Visit the User Settings > Tokens page in Terraform Cloud:
+Let's generate a new **user token** for use on your workstation. Visit the User Settings > Tokens page in HCP Terraform:
 
 https://app.terraform.io/app/settings/tokens
 
@@ -44,7 +44,7 @@ Click on the **Create an API token** button. You can name the token whatever you
 
 Back in the Instruqt track, you need to add your API token to a file called "credentials.tfrc.json". Select the "Credentials File" tab and open the `/root/.terraform.d/credentials.tfrc.json` file directly.
 
-Replace the part that says YOURTOKEN with what you copied from Terraform Cloud. Be sure to save the file.
+Replace the part that says YOURTOKEN with what you copied from HCP Terraform. Be sure to save the file.
 
 Your token is now safely stored in the "credentials.tfrc.json" file.
 
@@ -79,7 +79,7 @@ Please click on the second URL to test that your application is working.
 
 To see a valid value for the `catapp_ip` output, you sometimes might first need to run `terraform refresh`. Note that the IP is an internal IP and is not accessible from the internet.
 
-Additionally, you should see a new state file on the "States" tab of your Terraform Cloud workspace.
+Additionally, you should see a new state file on the "States" tab of your HCP Terraform workspace.
 
 Note: If you ran terraform locally before configuring the remote backend, you might have a local state file called `terraform.tfstate`. If so, please delete it by running `rm terraform.tfstate`.
 

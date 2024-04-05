@@ -7,7 +7,7 @@ set -o history
 
 cd /root/hashicat-aws
 
-# Get TFC ORG and TOKEN
+# Get HCP Terraform ORG and TOKEN
 if [[ -f /root/skipconfig.json ]]; then
   ORG=$(jq -r .org < /root/skipconfig.json)
   TOKEN=$(jq -r .token < /root/skipconfig.json)

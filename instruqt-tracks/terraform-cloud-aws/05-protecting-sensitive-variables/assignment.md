@@ -1,5 +1,6 @@
 ---
 slug: protecting-sensitive-variables
+id: 7u9bx3yzmcxr
 type: challenge
 title: "\U0001F510 Securing Cloud Credentials"
 teaser: |
@@ -12,7 +13,7 @@ notes:
     You get this email from William, the lead infosec admin at ACME:\n\n>\U0001F46E\U0001F3FF‍♂️
     Hello junior admin, we ran a remote scan on your laptop last night and found some
     unsecured AWS access keys. We need you to move those off your laptop and store
-    them in Terraform Cloud by the end of the day."
+    them in HCP Terraform by the end of the day."
 - type: text
   contents: "\U0001F914 Did you know?\n\nThousands of API and cryptographic keys and
     secrets are leaking on GitHub every day!\n\nhttps://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-their-crown-jewels-exposed-on-github/\n\nWhen
@@ -22,7 +23,7 @@ notes:
 - type: text
   contents: "\U0001F469\U0001F3FC‍\U0001F4BB Remote Execution, Local Code\n\nRemote
     Execution allows you to use the same Terraform commands that you're familiar with,
-    but the run and all your variables are safely stored in your Terraform Cloud workspace.
+    but the run and all your variables are safely stored in your HCP Terraform workspace.
     This can be helpful when you're upgrading tools that were originally written for
     Terraform Open Source.\n\nWith Remote Execution your Terraform code is still stored
     on your local machine and sent to the server each time you run."
@@ -37,7 +38,7 @@ tabs:
 difficulty: basic
 timelimit: 1800
 ---
-After the AWS credentials issue, the security team is tightening down access to your AWS account. API creds must now be secured as stored variables in Terraform Cloud. Your task is to find your AWS Access Key ID and Secret Access Key, and move them into your workspace as secure environment variables.
+After the AWS credentials issue, the security team is tightening down access to your AWS account. API creds must now be secured as stored variables in HCP Terraform. Your task is to find your AWS Access Key ID and Secret Access Key, and move them into your workspace as secure environment variables.
 
 You'll store the Access Key ID as a plain text environment variable, and the Secret Access Key as a sensitive environment variable. You may also enter optional descriptions for each variable but this is not required to complete the challenge.
 
@@ -59,12 +60,12 @@ Test your work by running `terraform init`. Your backend configuration will be u
 
 Next try running `terraform plan`. This will trigger what's known as a speculative plan. You can view this plan by copying the link from your "Shell" tab. This plan will not show up in your ordinary terraform runs that are triggered via the UI or API. A copy of the plan output will be streamed back to your "Shell" tab.
 
-Run a terraform apply. This apply **will** show up if you navigate to the runs page in the Terraform Cloud UI.
+Run a terraform apply. This apply **will** show up if you navigate to the runs page in the HCP Terraform UI.
 
 ```
 terraform apply
 ```
 
-Congratulations, your AWS keys are now safely encrypted and stored in your Terraform Cloud workspace.
+Congratulations, your AWS keys are now safely encrypted and stored in your HCP Terraform workspace.
 
-You can continue to run `terraform plan` and `terraform apply` in your "Shell" tab, but the execution is now done in Terraform Cloud.
+You can continue to run `terraform plan` and `terraform apply` in your "Shell" tab, but the execution is now done in HCP Terraform.

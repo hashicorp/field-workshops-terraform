@@ -1,6 +1,6 @@
 ---
 slug: a-sentinel-stands-guard
-id: hbfiys5uxsig
+id: cnv43veumwhh
 type: challenge
 title: "\U0001F6E1️ Terraform Compliance with Sentinel"
 teaser: |
@@ -44,7 +44,7 @@ Before moving on, please look at the [enforce-mandatory-tags](https://github.com
 
 4. Under **Description** you can enter "Sentinel Policies for our AWS resources".
 
-5. In the **More Options** menu set the **Policies Path** to `/aws`. This tells Terraform Cloud to use the AWS specific policies that are stored in the repo.
+5. In the **More Options** menu set the **Policies Path** to `/aws`. This tells HCP Terraform to use the AWS specific policies that are stored in the repo.
 
 6. Leave everything else at its default setting and click on the **Connect policy set** button at the bottom of the page.
 

@@ -43,7 +43,7 @@ Before moving on, please look at the [enforce-mandatory-tags](https://github.com
 
 4. Under **Description** you can enter "Sentinel Policies for our Azure resources".
 
-5. In the **More Options** menu set the **Policies Path** to `/azure`. This tells Terraform Cloud to use the Azure specific policies that are stored in the repo.
+5. In the **More Options** menu set the **Policies Path** to `/azure`. This tells HCP Terraform to use the Azure specific policies that are stored in the repo.
 
 6. Leave everything else at its default setting and click on the **Connect policy set** button at the bottom of the page.
 

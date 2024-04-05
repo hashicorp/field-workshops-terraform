@@ -3,19 +3,19 @@ slug: api-driven-workflows
 type: challenge
 title: "\U0001F517 API Driven Workflows"
 teaser: |
-  Terraform Cloud has a fully featured RESTful API that you can use to integrate with external systems. Where we're going, we don't need a GUI!
+  HCP Terraform has a fully featured RESTful API that you can use to integrate with external systems. Where we're going, we don't need a GUI!
 notes:
 - type: text
-  contents: "You've mostly been using the Terraform Cloud Web UI and command line
+  contents: "You've mostly been using the HCP Terraform Web UI and command line
     interface (CLI) to build infrastructure. The devops team needs to integrate with
     their CI/CD tool via the API. Lars sends you a chat message:\n\n>\U0001F468\U0001F3FB‍\U0001F9B2
     Hey senior sysadmin, we have this new continuous integration tool that the developers
     are using to test their application code. I'd like you to test some API calls
-    to our Terraform Cloud organization and workspaces. Can you please take a look
+    to our HCP Terraform organization and workspaces. Can you please take a look
     at this and learn how the API works?"
 - type: text
   contents: |-
-    Feeling stuck? Remember that the Terraform Cloud docs contain examples for all API endpoints:
+    Feeling stuck? Remember that the HCP Terraform docs contain examples for all API endpoints:
     https://www.terraform.io/docs/cloud/api/workspace-variables.html#create-a-variable
     https://www.terraform.io/docs/cloud/api/run.html#create-a-run
 - type: text
@@ -40,7 +40,7 @@ tabs:
 difficulty: basic
 timelimit: 1800
 ---
-In the final challenge you'll directly interact with the Terraform Cloud API. Terraform Cloud has a rich API that lets you do everything you can do in the GUI and more. Intermediate and advanced users utilize the API to create complex integrations that work with external systems.
+In the final challenge you'll directly interact with the HCP Terraform API. HCP Terraform has a rich API that lets you do everything you can do in the GUI and more. Intermediate and advanced users utilize the API to create complex integrations that work with external systems.
 
 Your goal is to configure three variables in the hashicat-azure workspace and then trigger a Terraform run using only the API. The three variables you need to configure are:
 - `placeholder` An image placeholder URL. Examples: placekitten.com, placedog.net, picsum.photos

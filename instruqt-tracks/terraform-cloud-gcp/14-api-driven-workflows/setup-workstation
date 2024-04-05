@@ -29,7 +29,7 @@ cat <<-EOF > /root/hashicat-gcp/json/apply.json
   "data": {
     "attributes": {
       "is-destroy":false,
-      "message": "Terraform Cloud API is Magic! 🦄 🌈 🧙‍♂️"
+      "message": "HCP Terraform API is Magic! 🦄 🌈 🧙‍♂️"
     },
     "type":"runs",
     "relationships": {

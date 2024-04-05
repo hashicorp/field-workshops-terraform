@@ -65,7 +65,7 @@ cat <<-EOF > /tmp/width.json
 }
 EOF
 
-# Create our variables in terraform cloud
+# Create our variables in HCP Terraform
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/placeholder.json https://app.terraform.io/api/v2/workspaces/$WORKSPACE_ID/vars
 
 curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/height.json https://app.terraform.io/api/v2/workspaces/$WORKSPACE_ID/vars

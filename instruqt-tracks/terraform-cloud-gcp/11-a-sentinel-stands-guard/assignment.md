@@ -43,7 +43,7 @@ Before moving on, please look at the [enforce-mandatory-labels](https://github.c
 
 4. Under **Description** you can enter "Sentinel Policies for our GCP resources".
 
-5. In the **More Options** menu set the **Policies Path** to `/gcp`. This tells Terraform Cloud to use the GCP specific policies that are stored in the repo.
+5. In the **More Options** menu set the **Policies Path** to `/gcp`. This tells HCP Terraform to use the GCP specific policies that are stored in the repo.
 
 6. Leave everything else at its default setting and click on the **Connect policy set** button at the bottom of the page.
 

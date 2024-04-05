@@ -1,16 +1,16 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-slug: terraform-cloud-gcp
+slug: hcp-terraform-gcp
 id: mjfywxvlky8d
-title: Terraform Cloud with GCP
+title: HCP Terraform with GCP
 teaser: |
   Join the ACME devops team on their journey to fully automated provisioning with GCP.
 description: |-
   Work with the devops team at Acme Inc. as they go from manual provisioning with Terraform to a fully automated devops workflow with code reviews, testing, and automated provisioning in Google Cloud Platform. This workshop covers the following topics:
 
   * Terraform Open Source
-  * Terraform Cloud
+  * HCP Terraform
   * Remote State
   * Secure Variable Storage
   * Version Control Integration
