@@ -1,7 +1,7 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-slug: terraform-cloud-gcp-v2
+slug: hcp-terraform-gcp-v2
 id: bpy7hbylexsf
 title: HCP Terraform with GCP
 teaser: |
@@ -26,9 +26,8 @@ tags:
 - gcp
 owner: hashicorp
 developers:
-- gilberto@hashicorp.com
-- jthompson@hashicorp.com
 - thomas@hashicorp.com
+- jenna.wong@hashicorp.com
 show_timer: true
 lab_config:
   overlay: false

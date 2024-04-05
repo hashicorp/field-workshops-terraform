@@ -84,7 +84,7 @@ In your workstation, there are two folders where you interact during the exercis
 
 1. The <t><img src="../assets/folder.png"/>hashicat-gcp</t> folder contains Terraform code for the application deployment.
 
-2. The <t><img src="../assets/folder.png"/>terraform-cloud</t> folder provides utility code to set up your HCP Terraform resources.
+2. The <t><img src="../assets/folder.png"/>hcp-terraform</t> folder provides utility code to set up your HCP Terraform resources.
 
 ---
 There are other folders that contain utilities for the exercises. We exclude them from the Code Editor for simplicity. You do not need to edit anything in them.

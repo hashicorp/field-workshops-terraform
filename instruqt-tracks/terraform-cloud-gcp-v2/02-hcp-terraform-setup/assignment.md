@@ -168,7 +168,7 @@ terraform login
 ===
 Use local Terraform utility deployment code to create and configure a new HCP Terraform Workspace.
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder and open the file <t><img src="../assets/tf-icon.png"/>terraform.tfvars</t>
+- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and expand the <t><img src="../assets/folder.png"/>hcp-terraform</t> folder and open the file <t><img src="../assets/tf-icon.png"/>terraform.tfvars</t>
 
 - Replace the `YOUR_ORGANIZATION` placeholder with your HCP Terraform organization name.
 
@@ -179,7 +179,7 @@ Use local Terraform utility deployment code to create and configure a new HCP Te
 - Move to the <t><img src="../assets/shell.png"/>Terminal</t> tab and execute the following commands:
 
 ```bash
-cd /root/terraform-cloud
+cd /root/hcp-terraform
 terraform init
 
 # The following creates a workspace in
