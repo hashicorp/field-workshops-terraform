@@ -2,9 +2,9 @@
 set -e
 
 # Set workdir
-set-workdir /root/terraform-cloud
+set-workdir /root/hcp-terraform
 
-cat /root/terraform-cloud/exercises/06-main.tf >> /root/terraform-cloud/main.tf
-cat /root/terraform-cloud/exercises/06-variables.tf >> /root/terraform-cloud/variables.tf
+cat /root/hcp-terraform/exercises/06-main.tf >> /root/hcp-terraform/main.tf
+cat /root/hcp-terraform/exercises/06-variables.tf >> /root/hcp-terraform/variables.tf
 
 exit 0

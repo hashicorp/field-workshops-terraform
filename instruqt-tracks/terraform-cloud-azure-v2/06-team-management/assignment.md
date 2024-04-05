@@ -108,7 +108,7 @@ The purpose of this challenge is to create an access strategy with Team Manageme
 - In the <t><img src="../assets/shell.png"/>Terminal</t> tab, configure your teams, workspace permissions and users with the following:
 
 ```bash
-cd /root/terraform-cloud
+cd /root/hcp-terraform
 
 # 1. Create admin, developers and
 #    managers teams.
@@ -129,7 +129,7 @@ Teams let you group users into specific categories to enable finer grained acces
 
 - Review each of your teams and their assigned Organization Access.
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review the assignment for your teams (Lines 146-189).
+- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>hcp-terraform</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review the assignment for your teams (Lines 146-189).
 
 2- Workspace Permissions
 ===
@@ -143,7 +143,7 @@ HCP Terraform's access model is team-based. There are two ways to choose which p
 
 - Use Edit Permissions to review the permissions assigned for each team on the hashicat-azure workspace.
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review the association between the hashicat-azure workspace and your teams (Lines 190-247).
+- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>hcp-terraform</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review the association between the hashicat-azure workspace and your teams (Lines 190-247).
 
 3- Assign Users
 ===
@@ -157,7 +157,7 @@ User accounts belong to individual people. Each user can be part of one or more 
 
 - With existing accounts, you can automatically join that organization and can begin using HCP Terraform.
 
-- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>terraform-cloud</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review how users invited to an organization and added to a team (Lines 248-289).
+- Use the <t><img src="../assets/web.png"/>Code Editor</t> tab and open the <t><img src="../assets/folder.png"/>hcp-terraform</t> folder. Observe the updates to the file <t><img src="../assets/tf-icon.png"/>main.tf</t> and review how users invited to an organization and added to a team (Lines 248-289).
 
 ---
 Excellent work. You have a foundational access strategy for teams, workspaces and users. You can write the following notes in your report:
