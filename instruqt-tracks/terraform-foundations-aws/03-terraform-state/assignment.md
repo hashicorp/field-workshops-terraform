@@ -70,8 +70,8 @@ and paste that at the "Token for app.terraform.io" prompt.
 
 [<ins>**Remote State**</ins>](https://www.terraform.io/docs/state/remote.html)
 
-Before we do a plan and apply to deploy our infrastructure, let's set up remote state. We have already created a `remote_backend.tf` file which configures Terraform
-Cloud as a remote backend. You will need to update this file with the organization name you created. Once the organization is updated, we just need to migrate
+Before we do a plan and apply to deploy our infrastructure, let's set up remote state. We have already created a `remote_backend.tf` file which configures HCP Terraform
+as a remote backend. You will need to update this file with the organization name you created. Once the organization is updated, we just need to migrate
 our state file to HCP Terraform by running another init.
 ```
 terraform init
