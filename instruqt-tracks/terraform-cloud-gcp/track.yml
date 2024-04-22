@@ -2,7 +2,6 @@
 # SPDX-License-Identifier: MPL-2.0
 
 slug: hcp-terraform-gcp
-id: mjfywxvlky8d
 title: HCP Terraform with GCP
 teaser: |
   Join the ACME devops team on their journey to fully automated provisioning with GCP.
