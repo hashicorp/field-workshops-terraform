@@ -33,7 +33,7 @@ tabs:
   hostname: tf-foundations
 - title: Slides
   type: website
-  url: https://hashicorp.github.io/field-workshops-terraform/slides/multi-cloud/terraform-cloud/version-control/#2
+  url: https://hashicorp.github.io/field-workshops-terraform/slides/multi-cloud/hcp-terraform/version-control/#2
 - title: HCP Terraform
   type: external
   url: https://app.terraform.io
