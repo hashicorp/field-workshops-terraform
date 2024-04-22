@@ -21,7 +21,7 @@ tags:
 - enterprise
 - aws
 - terraform
-owner: hashicorp-field-ops
+owner: hashicorp
 developers:
 - thomas@hashicorp.com
 - randy.keener@hashicorp.com
