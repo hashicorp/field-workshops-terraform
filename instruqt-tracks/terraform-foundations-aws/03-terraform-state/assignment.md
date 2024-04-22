@@ -25,7 +25,7 @@ tabs:
   hostname: tf-foundations
 - title: Slides
   type: website
-  url: https://hashicorp.github.io/field-workshops-terraform/slides/multi-cloud/terraform-cloud/tf-basics/#2
+  url: https://hashicorp.github.io/field-workshops-terraform/slides/multi-cloud/hcp-terraform/tf-basics/#2
 - title: Terraform State
   type: website
   url: https://www.terraform.io/docs/state/purpose.html
