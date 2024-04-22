@@ -109,7 +109,7 @@ name: benefits-of-policy
 - All the same benefits of Infrastructure as Code!
   - Version History, Change Control, Collaboration
 
-- Easily share-able and consumable across multiple organizations and teams in Terraform Cloud
+- Easily share-able and consumable across multiple organizations and teams in HCP Terraform
 
 - Can be tested and iterated on in an automated fashion with real test data!
   - We'll discuss mock data and testing in this training!!!
@@ -229,7 +229,7 @@ name: policy-sets
 
 - **Policy Sets** are groups of **Sentinel Policies** (and optionally Sentinel Modules)
   - They can be enforced on all workspaces or only on selected workspaces within one or more organizations.
-- They are usually created in VCS repositories and then registered with organizations using the Terraform Cloud UI or API.
+- They are usually created in VCS repositories and then registered with organizations using the HCP Terraform UI or API.
 - Additionally, **Parameters** can be added to policy sets allowing the secure introduction of credentials needed by API endpoints invoked with the Sentinel HTTP import.
 
 ---
@@ -237,7 +237,7 @@ name: chapter-summary
 # Chapter Summary
 
 - Sentinel is Policy as Code framework
-- Terraform Cloud automatically runs Sentinel checks between **plan and apply**
+- HCP Terraform automatically runs Sentinel checks between **plan and apply**
 - Sentinel has different enforcement levels, **Advisory, Soft and Hard Mandatory**
 
 ---
@@ -258,7 +258,7 @@ name: c1-references
 - [Sentinel Overview](https://www.terraform.io/cloud-docs/sentinel)
   - High level overview of Sentinel and Terraform
 - [Manage Policies](https://www.terraform.io/cloud-docs/sentinel/manage-policies)
-  - Managing Policies in Terraform Cloud
+  - Managing Policies in HCP Terraform
 - [Enforcement Levels](https://www.terraform.io/cloud-docs/sentinel/enforce)
   - The various enforcement levels
 
@@ -337,7 +337,7 @@ name: mock-intro
 # Sentinel Mocks in Terraform
 
 - Sentinel **Mocks** simulate the data from Terraform plans
-  - They can be generated from Terraform Cloud
+  - They can be generated from HCP Terraform
 - **Mocks** can be edited and modified to simulate other data
 - Using the Sentinel CLI with mocks speeds up development of new policies since additional plans do not need to be run.
 
@@ -444,10 +444,10 @@ name: types-of-policies-3
 name: chapter-summary
 # Chapter Summary
 
-- Sentinel can 'import' data from several sources in Terraform and Terraform Cloud
+- Sentinel can 'import' data from several sources in Terraform and HCP Terraform
   - The Terraform Plan, Config, State and Run Data!
 - You can 'simulate' this life-cycle by using **Mocks**
-  - Mocks can be generated from Terraform Cloud
+  - Mocks can be generated from HCP Terraform
   - Mocks can then be tested with **Sentinel CLI**
 
 ---
@@ -891,10 +891,10 @@ resource "aws_instance" "ubuntu" {
 
 ---
 name: methodology-4
-# Integrate with Terraform Cloud
+# Integrate with HCP Terraform
 
 - In order to use the Remote Backend against a TFC/TFE server;
-  - Authenticate to Terraform Cloud `terraform login`
+  - Authenticate to HCP Terraform `terraform login`
   - Configure your backend
 
 ```
@@ -1255,13 +1255,13 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# Chapter 5 - Using Sentinel in Terraform Cloud and Terraform Enterprise
+# Chapter 5 - Using Sentinel in HCP Terraform and Terraform Enterprise
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
 
 ---
 name: test-policies
-# Testing Policies in Terraform Cloud
+# Testing Policies in HCP Terraform
 
 - After successfully testing a policy with the CLI, you might also want to test it against actual Terraform code on a TFC or TFE server.
 - When doing this, we suggest you follow these recommendations:
@@ -1281,7 +1281,7 @@ name: creating-policies
 - Each policy set contains the policies and a configuration file called "sentinel.hcl" that lists the policies and their enforcement levels.
 - The "sentinel.hcl" file can also specify Sentinel modules to load.
 - Policies and Modules can be in any directory of the current repository and even in remote repositories.
-- You then configure the policy set in the Terraform Cloud UI by registering it, indicating the repository, branch, and policies path.
+- You then configure the policy set in the HCP Terraform UI by registering it, indicating the repository, branch, and policies path.
 - You can specify **Parameters** for it including sensitive ones.
 - You determine the workspaces it should be enforced on.
 
@@ -1344,7 +1344,7 @@ name: policy-pass-example
 
 ---
 name: deploying
-# Deploying Policies in Terraform Cloud
+# Deploying Policies in HCP Terraform
 
 - After successfully testing a policy with the CLI and possibly also on TFC itself, you will want to deploy it to your TFC organizations.
 - If you have not already added the policy to a policy set in your organizations, do that at this time.
@@ -1677,7 +1677,7 @@ name: restricting
 name: making-external
 # Making Calls to External API Endpoints
 
-- Sentinel policies in Terraform Cloud and Terraform Enterprise can use the http import to call external API endpoints.
+- Sentinel policies in HCP Terraform and Terraform Enterprise can use the http import to call external API endpoints.
 - Parameters can be added to policy sets allowing the secure introduction of credentials needed by API endpoints invoked with the Sentinel HTTP import.
 - Currently, the http import supports the HTTP GET and POST operations against API endpoints that return JSON documents.
 - The http import can send data to an API endpoint with the http import using headers or URL parameters.
@@ -1956,7 +1956,7 @@ count: false
 name: modules-from-pmr
 # Exercise 5: Require Modules from a PMR
 
-- Your task in these challenges is to complete and test two versions of a Sentinel policy that requires that all modules loaded by the root module come from the Private Module Registry (PMR) of a Terraform Cloud organization.
+- Your task in these challenges is to complete and test two versions of a Sentinel policy that requires that all modules loaded by the root module come from the Private Module Registry (PMR) of a HCP Terraform organization.
 - This policy uses the tfconfig/v2 import.
 - In the first version, you will write a custom validation function.
 - In the second version, you will move this function into a Sentinel module.
@@ -2023,7 +2023,7 @@ name: mocks-in-tf
 # Sentinel Mocks in Terraform
 
 - Sentinel **Mocks** simulate the data that is made available to the Terraform Sentinel imports from Terraform plans.
-- They can be generated from recent plans using the Terraform Cloud UI and API.
+- They can be generated from recent plans using the HCP Terraform UI and API.
 - They can also be copied and edited to simulate various combinations of resource and data source attributes.
 - They enable testing of Terraform Sentinel policies with the Sentinel CLI.
 - Using the Sentinel CLI with mocks speeds up development of new policies since additional plans do not need to be run.
