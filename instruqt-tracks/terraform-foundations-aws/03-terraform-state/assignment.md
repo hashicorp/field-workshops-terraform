@@ -80,8 +80,8 @@ You should have been prompted with a new message asking if you want to copy the 
 You should now see the new workspace created in HCP Terraform. In HCP Terraform, click on your workspace name and click on "States" in the upper right. You should
 see the state file that you just migrated. You can click on this first version of your state file to look at it's contents.
 
-Click on "Settings" and select "General". There are two execution modes for HCP Terraform, Remote and Local. Remote will be the default and sets Terraform
-Cloud to run the terraform commands in HCP Terraform. Local will allow you to run the commands on your local computer but still get the advantages of having
+Click on "Settings" and select "General". There are two execution modes for HCP Terraform, Remote and Local. Remote will be the default and sets HCP Terraform
+to run the terraform commands in HCP Terraform. Local will allow you to run the commands on your local computer but still get the advantages of having
 secure remote state in HCP Terraform. Select the `Local` option and save this setting.
 
 Let's make a change to our template and see how HCP Terraform updates the version of the state file. Change your "prefix" variable to something different.
