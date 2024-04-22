@@ -134,8 +134,8 @@ terraform plan
 terraform apply -auto-approve
 ```
 If you go back to HCP Terraform, you will see the "Run Status" of our workspace as "Planning" or "Applying". You can also click on your workspace to review
-the outputs of your current or previous plans and applies. Feel free to make changes to your prefix variable and run more plan and applies. Review the Terraform
-Cloud console to see the job status.
+the outputs of your current or previous plans and applies. Feel free to make changes to your prefix variable and run more plan and applies. Review the HCP Terraform
+console to see the job status.
 
 When you have completed exploring HCP Terraform, run the following command to destroy the infrastructure we have created.
 ```
