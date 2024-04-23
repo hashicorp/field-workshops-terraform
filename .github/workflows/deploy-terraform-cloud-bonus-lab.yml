@@ -1,20 +1,20 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
-name: hashicorp/field-workshops-terraform/deploy-terraform-cloud-bonus-lab
+name: hashicorp/field-workshops-terraform/deploy-hcp-terraform-bonus-lab
 on:
   workflow_dispatch:
   push:
     branches:
       - 'main'
     paths:
-      - 'instruqt-tracks/terraform-cloud-bonus-lab/**'
+      - 'instruqt-tracks/hcp-terraform-bonus-lab/**'
 permissions:
   contents: read
 jobs:
   deploy-track:
     uses: ./.github/workflows/instruqt-track-deploy.yml
     with:
-      working_directory: "instruqt-tracks/terraform-cloud-bonus-lab"
+      working_directory: "instruqt-tracks/hcp-terraform-bonus-lab"
       INSTRUQT_CLI_URI: ${{ vars.INSTRUQT_CLI_URI }}
     secrets:
       INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}

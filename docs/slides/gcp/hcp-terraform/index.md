@@ -1,4 +1,4 @@
-name: Intro-to-Terraform-Cloud
+name: Intro-to-hcp-terraform
 class: center,middle,title-slide
 count: false
 <br><br>
@@ -172,7 +172,7 @@ Enable users to build what they need without running up a huge bill or putting y
 **Terraform Cloud encourages safe provisioning via reusable modules and policy enforcement. Now users can build exactly what they need to do their jobs without breaking things or putting your organization at risk. A slow and cumbersome approval process is no longer required because the automation enforces best practices without manual code reviews.**
 
 ---
-name: terraform-cloud-what-is-it
+name: hcp-terraform-what-is-it
 # Terraform Cloud - The Big Picture
 
 .center[
@@ -318,7 +318,7 @@ Terraform Cloud/Enterprise is an application that provides the following feature
 **Terraform Enterprise can store and encrypt your cloud credentials, passwords or any other sensitive data. These credentials are stored safely inside of a Vault instance that runs inside of TFE.**
 
 ---
-name: terraform-cloud-enterprise
+name: hcp-terraform-enterprise
 class: compact
 # Terraform Cloud or Terraform Enterprise?
 **[Terraform Cloud](https://app.terraform.io/signup)** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud-based SaaS solution because they don't want to maintain the infrastructure to run it.
@@ -932,7 +932,7 @@ APIs are the default language of the Internet. According to Akamai research 83% 
 **There are APIs for all kinds of stuff! Even Dad Jokes!**
 
 ---
-name: terraform-cloud-api
+name: hcp-terraform-api
 # Terraform Cloud API - How It Works
 ```bash
 # Create a workspace using the API
@@ -995,7 +995,7 @@ If you have completed all the workshop content and would like to try the bonus l
 ???
 This bonus lab can be used with any of the three Terraform Cloud workshops. Create an invite if you'd like to share it with your students.
 
-https://instruqt.com/hashicorp/tracks/terraform-cloud-bonus-lab
+https://instruqt.com/hashicorp/tracks/hcp-terraform-bonus-lab
 
 ---
 name: additional-resources-tfe

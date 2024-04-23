@@ -1,4 +1,4 @@
-name: Intro-to-Terraform-Cloud
+name: Intro-to-hcp-terraform
 class: center,middle,title-slide
 count: false
 <br><br>
@@ -171,7 +171,7 @@ name: self-service-infra
 **Terraform Cloud는 재사용 가능한 모듈 및 정책 시행을 통해 안전한 프로비저닝을 권장합니다. 이제 사용자는 업무를 중단하거나 조직을 위험에 빠뜨리지 않고 업무를 수행하는 데 필요한 것을 정확하게 구축 할 수 있습니다. 자동화가 수동 코드 검토없이 모범 사례를 적용하기 때문에 느리고 번거로운 승인 프로세스가 더 이상 필요하지 않습니다.**
 
 ---
-name: terraform-cloud-what-is-it
+name: hcp-terraform-what-is-it
 # Terraform Cloud - 최종 상태
 
 .center[
@@ -318,7 +318,7 @@ Terraform Cloud/Enterprise는 다음의 환경을 제공합니다.:
 TFE/TFC는 클라우드 자격 증명, 암호 또는 기타 민감한 데이터를 저장하고 암호화 할 수 있습니다. 이러한 자격 증명은 TFE 내부에서 실행되는 Vault 인스턴스 내부에 안전하게 저장됩니다.
 
 ---
-name: terraform-cloud-enterprise
+name: hcp-terraform-enterprise
 # Terraform Cloud와 Terraform Enterprise 차이
 **[Terraform Cloud](https://app.terraform.io/signup)**는 원격 상태 관리, API 기반 실행, 정책 관리 등과 같은 기능을 제공하는 호스팅 된 애플리케이션입니다. 많은 사용자가 클라우드 기반 SaaS 솔루션을 선호하는 이유는 인프라를 유지하여 실행하는 것을 원하지 않기 때문입니다.
 
@@ -933,7 +933,7 @@ API는 인터넷의 기본 언어입니다. Akamai 연구에 따르면 인터넷
 모든 종류의 API가 준비되어있습니다.
 
 ---
-name: terraform-cloud-api
+name: hcp-terraform-api
 # Terraform Cloud API - 동작
 ```bash
 # Create a workspace using the API
@@ -996,7 +996,7 @@ name: bonus-lab
 ???
 이 보너스 랩은 세 가지 Terraform 클라우드 워크숍 중 하나와 함께 사용할 수 있습니다. 학생과 공유하려면 초대장을 만드세요.
 
-https://instruqt.com/hashicorp/tracks/terraform-cloud-bonus-lab
+https://instruqt.com/hashicorp/tracks/hcp-terraform-bonus-lab
 
 ---
 name: additional-resources-tfe

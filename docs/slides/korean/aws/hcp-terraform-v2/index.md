@@ -1,4 +1,4 @@
-name: Intro-to-Terraform-Cloud
+name: Intro-to-hcp-terraform
 class: center, middle, title-slide, no-footer
 count: true
 ![:scale 40%](images/HCP_Diagram_OnBlack_Terraform.svg)
