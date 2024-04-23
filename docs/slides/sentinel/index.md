@@ -940,8 +940,8 @@ Start a Terraform Plan then get your Mocks!
 
 - From your local directory containing main.tf and backend.tf, run _terraform init_ to initialize your Terraform configuration.
 - Then run terraform plan.
-- The plan will run on the TFC server, but its results will be visible locally and in the TFC UI.
-- To see the run in the TFC UI, copy the URL displayed near the top of the local version of the plan and navigate to it with a browser.
+- The plan will run on the HCP Terraform server, but its results will be visible locally and in the HCP Terraform UI.
+- To see the run in the HCP Terraform UI, copy the URL displayed near the top of the local version of the plan and navigate to it with a browser.
 - To generate mocks against your plan, click the "Download Sentinel mocks" button.
 - After a minute, a tar.gz file will be downloaded with 7 mocks.
 - Extract the mock files from the tar.gz file.
@@ -1263,7 +1263,7 @@ count: false
 name: test-policies
 # Testing Policies in HCP Terraform
 
-- After successfully testing a policy with the CLI, you might also want to test it against actual Terraform code on a TFC or TFE server.
+- After successfully testing a policy with the CLI, you might also want to test it against actual Terraform code on a HCP Terraform or TFE server.
 - When doing this, we suggest you follow these recommendations:
   - Put each new policy in a policy set that does not contain any other policies.
   - Assign the workspaces you will be using to test your policy to that policy set.
@@ -1346,7 +1346,7 @@ name: policy-pass-example
 name: deploying
 # Deploying Policies in HCP Terraform
 
-- After successfully testing a policy with the CLI and possibly also on TFC itself, you will want to deploy it to your TFC organizations.
+- After successfully testing a policy with the CLI and possibly also on HCP Terraform itself, you will want to deploy it to your HCP Terraform organizations.
 - If you have not already added the policy to a policy set in your organizations, do that at this time.
 - Add the new policy to an existing policy set that is already applied against desired workspaces, or create a new policy set for the policy and apply that policy set to desired workspaces across your organizations.
 - Also add any parameters the policy requires to your policy set.
