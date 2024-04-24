@@ -128,7 +128,7 @@
                 <g id="svg-background" fill="#F2F2F3">
                     <rect id="rectangle" x="0" y="0" width="480" height="400"></rect>
                 </g>
-                <g id="tfc" transform="translate(264.000000, 128.000000)">
+                <g id="hcp-terraform" transform="translate(264.000000, 128.000000)">
                     <g id="icon_box-/-vault" fill="#FFFFFF" stroke="#727274" stroke-width="1.5">
                         <rect id="box" x="0.75" y="0.75" width="198.5" height="254.5" rx="2"></rect>
                     </g>

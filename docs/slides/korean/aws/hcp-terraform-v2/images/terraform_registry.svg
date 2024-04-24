@@ -268,8 +268,8 @@
                                 <polygon id="Vector_37" points="12.8991813 35.9316959 24.5239766 42.6666667 24.5239766 29.2865497 24.5239766 29.1985965 12.8991813 22.4617544"></polygon>
                             </g>
                         </g>
-                        <text id="Terraform-Cloud" font-family="Arial-BoldMT, Arial" font-size="8" font-weight="bold" line-spacing="14" letter-spacing="0.12" fill="#1D1E1F">
-                            <tspan x="38.0609375" y="103">Terraform Cloud</tspan>
+                        <text id="HCP-Terraform" font-family="Arial-BoldMT, Arial" font-size="8" font-weight="bold" line-spacing="14" letter-spacing="0.12" fill="#1D1E1F">
+                            <tspan x="38.0609375" y="103">HCP Terraform</tspan>
                         </text>
                     </g>
                     <g id="run_tasks" transform="translate(0.000000, 300.000000)">

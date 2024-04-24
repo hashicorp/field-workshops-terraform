@@ -1,15 +1,12 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
-slug: hcp-terraform-azure
-id: ywejivwkxtlp
-title: HCP Terraform with Azure
+slug: wip-vcdl-251-hcp-terraform-azure
+id: lc6k9qyxgigo
+title: WIP VCDL-251 - HCP Terraform with Azure
 teaser: |
   Join the ACME devops team on their journey to fully automated provisioning with Azure Cloud.
 description: |-
   Work with the devops team at Acme Inc. as they go from manual provisioning with Terraform to a fully automated devops workflow with code reviews, testing, and automated provisioning in Azure Cloud. This workshop covers the following topics:
 
-  * Terraform Open Source
+  * Terraform Community Edition
   * HCP Terraform
   * Remote State
   * Secure Variable Storage
@@ -17,23 +14,28 @@ description: |-
   * Role-based Access Controls
   * Sentinel Security Policies
   * Collaboration on Changes
-  * Private Module Registry
+  * Terraform Private Registry
   * API Driven Workflows
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
-- terraform
 - azure
 - cloud
 - enterprise
-owner: hashicorp
+- terraform
+owner: hashicorp-field-ops
 developers:
 - thomas@hashicorp.com
 - swalker@hashicorp.com
 - randy.keener@hashicorp.com
 - jenna.wong@hashicorp.com
 show_timer: true
+idle_timeout: 300
+timelimit: 1200
 lab_config:
   overlay: false
   width: 25
   position: right
-checksum: "8536292711623770361"
+  sidebar_enabled: true
+  feedback_recap_enabled: true
+  loadingMessages: true
+checksum: "405923256151354550"

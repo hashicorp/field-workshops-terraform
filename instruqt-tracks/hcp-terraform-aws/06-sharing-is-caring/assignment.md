@@ -1,6 +1,6 @@
 ---
 slug: sharing-is-caring
-id: 422vsl92y04k
+id: bnq09foddvdd
 type: challenge
 title: "\U0001F91D\U0001F3FC Working with Teams in HCP Terraform"
 teaser: |

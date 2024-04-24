@@ -5,7 +5,7 @@ set -e
 cat <<-'EOF' > /root/sentinel/require-modules-from-pmr-a.sentinel
 # require-modules-from-pmr-a.sentinel
 # This policy validates that all modules loaded directly by the
-# root module are in the Private Module Registry (PMR) of a TFC
+# root module are in the Terraform Private Registry of a TFC
 # organization.
 
 # Import the v2 tfplan import, but use the alias "tfplan"
@@ -42,7 +42,7 @@ require_modules_from_pmr = func(tf_address, tf_org) {
 
   if not validated {
     print("All modules called from the root module must come from the",
-          "private module registry", tf_address + "/" + tf_org)
+          "Terraform Private Registry", tf_address + "/" + tf_org)
   }
 
   return validated

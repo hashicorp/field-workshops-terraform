@@ -1,5 +1,6 @@
 ---
 slug: hcp-terraform-setup
+id: jf632yvz3ipa
 type: challenge
 title: HCP Terraform Setup
 teaser: |

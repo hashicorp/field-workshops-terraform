@@ -73,7 +73,7 @@ name: Table-of-Contents
 1. Provision and Configure Azure VMs<br>
 🔬 **Lab - Provisioning with Terraform**<br>
 1. Manage and Change Infrastructure State<br>
-1. Terraform Cloud<br>
+1. HCP Terraform<br>
 ⚗️ **Lab - Terraform Remote State**
 
 
@@ -447,12 +447,12 @@ class: title
 **Now that you have terraform installed and working with Azure, we can do a few dry runs before building real infrastructure. Follow along carefully, copying and pasting the commands on each slide into your shell as we go.**
 
 ---
-name: what-is-terraform-oss
+name: what-is-terraform-community
 class: img-left
 # What is Terraform?
 ![Terraform](images\Terraform_VerticalLogo_FullColor.png)
 
-Terraform is an open source provisioning tool.
+Terraform is an Community Edition provisioning tool.
 
 It ships as a single binary which is written in Go. Terraform is cross platform and can run on Linux, Windows, or MacOS.
 
@@ -1111,59 +1111,59 @@ What happens in each scenario? Discuss.
 name: Chapter-6
 class: title
 # Chapter 6
-## Terraform Cloud
+## HCP Terraform
 
 ---
-name: terraform-cloud
+name: hcp-terraform
 class: img-right
-# Terraform Cloud
-##### Terraform Cloud is a free to use SaaS application that provides the best workflow for writing and building infrastructure as code with Terraform.
-![Terraform Cloud](https://hashicorp.github.io/field-workshops-assets/assets/logos/Terraform_Cloud_Logo_Color_RGB.png)
+# HCP Terraform
+##### HCP Terraform is a free to use SaaS application that provides the best workflow for writing and building infrastructure as code with Terraform.
+![HCP Terraform](https://hashicorp.github.io/field-workshops-assets/assets/logos/Terraform_Cloud_Logo_Color_RGB.png)
 
 * State storage and management
 * Web UI for viewing and approving Terraform runs
-* Private module registry
+* Terraform Private Registry
 * Version Control System (VCS) integration
 * CLI, API or GUI driven actions
 * Notifications for run events
 * Full HTTP API for automation
 
 ---
-name: tfcloud-vs-tfe
+name: hcp-terraform-vs-tfe
 class: compact
-# Terraform Cloud or Terraform Enterprise?
-**[Terraform Cloud](https://app.terraform.io/signup)** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud-based SaaS solution because they don't want to maintain the infrastructure to run it.
+# HCP Terraform or Terraform Enterprise?
+**[HCP Terraform](https://app.terraform.io/signup)** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud-based SaaS solution because they don't want to maintain the infrastructure to run it.
 
-**[Terraform Cloud for Business](https://www.hashicorp.com/contact-sales/terraform)** utilizes the same hosted environment as Terraform Cloud, but you get the features more applicable to larger teams.  Single Sign-on, Audit Logging, the abbility to use [Agents](https://www.terraform.io/cloud-docs/agents) to deploy in private environments, and integrate with external tools via [Run Tasks](https://www.terraform.io/cloud-docs/integrations/run-tasks).
+**[HCP Terraform Plus Tier](https://www.hashicorp.com/contact-sales/terraform)** utilizes the same hosted environment as HCP Terraform, but you get the features more applicable to larger teams.  Single Sign-on, Audit Logging, the abbility to use [Agents](https://www.terraform.io/cloud-docs/agents) to deploy in private environments, and integrate with external tools via [Run Tasks](https://www.terraform.io/cloud-docs/integrations/run-tasks).
 
-**[Terraform Enterprise](https://www.hashicorp.com/go/terraform-enterprise)** is the same application, but it runs in your own cloud environment or data center. Some users require more control over the Terraform Cloud application, or wish to run it in restricted networks behind corporate firewalls.
+**[Terraform Enterprise](https://www.hashicorp.com/go/terraform-enterprise)** is the same application, but it runs in your own cloud environment or data center. Some users require more control over the HCP Terraform application, or wish to run it in restricted networks behind corporate firewalls.
 
-The feature list for these offerings is nearly identical. We will be using Terraform Cloud accounts for our lab exercises today.
+The feature list for these offerings is nearly identical. We will be using HCP Terraform accounts for our lab exercises today.
 
 ---
-name: terraform-cloud-remote-state
+name: hcp-terraform-remote-state
 # Terraform Remote State
 By default Terraform stores its state file in the workspace directory on your laptop or workstation. This is ok for development and experimentation, but in a production environment you need to protect and store the state file safely.
 
-Terraform has an option to store and secure your state files remotely. Terraform Cloud accounts now offer unlimited state file storage even for open source users.
+Terraform has an option to store and secure your state files remotely. HCP Terraform accounts now offer unlimited state file storage even for Community Edition users.
 
-All state files are encrypted (using HashiCorp Vault) and stored securely in your Terraform Cloud account. You'll never have to worry about losing or deleting your state file again.
+All state files are encrypted (using HashiCorp Vault) and stored securely in your HCP Terraform account. You'll never have to worry about losing or deleting your state file again.
 
 ---
 name: execution-mode
 class: compact
-# Terraform Cloud Execution Modes
+# HCP Terraform Execution Modes
 
 **Local Execution** - Terraform commands run on your laptop or workstation and all variables are configured locally. Only the terraform state is stored remotely.
 
-**Remote Execution** - Terraform commands are run in a Terraform Cloud container environment. All variables are stored in the remote workspace. Code can be stored in a Version Control System repository. Limited to 1 concurrent run for free tier users.
+**Remote Execution** - Terraform commands are run in a HCP Terraform container environment. All variables are stored in the remote workspace. Code can be stored in a Version Control System repository. Limited to 1 concurrent run for free tier users.
 
-**Agent Execution** *(Enterprise only)* - Terraform Cloud Agents allow Terraform Cloud and Enterprise to communicate with isolated, private, or on-premises infrastructure. The agent architecture is pull-based, so no inbound connectivity is required. Any agent you provision will poll Terraform Cloud or Enterprise for work and carry out execution of that work locally.
+**Agent Execution** *(Enterprise only)* - HCP Terraform Agents allow HCP Terraform and Enterprise to communicate with isolated, private, or on-premises infrastructure. The agent architecture is pull-based, so no inbound connectivity is required. Any agent you provision will poll HCP Terraform or Terraform Enterprise for work and carry out execution of that work locally.
 
 ---
 name: lab-exercise-2c
-# 👩‍💻 Lab Exercise: Terraform Cloud
-In the final part of the second lab we'll create a free Terraform Cloud account and enable remote storage of our state file.
+# 👩‍💻 Lab Exercise: HCP Terraform
+In the final part of the second lab we'll create a free HCP Terraform account and enable remote storage of our state file.
 
 Return to the training lab and continue where you left off.
 
@@ -1185,7 +1185,7 @@ Microsoft Terraform Quickstarts<br>
 https://docs.microsoft.com/en-us/azure/terraform/
 
 Terraform with Azure Cloudshell<br>
-https://docs.microsoft.com/en-us/azure/terraform/terraform-cloud-shell
+https://docs.microsoft.com/en-us/azure/terraform/hcp-terraform-shell
 
 Terraform Azurerm Provider Documentation<br>
 https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/

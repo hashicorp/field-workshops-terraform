@@ -1,5 +1,6 @@
 ---
 slug: setup-our-environment
+id: 9yzui8tqxf4m
 type: challenge
 title: "\U0001F3E1 Moving in - Set Up Your Workspace"
 teaser: |

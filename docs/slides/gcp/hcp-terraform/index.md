@@ -4,16 +4,16 @@ count: false
 <br><br>
 ![:scale 60%](images/tf_gcp.png)
 <br>
-# Terraform Cloud on GCP
+# HCP Terraform on GCP
 
 ???
-**Welcome to the Terraform Cloud on GCP workshop. This is a one day workshop that introduces free and paid features of Terraform Cloud (also Enterprise) using an GCP-based application for the tech labs. If you're brand new to Terraform you should try the Introduction to Terraform OSS on GCP Instruqt track before this one.**
+**Welcome to the HCP Terraform on GCP workshop. This is a one day workshop that introduces free and paid features of HCP Terraform (also Enterprise) using an GCP-based application for the tech labs. If you're brand new to Terraform you should try the Introduction to Terraform Community Edition on GCP Instruqt track before this one.**
 
-**Terraform Cloud and Terraform Enterprise have almost identical feature sets so we'll be using Terraform Cloud as our training environment today.**
+**HCP Terraform and Terraform Enterprise have almost identical feature sets so we'll be using HCP Terraform as our training environment today.**
 
-INSTRUCTOR GUIDE LINK: https://github.com/hashicorp/field-workshops-terraform/blob/main/instructor-guides/all_terraform_cloud_INSTRUCTOR_GUIDE.md
+INSTRUCTOR GUIDE LINK: https://github.com/hashicorp/field-workshops-terraform/blob/main/instructor-guides/all_hcp_terraform_INSTRUCTOR_GUIDE.md
 
-INSTRUCTOR NOTE: Welcome to Terraform Cloud on GCP. This slide deck is written entirely in Markdown language, which means you can make edits or additions then submit a pull request to add your changes to the main branch. To make edits to the slide deck simply fork this repository, edit the Markdown file(s), and submit a pull request with your changes. You can easily test a local copy of the slide deck with this python one-liner:
+INSTRUCTOR NOTE: Welcome to HCP Terraform on GCP. This slide deck is written entirely in Markdown language, which means you can make edits or additions then submit a pull request to add your changes to the main branch. To make edits to the slide deck simply fork this repository, edit the Markdown file(s), and submit a pull request with your changes. You can easily test a local copy of the slide deck with this python one-liner:
 
 ```
 python -m SimpleHTTPServer
@@ -58,7 +58,7 @@ If your audience is less than 25 people you can quickly go through the room and 
 Now introduce yourself, tell a story, give the audience something to think about. If you don't have a story borrow someone else's: https://www.youtube.com/watch?v=h970ZBgKINg
 
 ---
-name: tfc-link-to-slide-deck
+name: hcp-terraform-link-to-slide-deck
 # The Slide Deck
 <br><br><br>
 .center[
@@ -76,8 +76,8 @@ class: col-2
 # Table of Contents
 
 <div>
-1. OSS to Cloud/Enterprise<br>
-🌥️ Terraform Cloud Overview<br>
+1. Community Edition to HCP/Enterprise<br>
+🌥️ HCP Terraform Overview<br>
 👨🏽‍🏫 Review the Basics<br>
 🔗 Configure Remote State<br>
 <hr>
@@ -91,7 +91,7 @@ class: col-2
 👮 Sentinel Policy Enforcement<br>
 <hr>
 4. Terraform Modules & API<br>
-⚙️ Private Module Registry<br>
+⚙️ Terraform Private Registry<br>
 🏗️ API Driven Workflows<br>
 <hr>
 5. Extra Resources<br>
@@ -109,10 +109,10 @@ name: TFE-Chapter-1
 class: title
 
 # Chapter 1
-## Terraform OSS, Cloud and Enterprise
+## Terraform Community Edition, HCP Terraform, and Terraform Enterprise
 
 ???
-**In the first chapter we'll cover Terraform open source and some of the differences between OSS and Cloud and Enterprise.**
+**In the first chapter we'll cover Terraform Community Edition and some of the differences between Community Edition, HCP Terraform, and Terraform Enterprise.**
 
 ---
 name: terraform-user-journey
@@ -156,7 +156,7 @@ name: multi-platform-compliance
 Terraform also integrates with on premise VMs or platform services.
 
 ???
-**Terraform Cloud and Enterprise can be used to build VMs in your data center, or GCP instances in the cloud, or both. You won't have to maintain two sets of tools to build on your hybrid cloud platforms.**
+**HCP Terraform and Enterprise can be used to build VMs in your data center, or GCP instances in the cloud, or both. You won't have to maintain two sets of tools to build on your hybrid cloud platforms.**
 
 ---
 name: self-service-infra
@@ -169,11 +169,11 @@ name: self-service-infra
 Enable users to build what they need without running up a huge bill or putting your organization at risk.
 
 ???
-**Terraform Cloud encourages safe provisioning via reusable modules and policy enforcement. Now users can build exactly what they need to do their jobs without breaking things or putting your organization at risk. A slow and cumbersome approval process is no longer required because the automation enforces best practices without manual code reviews.**
+**HCP Terraform encourages safe provisioning via reusable modules and policy enforcement. Now users can build exactly what they need to do their jobs without breaking things or putting your organization at risk. A slow and cumbersome approval process is no longer required because the automation enforces best practices without manual code reviews.**
 
 ---
 name: hcp-terraform-what-is-it
-# Terraform Cloud - The Big Picture
+# HCP Terraform - The Big Picture
 
 .center[
 ![:scale 90%](images/cloud_overview_gcp.png)
@@ -182,34 +182,34 @@ name: hcp-terraform-what-is-it
 ???
 **This slide shows the end state of our workshop. Over on the left our infrastructure folks have created some reusable modules that the rest of our users can implement in their own terraform code. These modules ensure that infrastructure components like networks and VMs get built correctly every time, and they also make it easy for the user to build the "right stuff" on their own.**
 
-**In the next stage our user is writing terraform code and checking it into a Version Control System. This ensures that each and every change meant for production is recorded and reviewed. This is so important. It requires discipline and cooperation from all of your devops and infrastructure admins. When new code is committed to the master branch it triggers a plan in Terraform Cloud (or Enterprise)**
+**In the next stage our user is writing terraform code and checking it into a Version Control System. This ensures that each and every change meant for production is recorded and reviewed. This is so important. It requires discipline and cooperation from all of your devops and infrastructure admins. When new code is committed to the master branch it triggers a plan in HCP Terraform (or Terraform Enterprise)**
 
-**Think of Terraform Cloud as a remote execution and state management platform for Terraform. Now you're not running terraform on your laptop like it's the wild west of cloud provisioning; instead all terraform runs happen in secure docker containers that run on our SaaS platform, or in your own data center. This allows you to encrypt and secure all your API keys, variables, and terraform state files. Access is granted only to authorized users.**
+**Think of HCP Terraform as a remote execution and state management platform for Terraform. Now you're not running terraform on your laptop like it's the wild west of cloud provisioning; instead all terraform runs happen in secure docker containers that run on our SaaS platform, or in your own data center. This allows you to encrypt and secure all your API keys, variables, and terraform state files. Access is granted only to authorized users.**
 
 **All your terraform state files are safely stored and encrypted on the server side. Any time you need to make a change to any of your infrastructure, Terraform knows the last state it was in and can build incrementally based on what has changed. Need to add more instances to a cluster? No problem, terraform can do that for you without a complete tear-down and rebuild.**
 
 **Before every terraform apply, you can run Sentinel policy checks against the proposed infrastructure plan to catch any policy violations. For example you might not want the devs creating super XL instances that cost a lot of money to run. You can write a simple rule that restricts developer workspaces to only using m3.medium sized instances, unless they get special permission for more.**
 
-**Role-based access controls allow different types of users to interact with Terraform cloud according to their level of access. You might have super admins who can control everything in the organization, then regular users who can run terraform but only in dev environments. Another group might be able to push changes to production, while some users may have read-only access. Terraform Cloud/Enterprise is a true multi-tenant application.**
+**Role-based access controls allow different types of users to interact with HCP Terraform according to their level of access. You might have super admins who can control everything in the organization, then regular users who can run terraform but only in dev environments. Another group might be able to push changes to production, while some users may have read-only access. HCP Terraform/Terraform Enterprise is a true multi-tenant application.**
 
 ---
-name: why-tfc-1
+name: why-hcp-terraform-1
 class: img-right
-# Terraform Cloud
+# HCP Terraform
 ![](images/tfc-gui.png)
 
-Terraform Cloud/Enterprise is an application that provides the following features:
+HCP Terraform/Terraform Enterprise is an application that provides the following features:
 
 ???
-**Let's go through a quick bullet list of Terraform Cloud features and why they matter.**
+**Let's go through a quick bullet list of HCP Terraform features and why they matter.**
 
 ---
-name: why-tfc-2
+name: why-hcp-terraform-2
 class: img-right
-# Terraform Cloud
+# HCP Terraform
 ![](images/tfc-gui.png)
 
-Terraform Cloud/Enterprise is an application that provides the following features:
+HCP Terraform/Terraform Enterprise is an application that provides the following features:
 
 * UI integration with VCS
 
@@ -217,12 +217,12 @@ Terraform Cloud/Enterprise is an application that provides the following feature
 **As your organization begins to standardize on Terraform, you'll have different types of users. Most of you will become terraform experts, but there may be others who just want to build things. They can use the terraform code that folks like you have written. To make this process easy, we have a web application. You log on, click a button, and out pops your infrastructure.**
 
 ---
-name: why-tfc-3
+name: why-hcp-terraform-3
 class: img-right
-# Terraform Cloud
+# HCP Terraform
 ![](images/tfc-gui.png)
 
-Terraform Cloud/Enterprise is an application that provides the following features:
+HCP Terraform/Terraform Enterprise is an application that provides the following features:
 
 * UI integration with VCS
 * API driven workflows
@@ -233,83 +233,83 @@ Terraform Cloud/Enterprise is an application that provides the following feature
 **APIs are the building blocks of any modern cloud automation system. By using standard, well defined APIs you ensure that your infrastructure pipelines will be ready to adapt to any future changes.**
 
 ---
-name: why-tfc-4
+name: why-hcp-terraform-4
 class: img-right
-# Terraform Cloud
+# HCP Terraform
 ![](images/tfc-gui.png)
 
-Terraform Cloud/Enterprise is an application that provides the following features:
+HCP Terraform/Terraform Enterprise is an application that provides the following features:
 
 * UI integration with VCS
 * API driven workflows
 * Central state management
 
 ???
-**Terraform enterprise also provides safe and secure storage for your state files. Instead of having that important state file stored on someone's laptop, now it is safely stored in the Terraform Cloud application. Only those who need access to the state file can see it, and it is protected from being overwritten or corrupted.**
+**Terraform enterprise also provides safe and secure storage for your state files. Instead of having that important state file stored on someone's laptop, now it is safely stored in the HCP Terraform application. Only those who need access to the state file can see it, and it is protected from being overwritten or corrupted.**
 
 ---
-name: why-tfc-5
+name: why-hcp-terraform-5
 class: img-right
-# Terraform Cloud
+# HCP Terraform
 ![](images/tfc-gui.png)
 
-Terraform Cloud/Enterprise is an application that provides the following features:
+HCP Terraform/Terraform Enterprise is an application that provides the following features:
 
 * UI integration with VCS
 * API driven workflows
 * Central state management
-* Private Module Registry
+* Terraform Private Registry
 
 ???
-**Eventually you'll have a library of Terraform code that you might like to share and publish for other users and teams in your company. The private module registry makes this easy. You build reusable modules that build infrastructure according to standards, and then publish them for your users. This can help with enforcing security policies and build standards.**
+**Eventually you'll have a library of Terraform code that you might like to share and publish for other users and teams in your company. The Terraform Private Registry makes this easy. You build reusable modules that build infrastructure according to standards, and then publish them for your users. This can help with enforcing security policies and build standards.**
 
 ---
-name: why-tfc-6
+name: why-hcp-terraform-6
 class: img-right
-# Terraform Cloud
+# HCP Terraform
 ![](images/tfc-gui.png)
 
-Terraform Cloud/Enterprise is an application that provides the following features:
+HCP Terraform/Terraform Enterprise is an application that provides the following features:
 
 * UI integration with VCS
 * API driven workflows
 * Central state management
-* Private Module Registry
+* Terraform Private Registry
 * Sentinel policy enforcement
 
 ???
 **TFE also comes with a policy enforcement engine that can ensure that your users don't build things they shouldn't build, or configure them in the wrong way. For example, you might wish to prevent users from opening network ports to the internet, or from building too many virtual machines. All of these types of rules can be expressed using our Sentinel policy enforcement engine. Sentinel policies prevent users from doing bad things, *before* they provision to the cloud.**
 
 ---
-name: why-tfc-7
+name: why-hcp-terraform-7
 class: img-right
-# Terraform Cloud
+# HCP Terraform
 ![](images/tfc-gui.png)
 
-Terraform Cloud/Enterprise is an application that provides the following features:
+HCP Terraform/Terraform Enterprise is an application that provides the following features:
 
 * UI integration with VCS
 * API driven workflows
 * Central state management
-* Private Module Registry
+* Terraform Private Registry
 * Sentinel policy enforcement
 * Single Sign-On
 
 ???
-**Terraform Cloud for Business, as well as Terraform Enterprise, also supports single sign-on using your own SAML provider. This allows you to quickly map users into your organization's teams and workspaces so they can become productive right away. We won't be covering SAML or single sign-on in today's workshop.**
+**HCP Terraform Plus Tier, as well as Terraform Enterprise, also supports single sign-on using your own SAML provider. This allows you to quickly map users into your organization's teams and workspaces so they can become productive right away. We won't be covering SAML or single sign-on in today's workshop.**
 
 ---
-name: why-tfc-8
+name: why-hcp-terraform-8
 class: img-right
-# Terraform Cloud
+# HCP Terraform
 ![](images/tfc-gui.png)
 
-Terraform Cloud/Enterprise is an application that provides the following features:
+HCP Terraform/Terraform Enterprise is an application that provides the following features:
 
 * UI integration with VCS
 * API driven workflows
 * Central state management
-* Private Module Registry
+* Terraform Private Registry
 * Sentinel policy enforcement
 * Single Sign-On
 * Secure API credentials
@@ -320,31 +320,31 @@ Terraform Cloud/Enterprise is an application that provides the following feature
 ---
 name: hcp-terraform-enterprise
 class: compact
-# Terraform Cloud or Terraform Enterprise?
-**[Terraform Cloud](https://app.terraform.io/signup)** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud-based SaaS solution because they don't want to maintain the infrastructure to run it.
+# HCP Terraform or Terraform Enterprise?
+**[HCP Terraform](https://app.terraform.io/signup)** is a hosted application that provides features like remote state management, API driven runs, policy management and more. Many users prefer a cloud-based SaaS solution because they don't want to maintain the infrastructure to run it.
 
-**[Terraform Cloud for Business](https://www.hashicorp.com/contact-sales/terraform)** utilizes the same hosted environment as Terraform Cloud, but you get the features more applicable to larger teams.  Single Sign-on, Audit Logging, and the ability to Terraform on-prem resources from the cloud.
+**[HCP Terraform Plus Tier](https://www.hashicorp.com/contact-sales/terraform)** utilizes the same hosted environment as HCP Terraform, but you get the features more applicable to larger teams.  Single Sign-on, Audit Logging, and the ability to Terraform on-prem resources from the cloud.
 
-**[Terraform Enterprise](https://www.hashicorp.com/go/terraform-enterprise)** is the same application, but it runs in your own cloud environment or data center. Some users require more control over the Terraform Cloud application, or wish to run it in restricted networks behind corporate firewalls.
+**[Terraform Enterprise](https://www.hashicorp.com/go/terraform-enterprise)** is the same application, but it runs in your own cloud environment or data center. Some users require more control over the HCP Terraform application, or wish to run it in restricted networks behind corporate firewalls.
 
-The feature list for these offerings is nearly identical. We will be using Terraform Cloud accounts for our lab exercises today.
+The feature list for these offerings is nearly identical. We will be using HCP Terraform accounts for our lab exercises today.
 
 ???
-**Just like the adoption story from OSS to Enterprise, Terraform offers the ability to build upon the ingelligence that grows within the team.  Terraform Cloud itself is really good for individuals, or small business that need to put some level of automation behind their infrastructure.  They usually move to the Business Tier when the number of users gets unwieldy, or when they need to deploy on-prem.  Enterprise is really the move if you want full control over your destiny, or if you have some severe security requirements (governments, government contractors, etc.).  The way I usually look at this, if you are using an on-prem VCS, chances are you'll need Enterprise.  If your pipeline or VCS is hosted, you're probably good with Terraform Cloud for Business.**
+**Just like the adoption story from Community Edition to Enterprise, Terraform offers the ability to build upon the ingelligence that grows within the team.  HCP Terraform itself is really good for individuals, or small business that need to put some level of automation behind their infrastructure.  They usually move to the Plus Tier when the number of users gets unwieldy, or when they need to deploy on-prem.  Enterprise is really the move if you want full control over your destiny, or if you have some severe security requirements (governments, government contractors, etc.).  The way I usually look at this, if you are using an on-prem VCS, chances are you'll need Enterprise.  If your pipeline or VCS is hosted, you're probably good with HCP Terraform Plus Tier.**
 
-Be well versed on the feature list and differences between Terraform Cloud levels (including the Business Tier) and Terraform Enterprise. In particular, remember that if you are running more concurrent builds, or if you need SSO, or on-prem, you are in the Cloud for Business or Enterprise tier automatically.
+Be well versed on the feature list and differences between HCP Terraform levels (including the Plus Tier) and Terraform Enterprise. In particular, remember that if you are running more concurrent builds, or if you need SSO, or on-prem, you are in the Cloud Plus Tier or Terraform Enterprise tier automatically.
 
 ---
 name: live-demo
 class: title, smokescreen, shelf
 background-image: url(images/live_demo.jpg)
 # Live Demo
-## Terraform Cloud in Action
+## HCP Terraform in Action
 
 ???
 INSTRUCTOR NOTE: You can use the same instruqt track that the students will be using to do this demo. Make sure you've gone through the entire track yourself and have your own organization, fork of the hashicat-gcp repo, and sentinel policy in place. Once you have done these steps it's easy to create a new demo:
 
-1. Start your own copy of the Terraform Cloud on GCP track
+1. Start your own copy of the HCP Terraform on GCP track
 2. Echo out your GCP credentials and set them as environment variables in TFC:
 ```
 echo $GOOGLE_CREDENTIALS
@@ -353,15 +353,15 @@ echo $GOOGLE_CREDENTIALS
 4. Make sure you remove the VPC file (vpc.tf) from your hashicat-gcp repo. This will make the demo take longer and may break if the regions aren't set up right.
 5. Begin your demo dialog:
 
-**This is a brief demo showing off some of the features of Terraform cloud. You'll get to work with all these features during the hands-on labs today.**
+**This is a brief demo showing off some of the features of HCP Terraform. You'll get to work with all these features during the hands-on labs today.**
 
 **Pretend I'm a brand new developer and I want to spin up a copy of my company's web application that I can use for testing. I have my own fork of the code here on github. This is the hashicat-gcp application. Like the name implies, it provides kittens as a service. You give it a placeholder URL, a height, and a width, and you get a cat. Neat huh?**
 
-**Let's hop over to Terraform Cloud and take a look at my workspace. Here you can see the most recent terraform runs and their status, along with the exact git commit hash that led to each run being triggered. All changes are recorded, and only code that passes our sentinel policies is allowed to run.**
+**Let's hop over to HCP Terraform and take a look at my workspace. Here you can see the most recent terraform runs and their status, along with the exact git commit hash that led to each run being triggered. All changes are recorded, and only code that passes our sentinel policies is allowed to run.**
 
 **Before I build anything I might want to configure some variables to adjust my infrastructure settings. Here you can see some terraform variables, prefix and region. These will determine the names of my resources and the region they will be deployed in.**
 
-**Down bottom you see the Environment Variables. These are system shell variables that are injected into the terraform cloud container at runtime. You can optionally encrypt sensitive environment variables such as these GCP keys. Note that these are write-only. Once you encrypt a variable by marking it sensitive, you won't see it here in plaintext again. These are dynamic GCP credentials that are good for only a few hours. You can paste them in manually or use the API to auto-populate them from HashiCorp Vault.**
+**Down bottom you see the Environment Variables. These are system shell variables that are injected into the HCP Terraform container at runtime. You can optionally encrypt sensitive environment variables such as these GCP keys. Note that these are write-only. Once you encrypt a variable by marking it sensitive, you won't see it here in plaintext again. These are dynamic GCP credentials that are good for only a few hours. You can paste them in manually or use the API to auto-populate them from HashiCorp Vault.**
 
 **New and advanced users can utilize the GUI to trigger infrastructure builds. Let's do that now by clicking on this Queue Plan button. I'm going to put "new dev environment" down as the reason for the build. Now notice that a new terraform plan has kicked off. This is the dry run. terraform is figuring out if any of the infrastructure already exists from a previous run, and then it will build or change everything to match what's in the code. That is, unless we fail a sentinel policy...**
 
@@ -379,7 +379,7 @@ INSTRUCTOR NOTE: Have your code commented and ready to go like this. That way yo
   }
 ```
 
-**Now if I pop back over to Terraform Cloud you can see that a new run has triggered based on the change I just made. Terraform Cloud watches that master branch for any changes and automatically picks them up. I still have a chance to review the run in the UI here. You can see that my policy check is now passing, which will make the finance people happy, and I can continue building my dev environment.**
+**Now if I pop back over to HCP Terraform you can see that a new run has triggered based on the change I just made. HCP Terraform watches that master branch for any changes and automatically picks them up. I still have a chance to review the run in the UI here. You can see that my policy check is now passing, which will make the finance people happy, and I can continue building my dev environment.**
 
 **I'll click Confirm & Apply and we'll start building.**
 
@@ -404,10 +404,10 @@ name: review-the-basics
 class: title, smokescreen, shelf
 background-image: url(images/terraform_scifi.jpg)
 # Review the Basics
-## A Terraform OSS Refresher
+## A Terraform Community Edition Refresher
 
 ???
-**This section is a quick review of terraform open source usage.**
+**This section is a quick review of terraform Community Edition usage.**
 
 ---
 name: review-basic-terraform-commands
@@ -426,7 +426,7 @@ terraform graph   # Create a DOT-formatted graph
 ```
 
 ???
-Depending on the maturity of your audience you might take a detour back to the Intro to Terraform track. Ideally everyone in the workshop has already completed this or has equivalent experience with Terraform OSS.
+Depending on the maturity of your audience you might take a detour back to the Intro to Terraform track. Ideally everyone in the workshop has already completed this or has equivalent experience with Terraform Community Edition.
 
 ---
 name: what-is-a-workspace
@@ -440,7 +440,7 @@ name: what-is-a-workspace
 
 
 ???
-**A Terraform workspace is a managed unit of infrastructure. On your laptop or local workstation, the terraform workspace is simply a directory full of terraform code and variables. This code is also ideally stored in a git repository. In the cloud the workspace takes on some extra roles. In Terraform Cloud and Enterprise your workspace is still where you execute terraform runs but there are extra features like access controls, secure variables and policy management. Terraform is only run from secure docker containers that you control. (There is one exception to this and that is when you run terraform locally, but only store the state in Terraform Cloud). Your local workspace, or copy of a git repo, generally maps 1:1 with your terraform workspace.**
+**A Terraform workspace is a managed unit of infrastructure. On your laptop or local workstation, the terraform workspace is simply a directory full of terraform code and variables. This code is also ideally stored in a git repository. In the cloud the workspace takes on some extra roles. In HCP Terraform and Enterprise your workspace is still where you execute terraform runs but there are extra features like access controls, secure variables and policy management. Terraform is only run from secure docker containers that you control. (There is one exception to this and that is when you run terraform locally, but only store the state in HCP Terraform). Your local workspace, or copy of a git repo, generally maps 1:1 with your terraform workspace.**
 
 **What should I put in a workspace? We recommend infrastructure that should be managed together as a unit be placed into the same workspace. Who has to manage it, how often does it change, does it have external dependencies that we can't control. Ask these questions. Think about what happens when you run `terraform apply`. You should be able to describe what you just built, and what outputs it provides, who this infrastructure is for, and how to utilize it.**
 
@@ -522,19 +522,19 @@ The local state file has some disadvantages:
 * No centralized record keeping
 
 ???
-**Let's not be the dog at my homework kid. There's no excuse for losing your state file because you can easily store it for free in your Terraform Cloud account.**
+**Let's not be the dog at my homework kid. There's no excuse for losing your state file because you can easily store it for free in your HCP Terraform account.**
 
 ---
-name: tfcloud-remote-state
-# Terraform Cloud Remote State
-Terraform Cloud Remote State is free and available to all users. The requirements to get it set up and working are below.
+name: hcp-terraform-remote-state
+# HCP Terraform Remote State
+HCP Terraform Remote State is free and available to all users. The requirements to get it set up and working are below.
 
-* Free or paid Terraform Cloud account
+* Free or paid HCP Terraform account
 * A **`.terraformrc`** (Unix/Linux) or **`terraform.rc`** (Windows) config file
 * User access token stored in your config file
 * Remote backend config file. We name it **`remote_backend.tf`** for consistency.
 
-**WARNING** - do not copy your Terraform Cloud API token to github!
+**WARNING** - do not copy your HCP Terraform API token to github!
 
 https://www.terraform.io/docs/backends/types/remote.html
 
@@ -560,7 +560,7 @@ name: lab-exercise-0
 name: lab-exercise-1
 # 👩‍💻 Lab Exercise: Configure Remote State
 <br><br>
-In this lab you'll set up a free Terraform Cloud account and configure your account for remote execution of Terraform commands.
+In this lab you'll set up a free HCP Terraform account and configure your account for remote execution of Terraform commands.
 
 Your instructor will provide the URL for the first lab environment.
 
@@ -617,7 +617,7 @@ class: img-right-full
 * Any sensitive text or data
 
 ???
-**Terraform Cloud has built in support for encryption and storage of any short string of text. This allows you to safely use these credentials during the provisioning process without exposing them in plaintext or storing them on someone's laptop.**
+**HCP Terraform has built in support for encryption and storage of any short string of text. This allows you to safely use these credentials during the provisioning process without exposing them in plaintext or storing them on someone's laptop.**
 
 ---
 name: where-are-your-creds
@@ -635,7 +635,7 @@ Config files and environment variables are a better option, but the credentials 
 name: a-better-way-creds
 # A Better Way to Store Sensitive Data
 
-Terraform Cloud can safely store your credentials and encrypt them for you. You can use this encrypted storage for passwords, TLS Certificates, SSH keys or anything else that should not be lying around in plain text.
+HCP Terraform can safely store your credentials and encrypt them for you. You can use this encrypted storage for passwords, TLS Certificates, SSH keys or anything else that should not be lying around in plain text.
 
 .center[![:scale 100%](images/gcp_encrypted_vars.png)]
 
@@ -646,7 +646,7 @@ Terraform Cloud can safely store your credentials and encrypt them for you. You 
 name: terraform-teams
 class: title, smokescreen, shelf
 background-image: url(images/teamwork.png)
-# Terraform Cloud Teams
+# HCP Terraform Teams
 ## Role-Based Access Controls (RBAC)
 
 ???
@@ -711,19 +711,19 @@ class: img-right
 
 Version control systems are applications that allow users to store, track, test, and collaborate on changes to their infrastructure and applications.
 
-Terraform Cloud integrates with most common Version Control Systems.
+HCP Terraform integrates with most common Version Control Systems.
 
 ???
-**Make sure you don't confuse git (the version control system) with GitHub (a web-based application containing the world's largest collection of git repositories). What are some other flavors of git? Bitbucket, GitLab are both also supported in Terraform Cloud. Today you'll be working with GitHub but you can integrate with any of the major git vendor software.**
+**Make sure you don't confuse git (the version control system) with GitHub (a web-based application containing the world's largest collection of git repositories). What are some other flavors of git? Bitbucket, GitLab are both also supported in HCP Terraform. Today you'll be working with GitHub but you can integrate with any of the major git vendor software.**
 
 ---
-name: tfc-infra-as-code-workflow
+name: hcp-terraform-infra-as-code-workflow
 class: img-left
-# VCS Integration with Terraform Cloud
+# VCS Integration with HCP Terraform
 
 ![:scale 70%](images/git_noobs.png)
 
-Terraform Cloud can directly integrate with source code repos in GitHub Enterprise, Gitlab, and Bitbucket. This allows you to build simple DevOps workflows with code reviews, testing and approvals.
+HCP Terraform can directly integrate with source code repos in GitHub Enterprise, Gitlab, and Bitbucket. This allows you to build simple DevOps workflows with code reviews, testing and approvals.
 
 https://xkcd.com/1597/
 
@@ -746,7 +746,7 @@ Each team can contribute or consume Terraform code according to their needs.
 .small[http://www.commitstrip.com/en/2015/02/02/is-your-company-ready-for-devops/]
 
 ???
-**When you store all your terraform code in git repos, you unlock some extra features like user collaboration. This is a funny comic called CommitStrip where dev and ops try to learn to work together. Terraform Cloud helps bring these teams closer in a more productive way.**
+**When you store all your terraform code in git repos, you unlock some extra features like user collaboration. This is a funny comic called CommitStrip where dev and ops try to learn to work together. HCP Terraform helps bring these teams closer in a more productive way.**
 
 ---
 name: vcs-driven-workflow
@@ -776,7 +776,7 @@ background-image: url(images/security_lasers.jpg)
 ## Policy Enforcement for Terraform
 
 ???
-**Sentinel is the HashiCorp policy enforcement language and it is only available in terraform cloud or enterprise.**
+**Sentinel is the HashiCorp policy enforcement language and it is only available in HCP Terraform or Terraform Enterprise.**
 
 ---
 name: what-is-sentinel
@@ -849,7 +849,7 @@ class: title
 ## Modules and API Automation
 
 ???
-**This is the final content chapter where we'll cover the private module registry and API automation.**
+**This is the final content chapter where we'll cover the Terraform Private Registry and API automation.**
 
 ---
 name: private-module-registry
@@ -892,12 +892,12 @@ What if you had to manage dozens or hundreds of modules, with different versions
 ---
 name: private-module-registry
 class: img-right
-# Private Module Registry
+# Terraform Private Registry
 ![](images/gcp_pmr.png)
 
 Terraform modules are reusable packages of Terraform code that you can use to build your infrastructure.
 
-Terraform Cloud includes a Private Module Registry where you can store, version, and distribute modules to your organizations and teams.
+HCP Terraform includes a Terraform Private Registry where you can store, version, and distribute modules to your organizations and teams.
 
 ???
 **This is just like the public module registry but it runs inside your own Terraform Organization where only your users can access it. This way you can share private or confidential code, or even take the public modules and fork them for your own use.**
@@ -906,11 +906,11 @@ Terraform Cloud includes a Private Module Registry where you can store, version,
 name: api-driven-workflows
 class: title, smokescreen, shelf
 background-image: url(images/enter_the_matrix.jpg)
-# Terraform Cloud API
+# HCP Terraform API
 ## Automate Everything
 
 ???
-**This section will give us a small sample of what's possible using the Terraform Cloud API to build automation. APIs provide a clear and well understood method for interacting with Terraform Cloud, even from systems that have no native Terraform support or integrations.**
+**This section will give us a small sample of what's possible using the HCP Terraform API to build automation. APIs provide a clear and well understood method for interacting with HCP Terraform, even from systems that have no native Terraform support or integrations.**
 
 ---
 name: whats-an-api
@@ -933,7 +933,7 @@ APIs are the default language of the Internet. According to Akamai research 83% 
 
 ---
 name: hcp-terraform-api
-# Terraform Cloud API - How It Works
+# HCP Terraform API - How It Works
 ```bash
 # Create a workspace using the API
 curl --header "Authorization: Bearer $TOKEN" --header \
@@ -953,7 +953,7 @@ Most programming languages have helper libraries for working with APIs.
 
 ---
 name: api-use-cases
-# Terraform Cloud API - Use Cases
+# HCP Terraform API - Use Cases
 
 * Continuous Integration test pipelines
 * Connect with workflow management systems
@@ -962,13 +962,13 @@ name: api-use-cases
 * Custom command line scripts for specific needs
 
 ???
-**Here are just a few of the things you might build with the Terraform Cloud API.**
+**Here are just a few of the things you might build with the HCP Terraform API.**
 
 ---
 name: lab-exercise-4
 # 👩‍💻 Lab Exercise: Modules and API Automation
 <br><br>
-In this lab we'll cover the Private Module Registry and API Automation with Terraform Cloud.
+In this lab we'll cover the Terraform Private Registry and API Automation with HCP Terraform.
 
 Continue the lab exercises from where you left off.
 
@@ -993,19 +993,19 @@ name: bonus-lab
 If you have completed all the workshop content and would like to try the bonus lab, your instructor can provide you with an invite.
 
 ???
-This bonus lab can be used with any of the three Terraform Cloud workshops. Create an invite if you'd like to share it with your students.
+This bonus lab can be used with any of the three HCP Terraform workshops. Create an invite if you'd like to share it with your students.
 
 https://instruqt.com/hashicorp/tracks/hcp-terraform-bonus-lab
 
 ---
 name: additional-resources-tfe
 # Additional Resources
-If you'd like to learn more about Terraform Enterprise or Terraform Cloud visit the links below:
+If you'd like to learn more about Terraform Enterprise or HCP Terraform visit the links below:
 
 Terraform Enterprise Product Page
 https://www.hashicorp.com/products/terraform/
 
-Why Consider Terraform Enterprise Over Open Source?
+Why Consider Terraform Enterprise Over Community Edition?
 https://www.hashicorp.com/resources/why-consider-terraform-enterprise-over-open-source
 
 Terraform GCP Provider Documentation

@@ -1,18 +1,19 @@
 ---
 slug: api-driven-workflows
+id: srbdhf4xf3rj
 type: challenge
 title: "\U0001F517 API Driven Workflows"
 teaser: |
   HCP Terraform has a fully featured RESTful API that you can use to integrate with external systems. Where we're going, we don't need a GUI!
 notes:
 - type: text
-  contents: "You've mostly been using the HCP Terraform Web UI and command line
-    interface (CLI) to build infrastructure. The devops team needs to integrate with
-    their CI/CD tool via the API. Lars sends you a chat message:\n\n>\U0001F468\U0001F3FB‍\U0001F9B2
+  contents: "You've mostly been using the HCP Terraform Web UI and command line interface
+    (CLI) to build infrastructure. The devops team needs to integrate with their CI/CD
+    tool via the API. Lars sends you a chat message:\n\n>\U0001F468\U0001F3FB‍\U0001F9B2
     Hey senior sysadmin, we have this new continuous integration tool that the developers
     are using to test their application code. I'd like you to test some API calls
-    to our HCP Terraform organization and workspaces. Can you please take a look
-    at this and learn how the API works?"
+    to our HCP Terraform organization and workspaces. Can you please take a look at
+    this and learn how the API works?"
 - type: text
   contents: |-
     Feeling stuck? Remember that the HCP Terraform docs contain examples for all API endpoints:

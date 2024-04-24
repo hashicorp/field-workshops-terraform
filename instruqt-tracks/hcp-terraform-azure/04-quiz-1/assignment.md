@@ -1,5 +1,6 @@
 ---
 slug: quiz-1
+id: xycwdxwukkbe
 type: quiz
 title: "\U0001F4DD Quiz 1 - Terraform Remote State"
 teaser: |

@@ -27,7 +27,7 @@ layout: true
 name: terraform-slides-link
 # The Slide Show
 ## You can follow along on your own computer at this link:
-### https://hashicorp.github.io/field-workshops-terraform/slides/multi-cloud/terraform-oss/index.html
+### https://hashicorp.github.io/field-workshops-terraform/slides/multi-cloud/terraform-community/index.html
 
 ???
 Give students a link to use the slides on their own computer.

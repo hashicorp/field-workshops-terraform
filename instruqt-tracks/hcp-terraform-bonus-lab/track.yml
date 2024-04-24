@@ -1,13 +1,13 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-slug: hcp-terraform-bonus-lab
+slug: wip-vcdl-251-hcp-terraform-bonus-lab
 id: gxdsws9y9bsu
 type: track
-title: Bonus Lab - Terraform Cloud
+title: WIP VCDL-251 - Bonus Lab - HCP Terraform
 teaser: |
-  Ready for more? Test your Terraform Cloud skills with this intermediate level lab challenge.
-description: If you've completed one of the Terraform Cloud tracks and would like
+  Ready for more? Test your HCP Terraform skills with this intermediate level lab challenge.
+description: If you've completed one of the HCP Terraform tracks and would like
   an extra challenge, try this bonus lab. In this track you'll build an approval pipeline
   and development branch for your Terraform code, then ensure that all tests pass
   in a dev environment before approving the change to production.
@@ -17,7 +17,7 @@ tags:
 - azure
 - aws
 - gcp
-owner: hashicorp
+owner: hashicorp-field-ops
 developers:
 - roger@hashicorp.com
 - jthompson@hashicorp.com
@@ -34,14 +34,14 @@ challenges:
   notes:
   - type: text
     contents: "\U0001F3F0 Welcome to the Gauntlet! This challenging lab will require
-      all the skills you learned in the Terraform Cloud workshop. \U0001F9DD\U0001F3FB"
+      all the skills you learned in the HCP Terraform workshop. \U0001F9DD\U0001F3FB"
   - type: text
     contents: Branch protection allows you to create rules that must be passed before
       any changes get merged into your master branch.
   - type: image
-    url: https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-cloud-bonuslab/git_branch_protection.png
+    url: https://storage.googleapis.com/instruqt-hashicorp-tracks/hcp-terraform-bonuslab/git_branch_protection.png
   assignment: |-
-    Welcome back! This is the bonus lab for the Terraform Cloud tracks. There are prerequisites that must be set up before you can begin the bonus lab. This is an intermediate level challenge.
+    Welcome back! This is the bonus lab for the HCP Terraform tracks. There are prerequisites that must be set up before you can begin the bonus lab. This is an intermediate level challenge.
 
     During this lab you'll use the "Code Editor" tab on the left. As you work through the setup steps below, you'll see some Terraform configuration files for the hashicat application show up.  When you edit any of these files, you will see a blue dot and a disk icon on the tab above it. **Be sure to click the disk icon to save your changes** -- there is no "auto-saving" in the Instruqt editor!
 
@@ -55,8 +55,8 @@ challenges:
     5. Open the file called `main.tf`. Note that the file type at the bottom of the screen was automatically set to "hcl" to give optimized syntax highlighting and colors.
     6. Add, commit, and push your changes to the remote **dev** branch.
 
-    ### Terraform Cloud Setup
-    1. Log onto your Terraform Cloud organization and create a new workspace called **hashicat-dev**.
+    ### HCP Terraform Setup
+    1. Log onto your HCP Terraform organization and create a new workspace called **hashicat-dev**.
     2. This time make sure it pulls from the **dev** branch instead of the master branch. Remember that you can choose which branch to target when you set up your workspace.
     3. Enable another policy set from your **tfc-workshop-sentinel** repo, this time use the `bonus_lab` directory as the source. Name the policy **tfc-workshop-bonuslab**. Set this policy to be enforced organization-wide. HINT: You'll be connecting to the same sentinel repo we used before, but pointing at a **different directory**. You can select the directory you want to use when you create the policy set.
     4. Echo out your credentials and store them as sensitive variables in both dev and production workspaces. You'll need to replace the credentials you used in the previous lab, as they may already be expired.

@@ -1,5 +1,6 @@
 ---
 slug: sharing-is-caring
+id: g0cl06ae6kpe
 type: challenge
 title: "\U0001F91D\U0001F3FC Working with Teams in HCP Terraform"
 teaser: |
@@ -8,11 +9,11 @@ notes:
 - type: text
   contents: "A few months go by and you continue building more infrastructure with
     HCP Terraform. The devops team are all familiar with Terraform, but some members
-    are unable to access the HCP Terraform organization. Your manager Hiro steps
-    into your cubicle with a clipboard in hand:\n\n>\U0001F468\U0001F3FB‍\U0001F4BC
-    Thank you for all your hard work on this Terraform project. I'd like to have read
-    access to your workspace, and we also need to get Lars and Aisha set up. Can you
-    please create some teams in our organization and add your co-workers to them?"
+    are unable to access the HCP Terraform organization. Your manager Hiro steps into
+    your cubicle with a clipboard in hand:\n\n>\U0001F468\U0001F3FB‍\U0001F4BC Thank
+    you for all your hard work on this Terraform project. I'd like to have read access
+    to your workspace, and we also need to get Lars and Aisha set up. Can you please
+    create some teams in our organization and add your co-workers to them?"
 - type: text
   contents: Teams and role-based access controls are a paid feature of HCP Terraform.
     Your instructor will need to upgrade your organization to a free trial in order

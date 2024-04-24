@@ -307,7 +307,7 @@ name: what-is-remote-storage-2
 
 - With remote state, Terraform writes the state data to a remote data store, which can then be shared between all members of a team
 
-- Terraform natively supports storing state in Terraform Cloud.
+- Terraform natively supports storing state in HCP Terraform.
 
 .center[
 ![:scale 60%](../images/remote-state.png)

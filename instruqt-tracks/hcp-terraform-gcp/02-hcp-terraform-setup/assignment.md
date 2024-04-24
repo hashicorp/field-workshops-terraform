@@ -1,5 +1,6 @@
 ---
 slug: hcp-terraform-setup
+id: m6sl2xkfspjs
 type: challenge
 title: HCP Terraform Setup
 teaser: |

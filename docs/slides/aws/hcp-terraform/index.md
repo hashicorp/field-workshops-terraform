@@ -11,7 +11,7 @@ count: false
 
 **HCP Terraform and Terraform Enterprise have almost identical feature sets so we'll be using HCP Terraform as our training environment today.**
 
-INSTRUCTOR GUIDE LINK: https://github.com/hashicorp/field-workshops-terraform/blob/main/instructor-guides/all_terraform_cloud_INSTRUCTOR_GUIDE.md
+INSTRUCTOR GUIDE LINK: https://github.com/hashicorp/field-workshops-terraform/blob/main/instructor-guides/all_hcp_terraform_INSTRUCTOR_GUIDE.md
 
 INSTRUCTOR NOTE: Welcome to HCP Terraform on AWS. This slide deck is written entirely in Markdown language, which means you can make edits or additions then submit a pull request to add your changes to the main branch. To make edits to the slide deck simply fork this repository, edit the Markdown file(s), and submit a pull request with your changes. You can easily test a local copy of the slide deck with this python one-liner:
 
@@ -58,7 +58,7 @@ If your audience is less than 25 people you can quickly go through the room and 
 Now introduce yourself, tell a story, give the audience something to think about. If you don't have a story borrow someone else's: https://www.youtube.com/watch?v=h970ZBgKINg
 
 ---
-name: tfc-link-to-slide-deck
+name: hcp-terraform-link-to-slide-deck
 # The Slide Deck
 <br><br><br>
 .center[
@@ -91,7 +91,7 @@ class: col-2
 👮 Sentinel Policy Enforcement<br>
 <hr>
 4. Terraform Modules & API<br>
-⚙️ Private Module Registry<br>
+⚙️ Terraform Private Registry<br>
 🏗️ API Driven Workflows<br>
 <hr>
 5. Extra Resources<br>
@@ -112,7 +112,7 @@ class: title
 ## Terraform Community, HCP Terraform and Enterprise
 
 ???
-**In the first chapter we'll cover Terraform open source and some of the differences between Community and HCP Terraform and Enterprise.**
+**In the first chapter we'll cover Terraform Community Edition and some of the differences between Community and HCP Terraform and Enterprise.**
 
 ---
 name: terraform-user-journey
@@ -193,7 +193,7 @@ name: hcp-terraform-what-is-it
 **Role-based access controls allow different types of users to interact with HCP Terraform according to their level of access. You might have super admins who can control everything in the organization, then regular users who can run terraform but only in dev environments. Another group might be able to push changes to production, while some users may have read-only access. HCP Terraform/Terraform Enterprise is a true multi-tenant application.**
 
 ---
-name: why-tfc-1
+name: why-hcp-terraform-1
 class: img-right
 # HCP Terraform
 ![](images/tfc-gui.png)
@@ -204,7 +204,7 @@ HCP Terraform/Terraform Enterprise is an application that provides the following
 **Let's go through a quick bullet list of HCP Terraform features and why they matter.**
 
 ---
-name: why-tfc-2
+name: why-hcp-terraform-2
 class: img-right
 # HCP Terraform
 ![](images/tfc-gui.png)
@@ -217,7 +217,7 @@ HCP Terraform/Terraform Enterprise is an application that provides the following
 **As your organization begins to standardize on Terraform, you'll have different types of users. Most of you will become terraform experts, but there may be others who just want to build things. They can use the terraform code that folks like you have written. To make this process easy, we have a web application. You log on, click a button, and out pops your infrastructure.**
 
 ---
-name: why-tfc-3
+name: why-hcp-terraform-3
 class: img-right
 # HCP Terraform
 ![](images/tfc-gui.png)
@@ -233,7 +233,7 @@ HCP Terraform/Terraform Enterprise is an application that provides the following
 **APIs are the building blocks of any modern cloud automation system. By using standard, well defined APIs you ensure that your infrastructure pipelines will be ready to adapt to any future changes.**
 
 ---
-name: why-tfc-4
+name: why-hcp-terraform-4
 class: img-right
 # HCP Terraform
 ![](images/tfc-gui.png)
@@ -248,7 +248,7 @@ HCP Terraform/Terraform Enterprise is an application that provides the following
 **HCP Terraform/Terraform Enterprise also provides safe and secure storage for your state files. Instead of having that important state file stored on someone's laptop, now it is safely stored in the Terraform application. Only those who need access to the state file can see it, and it is protected from being overwritten or corrupted.**
 
 ---
-name: why-tfc-5
+name: why-hcp-terraform-5
 class: img-right
 # HCP Terraform
 ![](images/tfc-gui.png)
@@ -258,13 +258,13 @@ HCP Terraform/Terraform Enterprise is an application that provides the following
 * UI integration with VCS
 * API driven workflows
 * Central state management
-* Private Module Registry
+* Terraform Private Registry
 
 ???
-**Eventually you'll have a library of Terraform code that you might like to share and publish for other users and teams in your company. The private module registry makes this easy. You build reusable modules that build infrastructure according to standards, and then publish them for your users. This can help with enforcing security policies and build standards.**
+**Eventually you'll have a library of Terraform code that you might like to share and publish for other users and teams in your company. The Terraform Private Registry makes this easy. You build reusable modules that build infrastructure according to standards, and then publish them for your users. This can help with enforcing security policies and build standards.**
 
 ---
-name: why-tfc-6
+name: why-hcp-terraform-6
 class: img-right
 # HCP Terraform
 ![](images/tfc-gui.png)
@@ -274,14 +274,14 @@ HCP Terraform/Terraform Enterprise is an application that provides the following
 * UI integration with VCS
 * API driven workflows
 * Central state management
-* Private Module Registry
+* Terraform Private Registry
 * Sentinel policy enforcement
 
 ???
 **HCP Terraform/Terraform Enterprise also comes with a policy enforcement engine that can ensure that your users don't build things they shouldn't build, or configure them in the wrong way. For example, you might wish to prevent users from opening network ports to the internet, or from building too many virtual machines. All of these types of rules can be expressed using our Sentinel policy enforcement engine. Sentinel policies prevent users from doing bad things, *before* they provision to the cloud.**
 
 ---
-name: why-tfc-7
+name: why-hcp-terraform-7
 class: img-right
 # HCP Terraform
 ![](images/tfc-gui.png)
@@ -291,7 +291,7 @@ HCP Terraform/Terraform Enterprise is an application that provides the following
 * UI integration with VCS
 * API driven workflows
 * Central state management
-* Private Module Registry
+* Terraform Private Registry
 * Sentinel policy enforcement
 * Single Sign-On
 
@@ -301,7 +301,7 @@ HCP Terraform/Terraform Enterprise is an application that provides the following
 It would be good to add SAML or SSO to the workshop somehow in the future.
 
 ---
-name: why-tfc-8
+name: why-hcp-terraform-8
 class: img-right
 # HCP Terraform
 ![](images/tfc-gui.png)
@@ -311,7 +311,7 @@ HCP Terraform/Terraform Enterprise is an application that provides the following
 * UI integration with VCS
 * API driven workflows
 * Central state management
-* Private Module Registry
+* Terraform Private Registry
 * Sentinel policy enforcement
 * Single Sign-On
 * Secure API credentials
@@ -410,7 +410,7 @@ background-image: url(images/terraform_scifi.jpg)
 ## A Terraform Community Refresher
 
 ???
-**This section is a quick review of terraform open source usage.**
+**This section is a quick review of terraform Community Edition usage.**
 
 ---
 name: review-basic-terraform-commands
@@ -530,7 +530,7 @@ The local state file has some disadvantages:
 **Let's not be the dog at my homework kid. There's no excuse for losing your state file because you can easily store it for free in your HCP Terraform account.**
 
 ---
-name: tfcloud-remote-state
+name: hcp-terraform-remote-state
 # HCP Terraform Remote State
 HCP Terraform Remote State is free and available to all users. The requirements to get it set up and working are below.
 
@@ -722,7 +722,7 @@ HCP Terraform integrates with most common Version Control Systems.
 **Make sure you don't confuse git (the version control system) with GitHub (a web-based application containing the world's largest collection of git repositories). What are some other flavors of git? Bitbucket, GitLab are both also supported in HCP Terraform. Today you'll be working with GitHub but you can integrate with any of the major git vendor software.**
 
 ---
-name: tfc-infra-as-code-workflow
+name: hcp-terraform-infra-as-code-workflow
 class: img-left
 # VCS Integration with HCP Terraform
 
@@ -781,7 +781,7 @@ background-image: url(images/security_lasers.jpg)
 ## Policy Enforcement for Terraform
 
 ???
-**Sentinel is the HashiCorp policy enforcement language and it is only available in HCP Terraform or enterprise.**
+**Sentinel is the HashiCorp policy enforcement language and it is only available in HCP Terraform or Terraform Enterprise.**
 
 ---
 name: what-is-sentinel
@@ -855,7 +855,7 @@ class: title
 ## Modules and API Automation
 
 ???
-**This is the final content chapter where we'll cover the private module registry and API automation.**
+**This is the final content chapter where we'll cover the Terraform Private Registry and API automation.**
 
 ---
 name: private-module-registry
@@ -898,12 +898,12 @@ What if you had to manage dozens or hundreds of modules, with different versions
 ---
 name: private-module-registry
 class: img-right
-# Private Module Registry
+# Terraform Private Registry
 ![](images/aws_pmr.png)
 
 Terraform modules are reusable packages of Terraform code that you can use to build your infrastructure.
 
-HCP Terraform includes a Private Module Registry where you can store, version, and distribute modules to your organizations and teams.
+HCP Terraform includes a Terraform Private Registry where you can store, version, and distribute modules to your organizations and teams.
 
 ???
 **This is just like the public module registry but it runs inside your own Terraform Organization where only your users can access it. This way you can share private or confidential code, or even take the public modules and fork them for your own use.**
@@ -974,11 +974,11 @@ name: api-use-cases
 name: lab-exercise-4
 # 👩‍💻 Lab Exercise: Modules and API Automation
 <br><br>
-In this lab we'll cover the Private Module Registry and API Automation with HCP Terraform.
+In this lab we'll cover the Terraform Private Registry and API Automation with HCP Terraform.
 
 Continue the lab exercises from where you left off.
 
-🛑 **STOP** after you complete the fourth quiz - "Private Module Registry".
+🛑 **STOP** after you complete the fourth quiz - "Terraform Private Registry".
 
 ???
 This is the last official lab; the bonus lab will be stored in a separate track.
@@ -1011,7 +1011,7 @@ If you'd like to learn more about Terraform Enterprise or HCP Terraform visit th
 Terraform Enterprise Product Page
 https://www.hashicorp.com/products/terraform/
 
-Why Consider Terraform Enterprise Over Open Source?
+Why Consider Terraform Enterprise Over Community Edition?
 https://www.hashicorp.com/resources/why-consider-terraform-enterprise-over-open-source
 
 Terraform AWS Provider Documentation

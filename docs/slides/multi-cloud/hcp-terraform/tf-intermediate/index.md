@@ -110,10 +110,10 @@ The Terraform Registry contains over 9000 examples of modules for a variety of p
 ---
 name: private-module-registry
 class: img-right
-# Private Module Registry
+# Terraform Private Registry
 ![](../images/pmr.png)
 
-Terraform Cloud and Enterprise include a Private Module Registry where you can store, version, and distribute modules to your organizations and teams.
+HCP Terraform and Enterprise include a Terraform Private Registry where you can store, version, and distribute modules to your organizations and teams.
 
 ???
 **This is just like the public module registry but it runs inside your own Terraform Organization where only your users can access it. This way you can share private or confidential code, or even take the public modules and fork them for your own use.**
@@ -226,9 +226,9 @@ In lab 4 we are going to look at some more advanced features of Terraform includ
 
 - Review the networking components in main.tf in the **hashicat-aws** project
 - Review main.tf in the **hashicat-modular-aws** project
-- Go to Terraform Cloud and review the new workspaces for the hashicat application
+- Go to HCP Terraform and review the new workspaces for the hashicat application
 
 ???
 First take a look at the hashicat-aws project. This is the full application that we will use in this lab. Review the networking components that are required for this web application - VPC, subnet, security group, routing table, external ip, etc. Even though these components aren't complex, we want to be able to reuse them for other applications so we are going to create a networking module. 
 
-Review the **main.tf in the hashicat-module-aws** project. Both of these projects have been added to your Terraform Cloud organization.
+Review the **main.tf in the hashicat-module-aws** project. Both of these projects have been added to your HCP Terraform organization.

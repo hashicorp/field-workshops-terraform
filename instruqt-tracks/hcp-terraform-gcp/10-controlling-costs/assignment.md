@@ -1,5 +1,6 @@
 ---
 slug: controlling-costs
+id: lomyzo5rvp5z
 type: challenge
 title: $ Controlling Costs with Cost Estimation
 teaser: |
@@ -9,8 +10,8 @@ notes:
   contents: "Developers often run bigger VMs than are really necessary. Karen from
     finance pays you a visit to see if you can help:\n\n>\U0001F469\U0001F3FC‍\U0001F4BC\U0001F4C8
     Hello sysadmin, we got a really big GCP bill last month and would like you to
-    inform developers using HCP Terraform about estimated monthly costs of their
-    workspaces before they apply runs. Can you do that?"
+    inform developers using HCP Terraform about estimated monthly costs of their workspaces
+    before they apply runs. Can you do that?"
 - type: text
   contents: |-
     You can learn more about HCP Terraform's Cost Estimation feature with these links:

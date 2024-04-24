@@ -3,7 +3,7 @@ slug: private-module-registry-v2
 type: challenge
 title: Exercise 5b
 teaser: |
-  Only allow modules from the Private Module Registry (second version).
+  Only allow modules from the Terraform Private Registry (second version).
 notes:
 - type: text
   contents: |-
@@ -67,7 +67,7 @@ timelimit: 1800
 
 In this challenge, you will write a second version of the fifth Sentinel policy for Terraform.
 
-Your task is to complete and test a Sentinel policy that requires that all modules loaded by the root module come from the [Private Module Registry](https://www.terraform.io/docs/cloud/registry/index.html) (PMR) of a HCP Terraform organization.
+Your task is to complete and test a Sentinel policy that requires that all modules loaded by the root module come from the [Terraform Private Registry](https://www.terraform.io/docs/cloud/registry/index.html) of a HCP Terraform organization.
 
 > [!NOTE]
 > At any point while solving the challenge, you can click the green "Check" button to get a hint suggesting something that you still need to do.
@@ -99,6 +99,6 @@ Finally, test your policy on the "Sentinel CLI" tab with this command:
 sentinel test -run=pmr-b.sentinel -verbose
 ```
 
-Both test cases should pass with green output. Additionally, the fail test case will print messages indicating that the root module of the Terraform configuration called modules that are not from the desired private module registry.
+Both test cases should pass with green output. Additionally, the fail test case will print messages indicating that the root module of the Terraform configuration called modules that are not from the desired Terraform Private Registry.
 
 If that is not the case, you will need to edit the `require-modules-from-pmr-b.sentinel` policy and test the policy again until both test cases pass.

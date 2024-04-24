@@ -16,7 +16,7 @@ A. You can always post in #se-workshops or #proj-instruqt and someone should be 
 
 **Q. How do I upgrade my users' organizations to trials?**<br>
 A. There is another slack channel called #team-se-trial-rqsts where you can ask an admin to upgrade your orgs to trials. But most users should be able to enable 
-a 30 day trial for themselves in the Terraform Cloud UI. (The exception is when they have already enabled a trial in the past which has expired.)
+a 30 day trial for themselves in the HCP Terraform UI. (The exception is when they have already enabled a trial in the past which has expired.)
 
 **Q. In the TF Cloud for AWS workshop sometimes the hashicat app URL doesn't load the first time I run `terraform apply`?**<br>
 A. This is because we are using a null provisioner to deploy the app, so sometimes the ec2 instance won't match what's currently in the state file on the first run. Running a second `terraform apply` will fix it for all subsequent runs until you destroy. We are working on a fix that might avoid this problem.
@@ -43,7 +43,7 @@ systemctl restart code-server
 
 **Q. Is there a way to fast-forward to a particular part of a track?**<br>
 A. Currently this is only possible for members of the HashiCorp Instruqt organization. However, you can use the `/tmp/skip-check` file as mentioned in the previous question to quickly skip past challenges to a particular point in the Intro to Terraform tracks. `/tmp/skip-check` must be created for each challenge that you want
-to skip. In the Terraform Cloud tracks, there is a separate mechanism documented [here](./instructor-guides/all_terraform_cloud_INSTRUCTOR_GUIDE.md#skipping-in-the-terraform-cloud-tracks).
+to skip. In the HCP Terraform tracks, there is a separate mechanism documented [here](./instructor-guides/all_hcp_terraform_INSTRUCTOR_GUIDE.md#skipping-in-the-hcp-terraform-tracks).
 
 **Q. My student created an AWS SSH key and terraform can't delete it.**<br>
 A. You can log onto the AWS console directly and delete the offending resource that is blocking your run. Use the following command to see your AWS console username and password:
@@ -52,5 +52,5 @@ env | grep AWS
 ```
 
 **Q. What is the Bonus Lab?**<br>
-A. The bonus lab is meant for intermediate to advanced users who have already completed the main track. The bonus lab is a challenging combination that tests several skills learned in the Terraform Cloud workshop. There are different Sentinel policies for the bonus lab depending on whether you're using AWS, Azure or GCP. Access it here:<br>
+A. The bonus lab is meant for intermediate to advanced users who have already completed the main track. The bonus lab is a challenging combination that tests several skills learned in the HCP Terraform workshop. There are different Sentinel policies for the bonus lab depending on whether you're using AWS, Azure or GCP. Access it here:<br>
 https://instruqt.com/hashicorp/tracks/hcp-terraform-bonus-lab

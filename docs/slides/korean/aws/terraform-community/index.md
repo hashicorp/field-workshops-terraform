@@ -1,7 +1,7 @@
 name: AWS-Terraform-Workshop
 class: center
 count: false
-![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/tf_aws.png)
+![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-community/images/tf_aws.png)
 
 <br><br>
 
@@ -74,7 +74,7 @@ name: Table-of-Contents
 1. AWS 인스턴스 프로비저닝과 설정<br>
 🔬 **Lab - Provisioning with Terraform**<br>
 1. 인프라 상태를 변경하고 관리하기
-1. Terraform Cloud<br>
+1. HCP Terraform<br>
 ⚗️ **Lab - Terraform Remote State**
 
 ???
@@ -111,7 +111,7 @@ name: How-to-Provision-an-AWS-Instance
 ---
 name: AWS-Console-Provision
 # Method 1: AWS Console (GUI)
-![:scale 70%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/aws_provision.png)
+![:scale 70%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-community/images/aws_provision.png)
 
 ???
 **AWS를 사용해 본 적이 있다면 익숙해 보일 것입니다. EC2 패널에서 인스턴스> 인스턴스 시작을 클릭하면 인스턴스를 프로비저닝하는 데 사용할 수있는 다양한 AWS 머신 이미지 (AMI) 목록이 표시됩니다. 이들 중 일부는 AWS에서 제공하고 다른 일부는 마켓 플레이스의 타사에서 제공합니다. 필요한 것을 검색하거나 찾아보고 클릭하세요.**
@@ -119,7 +119,7 @@ name: AWS-Console-Provision
 ---
 name: AWS-Console-Provision-2
 # Method 1: AWS Portal (GUI)
-![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/aws_provision_2.png)
+![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-community/images/aws_provision_2.png)
 
 ???
 **AMI를 선택한 후에는 인스턴스 유형, 시작하려는 VPC, 할당하려는 관련 IAM 역할, 외부 스토리지, 태그, 보안 그룹 등 몇 가지 세부 정보를 입력합니다. 긴 옵션 목록! AWS 콘솔은 개별 VM 및 개발 또는 테스트 환경을 가동하는 데 유용 할 수 있습니다. 좋은 소식은 이러한 방식으로 인프라를 가동하는 것이 정말 쉽다는 것입니다. 나쁜 소식은 확장되지 않는다는 것입니다. 그리고 아무도 빌드 된 것을 추적하지 않을 가능성이 있습니다.**
@@ -310,7 +310,7 @@ name: IaC2
 ---
 name: IaC-Tools
 # 다른 Infrastructure as Code 도구들
-.center[![:scale 40%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/infra_tools.png)]
+.center[![:scale 40%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-community/images/infra_tools.png)]
 
 이러한 도구는 OS나 애플리케이션 구성에 적합합니다.
 
@@ -324,7 +324,7 @@ Chef, Puppet 및 Ansible은 모두 운영 체제 및 애플리케이션의 맥�
 ---
 name: Native-Tools
 # Native-Cloud 프로비저닝 도구들
-.center[![:scale 90%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/clouds.png)]
+.center[![:scale 90%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-community/images/clouds.png)]
 
 각 클라우드에는 자체 YAML 또는 JSON 기반 프로비저닝 도구가 있습니다.
 
@@ -335,7 +335,7 @@ Terraform은 모든 주요 클라우드 제공 업체 및 VM 하이퍼 바이저
 
 ---
 name: Config-Hell
-.center[![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/Config_Hell.jpg)]
+.center[![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-community/images/Config_Hell.jpg)]
 ???
 **이것은 재미있는 웹 만화입니다. 중첩 된 JSON 템플릿을 살펴보면서 중괄호의 어떤 레이어에 있는지 알아 내려고 노력한 사람들은 이것을 이해할 것입니다.**
 
@@ -357,7 +357,7 @@ Terraform 코드 (HCL)는 배우기 쉽고 읽기 쉽습니다. 또한 동등한
 ---
 Name: Why-Terraform-1
 # 그래서, 왜 Terraform 일까요?
-.center[![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/1password_terraform.png)]
+.center[![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-community/images/1password_terraform.png)]
 
 .center[### <https://blog.1password.com/terraforming-1password/>]
 
@@ -436,10 +436,10 @@ class: title
 이제 terraform을 설치하고 AWS와 함께 작업 했으므로 실제 인프라를 구축하기 전에 몇 가지 테스트 실행을 수행 할 수 있습니다. 주의 깊게 따라 가면서 각 슬라이드의 명령을 복사하여 쉘에 붙여 넣으십시오.
 
 ---
-name: what-is-terraform-oss
+name: what-is-terraform-community
 class: img-left
 # Terraform이란
-![Terraform](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/Terraform_VerticalLogo_FullColor.png)
+![Terraform](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-community/images/Terraform_VerticalLogo_FullColor.png)
 
 Terraform은 오픈 소스 프로비저닝 도구입니다.
 
@@ -889,7 +889,7 @@ output "private_key" {
 name: tf-dependency-graph
 class: img-right
 # Terraform Dependency Graph
-.center[![:scale 100%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/blast_radius_graph_1.png)]
+.center[![:scale 100%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-community/images/blast_radius_graph_1.png)]
 
 terraform 리소스 그래프는 리소스 간의 종속성을 시각적으로 보여줍니다.
 
@@ -992,7 +992,7 @@ provisioner "remote-exec" {
 name: puppet-chef-ansible
 class: compact
 # Terraform & Config Management Tools
-.center[![:scale 50%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/images/cpa.jpg)]
+.center[![:scale 50%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-community/images/cpa.jpg)]
 
 Terraform은 Chef, Puppet 또는 Ansible과 같은 일반적인 구성 관리 도구와 잘 작동합니다.
 
@@ -1130,15 +1130,15 @@ class: compact
 name: Chapter-6
 class: title
 # Chapter 6
-## Terraform Cloud
+## HCP Terraform
 
 ---
-name: terraform-cloud
+name: hcp-terraform
 class: img-right
 
-# Terraform Cloud
-##### Terraform Cloud는 Terraform을 사용하여 코드로 인프라를 작성하고 구축하기위한 최고의 워크 플로를 제공하는 무료 SaaS 애플리케이션입니다.
-![Terraform Cloud](https://hashicorp.github.io/field-workshops-assets/assets/logos/Terraform_Cloud_Logo_Color_RGB.png)
+# HCP Terraform
+##### HCP Terraform는 Terraform을 사용하여 코드로 인프라를 작성하고 구축하기위한 최고의 워크 플로를 제공하는 무료 SaaS 애플리케이션입니다.
+![HCP Terraform](https://hashicorp.github.io/field-workshops-assets/assets/logos/Terraform_Cloud_Logo_Color_RGB.png)
 
 * 상태 저장 및 관리
 * Terraform 실행을보고 승인하기위한 웹 UI
@@ -1149,35 +1149,35 @@ class: img-right
 * 자동화를위한 전체 HTTP API
 
 ---
-name: tfcloud-vs-tfe
-# Terraform Cloud or Terraform Enterprise
-**Terraform Cloud**는 원격 상태 관리, API 기반 실행, 정책 관리 등과 같은 기능을 제공하는 호스팅 된 애플리케이션입니다. 많은 사용자가 클라우드 기반 SaaS 솔루션을 선호하는 이유 중 한가지는 인프라를 유지하여 실행하는 것이 부담될 때 입니다.
+name: hcp-terraform-vs-tfe
+# HCP Terraform or Terraform Enterprise
+**HCP Terraform**는 원격 상태 관리, API 기반 실행, 정책 관리 등과 같은 기능을 제공하는 호스팅 된 애플리케이션입니다. 많은 사용자가 클라우드 기반 SaaS 솔루션을 선호하는 이유 중 한가지는 인프라를 유지하여 실행하는 것이 부담될 때 입니다.
 
 **Terraform Enterprise**는 동일한 애플리케이션이지만 클라우드 환경이나 데이터 센터에서 실행됩니다. 일부 사용자는 Terraform Enterprise 애플리케이션에 대한 더 많은 제어가 필요하거나 회사 방화벽 뒤의 제한된 네트워크에서 실행하려고합니다.
 
-이 두 제품의 기능 목록은 거의 동일합니다. 다음 실습에서는 Terraform Cloud 계정을 사용할 것입니다.
+이 두 제품의 기능 목록은 거의 동일합니다. 다음 실습에서는 HCP Terraform 계정을 사용할 것입니다.
 
 ---
-name: terraform-cloud-remote-state
+name: hcp-terraform-remote-state
 # Terraform Remote State
 기본적으로 Terraform은 랩톱 또는 워크스테이션의 작업 공간 디렉토리에 상태 파일을 저장합니다. 이것은 개발 및 실험에는 괜찮지만 프로덕션 환경에서는 상태 파일을 안전하게 보호하고 저장해야합니다.
 
-Terraform에는 상태 파일을 원격으로 저장하고 보호하는 옵션이 있습니다. Terraform Cloud 계정은 이제 오픈 소스 사용자에게도 무제한 상태 파일 스토리지를 제공합니다.
+Terraform에는 상태 파일을 원격으로 저장하고 보호하는 옵션이 있습니다. HCP Terraform 계정은 이제 오픈 소스 사용자에게도 무제한 상태 파일 스토리지를 제공합니다.
 
-모든 상태 파일은 암호화되어 (HashiCorp Vault 사용) Terraform Cloud 계정에 안전하게 저장됩니다. 상태 파일을 다시 잃어 버리거나 삭제하는 것에 대해 걱정할 필요가 없습니다.
+모든 상태 파일은 암호화되어 (HashiCorp Vault 사용) HCP Terraform 계정에 안전하게 저장됩니다. 상태 파일을 다시 잃어 버리거나 삭제하는 것에 대해 걱정할 필요가 없습니다.
 
 ---
 name: execution-mode
-# Terraform Cloud Execution Modes
+# HCP Terraform Execution Modes
 
 **로컬 실행** - Terraform 명령은 랩톱 또는 워크 스테이션에서 실행되며 모든 변수는 로컬로 구성됩니다. 테라 폼 상태 만 원격으로 저장됩니다.
 
-**원격 실행** - Terraform 명령은 Terraform Cloud 컨테이너 환경에서 실행됩니다. 모든 변수는 원격 작업 공간에 저장됩니다. 코드는 Version Control System 저장소에 저장할 수 있습니다. 프리 티어 사용자의 경우 동시 실행이 1 회로 제한됩니다.
+**원격 실행** - Terraform 명령은 HCP Terraform 컨테이너 환경에서 실행됩니다. 모든 변수는 원격 작업 공간에 저장됩니다. 코드는 Version Control System 저장소에 저장할 수 있습니다. 프리 티어 사용자의 경우 동시 실행이 1 회로 제한됩니다.
 
 ---
 name: lab-exercise-2c
-# 👩‍💻 Lab Exercise: Terraform Cloud
-두 번째 실습의 마지막 부분에서는 무료 Terraform Cloud 계정을 만들고 상태 파일의 원격 저장소를 활성화합니다.
+# 👩‍💻 Lab Exercise: HCP Terraform
+두 번째 실습의 마지막 부분에서는 무료 HCP Terraform 계정을 만들고 상태 파일의 원격 저장소를 활성화합니다.
 
 교육 랩으로 돌아가 중단 한 부분부터 계속합니다.
 

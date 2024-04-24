@@ -3,9 +3,9 @@
 - Why Change
 - What is Infrastructure as Code, What is Terraform
 - Why Terraform vs other tools
-- Demo - OSS vs TFC - highlight differences
+- Demo - Community Edition vs TFC - highlight differences
 2. How Terraform Works
-- OSS + Plugin Model
+- Community Edition + Plugin Model
 - Providers / Documentation
 - State
 - Plan -> Apply, Destroy -> Apply

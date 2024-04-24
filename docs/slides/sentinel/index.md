@@ -139,7 +139,7 @@ name: customer-use-cases2
   - Limit the monthly spend of each Terraform workspace
 - HashiCorp customers are using Sentinel to avoid enforce standards:
   - Enforce mandatory tags on resources provisioned by Terraform
-  - Mandate that all modules come from a Private Module Registry
+  - Mandate that all modules come from a Terraform Private Registry
 
 **# List of allowed resources** <br>
 **allowed_list = ["aws_instance", "azurerm_virtualmachine", "google_compute_instance"]**
@@ -1956,7 +1956,7 @@ count: false
 name: modules-from-pmr
 # Exercise 5: Require Modules from a PMR
 
-- Your task in these challenges is to complete and test two versions of a Sentinel policy that requires that all modules loaded by the root module come from the Private Module Registry (PMR) of a HCP Terraform organization.
+- Your task in these challenges is to complete and test two versions of a Sentinel policy that requires that all modules loaded by the root module come from the Terraform Private Registry of a HCP Terraform organization.
 - This policy uses the tfconfig/v2 import.
 - In the first version, you will write a custom validation function.
 - In the second version, you will move this function into a Sentinel module.

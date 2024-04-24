@@ -3,7 +3,7 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# Terraform Cloud Technical Enablement
+# HCP Terraform Technical Enablement
 ## Terraform Foundations - 3
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
@@ -394,12 +394,12 @@ name: lab-three-instructions
 In the third lab, we are going to get hands on with Terraform state. We covered how Terraform keeps track of resources that it has created and why we need to protect and secure our state files in the second module. In this module we will:
 
 - Review the state files created locally in our instruqt workspaces.
-- Sign up and log in for Terraform Cloud
-- Run ```terraform login``` to authenticate our Terraform CLI to Terraform Cloud
-- Update the provided remote_backend.tf file with your Terraform Cloud Organization name
-- Run ```terraform init``` to migrate our local state file to Terraform Cloud
-- Review the state file in the Terraform Cloud web interface
-- Modify the Terraform Cloud workspace setting to select **Local** execution
+- Sign up and log in for HCP Terraform
+- Run ```terraform login``` to authenticate our Terraform CLI to HCP Terraform
+- Update the provided remote_backend.tf file with your HCP Terraform Organization name
+- Run ```terraform init``` to migrate our local state file to HCP Terraform
+- Review the state file in the HCP Terraform web interface
+- Modify the HCP Terraform workspace setting to select **Local** execution
 
 ---
 name: lab-three-instructions-continued
@@ -408,7 +408,7 @@ name: lab-three-instructions-continued
 
 - Modify the prefix variable to change tags
 - Run ```terraform plan``` and ```terraform apply```
-- Review the new state file version in Terraform cloud
-- Change execution mode to **remote** to have the plan and apply run in Terraform Cloud
-- Transfer AWS credentials and other required varaibles to Terraform Cloud
-- Run ```terraform plan``` and ```terraform apply``` to perform the run from Terraform Cloud
+- Review the new state file version in HCP Terraform
+- Change execution mode to **remote** to have the plan and apply run in HCP Terraform
+- Transfer AWS credentials and other required varaibles to HCP Terraform
+- Run ```terraform plan``` and ```terraform apply``` to perform the run from HCP Terraform

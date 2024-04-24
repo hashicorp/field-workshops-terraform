@@ -2,14 +2,14 @@ name: Intro-to-hcp-terraform
 class: center, middle, title-slide, no-footer
 count: true
 ![:scale 40%](images/HCP_Diagram_OnBlack_Terraform.svg)
-# Terraform Cloud on AWS
+# HCP Terraform on AWS
 
 ???
-# Terraform Cloud on AWS workshop
+# HCP Terraform on AWS workshop
 ## Getting started
-This is a half-day workshop that introduces Terraform Cloud using an AWS-based application for the Instruqt labs. If you're brand new to Terraform you should try the Introduction to Terraform Community Edition on AWS Instruqt track before this one.
+This is a half-day workshop that introduces HCP Terraform using an AWS-based application for the Instruqt labs. If you're brand new to Terraform you should try the Introduction to Terraform Community Edition on AWS Instruqt track before this one.
 
-The instructions on how to conduct a workshop are in the standard [instructor's guide](https://github.com/hashicorp/field-workshops-terraform/blob/main/instructor-guides/all_terraform_cloud_INSTRUCTOR_GUIDE.md).
+The instructions on how to conduct a workshop are in the standard [instructor's guide](https://github.com/hashicorp/field-workshops-terraform/blob/main/instructor-guides/all_hcp_terraform_INSTRUCTOR_GUIDE.md).
 
 ## Navigation
 
@@ -65,9 +65,9 @@ Standardize infrastructure across your provisioning processes using your private
 2. If your audience is less than 20 people you have the option to quickly go through the room and ask everyone to introduce themselves if they wish to participate.
 
 ## Goals for the workshop
-1. Launch a deployment to AWS using Terraform Cloud using VCS workflows
+1. Launch a deployment to AWS using HCP Terraform using VCS workflows
 2. Explore management and configuration options with team permissions and deployment policies
-3. Test the Private Module Registry and some API functions
+3. Test the Terraform Private Registry and some API functions
 
 ---
 name: Table-of-Contents
@@ -77,7 +77,7 @@ class: col-2, top, minimal-list, minimal-toc
 **1- Infrastructure Automation**
 * Terraform Adoption Journey
 * Terraform Editions
-* Terraform Cloud
+* HCP Terraform
 
 <hr>
 
@@ -96,7 +96,7 @@ class: col-2, top, minimal-list, minimal-toc
 <hr>
 
 **4- Terraform Modules & API**
-* Private Module Registry
+* Terraform Private Registry
 * API Driven Workflows
 * CI/CD Integration
 
@@ -129,7 +129,7 @@ class: table-exercises
       <p><strong>Part 1</strong></p>
       <ul>
         <li>Getting Started - Explore the Lab</li>
-        <li>Terraform Cloud Setup</li>
+        <li>HCP Terraform Setup</li>
         <li>Safekeeping your Terraform State</li>
         <li>Quiz 1: Terraform Remote State</li>
       </ul>
@@ -138,7 +138,7 @@ class: table-exercises
       <p><strong>Part 2</strong></p>
       <ul>
         <li>Workspace variables</li>
-        <li>Working with Teams in Terraform Cloud</li>
+        <li>Working with Teams in HCP Terraform</li>
         <li>Quiz 2: Secure Variables</li>
       </ul>
     </td>
@@ -156,9 +156,9 @@ class: table-exercises
     <td>
       <p><strong>Part 4</strong></p>
       <ul>
-        <li>Private Module Registry</li>
+        <li>Terraform Private Registry</li>
         <li>API Driven Workflows</li>
-        <li>Quiz 4: Private Module Registry</li>
+        <li>Quiz 4: Terraform Private Registry</li>
       </ul>
     </td>
   </tr>
@@ -184,12 +184,12 @@ class: table-exercises
 name: participant-requirements
 class: col-3, header-adjust, minimal-list
 # Participant Requirements
-### Terraform Cloud
-- Terraform Cloud account (free)
+### HCP Terraform
+- HCP Terraform account (free)
 
 - Terraform "___Plus Tier___" Trial
 
-- Terraform Cloud personal access token 
+- HCP Terraform personal access token 
 
 ### GitHub
 - Personal account
@@ -232,11 +232,11 @@ This chapter is organized in three sections:
 
 2. Terraform Editions
 
-   - Understand Terraform Community Edition and the differences between Community Edition and Cloud and Enterprise
+   - Understand Terraform Community Edition and the differences between Community Edition and HCP and Enterprise
 
-3. Benefits of using Terraform Cloud
+3. Benefits of using HCP Terraform
 
-   - Hightlight the key benefits of using Terraform Cloud to 
+   - Hightlight the key benefits of using HCP Terraform to 
 
      - Build infrastructure, 
      - Standardize best practices, and 
@@ -401,14 +401,14 @@ class: col-3, header-adjust, header-adjust-minimal-list
 * Manually pull and commit the most up-to-date version to perform Terraform operations
 * Use and publish public modules as infrastructure templates
 
-### Terraform Cloud
-* Integrate Terraform Cloud into your existing workflows
+### HCP Terraform
+* Integrate HCP Terraform into your existing workflows
 * Ensure that only approved teams can access, edit, and provision infrastructure
 * Publish configuration modules in a private registry to define approved infrastructure patterns
 * Enforce best practices and security rules with policy as code framework
 
 ### Terraform Enterprise
-* Set up a private instance of Terraform Cloud with dedicated support from HashiCorp
+* Set up a private instance of HCP Terraform with dedicated support from HashiCorp
 * Accommodate advanced security and compliance requirements
 
 ???
@@ -420,19 +420,19 @@ class: col-3, header-adjust, header-adjust-minimal-list
 
 - Terraform contains everything you need to configure, plan and deploy 
 
-## Terraform Cloud
-- Terraform Cloud is a SOC2-compliant cloud service to manage the lifecycle of infrastructure deployments with Terraform
+## HCP Terraform
+- HCP Terraform is a SOC2-compliant cloud service to manage the lifecycle of infrastructure deployments with Terraform
 
-- Terraform Cloud provides features to manage user access, assign team permissions, automate integrations, host private resources, enforce policies, conduct audit, etc.
+- HCP Terraform provides features to manage user access, assign team permissions, automate integrations, host private resources, enforce policies, conduct audit, etc.
 
 ## Terraform Enteprise
-- Terraform Enterprise is private instance of Terraform Cloud deployed in a private environment with dedicated support from HashiCorp.
+- Terraform Enterprise is private instance of HCP Terraform deployed in a private environment with dedicated support from HashiCorp.
 
 - Terraform Enterprise appeals to security conscious organizations that must accommodate advanced security and compliance requirements.
 ---
-name: terraform-cloud
+name: hcp-terraform
 class: col-2, header-adjust, minimal-list
-# Terraform Cloud
+# HCP Terraform
 ### Single control plane for provisioning
 
 * Fully-managed, infrastructure-as-code cloud service
@@ -443,21 +443,21 @@ class: col-2, header-adjust, minimal-list
   
 * Enterprise features to provide advanced security, compliance and governance 
 
-![Terraform Cloud](images/terraform_cloud.svg)
+![HCP Terraform](images/terraform_cloud.svg)
 
 ???
-# Terraform Cloud
+# HCP Terraform
 
-## Why Terraform Cloud?
+## Why HCP Terraform?
 
-- Terraform Cloud enables infrastructure automation for provisioning, compliance, and management of any cloud, datacenter, and service.
+- HCP Terraform enables infrastructure automation for provisioning, compliance, and management of any cloud, datacenter, and service.
 
-- Terraform Cloud provides infrastructure automation as a service, is free to get started, and has an in-place upgrade to paid option.
+- HCP Terraform provides infrastructure automation as a service, is free to get started, and has an in-place upgrade to paid option.
 
-- Terraform Cloud is not the same as Terraform Community Edition. Terraform Cloud is a cloud service, and Terraform Community Edition is the technology used to provision infrastructure.
+- HCP Terraform is not the same as Terraform Community Edition. HCP Terraform is a cloud service, and Terraform Community Edition is the technology used to provision infrastructure.
 
 ---
-name: terraform-cloud-build
+name: hcp-terraform-build
 class: col-2, header-adjust, minimal-paragraph
 # Build infrastructure remotely with your team
 
@@ -477,11 +477,11 @@ Review and comment on plans before executing any change to infrastructure
 # Build infrastructure remotely with your team
 - This slide is about **`team collaboration`** across an organization.
 
-- Terraform Cloud provides a number of features for teams to collaborate with a common purpose.
+- HCP Terraform provides a number of features for teams to collaborate with a common purpose.
 
 **INSTRUCTOR NOTE**: Please do not read the bullets. Instead, choose a story that fits your narrative. For example:
 
-1. **Remote state storage**: Remove a vulnerable part of the process by storing the deployment state in Terraform Cloud, where it is stored in an encrypted format at rest.
+1. **Remote state storage**: Remove a vulnerable part of the process by storing the deployment state in HCP Terraform, where it is stored in an encrypted format at rest.
 
 2. **Flexible workflows**: Allow practitioners to use the apprach that works best for their situation. 
 
@@ -490,7 +490,7 @@ Review and comment on plans before executing any change to infrastructure
 4. **Collaborate on infrastructure changes**: Each team is responsible for their domain of expertise.
 
 ---
-name: terraform-cloud-standard
+name: hcp-terraform-standard
 class: col-3, header-adjust, minimal-list
 # Standardize best practices 
 ###Private registry
@@ -506,7 +506,7 @@ class: col-3, header-adjust, minimal-list
 # Standardize best practices
 - This slide is about **`business calibration`** when adopting a service for deployment automation.
 
-- Terraform Cloud introduces workflow features for teams to support typical enterprise requirements.
+- HCP Terraform introduces workflow features for teams to support typical enterprise requirements.
 
 **INSTRUCTOR NOTE**: Please do not read the bullets. Instead, choose a point that fits your narrative. For example:
 
@@ -517,14 +517,14 @@ class: col-3, header-adjust, minimal-list
 3. **Policy as code**: Remove risk with standard deployments, avoiding common misconfigurations, maintaining security standards and confirming compliance requirements.
    
 ---
-name: terraform-cloud-cicd
+name: hcp-terraform-cicd
 class: col-2, header-adjust, minimal-paragraph
 # Integrating into your CI/CD pipelines 
 ###CI/CD integration
 Integrate Terraform runs into your existing toolchain for improved automation
 
 ###API-driven Operations
-Build Terraform Cloud into your existing automation workflows
+Build HCP Terraform into your existing automation workflows
 
 ###Concurrent runs
 Increase your team’s velocity by adding concurrent runs to your plan
@@ -535,17 +535,17 @@ Execute Terraform runs from behind your firewall or connect to other private res
 # Standardize best practices
 - This slide is about **`process optimization`** in service delivery.
 
-- Terraform Cloud integrates in various forms to enhance existing service delivery models.
+- HCP Terraform integrates in various forms to enhance existing service delivery models.
 
 **INSTRUCTOR NOTE**: Please do not read the bullets. Instead, choose a point that fits your narrative. For example:
 
-1. **CI/CD integration**: Inject automation into your service delivery practice, where Terraform Cloud works alongside your service management requests and fullfilment channels.
+1. **CI/CD integration**: Inject automation into your service delivery practice, where HCP Terraform works alongside your service management requests and fullfilment channels.
 
 2. **Concurrent runs**: Accelerate delivery and control the rate of deployments; support seasonal, high-intensity service delivery workloads. 
 
-3. **API-driven Operations**: Support an API-first methodology and align with your existing service management practices. Terraform Cloud offers multiple API-driven methods to complement the chain of operations in existing automation workflows.
+3. **API-driven Operations**: Support an API-first methodology and align with your existing service management practices. HCP Terraform offers multiple API-driven methods to complement the chain of operations in existing automation workflows.
 
-4. **Private datacenter connectivity**: Extend Terraform Cloud features and workflow steps to private networks that include Cloud and traditional datacenter environments.
+4. **Private datacenter connectivity**: Extend HCP Terraform features and workflow steps to private networks that include Cloud and traditional datacenter environments.
 
 ---
 name: lab-guidance-01
@@ -559,14 +559,14 @@ class: col-2, adjust-minimal-sub-list
   * Set up Code Editor
   * Try out Terraform commands    
 
-1. Terraform Cloud Setup
-  * Sign-up or log in to Terraform Cloud
+1. HCP Terraform Setup
+  * Sign-up or log in to HCP Terraform
   * Create a Plus Tier trial organization
-  * Generate a personal Terraform Cloud token
+  * Generate a personal HCP Terraform token
 
 1. Safekeeping Your Terraform State
   * Deploy a working app environment in AWS
-  * Use Terraform Cloud to manage Terraform state
+  * Use HCP Terraform to manage Terraform state
 
 - Quiz 1 - Terraform Remote State
 ???
@@ -607,14 +607,14 @@ class: review, no-footer
 
 1. The adoption journey of infrastructure-as-code with Terraform includes phases of maturity for individuals, groups, and organizations
 
-2. Terraform Cloud is a SOC2-compliant cloud service to manage the lifecycle of infrastructure deployments
+2. HCP Terraform is a SOC2-compliant cloud service to manage the lifecycle of infrastructure deployments
 
 ???
 # Chapter 1 review
 
 1. The adoption patterns we see, both among our large-scale users as well as individual contributors, involve multiple adaptive stages. The central idea remains uniform in that automation should be standardized as shared practice, and that governance guidelines are needed to support emerging requirements.
 
-2. Terraform Cloud is not the same as Terraform Community Edition. Terraform Cloud is a cloud service, and Terraform Community Edition is the technology used to provision infrastructure. We use Terraform Cloud to manage the lifecyle of infrastructure deployemnts using Terraform [Community]. 
+2. HCP Terraform is not the same as Terraform Community Edition. HCP Terraform is a cloud service, and Terraform Community Edition is the technology used to provision infrastructure. We use HCP Terraform to manage the lifecyle of infrastructure deployemnts using Terraform [Community]. 
 ---
 name: Access-Control
 class: title, no-footer
@@ -628,9 +628,9 @@ class: title, no-footer
 This chapter is organized in three sections:
 1. The Core Terraform Workflow
 
-   - Review the benefits of the Core Terraform Workflow with Terraform Cloud
+   - Review the benefits of the Core Terraform Workflow with HCP Terraform
 
-2. Shared Resources in Terraform Cloud 
+2. Shared Resources in HCP Terraform 
 
    - Projects and Workspaces
    - Deployment State
@@ -638,7 +638,7 @@ This chapter is organized in three sections:
 
 3. Team Collaboration
 
-   - Hightlight how teams access shared resources in Terraform Cloud
+   - Hightlight how teams access shared resources in HCP Terraform
    - How to apply the resources in a typical project lifecycle
 
 **INSTRUCTOR NOTE**: Remind the audience the topics above are showcased in the lab portion.
@@ -697,28 +697,28 @@ class: col-3, header-adjust, header-adjust-minimal-list
 
 ![:scale 40%](images/adoption_journey_individual.svg)
 ---
-name: core-terraform-workflow-with-tfc
+name: core-terraform-workflow-with-hcp-terraform
 class: col-3, header-adjust, header-adjust-minimal-list
-# The Core Terraform Workflow and Terraform Cloud
+# The Core Terraform Workflow and HCP Terraform
 
 ### Write
 * Author infrastructure as code and maintain in VCS
 * Team members work on authoring config until it is ready to propose changes via a pull request
-* Terraform Cloud secures state, input variables, and authorized access
+* HCP Terraform secures state, input variables, and authorized access
   
 <br>
 
 ### Plan
 * Automated, speculative plans review changes before applying so team members can quickly analyze the full plan details
-* Terraform Cloud estimates monthly costs of deployment
-* Terraform Cloud evaluates policies against the plan to determine compliance with policy-as-code logic
+* HCP Terraform estimates monthly costs of deployment
+* HCP Terraform evaluates policies against the plan to determine compliance with policy-as-code logic
 
 ### Apply
 * Team members trigger __apply__ directives via CLI, API or VCS change control
-* Authorized Terraform Cloud users can approve or reject deployments 
-* Terraform Cloud can integrate third-party tools and services to manage cost, security, and compliance; Or, to enhance your workflow with custom logic
+* Authorized HCP Terraform users can approve or reject deployments 
+* HCP Terraform can integrate third-party tools and services to manage cost, security, and compliance; Or, to enhance your workflow with custom logic
 ???
-# The Core Terraform Workflow and Terraform Cloud
+# The Core Terraform Workflow and HCP Terraform
 
 - There are still only three stages on the Core Terraform Workflow, but there are significant improvements in the approach to manage deployments. For instance:
 
@@ -732,13 +732,13 @@ class: col-3, header-adjust, header-adjust-minimal-list
 
 ![:scale 40%](images/adoption_journey_multiple_groups.svg)
 ---
-name: tfc-workspaces
+name: hcp-terraform-workspaces
 class: col-2, minimal-list
 # Projects and Workspaces
 
-- Terraform Cloud organizes infrastructure collections with projects and workspaces that align to teams
+- HCP Terraform organizes infrastructure collections with projects and workspaces that align to teams
 
-- A project is a logical grouping of Terraform Cloud workspaces 
+- A project is a logical grouping of HCP Terraform workspaces 
 
 - Workspaces contain everything Terraform needs to manage a given collection of infrastructure, and separate workspaces function like completely separate working entities
 
@@ -755,19 +755,19 @@ class: col-2, minimal-list
   - Grouping deployment types by department
   - Grouping deployment types by team
 
-- Workspaces fit into Projects to execute on the actual deployments. Each workspace follows logic for execution and access rules, policies, resources, integrations, etc. are inherent from the project or Terraform Cloud organization.
+- Workspaces fit into Projects to execute on the actual deployments. Each workspace follows logic for execution and access rules, policies, resources, integrations, etc. are inherent from the project or HCP Terraform organization.
 ---
-name: tfc-state
+name: hcp-terraform-state
 class: col-2, minimal-list
 # Deployment State
 
-- Terraform Cloud retains historical state versions, available for analysis of infrastructure changes over time
+- HCP Terraform retains historical state versions, available for analysis of infrastructure changes over time
 
 - Authorized users can download and manipulate state to manually import, taint, move, or rename existing resources to match a drift in configuration
 
 - Authorized users can roll back to a previous state version with the UI
 
-- Terraform Cloud uses state to measure drift with automated Health Assessments
+- HCP Terraform uses state to measure drift with automated Health Assessments
 
 ![Browser](images/workspace-state.svg)
 ???
@@ -780,13 +780,13 @@ class: col-2, minimal-list
 
 - All state information is fully encrypted at rest, where each object is encrypted with a unique encryption key.
 ---
-name: tfc-variables
+name: hcp-terraform-variables
 class: col-2, minimal-list
 # Deployment Variables
 
-- Terraform Cloud supports a global scope with **variable sets**. These can be exposed globaly or to select workspaces
+- HCP Terraform supports a global scope with **variable sets**. These can be exposed globaly or to select workspaces
 
-- Terraform Cloud workspaces use local variables - may override variable sets
+- HCP Terraform workspaces use local variables - may override variable sets
 
 - Variable subsets include
   <table>
@@ -798,7 +798,7 @@ class: col-2, minimal-list
   </tr>
 </table>
 
-![Terraform Cloud Variables](images/deployment_variables.svg)
+![HCP Terraform Variables](images/deployment_variables.svg)
 
 ???
 # Deployment Variables
@@ -812,29 +812,29 @@ class: col-2, minimal-list
   
   - Things that are configured during the deployment. Consider, the internal ID or a Cloud VPC, the ARN of a security group, the URL or a storage bucket. These can be more applicable to workspace variables.
 ---
-name: tfc-user-permissions
+name: hcp-terraform-user-permissions
 class: col-2, minimal-list
 # Permissions Model
 
-- Users must belong to a team with appropriate grant permissions to perform actions in Terraform Cloud
+- Users must belong to a team with appropriate grant permissions to perform actions in HCP Terraform
 
 - The permissions model splits into organization-level and workspace-level permissions
 
 - Organization owners can grant teams permissions to manage policies, projects and workspaces, VCS settings, private registry providers and modules, and policy overrides across an organization
 
-![Terraform Cloud Permissions Model](images/permissions_model.svg)
+![HCP Terraform Permissions Model](images/permissions_model.svg)
 ???
 # Permissions Model
-- The permissions model splits into into organization-level and workspace-level permissions. This is the best combination to align administrators, producers and consumers to manage, create and consume resources via Terraform Cloud.
+- The permissions model splits into into organization-level and workspace-level permissions. This is the best combination to align administrators, producers and consumers to manage, create and consume resources via HCP Terraform.
 
-- The organization-level permissions use an `Implicit-Deny` - which means Terraform Cloud administration is subject to assignment. In this model, teams fucntion based on their permissions and membership.
+- The organization-level permissions use an `Implicit-Deny` - which means HCP Terraform administration is subject to assignment. In this model, teams fucntion based on their permissions and membership.
 
-- The workspace-level permissions have `Implied Permissions` - where Terraform Cloud provides most common functions. Under this model permissions imply other permissions; for example, permission to queue plans also grants permission to read runs.
+- The workspace-level permissions have `Implied Permissions` - where HCP Terraform provides most common functions. Under this model permissions imply other permissions; for example, permission to queue plans also grants permission to read runs.
 
-- Q: What complements the permissions model? A: The alignment of Terraform Cloud teams with external teams via single-sign-on (SSO).
+- Q: What complements the permissions model? A: The alignment of HCP Terraform teams with external teams via single-sign-on (SSO).
 
 ---
-name: tfc-team-collaboration
+name: hcp-terraform-team-collaboration
 class: col-2, header-adjust-minimal-list
 # Team collaboration
 There are three main elements to the Terraform collaboration experience:
@@ -842,11 +842,11 @@ There are three main elements to the Terraform collaboration experience:
 - **Centralized plans and applies**: Safely run Terraform plans and applies in one location where collaborators can review and make decisions together
 - **State management**: Store, secure, lock, and version Terraform state files
 
-![Terraform Cloud Permissions Model](images/collaboration_experience.svg)
+![HCP Terraform Permissions Model](images/collaboration_experience.svg)
 
 ???
 # Team collaboration
-- The structure of the Möbius strip visual reflects a familiar way to describe a lifecycle process. There are many examples of that idea, and our intent is to explain where Terraform Cloud provides value. 
+- The structure of the Möbius strip visual reflects a familiar way to describe a lifecycle process. There are many examples of that idea, and our intent is to explain where HCP Terraform provides value. 
 
 - These concepts likely overlap with existing frameworks and that is why integration resonates with sophisticated environments.
 
@@ -866,10 +866,10 @@ class: col-2, adjust-minimal-sub-list
   * Explore Variable Sets
   * Compare workspace variables    
 
-1. Working with Teams in Terraform Cloud
+1. Working with Teams in HCP Terraform
   * Create Organization Teams
   * Assign Workspace Permissions to Teams
-  * Invite Terraform Cloud users to join Teams
+  * Invite HCP Terraform users to join Teams
 
 - Quiz 2 - Secure Variables
 
@@ -893,16 +893,16 @@ name: chapter-2-review
 class:  review, no-footer
 # Chapter 2 review
 
-1. Terraform Cloud permissions model splits into organization and workspace levels
+1. HCP Terraform permissions model splits into organization and workspace levels
 
-2. Resource administration in Terraform Cloud defaults to an implicit deny-all model, and teams require global, project or workspace assignments
+2. Resource administration in HCP Terraform defaults to an implicit deny-all model, and teams require global, project or workspace assignments
 
 ???
 # Chapter 2 review
 
-1. When teams are intent in formalizing their approach to automated infrastructure deployment with Terraform, there need to be fundamental principals to support a responsible use of Terraform Cloud. The permissions model is a core principle to support governance and responsible use of IaC automation. Without a permissions model, teams operated based on different opinions without self-supervision.
+1. When teams are intent in formalizing their approach to automated infrastructure deployment with Terraform, there need to be fundamental principals to support a responsible use of HCP Terraform. The permissions model is a core principle to support governance and responsible use of IaC automation. Without a permissions model, teams operated based on different opinions without self-supervision.
 
-2. When teams have different responsibilities, the platform instrumentation should allow for effective changes at a group level to support roles, not individual identities. Having an implicit `deny-all` for the Terraform Cloud organization, and `implied permissions` for teams and workspaces accelerates the effective purpose of IaC automation.
+2. When teams have different responsibilities, the platform instrumentation should allow for effective changes at a group level to support roles, not individual identities. Having an implicit `deny-all` for the HCP Terraform organization, and `implied permissions` for teams and workspaces accelerates the effective purpose of IaC automation.
 
 ---
 name: VCS-and-Governance
@@ -937,46 +937,46 @@ This chapter is organized in three sections:
 
 **INSTRUCTOR NOTE**: Remind the audience that the hands-on portions of the lab demonstrate the topics above. 
 ---
-name: tfc-vcs-workflow
+name: hcp-terraform-vcs-workflow
 class: col-2, minimal-list
 # VCS Connections
-- Access a list of repositories and link to your private module registry, policy sets and workspaces in Terraform Cloud
+- Access a list of repositories and link to your Terraform Private Registry, policy sets and workspaces in HCP Terraform
 
-- Terraform Cloud downloads the contents of a repository based on workflow triggers   
+- HCP Terraform downloads the contents of a repository based on workflow triggers   
 
-- Terraform Cloud supports Azure DevOps, BitBucket, GitHub, and GitLab
+- HCP Terraform supports Azure DevOps, BitBucket, GitHub, and GitLab
 
 ![VCS Workflow Overview](images/vcs_workflow_overview.svg)
 
 ???
 # VCS Connections
-- Terraform Cloud uses VCS connection to link directly to assets in repos
+- HCP Terraform uses VCS connection to link directly to assets in repos
 
 - VCS connections are configured once and used for three specific types of assets:
   
-  1. Terraform Modules to list in the private Terraform Cloud Registry
+  1. Terraform Modules to list in the Terraform Private Registry
    
   2. Policy collections to align with Policy Sets
    
   3. Terraform deployments in a 1:1 relationship with Workspaces
 
-- It is important to remember that Terraform Cloud Worspaces can use up to three types of workflows to trigger a run: 1- `CLI`, 2- `VCS` and 3- `API`. Using VCS satisfies one of these workflow patterns.
+- It is important to remember that HCP Terraform Worspaces can use up to three types of workflows to trigger a run: 1- `CLI`, 2- `VCS` and 3- `API`. Using VCS satisfies one of these workflow patterns.
 
 ---
-name: tfc-vcs-connection
+name: hcp-terraform-vcs-connection
 class: col-2, minimal-list
 # VCS Workflow
-- Workspaces register webhooks with your VCS provider, and Terraform Cloud gets notified of new commits to a branch
+- Workspaces register webhooks with your VCS provider, and HCP Terraform gets notified of new commits to a branch
   
-- With VCS integration, Terraform Cloud can automatically initiate a run on a dedicated Terraform Cloud worker
+- With VCS integration, HCP Terraform can automatically initiate a run on a dedicated HCP Terraform worker
 
-- Terraform Cloud makes code review easier by automatically predicting how pull requests affect infrastructure with speculative plans
+- HCP Terraform makes code review easier by automatically predicting how pull requests affect infrastructure with speculative plans
 
 ![VCS Connection Overview](images/vcs_connection_overview.svg)
 
 ???
 # VCS Workflow
-- A VCS connection is established at the administrative level for the VCS provider and Terraform Cloud.
+- A VCS connection is established at the administrative level for the VCS provider and HCP Terraform.
 
 - From the illustration:
   
@@ -984,24 +984,24 @@ class: col-2, minimal-list
   
   2. Notifications are triggered by pull requests and merges.
    
-  3. The Webhook notifies the associated Terraform Cloud workspace.
+  3. The Webhook notifies the associated HCP Terraform workspace.
 
-  4. Terraform Cloud securely retrieves the IaC collection to a secure location in Terraform Cloud. The location is not exposed outside of Terraform Cloud.
+  4. HCP Terraform securely retrieves the IaC collection to a secure location in HCP Terraform. The location is not exposed outside of HCP Terraform.
    
-  5. With a pull request, Terraform Cloud runs a speculative plan. 
+  5. With a pull request, HCP Terraform runs a speculative plan. 
    
   6. The results are processed back to the VCS pull request for further processing.
 
   7. With a successful plan, an other validing tests, the pull request is merged.
 
-  8. With an authorized VCS merge, Terraform Cloud initiates a new run and completes the entire set of steps to deploy the environment.
+  8. With an authorized VCS merge, HCP Terraform initiates a new run and completes the entire set of steps to deploy the environment.
 
 ---
-name: tfc-policy-as-code
+name: hcp-terraform-policy-as-code
 class: col-2, minimal-list, constrain-image
 # Policy As Code
 
-- Terraform Cloud enforces rules with policies written with HashiCorp Sentinel or Open Policy Agent (OPA)
+- HCP Terraform enforces rules with policies written with HashiCorp Sentinel or Open Policy Agent (OPA)
 
 - Policies are expressed as code and grouped into policy sets 
 
@@ -1040,7 +1040,7 @@ The categories above are not exhaustive and there are many other optional catego
 
 >> A development group should not deploy a fleet of VMs, any with 8-32 cores and/or 16-64GB memory, on a Friday afternoon past 3PM.
 ---
-name: tfc-policy-as-code-validation
+name: hcp-terraform-policy-as-code-validation
 class: col-2, minimal-list
 # Automated Policy Validation
 
@@ -1079,7 +1079,7 @@ class: col-2, minimal-list
    
   4. When a policy check fails, the assigned enforcement level determines whether a user with authority can override.
 ---
-name: tfc-vcs-automation
+name: hcp-terraform-vcs-automation
 class: col-3, header-adjust, header-adjust-minimal-paragraph
 # Automated Testing
 
@@ -1109,7 +1109,7 @@ class: col-3, header-adjust, header-adjust-minimal-paragraph
 
 - **Unit testing** looks at expected values in the Terraform plan.
 
-- **Contract testing** compares infrastructure state. Highlight that Terraform Cloud allows state sharing between workspaces to explore key informational data points.
+- **Contract testing** compares infrastructure state. Highlight that HCP Terraform allows state sharing between workspaces to explore key informational data points.
 
 - **Integration testing** compares ___real___ resources and their interaction. These often include functional, policy and security domains. You can introduce `Run Tasks` as the vehicle to perform this type of testing. 
   
@@ -1155,7 +1155,7 @@ class: col-2, adjust-minimal-sub-list
 **INSTRUCTOR NOTES**: 
 
 - This is the longest lab portion of the workshop. 
-- It is possibly the most challenging part for some participants as they have to use GitHub in combination with Terraform Cloud. 
+- It is possibly the most challenging part for some participants as they have to use GitHub in combination with HCP Terraform. 
 - It is important to remind your audience that the lab is available for 5 hours. 
 - If you have extended the Instruqt Invite beyond the workshop time, you can emphasize.
 
@@ -1164,15 +1164,15 @@ name: chapter-3-review
 class:  review, no-footer
 # Chapter 3 review
 
-1. Terraform Cloud supports CLI, VCS and API workflows, adapting to different code-management practices  
+1. HCP Terraform supports CLI, VCS and API workflows, adapting to different code-management practices  
 
-2. Terraform Cloud enables testing and validation with policy-as-code, and sustains maintenance with deployment health-checks and alerting
+2. HCP Terraform enables testing and validation with policy-as-code, and sustains maintenance with deployment health-checks and alerting
 ???
 # Chapter 3 review
 
-1. Terraform execution is driven by different priorities and the workflows in Terraform Cloud are adaptive. VCS-driven workflows are important for groups that are focused specifically in Infrastructure-as-Code delivery. VCS-driven workflows shorten the knowledge gap between newhires and veterans because they use a common set of defined practices; and VCS-driven workflows flattens the adoption curve for consumers because not everyone needs to learn Terraform.
+1. Terraform execution is driven by different priorities and the workflows in HCP Terraform are adaptive. VCS-driven workflows are important for groups that are focused specifically in Infrastructure-as-Code delivery. VCS-driven workflows shorten the knowledge gap between newhires and veterans because they use a common set of defined practices; and VCS-driven workflows flattens the adoption curve for consumers because not everyone needs to learn Terraform.
 
-2. Policy validation is increasingly necessary for all aspect of \[Work\]-as-Code practices. In our case, we truly believe that there should not be ___#YOLO-driven development!___ when dealing with infrastructure deployments. Terraform Cloud provides deployment health-checks and alerting mechanisms to provide continual coverage of emerging changes in infrastructure deployments.
+2. Policy validation is increasingly necessary for all aspect of \[Work\]-as-Code practices. In our case, we truly believe that there should not be ___#YOLO-driven development!___ when dealing with infrastructure deployments. HCP Terraform provides deployment health-checks and alerting mechanisms to provide continual coverage of emerging changes in infrastructure deployments.
 ---
 name: Modules-and-API
 class: title, no-footer
@@ -1188,13 +1188,13 @@ This chapter is organized in three sections:
 
    - Why is the Public Regitry important?
    - What is the value of Terraform modules?
-   - The advantage of the Terraform Cloud Private Module Registry (PMR)
+   - The advantage of the HCP Terraform Private Registry
 
 2. Business Process Models 
 
    - Trusted Orchestrator
    - VCS coordination
-   - Terraform Cloud
+   - HCP Terraform
 
 3. API-driven workflows
 
@@ -1222,7 +1222,7 @@ class: col-2, minimal-list
 
 - The progression of the Terraform journey into teams naturally leads to Terraform modules. These are like templates that teams often customize and use in deployments.
 
-- HashiCorp is comoditazing this centralized registry and extending it to Policy-as-Code and Run Tasks. **Policy-As-Code** are libraries of policies that can be used within Terraform Cloud. **Run Tasks** are third-party integrations to tools and services to manage cost, security, compliance and more.
+- HashiCorp is comoditazing this centralized registry and extending it to Policy-as-Code and Run Tasks. **Policy-As-Code** are libraries of policies that can be used within HCP Terraform. **Run Tasks** are third-party integrations to tools and services to manage cost, security, compliance and more.
 
 ---
 name: terraform-modules
@@ -1233,7 +1233,7 @@ class: col-2, minimal-list
 
 - Producer groups create curated modules as standard, templated offerings with configurable properties
 
-- Modules are maintained in VCS repositories and published to a private registry in Terraform Cloud
+- Modules are maintained in VCS repositories and published to a private registry in HCP Terraform
 
 ![Terraform Modules](images/terraform_modules.svg)
 ???
@@ -1244,39 +1244,39 @@ class: col-2, minimal-list
 - Modules in the Terraform Registry are free to use, and Terraform can download them automatically with an appropriate source and version in a module call block.
 
 ---
-name: tfc-private-registry
+name: hcp-terraform-private-registry
 class: col-2, minimal-list
-# Private Module Registry
+# Terraform Private Registry
 
-- Terraform Cloud includes a private registry where teams can set up modules and providers from private VCS repositories
+- HCP Terraform includes a private registry where teams can set up modules and providers from private VCS repositories
 
 - Many organizations use modules, providers, or policies that cannot or do not need to be publicly available
 
-- Practitioners can copy modules from the public Terraform Registry, customize a private version, and publish to their Private Module Registry in Terraform Cloud
+- Practitioners can copy modules from the public Terraform Registry, customize a private version, and publish to their Terraform Private Registry in HCP Terraform
 
 ![PMR Workflow](images/pmr_technical_workflow.svg)
 ???
-# Private Module Registry
-- In Terraform Cloud, modules can be privatized to support the idea of a safe sandbox. 
+# Terraform Private Registry
+- In HCP Terraform, modules can be privatized to support the idea of a safe sandbox. 
 
 - The further a module is configured, the least number of choices consumers need to make to automate their deployments.
 
-- Private modules can referenced arbitrarily, but access to the resource follows the Terraform Cloud permissions model - meaning only teams with access privileges are able to access the module in the private registry, and execution of the code is only possible within a workspace in the same Terraform Cloud organization.
+- Private modules can referenced arbitrarily, but access to the resource follows the HCP Terraform permissions model - meaning only teams with access privileges are able to access the module in the private registry, and execution of the code is only possible within a workspace in the same HCP Terraform organization.
 
 **INSTRUCTOR NOTE**: 
 
-> You can bring up the idea of the Configuration Designer in Terraform Cloud - which leads to no-code provisioning. 
+> You can bring up the idea of the Configuration Designer in HCP Terraform - which leads to no-code provisioning. 
 
 > No-code provisioning lets users deploy infrastructure in modules without writing any Terraform configuration, which makes your standards even easier to comply with, and removes the dependency on infrastructure teams or ticketing systems to give developers their required resources.
 
 ---
-name: tfc-api
+name: hcp-terraform-api
 class: col-2, minimal-list
 # Terraform API
 
-- Terraform Cloud supports a rich HTTP API to perform most operations, replacing UI directives and CLI commands
+- HCP Terraform supports a rich HTTP API to perform most operations, replacing UI directives and CLI commands
 
-- The TFC Terraform Provider is a practical API implementation for automating Terraform Cloud managment with Terraform (HCL) configuration code
+- The TFC Terraform Provider is a practical API implementation for automating HCP Terraform managment with Terraform (HCL) configuration code
 
 - The Terraform CDK supports the following:
 
@@ -1294,20 +1294,20 @@ class: col-2, minimal-list
 # Terraform API
 - Mature IaC practices evolve to delegate tasks through automation. Terraform can be fully operated via API allowing organizations to easily integrate it into their existing deployment processes.
 
-- Terraform Cloud supports multiple instrumentation technologies to implemented automated provisioning. The idea is to support adequate technology frameworks that support a service management practice.
+- HCP Terraform supports multiple instrumentation technologies to implemented automated provisioning. The idea is to support adequate technology frameworks that support a service management practice.
 
-- As a whole, the Terraform community provides testing frameworks, pipeline utilities, programming libraries, scripted templates, and repeatable examples to implement Terraform. What is relevant to emphasize is that all of these are 100% compatible with Terraform Cloud, and the time and effort to accomdate those resources is minimal. 
+- As a whole, the Terraform community provides testing frameworks, pipeline utilities, programming libraries, scripted templates, and repeatable examples to implement Terraform. What is relevant to emphasize is that all of these are 100% compatible with HCP Terraform, and the time and effort to accomdate those resources is minimal. 
 
 -
 
->> The real value is the utility of the Terraform echo system and the benefits of Terraform Cloud combined. In blunt words, technology is not a barrier... teams need to commit to the adoption journey.  
+>> The real value is the utility of the Terraform echo system and the benefits of HCP Terraform combined. In blunt words, technology is not a barrier... teams need to commit to the adoption journey.  
 
 ---
-name: tfc-api-workflows
+name: hcp-terraform-api-workflows
 class: col-2, minimal-list
 # Service Management
 
-- Terraform Cloud operations can be entirely managed via API, allowing organizations to integrate automated deployments in their existing business processes easily
+- HCP Terraform operations can be entirely managed via API, allowing organizations to integrate automated deployments in their existing business processes easily
 
 - Trusted orchestrators use the Terraform API to procure resources and coordinate runtime operations 
 
@@ -1316,22 +1316,22 @@ class: col-2, minimal-list
 ![Terraform API](images/terraform_workflow.svg)
 ???
 # Service Management
-- In context of service management, the most visible value of Terraform Cloud is the ability to integrate resources, workflow and support capabilites seamlessly.
+- In context of service management, the most visible value of HCP Terraform is the ability to integrate resources, workflow and support capabilites seamlessly.
 
-- Terraform Cloud is a cloud service and every functional area is designed with the intention to hand-off to a different one.
+- HCP Terraform is a cloud service and every functional area is designed with the intention to hand-off to a different one.
 
-- In the diagram, the main highlight is the HashiCorp accent in pink, which symbolizes the functional areas where Terraform Cloud operates within the service workflow. 
+- In the diagram, the main highlight is the HashiCorp accent in pink, which symbolizes the functional areas where HCP Terraform operates within the service workflow. 
   
-- The illustration is simplified and incomplete as there are many other steps in a formal service management process. As in the illustration of the [Möbius strip](#tfc-team-collaboration), there are many examples of a process idea, and our intent is to explain where Terraform Cloud provides value on day-one.
+- The illustration is simplified and incomplete as there are many other steps in a formal service management process. As in the illustration of the [Möbius strip](#hcp-terraform-team-collaboration), there are many examples of a process idea, and our intent is to explain where HCP Terraform provides value on day-one.
 
 ---
-name: tfc-api-cicd
+name: hcp-terraform-api-cicd
 class: center_p
 # CICD Integration
 
-Terraform Cloud integrates into your existing CI/CD pipelines, IT service management interfaces, and version control system processes.
+HCP Terraform integrates into your existing CI/CD pipelines, IT service management interfaces, and version control system processes.
 
-![Terraform Cloud CIDC](images/terraform_cloud_cicd.svg)
+![HCP Terraform CIDC](images/terraform_cloud_cicd.svg)
 ???
 # CICD Integration
 - The illustration showcases the type of service layers involved in a CI/CD process. Here is a quick breakdown of each from left to right:
@@ -1342,7 +1342,7 @@ Terraform Cloud integrates into your existing CI/CD pipelines, IT service manage
 | ServiceNow      |                                | IT Service management agent that handles requests and triggers work                  |
 | Jenkins         |                                | Trusted orchestrator to provide step-by-step functions to deliver the infrastructure |
 | GitHub          |                                | VCS to manage the lifecycle of IaC, Modules and PaC                                  |
-| Terraform Cloud |                                | Cloud service to manage the lifecyle of an IaC deployment using Terraform            |
+| HCP Terraform |                                | Cloud service to manage the lifecyle of an IaC deployment using Terraform            |
 | AWS             |                                | Target environment                                                                   |
 
 > **NOTABLY MISSING** is a secrets management service to safeguard secrets and to manage the lifecyle of those secrets.
@@ -1355,7 +1355,7 @@ Terraform Cloud integrates into your existing CI/CD pipelines, IT service manage
 > | :--------------------: | --- | :------: | --- | :----------: | --- | :----: |
 > | Korn<br>C<br>Bourne | | BladeLogic<br>Opsware<br>VMware | | Ansible<br>Chef<br>Puppet<br>Terraform | | Terraform<br>ARM templates<br>CloudFormation<br>GC Deployment Manager | -->
 
-- The overall infrastructure automation space is not new and there have been multiple generations of promising implementation solutions. The true realization of IaC had not happened until Terraform settled as the de facto solution. Terraform Cloud is a next-generation service to support that realization moving forward.
+- The overall infrastructure automation space is not new and there have been multiple generations of promising implementation solutions. The true realization of IaC had not happened until Terraform settled as the de facto solution. HCP Terraform is a next-generation service to support that realization moving forward.
 
 - It important to highlight the innovative approach from HashiCorp in the IaC space since 2012. 
 
@@ -1364,10 +1364,10 @@ name: lab-guidance-04
 class: col-2, adjust-minimal-sub-list
 # Workshop - Part Four
 
-1. Private Module Registry
+1. Terraform Private Registry
   * Implement a Terraform module from the [Terraform Registry](https://registry.terraform.io)
   * Clone a Terraform Registry module to your private VCS
-  * Implement a module from your Private Module Registry
+  * Implement a module from your Terraform Private Registry
 
 1. API Driven Workflows
   * Test core HTTP API methods
@@ -1375,7 +1375,7 @@ class: col-2, adjust-minimal-sub-list
   * Explore API wrappers concepts
   * Use continuous integration with GitHub Actions  
 
-- Quiz 4 - Private Module Registry
+- Quiz 4 - Terraform Private Registry
 
 - Clean up
 
@@ -1403,7 +1403,7 @@ class: col-2, adjust-minimal-sub-list
 - The __Clean up__ challenge removes the following:
   
   - AWS deployment of the Hashicat app
-  - Terraform Cloud configurations
+  - HCP Terraform configurations
   - GitHub repo of `hashicat-app`
 
 - The __Clean up__ challenge does not remove the cloned module from the Terraform Registry.
@@ -1414,13 +1414,13 @@ class: review, no-footer
 
 1. The Private Registry establishes a service catalogue of infrastructure deployments and options for no-code  
 
-2. Terraform Cloud supports rich API options that adapt to your existing service model workflows and integrate agnostically into your delivery pipelines
+2. HCP Terraform supports rich API options that adapt to your existing service model workflows and integrate agnostically into your delivery pipelines
 ???
 # Chapter 4 review
 
-1. The Public Terraform Registry and the Private Module Registry (PMR) serve a similar function purpose. The main difference is that the PMR is designed to support privacy and security controls.
+1. The Public Terraform Registry and the Terraform Private Registry serve a similar function purpose. The main difference is that the PMR is designed to support privacy and security controls.
 
-2. When using Terraform Cloud, stake-holders should expect to maximize the use of automation to support service management processes via service delivery pipelines. The Terraform Cloud API promotes an API-first approach and it contains a vast array of instrumentation options to satisfy most use cases. 
+2. When using HCP Terraform, stake-holders should expect to maximize the use of automation to support service management processes via service delivery pipelines. The HCP Terraform API promotes an API-first approach and it contains a vast array of instrumentation options to satisfy most use cases. 
 ---
 name: additional-resources
 class: header-adjust, minimal
@@ -1430,7 +1430,7 @@ Learn at your own pace in one place with reference docs, step by step tutorials,
 ### HashiCorp Community
 Join our forum or a user group to engage and learn from the broader community. `https://www.hashicorp.com/community`
 ### HashiCorp Forum
-Terraform, Terraform Cloud, Terraform Enterprise, and CDK for Terraform use cases, questions, and best practices discussions. `https://discuss.hashicorp.com`
+Terraform, HCP Terraform, Terraform Enterprise, and CDK for Terraform use cases, questions, and best practices discussions. `https://discuss.hashicorp.com`
 
 ???
 # Additional Resources

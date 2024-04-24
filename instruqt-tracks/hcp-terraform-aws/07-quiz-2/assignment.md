@@ -1,6 +1,6 @@
 ---
 slug: quiz-2
-id: ohe8ck0o9fnh
+id: cyspiyfltakw
 type: quiz
 title: "\U0001F4DD Quiz 2 - Secure Variables"
 teaser: |
@@ -11,8 +11,8 @@ notes:
 answers:
 - In your Terraform workspace
 - In a text file on your Desktop
-- As encrypted environment variables in Terraform Cloud
-- As Terraform variables in Terraform Cloud
+- As encrypted environment variables in HCP Terraform
+- As Terraform variables in HCP Terraform
 solution:
 - 2
 difficulty: basic

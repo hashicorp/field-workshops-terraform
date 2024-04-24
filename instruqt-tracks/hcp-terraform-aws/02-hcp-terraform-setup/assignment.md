@@ -1,6 +1,6 @@
 ---
 slug: hcp-terraform-setup
-id: u69ypczopbra
+id: ipdntgczsypl
 type: challenge
 title: HCP Terraform Setup
 teaser: |

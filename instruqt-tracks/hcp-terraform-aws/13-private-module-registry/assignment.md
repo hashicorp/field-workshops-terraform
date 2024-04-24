@@ -1,6 +1,6 @@
 ---
 slug: private-module-registry
-id: b6fjkmjmcj8z
+id: chxhhmy1pwyz
 type: challenge
 title: "\U0001F4DA Terraform Private Registry"
 teaser: |

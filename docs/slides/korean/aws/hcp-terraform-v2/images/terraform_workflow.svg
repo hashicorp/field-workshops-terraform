@@ -441,7 +441,7 @@
                                 <rect stroke="#727274" stroke-width="1" stroke-linejoin="square" fill="#FFFFFF" fill-rule="evenodd" x="0.5" y="0.5" width="139.8" height="31" rx="2"></rect>
                             </g>
                             <text id="Note" font-family="Roboto-Medium, Roboto" font-size="6" font-weight="400" line-spacing="9" letter-spacing="0.09" fill="#1D1E1F">
-                                <tspan x="58" y="13">Terraform Cloud integrates into </tspan>
+                                <tspan x="58" y="13">HCP Terraform integrates into </tspan>
                                 <tspan x="58" y="22">workflow by faciliating resources, </tspan>
                                 <tspan x="58" y="31">execution steps and maintenace</tspan>
                             </text>

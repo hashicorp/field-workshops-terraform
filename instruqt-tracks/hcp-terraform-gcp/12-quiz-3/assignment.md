@@ -1,5 +1,6 @@
 ---
 slug: quiz-3
+id: uqrmlqf7zng8
 type: quiz
 title: "\U0001F4DD Quiz 3 - Version Control and Terraform"
 teaser: |

@@ -1,6 +1,6 @@
 ---
 slug: controlling-costs
-id: tvnpca0utgre
+id: eawwscfmhu42
 type: challenge
 title: $ Controlling Costs with Cost Estimation
 teaser: |

@@ -1,5 +1,6 @@
 ---
 slug: versioned-infrastructure
+id: nxdq2pprchti
 type: challenge
 title: "\U0001F4BB Version Controlled Infrastructure"
 teaser: |

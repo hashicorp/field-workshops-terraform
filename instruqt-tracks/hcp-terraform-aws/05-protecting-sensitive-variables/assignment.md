@@ -1,6 +1,6 @@
 ---
 slug: protecting-sensitive-variables
-id: 7u9bx3yzmcxr
+id: 9ukscksazffz
 type: challenge
 title: "\U0001F510 Securing Cloud Credentials"
 teaser: |
@@ -25,8 +25,8 @@ notes:
     Execution allows you to use the same Terraform commands that you're familiar with,
     but the run and all your variables are safely stored in your HCP Terraform workspace.
     This can be helpful when you're upgrading tools that were originally written for
-    Terraform Open Source.\n\nWith Remote Execution your Terraform code is still stored
-    on your local machine and sent to the server each time you run."
+    Terraform Community Edition.\n\nWith Remote Execution your Terraform code is still
+    stored on your local machine and sent to the server each time you run."
 tabs:
 - title: Shell
   type: terminal

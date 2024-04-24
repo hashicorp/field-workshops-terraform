@@ -55,7 +55,7 @@ class: title, smokescreen, shelf
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# Terraform Cloud Technical Enablement
+# HCP Terraform Technical Enablement
 ## Course Agenda
 
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_terraform.png)
@@ -73,7 +73,7 @@ class: compact
   * Why Terraform vs. other tools?
   * Demo
 - **M2** How Terraform Works
-  * OSS + Plugin Model
+  * Community Edition + Plugin Model
   * Providers
   * State & Remote backends
   * Terraform Workflow
@@ -104,7 +104,7 @@ class: compact
   * Lab
 - **M6** Version Control
   * What is Version Control?
-  * Terraform Cloud VCS Workflow
+  * HCP Terraform VCS Workflow
   * Collaborating with VCS
   * Lab
 
@@ -325,22 +325,22 @@ class: compact
 * Works on all major cloud providers, on premise infrastructure (VMware, Cisco, Palo Alto, F5, etc.), SaaS applications (DataDog, Okta, etc.), and 300+ more.
 
 ---
-name: terraform-oss
+name: terraform-community
 class: compact
-# Terraform OSS
-- Terraform is an open source infrastructure as code provisioning tool.
+# Terraform Community Edition
+- Terraform is an Community Edition infrastructure as code provisioning tool.
 <br>
 - It is a single cross platform binary written in Go. It can run on Linux, Windows, or OS X.
 <br>
-- Installing Terraform is easy. You simply download a zip file, unzip it, and run it. Terraform OSS works with files in a directory.
+- Installing Terraform is easy. You simply download a zip file, unzip it, and run it. Terraform Community Edition works with files in a directory.
 <br><br>
 [Download Terraform](https://www.terraform.io/downloads.html)
 
 ---
-name: terraform-cloud
+name: hcp-terraform
 class: compact
-# Terraform Cloud
-Terraform Cloud is an application that helps teams use Terraform together. Terraform Cloud:
+# HCP Terraform
+HCP Terraform is an application that helps teams use Terraform together. HCP Terraform:
 
 - Manages Terraform runs in a consistent and reliable environment
 - Includes easy access to shared state and secret data
@@ -356,7 +356,7 @@ name: terraform-ent
 class: compact
 # Terraform Enterprise
 
-Terraform Enterprise is a self-hosted distribution of Terraform Cloud. It offers enterprises a private instance of the Terraform Cloud application, with no resource limits.
+Terraform Enterprise is a self-hosted distribution of HCP Terraform. It offers enterprises a private instance of the HCP Terraform application, with no resource limits.
 
 .center[
 ![:scale 50%](../images/tfc-gui.png)
@@ -388,18 +388,18 @@ class: img-right
 
 Version control systems are applications that allow users to store, track, test, and collaborate on changes to their infrastructure and applications.
 
-Terraform Cloud integrates with many common Version Control Systems.
+HCP Terraform integrates with many common Version Control Systems.
 
 ???
 
 ---
-name: tfc-infra-as-code-workflow
+name: hcp-terraform-infra-as-code-workflow
 class: img-left
-# VCS Integration with Terraform Cloud
+# VCS Integration with HCP Terraform
 
 ![:scale 70%](../images/git_noobs.png)
 
-Terraform Cloud can directly integrate with source code repos in GitHub, Gitlab, Azure DevOps, and Bitbucket. This allows you to build simple DevOps workflows with code reviews, testing and approvals.
+HCP Terraform can directly integrate with source code repos in GitHub, Gitlab, Azure DevOps, and Bitbucket. This allows you to build simple DevOps workflows with code reviews, testing and approvals.
 
 https://xkcd.com/1597/
 
@@ -417,7 +417,7 @@ Infrastructure changes are no longer created in isolated silos.
 Each team can contribute or consume Terraform code according to their needs.
 
 ???
-**When you store all your terraform code in git repos, you unlock some extra features like user collaboration. Terraform Cloud helps bring these teams closer in a more productive way.**
+**When you store all your terraform code in git repos, you unlock some extra features like user collaboration. HCP Terraform helps bring these teams closer in a more productive way.**
 
 ---
 name: vcs-driven-workflow

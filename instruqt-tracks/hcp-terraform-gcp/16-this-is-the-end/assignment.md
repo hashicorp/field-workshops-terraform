@@ -1,5 +1,6 @@
 ---
 slug: this-is-the-end
+id: a1j8potuyv4i
 type: challenge
 title: "\U0001F469\U0001F3FB‍\U0001F52C Open Lab"
 teaser: |

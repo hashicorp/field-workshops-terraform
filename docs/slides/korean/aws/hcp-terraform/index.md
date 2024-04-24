@@ -2,19 +2,19 @@ name: Intro-to-hcp-terraform
 class: center,middle,title-slide
 count: false
 <br><br>
-![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/tf_aws.png)
+![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/tf_aws.png)
 <br><br>
 
-# Terraform Cloud on AWS
+# HCP Terraform on AWS
 
 ???
-Terraform Cloud on AWS 워크숍에 오신 것을 환영합니다. 이 워크샵은 AWS 기반 애플리케이션을 사용하여 Terraform Cloud (Enterprise)의 무료 및 유료 기능을 소개하는 1 일 워크샵입니다. Terraform을 처음 사용하는 경우 AWS Instruqt 트랙에서 Terraform OSS 소개 트랙을 먼저 수행해야 합니다.
+HCP Terraform on AWS 워크숍에 오신 것을 환영합니다. 이 워크샵은 AWS 기반 애플리케이션을 사용하여 HCP Terraform (Enterprise)의 무료 및 유료 기능을 소개하는 1 일 워크샵입니다. Terraform을 처음 사용하는 경우 AWS Instruqt 트랙에서 Terraform Community Edition 소개 트랙을 먼저 수행해야 합니다.
 
-Terraform Cloud와 Terraform Enterprise는 거의 동일한 기능 세트를 가지고 있으므로 교육 환경으로 Terraform Cloud를 사용합니다.
+HCP Terraform와 Terraform Enterprise는 거의 동일한 기능 세트를 가지고 있으므로 교육 환경으로 HCP Terraform를 사용합니다.
 
-강사 가이드 링크: https://github.com/hashicorp/field-workshops-terraform/blob/main/instructor-guides/all_terraform_cloud_INSTRUCTOR_GUIDE.md
+강사 가이드 링크: https://github.com/hashicorp/field-workshops-terraform/blob/main/instructor-guides/all_hcp_terraform_INSTRUCTOR_GUIDE.md
 
-소개 노트: Terraform Cloud on AWS에 오신 것을 환영합니다. 이 슬라이드 데크는 전적으로 Markdown 언어로 작성되었으므로 편집하거나 추가 한 다음 풀 요청을 제출하여 변경 사항을 메인 브랜치에 추가 할 수 있습니다. 슬라이드 데크를 편집하려면이 저장소를 포크하고 Markdown 파일을 편집 한 다음 변경 사항과 함께 풀 요청을 제출하면됩니다. 이 파이썬 한 줄로 슬라이드 데크의 로컬 복사본을 쉽게 테스트 할 수 있습니다.:
+소개 노트: HCP Terraform on AWS에 오신 것을 환영합니다. 이 슬라이드 데크는 전적으로 Markdown 언어로 작성되었으므로 편집하거나 추가 한 다음 풀 요청을 제출하여 변경 사항을 메인 브랜치에 추가 할 수 있습니다. 슬라이드 데크를 편집하려면이 저장소를 포크하고 Markdown 파일을 편집 한 다음 변경 사항과 함께 풀 요청을 제출하면됩니다. 이 파이썬 한 줄로 슬라이드 데크의 로컬 복사본을 쉽게 테스트 할 수 있습니다.:
 
 ```
 python -m SimpleHTTPServer
@@ -58,7 +58,7 @@ name: Introductions
 Terraform을 사용하기 위해 vi의 전문가 일 필요는 없습니다. 오늘 실습 랩에서는 Visual Studio Code 또는 vim을 사용하여 일부 파일을 편집합니다.
 
 ---
-name: tfc-link-to-slide-deck
+name: hcp-terraform-link-to-slide-deck
 # The Slide Deck
 <br><br><br>
 .center[
@@ -76,8 +76,8 @@ class: col-2
 # Table of Contents
 
 <div>
-1. OSS to Cloud/Enterprise<br>
-🌥️ Terraform Cloud의 개요<br>
+1. Community Edition to HCP/Enterprise<br>
+🌥️ HCP Terraform의 개요<br>
 👨🏽‍🏫 기본 살펴보기<br>
 🔗 Remote State 구성하기<br>
 <hr>
@@ -91,7 +91,7 @@ class: col-2
 👮 Sentinel policy enforcement (정책 코드화 실행)<br>
 <hr>
 4. Terraform Modules & API<br>
-⚙️ Private Module Registry<br>
+⚙️ Terraform Private Registry<br>
 🏗️ API 기반의 워크플로우<br>
 <hr>
 5. Extra Resources<br>
@@ -109,10 +109,10 @@ name: TFE-Chapter-1
 class: title
 
 # Chapter 1
-## Terraform OSS, Cloud and Enterprise
+## Terraform Community Edition, HCP Terraform, and Terraform Enterprise
 
 ???
-**첫 번째 장에서는 Terraform 오픈 소스와 OSS와 클라우드 및 엔터프라이즈 간의 몇 가지 차이점을 다룰 것입니다.**
+**첫 번째 장에서는 Terraform 오픈 소스와 Community Edition와 클라우드 및 엔터프라이즈 간의 몇 가지 차이점을 다룰 것입니다.**
 
 ---
 name: terraform-user-journey
@@ -140,7 +140,7 @@ class: col-2
 * 모든 빌드 단계는 이제 코드로 표현됩니다.
 * 무언가를 다시 만들어야한다면 훨씬 쉽습니다!
 
-![Terraform Code on AWS](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/code_example.png)
+![Terraform Code on AWS](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/code_example.png)
 
 ???
 **Terraform의 핵심은 코드로서의 인프라 개념입니다. 일련의 수동 작업 또는 테스트 및 최신 상태가 아닐 수있는 오류가 발생하기 쉬운 셸 스크립트로 물건을 구축하는 대신이 간단한 도메인 특정 언어 또는 테라 폼으로 모든 인프라 구축 단계를 표현합니다. Terraform 구성 구문의 공식 이름은 HashiCorp Configuration Language (HCL)입니다. 이 언어는 초보자에게는 쉽고 전문가에게는 강력합니다. 인프라의 DNA라고 생각하십시오. **
@@ -149,67 +149,67 @@ class: col-2
 name: multi-platform-compliance
 # 보유한 모든 인프라 관리
 .center[
-![:scale 80%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/terraform_on_prem.png)
+![:scale 80%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/terraform_on_prem.png)
 ]
 
 Terraform은 또한 온 프레미스 VM 또는 플랫폼 서비스와 통합됩니다.
 
 ???
-Terraform Cloud 및 Enterprise는 데이터 센터에서 VM을 구축하거나 클라우드에서 AWS 인스턴스를 구축하는 데 사용할 수 있습니다. 하이브리드 클라우드 플랫폼을 구축하기 위해 서로 다른 두 가지 도구를 사용할 필요가 없습니다.
+HCP Terraform 및 Enterprise는 데이터 센터에서 VM을 구축하거나 클라우드에서 AWS 인스턴스를 구축하는 데 사용할 수 있습니다. 하이브리드 클라우드 플랫폼을 구축하기 위해 서로 다른 두 가지 도구를 사용할 필요가 없습니다.
 
 ---
 name: self-service-infra
 # 셀프서비스 인프라
 
 .center[
-![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/self_service.png)
+![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/self_service.png)
 ]
 
 특정 사용자가 막대한 비용을 지출하거나 정책에 위반되는 프로비저닝 같은, 조직을 위험에 빠뜨리지 않고 필요한 것을 구축 할 수 있도록 합니다.
 
 ???
-**Terraform Cloud는 재사용 가능한 모듈 및 정책 시행을 통해 안전한 프로비저닝을 권장합니다. 이제 사용자는 업무를 중단하거나 조직을 위험에 빠뜨리지 않고 업무를 수행하는 데 필요한 것을 정확하게 구축 할 수 있습니다. 자동화가 수동 코드 검토없이 모범 사례를 적용하기 때문에 느리고 번거로운 승인 프로세스가 더 이상 필요하지 않습니다.**
+**HCP Terraform는 재사용 가능한 모듈 및 정책 시행을 통해 안전한 프로비저닝을 권장합니다. 이제 사용자는 업무를 중단하거나 조직을 위험에 빠뜨리지 않고 업무를 수행하는 데 필요한 것을 정확하게 구축 할 수 있습니다. 자동화가 수동 코드 검토없이 모범 사례를 적용하기 때문에 느리고 번거로운 승인 프로세스가 더 이상 필요하지 않습니다.**
 
 ---
 name: hcp-terraform-what-is-it
-# Terraform Cloud - 최종 상태
+# HCP Terraform - 최종 상태
 
 .center[
-![:scale 90%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/cloud_overview_aws.png)
+![:scale 90%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/cloud_overview_aws.png)
 ]
 
 ???
 이 슬라이드는 워크샵의 최종 상태를 보여줍니다. 왼쪽에는 인프라 담당자가 나머지 사용자가 자신의 테라 폼 코드로 구현할 수있는 재사용 가능한 모듈을 만들었습니다. 이러한 모듈은 네트워크 및 VM과 같은 인프라 구성 요소가 매번 올바르게 구축되도록 보장하고 사용자가 "올바른 항목"을 쉽게 구축 할 수 있도록합니다.
 
-다음 단계에서 사용자는 Terraform 코드를 작성하고이를 Version Control System(VCS)에 체크인합니다. 이를 통해서 운영환경을 위한 모든 변경 사항이 기록되고 검토됩니다. 이부분이 매우 중요합니다. 그리고 모든 개발자와 인프라 관리자의 규율과 협력이 필요합니다. 새 코드가 마스터 브랜치에 커밋되면 Terraform Cloud (또는 Enterprise)에서 계획이 트리거됩니다.
+다음 단계에서 사용자는 Terraform 코드를 작성하고이를 Version Control System(VCS)에 체크인합니다. 이를 통해서 운영환경을 위한 모든 변경 사항이 기록되고 검토됩니다. 이부분이 매우 중요합니다. 그리고 모든 개발자와 인프라 관리자의 규율과 협력이 필요합니다. 새 코드가 마스터 브랜치에 커밋되면 HCP Terraform (또는 Enterprise)에서 계획이 트리거됩니다.
 
-Terraform Cloud를 Terraform을 위한 원격 실행장소, 또는 상태 관리 플랫폼으로 생각하십시오. 이제는 클라우드 프로비저닝을 위해 랩톱에서 terraform을 실행하지 않습니다. 대신 모든 테라 폼 실행은 SaaS 플랫폼에서 실행되는 보안 Docker 컨테이너 또는 자체 데이터 센터에서 수행합니다. 이를 통해 모든 API 키, 변수 및 테라 폼 상태 파일을 암호화하고 보호 할 수 있습니다. 권한이있는 사용자에게만 액세스가 허용됩니다.
+HCP Terraform를 Terraform을 위한 원격 실행장소, 또는 상태 관리 플랫폼으로 생각하십시오. 이제는 클라우드 프로비저닝을 위해 랩톱에서 terraform을 실행하지 않습니다. 대신 모든 테라 폼 실행은 SaaS 플랫폼에서 실행되는 보안 Docker 컨테이너 또는 자체 데이터 센터에서 수행합니다. 이를 통해 모든 API 키, 변수 및 테라 폼 상태 파일을 암호화하고 보호 할 수 있습니다. 권한이있는 사용자에게만 액세스가 허용됩니다.
 
 모든 Terraform 상태 파일은 서버 측에 안전하게 저장되고 암호화됩니다. 인프라를 변경해야 할 때마다 Terraform은 마지막 상태를 알고 변경 사항을 기반으로 점진적으로 빌드 할 수 있습니다. 클러스터에 더 많은 인스턴스를 추가해야합니까? 문제 없습니다. terraform은 완전한 분해 및 재구성 없이도 이를 수행 할 수 있습니다.
 
 모든 Terraform을 적용하기 전에 제안 된 인프라 계획에 대해 Sentinel 정책 검사를 실행하여 정책 위반을 포착 할 수 있습니다. 예를 들어 개발자가 실행하는 데 많은 비용이 드는 엄청 큰 인스턴스를 만드는 것을 원하지 않을 수 있습니다. 개발자 작업 공간을 m3.medium 크기의 인스턴스 만 사용하도록 제한하는 간단한 규칙을 작성할 수 있습니다.
 
-역할 기반 액세스 제어(RBAC)를 통해 다양한 유형의 사용자가 액세스 수준에 따라 Terraform 클라우드와 상호 작용할 수 있습니다. 조직의 모든 것을 제어 할 수있는 최고 관리자와 terraform을 실행할 수 있지만 개발 환경에서만 가능한 일반 사용자가있을 수 있습니다. 다른 그룹은 변경 사항을 운영환경에 푸시 할 수 있지만 일부 사용자는 읽기 전용 액세스 권한을 가질 수 있습니다. Terraform Cloud / Enterprise는 진정한 멀티 테넌트 환경을 제공합니다.
+역할 기반 액세스 제어(RBAC)를 통해 다양한 유형의 사용자가 액세스 수준에 따라 Terraform 클라우드와 상호 작용할 수 있습니다. 조직의 모든 것을 제어 할 수있는 최고 관리자와 terraform을 실행할 수 있지만 개발 환경에서만 가능한 일반 사용자가있을 수 있습니다. 다른 그룹은 변경 사항을 운영환경에 푸시 할 수 있지만 일부 사용자는 읽기 전용 액세스 권한을 가질 수 있습니다. HCP Terraform / Enterprise는 진정한 멀티 테넌트 환경을 제공합니다.
 
 ---
-name: why-tfc-1
+name: why-hcp-terraform-1
 class: img-right
-# Terraform Cloud
-![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/tfc-gui.png)
+# HCP Terraform
+![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/tfc-gui.png)
 
-Terraform Cloud/Enterprise는 다음의 환경을 제공합니다.:
+HCP Terraform/Terraform Enterprise는 다음의 환경을 제공합니다.:
 
 ???
-Terraform Cloud 기능과 그 기능이 중요한 이유에 대한 간략한 목록을 살펴 보겠습니다.
+HCP Terraform 기능과 그 기능이 중요한 이유에 대한 간략한 목록을 살펴 보겠습니다.
 
 ---
-name: why-tfc-2
+name: why-hcp-terraform-2
 class: img-right
 
-# Terraform Cloud
-![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/tfc-gui.png)
+# HCP Terraform
+![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/tfc-gui.png)
 
-Terraform Cloud/Enterprise는 다음의 환경을 제공합니다.:
+HCP Terraform/Terraform Enterprise는 다음의 환경을 제공합니다.:
 
 * VCS와 함께 UI에 통합된 환경
 
@@ -217,12 +217,12 @@ Terraform Cloud/Enterprise는 다음의 환경을 제공합니다.:
 실제 사용자나 팀이 Terraform에서 표준화 작업을 시작하면 다양한 유형의 사용자를 갖게됩니다. 이미 사용하거나 도입에 대한 테스트를 하는 경우, 여러분 대부분은 테라 폼 전문가가 될 것입니다.하지만 무언가를 만들고 싶어하는 사람들이있을 수 있습니다. 그들은 당신과 같은 사람들이 작성한 테라 폼 코드를 사용할 수 있습니다. 이 프로세스를 쉽게하기 위해 웹 애플리케이션이 있습니다. 로그온하고 버튼을 클릭하면 인프라가 나타납니다.
 
 ---
-name: why-tfc-3
+name: why-hcp-terraform-3
 class: img-right
-# Terraform Cloud
-![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/tfc-gui.png)
+# HCP Terraform
+![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/tfc-gui.png)
 
-Terraform Cloud/Enterprise는 다음의 환경을 제공합니다.:
+HCP Terraform/Terraform Enterprise는 다음의 환경을 제공합니다.:
 
 * VCS와 함께 UI에 통합된 환경
 * API 기반의 워크플로우
@@ -233,83 +233,83 @@ Terraform Cloud/Enterprise는 다음의 환경을 제공합니다.:
 API는 모든 최신 클라우드 자동화 시스템의 구성 요소입니다. 잘 정의 된 표준 API를 사용하면 인프라 파이프 라인이 향후 변경 사항에 대응할 준비가되어 있는지 확인할 수 있습니다.
 
 ---
-name: why-tfc-4
+name: why-hcp-terraform-4
 class: img-right
-# Terraform Cloud
-![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/tfc-gui.png)
+# HCP Terraform
+![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/tfc-gui.png)
 
-Terraform Cloud/Enterprise는 다음의 환경을 제공합니다.:
+HCP Terraform/Terraform Enterprise는 다음의 환경을 제공합니다.:
 
 * VCS와 함께 UI에 통합된 환경
 * API 기반의 워크플로우
 * STATE의 중앙 관리
 
 ???
-Terraform enterprise는 상태 파일을위한 안전하고 안전한 스토리지도 제공합니다. 중요한 상태 파일을 누군가의 랩톱에 저장하는 대신 이제 Terraform Cloud 애플리케이션에 안전하게 저장합니다. State 파일에 접근할 수 있는 사람 만 볼 수 있으며 덮어 쓰거나 손상되지 않도록 보호됩니다.
+Terraform enterprise는 상태 파일을위한 안전하고 안전한 스토리지도 제공합니다. 중요한 상태 파일을 누군가의 랩톱에 저장하는 대신 이제 HCP Terraform 애플리케이션에 안전하게 저장합니다. State 파일에 접근할 수 있는 사람 만 볼 수 있으며 덮어 쓰거나 손상되지 않도록 보호됩니다.
 
 ---
-name: why-tfc-5
+name: why-hcp-terraform-5
 class: img-right
-# Terraform Cloud
-![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/tfc-gui.png)
+# HCP Terraform
+![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/tfc-gui.png)
 
-Terraform Cloud/Enterprise는 다음의 환경을 제공합니다.:
+HCP Terraform/Terraform Enterprise는 다음의 환경을 제공합니다.:
 
 * VCS와 함께 UI에 통합된 환경
 * API 기반의 워크플로우
 * STATE의 중앙 관리
-* Private Module Registry
+* Terraform Private Registry
 
 ???
-결국 회사의 다른 사용자 및 팀을 위해 공유하고 게시 할 수있는 Terraform 코드 라이브러리가 생깁니다. Private Module Registry는 이것을 쉽게 만듭니다. 표준에 따라 인프라를 구축하는 재사용 가능한 모듈을 구축 한 다음 사용자를 위해 게시합니다. 이는 보안 정책을 시행하고 표준을 구축하는 데 도움이 될 수 있습니다.
+결국 회사의 다른 사용자 및 팀을 위해 공유하고 게시 할 수있는 Terraform 코드 라이브러리가 생깁니다. Terraform Private Registry는 이것을 쉽게 만듭니다. 표준에 따라 인프라를 구축하는 재사용 가능한 모듈을 구축 한 다음 사용자를 위해 게시합니다. 이는 보안 정책을 시행하고 표준을 구축하는 데 도움이 될 수 있습니다.
 
 ---
-name: why-tfc-6
+name: why-hcp-terraform-6
 class: img-right
-# Terraform Cloud
-![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/tfc-gui.png)
+# HCP Terraform
+![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/tfc-gui.png)
 
-Terraform Cloud/Enterprise는 다음의 환경을 제공합니다.:
+HCP Terraform/Terraform Enterprise는 다음의 환경을 제공합니다.:
 
 * VCS와 함께 UI에 통합된 환경
 * API 기반의 워크플로우
 * STATE의 중앙 관리
-* Private Module Registry
+* Terraform Private Registry
 * Sentinel policy enforcement (취약점 점검 및 정책 코드화 실행)
 
 ???
 TFC/TFE는 사용자가 구축해서는 안되는 것을 구축하거나 잘못된 방식으로 구성하지 않도록 보장 할 수있는 정책 시행 엔진과 함께 제공됩니다. 예를 들어 사용자가 인터넷에 대한 네트워크 포트를 열거 나 너무 많은 가상 머신을 구축하지 못하도록 할 수 있습니다. 이러한 모든 유형의 규칙은 Sentinel Policy Enforcement (정책 코드화 실행) 엔진을 사용하여 표현할 수 있습니다. Sentinel 정책은 사용자가 클라우드에 프로비저닝하기 **전에** 잘못된 작업을 하는 것을 방지합니다.
 
 ---
-name: why-tfc-7
+name: why-hcp-terraform-7
 class: img-right
-# Terraform Cloud
-![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/tfc-gui.png)
+# HCP Terraform
+![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/tfc-gui.png)
 
-Terraform Cloud/Enterprise는 다음의 환경을 제공합니다.:
+HCP Terraform/Terraform Enterprise는 다음의 환경을 제공합니다.:
 
 * VCS와 함께 UI에 통합된 환경
 * API 기반의 워크플로우
 * STATE의 중앙 관리
-* Private Module Registry
+* Terraform Private Registry
 * Sentinel policy enforcement (취약점 점검 및 정책 코드화 실행)
 * Single Sign-On
 
 ???
-Terraform Enterprise는 자체 SAML 공급자를 사용한 SSO도 지원합니다. 이를 통해 사용자를 조직의 팀 및 작업 영역에 신속하게 매핑하여 즉시 생산성을 높일 수 있습니다. 이 기능은  Terraform Enterprise 또는 Terraform Cloud for Business에서 사용할 수 있습니다. 오늘 워크숍에서는 SAML 또는 싱글 사인온을 다루지 않을 것입니다.
+Terraform Enterprise는 자체 SAML 공급자를 사용한 SSO도 지원합니다. 이를 통해 사용자를 조직의 팀 및 작업 영역에 신속하게 매핑하여 즉시 생산성을 높일 수 있습니다. 이 기능은  Terraform Enterprise 또는 HCP Terraform Plus Tier에서 사용할 수 있습니다. 오늘 워크숍에서는 SAML 또는 싱글 사인온을 다루지 않을 것입니다.
 
 ---
-name: why-tfc-8
+name: why-hcp-terraform-8
 class: img-right
-# Terraform Cloud
-![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/tfc-gui.png)
+# HCP Terraform
+![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/tfc-gui.png)
 
-Terraform Cloud/Enterprise는 다음의 환경을 제공합니다.:
+HCP Terraform/Terraform Enterprise는 다음의 환경을 제공합니다.:
 
 * VCS와 함께 UI에 통합된 환경
 * API 기반의 워크플로우
 * STATE의 중앙 관리
-* Private Module Registry
+* Terraform Private Registry
 * Sentinel policy enforcement (정책 코드화 실행)
 * Single Sign-On
 * 안전한 API 자격증명
@@ -319,27 +319,27 @@ TFE/TFC는 클라우드 자격 증명, 암호 또는 기타 민감한 데이터�
 
 ---
 name: hcp-terraform-enterprise
-# Terraform Cloud와 Terraform Enterprise 차이
-**[Terraform Cloud](https://app.terraform.io/signup)**는 원격 상태 관리, API 기반 실행, 정책 관리 등과 같은 기능을 제공하는 호스팅 된 애플리케이션입니다. 많은 사용자가 클라우드 기반 SaaS 솔루션을 선호하는 이유는 인프라를 유지하여 실행하는 것을 원하지 않기 때문입니다.
+# HCP Terraform와 Terraform Enterprise 차이
+**[HCP Terraform](https://app.terraform.io/signup)**는 원격 상태 관리, API 기반 실행, 정책 관리 등과 같은 기능을 제공하는 호스팅 된 애플리케이션입니다. 많은 사용자가 클라우드 기반 SaaS 솔루션을 선호하는 이유는 인프라를 유지하여 실행하는 것을 원하지 않기 때문입니다.
 
-**[Terraform Enterprise](https://www.hashicorp.com/go/terraform-enterprise)**는 동일한 애플리케이션이지만 클라우드 환경 또는 데이터 센터에서 실행됩니다. 일부 사용자는 Terraform Cloud 애플리케이션에 대한 더 많은 제어가 필요하거나 회사 방화벽 뒤의 제한된 네트워크에서 실행하려고합니다.
+**[Terraform Enterprise](https://www.hashicorp.com/go/terraform-enterprise)**는 동일한 애플리케이션이지만 클라우드 환경 또는 데이터 센터에서 실행됩니다. 일부 사용자는 HCP Terraform 애플리케이션에 대한 더 많은 제어가 필요하거나 회사 방화벽 뒤의 제한된 네트워크에서 실행하려고합니다.
 
-이 두 제품의 기능 목록은 거의 동일합니다. 이번 랩 실습에는 Terraform Cloud 계정을 사용할 것입니다.
+이 두 제품의 기능 목록은 거의 동일합니다. 이번 랩 실습에는 HCP Terraform 계정을 사용할 것입니다.
 
 ???
-귀하의 회사에서 어떤 것을 채택해야하는지 궁금하다면 Terraform Enterprise 또는 Terraform Cloud for Business가 답입니다.
+귀하의 회사에서 어떤 것을 채택해야하는지 궁금하다면 Terraform Enterprise 또는 HCP Terraform Plus Tier가 답입니다.
 
 ---
 name: live-demo
 class: title, smokescreen, shelf
-background-image: url(https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/live_demo.jpg)
+background-image: url(https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/live_demo.jpg)
 # Live Demo
-## Terraform Cloud in Action
+## HCP Terraform in Action
 
 ???
 INSTRUCTOR NOTE: You can use the same instruqt track that the students will be using to do this demo. Make sure you've gone through the entire track yourself and have your own organization, fork of the hashicat-aws repo, and sentinel policy in place. Once you have done these steps it's easy to create a new demo:
 
-1. Start your own copy of the Terraform Cloud on AWS track
+1. Start your own copy of the HCP Terraform on AWS track
 2. Echo out your AWS credentials and set them as environment variables in TFC:
 ```
 echo $AWS_ACCESS_KEY_ID
@@ -349,15 +349,15 @@ echo $AWS_SECRET_ACCESS_KEY
 4. Make sure you remove the VPC file (vpc.tf) from your hashicat-aws repo. This will make the demo take longer and may break if the regions aren't set up right.
 5. Begin your demo dialog:
 
-**This is a brief demo showing off some of the features of Terraform cloud. You'll get to work with all these features during the hands-on labs today.**
+**This is a brief demo showing off some of the features of HCP Terraform. You'll get to work with all these features during the hands-on labs today.**
 
 **Pretend I'm a brand new developer and I want to spin up a copy of my company's web application that I can use for testing. I have my own fork of the code here on github. This is the hashicat-aws application. Like the name implies, it provides kittens as a service. You give it a placeholder URL, a height, and a width, and you get a cat. Neat huh?**
 
-**Let's hop over to Terraform Cloud and take a look at my workspace. Here you can see the most recent terraform runs and their status, along with the exact git commit hash that led to each run being triggered. All changes are recorded, and only code that passes our sentinel policies is allowed to run.**
+**Let's hop over to HCP Terraform and take a look at my workspace. Here you can see the most recent terraform runs and their status, along with the exact git commit hash that led to each run being triggered. All changes are recorded, and only code that passes our sentinel policies is allowed to run.**
 
 **Before I build anything I might want to configure some variables to adjust my infrastructure settings. Here you can see some terraform variables, prefix and region. These will determine the names of my resources and the region they will be deployed in.**
 
-**Down bottom you see the Environment Variables. These are system shell variables that are injected into the terraform cloud container at runtime. You can optionally encrypt sensitive environment variables such as these AWS keys. Note that these are write-only. Once you encrypt a variable by marking it sensitive, you won't see it here in plaintext again. These are dynamic AWS credentials that are good for only a few hours. You can paste them in manually or use the API to auto-populate them from HashiCorp Vault.**
+**Down bottom you see the Environment Variables. These are system shell variables that are injected into the HCP Terraform container at runtime. You can optionally encrypt sensitive environment variables such as these AWS keys. Note that these are write-only. Once you encrypt a variable by marking it sensitive, you won't see it here in plaintext again. These are dynamic AWS credentials that are good for only a few hours. You can paste them in manually or use the API to auto-populate them from HashiCorp Vault.**
 
 **New and advanced users can utilize the GUI to trigger infrastructure builds. Let's do that now by clicking on this Queue Plan button. I'm going to put "new dev environment" down as the reason for the build. Now notice that a new terraform plan has kicked off. This is the dry run. terraform is figuring out if any of the infrastructure already exists from a previous run, and then it will build or change everything to match what's in the code. That is, unless we fail a sentinel policy...**
 
@@ -375,7 +375,7 @@ INSTRUCTOR NOTE: Have your code commented and ready to go like this. That way yo
   }
 ```
 
-**Now if I pop back over to Terraform Cloud you can see that a new run has triggered based on the change I just made. Terraform Cloud watches that master branch for any changes and automatically picks them up. I still have a chance to review the run in the UI here. You can see that my policy check is now passing, which will make the finance people happy, and I can continue building my dev environment.**
+**Now if I pop back over to HCP Terraform you can see that a new run has triggered based on the change I just made. HCP Terraform watches that master branch for any changes and automatically picks them up. I still have a chance to review the run in the UI here. You can see that my policy check is now passing, which will make the finance people happy, and I can continue building my dev environment.**
 
 **I'll click Confirm & Apply and we'll start building.**
 
@@ -398,9 +398,9 @@ Create a new variable called `placeholder` and set it to `placedog.net`. Queue u
 ---
 name: review-the-basics
 class: title, smokescreen, shelf
-background-image: url(https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/terraform_scifi.jpg)
+background-image: url(https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/terraform_scifi.jpg)
 # 기본 살펴보기
-## Terraform OSS 다시 떠올려보기
+## Terraform Community Edition 다시 떠올려보기
 
 ???
 이 섹션은 terraform 오픈 소스 사용에 대한 빠른 검토입니다.
@@ -424,12 +424,12 @@ terraform graph   # DOT 형식의 그래프 생성
 재교육이 필요하다면? [AWS의 Terraform 소개] (https://instruqt.com/hashicorp/tracks/terraform-intro-aws) 실습을 시도해보세요.
 
 ???
-청중의 성숙도에 따라 Intro to Terraform 트랙으로 돌아갈 수 있습니다. 이상적으로는 워크숍의 모든 사람이 이미 이 작업을 완료했거나 Terraform OSS에 대해 동등한 경험을 가지고 있습니다.
+청중의 성숙도에 따라 Intro to Terraform 트랙으로 돌아갈 수 있습니다. 이상적으로는 워크숍의 모든 사람이 이미 이 작업을 완료했거나 Terraform Community Edition에 대해 동등한 경험을 가지고 있습니다.
 
 ---
 name: what-is-a-workspace
 # Terraform 워크스페이스
-.center[![:scale 70%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/workspaces_gui.png)
+.center[![:scale 70%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/workspaces_gui.png)
 ]
 
 .center[
@@ -437,7 +437,7 @@ name: what-is-a-workspace
 ]
 
 ???
-Terraform 워크스페이스는 관리되는 인프라 단위입니다. 랩톱 또는 로컬 워크 스테이션에서 terraform 워크스페이스는 단순히 terraform 코드와 변수로 가득 찬 디렉토리입니다. 이 코드는 이상적으로 git 저장소에 저장됩니다. 클라우드에서 워크스페이스는 몇 가지 추가 역할을 수행합니다. Terraform Cloud 및 Enterprise에서 워크스페이스는 여전히 terraform 실행을 실행하는 곳이지만 접근 제어, 변수 암호화, 정책 관리와 같은 추가 기능이 있습니다. Terraform은 사용자가 제어하는 안전한 컨테이너(e.g. Docker)에서만 실행됩니다. (이에 대한 한 가지 예외가 있으며 terraform을 로컬에서 실행하지만 Terraform Cloud에만 상태를 저장하는 경우입니다). 로컬 작업 공간 또는 git repo 사본은 일반적으로 terraform 작업 공간과 1 : 1로 매핑됩니다.
+Terraform 워크스페이스는 관리되는 인프라 단위입니다. 랩톱 또는 로컬 워크 스테이션에서 terraform 워크스페이스는 단순히 terraform 코드와 변수로 가득 찬 디렉토리입니다. 이 코드는 이상적으로 git 저장소에 저장됩니다. 클라우드에서 워크스페이스는 몇 가지 추가 역할을 수행합니다. HCP Terraform 및 Enterprise에서 워크스페이스는 여전히 terraform 실행을 실행하는 곳이지만 접근 제어, 변수 암호화, 정책 관리와 같은 추가 기능이 있습니다. Terraform은 사용자가 제어하는 안전한 컨테이너(e.g. Docker)에서만 실행됩니다. (이에 대한 한 가지 예외가 있으며 terraform을 로컬에서 실행하지만 HCP Terraform에만 상태를 저장하는 경우입니다). 로컬 작업 공간 또는 git repo 사본은 일반적으로 terraform 작업 공간과 1 : 1로 매핑됩니다.
 
 작업 공간에 무엇을 넣어야합니까? 하나의 단위로 함께 관리해야하는 인프라는 동일한 작업 공간에 배치하는 것이 좋습니다. 누가 관리해야하는지, 얼마나 자주 변경되는지, 우리가 제어 할 수없는 외부 종속성이 있습니까? 다음 질문을하십시오. `terraform apply`를 실행할 때 어떤 일이 발생하는지 생각해보십시오. 방금 구축 한 내용과 제공하는 출력,이 인프라의 대상 및 활용 방법을 설명 할 수 있어야합니다.
 
@@ -448,7 +448,7 @@ Terraform은 코드로 계약을 생성하는 올바른 동작을 채택하도�
 ---
 name: what-is-an-organization
 # Terraform Organizations
-.center[![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/choose_an_org.png)
+.center[![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/choose_an_org.png)
 ]
 .center[
 .small[https://www.terraform.io/docs/cloud/users-teams-organizations/organizations.html]
@@ -460,7 +460,7 @@ name: what-is-an-organization
 ---
 name: what-is-a-team
 # Terraform Teams
-.center[![:scale 90%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/teams_emoji.png)
+.center[![:scale 90%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/teams_emoji.png)
 ]
 .center[
 .small[https://www.terraform.io/docs/cloud/users-teams-organizations/teams.html]
@@ -473,7 +473,7 @@ name: what-is-a-team
 name: our-application
 # HashiCat App - Kittens as a Service
 
-.center[![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/meow_world.png)]
+.center[![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/meow_world.png)]
 
 이것은 우리의 실습 결과물로 보여지는 화면의 예 입니다.
 
@@ -483,7 +483,7 @@ name: our-application
 ---
 name: terraform-state
 class: title, smokescreen, shelf
-background-image: url(https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/checklist.jpg)
+background-image: url(https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/checklist.jpg)
 # Terraform State
 ## 인프라 라이프사이클 관리
 
@@ -511,7 +511,7 @@ name: why-not-local-state
 class: img-left-full
 # 된장, State 파일이 사라졌어요.
 
-![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/dog_homework.jpg)
+![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/dog_homework.jpg)
 
 로컬에서 관리하는 state 파일에는 몇 가지 단점이 있습니다.
 
@@ -521,19 +521,19 @@ class: img-left-full
 * 중앙 집중식 기록 보관이 없음
 
 ???
- Terraform Cloud 계정에 쉽게 무료로 저장할 수 있기 때문에 상태 파일을 잃어 버릴 이유가 없습니다.
+ HCP Terraform 계정에 쉽게 무료로 저장할 수 있기 때문에 상태 파일을 잃어 버릴 이유가 없습니다.
 
 ---
-name: tfcloud-remote-state
-# Terraform Cloud - Remote State
-Terraform Cloud Remote State는 무료이며 모든 사용자가 사용할 수 있습니다. 설정 및 작동을위한 요구 사항은 다음과 같습니다.
+name: hcp-terraform-remote-state
+# HCP Terraform - Remote State
+HCP Terraform Remote State는 무료이며 모든 사용자가 사용할 수 있습니다. 설정 및 작동을위한 요구 사항은 다음과 같습니다.
 
-* 무료 또는 유료 Terraform Cloud 계정, 또는 Terraform Enterprise
+* 무료 또는 유료 HCP Terraform 계정, 또는 Terraform Enterprise
 * **`.terraformrc` ** (Unix / Linux) 또는 **`terraform.rc` ** (Windows) 구성 파일
 * 구성 파일에 저장된 사용자 액세스 토큰
 * 원격 백엔드 구성 파일. 일관성을 위해 이름을 **`remote_backend.tf` **로 지정
 
-**경고** - Terraform Cloud API 토큰을 github에 올리지 마세요!
+**경고** - HCP Terraform API 토큰을 github에 올리지 마세요!
 
 https://www.terraform.io/docs/backends/types/remote.html
 
@@ -559,7 +559,7 @@ name: lab-exercise-0
 name: lab-exercise-1
 # 👩‍💻 Lab Exercise: Remote State 구성하기
 <br><br>
-이 실습에서는 무료 Terraform Cloud 계정을 설정하고 Terraform 명령의 원격 실행을 위해 계정을 구성합니다.
+이 실습에서는 무료 HCP Terraform 계정을 설정하고 Terraform 명령의 원격 실행을 위해 계정을 구성합니다.
 
 강사는 첫 번째 실습 환경의 URL을 제공합니다.
 
@@ -582,7 +582,7 @@ class: title
 ---
 name: securing-sensitive-vars
 class: title, smokescreen, shelf
-background-image: url(https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/secure_lock.jpg)
+background-image: url(https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/secure_lock.jpg)
 
 # Sensitive Variables (민감한 변수)
 ## API 자격 증명을 위한 안전한 장소
@@ -608,7 +608,7 @@ https://nakedsecurity.sophos.com/2019/03/25/thousands-of-coders-are-leaving-thei
 name: Protecting-Sensitive-Variables
 class: img-right-full
 # 민감한 변수 보호
-![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/encryption.jpg)
+![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/encryption.jpg)
 
 * 클라우드 API 키
 * 비밀번호
@@ -617,7 +617,7 @@ class: img-right-full
 * 민감한 텍스트 또는 데이터
 
 ???
-Terraform Cloud는 짧은 텍스트 문자열의 암호화 및 저장을 기본적으로 지원합니다. 이를 통해 일반 텍스트로 노출하거나 다른 사람의 랩톱에 저장하지 않고도 프로비저닝 프로세스 중에 이러한 자격 증명을 안전하게 사용할 수 있습니다.
+HCP Terraform는 짧은 텍스트 문자열의 암호화 및 저장을 기본적으로 지원합니다. 이를 통해 일반 텍스트로 노출하거나 다른 사람의 랩톱에 저장하지 않고도 프로비저닝 프로세스 중에 이러한 자격 증명을 안전하게 사용할 수 있습니다.
 
 ---
 name: where-are-your-creds
@@ -635,9 +635,9 @@ Terraform은 클라우드 공급자의 API와 통신하기 위해 자격 증명�
 name: a-better-way-creds
 # 그럼, 민감한 정보는 어떻게 저장할까요?
 
-Terraform Cloud/Enterprise는 자격 증명같은 민감한 정보를 안전하게 저장하고 암호화 할 수 있습니다. 이 암호화 된 저장소는 Password, TLS 인증서, SSH 키, 일반 텍스트 표기되면 안되는 기타 모든 용도로 사용할 수 있습니다.
+HCP Terraform/Terraform Enterprise는 자격 증명같은 민감한 정보를 안전하게 저장하고 암호화 할 수 있습니다. 이 암호화 된 저장소는 Password, TLS 인증서, SSH 키, 일반 텍스트 표기되면 안되는 기타 모든 용도로 사용할 수 있습니다.
 
-.center[![:scale 70%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/aws_encrypted_vars.png)]
+.center[![:scale 70%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/aws_encrypted_vars.png)]
 
 ???
 다음은 작업 공간 내에서 사용할 수 있도록 AWS 자격 증명을 안전하게 저장하는 예입니다. 일단 설정되면 사용자가 관리 할 필요가 없습니다.
@@ -645,8 +645,8 @@ Terraform Cloud/Enterprise는 자격 증명같은 민감한 정보를 안전하�
 ---
 name: terraform-teams
 class: title, smokescreen, shelf
-background-image: url(https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/teamwork.png)
-# Terraform Cloud Teams
+background-image: url(https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/teamwork.png)
+# HCP Terraform Teams
 ## Role-Based Access Controls (RBAC)
 
 ???
@@ -656,7 +656,7 @@ background-image: url(https://hashicorp.github.io/field-workshops-terraform/slid
 name: terraform-rbac-2
 class: img-right
 # Terraform 협업을 위한 팀(Team)
-![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/teams_gui.png)
+![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/teams_gui.png)
 
 Team은 사용자의 역할에 따라 Terraform 인프라의 여러 부분에 다양한 수준의 액세스 권한을 부여하는 데 사용됩니다.
 
@@ -691,7 +691,7 @@ class: title
 ---
 name: version-control-title
 class: title, smokescreen, shelf
-background-image: url(https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/git_log.png)
+background-image: url(https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/git_log.png)
 
 # Terraform에 VCS 더하기
 ## Version Control Systems
@@ -708,23 +708,23 @@ name: whats-a-vcs
 class: img-right
 # Version Control System (VCS) 란?
 
-![:scale 70%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/distributed_vcs.png)
+![:scale 70%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/distributed_vcs.png)
 
 버전 제어 시스템은 사용자가 인프라 및 애플리케이션의 변경 사항을 저장, 추적, 테스트 및 공동 작업 할 수있는 애플리케이션입니다.
 
-Terraform Cloud는 가장 일반적인 버전 제어 시스템과 통합됩니다.
+HCP Terraform는 가장 일반적인 버전 제어 시스템과 통합됩니다.
 
 ???
-git (버전 제어 시스템)을 GitHub (세계에서 가장 큰 git 저장소 모음을 포함하는 웹 기반 애플리케이션)와 혼동하지 않도록하십시오. git의 다른 저장소는 무엇입니까? Bitbucket, GitLab은 모두 Terraform Cloud에서 지원됩니다. 오늘은 GitHub로 작업하지만 주요 git 공급 업체 소프트웨어와 통합 할 수 있습니다.
+git (버전 제어 시스템)을 GitHub (세계에서 가장 큰 git 저장소 모음을 포함하는 웹 기반 애플리케이션)와 혼동하지 않도록하십시오. git의 다른 저장소는 무엇입니까? Bitbucket, GitLab은 모두 HCP Terraform에서 지원됩니다. 오늘은 GitHub로 작업하지만 주요 git 공급 업체 소프트웨어와 통합 할 수 있습니다.
 
 ---
-name: tfc-infra-as-code-workflow
+name: hcp-terraform-infra-as-code-workflow
 class: img-left
-# Terraform Cloud와 VCS 결합
+# HCP Terraform와 VCS 결합
 
-![:scale 70%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/git_noobs.png)
+![:scale 70%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/git_noobs.png)
 
-Terraform Cloud는 GitHub Enterprise, Gitlab 및 Bitbucket의 소스 코드 저장소와 직접 통합 할 수 있습니다. 이를 통해 코드 검토, 테스트 및 승인을 통해 간단한 DevOps 워크 플로를 구축 할 수 있습니다.
+HCP Terraform는 GitHub Enterprise, Gitlab 및 Bitbucket의 소스 코드 저장소와 직접 통합 할 수 있습니다. 이를 통해 코드 검토, 테스트 및 승인을 통해 간단한 DevOps 워크 플로를 구축 할 수 있습니다.
 
 https://xkcd.com/1597/
 
@@ -745,12 +745,12 @@ class: img-right-full
 각 팀은 필요에 따라 Terraform 코드를 제공하거나 사용할 수 있습니다.
 
 ???
-모든 테라 폼 코드를 git repos에 저장하면 사용자 협업과 같은 추가 기능을 활성화 합니다. 이것은 CommitStrip이라는 재미있는 만화입니다. 개발자와 운영팀이 함께 일하는 법을 배우려고합니다. Terraform Cloud는 이러한 팀을보다 생산적인 방식으로 더 가깝게 만드는 데 도움이됩니다.
+모든 테라 폼 코드를 git repos에 저장하면 사용자 협업과 같은 추가 기능을 활성화 합니다. 이것은 CommitStrip이라는 재미있는 만화입니다. 개발자와 운영팀이 함께 일하는 법을 배우려고합니다. HCP Terraform는 이러한 팀을보다 생산적인 방식으로 더 가깝게 만드는 데 도움이됩니다.
 
 ---
 name: vcs-driven-workflow
 # 테스트 파이프라인의 자동화
-.center[![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/git_workflow_tests.png)]
+.center[![:scale 60%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/git_workflow_tests.png)]
 
 Terraform 코드가 버전 제어 시스템에 저장되면 pull 요청, 코드 검토 및 테스트와 같은 추가 기능을 활성화합니다. 다음은 Training Lab 저장소에서 실행되는 몇 가지 테스트를 보여주는 예입니다.
 
@@ -760,7 +760,7 @@ VCS에 코드를 저장하면 자동화 된 테스트 파이프 라인을 구축
 ---
 name: everything-is-recorded
 # 이제, 모든 변경사항은 추적 됩니다.
-.center[![:scale 100%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/git_commit_log.png)]
+.center[![:scale 100%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/git_commit_log.png)]
 
 모든 인프라 변경 사항은 git 로그에 기록되고 추적됩니다. 변경 한 사람, 변경된 사항, 변경 사항을 승인 한 사람, 변경 한시기와 이유를 항상 정확하게 알 수 있습니다.
 
@@ -770,7 +770,7 @@ name: everything-is-recorded
 ---
 name: sentinel-policy-enforcement
 class: title, smokescreen, shelf
-background-image: url(https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/security_lasers.jpg)
+background-image: url(https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/security_lasers.jpg)
 # Sentinel
 ## Terraformd에서 정책을 코드로 실행
 
@@ -824,7 +824,7 @@ name: sentinel-enforcement-levels
 ---
 name: org-or-workspace
 # 조직 또는 작업 영역에 Sentinel 적용
-.center[![:scale 80%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/policy_workspaces.png)]
+.center[![:scale 80%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/policy_workspaces.png)]
 
 ???
 정책 시행에 대해 매우 구체적이거나 매우 광범위 할 수 있습니다. 조직 전체의 정책을 구현하여 기본 보안 규칙이 항상 모든 곳에서 준수되도록 할 수 있습니다.
@@ -854,7 +854,7 @@ class: title
 ---
 name: private-module-registry
 class: title, smokescreen, shelf
-background-image: url(https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/lego_wallpaper.jpg)
+background-image: url(https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/lego_wallpaper.jpg)
 # Terraform Modules
 ## 재사용 가능한 Infrastructure as a Code
 
@@ -864,7 +864,7 @@ background-image: url(https://hashicorp.github.io/field-workshops-terraform/slid
 ---
 name: what-even-is-module
 # Terraform Module이 뭘까요?
-.center[![:scale 90%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/aws_vpc_module.png)]
+.center[![:scale 90%](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/aws_vpc_module.png)]
 
 모듈은 사용자에게 불필요한 복잡성을 숨기는 재사용 가능한 Terraform 코드 단위입니다. 예제의 모듈은 8 개의 변수로 표준 VPC 구성을 생성합니다.
 
@@ -893,12 +893,12 @@ name: how-modules-configured
 name: private-module-registry
 class: img-right
 
-# Private Module Registry
-![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/aws_pmr.png)
+# Terraform Private Registry
+![](https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/aws_pmr.png)
 
 Terraform 모듈은 인프라를 구축하는 데 사용할 수있는 재사용 가능한 Terraform 코드 패키지입니다.
 
-Terraform Cloud에는 조직과 팀에 모듈을 저장, 버전 화 및 배포 할 수있는 비공개 모듈 레지스트리가 포함되어 있습니다.
+HCP Terraform에는 조직과 팀에 모듈을 저장, 버전 화 및 배포 할 수있는 비공개 모듈 레지스트리가 포함되어 있습니다.
 
 ???
 공용 모듈 레지스트리와 같지만 사용자 만 액세스 할 수있는 자체 Terraform 조직 내에서 실행됩니다. 이렇게하면 개인 또는 기밀 코드를 공유하거나 공용 모듈을 가져 와서 자신이 사용하도록 포크 할 수 있습니다.
@@ -906,12 +906,12 @@ Terraform Cloud에는 조직과 팀에 모듈을 저장, 버전 화 및 배포 �
 ---
 name: api-driven-workflows
 class: title, smokescreen, shelf
-background-image: url(https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-cloud/images/enter_the_matrix.jpg)
-# Terraform Cloud API
+background-image: url(https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/images/enter_the_matrix.jpg)
+# HCP Terraform API
 ## 모든것을 자동화하기
 
 ???
-이 섹션에서는 Terraform Cloud API를 사용하여 자동화를 구축 할 수있는 것의 작은 샘플을 제공합니다. API는 기본 Terraform 지원 또는 통합이없는 시스템에서도 Terraform Cloud와 상호 작용할 수있는 명확하고 잘 알려진 방법을 제공합니다.
+이 섹션에서는 HCP Terraform API를 사용하여 자동화를 구축 할 수있는 것의 작은 샘플을 제공합니다. API는 기본 Terraform 지원 또는 통합이없는 시스템에서도 HCP Terraform와 상호 작용할 수있는 명확하고 잘 알려진 방법을 제공합니다.
 
 ---
 name: whats-an-api
@@ -934,7 +934,7 @@ API는 인터넷의 기본 언어입니다. Akamai 연구에 따르면 인터넷
 
 ---
 name: hcp-terraform-api
-# Terraform Cloud API - 동작
+# HCP Terraform API - 동작
 ```bash
 # Create a workspace using the API
 curl --header "Authorization: Bearer $TOKEN" --header \
@@ -954,7 +954,7 @@ https://app.terraform.io/api/v2/organizations/$ORG/workspaces
 
 ---
 name: api-use-cases
-# Terraform Cloud API - 사용 사례
+# HCP Terraform API - 사용 사례
 
 * CI/CD 테스트 파이프 라인
 * 워크 플로우 관리 시스템과 연결
@@ -963,13 +963,13 @@ name: api-use-cases
 * 특정 요구에 맞는 사용자 지정 명령 줄 스크립트
 
 ???
-다음은 Terraform Cloud API로 빌드 할 수있는 몇 가지 사항입니다.
+다음은 HCP Terraform API로 빌드 할 수있는 몇 가지 사항입니다.
 
 ---
 name: lab-exercise-4
 # 👩‍💻 Lab Exercise: Modules / API Automation
 <br><br>
-이 실습에서는 Terraform Cloud를 사용한 프라이빗 모듈 레지스트리 및 API 자동화에 대해 다룹니다.
+이 실습에서는 HCP Terraform를 사용한 프라이빗 모듈 레지스트리 및 API 자동화에 대해 다룹니다.
 
 중단 한 부분부터 실습을 계속합니다.
 
@@ -1001,12 +1001,12 @@ https://instruqt.com/hashicorp/tracks/hcp-terraform-bonus-lab
 ---
 name: additional-resources-tfe
 # Additional Resources
-Terraform Enterprise 또는 Terraform Cloud에 대해 자세히 알아 보려면 아래 링크를 방문하십시오.
+Terraform Enterprise 또는 HCP Terraform에 대해 자세히 알아 보려면 아래 링크를 방문하십시오.
 
 Terraform Enterprise Product Page
 https://www.hashicorp.com/products/terraform/
 
-Why Consider Terraform Enterprise Over Open Source?
+Why Consider Terraform Enterprise Over Community Edition?
 https://www.hashicorp.com/resources/why-consider-terraform-enterprise-over-open-source
 
 Terraform AWS Provider Documentation

@@ -36,8 +36,8 @@
                         <tspan x="272" y="53">as-code modules, policies </tspan>
                         <tspan x="272" y="64">and integration run tasks.</tspan>
                     </text>
-                    <text id="Use-Terraform-Cloud" font-family="Roboto-Regular, Roboto" font-size="10" font-weight="normal" letter-spacing="0.15" fill="#000000">
-                        <tspan x="0" y="18">Use Terraform Cloud to </tspan>
+                    <text id="Use-HCP-Terraform" font-family="Roboto-Regular, Roboto" font-size="10" font-weight="normal" letter-spacing="0.15" fill="#000000">
+                        <tspan x="0" y="18">Use HCP Terraform to </tspan>
                         <tspan x="0" y="29">safely store sensitive </tspan>
                         <tspan x="0" y="40">materials, including </tspan>
                         <tspan x="0" y="51">Terraform plans and </tspan>

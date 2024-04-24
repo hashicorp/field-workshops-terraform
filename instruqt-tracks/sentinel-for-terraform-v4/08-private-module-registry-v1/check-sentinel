@@ -12,7 +12,7 @@ fgrep -qL "<condition_1>" require-modules-from-pmr-a.sentinel && fail-message "Y
 
 fgrep -q 'index not matches "(.+):(.+)"' require-modules-from-pmr-a.sentinel || fgrep -q 'index not matches ".+:.+"' require-modules-from-pmr-a.sentinel || fgrep -q 'index matches "^[^:]*$"' require-modules-from-pmr-a.sentinel || fail-message "You have not replaced '<condition_1>' with 'index not matches \"(.+):(.+)\"' or 'index matches \"^[^:]*$\"' yet."
 
-fgrep -qL "<condition_2>" require-modules-from-pmr-a.sentinel && fail-message "You have not replaced '<condition_2>' in require-modules-from-pmr-a.sentinel with a condition that tests if the module call has a source from the desired private module registry yet."
+fgrep -qL "<condition_2>" require-modules-from-pmr-a.sentinel && fail-message "You have not replaced '<condition_2>' in require-modules-from-pmr-a.sentinel with a condition that tests if the module call has a source from the desired Terraform Private Registry yet."
 
 fgrep -q 'strings.has_prefix(mc.source, tf_address + "/" + tf_org)' require-modules-from-pmr-a.sentinel || fail-message "You have not replaced '<condition_2>' with 'strings.has_prefix(mc.source, tf_address + \"/\" + tf_org)' yet."
 

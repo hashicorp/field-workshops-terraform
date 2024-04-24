@@ -73,7 +73,7 @@ name: Table-of-Contents
 1. Azure에 VM 배포 및 구성<br>
 🔬 **Lab - Provisioning with Terraform**<br>
 1. 인프라 상태 관리 및 변경<br>
-1. Terraform Cloud<br>
+1. HCP Terraform<br>
 ⚗️ **Lab - Terraform Remote State**
 
 
@@ -449,7 +449,7 @@ class: title
 **Now that you have terraform installed and working with Azure, we can do a few dry runs before building real infrastructure. Follow along carefully, copying and pasting the commands on each slide into your shell as we go.**
 
 ---
-name: what-is-terraform-oss
+name: what-is-terraform-community
 class: img-left
 # Terraform 오픈 소스는 
 ![Terraform](images\Terraform_VerticalLogo_FullColor.png)
@@ -466,7 +466,7 @@ Go로 작성되고, 단일 바이너리 파일로 배포. 크로스 플랫폼을
 name: terraform-command-line
 class: col-2
 # Terraform CLI
-Terraform OSS는 CLI 기반 도구.
+Terraform Community Edition는 CLI 기반 도구.
 
 Terraform 명령어는 직접 입력하거나 스크립트와 같은 도구를 이용한 자동화된 입력 시 사용 가능.
 
@@ -1135,11 +1135,11 @@ class: title
 ## Terraform 클라우드
 
 ---
-name: terraform-cloud
+name: hcp-terraform
 class: img-right
 # Terraform 클라우드
 ##### Terraform 클라우드는 무료로 제공되는 SaaS 애플리케이션. 테라폼을 활용한 코드형 인프라(IaC)를 위한 최상의 Workflow를 제공.
-![Terraform Cloud](https://hashicorp.github.io/field-workshops-assets/assets/logos/Terraform_Cloud_Logo_Color_RGB.png)
+![HCP Terraform](https://hashicorp.github.io/field-workshops-assets/assets/logos/Terraform_Cloud_Logo_Color_RGB.png)
 
 * 원격 스테이트 파일 저장 및 관리
 * Terraform runs 조회 및 실행/승인 등을 위한 Web UI
@@ -1150,23 +1150,23 @@ class: img-right
 * 자동화를 위한 완벽한 HTTP API
 
 ---
-name: tfcloud-vs-tfe
+name: hcp-terraform-vs-tfe
 class: compact
 # Terraform 클라우드 ? Terraform 엔터프라이즈 ?
-**[Terraform Cloud](https://app.terraform.io/signup)** : 원격 상태 관리, API 기반 배포, 정책 관리 등을 제공하는 SaaS 애플리케이션. 인프라 유지/보수 및 운영에 대한 부담없이 Terraform을 사용하고자 하는 경우 선호. 무료.
+**[HCP Terraform](https://app.terraform.io/signup)** : 원격 상태 관리, API 기반 배포, 정책 관리 등을 제공하는 SaaS 애플리케이션. 인프라 유지/보수 및 운영에 대한 부담없이 Terraform을 사용하고자 하는 경우 선호. 무료.
 
-**[Terraform Cloud for Business](https://www.hashicorp.com/contact-sales/terraform)** Terraform Cloud와 동일한 환경을 사용하지만 보다 다음과 같은 기능이 필요한 경우 사용 (유상): SSO, Audit 로그 및 Terraform Enterprise에서 제공되는 다양한 상용 기능
+**[HCP Terraform Plus Tier](https://www.hashicorp.com/contact-sales/terraform)** HCP Terraform와 동일한 환경을 사용하지만 보다 다음과 같은 기능이 필요한 경우 사용 (유상): SSO, Audit 로그 및 Terraform Enterprise에서 제공되는 다양한 상용 기능
 
 **[Terraform Enterprise](https://www.hashicorp.com/go/terraform-enterprise)** 사용자가 원하는 환경에서 설치하여 사용. 동일한 애플리케이션. 단 인프라에 대한 관리 필요. 인프라를 직접 관리하고, 제한된 네트워크 환경에서 사용해야 하는 경우 적합. (유상)
 
-대부분의 기능이 유사하고, 구독에 따라 기능이 추가. 실습의 경우, 무료 버전의 Terraform Cloud 사용.
+대부분의 기능이 유사하고, 구독에 따라 기능이 추가. 실습의 경우, 무료 버전의 HCP Terraform 사용.
 
 ---
-name: terraform-cloud-remote-state
+name: hcp-terraform-remote-state
 # Terraform 원격 상태 관리
 기본적으로 테라폼은 작업자의 노트복 또는 콘솔 상의 작업 디렉토리에 상태 파일을 저장. 개발 또는 테스트 환경에서는 사용 가능하지만, 운영/가동계 환경에서 스테이트 파일을 보호하고 안전하게 관리하기에는 어려움이 존재.
 
-테라폼은 스테이트 파일을 원격에 저장하는 다양한 옵션을 제공. 그 중 무료 버전의 Terraform Cloud 계정을 사용해도 스테이트 파일을 무제한 저장하고 관리 가능.
+테라폼은 스테이트 파일을 원격에 저장하는 다양한 옵션을 제공. 그 중 무료 버전의 HCP Terraform 계정을 사용해도 스테이트 파일을 무제한 저장하고 관리 가능.
 
 내장된 [HashiCorp Vault](https://vaultproject.io)를 사용하여 모든 스테이트 파일은 **암호화**하여 저장. 스테이트 파일 분실이나 삭제에 대한 이슈가 사라짐. 
 
@@ -1180,7 +1180,7 @@ name: execution-mode
 
 ---
 name: lab-exercise-2c
-# 👩‍💻 Lab Exercise: Terraform Cloud
+# 👩‍💻 Lab Exercise: HCP Terraform
 마지막 실습으로 Terraform 클라우드 상에 계정을 생성하고, 스테이트 파일을 마이그레이션.
 
 
