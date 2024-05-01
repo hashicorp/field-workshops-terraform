@@ -939,7 +939,7 @@ challenges:
 
     Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "CLI-driven workflow" panel. Name your workspace **hashicat-aws**.
 
-    **Note:** If you already have a **hashicat-aws** workspace, please delete the workspace by selecting the **Settings >> Destruction and Deletion** menu, clicking the "Delete from HCP Terraform" button, typing "hashicat-aws" to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you played the [HCP Terraform with AWS](https://play.instruqt.com/hashicorp/tracks/hcp-terraform-aws) track and then played this track.
+    **Note:** If you already have a **hashicat-aws** workspace, please delete the workspace by selecting the **Settings >> Destruction and Deletion** menu, clicking the "Delete from HCP Terraform" button, typing "hashicat-aws" to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you played the [HCP Terraform with AWS](https://play.instruqt.com/hashicorp/tracks/terraform-cloud-aws) track and then played this track.
 
     Run `terraform version` on the "Shell" tab and then set the **Terraform Version** to match on the workspace's **Settings >> General** settings page.
 

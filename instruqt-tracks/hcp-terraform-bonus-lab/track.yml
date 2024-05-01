@@ -33,7 +33,7 @@ challenges:
     contents: Branch protection allows you to create rules that must be passed before
       any changes get merged into your master branch.
   - type: image
-    url: https://storage.googleapis.com/instruqt-hashicorp-tracks/hcp-terraform-bonuslab/git_branch_protection.png
+    url: https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-cloud-bonuslab/git_branch_protection.png
   assignment: |-
     Welcome back! This is the bonus lab for the HCP Terraform tracks. There are prerequisites that must be set up before you can begin the bonus lab. This is an intermediate level challenge.
 

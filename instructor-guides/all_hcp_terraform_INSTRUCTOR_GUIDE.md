@@ -99,14 +99,14 @@ Go through your track from start to finish and make sure you understand everythi
 
 ### v2 (new) tracks
 
-https://play.instruqt.com/hashicorp/tracks/hcp-terraform-aws-v2<br>
-https://play.instruqt.com/hashicorp/tracks/hcp-terraform-azure-v2<br>
-https://play.instruqt.com/hashicorp/tracks/hcp-terraform-gcp-v2<br>
+https://play.instruqt.com/hashicorp/tracks/terraform-cloud-aws-v2<br>
+https://play.instruqt.com/hashicorp/tracks/terraform-cloud-azure-v2<br>
+https://play.instruqt.com/hashicorp/tracks/terraform-cloud-gcp-v2<br>
 
 ### v1 (legacy) tracks
-https://play.instruqt.com/hashicorp/tracks/hcp-terraform-aws<br>
-https://play.instruqt.com/hashicorp/tracks/hcp-terraform-azure<br>
-https://play.instruqt.com/hashicorp/tracks/hcp-terraform-gcp<br>
+https://play.instruqt.com/hashicorp/tracks/terraform-cloud-aws<br>
+https://play.instruqt.com/hashicorp/tracks/terraform-cloud-azure<br>
+https://play.instruqt.com/hashicorp/tracks/terraform-cloud-gcp<br>
 
 
 #### Creating Instruqt Invites

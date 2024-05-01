@@ -997,7 +997,7 @@ If you have completed all the workshop content and would like to try the bonus l
 ???
 This bonus lab can be used with any of the three HCP Terraform workshops. Create an invite if you'd like to share it with your students.
 
-https://instruqt.com/hashicorp/tracks/hcp-terraform-bonus-lab
+https://instruqt.com/hashicorp/tracks/terraform-cloud-bonus-lab
 
 ---
 name: additional-resources-tfe

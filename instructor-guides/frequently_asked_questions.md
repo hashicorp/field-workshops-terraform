@@ -53,4 +53,4 @@ env | grep AWS
 
 **Q. What is the Bonus Lab?**<br>
 A. The bonus lab is meant for intermediate to advanced users who have already completed the main track. The bonus lab is a challenging combination that tests several skills learned in the HCP Terraform workshop. There are different Sentinel policies for the bonus lab depending on whether you're using AWS, Azure or GCP. Access it here:<br>
-https://instruqt.com/hashicorp/tracks/hcp-terraform-bonus-lab
+https://instruqt.com/hashicorp/tracks/terraform-cloud-bonus-lab

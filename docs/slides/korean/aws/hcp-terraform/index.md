@@ -996,7 +996,7 @@ name: bonus-lab
 ???
 이 보너스 랩은 세 가지 Terraform 클라우드 워크숍 중 하나와 함께 사용할 수 있습니다. 학생과 공유하려면 초대장을 만드세요.
 
-https://instruqt.com/hashicorp/tracks/hcp-terraform-bonus-lab
+https://instruqt.com/hashicorp/tracks/terraform-cloud-bonus-lab
 
 ---
 name: additional-resources-tfe
