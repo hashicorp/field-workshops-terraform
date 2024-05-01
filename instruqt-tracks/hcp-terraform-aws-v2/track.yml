@@ -1,6 +1,5 @@
-slug: wip-vcdl-251-hcp-terraform-aws-v2
-id: z84oifxd8sqs
-title: WIP VCDL-251 - HCP Terraform with AWS
+slug: terraform-cloud-aws-v2
+title: HCP Terraform with AWS
 teaser: |
   HCP Terraform enables infrastructure automation for provisioning, compliance, and management of any cloud, data center, and service.
 description: |-
@@ -21,7 +20,7 @@ tags:
 - enterprise
 - aws
 - terraform
-owner: hashicorp-field-ops
+owner: hashicorp
 developers:
 - thomas@hashicorp.com
 - jenna.wong@hashicorp.com
@@ -35,4 +34,3 @@ lab_config:
   sidebar_enabled: true
   feedback_recap_enabled: true
   loadingMessages: true
-checksum: "10969766454743287676"

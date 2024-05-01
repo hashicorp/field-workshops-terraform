@@ -1,6 +1,5 @@
-slug: wip-vcdl-251-hcp-terraform-gcp-v2
-id: ch829gsdemhk
-title: WIP VCDL-251 - HCP Terraform with GCP
+slug: terraform-cloud-gcp-v2
+title: HCP Terraform with GCP
 teaser: |
   HCP Terraform enables infrastructure automation for provisioning, compliance, and management of any cloud, data center, and service.
 description: |-
@@ -21,7 +20,7 @@ tags:
 - enterprise
 - terraform
 - gcp
-owner: hashicorp-field-ops
+owner: hashicorp
 developers:
 - thomas@hashicorp.com
 - jenna.wong@hashicorp.com
@@ -35,4 +34,3 @@ lab_config:
   sidebar_enabled: true
   feedback_recap_enabled: true
   loadingMessages: true
-checksum: "1405635155545408457"

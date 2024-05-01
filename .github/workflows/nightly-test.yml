@@ -161,8 +161,7 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@e28cf165c92ffef168d23c5c9000cffc8a25e117 # v1.24.0
         with:
-          # channel-id: ${{ vars.SLACK_NOTIFICATION_CHANNELS }}
-          channel-id: C070GHPBSP4 # CHANGE THIS BACK AFTER TESTING
+          channel-id: ${{ vars.SLACK_NOTIFICATION_CHANNELS }}
           payload: ${{ env.SLACK_PAYLOAD }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
@@ -171,8 +170,7 @@ jobs:
         if: ${{ steps.build-message.outputs.any_failures == 'true' }}
         uses: slackapi/slack-github-action@e28cf165c92ffef168d23c5c9000cffc8a25e117 # v1.24.0
         with:
-          # channel-id: ${{ vars.SLACK_NOTIFICATION_CHANNELS_FAIL_ONLY }}
-          channel-id: C070GE9FC9Z # CHANGE THIS BACK AFTER TESTING
+          channel-id: ${{ vars.SLACK_NOTIFICATION_CHANNELS_FAIL_ONLY }}
           payload: ${{ env.SLACK_PAYLOAD }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}

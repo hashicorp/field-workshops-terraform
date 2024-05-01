@@ -1,6 +1,5 @@
-slug: wip-vcdl-251-hcp-terraform-azure
-id: lc6k9qyxgigo
-title: WIP VCDL-251 - HCP Terraform with Azure
+slug: terraform-cloud-azure
+title: HCP Terraform with Azure
 teaser: |
   Join the ACME devops team on their journey to fully automated provisioning with Azure Cloud.
 description: |-
@@ -22,14 +21,14 @@ tags:
 - cloud
 - enterprise
 - terraform
-owner: hashicorp-field-ops
+owner: hashicorp
 developers:
 - thomas@hashicorp.com
 - swalker@hashicorp.com
 - randy.keener@hashicorp.com
 - jenna.wong@hashicorp.com
 show_timer: true
-idle_timeout: 300
+idle_timeout: 3000
 timelimit: 1200
 lab_config:
   overlay: false
@@ -38,4 +37,3 @@ lab_config:
   sidebar_enabled: true
   feedback_recap_enabled: true
   loadingMessages: true
-checksum: "405923256151354550"

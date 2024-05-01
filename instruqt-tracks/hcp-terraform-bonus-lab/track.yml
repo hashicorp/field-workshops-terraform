@@ -1,32 +1,26 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
-slug: wip-vcdl-251-hcp-terraform-bonus-lab
-id: gxdsws9y9bsu
-type: track
-title: WIP VCDL-251 - Bonus Lab - HCP Terraform
+slug: terraform-cloud-bonus-lab
+title: Bonus Lab - HCP Terraform
 teaser: |
   Ready for more? Test your HCP Terraform skills with this intermediate level lab challenge.
-description: If you've completed one of the HCP Terraform tracks and would like
-  an extra challenge, try this bonus lab. In this track you'll build an approval pipeline
+description: If you've completed one of the HCP Terraform tracks and would like an
+  extra challenge, try this bonus lab. In this track you'll build an approval pipeline
   and development branch for your Terraform code, then ensure that all tests pass
   in a dev environment before approving the change to production.
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags:
-- terraform
 - azure
 - aws
+- terraform
 - gcp
-owner: hashicorp-field-ops
+owner: hashicorp
 developers:
 - roger@hashicorp.com
 - jthompson@hashicorp.com
-private: true
-published: true
+- jenna.wong@hashicorp.com
 show_timer: true
 challenges:
 - slug: setup-our-environment
-  id: b0ek2h24eln1
+  id: ywxxkfdjwvmb
   type: challenge
   title: "\U0001F432 Bonus Lab - The Gauntlet \U0001F9D9\U0001F3FC‍♀️"
   teaser: |
@@ -115,4 +109,12 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 7200
-checksum: "9533558204772732614"
+idle_timeout: 300
+timelimit: 1200
+lab_config:
+  overlay: false
+  width: 33
+  position: right
+  sidebar_enabled: true
+  feedback_recap_enabled: true
+  loadingMessages: true

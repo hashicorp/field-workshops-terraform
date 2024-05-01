@@ -1,6 +1,5 @@
-slug: wip-vcdl-251-hcp-terraform-aws
-id: yrln3bj4agrz
-title: WIP VCDL-251 - HCP Terraform with AWS
+slug: terraform-cloud-aws
+title: HCP Terraform with AWS
 teaser: |
   Join the ACME devops team on their journey to fully automated provisioning with AWS Cloud.
 description: |-
@@ -22,14 +21,14 @@ tags:
 - enterprise
 - aws
 - terraform
-owner: hashicorp-field-ops
+owner: hashicorp
 developers:
 - thomas@hashicorp.com
 - randy.keener@hashicorp.com
 - swalker@hashicorp.com
 - jenna.wong@hashicorp.com
 show_timer: true
-idle_timeout: 300
+idle_timeout: 3000
 timelimit: 14400
 lab_config:
   overlay: false
@@ -38,4 +37,3 @@ lab_config:
   sidebar_enabled: true
   feedback_recap_enabled: true
   loadingMessages: true
-checksum: "13662728494172232830"

@@ -1,6 +1,6 @@
-slug: wip-vcdl-251-hcp-terraform-gcp
-id: i3z9weyeylq7
-title: WIP VCDL-251 - HCP Terraform with GCP
+slug: terraform-cloud-gcp
+id: h5wffylde93s
+title: HCP Terraform with GCP
 teaser: |
   Join the ACME devops team on their journey to fully automated provisioning with GCP.
 description: |-
@@ -24,15 +24,12 @@ tags:
 - gcp
 owner: hashicorp-field-ops
 developers:
-- roger@hashicorp.com
-- sean.carolan@hashicorp.com
 - thomas@hashicorp.com
 - swalker@hashicorp.com
 - randy.keener@hashicorp.com
-- gilberto@hashicorp.com
 - jenna.wong@hashicorp.com
 show_timer: true
-idle_timeout: 300
+idle_timeout: 3000
 timelimit: 1200
 lab_config:
   overlay: false
@@ -41,4 +38,4 @@ lab_config:
   sidebar_enabled: true
   feedback_recap_enabled: true
   loadingMessages: true
-checksum: "13340714147389422368"
+checksum: "8278109672787578470"
