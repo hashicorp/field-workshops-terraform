@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 slug: terraform-cloud-gcp
 id: h5wffylde93s
 title: HCP Terraform with GCP
@@ -30,7 +33,7 @@ developers:
 - jenna.wong@hashicorp.com
 show_timer: true
 idle_timeout: 3000
-timelimit: 1200
+timelimit: 14400
 lab_config:
   overlay: false
   width: 25

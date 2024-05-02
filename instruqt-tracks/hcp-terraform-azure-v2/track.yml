@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 slug: terraform-cloud-azure-v2
 title: HCP Terraform with Azure
 teaser: |
@@ -26,7 +29,7 @@ developers:
 - jenna.wong@hashicorp.com
 show_timer: true
 idle_timeout: 300
-timelimit: 1200
+timelimit: 14400
 lab_config:
   overlay: false
   width: 33

@@ -21,3 +21,12 @@ developers:
 - roger@hashicorp.com
 - jenna.wong@hashicorp.com
 show_timer: true
+idle_timeout: 300
+timelimit: 14400
+lab_config:
+  overlay: false
+  width: 33
+  position: right
+  sidebar_enabled: true
+  feedback_recap_enabled: true
+  loadingMessages: true

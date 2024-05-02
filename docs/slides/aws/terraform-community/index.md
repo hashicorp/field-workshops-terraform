@@ -450,7 +450,7 @@ class: img-left
 # What is Terraform?
 ![Terraform](images\Terraform_VerticalLogo_FullColor.png)
 
-Terraform is a community provisioning tool.
+Terraform Community Edition is a free, downloadable tool that you interact with on the command line. It lets you provision infrastructure on any cloud provider and manages configuration, plugins, infrastructure, and state.
 
 It ships as a single binary which is written in Go. Terraform is cross platform and can run on Linux, Windows, or MacOS.
 
