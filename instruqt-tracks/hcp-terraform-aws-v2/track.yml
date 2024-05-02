@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 slug: terraform-cloud-aws-v2
 title: HCP Terraform with AWS
 teaser: |
