@@ -25,7 +25,7 @@ tags:
 - enterprise
 - terraform
 - gcp
-owner: hashicorp-field-ops
+owner: hashicorp
 developers:
 - thomas@hashicorp.com
 - swalker@hashicorp.com
