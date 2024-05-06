@@ -61,18 +61,18 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 7200
-- slug: terraform-cloud-setup
+- slug: hcp-terraform-setup
   id: wor8lync260t
   type: challenge
-  title: ☁️ Terraform Cloud Setup
+  title: ☁️ HCP Terraform Setup
   teaser: |
-    Terraform Cloud offers almost all the same features as on-premise Terraform Enterprise.
+    HCP Terraform offers almost all the same features as on-premise Terraform Enterprise.
   notes:
   - type: text
-    contents: Terraform Cloud offers features like remote state and a private module
+    contents: HCP Terraform offers features like remote state and a private module
       registry.
   assignment: |-
-    During this challenge you'll sign up for a free Terraform Cloud account. Click on the URL below and sign up for an account if you don't have one already:
+    During this challenge you'll sign up for a free HCP Terraform account. Click on the URL below and sign up for an account if you don't have one already:
 
     https://app.terraform.io/signup/account
 
@@ -80,7 +80,7 @@ challenges:
 
     Next you'll configure a token for running terraform commands from your workstation.
 
-    Let's generate a new **user token** for use on your workstation. Visit the User Settings > Tokens page in Terraform Cloud:
+    Let's generate a new **user token** for use on your workstation. Visit the User Settings > Tokens page in HCP Terraform:
 
     https://app.terraform.io/app/settings/tokens
 
@@ -88,7 +88,7 @@ challenges:
 
     Back in the Instruqt track, you need to add your API token to a file called "credentials.tfrc.json". Select the "Credentials File" tab and open the `/root/.terraform.d/credentials.tfrc.json` file directly.
 
-    Replace the part that says YOURTOKEN with what you copied from Terraform Cloud. Be sure to save the file.
+    Replace the part that says YOURTOKEN with what you copied from HCP Terraform. Be sure to save the file.
 
     Your token is now safely stored in the "credentials.tfrc.json" file.
 
@@ -116,9 +116,9 @@ challenges:
   notes:
   - type: text
     contents: Terraform modules can be stored in your Version Control System (VCS),
-      and automatically imported into the Private Module Registry
+      and automatically imported into the Terraform Private Registry
   assignment: |-
-    In order for different teams and individuals to be able to work on the same Terraform code, you need to use a Version Control System (VCS). Terraform Cloud can integrate with the most popular VCS systems including GitHub, GitLab and Bitbucket.
+    In order for different teams and individuals to be able to work on the same Terraform code, you need to use a Version Control System (VCS). HCP Terraform can integrate with the most popular VCS systems including GitHub, GitLab and Bitbucket.
 
     You will need a free GitHub.com account for this challenge. We recommend using a personal account for training instead your work account (if you have one).
 
@@ -126,7 +126,7 @@ challenges:
 
     https://www.terraform.io/docs/cloud/vcs/github.html
 
-    Once you've configured GitHub access, you can import modules into your private module registry.
+    Once you've configured GitHub access, you can import modules into your Terraform Private Registry.
   tabs:
   - title: Code Editor
     type: code
@@ -138,7 +138,7 @@ challenges:
   - title: Configuring Github Access
     type: external
     url: https://www.terraform.io/docs/cloud/vcs/github.html
-  - title: Terraform Cloud
+  - title: HCP Terraform
     type: external
     url: https://app.terraform.io
   difficulty: basic
@@ -146,15 +146,15 @@ challenges:
 - slug: private-module-registry
   id: jpljzmbguwas
   type: challenge
-  title: "\U0001F4DA Private Module Registry"
+  title: "\U0001F4DA Terraform Private Registry"
   teaser: |
-    Some of your users want a simple way to deploy databases and network configurations. Enter the Private Module Registry, where you can store standard, re-usable Terraform configurations that others can use in their own workspaces.
+    Some of your users want a simple way to deploy databases and network configurations. Enter the Terraform Private Registry, where you can store standard, re-usable Terraform configurations that others can use in their own workspaces.
   notes:
   - type: text
     contents: Storing your modules in a git repo allows you to do code reviews and
       tag different versions.
   assignment: |-
-    In this challenge you'll learn to use the Private Module Registry, which allows you to store and version re-usable snippets of Terraform code. Think of modules like custom resources for your own environment.
+    In this challenge you'll learn to use the Terraform Private Registry, which allows you to store and version re-usable snippets of Terraform code. Think of modules like custom resources for your own environment.
 
     Instead of writing this module from scratch you can copy the existing vpc module from the public Terraform registry. Visit this URL to view the VPC module:
 
@@ -162,13 +162,13 @@ challenges:
 
     Note the **Source:** link that points at the github repository for this module. Click on the Source URL. As you did in previous workshop tracks, create your own fork of this repository with the **Fork** button.
 
-    Back in the Terraform Cloud control panel, click on the **Modules** link at the top of the page. Click on the **+Add Module** button. Click on the Github button and select the terraform-aws-vpc module that you just forked.
+    Back in the HCP Terraform control panel, click on the **Modules** link at the top of the page. Click on the **+Add Module** button. Click on the Github button and select the terraform-aws-vpc module that you just forked.
 
     Click on **Publish Module**.
 
     Create a new Terraform file called `main.tf` in your "workspace" directory and add a module to your module in it to create a new VPC. You'll also want to add an `aws` provider block and set its `region` attribute to `eu-west-1` to match the availability zones in the sample code.
 
-    HINT: The docs are your friend. They might even have an example of how the code should look. But be sure to set the source of the module to the one shown for it in your Private Module Registry. Don't use the source from the module's README.md file.
+    HINT: The docs are your friend. They might even have an example of how the code should look. But be sure to set the source of the module to the one shown for it in your Terraform Private Registry. Don't use the source from the module's README.md file.
 
     After you finish editing your main.tf file, you can initialize your Terraform configuration with this command:
 
@@ -210,7 +210,7 @@ challenges:
   - title: Shell
     type: terminal
     hostname: workstation
-  - title: Terraform Cloud
+  - title: HCP Terraform
     type: external
     url: https://app.terraform.io
   difficulty: basic

@@ -1,0 +1,28 @@
+#!/bin/bash -l
+set -e
+
+cd /root/hashicat-$CLOUD_ENV
+git pull origin main
+
+cat /root/hcp-terraform/exercises/11-main.tf >> /root/hcp-terraform/main.tf
+
+TFC_TOKEN=$(jq -r '.credentials."app.terraform.io".token' /root/.terraform.d/credentials.tfrc.json 2>/dev/null)
+TF_ORG=$(agent variable get TF_ORG)
+
+OUTPUT=$(curl https://app.terraform.io/api/v2/organizations/"$TF_ORG" \
+  --silent \
+  --header "Authorization: Bearer $TFC_TOKEN" \
+  --header "Content-Type: application/vnd.api+json" \
+  --request PATCH \
+  --data '{
+    "data": {
+        "type": "organizations",
+        "attributes": {
+          "cost-estimation-enabled": true
+        }
+    }
+  }')
+
+echo "$OUTPUT" | jq .
+
+exit 0

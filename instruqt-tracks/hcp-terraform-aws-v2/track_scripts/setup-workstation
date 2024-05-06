@@ -1,0 +1,190 @@
+#!/bin/bash -l
+# Track setup script
+
+set -e
+
+# Wait for Instruqt to finish booting the VM
+# This is better than doing sleep
+while [ ! -f /opt/instruqt/bootstrap/host-bootstrap-completed ]
+do
+    echo "Waiting for Instruqt to finish booting the VM"
+    sleep 1
+done
+
+# To repurpose this script, we choose the target 
+# Cloud Environment using this variable
+# export CLOUD_ENV="aws"
+
+# We use GitHub gh to load secrets in our working repo
+# For everything else, we use git
+snap install gh
+
+# Ensure we're working on the home directory
+cd /root
+
+# Get our working assets
+echo "Cloning assets..."
+git clone https://github.com/hashicorp/se-workshop-hashicat-app.git
+echo "Done cloning assets..."
+
+mv /root/se-workshop-hashicat-app/hashicat-$CLOUD_ENV /root/hashicat-$CLOUD_ENV
+mv /root/se-workshop-hashicat-app/hashicat-policies/$CLOUD_ENV /root/hashicat-$CLOUD_ENV/policies
+
+# rm -fR  /root/hashicat-$CLOUD_ENV/policies/$CLOUD_ENV
+# rm -fR  /root/hashicat-$CLOUD_ENV/policies/azure
+# rm -fR  /root/hashicat-$CLOUD_ENV/policies/gcp
+
+mv /root/se-workshop-hashicat-app/hcp-terraform /root/hcp-terraform
+mv /root/se-workshop-hashicat-app/terraform-github /root/terraform-github
+mv /root/se-workshop-hashicat-app/terraform-api /root/terraform-api
+mv /root/se-workshop-hashicat-app/scripts /root/scripts
+rm -fR /root/se-workshop-hashicat-app
+
+# We should end up with the following structure:
+#
+#  ├── hashicat-aws
+#  │   ├── files
+#  │   └── policies
+#  ├── hcp-terraform
+#  │   └── exercises
+#  └── terraform-github
+#  └── terraform-api
+#  └── scripts
+
+# Set the initial workspace name
+export WORKSPACE="hashicat-${CLOUD_ENV}"
+cp /root/hcp-terraform/terraform.tfvars.example /root/hcp-terraform/terraform.tfvars
+
+cd /root/hcp-terraform
+sed -i "s/YOUR_WORKSPACE/$WORKSPACE/g" terraform.tfvars
+
+# We do this to ear-mark the variables associated 
+# with the environment in the TFC workspace
+sed -i "s/CLOUD_ENV/$CLOUD_ENV/g" variables.tf
+
+# Our only commit/pull directory
+GITDIR="/root/hashicat-$CLOUD_ENV"
+
+# Create VSC startup script
+cat << EOF > /etc/systemd/system/code-server.service
+[Unit]
+Description=Code Server
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/usr/bin/code-server --host 0.0.0.0 --port 8443 --cert --auth none /root
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+mkdir -p /root/.local/share/code-server/User
+cat << EOF > /root/.local/share/code-server/User/settings.json
+{
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.startupEditor": "none",
+  "security.workspace.trust.enabled": false,
+  "editor.minimap.enabled": false,
+  "terraform.experimentalFeatures.validateOnSave": true,
+  "terraform.experimentalFeatures.prefillRequiredFields": true,
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file"
+  },
+  "[terraform-vars]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file"
+  },
+  "files.exclude": {
+    "**/.bash*": true,
+    "**/.cache": true,
+    "**/.config": true,
+    "**/.docker": true,
+    "**/.gnupg": true,
+    "**/.git-credentials": true,
+    "**/.gitconfig": true,
+    "**/.local": true,
+    "**/.profile": true,
+    "**/.ssh": true,
+    "**/.terraform.d": true,
+    "**/.viminfo": true,
+    "**/.vimrc": true,
+    "**/.vscode": true,
+    "**/terraform-github": true,
+    "**/terraform-api": true,
+    "**/scripts": true,
+    "**/snap": true
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.activeIconPack": "react",
+  "material-icon-theme.files.associations": {},
+  "material-icon-theme.folders.theme": "classic",
+  "material-icon-theme.hidesExplorerArrows": true,
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "vscode-pets.petSize": "medium",
+  "vscode-pets.position": "explorer",
+  "vscode-pets.theme": "forest"
+}
+EOF
+
+mkdir -p /root/.vscode
+cat << EOF > /root/.vscode/extensions.json
+{
+  "recommendations": [
+    "hashicorp.terraform",
+    "github.vscode-pull-request-github",
+    "pkief.material-icon-theme",
+    "tonybaloney.vscode-pets"
+  ],
+  "unwantedRecommendations": []
+}
+EOF
+
+# Start VSC
+systemctl enable code-server
+systemctl start code-server
+
+# Configure environment variables
+if [ $CLOUD_ENV == "aws" ]; then
+  # Create required variables spec in TF
+  echo "export TF_VAR_instruqt_aws_access_key_id=\$AWS_ACCESS_KEY_ID" >> /root/.bashrc
+  echo "export TF_VAR_instruqt_aws_secret_access_key=\$AWS_SECRET_ACCESS_KEY" >> /root/.bashrc
+
+  # Set up TF code block for AWS
+  mv /root/hcp-terraform/exercises/aws-env_vars_main.tf /root/hcp-terraform/exercises/05-env_vars_main.tf 
+  mv /root/hcp-terraform/exercises/aws-env_vars_variables.tf /root/hcp-terraform/exercises/05-env_vars_variables.tf
+
+  # Remove other templates 
+  rm -f /root/hcp-terraform/exercises/azure-env_vars*.tf
+  rm -f /root/hcp-terraform/exercises/gcp-env_vars*.tf
+elif [ $CLOUD_ENV == "azure" ]; then
+  # Set up TF code block for Azure
+  mv /root/hcp-terraform/exercises/azure-env_vars_main.tf /root/hcp-terraform/exercises/05-env_vars_main.tf 
+  mv /root/hcp-terraform/exercises/azure-env_vars_variables.tf /root/hcp-terraform/exercises/05-env_vars_variables.tf
+
+  # Remove other templates 
+  rm -f /root/hcp-terraform/exercises/aws-env_vars*.tf
+  rm -f /root/hcp-terraform/exercises/gcp-env_vars*.tf
+elif [ $CLOUD_ENV == "gcp" ]; then
+  # Set up TF code block for GCP
+  mv /root/hcp-terraform/exercises/gcp-env_vars_main.tf /root/hcp-terraform/exercises/05-env_vars_main.tf 
+  mv /root/hcp-terraform/exercises/gcp-env_vars_variables.tf /root/hcp-terraform/exercises/05-env_vars_variables.tf
+
+  # Remove other templates 
+  rm -f /root/hcp-terraform/exercises/aws-env_vars*.tf
+  rm -f /root/hcp-terraform/exercises/azure-env_vars*.tf
+fi
+
+# Dealing with "mesg: ttyname failed: Inappropriate ioctl for device"
+sed -i "s/mesg n || true//g" /root/.profile
+echo "tty -s && mesg n" >> /root/.profile
+
+exit 0

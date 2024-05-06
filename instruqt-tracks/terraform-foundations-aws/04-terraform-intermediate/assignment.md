@@ -31,7 +31,7 @@ tabs:
   hostname: tf-foundations
 - title: Slides
   type: website
-  url: https://hashicorp.github.io/field-workshops-terraform/slides/multi-cloud/terraform-cloud/tf-intermediate/#2
+  url: https://hashicorp.github.io/field-workshops-terraform/slides/multi-cloud/hcp-terraform/tf-intermediate/#2
 - title: Terraform Data Sources
   type: website
   url: https://www.terraform.io/docs/configuration/data-sources.html
@@ -59,9 +59,9 @@ In this exercise we will be using everything we've learned so far together, as w
 
 Please review the additional resources we added to your existing project.
 
-[<ins>**Data Sources**</ins>](https://www.terraform.io/docs/configuration/data-sources.html)
+[<ins>**Terraform Data Sources**</ins>](https://www.terraform.io/docs/configuration/data-sources.html)
 
-Data sources allow data to be fetched or computed for use elsewhere in Terraform configuration. Here we are using an aws_ami data source to search for the latest version
+Terraform Data Sources allow data to be fetched or computed for use elsewhere in Terraform configuration. Here we are using an `aws_ami` data source to search for the latest version
 of an Ubuntu image in the AWS AMI repository. We will use this image further down when creating an EC2 instance
 
 ```
@@ -83,9 +83,9 @@ Once a data source is defined its attributes become available for use in express
 
 You can reference a specific attribute as `data.<TYPE>.<NAME>.<ATTRIBUTE>`. For our AWS AMI example above, if you wanted to reference the AMI's ARN you would use `data.aws_ami.ubuntu.arn`
 
-[<ins>**Local Values**</ins>](https://www.terraform.io/docs/configuration/locals.html)
+[<ins>**Terraform Local Values**</ins>](https://www.terraform.io/docs/configuration/locals.html)
 
-A local value assigns a name to an expression, so you can use it multiple times within a module without repeating it.
+A Terraform Local Value assigns a name to an expression, so you can use it multiple times within a module without repeating it.
 
 Local values can be helpful to avoid repeating the same values or expressions multiple times in a configuration, but if overused they can also make a
 configuration hard to read by future maintainers by hiding the actual values used.
@@ -113,7 +113,7 @@ The Terraform language includes a number of built-in functions that you can call
 While our networking components are not extremely complex, we want to be able to reuse this pattern for other web applications and build in some
 organizational best practices.
 
-IMPORTANT: comment out or delete your VPC and subnet terraform resource definitions as well as the vpc_cidr and subnet_cidr variables in Terraform Cloud. We will now be
+IMPORTANT: comment out or delete your VPC and subnet terraform resource definitions as well as the vpc_cidr and subnet_cidr variables in HCP Terraform. We will now be
 leveraging a network module instead. This module contains similar code and allows us to abstract away those network details.
 
 The source of our module is external from our project. By doing this, we decouple these components. This allows for further access controls around the code

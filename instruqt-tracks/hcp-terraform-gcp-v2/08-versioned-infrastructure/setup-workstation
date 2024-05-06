@@ -1,0 +1,23 @@
+#!/bin/bash -l
+set -e
+
+# Set workdir
+set-workdir /root/terraform-github
+
+# Replace the entire file. We need to do this
+# in this manner as to replacethe code block for
+# the TFE workspace. We can manipulate the code with
+# bash but this is more straight forward.
+cp -f /root/hcp-terraform/exercises/08-main.tf /root/hcp-terraform/main.tf
+
+# Aggregate the required content 
+# main.tf
+cat /root/hcp-terraform/exercises/05-env_vars_main.tf >> /root/hcp-terraform/main.tf
+cat /root/hcp-terraform/exercises/05-tf_vars_main.tf >> /root/hcp-terraform/main.tf
+cat /root/hcp-terraform/exercises/08-users_main.tf >> /root/hcp-terraform/main.tf
+cat /root/hcp-terraform/exercises/08-github_main.tf >> /root/hcp-terraform/main.tf
+
+# Aggregate with new variables
+cat /root/hcp-terraform/exercises/08-variables.tf >> /root/hcp-terraform/variables.tf
+
+exit 0

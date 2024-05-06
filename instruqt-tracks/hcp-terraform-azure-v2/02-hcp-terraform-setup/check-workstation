@@ -1,0 +1,90 @@
+#!/bin/bash -l
+# Copyright (c) HashiCorp, Inc.
+set -euxvo pipefail
+
+# Get HCP Terraform token and organization
+# these jq commands may fail, that's okay, we account for 
+# that later, so temporarily disable set -e
+set +e
+# Check to make sure these are the right paths
+TFC_TOKEN=$(jq -r '.credentials."app.terraform.io".token' /root/.terraform.d/credentials.tfrc.json 2>/dev/null)
+echo "THIS IS THE TOKEN: ${TFC_TOKEN}" 
+set -e
+
+# Create /tmp/skip-check to disable this check
+# This /tmp/skip-check file is only necessary for the instruqt track test command 
+# When running this track as a customer/participant, skipping is disabled so it
+# this code will not have an affect.
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+# Save the Terraform Org and Workspace name as env variables 
+export ORG=$(grep organization /root/hcp-terraform/terraform.tfvars | cut -d '"' -f2)
+export WORKSPACE=$(grep workspace /root/hcp-terraform/terraform.tfvars | cut -d '"' -f2)
+
+# Do we have a valid token
+if [ -z "${TFC_TOKEN}" ]; then
+    fail-message "Unable to find HCP Terraform Token, please double-check the \"3- HCP Terraform Token\" steps"
+    exit 1
+fi
+
+STATUS=$(curl \
+    --header "Authorization: Bearer ${TFC_TOKEN}" \
+    --header "Content-Type: application/vnd.api+json" \
+    --request GET \
+    -w "%{response_code}" \
+    -s \
+    -o /tmp/.out.json \
+    https://app.terraform.io/api/v2/account/details 2>/dev/null)
+
+if [ "${STATUS}" != "200" ]; then
+    echo "Failed to get account details, status ${STATUS}"
+    if [ -f /tmp/.out.json ]; then
+	echo "Output was:"
+	cat /tmp/.out.json
+	echo "End of output"
+    fi
+    fail-message "HCP Terraform Token is not valid, please double-check the \"3- HCP Terraform Token\" steps"
+    exit 1
+fi
+
+rm -f /tmp/.out.json
+echo "We have a valid HCP Terraform token"
+
+# Is it a trial organization
+STATUS=$(curl \
+    --header "Authorization: Bearer ${TFC_TOKEN}" \
+    --header "Content-Type: application/vnd.api+json" \
+    --request GET \
+    -w "%{response_code}" \
+    -s \
+    -o /tmp/.out.json \
+    https://app.terraform.io/api/v2/organizations/"${ORG}"/subscription 2>/dev/null) # originally TFC_ORG
+
+if [ "${STATUS}" != "200" ]; then
+    echo "Failed to get organization subscription, status ${STATUS}"
+    if [ -f /tmp/.out.json ]; then
+	echo "Output was:"
+	cat /tmp/.out.json
+	echo "End of output"
+    fi
+    fail-message "Unable to get HCP Terraform Organization Subscription, please go back to the \"2- HCP Terraform Trial Plan\" steps"
+    exit 1
+fi
+
+TRIAL=$(jq -r '.included[].attributes."identifier"' /tmp/.out.json 2>/dev/null)
+if [ -z "${TRIAL}" ]; then
+    echo ".included[].attributes.\"identifier\" was empty"
+    fail-message "Unable to determine HCP Terraform Trial Status, please go back to the \"2- HCP Terraform Trial Plan\" steps"
+    exit 1
+fi
+
+if [ "${TRIAL}" != "trial" ]; then
+    echo ".included[].attributes.\"identifier\" was '${TRIAL}' not 'trial'"
+    fail-message "Your HCP Terraform Organization is not a trial one, please go back to the \"2- HCP Terraform Trial Plan\" step"
+    exit 1
+fi
+
+exit 0

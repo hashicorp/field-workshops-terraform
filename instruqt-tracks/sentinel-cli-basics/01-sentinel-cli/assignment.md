@@ -8,7 +8,7 @@ notes:
   contents: |-
     [Sentinel](https://docs.hashicorp.com/sentinel) allows customers to implement policy-as-code in the same way that Terraform implements infrastructure-as-code.
 
-    The Sentinel Command Line Interface (CLI) allows you to apply and test Sentinel policies including those that use mocks generated from Terraform Cloud and Terraform Enterprise plans.
+    The Sentinel Command Line Interface (CLI) allows you to apply and test Sentinel policies including those that use mocks generated from HCP Terraform and Terraform Enterprise plans.
 - type: text
   contents: |-
     We've launched the Sentinel CLI 0.24.0 on a Ubuntu VM running in GCP so that you don't need to download or install it.
@@ -63,7 +63,7 @@ timelimit: 1200
   }
 </style>
 
-The Sentinel Command Line Interface (CLI) allows you to apply and test Sentinel policies including those that use mocks generated from Terraform Cloud plans.
+The Sentinel Command Line Interface (CLI) allows you to apply and test Sentinel policies including those that use mocks generated from HCP Terraform plans.
 
 Let's start with some basic Sentinel commands, running them in the <t><img src="../assets/shell.png"/>Terminal</t> tab on the left.
 

@@ -1,0 +1,179 @@
+#!/bin/bash -l
+set -e
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-gcp
+
+# Students should run the 'fastforward' command to create this file.
+# Otherwise it is assumed that this is a CI/CD run.
+# The /root/skipconfig.json file is required for skipping challenges.
+if [[ -f /root/skipconfig.json ]]; then
+  ORG=$(jq -r .org < /root/skipconfig.json)
+  TOKEN=$(jq -r .token < /root/skipconfig.json)
+else
+  ORG="instruqt-circleci"
+  TOKEN=$(cat /var/tfc_user_token)
+fi
+
+# Create a workspace JSON payload with remote exec enabled
+echo "Creating a workspace JSON payload..."
+cat <<-EOF > /tmp/update_workspace.json
+{
+  "data": {
+    "attributes": {
+      "name": "hashicat-gcp",
+      "auto-apply": true,
+      "execution-mode": "remote",
+      "speculative-enabled": true,
+      "terraform-version": "1.0.7"
+    },
+    "type": "workspaces"
+  }
+}
+EOF
+
+# Update the workspace to enable remote exec
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request PATCH --data @/tmp/update_workspace.json https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-gcp
+
+# Fetch the workspace ID
+WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json"   https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-gcp | jq -r .data.id)
+
+# Stringify our google creds
+STRING_CREDS=$(echo $GOOGLE_CREDENTIALS | jq 'tostring')
+
+# Create JSON payloads for variables
+cat <<-EOF > /tmp/google_credentials.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"GOOGLE_CREDENTIALS",
+      "value":$STRING_CREDS,
+      "category":"env",
+      "hcl":false,
+      "sensitive":true
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id":"$WORKSPACE_ID",
+          "type":"workspaces"
+        }
+      }
+    }
+  }
+}
+EOF
+
+cat <<-EOF > /tmp/prefix.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"prefix",
+      "value":"$PREFIX",
+      "category":"terraform",
+      "hcl":false,
+      "sensitive":false
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id":"$WORKSPACE_ID",
+          "type":"workspaces"
+        }
+      }
+    }
+  }
+}
+EOF
+
+cat <<-EOF > /tmp/region.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"region",
+      "value":"us-central1",
+      "category":"terraform",
+      "hcl":false,
+      "sensitive":false
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id":"$WORKSPACE_ID",
+          "type":"workspaces"
+        }
+      }
+    }
+  }
+}
+EOF
+
+cat <<-EOF > /tmp/zone.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"zone",
+      "value":"us-central1-a",
+      "category":"terraform",
+      "hcl":false,
+      "sensitive":false
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id":"$WORKSPACE_ID",
+          "type":"workspaces"
+        }
+      }
+    }
+  }
+}
+EOF
+
+cat <<-EOF > /tmp/project.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"project",
+      "value":"$TF_VAR_project",
+      "category":"terraform",
+      "hcl":false,
+      "sensitive":false
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id":"$WORKSPACE_ID",
+          "type":"workspaces"
+        }
+      }
+    }
+  }
+}
+EOF
+
+# Create our variables in HCP Terraform
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/google_credentials.json https://app.terraform.io/api/v2/vars
+
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/prefix.json https://app.terraform.io/api/v2/vars
+
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/region.json https://app.terraform.io/api/v2/vars
+
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/zone.json https://app.terraform.io/api/v2/vars
+
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/project.json https://app.terraform.io/api/v2/vars
+
+# Run remote apply
+terraform apply -auto-approve
+
+sleep 30
+
+exit 0

@@ -1,6 +1,6 @@
 # Intro to Terraform on Azure - Instructor Guide
 
-This guide will prepare you to deliver a half-day [Introduction to Terraform on Azure Workshop](https://hashicorp.github.io/field-workshops-terraform/slides/azure/terraform-oss). This workshop content is suitable for HashiCorp community members, prospects and customers. The workshop is a combination of lecture slides and hands-on labs that introduce new users to Terraform features. This workshop focuses on open-source features and is targeted toward new users. The workshop may be presented in-person, over the web, or as a self-guided tutorial.
+This guide will prepare you to deliver a half-day [Introduction to Terraform on Azure Workshop](https://hashicorp.github.io/field-workshops-terraform/slides/azure/terraform-community). This workshop content is suitable for HashiCorp community members, prospects and customers. The workshop is a combination of lecture slides and hands-on labs that introduce new users to Terraform features. This workshop focuses on open-source features and is targeted toward new users. The workshop may be presented in-person, over the web, or as a self-guided tutorial.
 
 The workshop alternates between lectures with accompanying slides and hands-on lab exercises. New concepts that are introduced in the slides are reinforced in the labs. Participants will learn both the theory and practice of Terraform. As an instructor you should be well familiar with the slide deck and training labs. Go through the course and make sure you understand all of the major concepts and lab exercises.
 
@@ -49,7 +49,7 @@ The only prerequisites for this workshop are a web browser and willingness to le
 ### Markdown Slide Deck
 The slide deck for this training is published here:
 
-#### https://hashicorp.github.io/field-workshops-terraform/slides/azure/terraform-oss
+#### https://hashicorp.github.io/field-workshops-terraform/slides/azure/terraform-community
 
 Shortened URL:
 #### https://git.io/JeuCI
@@ -151,7 +151,7 @@ terraform apply -auto-approve
 
 > Terraform has put the security groups back in their correct configuration and restored access to our web application. And access is restored!
 
-> This was a brief demo showing what Terraform open source can do. In a moment you'll get some hands on experience with terraform and Azure.
+> This was a brief demo showing what Terraform Community Edition can do. In a moment you'll get some hands on experience with terraform and Azure.
 
 ### Timing
 The following schedule assumes you have a group of participants who are brand new to Terraform. You should budget between three and four hours for this workshop. This is meant as a guideline, you can adjust as needed.

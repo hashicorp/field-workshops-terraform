@@ -1,0 +1,19 @@
+#!/bin/bash -l
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+cd /root/hashicat-aws
+
+# Get our HCP Terraform token and organization from the local config files
+TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
+
+VCS_HASHICAT=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws | jq -r '.data.attributes | .["vcs-repo"] | .identifier' | cut -f2 -d '/')
+
+[[ $VCS_HASHICAT == hashicat-aws ]] || fail-message "Oops, we were unable to find the hashicat-aws VCS repo connected to your workspace. Make sure you have set up GitHub integration, and updated your workspace VCS settings."
+
+exit 0

@@ -3,7 +3,7 @@ slug: private-module-registry-v1
 type: challenge
 title: Exercise 5a
 teaser: |
-  Only allow modules from the Private Module Registry (first version).
+  Only allow modules from the Terraform Private Registry (first version).
 notes:
 - type: text
   contents: |-
@@ -24,12 +24,12 @@ notes:
   contents: We've made things easier by writing most of the policy for you and by
     providing the test cases and mocks that you need to test it. The mocks simulate
     the use of two Azure modules both from the public Terraform Registry and from
-    a Private Module Registry in an organization on the Terraform Cloud server.
+    a Terraform Private Registry in an organization on the HCP Terraform server.
 - type: text
   contents: |-
-    Your task is to complete and test a Sentinel policy that requires that all modules called by the root module come from the [Private Module Registry](https://www.terraform.io/docs/cloud/registry/index.html) (PMR) of a Terraform Cloud organization called "Cloud-Operations". You will use the [tfconfig/v2](https://www.terraform.io/docs/cloud/sentinel/import/tfconfig-v2.html) import to do that.
+    Your task is to complete and test a Sentinel policy that requires that all modules called by the root module come from the [Terraform Private Registry](https://www.terraform.io/docs/cloud/registry/index.html) of a HCP Terraform organization called "Cloud-Operations". You will use the [tfconfig/v2](https://www.terraform.io/docs/cloud/sentinel/import/tfconfig-v2.html) import to do that.
 
-    Since the owners of a Terraform Cloud/Enterprise organization can prevent modules in their PMR from using external modules, requiring the root module to call all modules from the PMR effectively requires that all non-root modules come from the PMR.
+    Since the owners of a HCP Terraform/Terraform Enterprise organization can prevent modules in their PMR from using external modules, requiring the root module to call all modules from the PMR effectively requires that all non-root modules come from the PMR.
 
     You might find the documentation for Sentinel's [matches](https://docs.hashicorp.com/sentinel/language/spec/#matches-operator) operator and [strings](https://docs.hashicorp.com/sentinel/imports/strings) import useful. You might also want to read about how modules are sourced from private module registries [here](https://www.terraform.io/docs/cloud/registry/using.html).
 tabs:
@@ -89,9 +89,9 @@ timelimit: 1800
 
 In this challenge, you will write a fifth Sentinel policy for Terraform.
 
-Your task is to complete and test a Sentinel policy that requires that all modules loaded by the root module come from the [Private Module Registry](https://www.terraform.io/docs/cloud/registry/index.html) (PMR) of a Terraform Cloud organization.
+Your task is to complete and test a Sentinel policy that requires that all modules loaded by the root module come from the [Terraform Private Registry](https://www.terraform.io/docs/cloud/registry/index.html) of a HCP Terraform organization.
 
-We recommend reviewing this [doc](https://www.terraform.io/docs/cloud/registry/using.html) that describes how to specify the `source` for a module in a Private Module Registry on a Terraform Cloud or Terraform Enterprise server.
+We recommend reviewing this [doc](https://www.terraform.io/docs/cloud/registry/using.html) that describes how to specify the `source` for a module in a Terraform Private Registry on a HCP Terraform or Terraform Enterprise server.
 
 At this point, we recommend you look at the tree diagram in the [Import Overview](https://www.terraform.io/docs/cloud/sentinel/import/tfconfig-v2.html#import-overview) for the `tfconfig/v2` import that the policy uses.
 
@@ -117,7 +117,7 @@ We only want the policy to restrict module calls made from the root module. Whil
     1. The simpler way uses `if index matches "<regex1>"` in which <regex1\> uses `.+` or `(.+)` twice to match one or more characters.
     2. The slightly more complex way uses `if index matches "<regex2>"` in which <regex2\> contains a [negated character class](https://www.regular-expressions.info/charclass.html) and ensures that nothing in it occurs from the beginning (^) to the end ($) of the index.
 
-4. Next, you need to replace `<condition_2>` with a condition that tests if the module call has a `source` from the desired Private Module Registry.
+4. Next, you need to replace `<condition_2>` with a condition that tests if the module call has a `source` from the desired Terraform Private Registry.
     - Since this condition is placed after `not`, the function will print a violation message for modules that are not in the PMR and set the `validated` flag to `false`.
     - While you could use the `matches` operator in your replacement of `<condition_2>`, **please use the `has_prefix` function from Sentinel's [strings](https://docs.hashicorp.com/sentinel/imports/strings) import in your solution**.
     - In general, a well-designed function should not reference things defined outside of it. So, please do not reference the Sentinel parameters, `address` and `organization` from the top of the policy; instead, reference the function's arguments, `tf_address` and `tf_org`.
@@ -134,9 +134,9 @@ Examine the Test Cases and Mocks
 ===
 Now open the test cases and mock files on the "Test Cases" tab. You'll see that the `fail.hcl` test case refers to the `mock-tfconfig-fail.sentinel` mock file and expects the main rule to return false. You'll also see that the "pass.hcl" test case refers to the `mock-tfconfig-pass.sentinel` mock file and expects the main rule to return true.
 
-As mentioned above, both test case files provide a value for the `organization` parameter. We also could have provided a value for the `address` parameter to override the default value set in the policy. We would do that if using a Terraform Enterprise server instead of the Terraform Cloud deployment hosted by HashiCorp.
+As mentioned above, both test case files provide a value for the `organization` parameter. We also could have provided a value for the `address` parameter to override the default value set in the policy. We would do that if using a Terraform Enterprise server instead of the HCP Terraform deployment hosted by HashiCorp.
 
-The mock files are simplified versions of mocks generated from plans of Terraform Cloud runs done against Terraform code that used the Azure provider to provision Azure resources including resource groups, network resources, security group resources, and VMs. The `mock-tfconfig-fail.sentinel` mock uses modules from the public [Terraform Registry](https://registry.terraform.io/) while the `mock-tfconfig-pase.sentinel` mock uses modules from a PMR in the "Cloud-Operations" organization on the Terraform Cloud server ("app.terraform.io").
+The mock files are simplified versions of mocks generated from plans of HCP Terraform runs done against Terraform code that used the Azure provider to provision Azure resources including resource groups, network resources, security group resources, and VMs. The `mock-tfconfig-fail.sentinel` mock uses modules from the public [Terraform Registry](https://registry.terraform.io/) while the `mock-tfconfig-pase.sentinel` mock uses modules from a PMR in the "Cloud-Operations" organization on the HCP Terraform server ("app.terraform.io").
 
 Test the First Version
 ===
@@ -144,7 +144,7 @@ Now, you should test your policy on the "Sentinel CLI" tab with this command:
 ```
 sentinel test -run=pmr-a.sentinel -verbose
 ```
-Setting the `-run` argument to `pmr.sentinel` will only match the desired policy and avoid running other policies. Both test cases should pass with green output. Additionally, the fail test case will print messages indicating that the root module of the Terraform configuration called modules that are not from the desired private module registry.
+Setting the `-run` argument to `pmr.sentinel` will only match the desired policy and avoid running other policies. Both test cases should pass with green output. Additionally, the fail test case will print messages indicating that the root module of the Terraform configuration called modules that are not from the desired Terraform Private Registry.
 
 If that is not the case, you will need to edit the `require-modules-from-pmr-a.sentinel` policy and test the policy again until both test cases pass.
 

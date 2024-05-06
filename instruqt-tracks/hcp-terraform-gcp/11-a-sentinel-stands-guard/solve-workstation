@@ -1,0 +1,136 @@
+#!/bin/bash -l
+set -e
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-gcp
+
+# Get HCP Terraform ORG and TOKEN
+if [[ -f /root/skipconfig.json ]]; then
+  ORG=$(jq -r .org < /root/skipconfig.json)
+  TOKEN=$(jq -r .token < /root/skipconfig.json)
+  GITUSERID=$(jq -r .gituserid < /root/skipconfig.json)
+  OAUTHID=$(jq -r .oauthid < /root/skipconfig.json)
+else
+  ORG="instruqt-circleci"
+  TOKEN=$(cat /var/tfc_user_token)
+  GITUSERID="workshops-testbot"
+  OAUTHID="ot-tcRNmn3r5wrk65Kz"
+fi
+
+# Get workspace ID
+WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json"   https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-gcp | jq -r .data.id)
+
+# Create tfc-workshops-sentinel-gcp policy set for users
+# and add hashicat-gcp workspace to it
+# We expect user to have forked https://github.com/hashicorp/tfc-workshops-sentinel
+
+# Check if tfc-workshops-sentinel-gcp policy set exists
+POLICY_SET_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --request GET "https://app.terraform.io/api/v2/organizations/$ORG/policy-sets?search%5Bname%5D=tfc-workshops-sentinel-gcp" | jq -r '.data | .[] | .id')
+
+if [[ "$POLICY_SET_ID" == "" ]]; then
+  # Create policy set and attach workspace
+  cat <<-EOF > /tmp/create_policy_set.json
+{
+  "data": {
+    "type": "policy-sets",
+    "attributes": {
+      "name": "tfc-workshops-sentinel-gcp",
+      "description": "This policy set contains policies for GCP.",
+      "global": false,
+      "policies-path": "/gcp",
+      "vcs-repo": {
+        "branch": "master",
+        "identifier": "$GITUSERID/tfc-workshops-sentinel",
+        "ingress-submodules": false,
+        "oauth-token-id": "$OAUTHID"
+      }
+    },
+    "relationships": {
+      "workspaces": {
+        "data": [
+          { "id": "$WORKSPACE_ID", "type": "workspaces" }
+        ]
+      }
+    }
+  }
+}
+EOF
+  POLICY_SET_ID=$(curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/create_policy_set.json https://app.terraform.io/api/v2/organizations/$ORG/policy-sets | jq -r '.data.id' )
+  if [[ "$POLICY_SET_ID" == "" ]]; then
+    fail-message "Could not create tfc-workshops-sentinel-gcp policy set"
+  fi
+else
+  # Attach workspace to existing policy set
+  cat <<-EOF > /tmp/attach_workspace.json
+{
+  "data": [
+    { "id": "$WORKSPACE_ID", "type": "workspaces" }
+  ]
+}
+EOF
+  curl -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/vnd.api+json" --request POST --data @/tmp/attach_workspace.json https://app.terraform.io/api/v2/policy-sets/$POLICY_SET_ID/relationships/workspaces
+fi
+
+# Create payload for triggering a run
+echo "Creating a run JSON payload..."
+cat <<-EOF > /tmp/trigger_run.json
+{
+  "data": {
+    "attributes": {
+      "is-destroy": false,
+      "message": "Run subject to Sentinel policies"
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "type": "workspaces",
+          "id": "$WORKSPACE_ID"
+        }
+      }
+    },
+    "type": "runs"
+  }
+}
+EOF
+
+## Do git operations to add labels (but not for workshops-testbot)
+if [[ -f /root/skipconfig.json ]]; then
+  GITUSERID=$(jq -r .gituserid < /root/skipconfig.json)
+  GITPAT=$(jq -r .gitpat < /root/skipconfig.json)
+  git pull
+  # Add department label
+  sed -i "s/name = \"hashicat\"/name = \"hashicat\"\n    department = \"devops\"/" main.tf
+  git add .
+  git commit -m "Added the first label"
+  cat <<-EOF > /root/.netrc
+  machine github.com
+  login $GITUSERID
+  password $GITPAT
+EOF
+  git push origin master
+  # Add billable label
+  sed -i "s/department = \"devops\"/department = \"devops\"\n    billable   = \"true\"/" main.tf
+  git add .
+  git commit -m "Added the second label"
+  git push origin master
+else
+  # Trigger a run
+  run_result=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/trigger_run.json https://app.terraform.io/api/v2/runs)
+  run_id=$(echo $run_result | jq -r .data.id)
+  for (( count=1; count<=10; count++)); do
+    sleep 30
+    echo "Checking run status."
+    check_result=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" https://app.terraform.io/api/v2/runs/${run_id})
+    run_status=$(echo $check_result | jq -r '.data.attributes.status')
+    echo "Run Status: " $run_status
+    if [[ "$run_status" == "applied" ]]; then
+      echo "Run was applied."
+      break
+    fi
+  done
+fi
+
+exit 0

@@ -1,0 +1,123 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
+slug: terraform-cloud-bonus-lab
+title: Bonus Lab - HCP Terraform
+teaser: |
+  Ready for more? Test your HCP Terraform skills with this intermediate level lab challenge.
+description: If you've completed one of the HCP Terraform tracks and would like an
+  extra challenge, try this bonus lab. In this track you'll build an approval pipeline
+  and development branch for your Terraform code, then ensure that all tests pass
+  in a dev environment before approving the change to production.
+icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
+tags:
+- azure
+- aws
+- terraform
+- gcp
+owner: hashicorp
+developers:
+- roger@hashicorp.com
+- jthompson@hashicorp.com
+- jenna.wong@hashicorp.com
+show_timer: true
+challenges:
+- slug: setup-our-environment
+  id: ywxxkfdjwvmb
+  type: challenge
+  title: "\U0001F432 Bonus Lab - The Gauntlet \U0001F9D9\U0001F3FC‍♀️"
+  teaser: |
+    Welcome back to a familiar environment. You'll have to rely on your skills and knowledge to complete the bonus lab, also known as The Gauntlet.
+  notes:
+  - type: text
+    contents: "\U0001F3F0 Welcome to the Gauntlet! This challenging lab will require
+      all the skills you learned in the HCP Terraform workshop. \U0001F9DD\U0001F3FB"
+  - type: text
+    contents: Branch protection allows you to create rules that must be passed before
+      any changes get merged into your master branch.
+  - type: image
+    url: https://storage.googleapis.com/instruqt-hashicorp-tracks/terraform-cloud-bonuslab/git_branch_protection.png
+  assignment: |-
+    Welcome back! This is the bonus lab for the HCP Terraform tracks. There are prerequisites that must be set up before you can begin the bonus lab. This is an intermediate level challenge.
+
+    During this lab you'll use the "Code Editor" tab on the left. As you work through the setup steps below, you'll see some Terraform configuration files for the hashicat application show up.  When you edit any of these files, you will see a blue dot and a disk icon on the tab above it. **Be sure to click the disk icon to save your changes** -- there is no "auto-saving" in the Instruqt editor!
+
+    Throughout this track, please execute all commands on the "Shell" tab.
+
+    ### Workstation Setup
+    1. Clone a local copy of your fork of the **hashicat** repo that you created earlier.
+    2. Open the local repo in your text editor.
+    3. Create a new git branch called **dev** and switch to that branch.
+    4. Delete any extra terraform files containing modules. For example, `vpc.tf` or `vnet.tf`. You won't need external modules for this challenge.
+    5. Open the file called `main.tf`. Note that the file type at the bottom of the screen was automatically set to "hcl" to give optimized syntax highlighting and colors.
+    6. Add, commit, and push your changes to the remote **dev** branch.
+
+    ### HCP Terraform Setup
+    1. Log onto your HCP Terraform organization and create a new workspace called **hashicat-dev**.
+    2. This time make sure it pulls from the **dev** branch instead of the master branch. Remember that you can choose which branch to target when you set up your workspace.
+    3. Enable another policy set from your **tfc-workshop-sentinel** repo, this time use the `bonus_lab` directory as the source. Name the policy **tfc-workshop-bonuslab**. Set this policy to be enforced organization-wide. HINT: You'll be connecting to the same sentinel repo we used before, but pointing at a **different directory**. You can select the directory you want to use when you create the policy set.
+    4. Echo out your credentials and store them as sensitive variables in both dev and production workspaces. You'll need to replace the credentials you used in the previous lab, as they may already be expired.
+
+    AWS:
+    ```
+    echo $AWS_ACCESS_KEY_ID
+    echo $AWS_SECRET_ACCESS_KEY
+    ```
+
+
+    Azure:
+    ```
+    echo $ARM_CLIENT_ID
+    echo $ARM_CLIENT_SECRET
+    echo $ARM_SUBSCRIPTION_ID
+    echo $ARM_TENANT_ID
+    ```
+
+    Google:<br>
+    Set as `GOOGLE_CREDENTIALS` in TFC; this is one long string of JSON.
+    ```
+    echo $INSTRUQT_GCP_PROJECT_GCP_PROJECT_SERVICE_ACCOUNT_KEY | base64 -d | jq -r 'tostring'
+    ```
+
+    5. Trigger a run in the `dev` workspace. You should see a Sentinel failure. Read through the output and try to figure out which policy is failing and why. You'll need to fix your terraform code and/or variables to pass the Sentinel checks.
+
+    ### Git Repo Setup
+    1. Go into the github.com settings page for your hashicat repo and click on **Branches** on the left side menu.
+    2. Add a branch protection rule on the master branch. Hint: the branch name pattern should be **master**.
+    3. Make sure the following boxes are checked:
+    * Require pull request reviews before merging
+    * Require status checks to pass before merging
+    * All the **Status Checks** that include **hashicat-dev**
+    4. Click on **Create** at the bottom of the page.
+
+    That's it! You're now ready for the bonus lab challenge. You can do this one alone or with a partner.
+
+    ### The challenge
+    You need to make some changes to the production website but they have to be tested and approved before merging your changes into the master branch.
+
+    Your task is to get your code passing all Sentinel tests in the dev workspace and branch. You'll need to read the Sentinel policies that you just enabled to figure out what they do.
+
+    Once that is complete submit a pull request against your fork of the hashicat repo. If you're working with a lab partner you can submit a pull request to their repo instead of your own.
+
+    Review the pull request, and if all tests are passing, approve and merge to master. Your changes are now safely being pushed to production.
+
+    Congratulations, you built an Infrastructure as Code CI/CD pipeline!
+  tabs:
+  - title: Code Editor
+    type: code
+    hostname: workstation
+    path: /root
+  - title: Shell
+    type: terminal
+    hostname: workstation
+  difficulty: basic
+  timelimit: 7200
+idle_timeout: 300
+timelimit: 14400
+lab_config:
+  overlay: false
+  width: 33
+  position: right
+  sidebar_enabled: true
+  feedback_recap_enabled: true
+  loadingMessages: true

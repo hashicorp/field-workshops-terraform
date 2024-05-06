@@ -1,0 +1,68 @@
+#!/bin/bash -l
+set -e
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-aws
+
+# Get our HCP Terraform token and organization from the local config files
+TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
+WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json"   https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws | jq -r .data.id)
+
+if [[ -f /root/skipconfig.json ]]; then
+  GITUSERID=$(jq -r .gituserid < /root/skipconfig.json)
+  GITPAT=$(jq -r .gitpat < /root/skipconfig.json)
+  GITUSERNAME=$(jq -r .gitusername < /root/skipconfig.json)
+  GITEMAIL=$(jq -r .gitemail < /root/skipconfig.json)
+  OAUTHID=$(jq -r .oauthid < /root/skipconfig.json)
+  # Update git settings
+  git remote remove origin
+  git remote add origin https://github.com/$GITUSERID/hashicat-aws
+  git fetch --all
+  git branch --set-upstream-to=origin/master master
+  git pull
+  git config --global core.editor "vi"
+  git config --global user.email "$GITEMAIL"
+  git config --global user.name "$GITUSERNAME"
+  git add .
+  git commit -m "Added remote backend"
+  cat <<-EOF > /root/.netrc
+machine github.com
+login $GITUSERID
+password $GITPAT
+EOF
+  git push origin master
+else
+  GITUSERID="workshops-testbot"
+  OAUTHID="ot-tcRNmn3r5wrk65Kz"
+fi
+
+# Update the workspace with VCS settings
+echo "Creating a workspace JSON payload..."
+cat <<-EOF > /tmp/add_vcs.json
+{
+  "data": {
+    "attributes": {
+      "name": "hashicat-aws",
+      "operations": true,
+      "auto-apply": true,
+      "vcs-repo": {
+        "branch": "",
+        "ingress-submodules": false,
+        "identifier": "$GITUSERID/hashicat-aws",
+        "display-identifier": "$GITUSERID/hashicat-aws",
+        "oauth-token-id": "$OAUTHID"
+        }
+    },
+    "type": "workspaces"
+  }
+}
+EOF
+
+# Update the workspace to enable VCS
+# This triggers a run
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request PATCH --data @/tmp/add_vcs.json https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws
+
+exit 0

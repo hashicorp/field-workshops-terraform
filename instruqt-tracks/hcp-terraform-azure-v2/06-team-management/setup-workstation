@@ -1,0 +1,10 @@
+#!/bin/bash -l
+set -e
+
+# Set workdir
+set-workdir /root/hcp-terraform
+
+cat /root/hcp-terraform/exercises/06-main.tf >> /root/hcp-terraform/main.tf
+cat /root/hcp-terraform/exercises/06-variables.tf >> /root/hcp-terraform/variables.tf
+
+exit 0

@@ -1,0 +1,44 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
+slug: terraform-cloud-gcp
+id: h5wffylde93s
+title: HCP Terraform with GCP
+teaser: |
+  Join the ACME devops team on their journey to fully automated provisioning with GCP.
+description: |-
+  Work with the devops team at Acme Inc. as they go from manual provisioning with Terraform to a fully automated devops workflow with code reviews, testing, and automated provisioning in Google Cloud Platform. This workshop covers the following topics:
+
+  * Terraform Community Edition
+  * HCP Terraform
+  * Remote State
+  * Secure Variable Storage
+  * Version Control Integration
+  * Role-based Access Controls
+  * Sentinel Security Policies
+  * Collaboration on Changes
+  * Terraform Private Registry
+  * API Driven Workflows
+icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
+tags:
+- cloud
+- enterprise
+- terraform
+- gcp
+owner: hashicorp-field-ops
+developers:
+- thomas@hashicorp.com
+- swalker@hashicorp.com
+- randy.keener@hashicorp.com
+- jenna.wong@hashicorp.com
+show_timer: true
+idle_timeout: 3000
+timelimit: 14400
+lab_config:
+  overlay: false
+  width: 25
+  position: right
+  sidebar_enabled: true
+  feedback_recap_enabled: true
+  loadingMessages: true
+checksum: "8278109672787578470"

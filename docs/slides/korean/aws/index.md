@@ -28,7 +28,7 @@ name: terraform-workshops-slides
 
 ### 각 클라우드에 대한 워크샵은 아래 유형별로 구성됩니다.
 
-  1. Terraform OSS
+  1. Terraform Community Edition
   1. Terraform Enterprise
 
 ???

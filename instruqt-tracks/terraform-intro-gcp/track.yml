@@ -71,7 +71,7 @@ challenges:
   notes:
   - type: text
     contents: |-
-      Terraform open source is a command line application that you can download and run from your laptop or virtual workstation.
+      Terraform Community Edition is a command line application that you can download and run from your laptop or virtual workstation.
 
       It is written in Go and runs on macOS, Linux or Windows. You can always download the latest version of Terraform from https://www.terraform.io/downloads.html
   - type: text
@@ -884,27 +884,27 @@ challenges:
   - 1
   difficulty: basic
   timelimit: 1000
-- slug: terraform-cloud-setup
+- slug: hcp-terraform-setup
   id: ybvvptd2fxpo
   type: challenge
-  title: ☁️ Terraform Cloud Setup
+  title: ☁️ HCP Terraform Setup
   teaser: |
-    Terraform Cloud offers unlimited free Terraform state storage for users. Safeguard your state files by storing them remotely in Terraform Cloud.
+    HCP Terraform offers unlimited free Terraform state storage for users. Safeguard your state files by storing them remotely in HCP Terraform.
   notes:
   - type: text
-    contents: Terraform Cloud remote state storage is free for all users.
+    contents: HCP Terraform remote state storage is free for all users.
   assignment: |-
-    During this challenge and the next one, you'll use the remote state feature of Terraform Cloud to store your state file in the cloud. In order to do this you'll need a Terraform Cloud account. Click on the URL below and sign up for a free account if you don't have one already:
+    During this challenge and the next one, you'll use the remote state feature of HCP Terraform to store your state file in the cloud. In order to do this you'll need a HCP Terraform account. Click on the URL below and sign up for a free account if you don't have one already:
 
     https://app.terraform.io/signup/account
 
     If you already have an account you can simply sign in with your existing credentials.
 
-    Once you're signed into Terraform Cloud create a new organization called YOURNAME-training. Replace YOURNAME with your own name or other text.
+    Once you're signed into HCP Terraform create a new organization called YOURNAME-training. Replace YOURNAME with your own name or other text.
 
     Next you'll be prompted to create a workspace. You can skip the VCS integration step by clicking the "CLI-driven workflow" panel. Name your workspace **hashicat-gcp**.
 
-    **Note:** If you already have a **hashicat-gcp** workspace, please delete the workspace by selecting the **Settings >> Destruction and Deletion** menu, clicking the "Delete from Terraform Cloud" button, typing "hashicat-gcp" to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you played the [Terraform Cloud with GCP](https://play.instruqt.com/hashicorp/tracks/terraform-cloud-gcp) track and then played this track.
+    **Note:** If you already have a **hashicat-gcp** workspace, please delete the workspace by selecting the **Settings >> Destruction and Deletion** menu, clicking the "Delete from HCP Terraform" button, typing "hashicat-gcp" to confirm, and then clicking the "Delete workspace" button. Then re-create it as above. Doing this avoids possible problems with mis-matched state versions when executing local runs after having executed remote runs. This could happen if you played the [HCP Terraform with GCP](https://play.instruqt.com/hashicorp/tracks/terraform-cloud-gcp) track and then played this track.
 
     Run `terraform version` on the "Shell" tab and then set the **Terraform Version** to match on the workspace's **Settings >> General** settings page.
 
@@ -926,21 +926,21 @@ challenges:
   type: challenge
   title: "\U0001F39B️ Configure Remote State"
   teaser: |
-    The terraform command line tool can store its state in Terraform Cloud. All that is required is a user token.
+    The terraform command line tool can store its state in HCP Terraform. All that is required is a user token.
   notes:
   - type: text
     contents: |-
       With *local* execution mode the Terraform commands and variables all remain
       on your workstation.
 
-      With *remote* execution mode Terraform runs in a Terraform Cloud
+      With *remote* execution mode Terraform runs in a HCP Terraform
       container environment. All variables must be configured in the cloud environment with this method.
   assignment: |-
-    During this challenge we'll configure Terraform Cloud as a remote state backend, and then migrate our existing state file to Terraform Cloud.
+    During this challenge we'll configure HCP Terraform as a remote state backend, and then migrate our existing state file to HCP Terraform.
 
     Edit the "remote_backend.tf" file and replace the YOURORGANIZATION and YOURWORKSPACE placeholders with your org name and workspace name. Be sure to save the file.
 
-    Let's generate a new **user token** for use on your workstation. Visit the User Settings > Tokens page in Terraform Cloud:
+    Let's generate a new **user token** for use on your workstation. Visit the User Settings > Tokens page in HCP Terraform:
 
     https://app.terraform.io/app/settings/tokens
 
@@ -948,21 +948,21 @@ challenges:
 
     Back in the Instruqt track, you need to add your API token to a file called "credentials.tfrc.json". Select the "Credentials File" tab and open the `/root/.terraform.d/credentials.tfrc.json` file directly.
 
-    Replace the part that says YOURTOKEN with what you copied from Terraform Cloud. Be sure to save the file.
+    Replace the part that says YOURTOKEN with what you copied from HCP Terraform. Be sure to save the file.
 
     Your token is now safely stored in the `/root/.terraform.d/credentials.tfrc.json` file.
 
-    Now run `terraform init` to migrate your state to Terraform Cloud.
+    Now run `terraform init` to migrate your state to HCP Terraform.
 
     ```
     terraform init
     ```
 
-    Type "yes" when it prompts you to migrate your state into Terraform Cloud.
+    Type "yes" when it prompts you to migrate your state into HCP Terraform.
 
-    Your state is now safely stored in Terraform Cloud. You can verify this on the "States" tab of your workspace in the TFC UI.
+    Your state is now safely stored in HCP Terraform. You can verify this on the "States" tab of your workspace in the TFC UI.
 
-    Run a `terraform apply -auto-approve` and watch your state file evolve with each change. You can browse through previous state files with the Terraform Cloud UI.
+    Run a `terraform apply -auto-approve` and watch your state file evolve with each change. You can browse through previous state files with the HCP Terraform UI.
   tabs:
   - title: Shell
     type: terminal

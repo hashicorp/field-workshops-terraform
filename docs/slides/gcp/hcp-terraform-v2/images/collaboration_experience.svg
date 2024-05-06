@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="480px" height="400px" viewBox="0 0 480 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>collaboration_experience</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="480" height="400"></rect>
+        <linearGradient x1="-14.2229353%" y1="50%" x2="57.3998772%" y2="50%" id="linearGradient-3">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.998339844" offset="79.4128259%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-14.5186942%" y1="50%" x2="65.1790844%" y2="50%" id="linearGradient-4">
+            <stop stop-color="#844FBA" offset="0%"></stop>
+            <stop stop-color="#D1EBFF" offset="90.2270609%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="slides" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="team-collaboration" transform="translate(-80.000000, -80.000000)">
+            <g id="collaboration_experience" transform="translate(80.000000, 80.000000)">
+                <g id="svg-background" fill="#F2F2F3">
+                    <rect id="rectangle" x="0" y="0" width="480" height="400"></rect>
+                </g>
+                <g id="mobius_strip">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Mask"></g>
+                    <path d="M520,160 C480.881633,160 445.954111,177.062386 412.482394,200.049729 C394.714408,212.252234 377.356648,226.124312 360,240 C309.984086,279.98498 259.977478,320 200,320 C133.72583,320 80,266.27417 80,200 C80,133.72583 133.72583,80 200,80 C259.94635,80 310.010001,120.035799 360,160 C342.738884,173.799327 325.220639,187.844407 307.565186,200 C273.432428,176.221074 240.106232,160 200,160 C177.90861,160 160,177.90861 160,200 C160,222.09139 177.90861,240 200,240 C239.310347,240 274.034952,223.085211 307.565186,200 C325.220639,187.844407 342.738884,173.799327 360,160 C410.02687,120.006227 460.147989,80 520,80 C586.27417,80 640,133.72583 640,200 C640,266.27417 586.27417,320 520,320 C460.171007,320 410.007607,279.978382 360,240 C377.356648,226.124312 394.714408,212.252234 412.482394,200.049729 C429.53875,188.33595 429.534283,188.319374 412.468994,200 C448.317129,226.666667 484.160798,240 520,240 C542.09139,240 560,222.09139 560,200 C560,177.90861 542.09139,160 520,160" id="Path" stroke="url(#linearGradient-4)" stroke-width="5" fill="url(#linearGradient-3)" mask="url(#mask-2)"></path>
+                </g>
+                <g id="annotations" transform="translate(24.000000, 15.000000)">
+                    <text id="Use-the-Terraform-Re" font-family="Roboto-Regular, Roboto" font-size="10" font-weight="normal" letter-spacing="0.15" fill="#000000">
+                        <tspan x="272" y="9">Use the Terraform  </tspan>
+                        <tspan x="272" y="20">Registry to accelerate the </tspan>
+                        <tspan x="272" y="31">adoption of Terraform </tspan>
+                        <tspan x="272" y="42">providers, configuration-</tspan>
+                        <tspan x="272" y="53">as-code modules, policies </tspan>
+                        <tspan x="272" y="64">and integration run tasks.</tspan>
+                    </text>
+                    <text id="Use-HCP-Terraform" font-family="Roboto-Regular, Roboto" font-size="10" font-weight="normal" letter-spacing="0.15" fill="#000000">
+                        <tspan x="0" y="18">Use HCP Terraform to </tspan>
+                        <tspan x="0" y="29">safely store sensitive </tspan>
+                        <tspan x="0" y="40">materials, including </tspan>
+                        <tspan x="0" y="51">Terraform plans and </tspan>
+                        <tspan x="0" y="62">secrets; provide access </tspan>
+                        <tspan x="0" y="73">based on team </tspan>
+                        <tspan x="0" y="84">permissions.</tspan>
+                    </text>
+                    <text id="Provide-policy-contr" font-family="Roboto-Regular, Roboto" font-size="10" font-weight="normal" letter-spacing="0.15" fill="#000000">
+                        <tspan x="8" y="314">Provide policy control </tspan>
+                        <tspan x="8" y="325">mechanisms to test, </tspan>
+                        <tspan x="8" y="336">validate and approve </tspan>
+                        <tspan x="8" y="347">builds - including cost </tspan>
+                        <tspan x="8" y="358">control.</tspan>
+                    </text>
+                    <line x1="272.5" y1="73.5" x2="256" y2="105" id="Path-7" stroke="#1D1E1F"></line>
+                    <line x1="48.5" y1="89.5" x2="63.5" y2="112.5" id="Path-7" stroke="#1D1E1F"></line>
+                    <line x1="71.5" y1="264.5" x2="48.5" y2="297.5" id="Path-7" stroke="#1D1E1F"></line>
+                    <text id="Secure-deployment-st" font-family="Roboto-Regular, Roboto" font-size="10" font-weight="normal" letter-spacing="0.15" fill="#000000">
+                        <tspan x="296" y="314">Secure deployment state </tspan>
+                        <tspan x="296" y="325">and use automated health </tspan>
+                        <tspan x="296" y="336">synchronization to detect </tspan>
+                        <tspan x="296" y="347">and manage configuration </tspan>
+                        <tspan x="296" y="358">drift of your deployments.</tspan>
+                    </text>
+                    <line x1="320.5" y1="265.5" x2="336.5" y2="297.5" id="Path-7" stroke="#1D1E1F"></line>
+                </g>
+                <polygon id="Path-6" stroke="#727274" fill="#D1EBFF" stroke-linejoin="bevel" transform="translate(190.000000, 126.520020) rotate(-95.000000) translate(-190.000000, -126.520020) " points="190 120 182 128 186 128 186 133.040039 194.609375 133.040039 194.609375 128 198 128"></polygon>
+                <text id="PLAN---linting---uni" font-family="Roboto-Medium, Roboto" font-size="12" font-weight="400" line-spacing="14" letter-spacing="0.18">
+                    <tspan x="109" y="145" fill="#222222">PLAN</tspan>
+                    <tspan x="109" y="159" fill="#727274">- linting</tspan>
+                    <tspan x="109" y="173" fill="#727274">- unit </tspan>
+                </text>
+                <polygon id="Path-6" stroke="#727274" fill="#D1EBFF" stroke-linejoin="bevel" transform="translate(125.000000, 210.520020) rotate(-187.000000) translate(-125.000000, -210.520020) " points="125 204 117 212 121 212 121 217.040039 129.609375 217.040039 129.609375 212 133 212"></polygon>
+                <polygon id="Path-6" stroke="#727274" fill="#D1EBFF" stroke-linejoin="bevel" transform="translate(245.000000, 270.520020) rotate(-293.000000) translate(-245.000000, -270.520020) " points="245 264 237 272 241 272 241 277.040039 249.609375 277.040039 249.609375 272 253 272"></polygon>
+                <polygon id="Path-6" stroke="#727274" fill="#D1EBFF" stroke-linejoin="bevel" transform="translate(350.000000, 210.520020) rotate(-305.000000) translate(-350.000000, -210.520020) " points="350 204 342 212 346 212 346 217.040039 354.609375 217.040039 354.609375 212 358 212"></polygon>
+                <text id="CODE---validate---it" font-family="Roboto-Medium, Roboto" font-size="12" font-weight="400" line-spacing="14" letter-spacing="0.18">
+                    <tspan x="232" y="123" fill="#222222">CODE</tspan>
+                    <tspan x="232" y="137" fill="#727274">- validate</tspan>
+                    <tspan x="232" y="151" fill="#727274">- iterate</tspan>
+                </text>
+                <text id="BUILD---contracts--" font-family="Roboto-Medium, Roboto" font-size="12" font-weight="400" line-spacing="14" letter-spacing="0.18">
+                    <tspan x="132" y="248" fill="#222222">BUILD</tspan>
+                    <tspan x="132" y="262" fill="#727274">- contracts</tspan>
+                    <tspan x="132" y="276" fill="#727274">- acceptance</tspan>
+                    <tspan x="132" y="290" fill="#727274">- integration </tspan>
+                </text>
+                <text id="INTEGRATE---release" font-family="Roboto-Medium, Roboto" font-size="12" font-weight="400" line-spacing="14" letter-spacing="0.18">
+                    <tspan x="272" y="239" fill="#222222">INTEGRATE</tspan>
+                    <tspan x="272" y="253" fill="#727274">- release</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

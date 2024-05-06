@@ -1,0 +1,78 @@
+#!/bin/bash -l
+set -e
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-azure
+
+# Students should run the 'fastforward' command to create this file.
+# Otherwise it is assumed that this is a CI/CD run.
+# The /root/skipconfig.json file is required for skipping challenges.
+if [[ -f /root/skipconfig.json ]]; then
+  ORG=$(jq -r .org < /root/skipconfig.json)
+  TOKEN=$(jq -r .token < /root/skipconfig.json)
+else
+  ORG="instruqt-circleci"
+  TOKEN=$(cat /var/tfc_user_token)
+fi
+
+# Fetch the workspace ID
+WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN"   --header "Content-Type: application/vnd.api+json"   https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-azure | jq -r .data.id)
+
+# Create JSON payloads for variables
+cat <<-EOF > /tmp/placeholder.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"placeholder",
+      "value":"www.fillmurray.com",
+      "category":"terraform",
+      "hcl":false
+    }
+  }
+}
+EOF
+
+cat <<-EOF > /tmp/height.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"height",
+      "value":"600",
+      "category":"terraform",
+      "hcl":false
+    }
+  }
+}
+EOF
+
+cat <<-EOF > /tmp/width.json
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"width",
+      "value":"800",
+      "category":"terraform",
+      "hcl":false,
+      "sensitive":false
+    }
+  }
+}
+EOF
+
+# Create our variables in HCP Terraform
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/placeholder.json https://app.terraform.io/api/v2/workspaces/$WORKSPACE_ID/vars
+
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/height.json https://app.terraform.io/api/v2/workspaces/$WORKSPACE_ID/vars
+
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/width.json https://app.terraform.io/api/v2/workspaces/$WORKSPACE_ID/vars
+
+# In theory, we should trigger an apply with the API, but if the first
+# apply worked then we know the new one would too.
+
+exit 0

@@ -1,0 +1,18 @@
+#!/bin/bash -l
+set -e
+
+# Set workdir
+set-workdir /root/hcp-terraform
+
+cp -a /root/hashicat-$CLOUD_ENV/exercises/13-main.tf /root/hashicat-$CLOUD_ENV/main.tf
+
+sed -i "s/STORAGE_MODULE/aws-s3-bucket/g" /root/hcp-terraform/exercises/13-main.tf
+cat /root/hcp-terraform/exercises/13-main.tf >> /root/hcp-terraform/main.tf
+
+sed -i "s/STORAGE_MODULE/terraform-aws-s3-bucket/g" /root/hcp-terraform/exercises/13-variables.tf
+cat /root/hcp-terraform/exercises/13-variables.tf >> /root/hcp-terraform/variables.tf
+
+sed -i "s/STORAGE_MODULE/terraform-aws-s3-bucket/g" /root/hcp-terraform/exercises/13-terraform.tfvars
+cat /root/hcp-terraform/exercises/13-terraform.tfvars >> /root/hcp-terraform/terraform.tfvars
+
+exit 0

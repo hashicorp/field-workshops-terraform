@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<!--
+ Copyright (c) HashiCorp, Inc.
+ SPDX-License-Identifier: MPL-2.0
+-->
+
+<html>
+
+<head>
+  <title>HCP Terraform on Azure</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <link rel="icon" href="fav-icon/icon.svg" type="image/svg+xml" sizes="32x32" />
+
+  <link REL="stylesheet" TYPE="text/css"
+    HREF="https://hashicorp.github.io/field-workshops-assets/assets/css/adirondack.css">
+  <link REL="stylesheet" TYPE="text/css" HREF="https://hashicorp.github.io/field-workshops-assets/assets/css/apron.css">
+  <link REL="stylesheet" TYPE="text/css"
+    HREF="https://hashicorp.github.io/field-workshops-assets/assets/css/descartes.css">
+  <link REL="stylesheet" TYPE="text/css"
+    HREF="https://hashicorp.github.io/field-workshops-assets/assets/css/hashicorp.css">
+  <link REL="stylesheet" TYPE="text/css" HREF="https://hashicorp.github.io/field-workshops-assets/assets/css/all.css">
+
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+  <!-- <script src="https://hashicorp.github.io/field-workshops-assets/assets/js/link.js"></script> -->
+  <!-- <script src="https://hashicorp.github.io/field-workshops-assets/assets/js/story.js"></script> -->
+
+  <!--
+      HashiCorp Colors
+      Vagrant    #1563FF
+      Packer     #00ACFF
+      Terraform  #623CE4
+      Vault      #000000
+      Nomad      #00BC7F
+      Consul     #CA2171
+  -->
+
+  <style type="text/css">
+    .remark-container {
+      background-color: #4C316B;
+      background-image: linear-gradient(45deg, black, 75%, #4C316B);
+    }
+
+    .remark-slide-scaler {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+
+    .title-slide {
+      color: white;
+      background-color: #4C316B;
+      background-image: linear-gradient(45deg, black, 75%, #4C316B);
+    }
+
+    .title {
+      background-color: #4C316B;
+      background-image: url(images/terraform_callout_pattern_dark.svg), linear-gradient(45deg, black, 75%, #4C316B);
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: white;
+    }
+
+    .title-light {
+      background-color: white;
+      background-image: url(images/terraform_callout_pattern_light.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: black;
+    }
+
+    .review {
+      background-image: url(images/terraform_callout_pattern_light.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 150px 200px;
+    }
+
+    .with-invitation h3 {
+      -webkit-user-modify: read-write;
+      -moz-user-modify: read-write;
+      user-modify: read-write;
+    }
+
+    .minimal p {
+      color: #727274;
+      font-size: 1.5rem;
+      padding: 0 40px;
+    }
+
+    .minimal-toc hr {
+      border: 1px dashed white;
+    }
+
+    .minimal-list li {
+      font-size: 1.5rem;
+    }
+
+    .constrain-image img {
+      width: 480px;
+      max-width: 480px;
+      object-fit: contain;
+    }
+
+    .header-adjust h1 {
+      padding: 0;
+      padding-bottom: 80px;
+      font-size: 2.5rem;
+    }
+
+    .header-adjust h3 {
+      margin-block-start: 0;
+      font-size: 1.75rem;
+    }
+
+    .minimal-paragraph p {
+      margin-block-start: 0;
+      font-size: 1.5rem;
+      margin: 25px 50px 75px 50px;
+      color: #727274;
+      height: 100px;
+      border-bottom: 2px solid #222;
+      border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+    }
+
+    .minimal-paragraph p::before {
+      content: "\2022";
+      color: #4C316B;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    .header-adjust-minimal-list li {
+      font-size: 1.2rem;
+      padding-bottom: 1rem;
+    }
+
+    .header-adjust-minimal-paragraph ul {
+      padding: 0;
+      margin-block-start: 10px;
+      margin-block-end: 10px;
+    }
+
+    .header-adjust-minimal-paragraph li {
+      font-size: 1.2rem;
+      color: #727274;
+      padding-bottom: 1rem;
+      list-style: none;
+    }
+
+    .header-adjust-minimal-paragraph p {
+      margin-block-start: 10px;
+      margin-block-end: 10px;
+    }
+
+    .adjust-minimal-sub-list li {
+      font-size: 1.5rem;
+      color: #222;
+    }
+
+    .adjust-minimal-sub-list ul li {
+      list-style: none;
+    }
+
+    .adjust-minimal-sub-list li p {
+      margin-block-end: 10px;
+    }
+
+    .adjust-minimal-sub-list li ul li {
+      font-size: 1rem;
+      color: #727274;
+      list-style: circle;
+    }
+
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      padding: 15px;
+      z-index: 9999;
+      border-radius: 10px;
+    }
+
+    .lightbox__inner {
+      position: relative;
+      background: white;
+      box-shadow: 0 25px 25px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+    }
+
+    .lightbox__content img {
+      width: 100%;
+      min-width: 800px;
+      height: 100%;
+      min-height: 800px;
+      max-height: 1000px;
+      border-radius: 10px;
+    }
+
+    .remark-slide-content .remark-slide-number,
+    .remark-slide-content .footer li {
+      font-size: 1rem;
+      color: #727274;
+    }
+
+    .center_p p {
+      display: flex;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .footer li:nth-child(2) {
+      opacity: 1;
+    }
+
+    .table-exercises table {
+      display: table;
+    }
+
+    .table-exercises td p {
+      font-size: 2rem;
+      margin-block-start: 10px;
+      margin-block-end: 10px;
+    }
+
+    .table-exercises ul li {
+      font-size: 1.25rem;
+      color: #727274;
+    }
+
+    .table-exercises ul li:last-child {
+      margin-block-start: 10px;
+      list-style: none;
+    }
+
+    .remark-slide-content table th,
+    .remark-slide-content table td {
+      background-color: white;
+      vertical-align: top;
+      border: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <script>
+
+    /**
+     * Lightbox sequence for images
+     * The purpose is to effectively display each image on the screen 
+     * taking the full height of the viewing window. All images have 
+     * been designed with 4:3 ratio. This choice accomodates mobile 
+     * devices when the lightbox is activated.  
+    */
+
+    /** 
+     * Active the lighbox. Create hidden <div> -> <div> - <div>
+     * structure to hold the image when the lightbox display 
+     * property is set to block.
+     */
+    function activate() {
+      document.body.insertAdjacentHTML("afterbegin", `
+            <div class="lightbox" id="lightbox" style="display:none">
+                <div class="lightbox__inner">
+                    <div class="lightbox__content"></div>
+                </div>
+            </div>
+        `);
+
+      const lightBox = document.querySelector("#lightbox");
+      const content = lightBox.querySelector(".lightbox__content");
+
+      const closeLightbox = () => {
+        lightBox.style.display = "none";
+        content.innerHTML = "";
+      };
+
+      lightBox.addEventListener("mousedown", e => {
+        closeLightbox();
+      });
+    }
+
+    /**
+     * show - Given an element, display the HTML or image element 
+     * on the lightbox by replacing the innermost <div> with the 
+     * element contents.
+     * @param {htmlOrElement} the image to display in the lightbox.
+     */
+    function show(htmlOrElement) {
+      const content = document.querySelector("#lightbox .lightbox__content");
+
+      document.querySelector("#lightbox").style.display = null;
+
+      if (typeof htmlOrElement === "string") {
+        content.innerHTML = htmlOrElement;
+      } else {
+        content.innerHTML = "";
+        content.appendChild(htmlOrElement);
+      }
+    }
+  </script>
+
+  <script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
+  <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+  <script>
+    remark.macros.scale = function (percentage) {
+      var url = this;
+      return '<img src="' + url + '" style="width: ' + percentage + '" />';
+    };
+
+    // Main markdown file here
+    sourceUrls = [
+      'index.md'
+    ]
+
+    var xmlhttp = new XMLHttpRequest();
+
+    var source = ""
+
+    for (var i = 0; i < sourceUrls.length; i++) {
+      xmlhttp.open('GET', sourceUrls[i], false);
+      xmlhttp.send();
+      source += xmlhttp.responseText; // Files shouldn't have --- at the head or foot // It is added automatically here 
+      if (i + 1 < sourceUrls.length) {
+        source += "\n---\n"
+      }
+    };
+
+    var slideshow = remark.create({
+      ratio: '16:9',
+      highlightLines: 'true',
+      source: source,
+      navigation: {
+        // Enable or disable navigating using scroll
+        // Default: true 
+        // Alternatives: false 
+        scroll: false,
+      }
+    });
+
+    // This is done manually for this particular presentation
+    // slides contains the object element for each slide
+    const slides = document.getElementsByClassName("remark-slide-content");
+    const images = []
+
+    // This is a list of slides that contain images which we 
+    // want to ignore. The following slides do not active the
+    // lightbox - this is an all-or-nothing approach and can be improved.
+    const ignore_ids = [
+      "slide-Intro-to-hcp-terraform",
+      "slide-terraform-adoption-journey",
+      "slide-lab-guidance-01",
+      "slide-lab-guidance-02",
+      "slide-lab-guidance-03",
+      "slide-lab-guidance-04",
+      "slide-thank-you",
+    ]
+
+    activate();
+
+    // Check each slide in the list obtained during bootstrap
+    // Make a list of images objects so we can add an event listener
+    slides.forEach(slide => {
+      const slide_children = slide.children;
+
+      // Clause: if the slide is in the ignore list, do nothing.
+      if (ignore_ids.indexOf(String(slide.id)) != -1) {
+        return
+      }
+
+      // For each tag element in the current slide
+      slide_children.forEach(el => {
+
+        // Clause: if the element is not a <P> element, do nothing.
+        // RemarkJS places images inside of a <P> element when using
+        // the [alt](image/image.svg) in Markdown.
+        if (el.nodeName != 'P') {
+          return
+        }
+        slide_paragraph = el
+        slide_paragraph_first_child = slide_paragraph.firstChild
+
+        // Clause: if the element inside of the <P> is not an image, do nothing.
+        if (slide_paragraph_first_child.nodeName != 'IMG') {
+          return
+        }
+
+        // This is an image so place it in the list as an object.
+        images.push(slide_paragraph_first_child)
+      })
+    })
+
+    // For each image object in the list from above, create 
+    // event listener. We're looking for click.
+    images.forEach(lb_image => {
+      lb_image.addEventListener('click', () => {
+
+        // If the user clicks on the image, show the image in the
+        // lightbox. See show() for toggle sequence.
+        show(lb_image.outerHTML)
+      })
+    })
+
+  </script>
+</body>
+
+</html>

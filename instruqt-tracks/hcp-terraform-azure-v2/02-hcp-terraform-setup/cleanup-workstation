@@ -1,0 +1,35 @@
+#!/bin/bash -l
+# Copyright (c) HashiCorp, Inc.
+set -euxvo pipefail
+
+ORG=$(grep organization /root/hcp-terraform/terraform.tfvars | cut -d '"' -f2)
+WORKSPACE=$(grep workspace /root/hcp-terraform/terraform.tfvars | cut -d '"' -f2)
+
+agent variable set TF_ORG $ORG
+agent variable set TF_WORKSPACE $WORKSPACE
+
+cp /root/hashicat-$CLOUD_ENV/remote_backend.tf.example /root/hashicat-$CLOUD_ENV/remote_backend.tf
+
+cd /root/hashicat-$CLOUD_ENV
+sed -i "s/YOUR_ORGANIZATION/$ORG/g" remote_backend.tf
+sed -i "s/YOUR_WORKSPACE/$WORKSPACE/g" remote_backend.tf
+
+cp /root/hcp-terraform/terraform.tfvars.example /root/hcp-terraform/terraform.tfvars
+
+cd /root/hcp-terraform
+sed -i "s/YOUR_ORGANIZATION/$ORG/g" terraform.tfvars 
+sed -i "s/YOUR_WORKSPACE/$WORKSPACE/g" terraform.tfvars
+
+cp /root/terraform-api/terraform.tfvars.example /root/terraform-api/terraform.tfvars
+
+cd /root/terraform-api
+sed -i "s/YOUR_ORGANIZATION/$ORG/g" terraform.tfvars
+sed -i "s/YOUR_WORKSPACE/$WORKSPACE/g" terraform.tfvars
+
+# Store the ORG in /root/.bashrc
+echo "export ORG=\"$ORG\"" >> /root/.bashrc
+
+# Store the WORKSPACE in /root/.bashrc
+echo "export WORKSPACE=\"$WORKSPACE\"" >> /root/.bashrc
+
+exit 0

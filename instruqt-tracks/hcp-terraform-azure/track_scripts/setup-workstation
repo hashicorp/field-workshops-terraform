@@ -1,0 +1,119 @@
+#!/bin/bash -l
+# Track setup script
+
+set -e
+
+# Wait for Instruqt to finish booting the VM
+# This is better than doing sleep
+while [ ! -f /opt/instruqt/bootstrap/host-bootstrap-completed ]
+do
+    echo "Waiting for Instruqt to finish booting the VM"
+    sleep 1
+done
+
+# Set Terraform Version
+TERRAFORM_VERSION="1.1.4"
+
+# Install desired version of Terraform
+rm -f /usr/local/bin/terraform
+wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+mv terraform /usr/local/bin/terraform
+chmod +x /usr/local/bin/terraform
+rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+
+# Install cowsay
+sudo apt-get update -y
+sudo apt-get install -y cowsay
+cp /usr/games/cowsay /usr/local/bin/cowsay
+
+# clone the hashicat-azure repo
+git clone https://github.com/hashicorp/hashicat-azure
+GITDIR="/root/hashicat-azure"
+
+# Set workdir
+set-workdir /root/hashicat-azure
+
+cd ${GITDIR}
+mv terraform.tfvars.example terraform.tfvars
+echo -e "# location = \"\"" >> terraform.tfvars
+
+# Create a catch-up script that enables the user to fast-forward
+cat <<-EOF > /usr/bin/fastforward
+#!/bin/bash
+echo "******************************************************************"
+echo "* Skip to Challenge Configuration Script"
+echo "******************************************************************"
+echo
+echo "This script will set up your HCP Terraform token and organization"
+echo "configuration. Once that is done you may use the 'skip to challenge'"
+echo "feature of Instruqt to fast-forward to a particular point in the"
+echo "training."
+echo
+echo "Please enter your HCP Terraform organization name."
+read ORG
+echo
+echo "Please enter your workspace name."
+read WORKSPACE
+echo
+echo "Please enter your HCP Terraform user token."
+read TOKEN
+echo
+echo "Please enter your GitHub user ID."
+read GITUSERID
+echo
+echo "Please enter your GitHub personal access token."
+read GITPAT
+echo
+echo "Please enter your GitHub user name (<first_name> <last_name>)."
+read GITUSERNAME
+echo
+echo "Please enter your GitHub email."
+read GITEMAIL
+echo
+echo "Please enter your oauth-id. You can find it at this URL:"
+echo "https://app.terraform.io/app/\${ORG}/settings/version-control"
+echo "If you haven't set up VCS integration yet, simply hit enter."
+read OAUTHID
+echo
+echo "Organization: \$ORG"
+echo "Workspace   : \$WORKSPACE"
+echo "Token       : \$TOKEN"
+echo "GitHub User ID : \$GITUSERID"
+echo "GitHub Personal Access Token : \$GITPAT"
+echo "GitHub User Name : \$GITUSERNAME"
+echo "GitHub Email : \$GITEMAIL"
+echo "OAuth ID    : \$OAUTHID"
+echo
+read -p "Do these look right to you? Y/n " -n 1 -r
+echo
+if [[ ! \$REPLY =~ ^[Yy]\$ ]]
+then
+  echo "Please try again."
+  exit 1
+fi
+echo
+echo "Saving your settings in /root/skipconfig.json"
+cat <<-EOM > /root/skipconfig.json
+{
+  "org": "\$ORG",
+  "workspace": "\$WORKSPACE",
+  "token": "\$TOKEN",
+  "gituserid": "\$GITUSERID",
+  "gitpat": "\$GITPAT",
+  "gitusername": "\$GITUSERNAME",
+  "gitemail": "\$GITEMAIL",
+  "oauthid": "\$OAUTHID"
+}
+EOM
+
+# Store the ORG in /root/.bashrc
+grep \$ORG /root/.bashrc || echo "export ORG=\"\$ORG\"" >> /root/.bashrc
+
+cowsay "Ready to Skip Challenges!"
+
+EOF
+
+chmod +x /usr/bin/fastforward
+
+exit 0

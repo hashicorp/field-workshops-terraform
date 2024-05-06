@@ -29,7 +29,7 @@ name: terraform-workshops
 ### This repository contains Terraform workshops.
 * They are organized by cloud.
 * Workshops for each cloud are organized by type:
-  1. Terraform OSS
+  1. Terraform Community Edition
   1. Terraform Enterprise
 
 ???
@@ -49,9 +49,9 @@ You can also indent one kind of list under another as done in this slide.  To ma
 name:workshop-slides
 # Viewing Workshop Slides
 #### You can view workshop slides with URLs like these:
-* https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-oss/index.html
-* https://hashicorp.github.io/field-workshops-terraform/slides/azure/terraform-oss/index.html
-* https://hashicorp.github.io/field-workshops-terraform/slides/gcp/terraform-oss/index.html
+* https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-community/index.html
+* https://hashicorp.github.io/field-workshops-terraform/slides/azure/terraform-community/index.html
+* https://hashicorp.github.io/field-workshops-terraform/slides/gcp/terraform-community/index.html
 
 ???
 The workshop slides are written in Remark.js.

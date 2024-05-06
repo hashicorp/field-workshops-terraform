@@ -1,0 +1,175 @@
+#!/bin/bash -l
+set -e
+
+# Enable bash history
+HISTFILE=/root/.bash_history
+set -o history
+
+cd /root/hashicat-gcp
+
+# Get our HCP Terraform token and organization from the local config files
+TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
+
+# These are the HCP Terraform IDs of our fictional users. They are persistent and should not be deleted from HCP Terraform.
+LARS_ID="user-V2Qt225RgAUzsWpz"
+HIRO_ID="user-egHewG9Z5eNa9u9m"
+AISHA_ID="user-CsBb94bVHrq7E5AA"
+
+# Get our team IDs. In the test environment these teams are pre-created.
+ADMINS_TEAM_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/teams | jq -r '.data | .[] | select(.attributes.name|test("admins")) | .id')
+
+# Create admins team if it does not exist
+if [[ "$ADMINS_TEAM_ID" == "" ]]; then
+  cat <<-EOF > /tmp/create_admins_team.json
+{
+  "data": {
+    "type": "teams",
+    "attributes": {
+      "name": "admins",
+      "visibility": "organization",
+      "organization-access": {
+        "manage-workspaces": true,
+        "manage-policies": true,
+        "manage-vcs-settings": true
+      }
+    }
+  }
+}
+EOF
+  ADMINS_TEAM_ID=$(curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/create_admins_team.json https://app.terraform.io/api/v2/organizations/$ORG/teams | jq -r '.data.id')
+  if [[ "$ADMINS_TEAM_ID" == "" ]]; then
+    fail-message "Could not create admins team"
+  fi
+fi
+
+DEVS_TEAM_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/teams | jq -r '.data | .[] | select(.attributes.name|test("developers")) | .id')
+
+# Create developers team if it does not exist
+if [[ "$DEVS_TEAM_ID" == "" ]]; then
+  cat <<-EOF > /tmp/create_developers_team.json
+{
+  "data": {
+    "type": "teams",
+    "attributes": {
+      "name": "developers",
+      "visibility": "organization
+    }
+  }
+}
+EOF
+  DEVS_TEAM_ID=$(curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/create_developers_team.json https://app.terraform.io/api/v2/organizations/$ORG/teams | jq -r '.data.id')
+  if [[ "$DEVS_TEAM_ID" == "" ]]; then
+    fail-message "Could not create developers team"
+  fi
+fi
+
+MANAGERS_TEAM_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/teams | jq -r '.data | .[] | select(.attributes.name|test("managers")) | .id')
+
+# Create managers team if it does not exist
+if [[ "$MANAGERS_TEAM_ID" == "" ]]; then
+  cat <<-EOF > /tmp/create_managers_team.json
+{
+  "data": {
+    "type": "teams",
+    "attributes": {
+      "name": "managers",
+      "visibility": "organization
+    }
+  }
+}
+EOF
+  MANAGERS_TEAM_ID=$(curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/create_managers_team.json https://app.terraform.io/api/v2/organizations/$ORG/teams | jq -r '.data.id')
+  if [[ "$MANAGERS_TEAM_ID" == "" ]]; then
+    fail-message "Could not create managers team"
+  fi
+fi
+
+# Fetch our workspace ID
+WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-gcp | jq -r .data.id)
+
+# Create a payload to associate the managers team
+cat <<-EOF > /tmp/managers_read_access.json
+{
+  "data": {
+    "attributes": {
+      "access":"read"
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "type":"workspaces",
+          "id":"$WORKSPACE_ID"
+        }
+      },
+      "team": {
+        "data": {
+          "type":"teams",
+          "id":"$MANAGERS_TEAM_ID"
+        }
+      }
+    },
+    "type":"team-workspaces"
+  }
+}
+EOF
+
+# Create a payload to associate the developers team
+cat <<-EOF > /tmp/developers_write_access.json
+{
+  "data": {
+    "attributes": {
+      "access":"write"
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "type":"workspaces",
+          "id":"$WORKSPACE_ID"
+        }
+      },
+      "team": {
+        "data": {
+          "type":"teams",
+          "id":"$DEVS_TEAM_ID"
+        }
+      }
+    },
+    "type":"team-workspaces"
+  }
+}
+EOF
+
+# Create a payload to associate the admins team
+cat <<-EOF > /tmp/admins_admin_access.json
+{
+  "data": {
+    "attributes": {
+      "access":"admin"
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "type":"workspaces",
+          "id":"$WORKSPACE_ID"
+        }
+      },
+      "team": {
+        "data": {
+          "type":"teams",
+          "id":"$ADMINS_TEAM_ID"
+        }
+      }
+    },
+    "type":"team-workspaces"
+  }
+}
+EOF
+
+# Associate each team with the workspace
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/managers_read_access.json https://app.terraform.io/api/v2/team-workspaces
+
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/developers_write_access.json https://app.terraform.io/api/v2/team-workspaces
+
+curl --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @/tmp/admins_admin_access.json https://app.terraform.io/api/v2/team-workspaces
+
+exit 0

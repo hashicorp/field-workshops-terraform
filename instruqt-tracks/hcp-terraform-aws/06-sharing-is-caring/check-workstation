@@ -1,0 +1,45 @@
+#!/bin/bash -l
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+cd /root/hashicat-aws
+
+# Get our HCP Terraform token and organization from the local config files
+TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
+
+# Get our team IDs. In the test environment these teams are pre-created.
+ADMINS_TEAM_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/teams | jq -r '.data | .[] | select(.attributes.name|test("[Aa]dmin*")) | .id')
+
+DEVS_TEAM_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/teams | jq -r '.data | .[] | select(.attributes.name|test("^developers$")) | .id')
+
+MANAGERS_TEAM_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/teams | jq -r '.data | .[] | select(.attributes.name|test("^managers$")) | .id')
+
+# Fetch our workspace ID
+WORKSPACE_ID=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-aws | jq -r .data.id)
+
+# Check if the admins team has been attached to the workspace with correct access
+ADMINS_ACCESS=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET "https://app.terraform.io/api/v2/team-workspaces?filter%5Bworkspace%5D%5Bid%5D=$WORKSPACE_ID" | jq -r --arg ADMINS_TEAM_ID "$ADMINS_TEAM_ID" '.data | .[] | select(.relationships.team.data.id | test($ADMINS_TEAM_ID)) | .attributes.access')
+
+[[ $ADMINS_ACCESS == admin ]] || fail-message "Oops, it looks like your admins group has not been set up correctly yet. Give the admins group admin rights on the hashicat-aws workspace."
+
+# Check if the managers team has been attached to the workspace with correct access
+MANAGERS_ACCESS=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET "https://app.terraform.io/api/v2/team-workspaces?filter%5Bworkspace%5D%5Bid%5D=$WORKSPACE_ID" | jq -r --arg MANAGERS_TEAM_ID "$MANAGERS_TEAM_ID" '.data | .[] | select(.relationships.team.data.id | test($MANAGERS_TEAM_ID)) | .attributes.access')
+
+[[ $MANAGERS_ACCESS == read ]] || fail-message "Oops, it looks like your managers group has not been set up correctly yet. Give the managers group read rights on the hashicat-aws workspace."
+
+# Check if the developers team has been attached to the workspace with correct access
+DEVS_ACCESS=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET "https://app.terraform.io/api/v2/team-workspaces?filter%5Bworkspace%5D%5Bid%5D=$WORKSPACE_ID" | jq -r --arg DEVS_TEAM_ID "$DEVS_TEAM_ID" '.data | .[] | select(.relationships.team.data.id | test($DEVS_TEAM_ID)) | .attributes.access')
+
+[[ $DEVS_ACCESS == write ]] || fail-message "Oops, it looks like your developers group has not been attached to your workspace yet. Give the developers group write access to the hashicat-aws workspace."
+
+# Check the number of users in the org
+USERS=$(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" https://app.terraform.io/api/v2/organizations/$ORG/organization-memberships | jq -r '.data | length')
+
+[[ $USERS -gt 1 ]] || fail-message "Oops, it looks like you haven't added any other users to your organization. Invite at least one user to your org and put them on a team."
+
+exit 0

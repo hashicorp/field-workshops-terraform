@@ -30,22 +30,22 @@ jobs:
       working_directory: instruqt-tracks/sentinel-for-terraform-v4
     secrets:
       INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
-  terraform-cloud-aws:
+  hcp-terraform-aws:
     uses: ./.github/workflows/instruqt-track-test.yml
     with:
-      working_directory: instruqt-tracks/terraform-cloud-aws
+      working_directory: instruqt-tracks/hcp-terraform-aws
     secrets:
       INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
-  terraform-cloud-azure:
+  hcp-terraform-azure:
     uses: ./.github/workflows/instruqt-track-test.yml
     with:
-      working_directory: instruqt-tracks/terraform-cloud-azure
+      working_directory: instruqt-tracks/hcp-terraform-azure
     secrets:
       INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
-  terraform-cloud-gcp:
+  hcp-terraform-gcp:
     uses: ./.github/workflows/instruqt-track-test.yml
     with:
-      working_directory: instruqt-tracks/terraform-cloud-gcp
+      working_directory: instruqt-tracks/hcp-terraform-gcp
     secrets:
       INSTRUQT_TOKEN: ${{ secrets.INSTRUQT_TOKEN }}
   terraform-foundations-aws:
@@ -76,9 +76,9 @@ jobs:
     needs:
       - sentinel-cli-basics
       - sentinel-for-terraform-v4
-      - terraform-cloud-aws
-      - terraform-cloud-azure
-      - terraform-cloud-gcp
+      - hcp-terraform-aws
+      - hcp-terraform-azure
+      - hcp-terraform-gcp
       - terraform-foundations-aws
       - terraform-intro-aws
       - terraform-intro-azure

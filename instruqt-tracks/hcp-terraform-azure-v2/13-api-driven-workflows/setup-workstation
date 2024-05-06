@@ -1,0 +1,29 @@
+#!/bin/bash -l
+set -e
+
+set-workdir /root/terraform-api
+
+export TFC_TOKEN=$(cat /root/.terraform.d/credentials.tfrc.json  | jq '.credentials."app.terraform.io".token')
+echo "export TFC_TOKEN=${TFC_TOKEN}" >> /root/.bashrc
+unset TFC_TOKEN
+
+# This sequence allows to check in the GitHub Actions portion
+sed -i 's/remote_backend.tf/# remote_backend.tf/g' /root/hashicat-$CLOUD_ENV/.gitignore
+sed -i 's/terraform.yml/# terraform.yml/g' /root/hashicat-$CLOUD_ENV/.gitignore
+
+# Replace the entire file. We need to do this
+# in this manner as to replacethe code block for
+# the TFE workspace. We can manipulate the code with
+# bash but this is more straight forward.
+cp /root/hcp-terraform/exercises/14-main.tf /root/hcp-terraform/main.tf 
+
+# Aggregate the required content 
+# main.tf
+cat /root/hcp-terraform/exercises/05-env_vars_main.tf >> /root/hcp-terraform/main.tf
+cat /root/hcp-terraform/exercises/05-tf_vars_main.tf >> /root/hcp-terraform/main.tf
+cat /root/hcp-terraform/exercises/08-users_main.tf >> /root/hcp-terraform/main.tf
+cat /root/hcp-terraform/exercises/08-github_main.tf >> /root/hcp-terraform/main.tf
+cat /root/hcp-terraform/exercises/11-main.tf >> /root/hcp-terraform/main.tf
+cat /root/hcp-terraform/exercises/13-main.tf >> /root/hcp-terraform/main.tf
+
+exit 0

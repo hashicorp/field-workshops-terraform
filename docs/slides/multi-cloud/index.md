@@ -26,7 +26,7 @@ name: terraform-workshops-slides
 # Terraform Multi-Cloud Workshop Slides
 ### This directory contains slides for Terraform workshops intended for use with multiple clouds.
 ### Workshops for each cloud are organized by type:
-  1. Terraform OSS
+  1. Terraform Community Edition
   1. Terraform Enterprise
 
 ???

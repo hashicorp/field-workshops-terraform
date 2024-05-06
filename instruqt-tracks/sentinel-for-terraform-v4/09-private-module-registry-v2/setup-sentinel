@@ -8,7 +8,7 @@ mkdir -p /root/sentinel/common-functions/module-functions
 cat <<-'EOF' > /root/sentinel/require-modules-from-pmr-b.sentinel
 # require-modules-from-pmr-b.sentinel
 # This policy validates that all modules loaded directly by the
-# root module are in the Private Module Registry (PMR) of a TFC
+# root module are in the Terraform Private Registry of a TFC
 # organization.
 
 # Import module-functions.sentinel as "modules"

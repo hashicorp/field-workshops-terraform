@@ -1,0 +1,52 @@
+#!/bin/bash -l
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+cd /root/hashicat-gcp
+
+TOKEN=$(grep token /root/.terraform.d/credentials.tfrc.json | cut -d '"' -f4)
+ORG=$(grep organization /root/hashicat-gcp/remote_backend.tf | cut -d '"' -f2)
+
+# Check the token length
+[[ 91 -eq $(echo $TOKEN | wc -m) ]]
+EXIT_CODE=$?
+if [[ $EXIT_CODE -ne 0 ]]; then
+  fail-message "Oops, something's not right with your token. Check your /root/.terraform.d/credentials.tfrc.json file to be sure it has your token in it."
+fi
+
+# Does the user have an organization configured
+grep -q YOURORGANIZATION /root/hashicat-gcp/remote_backend.tf
+EXIT_CODE=$?
+if [[ $EXIT_CODE -ne 1 ]]; then
+  fail-message "Oops, it looks like you haven't added your organization name to the remote_backend.tf file yet."
+fi
+
+# Does the user have a workspace configured
+grep -q hashicat-gcp /root/hashicat-gcp/remote_backend.tf
+EXIT_CODE=$?
+if [[ $EXIT_CODE -ne 0 ]]; then
+  fail-message "Oops, we couldn't find the hashicat-gcp workspace in your remote_backend.tf config file. Try again."
+fi
+
+# Verify the organization exists in HCP Terraform
+curl -I -s -L --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG | grep "HTTP/2 200"
+EXIT_CODE=$?
+if [[ $EXIT_CODE -ne 0 ]]; then
+  fail-message "I couldn't find your organization, $ORG in HCP Terraform. Make sure you created it and that it is configured in your remote_backend.tf file."
+fi
+
+# Verify the workspace exists in HCP Terraform
+curl -I -s -L --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.api+json" --request GET https://app.terraform.io/api/v2/organizations/$ORG/workspaces/hashicat-gcp | grep "HTTP/2 200"
+EXIT_CODE=$?
+if [[ $EXIT_CODE -ne 0 ]]; then
+  fail-message "I couldn't find the hashicat-gcp workspace in your organization $ORG. Make sure you created it and that it is configured in your remote_backend.tf file."
+fi
+
+# Store the ORG in /root/.bashrc
+grep $ORG /root/.bashrc || echo "export ORG=\"$ORG\"" >> /root/.bashrc
+
+exit 0

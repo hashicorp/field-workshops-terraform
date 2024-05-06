@@ -11,7 +11,7 @@ cd ~/gitclones/tflabs
 
 if [ ! -f  "/root/.terraform.d/credentials.tfrc.json" ]
 then
-      fail-message "TFC token not set, please run the terraform login command or refresh your Terminal tab before continuing."
+      fail-message "HCP Terraform token not set, please run the terraform login command or refresh your Terminal tab before continuing."
 else
       TOKEN=$(jq -r '.credentials."app.terraform.io".token'  /root/.terraform.d/credentials.tfrc.json)
       echo $(echo TFE_TOKEN=$TOKEN >> /root/.bashrc)
@@ -19,7 +19,7 @@ fi
 
 if [ -z "$TOKEN" ]
 then
-      fail-message "TFC token not set, please run the terraform login command or refresh your Terminal tab before continuing."
+      fail-message "HCP Terraform token not set, please run the terraform login command or refresh your Terminal tab before continuing."
 else
       echo $(echo TFE_TOKEN=$TOKEN >> /root/.bashrc)
 fi
@@ -28,7 +28,7 @@ export TFC_ORG=$(awk -F'"' '/organization/ {print $2}' remote_backend.tf)
 export TFC_WORKSPACE=$(awk -F'"' '/ name/ {print $2}' remote_backend.tf)
 if [ $TFC_ORG = "UpdateThisWithYourOrgName" ]
 then
-      fail-message "Please update your remote_backend.tf to your organization name in Terraform Cloud.  Make sure to run a 'terraform init' after updating the file.  This will migrated your statefile to Terraform Cloud"
+      fail-message "Please update your remote_backend.tf to your organization name in HCP Terraform.  Make sure to run a 'terraform init' after updating the file.  This will migrated your statefile to HCP Terraform"
 fi
 
 terraform init -input=false -reconfigure -force-copy >/tmp/tfinit.test 2>&1
@@ -44,15 +44,15 @@ fi
 
 if [ -z $(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.apitoken" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$TFC_ORG&filter%5Bworkspace%5D%5Bname%5D=$TFC_WORKSPACE"|jq '.data[].attributes | select(.key == "AWS_ACCESS_KEY_ID") .key') ]
 then
-      fail-message "Missing AWS_ACCESS_KEY_ID variable in your Terraform Cloud workspace $TFC_WORKSPACE.  This is required to authenticate to AWS in remote execution mode"
+      fail-message "Missing AWS_ACCESS_KEY_ID variable in your HCP Terraform workspace $TFC_WORKSPACE.  This is required to authenticate to AWS in remote execution mode"
 fi
 
 if [ -z $(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.apitoken" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$TFC_ORG&filter%5Bworkspace%5D%5Bname%5D=$TFC_WORKSPACE"|jq '.data[].attributes | select(.key == "AWS_SECRET_ACCESS_KEY") .key') ]
 then
-      fail-message "Missing AWS_SECRET_ACCESS_KEY variable in your Terraform Cloud workspace $TFC_WORKSPACE.  This is required to authenticate to AWS in remote execution mode"
+      fail-message "Missing AWS_SECRET_ACCESS_KEY variable in your HCP Terraform workspace $TFC_WORKSPACE.  This is required to authenticate to AWS in remote execution mode"
 fi
 
 if [ $(curl -s --header "Authorization: Bearer $TOKEN" --header "Content-Type: application/vnd.apitoken" "https://app.terraform.io/api/v2/vars?filter%5Borganization%5D%5Bname%5D=$TFC_ORG&filter%5Bworkspace%5D%5Bname%5D=$TFC_WORKSPACE"|jq '.data[].attributes | select(.key == "AWS_SECRET_ACCESS_KEY") .sensitive') == false ]
 then
-      fail-message "You didn't set the AWS_SECRET_ACCESS_KEY variable in your Terraform Cloud workspace $TFC_WORKSPACE as 'sensitive'.  This would be considered a security risk since anyone with access to the workspace would see the secret in clear text"
+      fail-message "You didn't set the AWS_SECRET_ACCESS_KEY variable in your HCP Terraform workspace $TFC_WORKSPACE as 'sensitive'.  This would be considered a security risk since anyone with access to the workspace would see the secret in clear text"
 fi

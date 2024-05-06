@@ -9,7 +9,7 @@ notes:
   contents: |-
     [Sentinel](https://docs.hashicorp.com/sentinel) allows customers to implement policy-as-code in the same way that Terraform implements infrastructure-as-code.
 
-    The Sentinel Command Line Interface (CLI) allows you to apply and test Sentinel policies including those that use mocks generated from Terraform Cloud and Terraform Enterprise plans.
+    The Sentinel Command Line Interface (CLI) allows you to apply and test Sentinel policies including those that use mocks generated from HCP Terraform and Terraform Enterprise plans.
 
     You should run the **Sentinel CLI Basics** track before starting this track.
 - type: text
@@ -160,7 +160,7 @@ Now open the test cases and mock files on the "Test Cases" tab.
 - You'll see that the `fail.hcl` test case refers to the `tfplan-functions.sentinel` module and the `mock-tfplan-fail.sentinel` mock file and expects the main rule to return `false`.
 - You'll also see that the `pass.hcl` test case refers to the same module and the `mock-tfplan-pass.sentinel` mock file and expects the main rule to return `true`.
 
-The mock files are simplified versions of mocks generated from plans of Terraform Cloud runs done against Terraform code that used the Vault provider to create some auth methods. The key data that determines whether a test case will pass or fail is in the `after` stanza of the `change` stanza of resources under the `resource_changes` collection.
+The mock files are simplified versions of mocks generated from plans of HCP Terraform runs done against Terraform code that used the Vault provider to create some auth methods. The key data that determines whether a test case will pass or fail is in the `after` stanza of the `change` stanza of resources under the `resource_changes` collection.
 
 The `mock-tfplan-fail.sentinel` mock file creates instances of the Kubernetes, GitHub, and AWS auth methods; the first two are allowed, but the third is not. The `mock-tfplan-pass.sentinel` mock file creates instances of the Kubernetes, GitHub, and Azure auth methods, all of which are allowed.
 

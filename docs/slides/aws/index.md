@@ -26,7 +26,7 @@ name: terraform-workshops-slides
 # Terraform AWS Workshop Slides
 ### This directory contains slides for Terraform workshops intended for use with AWS.
 ### Workshops for each cloud are organized by type:
-  1. Terraform OSS
+  1. Terraform Community Edition
   1. Terraform Enterprise
 
 ???

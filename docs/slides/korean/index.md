@@ -37,7 +37,7 @@ name: terraform-workshops-slides
 
 * 클라우드에 구성됩니다.
 * 각 클라우드에 대한 워크샵은 아래 유형으로 구성됩니다.:
-  1. Terraform OSS
+  1. Terraform Community Edition
   1. Terraform Enterprise
 
 ???
@@ -61,9 +61,9 @@ name:workshop-slides
 
 #### 다음의 URL로 워크샵 슬라이드를 확인할 수 있습니다.:
 
-* https://hashicorp.github.io/field-workshops-terraform/slides/korean/aws/terraform-oss/index.html
-* https://hashicorp.github.io/field-workshops-terraform/slides/korean/azure/terraform-oss/index.html
-* https://hashicorp.github.io/field-workshops-terraform/slides/korean/gcp/terraform-oss/index.html
+* https://hashicorp.github.io/field-workshops-terraform/slides/korean/aws/terraform-community/index.html
+* https://hashicorp.github.io/field-workshops-terraform/slides/korean/azure/terraform-community/index.html
+* https://hashicorp.github.io/field-workshops-terraform/slides/korean/gcp/terraform-community/index.html
 
 ???
 워크샵 슬라이드는 Remark.js로 작성되었습니다.
