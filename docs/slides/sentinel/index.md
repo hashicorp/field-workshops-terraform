@@ -39,7 +39,7 @@ class: img-left-full
 .center[
 Follow along at this link:
 
-## https://hashicorp.github.io/workshops/
+## https://hashicorp.github.io/field-workshops-terraform/slides/sentinel/
 ]
 ---
 name: agenda

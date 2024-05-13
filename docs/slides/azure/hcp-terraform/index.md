@@ -64,7 +64,7 @@ name: hcp-terraform-link-to-slide-deck
 .center[
 Follow along on your own computer at this link:
 
-# https://git.io/JvvLK
+# https://hashicorp.github.io/field-workshops-terraform/slides/azure/hcp-terraform/
 ]
 
 ???

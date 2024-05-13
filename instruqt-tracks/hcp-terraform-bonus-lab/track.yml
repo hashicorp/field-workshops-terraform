@@ -112,7 +112,7 @@ challenges:
     hostname: workstation
   difficulty: basic
   timelimit: 7200
-idle_timeout: 300
+idle_timeout: 3000
 timelimit: 14400
 lab_config:
   overlay: false

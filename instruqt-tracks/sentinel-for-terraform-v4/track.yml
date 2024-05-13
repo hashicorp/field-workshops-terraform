@@ -25,7 +25,7 @@ developers:
 - fraser@hashicorp.com
 - roger@hashicorp.com
 - jenna.wong@hashicorp.com
-idle_timeout: 300
+idle_timeout: 3000
 timelimit: 14400
 lab_config:
   overlay: false
