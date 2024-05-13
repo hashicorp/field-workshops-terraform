@@ -58,7 +58,7 @@ name: Link-to-Slide-Deck
 <br><br><br>
 Follow along on your own computer at this link:
 
-### <https://git.io/JerH6>
+### <https://hashicorp.github.io/field-workshops-terraform/slides/aws/terraform-community/>
 
 ---
 name: Table-of-Contents

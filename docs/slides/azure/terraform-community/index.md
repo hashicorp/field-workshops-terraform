@@ -58,7 +58,7 @@ name: Link-to-Slide-Deck
 <br><br><br>
 Follow along on your own computer at this link:
 
-# https://git.io/JeuCI
+# https://hashicorp.github.io/field-workshops-terraform/slides/azure/terraform-community/
 
 ---
 name: Table-of-Contents

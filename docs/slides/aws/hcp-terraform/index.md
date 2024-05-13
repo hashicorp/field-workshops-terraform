@@ -64,7 +64,7 @@ name: hcp-terraform-link-to-slide-deck
 .center[
 Follow along on your own computer at this link:
 
-# https://git.io/JeA7Q
+# https://hashicorp.github.io/field-workshops-terraform/slides/aws/hcp-terraform/
 ]
 
 ???
@@ -428,7 +428,7 @@ terraform output  # View Terraform outputs
 terraform graph   # Create a DOT-formatted graph
 ```
 
-Need a refresher? Try the [Intro to Terraform on AWS](https://instruqt.com/hashicorp/tracks/terraform-intro-aws) lab exercises.
+Need a refresher? Try the Intro to Terraform on AWS lab exercises.
 
 ???
 Depending on the maturity of your audience you might take a detour back to the Intro to Terraform track. Ideally everyone in the workshop has already completed this or has equivalent experience with Terraform Community.

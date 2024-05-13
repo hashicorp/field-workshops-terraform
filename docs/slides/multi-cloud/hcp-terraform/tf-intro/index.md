@@ -30,7 +30,7 @@ class: img-right-full
 .center[
 Follow along at this link:
 
-## https://g
+## https://hashicorp.github.io/field-workshops-terraform/slides/multi-cloud/hcp-terraform/tf-intro/
 ]
 
 ???
