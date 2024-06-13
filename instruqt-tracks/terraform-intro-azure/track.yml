@@ -1,5 +1,4 @@
-slug: wip-vcdl-846-terraform-intro-azure
-id: nzwzce8frqo5
+slug: terraform-intro-azure
 title: Intro to Terraform on Azure
 teaser: |
   Provision the HashiCat application on Azure Cloud using Terraform.
@@ -12,7 +11,7 @@ tags:
 - azure
 - terraform
 - basics
-owner: hashicorp-field-ops
+owner: hashicorp
 developers:
 - roger@hashicorp.com
 - sean.carolan@hashicorp.com
@@ -28,4 +27,3 @@ lab_config:
   feedback_recap_enabled: true
   loadingMessages: true
   hideStopButton: false
-checksum: "11593833918721249270"

@@ -1,5 +1,4 @@
-slug: wip-vcdl-846-terraform-intro-aws
-id: jcykt4xymnwf
+slug: terraform-intro-aws
 title: Intro to Terraform on AWS
 teaser: |
   Provision the HashiCat application on AWS Cloud using Terraform.
@@ -13,7 +12,7 @@ tags:
 - aws
 - terraform
 - basics
-owner: hashicorp-field-ops
+owner: hashicorp
 developers:
 - sean.carolan@hashicorp.com
 - roger@hashicorp.com
@@ -29,4 +28,3 @@ lab_config:
   feedback_recap_enabled: true
   loadingMessages: true
   hideStopButton: false
-checksum: "5050346962910484889"

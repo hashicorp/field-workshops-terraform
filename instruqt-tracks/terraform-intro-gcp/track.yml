@@ -1,5 +1,4 @@
-slug: wip-vcdl-846-terraform-intro-gcp
-id: dx3wcf4lubqm
+slug: terraform-intro-gcp
 title: Intro to Terraform on GCP
 teaser: |
   Provision the HashiCat application on GCP using Terraform.
@@ -12,7 +11,7 @@ tags:
 - terraform
 - gcp
 - basics
-owner: hashicorp-field-ops
+owner: hashicorp
 developers:
 - sean.carolan@hashicorp.com
 - roger@hashicorp.com
@@ -28,4 +27,3 @@ lab_config:
   feedback_recap_enabled: true
   loadingMessages: true
   hideStopButton: false
-checksum: "13556230776911275731"
