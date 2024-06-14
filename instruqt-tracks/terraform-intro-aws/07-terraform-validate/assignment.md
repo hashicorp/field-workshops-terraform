@@ -1,6 +1,5 @@
 ---
 slug: terraform-validate
-id: 0ge7cn9kcnom
 type: challenge
 title: "\U0001F469‍⚖️ Terraform Validate - Test Your Code"
 teaser: |

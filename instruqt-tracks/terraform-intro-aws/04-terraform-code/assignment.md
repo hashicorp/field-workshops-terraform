@@ -1,6 +1,5 @@
 ---
 slug: terraform-code
-id: ozizhb0unuov
 type: challenge
 title: "\U0001F468‍\U0001F4BB What does Terraform code look like?"
 teaser: |

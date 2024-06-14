@@ -1,6 +1,5 @@
 ---
 slug: aws-credentials
-id: qtjyikiuvx9z
 type: challenge
 title: "\U0001F510 Connecting Terraform to AWS"
 teaser: |

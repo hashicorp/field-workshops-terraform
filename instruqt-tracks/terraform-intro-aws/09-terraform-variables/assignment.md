@@ -1,6 +1,5 @@
 ---
 slug: terraform-variables
-id: d9uqeneyhruz
 type: challenge
 title: "\U0001F39B️ Working with Terraform Variables"
 teaser: |

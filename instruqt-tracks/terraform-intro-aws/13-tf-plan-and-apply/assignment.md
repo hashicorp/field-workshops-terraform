@@ -1,6 +1,5 @@
 ---
 slug: tf-plan-and-apply
-id: jenvz4vgpcok
 type: challenge
 title: "\U0001F468‍\U0001F4BB Terraform Plan and Terraform Apply"
 teaser: |

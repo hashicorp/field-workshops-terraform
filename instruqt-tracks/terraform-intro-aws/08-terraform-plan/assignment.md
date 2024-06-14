@@ -1,6 +1,5 @@
 ---
 slug: terraform-plan
-id: wrnxxdklcxbq
 type: challenge
 title: "\U0001F914 Terraform Plan - Dry Run Mode"
 teaser: |

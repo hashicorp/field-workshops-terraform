@@ -1,6 +1,5 @@
 ---
 slug: change-prefix
-id: kgo0ykyxezo0
 type: challenge
 title: "\U0001F6EB Change Your Prefix"
 teaser: |

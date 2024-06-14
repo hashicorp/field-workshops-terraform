@@ -1,6 +1,5 @@
 ---
 slug: add-a-tag
-id: nv5xjz6pyjrx
 type: challenge
 title: "\U0001F3F7️ Add a Tag to Your VPC"
 teaser: |

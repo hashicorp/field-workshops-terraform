@@ -1,6 +1,5 @@
 ---
 slug: terraform-add-a-variable
-id: zdbscmg1vqjl
 type: challenge
 title: "\U0001F5FC Change Your Location"
 teaser: |

@@ -1,6 +1,5 @@
 ---
 slug: tf-plan-again
-id: oxmdpa6rocnw
 type: challenge
 title: "\U0001F469‍\U0001F4BB Test and Repair"
 teaser: |

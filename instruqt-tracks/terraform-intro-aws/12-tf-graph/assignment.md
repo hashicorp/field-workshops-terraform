@@ -1,6 +1,5 @@
 ---
 slug: tf-graph
-id: 4q6h5ttt7zb5
 type: challenge
 title: "\U0001F4C8 Terraform Graph"
 teaser: |

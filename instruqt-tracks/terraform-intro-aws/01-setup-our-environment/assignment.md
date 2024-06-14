@@ -1,6 +1,5 @@
 ---
 slug: setup-our-environment
-id: ebj23ohhehzw
 type: challenge
 title: "\U0001F3E1 Moving in - Explore Your Workspace"
 teaser: |
