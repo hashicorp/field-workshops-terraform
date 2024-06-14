@@ -1,6 +1,5 @@
 ---
 slug: terraform-destroy
-id: qyylxg2s3kps
 type: challenge
 title: "\U0001F525 Terraform Destroy"
 teaser: |

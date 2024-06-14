@@ -1,6 +1,5 @@
 ---
 slug: use-a-provisioner
-id: 75ne46lncukj
 type: challenge
 title: "\U0001F6E0️ Use a Provisioner"
 teaser: |

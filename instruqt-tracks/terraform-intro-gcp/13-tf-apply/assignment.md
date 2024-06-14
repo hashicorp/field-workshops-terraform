@@ -1,6 +1,5 @@
 ---
 slug: tf-apply
-id: yimyuso20nfh
 type: challenge
 title: "\U0001F468‍\U0001F4BB Terraform Plan and Apply"
 teaser: |

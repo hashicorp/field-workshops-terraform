@@ -1,6 +1,5 @@
 ---
 slug: gcp-credentials
-id: hztyb5p4qfdz
 type: challenge
 title: "\U0001F510 Connecting Terraform to GCP"
 teaser: |

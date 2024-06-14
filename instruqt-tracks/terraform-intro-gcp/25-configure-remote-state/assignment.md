@@ -1,6 +1,5 @@
 ---
 slug: configure-remote-state
-id: lupzdaszexnz
 type: challenge
 title: "\U0001F39B️ Configure Remote State"
 teaser: |

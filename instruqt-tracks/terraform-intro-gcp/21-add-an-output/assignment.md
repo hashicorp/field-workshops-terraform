@@ -1,6 +1,5 @@
 ---
 slug: add-an-output
-id: ci9mcysfqxga
 type: challenge
 title: "\U0001F5A8️ Add an Output"
 teaser: |

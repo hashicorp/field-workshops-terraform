@@ -1,6 +1,5 @@
 ---
 slug: hello-terraform
-id: vkstvwcmd0g8
 type: challenge
 title: "\U0001F44B Getting to Know Terraform"
 teaser: |

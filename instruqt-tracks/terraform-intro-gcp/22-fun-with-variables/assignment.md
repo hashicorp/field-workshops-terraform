@@ -1,6 +1,5 @@
 ---
 slug: fun-with-variables
-id: eohaq0hbcfbw
 type: challenge
 title: "\U0001F436 Fun With Variables"
 teaser: |

@@ -1,6 +1,5 @@
 ---
 slug: terraform-init-provider
-id: 1tmqjwbq0gzb
 type: challenge
 title: "\U0001F3E1 Terraform Init - Install the Providers"
 teaser: |
