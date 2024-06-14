@@ -1,6 +1,5 @@
 ---
 slug: terraform-variables-quiz
-id: 3ukxio6zc1w0
 type: quiz
 title: "\U0001F4DD Quiz 4 - Terraform Variables"
 teaser: |

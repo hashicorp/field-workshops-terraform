@@ -1,6 +1,5 @@
 ---
 slug: terraform-init-provider
-id: dl5lggdlau7w
 type: challenge
 title: ☁️ Terraform Init - Install the Azure Provider
 teaser: |

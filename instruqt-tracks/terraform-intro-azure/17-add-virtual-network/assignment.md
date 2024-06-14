@@ -1,6 +1,5 @@
 ---
 slug: add-virtual-network
-id: 2byhpkuve0uw
 type: challenge
 title: "\U0001F5A7 Add a Virtual Network"
 teaser: |

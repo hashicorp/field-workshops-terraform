@@ -1,6 +1,5 @@
 ---
 slug: hello-terraform
-id: xnar3nai5z5l
 type: challenge
 title: Getting to Know Terraform
 teaser: |

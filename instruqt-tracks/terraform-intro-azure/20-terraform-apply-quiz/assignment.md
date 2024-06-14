@@ -1,6 +1,5 @@
 ---
 slug: terraform-apply-quiz
-id: pqzhlrhyji8j
 type: quiz
 title: "\U0001F4DD Quiz 3 - Terraform Apply"
 teaser: |

@@ -1,6 +1,5 @@
 ---
 slug: setup-our-environment
-id: erun28lc0cgi
 type: challenge
 title: Moving in - Explore Your Workspace
 teaser: |

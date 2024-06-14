@@ -1,6 +1,5 @@
 ---
 slug: hcp-terraform-setup
-id: iqi9tsxbya43
 type: challenge
 title: ☁️ HCP Terraform Setup
 teaser: |

@@ -1,6 +1,5 @@
 ---
 slug: add-a-tag
-id: szow0ncj2rqi
 type: challenge
 title: "\U0001F3F7️ Add a Tag to Your Resource Group"
 teaser: |

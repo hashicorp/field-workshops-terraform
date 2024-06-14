@@ -1,6 +1,5 @@
 ---
 slug: provider-quiz
-id: ghubb2efccqe
 type: quiz
 title: "\U0001F4DD Quiz 1 - Providers and Modules"
 teaser: |

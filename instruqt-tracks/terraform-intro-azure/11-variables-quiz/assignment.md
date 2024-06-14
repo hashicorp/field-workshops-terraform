@@ -1,6 +1,5 @@
 ---
 slug: variables-quiz
-id: 84pwqaghg6d3
 type: quiz
 title: "\U0001F4DD Quiz 2 - Variables"
 teaser: |

@@ -1,6 +1,5 @@
 ---
 slug: complete-the-build
-id: trfoujcx6peo
 type: challenge
 title: "\U0001F3D7️ Complete the Build"
 teaser: |

@@ -1,6 +1,5 @@
 ---
 slug: azure-credentials
-id: v23bafxcbbi2
 type: challenge
 title: Connecting Terraform to Azure Cloud
 teaser: |
