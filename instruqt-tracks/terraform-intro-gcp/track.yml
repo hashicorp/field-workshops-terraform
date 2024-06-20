@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 slug: terraform-intro-gcp
 title: Intro to Terraform on GCP
 teaser: |
