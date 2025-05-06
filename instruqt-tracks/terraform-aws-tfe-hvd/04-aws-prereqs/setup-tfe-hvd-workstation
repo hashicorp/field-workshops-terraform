@@ -1,0 +1,14 @@
+#!/bin/bash -l
+
+set -e
+
+# Clone Assets
+echo "Cloning assets..."
+mkdir -p /root/src/modules
+cd /root/src/modules/
+filename="terraform-aws-prereqs-main.zip"
+fileid="1iSAP64DcnnwIDi81FLODnr5wNE_FwoWd"
+curl -sS -L -o ${filename} "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
+unzip ${filename} > /dev/null
+
+exit 0

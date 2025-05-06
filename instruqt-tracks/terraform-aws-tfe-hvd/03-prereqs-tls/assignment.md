@@ -1,7 +1,7 @@
 ---
 slug: prereqs-tls
 type: challenge
-title: "\U0001F4DA Review HVD Module"
+title: "\U0001F4DA Create Acme TLS prereqs"
 teaser: Welcome to this HashiCorp workshop on the Terraform Enterprise Hashicorp Validated
   Design (HVD) module.
 notes:
