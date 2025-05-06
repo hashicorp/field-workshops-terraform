@@ -14,7 +14,7 @@ containers:
   shell: /bin/bash
 aws_accounts:
 - name: TF-WORKSHOP
-  regions: [us-west-1]
+#  regions: [us-west-1]
   managed_policies:
   - arn:aws:iam::aws:policy/AmazonEC2FullAccess
   - arn:aws:iam::aws:policy/AmazonVPCFullAccess
