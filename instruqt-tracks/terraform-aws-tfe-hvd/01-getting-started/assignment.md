@@ -22,7 +22,7 @@ tabs:
   port: 8443
   title: Terminal
   type: terminal
-	hostname: tfe-hvd-workstation
+  hostname: tfe-hvd-workstation
 difficulty: basic
 timelimit: 5000
 enhanced_loading: null
