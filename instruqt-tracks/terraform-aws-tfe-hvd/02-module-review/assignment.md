@@ -17,7 +17,7 @@ tabs:
   port: 8443
 - title: Terminal
   type: terminal
-	hostname: tfe-hvd-workstation
+  hostname: tfe-hvd-workstation
 - title: Github TFE HVD module
   type: website
   url: https://github.com/hashicorp/terraform-aws-terraform-enterprise-hvd
