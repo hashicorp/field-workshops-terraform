@@ -23,9 +23,6 @@ tabs:
   hostname: cloud-client
   path: /
   port: 80
-- title: aws CLI
-  type: terminal
-  hostname: cloud-client
 - title: Github TFE HVD module
   type: website
   url: https://github.com/hashicorp/terraform-aws-terraform-enterprise-hvd

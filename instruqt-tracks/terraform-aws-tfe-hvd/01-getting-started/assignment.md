@@ -28,9 +28,6 @@ tabs:
   hostname: cloud-client
   path: /
   port: 80
-- title: aws CLI
-  type: terminal
-  hostname: cloud-client
 difficulty: basic
 timelimit: 5000
 enhanced_loading: null
