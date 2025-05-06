@@ -8,12 +8,5 @@ mkdir -p /root/src/modules
 git clone https://github.com/hashicorp/terraform-aws-terraform-enterprise-hvd.git /root/src/modules/terraform-aws-terraform-enterprise-hvd
 # https://gist.github.com/abuxton/0d7452c9f1ccc94c9e9441e110016cf7
 cd /root/src/modules/
-filename="terraform-acme-tls-aws-main.zip"
-fileid="1V3uTiKgXpg7L_VdaML_pCcF7dRXPE86c"
-curl -sS -L -o ${filename} "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
-filename="terraform-aws-prereqs-main.zip"
-fileid="1iSAP64DcnnwIDi81FLODnr5wNE_FwoWd"
-curl -sS -L -o ${filename} "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
-
 
 exit 0

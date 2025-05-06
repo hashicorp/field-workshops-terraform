@@ -17,12 +17,6 @@ tabs:
   port: 8443
 - title: Terminal
   type: terminal
-  hostname: tfe-hvd-workstation
-- title: AWS Console
-  type: service
-  hostname: cloud-client
-  path: /
-  port: 80
 - title: Github TFE HVD module
   type: website
   url: https://github.com/hashicorp/terraform-aws-terraform-enterprise-hvd
@@ -31,12 +25,11 @@ tabs:
   type: website
   url: https://registry.terraform.io/modules/hashicorp/terraform-enterprise-hvd/aws/latest
   new_window: true
-- title: AWS Provider
-  type: website
-  url: https://registry.terraform.io/providers/hashicorp/aws/latest/docs
-  new_window: true
 difficulty: basic
 timelimit: 5000
 enhanced_loading: null
 ---
 
+Before we actually run any further  commands or code, we're going to take some time to review the HVD guides, registry modules and github.
+
+Open the various browser tabs in Instruqt interface, and the instruqtor will provide the link to the HVD guides.
