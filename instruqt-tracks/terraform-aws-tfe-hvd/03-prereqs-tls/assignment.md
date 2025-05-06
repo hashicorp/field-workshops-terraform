@@ -23,10 +23,6 @@ tabs:
   hostname: cloud-client
   path: /
   port: 80
-- title: AWS Provider
-  type: website
-  url: https://registry.terraform.io/providers/hashicorp/aws/latest/docs
-  new_window: true
 difficulty: basic
 timelimit: 5000
 enhanced_loading: null
