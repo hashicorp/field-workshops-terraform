@@ -7,7 +7,7 @@ description: |-
   We will be utilizing additional modules for certificates and prerequisites.
 icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
 tags: []
-owner: hashicorp
+owner: hashicorp-field-ops
 developers:
 - tristan.morgan@hashicorp.com
 - joe.kellner@hashicorp.com
