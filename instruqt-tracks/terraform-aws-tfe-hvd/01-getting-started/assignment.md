@@ -16,11 +16,11 @@ notes:
 
     The modules usage requires providing the prerequisite requirements which we will also be creating with Terraform on AWS.
 tabs:
-  title: Code Editor
+- title: Code Editor
   type: service
   hostname: tfe-hvd-workstation
   port: 8443
-  title: Terminal
+- title: Terminal
   type: terminal
   hostname: tfe-hvd-workstation
 difficulty: basic

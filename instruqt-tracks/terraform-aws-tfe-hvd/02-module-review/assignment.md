@@ -11,22 +11,22 @@ notes:
 
     The modules usage requires providing the prerequisite requirements which we will also be creating with Terraform on AWS.
 tabs:
-  title: Code Editor
+- title: Code Editor
   type: service
   hostname: tfe-hvd-workstation
   port: 8443
-  title: Terminal
+- title: Terminal
   type: terminal
   hostname: tfe-hvd-workstation
-  title: Github TFE HVD module
+- title: Github TFE HVD module
   type: website
   url: https://github.com/hashicorp/terraform-aws-terraform-enterprise-hvd
   new_window: true
-  title: Terraform AWS TFE HVD module
+- title: Terraform AWS TFE HVD module
   type: website
   url: https://registry.terraform.io/modules/hashicorp/terraform-enterprise-hvd/aws/latest
   new_window: true
-  title: AWS Provider
+- title: AWS Provider
   type: website
   url: https://registry.terraform.io/providers/hashicorp/aws/latest/docs
   new_window: true
