@@ -18,6 +18,15 @@ tabs:
 - title: Terminal
   type: terminal
   hostname: tfe-hvd-workstation
+- title: AWS Console
+  type: service
+  hostname: cloud-client
+  path: /
+  port: 80
+- title: aws CLI
+  type: terminal
+  hostname: cloud-client
+difficulty: basic
 - title: Github TFE HVD module
   type: website
   url: https://github.com/hashicorp/terraform-aws-terraform-enterprise-hvd
