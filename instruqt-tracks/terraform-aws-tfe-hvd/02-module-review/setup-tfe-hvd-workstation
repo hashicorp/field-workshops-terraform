@@ -12,7 +12,7 @@ filename="terraform-acme-tls-aws-main.zip"
 fileid="1V3uTiKgXpg7L_VdaML_pCcF7dRXPE86c"
 curl -sS -L -o ${filename} "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
 filename="terraform-aws-prereqs-main.zip"
-fileid="1l-390XP5sZRVwq-bg05N-lQFPSEEw0J1"
+fileid="1iSAP64DcnnwIDi81FLODnr5wNE_FwoWd"
 curl -sS -L -o ${filename} "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
 
 

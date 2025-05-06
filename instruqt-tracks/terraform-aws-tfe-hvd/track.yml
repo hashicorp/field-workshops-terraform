@@ -10,7 +10,12 @@ icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.pn
 tags: []
 owner: hashicorp
 developers:
+- tristan.morgan@hashicorp.com
+- joe.kellner@hashicorp.com
+- andres.lopez@hashicorp.com
+- ivan.calvorevelo@hashicorp.com
 - abuxton@hashicorp.com
+- jcarlin@hashicorp.com
 idle_timeout: 300
 timelimit: 1200
 lab_config:
