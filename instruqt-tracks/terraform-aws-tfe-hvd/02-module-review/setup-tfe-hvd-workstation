@@ -16,3 +16,4 @@ fileid="1l-390XP5sZRVwq-bg05N-lQFPSEEw0J1"
 curl -sS -L -o ${filename} "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
 
 
+exit 0

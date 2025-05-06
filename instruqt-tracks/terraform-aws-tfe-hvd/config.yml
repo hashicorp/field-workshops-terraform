@@ -7,8 +7,14 @@ virtualmachines:
   image: instruqt-hashicorp/ubuntu-2004-base
   shell: /bin/bash -l
   machine_type: n1-standard-1
+containers:
+- name: cloud-client
+  image: gcr.io/instruqt/cloud-client
+  ports: [80]
+  shell: /bin/bash
 aws_accounts:
 - name: TF-WORKSHOP
+  regions: [us-west-1]
   managed_policies:
   - arn:aws:iam::aws:policy/AmazonEC2FullAccess
   - arn:aws:iam::aws:policy/AmazonVPCFullAccess

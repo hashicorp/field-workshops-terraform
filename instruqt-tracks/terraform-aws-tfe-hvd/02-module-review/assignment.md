@@ -1,9 +1,9 @@
 ---
-slug: getting-started
+slug: module-review
 type: challenge
 title: "\U0001F4DA Review HVD Module"
-teaser: |-
-  Welcome to this HashiCorp workshop on the Terraform Enterprise Hashicorp Validated Design (HVD) module.
+teaser: Welcome to this HashiCorp workshop on the Terraform Enterprise Hashicorp Validated
+  Design (HVD) module.
 notes:
 - type: text
   contents: |
