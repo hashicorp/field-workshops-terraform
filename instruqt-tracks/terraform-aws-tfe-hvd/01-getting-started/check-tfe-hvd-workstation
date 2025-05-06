@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+
+# Create /tmp/skip-check to disable this check
+if [ -f /tmp/skip-check ]; then
+    rm /tmp/skip-check
+    exit 0
+fi
+
+HISTFILE=/root/.bash_history
+grep -q "echo \$AWS_ACCESS_KEY_ID" HISTFILE
+EXIT_CODE=$?
+if [[ $EXIT_CODE -eq 0 ]]; then
+  fail-message "Oops, you failed to echo your AWS_ACCESS_KEY_ID to the screen. Please try again."
+fi
+grep -q "echo \$AWS_SECRET_ACCESS_KEY" HISTFILE
+EXIT_CODE=$?
+if [[ $EXIT_CODE -eq 0 ]]; then
+  fail-message "Oops, you failed to echo your AWS_SECRET_ACCESS_KEY_ID to the screen. Please try again."
+fi

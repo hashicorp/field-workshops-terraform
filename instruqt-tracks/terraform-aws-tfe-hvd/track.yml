@@ -1,0 +1,23 @@
+slug: terraform-aws-tfe-hvd
+id: uyumr3wl1nww
+title: Terraform AWS TFE HVD
+teaser: Terraform AWS TFE HVD deployment workshop.
+description: |-
+  This Terraform workshop will cover reviewing and deploying terraform enterprise in AWS, using teh Hashicorp Validated Design (HVD) modules. You will get hands on experience setting up first terraform template,
+
+  We will be utilizing additional modules for certificates and prerequisites.
+icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/terraform.png
+tags: []
+owner: hashicorp
+developers:
+- abuxton@hashicorp.com
+idle_timeout: 300
+timelimit: 1200
+lab_config:
+  sidebar_enabled: true
+  feedback_recap_enabled: true
+  feedback_tab_enabled: false
+  loadingMessages: true
+  hideStopButton: false
+checksum: "16765533515232009296"
+enhanced_loading: false
