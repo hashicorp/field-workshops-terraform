@@ -26,7 +26,6 @@ tabs:
 - title: aws CLI
   type: terminal
   hostname: cloud-client
-difficulty: basic
 - title: Github TFE HVD module
   type: website
   url: https://github.com/hashicorp/terraform-aws-terraform-enterprise-hvd
