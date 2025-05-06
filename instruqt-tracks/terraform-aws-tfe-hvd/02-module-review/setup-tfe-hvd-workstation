@@ -6,7 +6,5 @@ set -e
 echo "Cloning assets..."
 mkdir -p /root/src/modules
 git clone https://github.com/hashicorp/terraform-aws-terraform-enterprise-hvd.git /root/src/modules/terraform-aws-terraform-enterprise-hvd
-# https://gist.github.com/abuxton/0d7452c9f1ccc94c9e9441e110016cf7
-cd /root/src/modules/
 
 exit 0
